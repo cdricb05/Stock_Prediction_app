@@ -26,17 +26,17 @@ from multiprocessing import Process, Queue
 # ===== Runtime flags (sane defaults) =====
 ENABLE_LSTM = os.getenv("PREDICTOR_ENABLE_LSTM", "0").lower() in ("1", "true", "yes")
 ALLOW_LIVE_PRICE = os.getenv("PREDICTOR_ALLOW_LIVE_PRICE", "1").lower() in ("1", "true", "yes")
-FAST_ONLY = os.getenv("PREDICTOR_FAST_ONLY", "0").lower() in ("1", "true", "yes")
+FAST_ONLY = os.getenv("PREDICTOR_FAST_ONLY", "1").lower() in ("1", "true", "yes")
 
-MODEL_TIMEOUT_SEC = int(os.getenv("PREDICTOR_MODEL_TIMEOUT_SEC", "10"))
-TOTAL_BUDGET_SEC = int(os.getenv("PREDICTOR_TOTAL_BUDGET_SEC", "60"))
-LOOKBACK_DAYS = int(os.getenv("PREDICTOR_LOOKBACK_DAYS", "365"))
-XGB_ESTIMATORS = int(os.getenv("PREDICTOR_XGB_EST", "160"))
+MODEL_TIMEOUT_SEC = int(os.getenv("PREDICTOR_MODEL_TIMEOUT_SEC", "15"))
+TOTAL_BUDGET_SEC = int(os.getenv("PREDICTOR_TOTAL_BUDGET_SEC", "30"))
+LOOKBACK_DAYS = int(os.getenv("PREDICTOR_LOOKBACK_DAYS", "180"))
+XGB_ESTIMATORS = int(os.getenv("PREDICTOR_XGB_EST", "50"))
 
 ALPHA_STRONG = float(os.getenv("ALPHA_STRONG", "0.02")) # 2% strong band
 ALPHA_WEAK = float(os.getenv("ALPHA_WEAK", "0.005")) # 0.5% weak band
 GOOD_ERR = float(os.getenv("GOOD_ERR", "1.0"))
-WARN_ERR = float(os.getenv("WARN_ERR", "2.0"))
+WARN_ERR = float(os.getenv("WARN_ERR", "5.0"))
 
 # Staleness control: if DB latest date < (last business day - STALE_DAYS), refresh from Yahoo
 STALE_DAYS = int(os.getenv("PREDICTOR_STALE_DAYS", "3"))
@@ -221,7 +221,15 @@ def get_data_from_db(ticker, lookback_days=LOOKBACK_DAYS) -> pd.DataFrame:
         logger.warning(f"[DB] {ticker} not in DB, falling back to Yahoo...")
         return fetch_from_yahoo(ticker, lookback_days)
 
+_series_cache: dict = {}
+_SERIES_CACHE_TTL = 1800  # 30 min
+
 def get_fresh_series(ticker: str, lookback_days=LOOKBACK_DAYS) -> pd.DataFrame:
+    cache_key = f"{ticker}_{lookback_days}"
+    entry = _series_cache.get(cache_key)
+    if entry and (time.time() - entry["ts"]) < _SERIES_CACHE_TTL:
+        logger.info(f"[CACHE] Series HIT for {ticker}")
+        return entry["df"].copy()
     df = get_data_from_db(ticker, lookback_days)
     if df is None or df.empty:
         return df
@@ -236,10 +244,20 @@ def get_fresh_series(ticker: str, lookback_days=LOOKBACK_DAYS) -> pd.DataFrame:
             logger.info(f"[STALE] {ticker} refreshed. New last DB date: {pd.to_datetime(df['ds'].iloc[-1]).date()}")
     else:
         logger.info(f"[OK] {ticker} last DB date {last_db_date} (<= {STALE_DAYS}d from last business day {lb}).")
+    if df is not None and not df.empty:
+        _series_cache[cache_key] = {"ts": time.time(), "df": df.copy()}
     return df
 
 def get_current_price_with_meta(ticker, last_close: float, last_close_date: dt.date) -> Tuple[float, str, str]:
     if not ALLOW_LIVE_PRICE:
+        return last_close, "db_last_close", last_close_date.strftime("%Y-%m-%d")
+    # Skip yfinance on weekends or outside market hours (9:30-16:00 ET)
+    import pytz
+    now_et = dt.datetime.now(pytz.timezone("America/New_York"))
+    is_weekend = now_et.weekday() >= 5
+    is_market_hours = dt.time(9, 30) <= now_et.time() <= dt.time(16, 0)
+    if is_weekend or not is_market_hours:
+        logger.info(f"[LIVE] Skipping yfinance — {'weekend' if is_weekend else 'outside market hours'}")
         return last_close, "db_last_close", last_close_date.strftime("%Y-%m-%d")
     try:
         fast = yf.Ticker(ticker).fast_info
@@ -303,7 +321,7 @@ def run_arima(df, spy_price):
     results, ratios, metrics = {}, {}, {}
     try:
         series = df.set_index("ds")["y"]
-        model = ARIMA(series, order=(5, 1, 0))
+        model = ARIMA(series, order=(1, 1, 0))
         fit = model.fit()
         pred = fit.forecast(steps=5).round(2).tolist()
         results["ARIMA"] = pred
@@ -333,7 +351,7 @@ def run_xgboost(df, spy_price):
         target = r.reindex(feats.index).shift(-1).dropna()
         X = feats.loc[target.index]
         model = xgb.XGBRegressor(
-            n_estimators=XGB_ESTIMATORS, max_depth=4, learning_rate=0.1,
+            n_estimators=XGB_ESTIMATORS, max_depth=3, learning_rate=0.1,
             subsample=0.9, colsample_bytree=0.9,
             objective="reg:squarederror", reg_alpha=0.0, reg_lambda=1.0, verbosity=0
         )
@@ -524,13 +542,24 @@ def _model_worker(func, df, spy_price, q: Queue):
         q.put(("err", {}, {}, {}, str(e)))
 
 def run_with_timeout(func, df, spy_price, timeout_sec: int):
+    import os, signal
     q = Queue(maxsize=1)
     p = Process(target=_model_worker, args=(func, df, spy_price, q))
     p.start()
     p.join(timeout=timeout_sec)
     if p.is_alive():
         logger.warning(f"[TIMEOUT] Model {func.__name__} timed out after {timeout_sec}s; terminating.")
-        p.terminate(); p.join()
+        try:
+            import psutil
+            parent = psutil.Process(p.pid)
+            for child in parent.children(recursive=True):
+                try: child.kill()
+                except psutil.NoSuchProcess: pass
+            parent.kill()
+        except Exception:
+            try: os.killpg(os.getpgid(p.pid), signal.SIGKILL)
+            except Exception: p.kill()
+        p.join(timeout=5)
         return {}, {}, {}, f"timeout@{timeout_sec}s"
     if not q.empty():
         status, r, rr, m, err = q.get()
@@ -639,6 +668,18 @@ def build_predictions_list(results: Dict[str, List[float]]) -> List[Dict[str, An
 async def ping():
     return {"status": "ok"}
 
+@app.on_event("startup")
+async def warmup():
+    import asyncio
+    logger.info("[WARMUP] Pre-fetching AAPL and SPY...")
+    try:
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, lambda: get_fresh_series("AAPL", lookback_days=LOOKBACK_DAYS))
+        await loop.run_in_executor(None, lambda: get_fresh_series("SPY", lookback_days=LOOKBACK_DAYS))
+        logger.info("[WARMUP] Done — DB connections warm.")
+    except Exception as e:
+        logger.warning(f"[WARMUP] Failed: {e}")
+
 @app.get("/healthz")
 async def healthz():
     return {"status": "ok", "db_ok": _DB_OK, "fast_only": FAST_ONLY}
@@ -658,7 +699,7 @@ async def config():
 def run_model_suite(df: pd.DataFrame, spy_price: float, budget_left: float):
     funcs = [run_drift, run_linear, run_xgboost, run_naive, run_sma]
     if not FAST_ONLY:
-        funcs = [run_drift, run_linear, run_ets, run_prophet, run_arima, run_xgboost, run_naive, run_sma]
+        funcs = [run_drift, run_linear, run_ets, run_arima, run_xgboost, run_naive, run_sma]
     if ENABLE_LSTM:
         funcs.append(run_lstm)
     results, ratios, metrics = {}, {}, {}
@@ -719,7 +760,12 @@ async def predict_all(data: TickerRequest = Body(...)):
         n_models = int(elig_details.get("n_total_models", 0))
         spy_avg_forecast = []; spy_ret_pct = []
         if spy_df is not None and not spy_df.empty and spy_current_price is not None:
-            spy_results, _, _, _, _, _ = run_model_suite(spy_df, spy_current_price, spy_budget)
+            # SPY only needs fast models for alpha — never run Prophet/ARIMA on it
+            spy_fast_results = {}
+            for f in [run_drift, run_linear, run_naive]:
+                r, _, _, _ = run_with_timeout(f, spy_df.copy(), spy_current_price, 8)
+                spy_fast_results.update(r)
+            spy_results = spy_fast_results
             spy_avg_forecast = avg_forecast_series(spy_results)
             spy_ret_pct = [round(100.0 * (p / spy_current_price - 1.0), 2) for p in spy_avg_forecast] if spy_avg_forecast else []
         alpha_by_day_pct = []; spy_ratio = []
