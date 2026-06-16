@@ -5,14 +5,22 @@ model over it, and writes an honest metrics report answering one question:
 
     "Does the current prediction model have any measurable out-of-sample edge?"
 
-Run on the GCP VM (needs the DB + model stack), from the repo root:
+Run on the GCP VM (needs the DB + model stack), from the repo root. Quick check:
 
     set -a; . ./api.env; set +a
     PYTHONPATH=. /home/binisti/venv/bin/python -m research.run_walk_forward_baseline \
         --fast-smoke
 
+Full walk-forward (writes docs/current_model_walk_forward_results_v1.md and a
+per-prediction CSV under research/output/); nice'd to protect the live service:
+
+    set -a; . ./api.env; set +a
+    nice -n 19 ionice -c3 env PYTHONPATH=. /home/binisti/venv/bin/python \
+        -m research.run_walk_forward_baseline \
+        --start-date 2024-01-01 --end-date 2025-12-31 --max-tickers 60
+
 Nothing here restarts the service, deploys, installs packages, changes env, or
-writes to the database.
+writes to the database. It only reads stock_prices and replays the model.
 """
 from __future__ import annotations
 
@@ -41,16 +49,22 @@ REQUIRED_SECTIONS = [
     "## Number of predictions evaluated",
     "## Coverage by model",
     "## Recommendation distribution (BUY/HOLD/SELL)",
+    "## Actionability gate — why candidates are HOLD",
     "## Hit rate — positive 5-day return",
     "## Hit rate — outperforming SPY",
     "## Average realized 5-day return by recommendation",
     "## Average realized excess return vs SPY by recommendation",
+    "## Model picks vs universe baseline",
+    "## Performance by predicted-return (score) bucket",
+    "## Performance by confidence bucket",
+    "## Top-N selection simulation (dispatch width)",
     "## Precision@K for top predicted returns",
     "## Rank IC / Spearman correlation",
     "## Calibration table by confidence decile",
     "## Confusion matrix — BUY/HOLD/SELL vs realized positive return",
     "## Drawdown / downside summary for BUY recommendations",
     "## Verdict",
+    "## Build vs refactor vs rebuild",
 ]
 
 PCT = lambda x: "n/a" if x is None or (isinstance(x, float) and math.isnan(x)) else f"{x * 100:.2f}%"
@@ -174,6 +188,24 @@ def build_report_markdown(preds: pd.DataFrame, meta: dict) -> str:
              ", ".join(f"{k}={v}" for k, v in sorted(raw_counts.items())) + ".")
     L.append("")
 
+    # --- Actionability gate: why HOLD ---
+    L.append("## Actionability gate — why candidates are HOLD")
+    L.append("")
+    L.append("The gate (`api_server.make_recommendation`) only emits BUY/SELL when "
+             "`agreement >= REC_MIN_AGREEMENT` **and** `confidence >= REC_MIN_CONF` **and** "
+             "`|predicted move| >= REC_BUY_WEAK`. Everything else collapses to HOLD. "
+             "Breakdown of the reason each graded row landed where it did:")
+    L.append("")
+    if "hold_reason" in g.columns:
+        gt = M.tally([str(x) for x in g["hold_reason"].fillna("unknown")])
+        L.append("| Reason | Count | Share |")
+        L.append("|---|---:|---:|")
+        for row in gt:
+            L.append(f"| {row['reason']} | {row['count']} | {PCT(row['share'])} |")
+    else:
+        L.append("_(hold_reason not present in this dataset — re-run the replay to populate.)_")
+    L.append("")
+
     # --- Hit rate positive ---
     hr_pos = M.hit_rate(pos_flag)
     se_pos = M.proportion_stderr(hr_pos, n_graded)
@@ -225,6 +257,87 @@ def build_report_markdown(preds: pd.DataFrame, meta: dict) -> str:
     for b in ("BUY", "HOLD", "SELL"):
         d = by_excess[b]
         L.append(f"| {b} | {d['n']} | {PCT(d['mean'])} | {PCT(d['std'])} |")
+    L.append("")
+
+    # --- Model picks vs universe baseline ---
+    L.append("## Model picks vs universe baseline")
+    L.append("")
+    ub = M.universe_baseline(real)
+    L.append("Universe baseline = equal-weight 'hold every eligible candidate' over the same "
+             "graded rows. The model only adds value if its *selected* names beat this.")
+    L.append("")
+    L.append(f"- Universe baseline mean realized 5d return (n={ub['n']}): **{PCT(ub['mean'])}** "
+             f"(median {PCT(ub['median'])}, positive {PCT(ub['hit_rate'])}).")
+    buy_mean = by_real.get("BUY", {}).get("mean", float("nan"))
+    buy_n = by_real.get("BUY", {}).get("n", 0)
+    L.append(f"- Model BUY-bucket mean realized 5d return (n={buy_n}): **{PCT(buy_mean)}**.")
+    if not (isinstance(buy_mean, float) and math.isnan(buy_mean)) and not math.isnan(ub["mean"]):
+        L.append(f"- BUY excess vs universe baseline: **{PCT(buy_mean - ub['mean'])}**.")
+    buy_excess_spy = by_excess.get("BUY", {}).get("mean", float("nan"))
+    L.append(f"- BUY excess vs SPY benchmark: **{PCT(buy_excess_spy)}**.")
+    L.append("")
+
+    # --- Performance by score bucket ---
+    L.append("## Performance by predicted-return (score) bucket")
+    L.append("")
+    L.append("Rows split into quintiles of predicted 5d return (Q1 = most bearish, Q5 = most "
+             "bullish). A working signal shows realized return / hit rate rising Q1→Q5.")
+    L.append("")
+    sb = M.bucket_stats(pred, real, n_bins=5)
+    if sb:
+        L.append("| Quintile | n | Pred range | Mean pred | Mean realized 5d | Hit rate |")
+        L.append("|---:|---:|---|---:|---:|---:|")
+        for row in sb:
+            L.append(f"| {row['bin']} | {row['n']} | {PCT(row['val_min'])}–{PCT(row['val_max'])} | "
+                     f"{PCT(row['mean_value'])} | {PCT(row['mean_realized'])} | {PCT(row['hit_rate'])} |")
+        monotone = all(sb[i]["mean_realized"] <= sb[i + 1]["mean_realized"] for i in range(len(sb) - 1))
+        L.append("")
+        L.append(f"- Monotonic increasing realized return across score quintiles? "
+                 f"**{'yes' if monotone else 'no'}**.")
+    else:
+        L.append("No predicted-return values to bucket.")
+    L.append("")
+
+    # --- Performance by confidence bucket ---
+    L.append("## Performance by confidence bucket")
+    L.append("")
+    L.append("Rows split into quintiles of model confidence. If confidence were informative, "
+             "realized return / hit rate would rise with the confidence quintile.")
+    L.append("")
+    cb = M.bucket_stats(conf, real, n_bins=5)
+    if cb:
+        L.append("| Quintile | n | Conf range | Mean conf | Mean realized 5d | Hit rate |")
+        L.append("|---:|---:|---|---:|---:|---:|")
+        for row in cb:
+            L.append(f"| {row['bin']} | {row['n']} | {row['val_min']:.1f}–{row['val_max']:.1f} | "
+                     f"{row['mean_value']:.1f} | {PCT(row['mean_realized'])} | {PCT(row['hit_rate'])} |")
+    else:
+        L.append("No confidence values to bucket.")
+    L.append("")
+
+    # --- Top-N selection simulation ---
+    L.append("## Top-N selection simulation (dispatch width)")
+    L.append("")
+    L.append("Each as-of date, rank eligible candidates by predicted 5d return and take the top N "
+             "(equal weight); the figure is the mean across dates. This directly tests whether a "
+             "narrow top-5 dispatch policy is better or worse than a wider list.")
+    L.append("")
+    dates = list(g["as_of_date"])
+    sim = M.topn_simulation(dates, pred, real, [5, 10, 25, 50, None])
+    uni_ret = sim.get("all", {}).get("mean_return", float("nan"))
+    L.append("| Policy | Avg picks/date | Dates | Mean 5d return | Hit rate | Excess vs all-eligible |")
+    L.append("|---|---:|---:|---:|---:|---:|")
+    for key in (5, 10, 25, 50, "all"):
+        d = sim.get(key)
+        if not d:
+            continue
+        label = "all eligible" if key == "all" else f"top {key}"
+        exc = (d["mean_return"] - uni_ret) if (not math.isnan(d["mean_return"]) and not math.isnan(uni_ret)) else float("nan")
+        L.append(f"| {label} | {NUM(d['avg_picks'], 1)} | {d['n_dates']} | {PCT(d['mean_return'])} | "
+                 f"{PCT(d['hit_rate'])} | {PCT(exc)} |")
+    L.append("")
+    L.append("- If 'top 5' does not beat wider lists / all-eligible, the narrow dispatch policy is "
+             "not justified by selection skill at this horizon.")
     L.append("")
 
     # --- Precision@K ---
@@ -382,6 +495,34 @@ def _append_verdict(L: list[str], *, verdict: str, reasons: list[str]):
     L.append("")
     L.append("_This report is observational. It does not change the model, the live API, scoring "
              "thresholds, orders, or automation._")
+    L.append("")
+
+    # --- Build vs refactor vs rebuild ---
+    L.append("## Build vs refactor vs rebuild")
+    L.append("")
+    decision = {
+        "weak-yes": "**REFACTOR** — keep the serving spine and ensemble plumbing; the price-only "
+                    "signal shows only weak edge, so replace the signal/confidence layer (calibrated "
+                    "probabilities, real point-in-time features) rather than the whole system.",
+        "no": "**REBUILD the signal layer** — the current price-only ensemble shows no measurable "
+              "out-of-sample edge and confidence is not a probability. Keep the FastAPI service, DB "
+              "access and walk-forward harness; rebuild what generates the score and the risk.",
+        "inconclusive": "**REFACTOR, decision-gated** — evidence here is not yet sufficient to justify "
+                        "a full rebuild; run the full-universe walk-forward (command in the report "
+                        "header) and re-read this section. The structural gaps below hold regardless.",
+    }.get(verdict, verdict)
+    L.append(decision)
+    L.append("")
+    L.append("Structural facts that hold independent of sample size (proven by code, not by data):")
+    L.append("- The model is **price-only** (adjusted close). No news, sentiment, macro, seasonality, "
+             "fundamentals, sector, beta, liquidity, or calibrated risk are used. Do not claim them.")
+    L.append("- 'Confidence' is `100 - coefficient_of_variation` of the member forecasts — a dispersion "
+             "statistic, **not** a probability and not calibrated against outcomes.")
+    L.append("- Recommendations come from fixed return-band + agreement/confidence thresholds, not from "
+             "a learned, validated decision rule.")
+    L.append("- There are **no prediction intervals**, so position sizing / downside control has no "
+             "calibrated basis.")
+    L.append("- Verdict reflects this window only; it is not a survivorship- or regime-controlled claim.")
 
 
 def _parse_args(argv=None):
@@ -398,7 +539,10 @@ def _parse_args(argv=None):
     p.add_argument("--benchmark", type=str, default="SPY")
     p.add_argument("--db-url", type=str, default=None)
     p.add_argument("--output", type=str,
-                   default="docs/current_model_walk_forward_baseline_v1.md")
+                   default="docs/current_model_walk_forward_results_v1.md")
+    p.add_argument("--csv-output", type=str,
+                   default="research/output/walk_forward_predictions_v1.csv",
+                   help="Where to persist the per-prediction replay table (set '' to skip).")
     p.add_argument("--fast-smoke", action="store_true",
                    help="Tiny subset for quick validation.")
     return p.parse_args(argv)
@@ -432,6 +576,12 @@ def main(argv=None):
     from research.current_model_baseline import replay_dataset
     preds = replay_dataset(dataset, cache, benchmark=args.benchmark, lookback=args.lookback)
     print(f"      replayed predictions: {len(preds)}")
+
+    if args.csv_output and len(preds):
+        csv_out = args.csv_output
+        os.makedirs(os.path.dirname(os.path.abspath(csv_out)), exist_ok=True)
+        preds.to_csv(csv_out, index=False)
+        print(f"      wrote per-prediction table -> {csv_out} ({len(preds)} rows)")
 
     print("[3/4] Building report ...")
     meta = {

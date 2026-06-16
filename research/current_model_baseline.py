@@ -108,6 +108,7 @@ def replay_one(api, ticker: str, as_of: dt.date,
             "forecast_price_5d": None, "predicted_return_5d": None,
             "recommendation": None, "confidence": None, "agreement": None,
             "residual_alpha_vs_spy_pct": None, "zscore": None,
+            "n_eligible_models": 0, "hold_reason": "no_model_output",
             "ran_models": "", "model_errors": ";".join(f"{k}:{v}" for k, v in model_errors.items()),
         }
 
@@ -118,7 +119,8 @@ def replay_one(api, ticker: str, as_of: dt.date,
     eligible = [m for m, v in metrics.items()
                 if isinstance(v, list) and len(v) == 2 and v[0] is not None and v[1] is not None
                 and v[0] <= api.WARN_ERR and v[1] <= api.WARN_ERR]
-    agreement, confidence, _ = api.compute_agreement_confidence(results, current_price, eligible)
+    agreement, confidence, elig_details = api.compute_agreement_confidence(results, current_price, eligible)
+    n_eligible_models = int(elig_details.get("n_eligible", 0)) if isinstance(elig_details, dict) else 0
 
     # Residual alpha vs SPY (D+5), replicating predict_all's SPY fast-model block.
     alpha_day5_pct = None
@@ -141,6 +143,7 @@ def replay_one(api, ticker: str, as_of: dt.date,
     z = api.zscore_abs(ensemble_day5, current_price, df["y"])
     recommendation = api.make_recommendation(ensemble_day5, current_price, agreement, confidence)
     predicted_return_5d = ensemble_day5 / current_price - 1.0 if current_price else None
+    hold_reason = _hold_reason(api, recommendation, predicted_return_5d, agreement, confidence)
 
     return {
         "ticker": ticker,
@@ -153,9 +156,33 @@ def replay_one(api, ticker: str, as_of: dt.date,
         "agreement": float(agreement) if agreement is not None else None,
         "residual_alpha_vs_spy_pct": alpha_day5_pct,
         "zscore": float(z) if z is not None else None,
+        "n_eligible_models": n_eligible_models,
+        "hold_reason": hold_reason,
         "ran_models": ",".join(ran_models),
         "model_errors": ";".join(f"{k}:{v}" for k, v in model_errors.items()),
     }
+
+
+def _hold_reason(api, recommendation: Optional[str], rel: Optional[float],
+                 agreement: Optional[float], confidence: Optional[float]) -> str:
+    """Why did the actionability gate yield this label?
+
+    Mirrors api_server.make_recommendation's gate, in precedence order, so the
+    report can show *why* HOLD-heavy output occurs. Returns "actionable" for
+    BUY/SELL labels.
+    """
+    if recommendation in {"Strong Buy", "Buy", "Strong Sell", "Sell"}:
+        return "actionable"
+    # Below here the live label is Hold — diagnose which gate failed.
+    if agreement is None or confidence is None:
+        return "insufficient_eligible_models"
+    if agreement < api.REC_MIN_AGREEMENT:
+        return "low_agreement"
+    if confidence < api.REC_MIN_CONF:
+        return "low_confidence"
+    if rel is not None and abs(rel) < api.REC_BUY_WEAK:
+        return "below_direction_band"
+    return "hold_other"
 
 
 def replay_dataset(dataset: pd.DataFrame, series_cache: Dict[str, TickerSeries],

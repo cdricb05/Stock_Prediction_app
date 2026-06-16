@@ -233,6 +233,128 @@ def is_calibrated(table: List[Dict[str, float]], min_bins: int = 3,
     return (not math.isnan(rho)) and rho > 0.0 and spread >= min_spread
 
 
+def universe_baseline(realized: Sequence[float]) -> Dict[str, float]:
+    """Equal-weight universe baseline: mean/median/n of all realized returns.
+
+    This is the 'buy everything eligible' reference. The model only adds value if
+    its *selected* names (BUY bucket, or a top-K slice) beat this number.
+    """
+    v = np.asarray(realized, dtype=float)
+    v = v[~np.isnan(v)]
+    if len(v) == 0:
+        return {"n": 0, "mean": NAN, "median": NAN, "hit_rate": NAN}
+    return {
+        "n": int(len(v)),
+        "mean": float(np.mean(v)),
+        "median": float(np.median(v)),
+        "hit_rate": float(np.mean(v > 0)),
+    }
+
+
+def bucket_stats(values: Sequence[float], realized: Sequence[float],
+                 n_bins: int = 5) -> List[Dict[str, float]]:
+    """Per quantile-bucket of ``values``: n, value range, mean realized return,
+    and positive-return hit rate.
+
+    Generic engine behind both the score-bucket (values = predicted return) and
+    confidence-bucket (values = confidence) tables. NaN rows (either field) are
+    dropped. Heavy ties collapse to fewer buckets — expected, not an error.
+    """
+    x = np.asarray(values, dtype=float)
+    y = np.asarray(realized, dtype=float)
+    n0 = min(len(x), len(y))
+    x, y = x[:n0], y[:n0]
+    mask = ~(np.isnan(x) | np.isnan(y))
+    x, y = x[mask], y[mask]
+    if len(x) == 0:
+        return []
+    edges = quantile_bin_edges(x, n_bins)
+    if len(edges) < 2:
+        return [{
+            "bin": 1, "n": int(len(x)), "val_min": float(x.min()),
+            "val_max": float(x.max()), "mean_value": float(x.mean()),
+            "mean_realized": float(y.mean()), "hit_rate": float(np.mean(y > 0)),
+        }]
+    idx = np.digitize(x, edges[1:-1], right=True)
+    rows: List[Dict[str, float]] = []
+    for b in range(len(edges) - 1):
+        sel = idx == b
+        if not np.any(sel):
+            continue
+        xb, yb = x[sel], y[sel]
+        rows.append({
+            "bin": b + 1,
+            "n": int(len(xb)),
+            "val_min": float(xb.min()),
+            "val_max": float(xb.max()),
+            "mean_value": float(xb.mean()),
+            "mean_realized": float(yb.mean()),
+            "hit_rate": float(np.mean(yb > 0)),
+        })
+    return rows
+
+
+def topn_simulation(dates: Sequence, scores: Sequence[float], realized: Sequence[float],
+                    ns: Sequence) -> Dict:
+    """Simulate a top-N selection policy, rebalanced per as-of date.
+
+    For each unique as-of date, rank the candidates by ``scores`` (descending)
+    and take the top ``n`` (``n=None`` means 'all eligible'). The per-date return
+    is the equal-weight mean realized return of that slice; the reported figure is
+    the mean across dates (each date weighted equally, so a few crowded dates do
+    not dominate). NaN score/realized rows are dropped before ranking.
+
+    Returns ``{n: {"n_dates", "mean_return", "avg_picks", "hit_rate"}}`` plus the
+    key ``"_universe"`` (the n=None 'all eligible' row) for excess-return context.
+    """
+    from collections import defaultdict
+    s = np.asarray(scores, dtype=float)
+    r = np.asarray(realized, dtype=float)
+    idx_by_date = defaultdict(list)
+    n0 = min(len(dates), len(s), len(r))
+    for i in range(n0):
+        if np.isnan(s[i]) or np.isnan(r[i]):
+            continue
+        idx_by_date[dates[i]].append(i)
+
+    out: Dict = {}
+    for n in ns:
+        per_date_ret: List[float] = []
+        per_date_hit: List[float] = []
+        pick_counts: List[int] = []
+        for _d, idxs in idx_by_date.items():
+            order = sorted(idxs, key=lambda i: -s[i])
+            top = order if n is None else order[:n]
+            if not top:
+                continue
+            rr = np.asarray([r[i] for i in top], dtype=float)
+            per_date_ret.append(float(rr.mean()))
+            per_date_hit.append(float(np.mean(rr > 0)))
+            pick_counts.append(len(top))
+        key = "all" if n is None else n
+        out[key] = {
+            "n_dates": len(per_date_ret),
+            "mean_return": float(np.mean(per_date_ret)) if per_date_ret else NAN,
+            "avg_picks": float(np.mean(pick_counts)) if pick_counts else NAN,
+            "hit_rate": float(np.mean(per_date_hit)) if per_date_hit else NAN,
+        }
+    out["_universe"] = out.get("all", {"mean_return": NAN})
+    return out
+
+
+def tally(reasons: Sequence[str]) -> List[Dict[str, float]]:
+    """Count occurrences of each reason string, sorted by descending count, with
+    shares. Used for the actionability-gate failure breakdown.
+    """
+    from collections import Counter
+    items = [r if r else "unknown" for r in reasons]
+    total = len(items)
+    c = Counter(items)
+    rows = [{"reason": k, "count": v, "share": (v / total if total else NAN)}
+            for k, v in c.most_common()]
+    return rows
+
+
 def drawdown_summary(returns: Sequence[float], loss_threshold: float = -0.02) -> Dict[str, float]:
     """Downside summary for a set of realized returns (e.g. BUY-rec rows).
 

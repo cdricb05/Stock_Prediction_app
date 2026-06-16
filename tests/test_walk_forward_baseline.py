@@ -210,6 +210,59 @@ def test_bucket_and_confusion_matrix():
 
 
 # --------------------------------------------------------------------------- #
+#    New selection / baseline metrics
+# --------------------------------------------------------------------------- #
+def test_universe_baseline():
+    ub = M.universe_baseline([0.01, -0.01, 0.03, float("nan"), 0.05])
+    assert ub["n"] == 4
+    assert _approx(ub["mean"], (0.01 - 0.01 + 0.03 + 0.05) / 4)
+    assert _approx(ub["hit_rate"], 0.75)  # 3 of 4 positive
+    assert math.isnan(M.universe_baseline([float("nan")])["mean"])
+
+
+def test_bucket_stats_monotone_signal():
+    # value perfectly orders realized return -> realized rises across buckets
+    values = list(range(100))
+    realized = [v / 100.0 for v in values]
+    rows = M.bucket_stats(values, realized, n_bins=5)
+    assert len(rows) == 5
+    means = [r["mean_realized"] for r in rows]
+    assert means == sorted(means)  # monotone increasing
+    assert rows[0]["mean_realized"] < rows[-1]["mean_realized"]
+
+
+def test_topn_simulation_prefers_better_scores():
+    # Two dates; on each, score ranks realized perfectly. top-1 should beat all.
+    dates = ["d1", "d1", "d1", "d2", "d2", "d2"]
+    scores = [3, 2, 1, 30, 20, 10]
+    realized = [0.09, 0.05, -0.02, 0.12, 0.04, -0.06]
+    sim = M.topn_simulation(dates, scores, realized, [1, 2, None])
+    # top-1 picks the best each date: mean of (0.09, 0.12)
+    assert _approx(sim[1]["mean_return"], (0.09 + 0.12) / 2)
+    assert sim[1]["avg_picks"] == 1.0
+    assert sim[1]["n_dates"] == 2
+    # all-eligible == universe
+    all_mean = (np.mean([0.09, 0.05, -0.02]) + np.mean([0.12, 0.04, -0.06])) / 2
+    assert _approx(sim["all"]["mean_return"], all_mean)
+    assert sim[1]["mean_return"] > sim["all"]["mean_return"]
+
+
+def test_topn_simulation_drops_nan():
+    sim = M.topn_simulation(["d1", "d1"], [1.0, float("nan")], [0.05, 0.10], [1, None])
+    # nan score row dropped -> only one candidate that date
+    assert sim[1]["n_dates"] == 1
+    assert _approx(sim[1]["mean_return"], 0.05)
+
+
+def test_tally_counts_and_shares():
+    rows = M.tally(["a", "a", "b", "", None])
+    by = {r["reason"]: r for r in rows}
+    assert by["a"]["count"] == 2 and _approx(by["a"]["share"], 0.4)
+    assert by["unknown"]["count"] == 2  # "" and None collapse to unknown
+    assert sum(r["count"] for r in rows) == 5
+
+
+# --------------------------------------------------------------------------- #
 # 7. Report contains required sections
 # --------------------------------------------------------------------------- #
 def _synthetic_preds(n=300, seed=1):
@@ -230,6 +283,9 @@ def _synthetic_preds(n=300, seed=1):
         "zscore": rng.uniform(0, 3, n),
         "ran_models": ["Drift,LinearTrend,XGBoost,Naive,SMA"] * n,
         "model_errors": [""] * n,
+        "n_eligible_models": rng.integers(2, 6, n),
+        "hold_reason": rng.choice(
+            ["actionable", "low_agreement", "low_confidence", "below_direction_band"], n),
         "realized_return_5d": real,
         "spy_return_5d": spy,
         "realized_excess_return_5d_vs_spy": real - spy,
