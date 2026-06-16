@@ -1,0 +1,35 @@
+{
+  "phase": "2E-B",
+  "gate": "gate4",
+  "gate_name": "BUY basket beats SPY + universe after costs",
+  "generated_at": "2026-06-16T19:24:33",
+  "synthetic_sample": true,
+  "note": "SYNTHETIC sample built from Phase 2B/2C planted-signal SYN_* rows. NOT real market data and not production edge.",
+  "production_edge": false,
+  "database_touched": false,
+  "cost_bps": 10.0,
+  "buy_recommendations": [
+    "Buy",
+    "Strong Buy"
+  ],
+  "n_universe_rows": 808,
+  "n_buy_rows": 148,
+  "n_buy_dates": 57,
+  "model_version": "phase2-ridge-20260616-7bda0e",
+  "labels_joined": true,
+  "n_buy_rows_with_labels": 148,
+  "n_universe_rows_with_labels": 808,
+  "avg_buy_realized_excess_return": 0.014000203545171034,
+  "avg_universe_realized_excess_return": -0.0031214809625090744,
+  "buy_hit_rate_vs_spy": 0.6081081081081081,
+  "net_of_cost_buy_excess_return": 0.013000203545171035,
+  "buy_excess_minus_universe": 0.017121684507680108,
+  "evaluable": true,
+  "passed": true,
+  "pass_criteria": {
+    "net_of_cost_buy_excess_return_gt_0": true,
+    "buy_excess_gt_universe_excess": true,
+    "buy_hit_rate_gt_0_5": true
+  },
+  "passed_on": "synthetic/sample only"
+}

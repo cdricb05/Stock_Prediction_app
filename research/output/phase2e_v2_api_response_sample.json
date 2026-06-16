@@ -1,0 +1,295 @@
+{
+  "phase": "2E-B",
+  "generated_at": "2026-06-16T19:24:33",
+  "synthetic_sample": true,
+  "production_edge": false,
+  "database_touched": false,
+  "note": "SYNTHETIC sample built from Phase 2B/2C planted-signal SYN_* rows. NOT real market data and not production edge.",
+  "feature_flag": {
+    "env_var": "PREDICTOR_USE_MODEL_V2",
+    "default_enabled": false
+  },
+  "single_ticker_response": {
+    "ticker": "SYN_C",
+    "recommendation": "Strong Buy",
+    "confidence": 68.0,
+    "agreement": 0.68,
+    "ensemble_day5": null,
+    "predictions": [
+      {
+        "model": "model_v2",
+        "horizon_days": 5,
+        "predicted_excess_return_5d": 0.0462302481401244,
+        "prob_outperform_spy": 0.68
+      }
+    ],
+    "zscore": null,
+    "model_version": "phase2-ridge-20260616-7bda0e",
+    "feature_set_version": "phase2a-19f-7d7ba3b1",
+    "score": 0.0462302481401244,
+    "predicted_excess_return_5d": 0.0462302481401244,
+    "prob_outperform_spy": 0.68,
+    "lo_return_5d": -0.0175838085108286,
+    "hi_return_5d": 0.0808752705068815,
+    "interval_width": 0.0984590790177102,
+    "risk_band": "low",
+    "rank_in_universe": 1,
+    "as_of_date": "2024-02-16",
+    "target_date": "2024-02-23",
+    "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+    "model_v2": true
+  },
+  "multi_ticker_response": {
+    "model_v2": true,
+    "synthetic_sample": true,
+    "note": "SYNTHETIC sample built from Phase 2B/2C planted-signal SYN_* rows. NOT real market data and not production edge.",
+    "count": 8,
+    "model_version": "phase2-ridge-20260616-7bda0e",
+    "as_of_dates": [
+      "2024-02-16"
+    ],
+    "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+    "results": [
+      {
+        "ticker": "SYN_C",
+        "recommendation": "Strong Buy",
+        "confidence": 68.0,
+        "agreement": 0.68,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": 0.0462302481401244,
+            "prob_outperform_spy": 0.68
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": 0.0462302481401244,
+        "predicted_excess_return_5d": 0.0462302481401244,
+        "prob_outperform_spy": 0.68,
+        "lo_return_5d": -0.0175838085108286,
+        "hi_return_5d": 0.0808752705068815,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "low",
+        "rank_in_universe": 1,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_F",
+        "recommendation": "Buy",
+        "confidence": 56.41,
+        "agreement": 0.56,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": 0.0106909239584593,
+            "prob_outperform_spy": 0.5641025641025641
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": 0.0106909239584593,
+        "predicted_excess_return_5d": 0.0106909239584593,
+        "prob_outperform_spy": 0.5641025641025641,
+        "lo_return_5d": -0.0531231326924936,
+        "hi_return_5d": 0.0453359463252165,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "medium",
+        "rank_in_universe": 2,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_A",
+        "recommendation": "Sell",
+        "confidence": 69.07,
+        "agreement": 0.69,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": -0.0045755995898799,
+            "prob_outperform_spy": 0.3093220338983051
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": -0.0045755995898799,
+        "predicted_excess_return_5d": -0.0045755995898799,
+        "prob_outperform_spy": 0.3093220338983051,
+        "lo_return_5d": -0.068389656240833,
+        "hi_return_5d": 0.0300694227768771,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "high",
+        "rank_in_universe": 3,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_D",
+        "recommendation": "Sell",
+        "confidence": 69.07,
+        "agreement": 0.69,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": -0.0055130813781461,
+            "prob_outperform_spy": 0.3093220338983051
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": -0.0055130813781461,
+        "predicted_excess_return_5d": -0.0055130813781461,
+        "prob_outperform_spy": 0.3093220338983051,
+        "lo_return_5d": -0.0693271380290991,
+        "hi_return_5d": 0.029131940988611,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "high",
+        "rank_in_universe": 4,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_G",
+        "recommendation": "Strong Sell",
+        "confidence": 69.07,
+        "agreement": 0.69,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": -0.0077893238047876,
+            "prob_outperform_spy": 0.3093220338983051
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": -0.0077893238047876,
+        "predicted_excess_return_5d": -0.0077893238047876,
+        "prob_outperform_spy": 0.3093220338983051,
+        "lo_return_5d": -0.0716033804557406,
+        "hi_return_5d": 0.0268556985619695,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "medium",
+        "rank_in_universe": 5,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_B",
+        "recommendation": "Strong Sell",
+        "confidence": 70.0,
+        "agreement": 0.7,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": -0.0110869312399532,
+            "prob_outperform_spy": 0.3
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": -0.0110869312399532,
+        "predicted_excess_return_5d": -0.0110869312399532,
+        "prob_outperform_spy": 0.3,
+        "lo_return_5d": -0.0749009878909062,
+        "hi_return_5d": 0.0235580911268039,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "medium",
+        "rank_in_universe": 6,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_E",
+        "recommendation": "Strong Sell",
+        "confidence": 70.0,
+        "agreement": 0.7,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": -0.0152145441813314,
+            "prob_outperform_spy": 0.3
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": -0.0152145441813314,
+        "predicted_excess_return_5d": -0.0152145441813314,
+        "prob_outperform_spy": 0.3,
+        "lo_return_5d": -0.0790286008322845,
+        "hi_return_5d": 0.0194304781854256,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "low",
+        "rank_in_universe": 7,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      },
+      {
+        "ticker": "SYN_H",
+        "recommendation": "Strong Sell",
+        "confidence": 100.0,
+        "agreement": 1.0,
+        "ensemble_day5": null,
+        "predictions": [
+          {
+            "model": "model_v2",
+            "horizon_days": 5,
+            "predicted_excess_return_5d": -0.0215741503896043,
+            "prob_outperform_spy": 0.0
+          }
+        ],
+        "zscore": null,
+        "model_version": "phase2-ridge-20260616-7bda0e",
+        "feature_set_version": "phase2a-19f-7d7ba3b1",
+        "score": -0.0215741503896043,
+        "predicted_excess_return_5d": -0.0215741503896043,
+        "prob_outperform_spy": 0.0,
+        "lo_return_5d": -0.0853882070405573,
+        "hi_return_5d": 0.0130708719771528,
+        "interval_width": 0.0984590790177102,
+        "risk_band": "low",
+        "rank_in_universe": 8,
+        "as_of_date": "2024-02-16",
+        "target_date": "2024-02-23",
+        "source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+        "model_v2": true
+      }
+    ]
+  }
+}
