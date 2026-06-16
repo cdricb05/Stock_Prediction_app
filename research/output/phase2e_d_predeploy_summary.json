@@ -1,0 +1,16 @@
+{
+  "phase": "2E-D",
+  "latest_git_commit": "a3a637b72cb1ebc9e5367b5a08879176783ee750",
+  "api_server_compiles": true,
+  "flag_default_off": true,
+  "route_names_present": true,
+  "legacy_keys_present": true,
+  "model_v2_gated": true,
+  "database_touched": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "safe_to_deploy_with_flag_off": true,
+  "feature_flag": "PREDICTOR_USE_MODEL_V2",
+  "feature_flag_default": "off",
+  "notes": "Offline readiness check only. No network, gcloud, SSH, DB connection, migration, or deployment was performed. Do not enable PREDICTOR_USE_MODEL_V2 yet."
+}
