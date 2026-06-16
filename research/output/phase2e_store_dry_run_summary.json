@@ -1,0 +1,32 @@
+{
+  "phase": "2E-A",
+  "generated_at": "2026-06-16T18:59:13",
+  "model_version": "phase2-ridge-20260616-7bda0e",
+  "feature_set_version": "phase2a-19f-7d7ba3b1",
+  "detected_source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+  "is_synthetic": true,
+  "metadata_rows_validated": 1,
+  "prediction_rows_validated": 808,
+  "metadata_validation": {
+    "ok": true,
+    "n_rows": 1,
+    "errors": []
+  },
+  "prediction_validation": {
+    "ok": true,
+    "n_rows": 808,
+    "errors": []
+  },
+  "would_write_model_registry_rows": 1,
+  "would_write_prediction_output_rows": 808,
+  "natural_key": [
+    "model_version",
+    "ticker",
+    "as_of_date"
+  ],
+  "commit_enabled": false,
+  "database_touched": false,
+  "write_error": null,
+  "migration_file": "migrations\\phase2e_prediction_outputs.sql",
+  "migration_executed": false
+}
