@@ -1,0 +1,50 @@
+{
+  "model_version": "phase2-ridge-20260616-7bda0e",
+  "feature_set_version": "phase2a-19f-7d7ba3b1",
+  "created_at": "2026-06-16T18:44:53",
+  "training_source": "SYNTHETIC (Phase 2B/2C planted-signal SYN_* sample; no --db-url given \u2014 NOT real market data)",
+  "training_start_date": "2023-06-30",
+  "training_end_date": "2024-02-16",
+  "horizon_days": 5,
+  "model_name": "ridge",
+  "calibration_method": "isotonic (PAVA) -> Platt fallback -> base-rate; walk-forward, prior folds only",
+  "interval_method": "split-conformal signed-residual quantiles (coverage 0.8); prior folds only",
+  "decision_gate_summary": {
+    "gate3": {
+      "name": "Calibrated probability with monotone buckets / Brier",
+      "evaluable": true,
+      "passed": false
+    },
+    "gate5": {
+      "name": "Honest interval coverage + measured drawdown",
+      "evaluable": true,
+      "passed": true
+    },
+    "gate4": {
+      "name": "BUY basket beats SPY + universe after costs",
+      "evaluable": false,
+      "passed": null,
+      "note": "deferred to Phase 2E (decision/cost backtest)"
+    }
+  },
+  "metrics_summary": {
+    "n_rows": 808,
+    "brier": 0.2554185910807814,
+    "brier_base_rate": 0.249902614265928,
+    "base_rate": 0.4901315789473684,
+    "interval_coverage": 0.8141447368421053,
+    "target_coverage": 0.8,
+    "avg_interval_width": 0.10522829888344677,
+    "drawdown": {
+      "n": 608,
+      "worst": -0.1002819651583794,
+      "mean": -0.001306046303845798,
+      "pct_negative": 0.5411184210526315,
+      "pct_below_threshold": 0.29605263157894735,
+      "mean_loss": -0.023771404783676384,
+      "loss_threshold": -0.02
+    }
+  },
+  "schema_version": "phase2d-registry-v1",
+  "is_synthetic": true
+}
