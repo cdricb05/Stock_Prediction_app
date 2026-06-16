@@ -250,15 +250,19 @@ def test_serve_source_has_no_forbidden_deps():
         assert token not in src, f"serve_v2.py contains forbidden token: {token!r}"
 
 
-def test_api_server_unchanged_no_serve_refs():
+def test_api_server_references_v2_only_through_gated_path():
+    # Phase 2E-C wires serve_v2 into api_server.py behind PREDICTOR_USE_MODEL_V2.
+    # The adapter itself stays decoupled: it must never import api_server, and
+    # api_server must reference the flag exactly once (read via os.getenv) and the
+    # adapter only through the guarded import. (Pre-2E-C this asserted no refs.)
     path = os.path.join(_REPO_ROOT, "api_server.py")
     if not os.path.exists(path):
         return  # api_server lives only on the VM; skip where absent
     with open(path, "r", encoding="utf-8") as f:
         src = f.read()
-    assert "serve_v2" not in src
-    assert "model_v2_enabled" not in src
-    assert "PREDICTOR_USE_MODEL_V2" not in src
+    assert src.count("from model import serve_v2") == 1
+    assert src.count('os.getenv("PREDICTOR_USE_MODEL_V2")') == 1
+    assert "model_v2_enabled(os.getenv(" in src
 
 
 # --------------------------------------------------------------------------- #

@@ -696,6 +696,80 @@ async def config():
         "eps_direction": EPS_DIRECTION,
     }
 
+# >>> MODELV2_GATE_BEGIN (self-contained; tests exec this block in isolation)
+# ===== Model-v2 serving (Phase 2E-C): flag-gated, fail-closed =====
+# The model-v2 path is OFF by default. When PREDICTOR_USE_MODEL_V2 is enabled it
+# may return stored model-v2 prediction rows; on missing rows or ANY error it
+# returns None so the caller falls back to the existing (legacy) model path. No
+# DB connection is made by default — rows are read read-only from a local CSV.
+try:
+    from model import serve_v2 as _serve_v2
+except Exception as _e:  # serve_v2 is optional at runtime; absence => legacy only
+    _serve_v2 = None
+    logger.warning(f"[MODEL_V2] serve_v2 unavailable, legacy-only: {_e}")
+
+# Optional local CSV source for model-v2 rows (read-only). Empty => adapter default.
+MODEL_V2_SOURCE = os.getenv("PREDICTOR_MODEL_V2_SOURCE", "")
+
+
+def model_v2_is_enabled() -> bool:
+    """Read PREDICTOR_USE_MODEL_V2 at request time; default off.
+
+    The pure flag logic lives in serve_v2.model_v2_enabled — we only read the
+    environment here and pass the value in.
+    """
+    if _serve_v2 is None:
+        return False
+    return _serve_v2.model_v2_enabled(os.getenv("PREDICTOR_USE_MODEL_V2"))
+
+
+def _load_model_v2_rows():
+    """Read-only load of model-v2 prediction rows. Called only when flag is on."""
+    path = MODEL_V2_SOURCE or _serve_v2.DEFAULT_PRED_CSV
+    return _serve_v2.load_prediction_outputs(path)
+
+
+def model_v2_predict_single(ticker: str):
+    """Model-v2 /predict response for one ticker, or None to fall back to legacy.
+
+    Fail-closed: flag off, missing rows, or any error all return None so the
+    existing legacy model path runs unchanged.
+    """
+    if not model_v2_is_enabled():
+        return None
+    try:
+        frame = _load_model_v2_rows()
+        row = _serve_v2.latest_row_for_ticker(frame, ticker)
+        if row is None:
+            return None
+        resp = _serve_v2.row_to_predict_response(row)
+        logger.info(f"[MODEL_V2] served {ticker} from model-v2 rows")
+        return resp
+    except Exception as e:  # fail closed -> legacy fallback
+        logger.warning(f"[MODEL_V2] fallback to legacy for {ticker}: {e}")
+        return None
+
+
+def model_v2_predict_batch(tickers=None):
+    """Model-v2 /predict_all_models-style batch response, or None to fall back.
+
+    Fail-closed like model_v2_predict_single. Not wired to a route here (the
+    live /predict_all_models/ is single-ticker), but available for future use.
+    """
+    if not model_v2_is_enabled():
+        return None
+    try:
+        frame = _load_model_v2_rows()
+        rows = _serve_v2.latest_rows_for_tickers(frame, tickers)
+        if not rows:
+            return None
+        return _serve_v2.rows_to_predict_all_response(rows)
+    except Exception as e:  # fail closed -> legacy fallback
+        logger.warning(f"[MODEL_V2] batch fallback to legacy: {e}")
+        return None
+# <<< MODELV2_GATE_END
+
+
 def run_model_suite(df: pd.DataFrame, spy_price: float, budget_left: float):
     funcs = [run_drift, run_linear, run_xgboost, run_naive, run_sma]
     if not FAST_ONLY:
@@ -723,6 +797,11 @@ async def predict_all(data: TickerRequest = Body(...)):
     try:
         ticker = data.ticker.upper()
         logger.info(f"[REQ] {ticker}")
+        # Phase 2E-C: flag-gated model-v2 path (default off, fail-closed). When
+        # disabled or unavailable this is None and the legacy path runs as before.
+        v2_resp = model_v2_predict_single(ticker)
+        if v2_resp is not None:
+            return v2_resp
         df = get_fresh_series(ticker, lookback_days=LOOKBACK_DAYS).tail(LOOKBACK_DAYS).copy()
         df.dropna(inplace=True)
         if df.empty:
