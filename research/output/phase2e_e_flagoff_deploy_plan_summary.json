@@ -1,0 +1,13 @@
+{
+  "phase": "2E-E",
+  "latest_git_commit": "58a05ee1854e18b1a23a5afcc99ef79267e16a5e",
+  "deployment_executed": false,
+  "migration_executed": false,
+  "database_touched": false,
+  "model_v2_enabled": false,
+  "feature_flag": "PREDICTOR_USE_MODEL_V2",
+  "smoke_script": "scripts/phase2e_e_postdeploy_smoke.py",
+  "runbook": "docs/phase2e_e_flagoff_deploy_runbook_v1.md",
+  "safe_to_prepare_flagoff_deploy": true,
+  "notes": "Planning artifacts only. This phase prepares a flag-off deployment runbook and a read-only, stdlib-only post-deploy smoke script. No deployment, gcloud, SSH, service restart, migration, or database write was performed, and PREDICTOR_USE_MODEL_V2 remains unset/off."
+}
