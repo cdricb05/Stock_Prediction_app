@@ -1,0 +1,37 @@
+{
+  "phase": "2G-B",
+  "purpose": "Strict, offline, read-only runner that wraps the Phase 2G-A shadow validation harness for a real historical price CSV export. It adds two explicit gates (--input-csv required, --confirm-real-data required), CSV pre-flight validation (required columns, benchmark presence, minimum tickers/dates), and a GO_CANDIDATE / NO_GO verdict surfaced from the harness safe_for_canary result. This phase does NOT export from the production database and does NOT run against GCP; it prepares the runner so a later phase can supply a real read-only CSV and execute it.",
+  "runner_path": "research/run_phase2g_real_data_validation.py",
+  "wraps": "research/run_phase2g_shadow_validation.py",
+  "tests_path": "tests/test_phase2g_real_data_validation.py",
+  "doc_path": "docs/phase2g_b_real_data_validation_runner_v1.md",
+  "default_output_paths": {
+    "summary_json": "research/output/phase2g_real_data_validation.json",
+    "scored_csv": "research/output/phase2g_real_data_scored.csv"
+  },
+  "required_csv_schema": ["ticker", "date", "adj_close"],
+  "optional_csv_columns": ["volume"],
+  "gates": {
+    "input_csv_required": true,
+    "confirm_real_data_required_for_real_run": true,
+    "test_fixture_mode_bypasses_confirm_only_for_tests": true,
+    "benchmark_required_unless_overridden": "SPY",
+    "min_tickers_default_for_real_data": 20,
+    "min_dates_default_for_real_data": 120
+  },
+  "verdict_values": ["GO_CANDIDATE", "NO_GO"],
+  "feature_flag": "PREDICTOR_USE_MODEL_V2",
+  "deployment_executed": false,
+  "migration_executed": false,
+  "database_touched": false,
+  "database_connected": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "uses_gcloud": false,
+  "uses_ssh": false,
+  "restarts_service": false,
+  "next_step": "Phase 2G-C: produce a real, read-only export of historical price history to a CSV matching this schema (no DB write, no migration, include the benchmark), then run this wrapper with --input-csv <export> --confirm-real-data (and --legacy-csv for the canary gate). Review the resulting rank_ic, top-decile-vs-universe, bucket monotonicity, safe_for_canary, and go_no_go. Enabling PREDICTOR_USE_MODEL_V2 remains a separate, later, human-approved canary phase."
+}
