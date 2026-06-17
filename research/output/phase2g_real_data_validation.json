@@ -1,0 +1,195 @@
+{
+  "phase": "2G-B",
+  "generated_at": "2026-06-17T09:28:38",
+  "input_mode": "csv",
+  "input_csv": "research/output/phase2g_price_history_real.csv",
+  "benchmark": "SPY",
+  "feature_flag": "PREDICTOR_USE_MODEL_V2",
+  "confirm_real_data": true,
+  "test_fixture_mode": false,
+  "real_data_validation_attempted": true,
+  "database_touched": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "safe_for_canary": false,
+  "go_no_go": "NO_GO",
+  "go_no_go_reason": "real-data shadow validation did not clear the harness canary gate (safe_for_canary=false)",
+  "input_stats": {
+    "input_csv": "research/output/phase2g_price_history_real.csv",
+    "row_count": 35014,
+    "ticker_count": 41,
+    "universe_ticker_count": 40,
+    "date_count": 854,
+    "benchmark": "SPY",
+    "benchmark_present": true,
+    "min_tickers": 20,
+    "min_dates": 120
+  },
+  "phase2g_a_summary": {
+    "phase": "2G-A",
+    "generated_at": "2026-06-17T09:28:36",
+    "input_mode": "csv",
+    "input_csv": "research/output/phase2g_price_history_real.csv",
+    "benchmark": "SPY",
+    "feature_flag": "PREDICTOR_USE_MODEL_V2",
+    "database_touched": false,
+    "migration_executed": false,
+    "deployment_executed": false,
+    "model_v2_enabled": false,
+    "production_edge_claimed": false,
+    "fixture_only": false,
+    "no_trading": true,
+    "no_orders": true,
+    "no_automation": true,
+    "legacy_comparison_available": false,
+    "safe_for_canary": false,
+    "row_count": 32800,
+    "ticker_count": 40,
+    "date_start": "2023-02-14",
+    "date_end": "2026-05-21",
+    "horizon_days": 5,
+    "target_metric": "realized_excess_return_5d_vs_spy",
+    "rank_ic": 0.0013779969416183445,
+    "top_decile_mean_excess_return": 0.0018289692073781606,
+    "universe_mean_excess_return": 0.00011304775841829418,
+    "top_decile_hit_rate": 0.4899390243902439,
+    "top_decile_n_dates": 820,
+    "bucket_monotonic": false,
+    "score_buckets": [
+      {
+        "bin": 1,
+        "n": 6560,
+        "val_min": -3.3467162235615286,
+        "val_max": -0.41402014978031515,
+        "mean_value": -0.8210524448262032,
+        "mean_realized": 0.0007456598784773651,
+        "hit_rate": 0.49070121951219514
+      },
+      {
+        "bin": 2,
+        "n": 6560,
+        "val_min": -0.4139910102473239,
+        "val_max": -0.10456746099832377,
+        "mean_value": -0.2444541560320973,
+        "mean_realized": -6.707439782989937e-05,
+        "hit_rate": 0.48277439024390245
+      },
+      {
+        "bin": 3,
+        "n": 6560,
+        "val_min": -0.10451798746838716,
+        "val_max": 0.1471724626794112,
+        "mean_value": 0.021076855566371257,
+        "mean_realized": -0.0018038170704836416,
+        "hit_rate": 0.4614329268292683
+      },
+      {
+        "bin": 4,
+        "n": 6560,
+        "val_min": 0.1471909325280157,
+        "val_max": 0.440442824901085,
+        "mean_value": 0.2893748561718879,
+        "mean_realized": 0.0008533480516764819,
+        "hit_rate": 0.5080792682926829
+      },
+      {
+        "bin": 5,
+        "n": 6560,
+        "val_min": 0.4404771124246919,
+        "val_max": 2.5981803467771094,
+        "mean_value": 0.7550548891200415,
+        "mean_realized": 0.0008371223302511649,
+        "hit_rate": 0.4894817073170732
+      }
+    ],
+    "probability_bucket_summary": [
+      {
+        "bin": 1,
+        "n": 3280,
+        "conf_min": 0.0125,
+        "conf_max": 0.0875,
+        "mean_confidence": 0.05,
+        "hit_rate": 0.48871951219512194
+      },
+      {
+        "bin": 2,
+        "n": 3280,
+        "conf_min": 0.1125,
+        "conf_max": 0.1875,
+        "mean_confidence": 0.15000000000000002,
+        "hit_rate": 0.4899390243902439
+      },
+      {
+        "bin": 3,
+        "n": 3280,
+        "conf_min": 0.2125,
+        "conf_max": 0.2875,
+        "mean_confidence": 0.25,
+        "hit_rate": 0.5024390243902439
+      },
+      {
+        "bin": 4,
+        "n": 3280,
+        "conf_min": 0.3125,
+        "conf_max": 0.3875,
+        "mean_confidence": 0.35,
+        "hit_rate": 0.46707317073170734
+      },
+      {
+        "bin": 5,
+        "n": 3280,
+        "conf_min": 0.4125,
+        "conf_max": 0.4875,
+        "mean_confidence": 0.45,
+        "hit_rate": 0.4579268292682927
+      },
+      {
+        "bin": 6,
+        "n": 3280,
+        "conf_min": 0.5125,
+        "conf_max": 0.5875,
+        "mean_confidence": 0.55,
+        "hit_rate": 0.46463414634146344
+      },
+      {
+        "bin": 7,
+        "n": 3280,
+        "conf_min": 0.6125,
+        "conf_max": 0.6875,
+        "mean_confidence": 0.65,
+        "hit_rate": 0.4948170731707317
+      },
+      {
+        "bin": 8,
+        "n": 3280,
+        "conf_min": 0.7125,
+        "conf_max": 0.7875,
+        "mean_confidence": 0.75,
+        "hit_rate": 0.5076219512195121
+      },
+      {
+        "bin": 9,
+        "n": 3280,
+        "conf_min": 0.8125,
+        "conf_max": 0.8875,
+        "mean_confidence": 0.85,
+        "hit_rate": 0.5018292682926829
+      },
+      {
+        "bin": 10,
+        "n": 3280,
+        "conf_min": 0.9125,
+        "conf_max": 0.9875,
+        "mean_confidence": 0.95,
+        "hit_rate": 0.4899390243902439
+      }
+    ],
+    "scored_csv": "research/output/phase2g_real_data_scored.csv"
+  },
+  "scored_csv": "research/output/phase2g_real_data_scored.csv"
+}
