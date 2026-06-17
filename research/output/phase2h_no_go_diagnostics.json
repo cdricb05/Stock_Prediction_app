@@ -1,0 +1,341 @@
+{
+  "phase": "2H-A",
+  "generated_at": "2026-06-17T09:57:01",
+  "inputs_read": {
+    "validation_json": "research\\output\\phase2g_real_data_validation.json",
+    "scored_csv": "research\\output\\phase2g_real_data_scored.csv",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "go_no_go": "NO_GO",
+  "safe_for_canary": false,
+  "overall": {
+    "reported_rank_ic": 0.001378,
+    "recomputed_rank_ic": -0.002009,
+    "recomputed_n_dates": 820,
+    "rank_ic_floor": 0.03,
+    "top_decile_mean_excess_return": 0.001829,
+    "universe_mean_excess_return": 0.000113,
+    "top_decile_hit_rate": 0.489939,
+    "hit_rate_floor": 0.5,
+    "bucket_monotonic": false,
+    "n_dates": 820,
+    "n_tickers": 40,
+    "legacy_comparison_available": false
+  },
+  "rank_ic_by_year": [
+    {
+      "period": "2023",
+      "rank_ic": -0.019803,
+      "n_dates": 221
+    },
+    {
+      "period": "2024",
+      "rank_ic": 0.020535,
+      "n_dates": 252
+    },
+    {
+      "period": "2025",
+      "rank_ic": -0.034416,
+      "n_dates": 250
+    },
+    {
+      "period": "2026",
+      "rank_ic": 0.063486,
+      "n_dates": 97
+    }
+  ],
+  "rank_ic_by_quarter": [
+    {
+      "period": "2023-Q1",
+      "rank_ic": 0.006442,
+      "n_dates": 33
+    },
+    {
+      "period": "2023-Q2",
+      "rank_ic": 0.039914,
+      "n_dates": 62
+    },
+    {
+      "period": "2023-Q3",
+      "rank_ic": -0.088883,
+      "n_dates": 63
+    },
+    {
+      "period": "2023-Q4",
+      "rank_ic": -0.023241,
+      "n_dates": 63
+    },
+    {
+      "period": "2024-Q1",
+      "rank_ic": 0.092055,
+      "n_dates": 61
+    },
+    {
+      "period": "2024-Q2",
+      "rank_ic": 0.025391,
+      "n_dates": 63
+    },
+    {
+      "period": "2024-Q3",
+      "rank_ic": -0.086128,
+      "n_dates": 64
+    },
+    {
+      "period": "2024-Q4",
+      "rank_ic": 0.054251,
+      "n_dates": 64
+    },
+    {
+      "period": "2025-Q1",
+      "rank_ic": -0.011914,
+      "n_dates": 60
+    },
+    {
+      "period": "2025-Q2",
+      "rank_ic": -0.014392,
+      "n_dates": 62
+    },
+    {
+      "period": "2025-Q3",
+      "rank_ic": -0.044591,
+      "n_dates": 64
+    },
+    {
+      "period": "2025-Q4",
+      "rank_ic": -0.064734,
+      "n_dates": 64
+    },
+    {
+      "period": "2026-Q1",
+      "rank_ic": 0.067957,
+      "n_dates": 61
+    },
+    {
+      "period": "2026-Q2",
+      "rank_ic": 0.05591,
+      "n_dates": 36
+    }
+  ],
+  "top_decile_excess_return_by_year": [
+    {
+      "year": 2023,
+      "n_dates": 221,
+      "top_decile_mean_excess_return": -0.002646,
+      "universe_mean_excess_return": 0.001095,
+      "top_decile_hit_rate": 0.41629
+    },
+    {
+      "year": 2024,
+      "n_dates": 252,
+      "top_decile_mean_excess_return": 0.001554,
+      "universe_mean_excess_return": -0.000611,
+      "top_decile_hit_rate": 0.488095
+    },
+    {
+      "year": 2025,
+      "n_dates": 250,
+      "top_decile_mean_excess_return": -0.000989,
+      "universe_mean_excess_return": -0.000175,
+      "top_decile_hit_rate": 0.468
+    },
+    {
+      "year": 2026,
+      "n_dates": 97,
+      "top_decile_mean_excess_return": 0.02,
+      "universe_mean_excess_return": 0.000498,
+      "top_decile_hit_rate": 0.690722
+    }
+  ],
+  "hit_rate_by_year": [
+    {
+      "year": 2023,
+      "n_rows": 8840,
+      "positive_excess_rate": 0.500792
+    },
+    {
+      "year": 2024,
+      "n_rows": 10080,
+      "positive_excess_rate": 0.477381
+    },
+    {
+      "year": 2025,
+      "n_rows": 10000,
+      "positive_excess_rate": 0.4872
+    },
+    {
+      "year": 2026,
+      "n_rows": 3880,
+      "positive_excess_rate": 0.475773
+    }
+  ],
+  "score_buckets": [
+    {
+      "bin": 1,
+      "n": 6560,
+      "val_min": -3.3467162235615286,
+      "val_max": -0.41402014978031515,
+      "mean_value": -0.8210524448262032,
+      "mean_realized": 0.0007456598784773651,
+      "hit_rate": 0.49070121951219514
+    },
+    {
+      "bin": 2,
+      "n": 6560,
+      "val_min": -0.4139910102473239,
+      "val_max": -0.10456746099832377,
+      "mean_value": -0.2444541560320973,
+      "mean_realized": -6.707439782989937e-05,
+      "hit_rate": 0.48277439024390245
+    },
+    {
+      "bin": 3,
+      "n": 6560,
+      "val_min": -0.10451798746838716,
+      "val_max": 0.1471724626794112,
+      "mean_value": 0.021076855566371257,
+      "mean_realized": -0.0018038170704836416,
+      "hit_rate": 0.4614329268292683
+    },
+    {
+      "bin": 4,
+      "n": 6560,
+      "val_min": 0.1471909325280157,
+      "val_max": 0.440442824901085,
+      "mean_value": 0.2893748561718879,
+      "mean_realized": 0.0008533480516764819,
+      "hit_rate": 0.5080792682926829
+    },
+    {
+      "bin": 5,
+      "n": 6560,
+      "val_min": 0.4404771124246919,
+      "val_max": 2.5981803467771094,
+      "mean_value": 0.7550548891200415,
+      "mean_realized": 0.0008371223302511649,
+      "hit_rate": 0.4894817073170732
+    }
+  ],
+  "ticker_behavior": {
+    "best_by_rank_ic": [
+      {
+        "ticker": "AMD",
+        "n_rows": 820,
+        "ticker_rank_ic": 0.068115,
+        "mean_realized_excess_return": 0.009871,
+        "positive_excess_rate": 0.529268
+      },
+      {
+        "ticker": "ACN",
+        "n_rows": 820,
+        "ticker_rank_ic": 0.06125,
+        "mean_realized_excess_return": -0.005813,
+        "positive_excess_rate": 0.436585
+      },
+      {
+        "ticker": "ADBE",
+        "n_rows": 820,
+        "ticker_rank_ic": 0.047617,
+        "mean_realized_excess_return": -0.005428,
+        "positive_excess_rate": 0.45
+      },
+      {
+        "ticker": "NFLX",
+        "n_rows": 820,
+        "ticker_rank_ic": 0.036077,
+        "mean_realized_excess_return": 0.002624,
+        "positive_excess_rate": 0.52561
+      },
+      {
+        "ticker": "ORCL",
+        "n_rows": 820,
+        "ticker_rank_ic": 0.023877,
+        "mean_realized_excess_return": 0.00313,
+        "positive_excess_rate": 0.496341
+      }
+    ],
+    "worst_by_rank_ic": [
+      {
+        "ticker": "AMZN",
+        "n_rows": 820,
+        "ticker_rank_ic": -0.192412,
+        "mean_realized_excess_return": 0.002866,
+        "positive_excess_rate": 0.535366
+      },
+      {
+        "ticker": "AVGO",
+        "n_rows": 820,
+        "ticker_rank_ic": -0.138732,
+        "mean_realized_excess_return": 0.010327,
+        "positive_excess_rate": 0.531707
+      },
+      {
+        "ticker": "BAC",
+        "n_rows": 820,
+        "ticker_rank_ic": -0.120546,
+        "mean_realized_excess_return": -0.000621,
+        "positive_excess_rate": 0.504878
+      },
+      {
+        "ticker": "WMT",
+        "n_rows": 820,
+        "ticker_rank_ic": -0.118534,
+        "mean_realized_excess_return": 0.00194,
+        "positive_excess_rate": 0.558537
+      },
+      {
+        "ticker": "PEP",
+        "n_rows": 820,
+        "ticker_rank_ic": -0.11277,
+        "mean_realized_excess_return": -0.004293,
+        "positive_excess_rate": 0.393902
+      }
+    ]
+  },
+  "root_causes": {
+    "flags": {
+      "weak_rank_signal": true,
+      "non_monotonic_buckets": true,
+      "top_decile_weak": true,
+      "insufficient_sample": false,
+      "missing_legacy_comparison": true
+    },
+    "failure_category": "signal_issue",
+    "primary_drivers": [
+      "weak_rank_signal",
+      "non_monotonic_buckets",
+      "top_decile_weak",
+      "missing_legacy_comparison"
+    ]
+  },
+  "recommended_experiments": [
+    {
+      "experiment": "feature_reweighting",
+      "detail": "Replace the equal-weight mean-z composite with an out-of-sample fitted cross-sectional weighting (e.g. ridge / rank-regression on point-in-time features), validated walk-forward to avoid lookahead."
+    },
+    {
+      "experiment": "horizon_sweep",
+      "detail": "Re-score at 10d / 21d / 63d forward horizons; the 5d excess target may be dominated by noise at the weekly horizon."
+    },
+    {
+      "experiment": "feature_pruning",
+      "detail": "Drop features with near-zero univariate per-date rank IC and re-test; isolate momentum vs mean-reversion blocks separately."
+    },
+    {
+      "experiment": "neutralization",
+      "detail": "Sector / beta neutralize the score before ranking so the top decile is not just a sector or high-beta tilt."
+    },
+    {
+      "experiment": "wire_legacy_comparison",
+      "detail": "Capture the existing production prediction series over the same window and compute its rank IC head-to-head; the canary gate requires this baseline before any GO_CANDIDATE."
+    }
+  ]
+}
