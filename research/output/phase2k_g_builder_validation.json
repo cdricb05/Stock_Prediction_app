@@ -1,0 +1,264 @@
+{
+  "phase": "2K-G",
+  "generated_at": "2026-06-17T16:34:44",
+  "inputs_read": {
+    "phase2k_f_json": "research\\output\\phase2k_f_free_data_build_plan.json",
+    "builder_script": "research\\build_phase2k_g_free_expanded_dataset.py",
+    "sample_universe_csv": "research\\input\\phase2k_g_free_universe_tickers_sample.csv"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "external_data_root": {
+    "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+    "output_dir": "D:/Stock_Prediction_app_data/phase2k_g/output",
+    "cache_dir": "D:/Stock_Prediction_app_data/phase2k_g/cache",
+    "full_universe_csv": "D:/Stock_Prediction_app_data/phase2k_g/input/phase2k_g_free_universe_tickers.csv",
+    "note": "Large datasets, caches, and the real build outputs live on the D: data root, never in the C: repo. Created only by --execute --allow-network."
+  },
+  "upstream_phase2k_f_summary": {
+    "phase": "2K-F",
+    "candidate": "avg_dollar_volume_21d",
+    "kf_recommended_next_phase": "2K-G",
+    "kf_recommended_next_phase_title": "Free Expanded Price/Volume Dataset Builder",
+    "routed_to_2k_g": true,
+    "kf_create_build_script_now": false,
+    "kf_execute_data_build_now": false
+  },
+  "builder_script": {
+    "path": "research/build_phase2k_g_free_expanded_dataset.py",
+    "exists_now": true,
+    "created_by_phase_2k_g": true
+  },
+  "sample_universe": {
+    "path": "research/input/phase2k_g_free_universe_tickers_sample.csv",
+    "exists_now": true,
+    "created_by_phase_2k_g": true,
+    "required_columns": [
+      "ticker",
+      "name",
+      "sector",
+      "source",
+      "active_as_of",
+      "survivorship_caveat"
+    ],
+    "is_sample_not_full_universe": true,
+    "full_universe_file_created": false,
+    "columns_present": true,
+    "missing_columns": [],
+    "ticker_count": 15,
+    "validation": {
+      "ok": true,
+      "missing_columns": [],
+      "ticker_count": 15,
+      "has_benchmark": true,
+      "survivorship_caveat_column_present": true,
+      "all_rows_have_survivorship_caveat": true,
+      "point_in_time_membership_claimed": false
+    }
+  },
+  "dry_run_validation": {
+    "executed": true,
+    "mode": "dry-run",
+    "universe_valid": true,
+    "network_calls_made": false,
+    "real_outputs_created": false,
+    "real_outputs_present_after": []
+  },
+  "fixture_validation": {
+    "executed": true,
+    "mode": "fixture-mode",
+    "output_dir": "C:/Users/binis/AppData/Local/Temp/phase2k_g_fixture_validation_5csb_d8m",
+    "wrote_to_real_output_dir": false,
+    "data_quality_status": "PASS_WITH_CAVEAT",
+    "row_count": 36,
+    "files_written_count": 5,
+    "network_calls_made": false,
+    "real_outputs_created": false,
+    "real_outputs_present_after": []
+  },
+  "planned_real_outputs": {
+    "note": "The large output files the full --execute build would write. The dry-run and fixture modes never create these.",
+    "expanded_price_history_csv": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+      "role": "Longer, broader daily adjusted OHLCV + volume panel.",
+      "exists_now": false,
+      "created_by_dry_run_or_fixture": false
+    },
+    "expanded_scored_csv": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
+      "role": "Feature-ready / scored panel derived from the price history.",
+      "exists_now": false,
+      "created_by_dry_run_or_fixture": false
+    },
+    "data_quality_report_json": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+      "role": "Data-quality report with PASS / PASS_WITH_CAVEAT / FAIL status.",
+      "exists_now": false,
+      "created_by_dry_run_or_fixture": false
+    },
+    "data_build_summary_json": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+      "role": "Reproducible run metadata.",
+      "exists_now": false,
+      "created_by_dry_run_or_fixture": false
+    },
+    "survivorship_caveat_json": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
+      "role": "Explicit survivorship-caveat metadata.",
+      "exists_now": false,
+      "created_by_dry_run_or_fixture": false
+    }
+  },
+  "real_outputs_status": {
+    "external_data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+    "external_output_dir": "D:/Stock_Prediction_app_data/phase2k_g/output",
+    "files": [
+      {
+        "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+        "exists_now": false
+      },
+      {
+        "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
+        "exists_now": false
+      },
+      {
+        "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+        "exists_now": false
+      },
+      {
+        "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+        "exists_now": false
+      },
+      {
+        "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
+        "exists_now": false
+      }
+    ],
+    "present": [],
+    "legacy_repo_output_files": [
+      "research/output/phase2k_g_expanded_price_history_free.csv",
+      "research/output/phase2k_g_expanded_scored_free.csv",
+      "research/output/phase2k_g_data_quality_report.json",
+      "research/output/phase2k_g_data_build_summary.json",
+      "research/output/phase2k_g_survivorship_caveat.json"
+    ],
+    "legacy_present": [],
+    "legacy_all_absent": true,
+    "all_absent": true
+  },
+  "data_quality_check_catalog": [
+    {
+      "check_id": "adjusted_close_continuity",
+      "severity": "caveat",
+      "description": "Adjusted-close series is continuous with no unexplained jumps."
+    },
+    {
+      "check_id": "duplicate_date_ticker_rows",
+      "severity": "hard",
+      "description": "No duplicate rows on the (date, ticker) key."
+    },
+    {
+      "check_id": "missing_adjusted_close",
+      "severity": "hard",
+      "description": "Missing adjusted-close values stay below threshold."
+    },
+    {
+      "check_id": "missing_volume",
+      "severity": "caveat",
+      "description": "Missing volume values stay below threshold."
+    },
+    {
+      "check_id": "outlier_daily_returns",
+      "severity": "caveat",
+      "description": "Daily returns outside a sane bound are flagged for review."
+    },
+    {
+      "check_id": "zero_or_negative_prices",
+      "severity": "hard",
+      "description": "No zero or negative adjusted prices."
+    },
+    {
+      "check_id": "zero_or_negative_volume_unexpected",
+      "severity": "caveat",
+      "description": "Zero / negative volume only where genuinely expected."
+    },
+    {
+      "check_id": "ticker_level_date_coverage",
+      "severity": "caveat",
+      "description": "Each ticker covers enough of its live span against the calendar."
+    },
+    {
+      "check_id": "benchmark_coverage",
+      "severity": "caveat",
+      "description": "Benchmark series spans the full panel date range."
+    },
+    {
+      "check_id": "minimum_years_achieved",
+      "severity": "caveat",
+      "description": "Panel spans at least 8 years."
+    },
+    {
+      "check_id": "minimum_ticker_count_achieved",
+      "severity": "caveat",
+      "description": "At least 100 tickers per date."
+    },
+    {
+      "check_id": "no_forward_filled_labels",
+      "severity": "hard",
+      "description": "Target labels use only realized future prices, never forward fill."
+    },
+    {
+      "check_id": "no_point_in_time_membership_claim",
+      "severity": "hard",
+      "description": "No claim of point-in-time membership; current-as-of only."
+    },
+    {
+      "check_id": "survivorship_caveat_present",
+      "severity": "caveat",
+      "description": "Survivorship-caveat metadata is present and populated."
+    }
+  ],
+  "survivorship_caveat_policy": {
+    "explicitly_documented": true,
+    "no_false_point_in_time_membership_claim": true,
+    "clean_point_in_time_build_deferred": true,
+    "reported_as_survivorship_biased": true,
+    "carried_from_phase_2k_f": true
+  },
+  "interpretation": {
+    "live_download_executed": false,
+    "network_mode_run": false,
+    "real_dataset_outputs_created": false,
+    "paid_data_acquired": false,
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "only_safe_modes_run": true,
+    "narrative": "Phase 2K-G implements the local / free expanded dataset builder from the Phase 2K-F plan and proves it works using only safe dry-run and fixture modes. The builder is import-safe, requires an explicit --execute --allow-network to fetch anything, and writes its large outputs only in that manual mode. This validation fetches nothing, acquires no paid data, trains no model, and creates none of the large real output files. No production edge is claimed."
+  },
+  "decision": {
+    "builder_script_created": true,
+    "sample_universe_created": true,
+    "live_download_executed": false,
+    "real_dataset_outputs_created": false,
+    "paid_data_acquired": false,
+    "model_candidate_created": false,
+    "ready_for_manual_live_build": true,
+    "reason": "Phase 2K-G creates the builder script and the sample ticker universe and validates them only in safe dry-run and fixture modes (no network, into a temp directory). The full free build is the manual Phase 2K-H step run with --execute --allow-network. No live download, no real dataset outputs, no paid data, and no model candidate are produced here."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-H",
+    "title": "Manual Free Expanded Dataset Build Run",
+    "purpose": "Run the Phase 2K-G builder in explicit --execute --allow-network mode against the full local ticker universe to create the expanded, survivorship-caveated daily adjusted OHLCV dataset and its data-quality report. Still no model training, no model candidate, and no production integration."
+  }
+}

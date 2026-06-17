@@ -1,0 +1,16 @@
+ticker,name,sector,source,active_as_of,survivorship_caveat
+AAPL,Apple Inc.,Information Technology,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+MSFT,Microsoft Corp.,Information Technology,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+NVDA,NVIDIA Corp.,Information Technology,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+AMZN,Amazon.com Inc.,Consumer Discretionary,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+GOOGL,Alphabet Inc. Class A,Communication Services,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+META,Meta Platforms Inc.,Communication Services,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+JPM,JPMorgan Chase & Co.,Financials,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+V,Visa Inc.,Financials,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+UNH,UnitedHealth Group Inc.,Health Care,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+JNJ,Johnson & Johnson,Health Care,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+XOM,Exxon Mobil Corp.,Energy,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+PG,Procter & Gamble Co.,Consumer Staples,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+HD,Home Depot Inc.,Consumer Discretionary,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+KO,Coca-Cola Co.,Consumer Staples,manual_curated_sample,2026-06-17,current_member_as_of_2026-06-17_not_point_in_time
+SPY,SPDR S&P 500 ETF Trust,Benchmark,manual_curated_sample,2026-06-17,benchmark_etf_not_a_constituent
