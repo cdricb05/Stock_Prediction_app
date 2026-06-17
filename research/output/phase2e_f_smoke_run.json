@@ -1,0 +1,18 @@
+{
+  "phase": "2E-E",
+  "base_url": "http://127.0.0.1:9000",
+  "ticker": "AAPL",
+  "feature_flag": "PREDICTOR_USE_MODEL_V2",
+  "ping_ok": true,
+  "health_ok": true,
+  "config_ok": true,
+  "predict_ok": true,
+  "predict_all_ok": true,
+  "legacy_keys_present": true,
+  "model_v2_inactive": true,
+  "database_touched": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "safe_flagoff_smoke": true,
+  "notes": "Read-only HTTP smoke only. No env var was set, no gcloud/SSH, no DB connection, no migration, no deployment. PREDICTOR_USE_MODEL_V2 was never enabled by this script."
+}
