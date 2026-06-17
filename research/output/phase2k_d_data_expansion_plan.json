@@ -1,0 +1,350 @@
+{
+  "phase": "2K-D",
+  "generated_at": "2026-06-17T15:32:08",
+  "inputs_read": {
+    "phase2l_b_json": "research\\output\\phase2l_b_walk_forward_validation.json",
+    "phase2l_a_json": "research\\output\\phase2l_a_walk_forward_design.json",
+    "phase2k_c_json": "research\\output\\phase2k_c_residual_robustness.json",
+    "phase2k_a_json": "research\\output\\phase2k_alpha_backlog.json",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "upstream_phase2l_b_summary": {
+    "phase": "2L-B",
+    "recommendation": "NEED_MORE_DATA",
+    "reason": "only 7 folds / 7.0 effective validation observations after the horizon-length embargo (need >= 3 folds and >= 8.0 effective obs); the data cannot support a conclusive walk-forward test.",
+    "recommended_next_phase": "2K-D",
+    "candidate": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "embargo_sessions": 63,
+    "walk_forward_config": {
+      "min_train_sessions": 252,
+      "validation_sessions": 63,
+      "embargo_sessions": 63,
+      "n_calendar_sessions": 762,
+      "calendar_start": "2023-02-14",
+      "calendar_end": "2026-02-27",
+      "min_effective_obs": 8.0
+    },
+    "aggregate_metrics": {
+      "n_folds": 7,
+      "total_effective_validation_obs": 7.0,
+      "pooled_validation_mean_residual_rank_ic": 0.040803,
+      "frac_validation_windows_same_sign": 0.428571
+    },
+    "pass_fail_gates": [
+      {
+        "id": "validation_mean_ic_above_floor",
+        "passed": true
+      },
+      {
+        "id": "majority_validation_windows_same_sign",
+        "passed": false
+      },
+      {
+        "id": "bootstrap_ci_excludes_zero_in_validation",
+        "passed": false
+      },
+      {
+        "id": "no_single_validation_period_drives_result",
+        "passed": false
+      },
+      {
+        "id": "no_excessive_ticker_concentration",
+        "passed": true
+      },
+      {
+        "id": "no_regime_only_dependence",
+        "passed": true
+      },
+      {
+        "id": "no_degradation_vs_phase2k_c",
+        "passed": true
+      },
+      {
+        "id": "no_lookahead_leakage",
+        "passed": true
+      },
+      {
+        "id": "enough_effective_observations_after_embargo",
+        "passed": false
+      }
+    ],
+    "failed_gates": [
+      "majority_validation_windows_same_sign",
+      "bootstrap_ci_excludes_zero_in_validation",
+      "no_single_validation_period_drives_result",
+      "enough_effective_observations_after_embargo"
+    ],
+    "n_folds": 7,
+    "effective_validation_obs": 7.0
+  },
+  "decision": {
+    "continue_model_research_now": false,
+    "create_model_candidate_now": false,
+    "reason": "Phase 2L-B returned NEED_MORE_DATA for avg_dollar_volume_21d: only 7 non-overlapping walk-forward folds / 7.0 effective validation observations remained after the 63-session embargo, below the required 8.0. A ~40-name, ~3.04-year single-regime panel cannot support a conclusive out-of-sample test, so no model research and no model candidate are authorized; the disciplined next step is to acquire longer history and a broader point-in-time universe and retest.",
+    "upstream_recommendation": "NEED_MORE_DATA",
+    "decision_basis": "NEED_MORE_DATA"
+  },
+  "data_gap_analysis": {
+    "decision_basis": "NEED_MORE_DATA",
+    "candidate": "avg_dollar_volume_21d",
+    "current_panel": {
+      "n_tickers": 40,
+      "n_dates": 820,
+      "approx_years": 3.04,
+      "labeled_calendar_sessions": 762,
+      "calendar_start": "2023-02-14",
+      "calendar_end": "2026-02-27",
+      "single_regime": true,
+      "single_regime_note": "The 2023-2026 export is essentially one extended bull regime; it lacks a sustained drawdown, so a 63-session signal cannot be tested out of a single regime."
+    },
+    "why_cannot_advance": "NEED_MORE_DATA: after the horizon-length embargo the labeled calendar yields too few effectively independent validation observations to draw a conclusion. The panel is both too short (only one regime) and too narrow to support model research.",
+    "insufficient_folds_or_observations": {
+      "n_folds": 7,
+      "effective_validation_obs": 7.0,
+      "min_effective_obs_required": 8.0,
+      "effective_obs_shortfall": 1.0,
+      "embargo_sessions": 63,
+      "explanation": "Each non-overlapping validation block contributes ~validation_dates / horizon effective observations; with validation == horizon that is ~1 per fold, so clearing the floor requires materially more labeled history after the embargo than the current export provides."
+    }
+  },
+  "expanded_dataset_requirements": {
+    "candidate_being_retested": "avg_dollar_volume_21d",
+    "note": "avg_dollar_volume_21d is a price/volume liquidity feature, so fundamentals and analyst estimates are NOT required to retest it -- they are marked as future-phase data that only later, different hypotheses would need.",
+    "requirements": {
+      "longer_price_history": {
+        "description": "Daily adjusted OHLCV reaching well before 2023, ideally a full market cycle including a sustained drawdown.",
+        "required_for_retesting_candidate": true,
+        "must_be_point_in_time": false,
+        "leakage_risk": "Corporate-action adjustment must use only data available as of each date; no future split/dividend adjustment applied to past prices.",
+        "priority": "high"
+      },
+      "broader_equity_universe": {
+        "description": "Materially more than the current ~40 mega-caps (toward the full S&P 500 / a broad liquid universe) to widen each cross-section and reduce long-leg ticker concentration.",
+        "required_for_retesting_candidate": true,
+        "must_be_point_in_time": true,
+        "leakage_risk": "Using today's index membership for history is survivorship bias; membership must be resolved as-of-date.",
+        "priority": "high"
+      },
+      "point_in_time_universe_membership": {
+        "description": "As-of-date index / universe constituent history so each date's cross-section uses only names that were members then.",
+        "required_for_retesting_candidate": true,
+        "must_be_point_in_time": true,
+        "leakage_risk": "Back-applying current membership injects look-ahead and survivorship bias.",
+        "priority": "high"
+      },
+      "survivorship_bias_controls": {
+        "description": "Coverage of delisted / merged / renamed names over the history so the universe is not silently restricted to today's survivors.",
+        "required_for_retesting_candidate": true,
+        "must_be_point_in_time": true,
+        "leakage_risk": "Dropping delisted names inflates measured returns and any signal computed on the survivors.",
+        "priority": "high"
+      },
+      "liquidity_and_volume_history": {
+        "description": "Daily volume / dollar-volume history -- the direct input to avg_dollar_volume_21d -- across the longer span and broader universe.",
+        "required_for_retesting_candidate": true,
+        "must_be_point_in_time": false,
+        "leakage_risk": "Features must stay trailing-only; volume spikes around events leak if not lagged.",
+        "priority": "high",
+        "mostly_available_now": true
+      },
+      "benchmark_and_factor_data": {
+        "description": "Benchmark (SPY) and trailing risk series over the longer span for the beta / vol residualization controls.",
+        "required_for_retesting_candidate": true,
+        "must_be_point_in_time": false,
+        "leakage_risk": "Betas / vols must be trailing-only.",
+        "priority": "medium",
+        "mostly_available_now": true
+      },
+      "sector_industry_classification": {
+        "description": "Point-in-time sector / industry tags to support neutralization and concentration control on the broader universe.",
+        "required_for_retesting_candidate": false,
+        "must_be_point_in_time": true,
+        "leakage_risk": "Applying current classification to history misclassifies reclassified names.",
+        "priority": "medium",
+        "future_phase": false
+      },
+      "point_in_time_fundamentals": {
+        "description": "As-first-reported fundamentals with correct report-date lags.",
+        "required_for_retesting_candidate": false,
+        "must_be_point_in_time": true,
+        "leakage_risk": "Restated figures and report-date misalignment are the dominant factor-research leakage source.",
+        "priority": "low",
+        "future_phase": true,
+        "future_phase_note": "Only needed by later fundamental / quality-value hypotheses, not by the liquidity candidate."
+      },
+      "analyst_estimates_and_surprise": {
+        "description": "Point-in-time consensus estimates, revision timestamps, actual earnings dates and surprise.",
+        "required_for_retesting_candidate": false,
+        "must_be_point_in_time": true,
+        "leakage_risk": "Using final/current consensus for a past date imports the future; earnings dates must be actual.",
+        "priority": "low",
+        "future_phase": true,
+        "future_phase_note": "Only needed by later revision / drift hypotheses."
+      }
+    }
+  },
+  "minimum_viable_expanded_dataset": {
+    "daily_adjusted_ohlcv_years_min": 8,
+    "daily_adjusted_ohlcv_years_recommended": 10,
+    "universe_breadth_min_tickers_per_date": 100,
+    "universe_breadth_note": "Materially broader than the current ~40 names; the full liquid S&P 500 is the ideal target.",
+    "point_in_time_membership_required": true,
+    "survivorship_caveat_if_not_point_in_time": "If true point-in-time membership cannot be sourced, the dataset must carry an explicit survivorship caveat and the retest must report results as survivorship-biased rather than treating them as clean.",
+    "enough_walk_forward_folds_after_embargo": true,
+    "regimes_required": [
+      "market_up",
+      "market_down",
+      "high_volatility",
+      "low_volatility",
+      "at_least_one_sustained_drawdown"
+    ]
+  },
+  "target_validation_capacity": {
+    "min_nonoverlapping_validation_folds": 8,
+    "recommended_validation_folds": 16,
+    "min_effective_validation_obs": 8.0,
+    "recommended_effective_validation_obs": 16.0,
+    "effective_obs_per_fold": 1.0,
+    "min_tickers_per_date": 100,
+    "min_years_history": 8,
+    "recommended_years_history": 10,
+    "raw_sessions_for_floor": 882,
+    "approx_years_for_floor": 3.5,
+    "raw_sessions_for_recommended": 1386,
+    "approx_years_for_recommended": 5.5,
+    "must_include_at_least_one_stressed_period": true,
+    "arithmetic_vs_regime_note": "The session arithmetic above is only the minimum to clear the effective-observation gate; the binding constraint is REGIME COVERAGE. The 8-10 year target exists so the walk-forward spans more than one market regime, not merely to accumulate enough non-overlapping blocks.",
+    "current_vs_target": {
+      "current_n_tickers": 40,
+      "current_effective_validation_obs": 7.0,
+      "current_n_folds": 7
+    }
+  },
+  "data_quality_gates": [
+    {
+      "id": "adjusted_close_consistency",
+      "description": "Adjusted closes are internally consistent across the longer span; no discontinuities at the join between the old and the extended history.",
+      "check": "Reconcile adjusted vs raw closes and verify total-return continuity."
+    },
+    {
+      "id": "split_dividend_adjustment_sanity",
+      "description": "Split and dividend adjustments are correct and applied with no look-ahead.",
+      "check": "Spot-check known splits/dividends; confirm adjustments use only as-of-date information."
+    },
+    {
+      "id": "missing_date_handling",
+      "description": "Trading-calendar gaps are handled explicitly; no silent forward-fill of prices across non-trading days.",
+      "check": "Validate each name's date index against the exchange calendar."
+    },
+    {
+      "id": "ticker_history_continuity",
+      "description": "Each ticker's history is continuous over its membership span with no unexplained gaps.",
+      "check": "Flag names with interior gaps exceeding a tolerance."
+    },
+    {
+      "id": "delisting_survivorship_treatment",
+      "description": "Delisted / merged names are retained over their live span so the universe is not restricted to survivors.",
+      "check": "Confirm delisted names appear up to their delist date and not after."
+    },
+    {
+      "id": "duplicate_row_detection",
+      "description": "No duplicate (date, ticker) rows.",
+      "check": "Assert uniqueness on the (date, ticker) key."
+    },
+    {
+      "id": "no_forward_filled_target_labels",
+      "description": "Forward labels are never forward-filled or imputed; a name with no genuine forward window is dropped, not filled.",
+      "check": "Verify labels are computed only from realized future prices."
+    },
+    {
+      "id": "no_lookahead_universe_membership",
+      "description": "Universe membership is resolved point-in-time; today's membership is never back-applied to historical dates.",
+      "check": "Confirm each date's cross-section uses as-of-date membership only."
+    }
+  ],
+  "implementation_options": [
+    {
+      "option": "extend_current_free_local_data",
+      "data_scope": "Extend the existing free end-of-day export backward (more years) and modestly widen the ticker list.",
+      "cost": "free",
+      "point_in_time_membership": false,
+      "pros": [
+        "No new spend; fastest to attempt; reuses the existing pipeline."
+      ],
+      "risks": [
+        "No point-in-time membership (survivorship bias); free history depth and delisted-name coverage are limited and may not reach a full market cycle."
+      ],
+      "recommended_first": true
+    },
+    {
+      "option": "broader_free_low_cost_sources",
+      "data_scope": "Investigate broader free / low-cost end-of-day price and volume archives and a low-cost point-in-time constituent history.",
+      "cost": "low",
+      "point_in_time_membership": "partial",
+      "pros": [
+        "Wider universe and longer depth than the current export; low spend."
+      ],
+      "risks": [
+        "Point-in-time constituent lists remain the scarce piece; coverage and adjustment quality must be validated against the data-quality gates before use."
+      ],
+      "recommended_first": false
+    },
+    {
+      "option": "paid_point_in_time_dataset",
+      "data_scope": "A paid point-in-time universe + price (+ optionally fundamentals) dataset with delisted-name coverage.",
+      "cost": "paid",
+      "point_in_time_membership": true,
+      "pros": [
+        "Clean point-in-time membership and survivorship handling; the soundest basis for out-of-sample research."
+      ],
+      "risks": [
+        "Cost and procurement lead time; decision deferred until the free / low-cost feasibility check (Phase 2K-E) is done."
+      ],
+      "recommended_first": false,
+      "decision": "later"
+    }
+  ],
+  "research_retest_plan": {
+    "preconditions": [
+      "Expanded dataset assembled and passing every data_quality_gate.",
+      "Universe resolved point-in-time (or carrying an explicit survivorship caveat).",
+      "Coverage spans more than one market regime, including a sustained drawdown."
+    ],
+    "steps": [
+      "Re-run the Phase 2K-B beta/vol-neutralized residual rank-IC test for avg_dollar_volume_21d on the expanded multi-regime panel.",
+      "Re-run the Phase 2K-C robustness battery (overlap-aware bootstrap, permutation null, leave-one-year-out, concentration, regime splits) on the expanded data.",
+      "Re-run the Phase 2L-A walk-forward design / Phase 2L-B model-free walk-forward validation, which now has enough folds and regimes to be conclusive.",
+      "Only if the model-free baseline passes walk-forward on multi-regime data may a later, separately gated phase design a simple single-feature candidate under the model-candidate gate."
+    ],
+    "still_no_model_until": "A feature family passes the IC sweep and the out-of-sample robustness / walk-forward battery on real data spanning more than one market regime, with no single-regime artifact, no excessive ticker concentration, and no look-ahead leakage. The model-v2 serving flag stays disabled until then.",
+    "creates_model_candidate": false
+  },
+  "interpretation": {
+    "candidate": "avg_dollar_volume_21d",
+    "upstream_walk_forward_recommendation": "NEED_MORE_DATA",
+    "continue_model_research_now": false,
+    "create_model_candidate_now": false,
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "narrative": "Phase 2L-B could not advance avg_dollar_volume_21d to model research on the current ~40-name, single-regime 2023-2026 export (NEED_MORE_DATA). Phase 2K-D therefore plans data expansion and universe broadening rather than model work: it defines the longer history, broader point-in-time universe, survivorship controls, target validation capacity, data-quality / leakage gates, and acquisition options needed before any retest. No model is trained, fitted, scored, or served, and no model candidate is created. No production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-E",
+    "title": "Expanded Historical Universe Data Feasibility Check",
+    "purpose": "Before retesting any residual signal, verify whether the required expanded dataset -- 8-10 years of daily adjusted OHLCV across a materially broader, point-in-time universe with survivorship coverage -- can actually be assembled locally / free / low-cost. The feasibility check scopes source depth, universe breadth, point-in-time membership availability, and the data-quality gates, and decides whether a paid point-in-time dataset is warranted. It acquires no paid data, trains no model, and creates no model candidate."
+  }
+}
