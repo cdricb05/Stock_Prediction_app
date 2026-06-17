@@ -1,0 +1,122 @@
+{
+  "phase": "2G-A",
+  "generated_at": "2026-06-16T21:28:34",
+  "input_mode": "csv",
+  "input_csv": "research\\output\\phase2g_shadow_validation_sample.csv",
+  "benchmark": "SPY",
+  "feature_flag": "PREDICTOR_USE_MODEL_V2",
+  "database_touched": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "fixture_only": true,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "legacy_comparison_available": false,
+  "safe_for_canary": false,
+  "row_count": 876,
+  "ticker_count": 6,
+  "date_start": "2024-02-12",
+  "date_end": "2024-09-02",
+  "horizon_days": 5,
+  "target_metric": "realized_excess_return_5d_vs_spy",
+  "rank_ic": -0.015502573932214207,
+  "top_decile_mean_excess_return": -0.00266012290786997,
+  "universe_mean_excess_return": -0.004617423862599631,
+  "top_decile_hit_rate": 0.5,
+  "top_decile_n_dates": 146,
+  "bucket_monotonic": false,
+  "score_buckets": [
+    {
+      "bin": 1,
+      "n": 176,
+      "val_min": -1.3725512499515842,
+      "val_max": -0.4869725776959187,
+      "mean_value": -0.7279554541123597,
+      "mean_realized": -0.0011667646150927955,
+      "hit_rate": 0.4602272727272727
+    },
+    {
+      "bin": 2,
+      "n": 175,
+      "val_min": -0.48586417374214336,
+      "val_max": -0.151212119472158,
+      "mean_value": -0.318236568323344,
+      "mean_realized": -0.003830831257682567,
+      "hit_rate": 0.45714285714285713
+    },
+    {
+      "bin": 3,
+      "n": 175,
+      "val_min": -0.1506081241928433,
+      "val_max": 0.1513189647129327,
+      "mean_value": 0.005457199155490458,
+      "mean_realized": -0.011882553786267782,
+      "hit_rate": 0.41714285714285715
+    },
+    {
+      "bin": 4,
+      "n": 175,
+      "val_min": 0.15232002104980774,
+      "val_max": 0.46607705933780097,
+      "mean_value": 0.3031599004311949,
+      "mean_realized": 0.0002770425014427198,
+      "hit_rate": 0.4742857142857143
+    },
+    {
+      "bin": 5,
+      "n": 175,
+      "val_min": 0.4673128505071671,
+      "val_max": 1.5511241668696978,
+      "mean_value": 0.7417346683010888,
+      "mean_realized": -0.006503730208240628,
+      "hit_rate": 0.45714285714285713
+    }
+  ],
+  "probability_bucket_summary": [
+    {
+      "bin": 1,
+      "n": 292,
+      "conf_min": 0.08333333333333333,
+      "conf_max": 0.25,
+      "mean_confidence": 0.16666666666666669,
+      "hit_rate": 0.4657534246575342
+    },
+    {
+      "bin": 2,
+      "n": 146,
+      "conf_min": 0.4166666666666667,
+      "conf_max": 0.4166666666666667,
+      "mean_confidence": 0.41666666666666663,
+      "hit_rate": 0.4520547945205479
+    },
+    {
+      "bin": 4,
+      "n": 146,
+      "conf_min": 0.5833333333333334,
+      "conf_max": 0.5833333333333334,
+      "mean_confidence": 0.5833333333333334,
+      "hit_rate": 0.4315068493150685
+    },
+    {
+      "bin": 5,
+      "n": 146,
+      "conf_min": 0.75,
+      "conf_max": 0.75,
+      "mean_confidence": 0.75,
+      "hit_rate": 0.4041095890410959
+    },
+    {
+      "bin": 6,
+      "n": 146,
+      "conf_min": 0.9166666666666666,
+      "conf_max": 0.9166666666666666,
+      "mean_confidence": 0.9166666666666667,
+      "hit_rate": 0.5
+    }
+  ],
+  "note": "Deterministic FIXTURE built from synthetic price series with a planted per-ticker momentum drift, purely to exercise the harness end-to-end. This is NOT real market data and is NOT evidence of a production edge. Any skill shown is the planted signal being recovered, which only proves the pipeline runs.",
+  "disclaimer": "This is fixture/sample output. It is NOT production evidence and NOT a real market-edge claim. safe_for_canary is false."
+}
