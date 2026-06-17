@@ -1,0 +1,663 @@
+{
+  "phase": "2L-B",
+  "generated_at": "2026-06-17T15:17:43",
+  "inputs_read": {
+    "phase2l_a_design_json": "research\\output\\phase2l_a_walk_forward_design.json",
+    "phase2k_c_json": "research\\output\\phase2k_c_residual_robustness.json",
+    "phase2k_b_json": "research\\output\\phase2k_b_residual_signal.json",
+    "scored_csv": "research\\output\\phase2g_real_data_scored.csv",
+    "price_history_csv": "research\\output\\phase2g_price_history_real.csv",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "design_validation": {
+    "design_phase": "2L-A",
+    "candidate_is_avg_dollar_volume_21d": true,
+    "primary_horizon_is_63": true,
+    "design_routed_to_2l_b": true
+  },
+  "candidate": {
+    "feature": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "direction": "bullish",
+    "reference_sign": 1,
+    "phase2k_c_residual_mean_rank_ic": 0.067368,
+    "is_research_only": true,
+    "is_production_edge": false
+  },
+  "residualization_config": {
+    "label_base": "forward_excess_return_vs_spy",
+    "label_column": "resid_63d",
+    "horizons": [
+      5,
+      10,
+      21,
+      63
+    ],
+    "controls": [
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "method": "per-date cross-sectional OLS (usable controls + intercept); residual = forward excess label - fitted (identical to Phase 2K-B / 2K-C, via the imported Phase 2K-B functions)",
+    "robust_fallback": "cross-sectional demean when no control is usable, a control is constant, or the date has fewer than min_names_for_ols usable names",
+    "min_names_for_ols": 10,
+    "no_lookahead": "controls are trailing point-in-time features; the label is strictly forward; each per-date fit uses no forward information",
+    "residual_label_columns": {
+      "5": "resid_5d",
+      "10": "resid_10d",
+      "21": "resid_21d",
+      "63": "resid_63d"
+    },
+    "fit_counts": {
+      "5": {
+        "ols_dates": 820,
+        "fallback_dates": 0
+      },
+      "10": {
+        "ols_dates": 815,
+        "fallback_dates": 0
+      },
+      "21": {
+        "ols_dates": 804,
+        "fallback_dates": 0
+      },
+      "63": {
+        "ols_dates": 762,
+        "fallback_dates": 0
+      }
+    }
+  },
+  "walk_forward_config": {
+    "candidate_signal": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "embargo_sessions": 63,
+    "embargo_equals_forward_horizon": true,
+    "min_train_sessions": 252,
+    "rolling_train_sessions": 504,
+    "validation_sessions": 63,
+    "step_sessions": 63,
+    "training_scheme_for_gates": "expanding",
+    "rolling_training_reported": true,
+    "no_random_cross_validation": true,
+    "test_period_always_after_training_period": true,
+    "no_overlap_between_train_and_validation_label_windows": true,
+    "model_free": true,
+    "fitted_model": false,
+    "calendar_source": "labeled per-date residual-IC session calendar",
+    "n_calendar_sessions": 762,
+    "calendar_start": "2023-02-14",
+    "calendar_end": "2026-02-27",
+    "thresholds": {
+      "rank_ic_floor": 0.03,
+      "majority_sign_fraction": 0.5,
+      "concentration_top3_threshold": 0.5,
+      "degradation_tolerance_fraction": 0.5,
+      "min_effective_obs": 8.0,
+      "min_train_sessions": 252,
+      "rolling_train_sessions": 504,
+      "validation_sessions": 63,
+      "step_sessions": 63
+    }
+  },
+  "panel": {
+    "n_rows": 32800,
+    "n_tickers": 40,
+    "n_dates": 820,
+    "date_start": "2023-02-14",
+    "date_end": "2026-05-21"
+  },
+  "provenance": {
+    "source": "yfinance",
+    "date_start": "2023-01-03",
+    "date_end": "2026-05-29",
+    "price_row_count": 35014,
+    "ticker_count": 41
+  },
+  "folds": [
+    {
+      "fold_id": 0,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 252,
+      "rolling_train_start_idx": 0,
+      "embargo_start_idx": 252,
+      "embargo_end_idx": 315,
+      "embargo_sessions": 63,
+      "validation_start_idx": 315,
+      "validation_end_idx": 378,
+      "train_start": "2023-02-14",
+      "train_end": "2024-02-14",
+      "rolling_train_start": "2023-02-14",
+      "embargo_start": "2024-02-15",
+      "embargo_end": "2024-05-15",
+      "validation_start": "2024-05-16",
+      "validation_end": "2024-08-15",
+      "n_train_dates": 252,
+      "n_rolling_train_dates": 252,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    },
+    {
+      "fold_id": 1,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 315,
+      "rolling_train_start_idx": 0,
+      "embargo_start_idx": 315,
+      "embargo_end_idx": 378,
+      "embargo_sessions": 63,
+      "validation_start_idx": 378,
+      "validation_end_idx": 441,
+      "train_start": "2023-02-14",
+      "train_end": "2024-05-15",
+      "rolling_train_start": "2023-02-14",
+      "embargo_start": "2024-05-16",
+      "embargo_end": "2024-08-15",
+      "validation_start": "2024-08-16",
+      "validation_end": "2024-11-13",
+      "n_train_dates": 315,
+      "n_rolling_train_dates": 315,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    },
+    {
+      "fold_id": 2,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 378,
+      "rolling_train_start_idx": 0,
+      "embargo_start_idx": 378,
+      "embargo_end_idx": 441,
+      "embargo_sessions": 63,
+      "validation_start_idx": 441,
+      "validation_end_idx": 504,
+      "train_start": "2023-02-14",
+      "train_end": "2024-08-15",
+      "rolling_train_start": "2023-02-14",
+      "embargo_start": "2024-08-16",
+      "embargo_end": "2024-11-13",
+      "validation_start": "2024-11-14",
+      "validation_end": "2025-02-18",
+      "n_train_dates": 378,
+      "n_rolling_train_dates": 378,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    },
+    {
+      "fold_id": 3,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 441,
+      "rolling_train_start_idx": 0,
+      "embargo_start_idx": 441,
+      "embargo_end_idx": 504,
+      "embargo_sessions": 63,
+      "validation_start_idx": 504,
+      "validation_end_idx": 567,
+      "train_start": "2023-02-14",
+      "train_end": "2024-11-13",
+      "rolling_train_start": "2023-02-14",
+      "embargo_start": "2024-11-14",
+      "embargo_end": "2025-02-18",
+      "validation_start": "2025-02-19",
+      "validation_end": "2025-05-19",
+      "n_train_dates": 441,
+      "n_rolling_train_dates": 441,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    },
+    {
+      "fold_id": 4,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 504,
+      "rolling_train_start_idx": 0,
+      "embargo_start_idx": 504,
+      "embargo_end_idx": 567,
+      "embargo_sessions": 63,
+      "validation_start_idx": 567,
+      "validation_end_idx": 630,
+      "train_start": "2023-02-14",
+      "train_end": "2025-02-18",
+      "rolling_train_start": "2023-02-14",
+      "embargo_start": "2025-02-19",
+      "embargo_end": "2025-05-19",
+      "validation_start": "2025-05-20",
+      "validation_end": "2025-08-19",
+      "n_train_dates": 504,
+      "n_rolling_train_dates": 504,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    },
+    {
+      "fold_id": 5,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 567,
+      "rolling_train_start_idx": 63,
+      "embargo_start_idx": 567,
+      "embargo_end_idx": 630,
+      "embargo_sessions": 63,
+      "validation_start_idx": 630,
+      "validation_end_idx": 693,
+      "train_start": "2023-02-14",
+      "train_end": "2025-05-19",
+      "rolling_train_start": "2023-05-16",
+      "embargo_start": "2025-05-20",
+      "embargo_end": "2025-08-19",
+      "validation_start": "2025-08-20",
+      "validation_end": "2025-11-17",
+      "n_train_dates": 567,
+      "n_rolling_train_dates": 504,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    },
+    {
+      "fold_id": 6,
+      "window_type": "expanding",
+      "train_start_idx": 0,
+      "train_end_idx": 630,
+      "rolling_train_start_idx": 126,
+      "embargo_start_idx": 630,
+      "embargo_end_idx": 693,
+      "embargo_sessions": 63,
+      "validation_start_idx": 693,
+      "validation_end_idx": 756,
+      "train_start": "2023-02-14",
+      "train_end": "2025-08-19",
+      "rolling_train_start": "2023-08-16",
+      "embargo_start": "2025-08-20",
+      "embargo_end": "2025-11-17",
+      "validation_start": "2025-11-18",
+      "validation_end": "2026-02-19",
+      "n_train_dates": 630,
+      "n_rolling_train_dates": 504,
+      "n_embargo_dates": 63,
+      "n_validation_dates": 63
+    }
+  ],
+  "fold_metrics": [
+    {
+      "fold_id": 0,
+      "train_start": "2023-02-14",
+      "train_end": "2024-02-14",
+      "embargo_start": "2024-02-15",
+      "embargo_end": "2024-05-15",
+      "validation_start": "2024-05-16",
+      "validation_end": "2024-08-15",
+      "n_train_dates": 252,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": -0.024861,
+      "validation_information_ratio": -0.272442,
+      "top_minus_bottom_residual_spread": 0.001848,
+      "top_decile_residual_hit_rate": 0.599206,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.995968,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.095057,
+      "train_mean_residual_rank_ic_rolling": 0.095057,
+      "validation_sign": -1,
+      "validation_sign_matches_reference": false
+    },
+    {
+      "fold_id": 1,
+      "train_start": "2023-02-14",
+      "train_end": "2024-05-15",
+      "embargo_start": "2024-05-16",
+      "embargo_end": "2024-08-15",
+      "validation_start": "2024-08-16",
+      "validation_end": "2024-11-13",
+      "n_train_dates": 315,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": 0.123407,
+      "validation_information_ratio": 1.860883,
+      "top_minus_bottom_residual_spread": 0.038932,
+      "top_decile_residual_hit_rate": 0.353175,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.995968,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.104889,
+      "train_mean_residual_rank_ic_rolling": 0.104889,
+      "validation_sign": 1,
+      "validation_sign_matches_reference": true
+    },
+    {
+      "fold_id": 2,
+      "train_start": "2023-02-14",
+      "train_end": "2024-08-15",
+      "embargo_start": "2024-08-16",
+      "embargo_end": "2024-11-13",
+      "validation_start": "2024-11-14",
+      "validation_end": "2025-02-18",
+      "n_train_dates": 378,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": -0.049802,
+      "validation_information_ratio": -0.464475,
+      "top_minus_bottom_residual_spread": -0.022607,
+      "top_decile_residual_hit_rate": 0.214286,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.985887,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.083264,
+      "train_mean_residual_rank_ic_rolling": 0.083264,
+      "validation_sign": -1,
+      "validation_sign_matches_reference": false
+    },
+    {
+      "fold_id": 3,
+      "train_start": "2023-02-14",
+      "train_end": "2024-11-13",
+      "embargo_start": "2024-11-14",
+      "embargo_end": "2025-02-18",
+      "validation_start": "2025-02-19",
+      "validation_end": "2025-05-19",
+      "n_train_dates": 441,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": -0.008234,
+      "validation_information_ratio": -0.119672,
+      "top_minus_bottom_residual_spread": -0.004811,
+      "top_decile_residual_hit_rate": 0.277778,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.991935,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.088999,
+      "train_mean_residual_rank_ic_rolling": 0.088999,
+      "validation_sign": -1,
+      "validation_sign_matches_reference": false
+    },
+    {
+      "fold_id": 4,
+      "train_start": "2023-02-14",
+      "train_end": "2025-02-18",
+      "embargo_start": "2025-02-19",
+      "embargo_end": "2025-05-19",
+      "validation_start": "2025-05-20",
+      "validation_end": "2025-08-19",
+      "n_train_dates": 504,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": 0.125492,
+      "validation_information_ratio": 1.204939,
+      "top_minus_bottom_residual_spread": 0.084355,
+      "top_decile_residual_hit_rate": 0.615079,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.995968,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.071649,
+      "train_mean_residual_rank_ic_rolling": 0.071649,
+      "validation_sign": 1,
+      "validation_sign_matches_reference": true
+    },
+    {
+      "fold_id": 5,
+      "train_start": "2023-02-14",
+      "train_end": "2025-05-19",
+      "embargo_start": "2025-05-20",
+      "embargo_end": "2025-08-19",
+      "validation_start": "2025-08-20",
+      "validation_end": "2025-11-17",
+      "n_train_dates": 567,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": -0.043789,
+      "validation_information_ratio": -0.436571,
+      "top_minus_bottom_residual_spread": -0.018609,
+      "top_decile_residual_hit_rate": 0.488095,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.979839,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.062773,
+      "train_mean_residual_rank_ic_rolling": 0.044541,
+      "validation_sign": -1,
+      "validation_sign_matches_reference": false
+    },
+    {
+      "fold_id": 6,
+      "train_start": "2023-02-14",
+      "train_end": "2025-08-19",
+      "embargo_start": "2025-08-20",
+      "embargo_end": "2025-11-17",
+      "validation_start": "2025-11-18",
+      "validation_end": "2026-02-19",
+      "n_train_dates": 630,
+      "n_validation_dates": 63,
+      "n_validation_rows": 2520,
+      "validation_mean_residual_rank_ic": 0.163409,
+      "validation_information_ratio": 2.213943,
+      "top_minus_bottom_residual_spread": 0.056939,
+      "top_decile_residual_hit_rate": 0.543651,
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "turnover_stability_proxy": 0.995968,
+      "effective_validation_obs": 1.0,
+      "train_mean_residual_rank_ic_expanding": 0.069045,
+      "train_mean_residual_rank_ic_rolling": 0.05065,
+      "validation_sign": 1,
+      "validation_sign_matches_reference": true
+    }
+  ],
+  "aggregate_metrics": {
+    "n_folds": 7,
+    "n_validation_windows": 7,
+    "pooled_n_validation_dates": 441,
+    "total_effective_validation_obs": 7.0,
+    "mean_validation_residual_rank_ic": 0.040803,
+    "pooled_validation_mean_residual_rank_ic": 0.040803,
+    "median_validation_residual_rank_ic": 0.046154,
+    "reference_direction_sign": 1,
+    "n_validation_windows_same_sign": 3,
+    "frac_validation_windows_same_sign": 0.428571,
+    "bootstrap_pooled_ic_ci": {
+      "method": "moving_block",
+      "block_len_sessions": 63,
+      "n_resamples": 1000,
+      "alpha": 0.05,
+      "ci_low": -0.008009,
+      "ci_high": 0.08449,
+      "excludes_zero": false
+    },
+    "leave_one_fold_out": {
+      "per_fold": [
+        {
+          "fold_left_out": 0,
+          "mean_validation_ic_remaining": 0.051747,
+          "sign_preserved": true,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 1,
+          "mean_validation_ic_remaining": 0.027036,
+          "sign_preserved": true,
+          "above_floor": false
+        },
+        {
+          "fold_left_out": 2,
+          "mean_validation_ic_remaining": 0.055904,
+          "sign_preserved": true,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 3,
+          "mean_validation_ic_remaining": 0.048976,
+          "sign_preserved": true,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 4,
+          "mean_validation_ic_remaining": 0.026688,
+          "sign_preserved": true,
+          "above_floor": false
+        },
+        {
+          "fold_left_out": 5,
+          "mean_validation_ic_remaining": 0.054902,
+          "sign_preserved": true,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 6,
+          "mean_validation_ic_remaining": 0.020369,
+          "sign_preserved": true,
+          "above_floor": false
+        }
+      ],
+      "sign_stable": false
+    },
+    "concentration": {
+      "top_quintile_ticker_concentration": 0.125,
+      "top3_long_leg_share": 0.375,
+      "n_unique_top_quintile_tickers": 12,
+      "top_quintile_rows": 3528
+    },
+    "regimes": {
+      "spy_forward_return": {
+        "threshold": 0.0,
+        "positive": {
+          "rank_ic": 0.046581,
+          "n_dates": 350
+        },
+        "negative": {
+          "rank_ic": 0.018582,
+          "n_dates": 91
+        },
+        "sign_flips_across_regime": false
+      },
+      "market_volatility_21d": {
+        "median_split": 0.125861,
+        "high": {
+          "rank_ic": 0.027663,
+          "n_dates": 221
+        },
+        "low": {
+          "rank_ic": 0.054003,
+          "n_dates": 220
+        },
+        "sign_flips_across_regime": false
+      }
+    },
+    "regime_dependent": false,
+    "degradation_vs_phase2k_c": {
+      "phase2k_c_residual_mean_rank_ic": 0.067368,
+      "degradation_tolerance_fraction": 0.5,
+      "degradation_floor": 0.033684,
+      "pooled_validation_mean_residual_rank_ic": 0.040803,
+      "degraded": false
+    }
+  },
+  "pass_fail_gates": [
+    {
+      "id": "validation_mean_ic_above_floor",
+      "observed": 0.040803,
+      "threshold": 0.03,
+      "passed": true
+    },
+    {
+      "id": "majority_validation_windows_same_sign",
+      "observed": 0.428571,
+      "threshold": 0.5,
+      "passed": false
+    },
+    {
+      "id": "bootstrap_ci_excludes_zero_in_validation",
+      "observed": {
+        "ci_low": -0.008009,
+        "ci_high": 0.08449
+      },
+      "threshold": "95% CI excludes 0",
+      "passed": false
+    },
+    {
+      "id": "no_single_validation_period_drives_result",
+      "observed": false,
+      "threshold": "leave-one-fold-out sign + floor stable",
+      "passed": false
+    },
+    {
+      "id": "no_excessive_ticker_concentration",
+      "observed": 0.375,
+      "threshold": 0.5,
+      "passed": true
+    },
+    {
+      "id": "no_regime_only_dependence",
+      "observed": false,
+      "threshold": "no sign flip across SPY up/down split",
+      "passed": true
+    },
+    {
+      "id": "no_degradation_vs_phase2k_c",
+      "observed": 0.040803,
+      "threshold": 0.033684,
+      "passed": true
+    },
+    {
+      "id": "no_lookahead_leakage",
+      "observed": "embargo applied; trailing-only features; train-only fit",
+      "threshold": "all leakage controls satisfied by construction",
+      "passed": true
+    },
+    {
+      "id": "enough_effective_observations_after_embargo",
+      "observed": 7.0,
+      "threshold": 8.0,
+      "passed": false
+    }
+  ],
+  "recommendation": {
+    "recommendation": "NEED_MORE_DATA",
+    "allowed_values": [
+      "WALK_FORWARD_PASS",
+      "WALK_FORWARD_FAIL",
+      "NEED_MORE_DATA"
+    ],
+    "enough_data": false,
+    "all_gates_passed": false,
+    "failed_gates": [
+      "majority_validation_windows_same_sign",
+      "bootstrap_ci_excludes_zero_in_validation",
+      "no_single_validation_period_drives_result",
+      "enough_effective_observations_after_embargo"
+    ],
+    "reason": "only 7 folds / 7.0 effective validation observations after the horizon-length embargo (need >= 3 folds and >= 8.0 effective obs); the data cannot support a conclusive walk-forward test.",
+    "is_production_edge": false,
+    "authorizes_model_training": false
+  },
+  "interpretation": {
+    "candidate": "avg_dollar_volume_21d",
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "walk_forward_recommendation": "NEED_MORE_DATA",
+    "pooled_validation_mean_residual_rank_ic": 0.040803,
+    "narrative": "Phase 2L-B implemented the Phase 2L-A model-free, rank-only walk-forward validation for avg_dollar_volume_21d at its 63d horizon. Names were ranked by the single feature each date, the direction was fixed from the training window, and only out-of-sample validation residual-label metrics were measured -- nothing was fitted. The signal could not be conclusively tested -- too few effective observations remain after the horizon-length embargo on this thin, single-regime panel. No model was trained, fitted, scored, or served, and no model candidate was created. Even a walk-forward pass would only permit DESIGNING a simple, separately gated single-feature candidate later; it is not a production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-D",
+    "title": "Extend Data / Broaden Universe Before Model Research",
+    "purpose": "The model-free walk-forward validation did not pass on the current ~40-name, single-regime 2023-2026 export (either the signal failed the gates out-of-sample or there were too few effective observations after the embargo). The disciplined next step is to acquire longer history and a broader point-in-time universe and retest, not to train a model. No model candidate is created."
+  }
+}
