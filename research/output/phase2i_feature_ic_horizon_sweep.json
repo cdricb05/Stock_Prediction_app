@@ -1,0 +1,5804 @@
+{
+  "phase": "2I-A",
+  "generated_at": "2026-06-17T11:52:55",
+  "inputs_read": {
+    "scored_csv": "research\\output\\phase2g_real_data_scored.csv",
+    "price_history_csv": "research\\output\\phase2g_price_history_real.csv",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "config": {
+    "features": [
+      "return_5d",
+      "return_10d",
+      "return_21d",
+      "return_63d",
+      "momentum_12_1",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "excess_return_vs_spy_21d",
+      "excess_return_vs_spy_63d",
+      "rolling_beta_63d",
+      "rolling_corr_spy_63d",
+      "volume_zscore_21d"
+    ],
+    "horizons": [
+      5,
+      10,
+      21,
+      63
+    ],
+    "rank_ic_floor": 0.03,
+    "year_sign_min": 3,
+    "min_dates": 120,
+    "min_names_per_date": 5,
+    "forward_label_5d_source": "realized_excess_return_5d_vs_spy",
+    "forward_label_10_21_63_source": "phase2g_price_history_real.csv",
+    "keep_rule": "KEEP if |mean per-date rank IC| at best horizon >= rank_ic_floor AND IC sign matches the overall sign in >= year_sign_min years AND best horizon is not low_confidence; survivors ranked by |information ratio|."
+  },
+  "label_sources": {
+    "5": "scored_csv.realized_excess_return_5d_vs_spy",
+    "10": "price_history.forward_excess_return_vs_spy",
+    "21": "price_history.forward_excess_return_vs_spy",
+    "63": "price_history.forward_excess_return_vs_spy"
+  },
+  "label_cross_checks": {
+    "5d_scored_vs_price_derived": {
+      "correlation": 1.0,
+      "n": 32800,
+      "mean_abs_diff": 0.0,
+      "max_abs_diff": 0.0
+    }
+  },
+  "label_5d_cross_check": {
+    "official_5d_label_source": "realized_excess_return_5d_vs_spy",
+    "n_rows_compared": 32800,
+    "pearson_corr_vs_price_derived_5d": 1.0,
+    "mean_abs_diff_vs_price_derived_5d": 0.0
+  },
+  "provenance": {
+    "source": "yfinance",
+    "date_start": "2023-01-03",
+    "date_end": "2026-05-29",
+    "price_row_count": 35014,
+    "ticker_count": 41
+  },
+  "panel": {
+    "n_rows": 32800,
+    "n_tickers": 40,
+    "n_dates": 820,
+    "date_start": "2023-02-14",
+    "date_end": "2026-05-21"
+  },
+  "features": {
+    "return_5d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.014737,
+      "best_information_ratio": 0.060921,
+      "direction": "bullish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": -0.001963,
+          "std_rank_ic": 0.255784,
+          "information_ratio": -0.007674,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.000655,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.495427,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.028104,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.001391,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.023131,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": -0.017394,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.052305,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.016153,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.024298,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.079591,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.017079,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.059254,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.031754,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.037374,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.032058,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.033009,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.048388,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.040045,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.041211,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.022962,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": -0.008837,
+          "std_rank_ic": 0.257783,
+          "information_ratio": -0.03428,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": -0.000149,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.489877,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.006122,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.010946,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.051545,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.077062,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.025885,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.079834,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.088064,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.017413,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.009861,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.054424,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.029221,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.049094,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.062402,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.018423,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.064681,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.096013,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.016397,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.196435,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": -0.014032,
+          "std_rank_ic": 0.248988,
+          "information_ratio": -0.056357,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": -0.001455,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.490983,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.018268,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.010204,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.037045,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.05664,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.075013,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.064867,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.147425,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.058799,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.03741,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.02557,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.125062,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.024056,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.059465,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.099443,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.064057,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.121236,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.010851,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.262486,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.014737,
+          "std_rank_ic": 0.241909,
+          "information_ratio": 0.060921,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.000927,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.506562,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.007754,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.020531,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.006917,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.067003,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.120592,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.012461,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.099357,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.051127,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.072054,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.009271,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.017692,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.020729,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.073421,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.02997,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.087594,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.020776,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.067003,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "return_10d": {
+      "best_horizon_days": 10,
+      "best_mean_rank_ic": -0.01759,
+      "best_information_ratio": -0.06568,
+      "direction": "bearish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": -0.01702,
+          "std_rank_ic": 0.26169,
+          "information_ratio": -0.065038,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 2.3e-05,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.47439,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.003259,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.022239,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.061755,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.065633,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.021388,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.070783,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.086843,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.017413,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.032719,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.031931,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.066079,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.041132,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.058433,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.005371,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.058243,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.133411,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.033568,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.119966,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": -0.01759,
+          "std_rank_ic": 0.267822,
+          "information_ratio": -0.06568,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 6.3e-05,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.476074,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.042044,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.012328,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.052891,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.122663,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.03152,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.110271,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.193222,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.046276,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.030474,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.018252,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.129177,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.033622,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.085969,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.092135,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.066246,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.149018,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.052394,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.260933,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": -0.009985,
+          "std_rank_ic": 0.2493,
+          "information_ratio": -0.040054,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.002821,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.494092,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.032531,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.004227,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.026185,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.08361,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.149122,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.062277,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.187111,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.089818,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.074549,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.011918,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.135334,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.035905,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.067927,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.149068,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.051768,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.131247,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.025537,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.260732,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.015876,
+          "std_rank_ic": 0.249342,
+          "information_ratio": 0.063672,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.004227,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.486877,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.009107,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.016946,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.012941,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.066137,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.173228,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.008183,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.143736,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.07689,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.075099,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.018699,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.065212,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.04195,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.11021,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.037953,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.113256,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.003849,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.066137,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "return_21d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.017035,
+      "best_information_ratio": 0.066585,
+      "direction": "bullish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": -0.007827,
+          "std_rank_ic": 0.260851,
+          "information_ratio": -0.030007,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.000583,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.508537,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.024378,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.006701,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.018361,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.054105,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.004702,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.010525,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.11419,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.020778,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.051844,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.033578,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.137242,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.028389,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.035838,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.07663,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.009067,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.103292,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.013724,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.12253,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": -0.009994,
+          "std_rank_ic": 0.246895,
+          "information_ratio": -0.040479,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.000998,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.502454,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.044538,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.002874,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.021611,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.085052,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.056626,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.028636,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.185559,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.030802,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.093879,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.051767,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.178348,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.026595,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.085194,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.130321,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.022367,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.108431,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.023406,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.206355,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.012652,
+          "std_rank_ic": 0.235235,
+          "information_ratio": 0.053785,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.006281,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.515236,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.012065,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.018435,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.011323,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.066201,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.027256,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.065602,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.149784,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.057176,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.154231,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.035763,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.174021,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.064403,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.120929,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.179595,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.033768,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.05015,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.00884,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.241154,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.017035,
+          "std_rank_ic": 0.255838,
+          "information_ratio": 0.066585,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.011826,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.499344,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.026908,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.004612,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.016103,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.047337,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.24011,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.048669,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.165922,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.086646,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.1265,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.024081,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.122505,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.003612,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.211245,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.00059,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.192149,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.068222,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.047337,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "return_63d": {
+      "best_horizon_days": 10,
+      "best_mean_rank_ic": 0.02519,
+      "best_information_ratio": 0.092017,
+      "direction": "bullish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": false,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.022858,
+          "std_rank_ic": 0.28668,
+          "information_ratio": 0.079734,
+          "n_dates": 786,
+          "n_rows": 31440,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.003319,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.49014,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.004106,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.045443,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.005507,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.073442,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.075041,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.013467,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.047006,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.171661,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.05446,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.064083,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.025792,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.029625,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.020063,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.031177,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.005479,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.085849,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.052418,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.02519,
+          "std_rank_ic": 0.273758,
+          "information_ratio": 0.092017,
+          "n_dates": 781,
+          "n_rows": 31240,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.005714,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.487196,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.000112,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.049949,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.02374,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.141769,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.162593,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.071756,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.086009,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.228496,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.052405,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.09669,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.023992,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.072398,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.058879,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.025343,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.006833,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.149371,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.126811,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.024604,
+          "std_rank_ic": 0.260806,
+          "information_ratio": 0.094339,
+          "n_dates": 770,
+          "n_rows": 30800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.010152,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.476948,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.038343,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.050426,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.029896,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.080763,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.227032,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.029128,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.076884,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.25798,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.012907,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.091584,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.056954,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.18252,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.119969,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.094984,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.075566,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.075764,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.096013,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.017205,
+          "std_rank_ic": 0.23655,
+          "information_ratio": 0.072732,
+          "n_dates": 728,
+          "n_rows": 29120,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.011982,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.45261,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.09768,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.002506,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.032263,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.075793,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.237702,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.00771,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.067495,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.138074,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.052512,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.048414,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.041364,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.13631,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.230615,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.167522,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.057651,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.075793,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "momentum_12_1": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.058679,
+      "best_information_ratio": 0.243033,
+      "direction": "bullish",
+      "keep": true,
+      "keep_criteria": {
+        "magnitude_pass": true,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.046204,
+          "std_rank_ic": 0.28662,
+          "information_ratio": 0.161202,
+          "n_dates": 597,
+          "n_rows": 23880,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.006067,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.526801,
+          "years_present": 3,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2024",
+              "rank_ic": 0.05324,
+              "n_dates": 250
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.014033,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.110984,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.141667,
+              "n_dates": 59
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.056199,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.058302,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.08035,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.031557,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.073476,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.015678,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.002457,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.089853,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.14679,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.047805,
+          "std_rank_ic": 0.28134,
+          "information_ratio": 0.169918,
+          "n_dates": 592,
+          "n_rows": 23680,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.010952,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.535895,
+          "years_present": 3,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2024",
+              "rank_ic": 0.054844,
+              "n_dates": 250
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.003719,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.168688,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.150246,
+              "n_dates": 59
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.061836,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.071954,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.086808,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.032739,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.042102,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.013901,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.038523,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.143918,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.21743,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.039603,
+          "std_rank_ic": 0.281102,
+          "information_ratio": 0.140884,
+          "n_dates": 581,
+          "n_rows": 23240,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.020143,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.546902,
+          "years_present": 3,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2024",
+              "rank_ic": 0.052495,
+              "n_dates": 250
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.029762,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.213902,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.062566,
+              "n_dates": 59
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.018193,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.027465,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.156936,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.037533,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.009417,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.010718,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.061231,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.17967,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.318311,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.058679,
+          "std_rank_ic": 0.241443,
+          "information_ratio": 0.243033,
+          "n_dates": 539,
+          "n_rows": 21560,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.035189,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.554267,
+          "years_present": 3,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2024",
+              "rank_ic": 0.065223,
+              "n_dates": 250
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.003445,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.370789,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.001158,
+              "n_dates": 59
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.057045,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.14015,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.169712,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.225563,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.062328,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.116082,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.021544,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.370789,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "realized_vol_21d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.129838,
+      "best_information_ratio": 0.450495,
+      "direction": "bullish",
+      "keep": true,
+      "keep_criteria": {
+        "magnitude_pass": true,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.03705,
+          "std_rank_ic": 0.309033,
+          "information_ratio": 0.11989,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.007289,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.51128,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.065011,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.019836,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.034543,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.024528,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.059657,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.067751,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.024855,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.105274,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.021856,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.106581,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.049437,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.001794,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.09273,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.154917,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.091765,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.019972,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.082327,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.205587,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.063602,
+          "std_rank_ic": 0.305378,
+          "information_ratio": 0.208273,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.015302,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.523313,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.100323,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.038677,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.069778,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.026882,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.105901,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.143331,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.020965,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.134432,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.032479,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.16007,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.030195,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.006039,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.085435,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.284758,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.128333,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.051527,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.098315,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.273237,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.100042,
+          "std_rank_ic": 0.265783,
+          "information_ratio": 0.376404,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.032577,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.536692,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.143599,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.076413,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.107779,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.030834,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.130269,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.189857,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.012064,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.260719,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.011232,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.217803,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.021465,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.054306,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.124816,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.409478,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.178421,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.037075,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.056657,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.297683,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.129838,
+          "std_rank_ic": 0.288211,
+          "information_ratio": 0.450495,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.078657,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.553478,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.254586,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.041812,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.109139,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.1244,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.447558,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.264873,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.208517,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.189449,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.037914,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.107832,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.174408,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.152058,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.047036,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.466919,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.266041,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.247948,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.1244,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "realized_vol_63d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.110599,
+      "best_information_ratio": 0.365652,
+      "direction": "bullish",
+      "keep": true,
+      "keep_criteria": {
+        "magnitude_pass": true,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.040235,
+          "std_rank_ic": 0.345355,
+          "information_ratio": 0.116502,
+          "n_dates": 786,
+          "n_rows": 31440,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.008684,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.516858,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.062075,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.037078,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.03389,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.022682,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.095183,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.029638,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.062456,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.058287,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.089231,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.046928,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.049531,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.147799,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.206203,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.055532,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.015651,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.111017,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.249229,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.05646,
+          "std_rank_ic": 0.337186,
+          "information_ratio": 0.167443,
+          "n_dates": 781,
+          "n_rows": 31240,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.016628,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.53041,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.09087,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.051459,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.051993,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.012352,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.188518,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.023011,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.06418,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.077098,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.127496,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.042217,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.045846,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.178183,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.32781,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.080772,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.028192,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.142374,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.316813,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.083108,
+          "std_rank_ic": 0.296475,
+          "information_ratio": 0.280319,
+          "n_dates": 770,
+          "n_rows": 30800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.033884,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.552922,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.159821,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.070572,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.05876,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.020151,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.270147,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.01665,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.196167,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.036198,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.181563,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.033853,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.098502,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.289856,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.444368,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.149801,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.07901,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.086458,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.34531,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.110599,
+          "std_rank_ic": 0.30247,
+          "information_ratio": 0.365652,
+          "n_dates": 728,
+          "n_rows": 29120,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.074534,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.581387,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.264458,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.038858,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.061091,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.153774,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.359656,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.249334,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.187406,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.070815,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.074311,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.122869,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.110512,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.179303,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.469373,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.245383,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.293354,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.153774,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "downside_vol_21d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.10774,
+      "best_information_ratio": 0.405232,
+      "direction": "bullish",
+      "keep": true,
+      "keep_criteria": {
+        "magnitude_pass": true,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.034597,
+          "std_rank_ic": 0.28302,
+          "information_ratio": 0.122242,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.005332,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.48628,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.071773,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.011238,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.035237,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.00893,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.068782,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.056669,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.066452,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.093526,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.008332,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.079797,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.038511,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.003729,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.060916,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.114322,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.092525,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.008522,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.064639,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.133589,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.054145,
+          "std_rank_ic": 0.279186,
+          "information_ratio": 0.193938,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.011964,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.48773,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.101156,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.026438,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.057549,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.007857,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.141111,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.108521,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.06949,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.104646,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.003577,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.121883,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.018829,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.00046,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.05379,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.206558,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.120392,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.045266,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.077729,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.176269,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.07694,
+          "std_rank_ic": 0.236546,
+          "information_ratio": 0.325265,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.026737,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.483831,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.136827,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.047764,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.069694,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.026681,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.152402,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.12663,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.033592,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.24194,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.062058,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.182081,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.018114,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.049871,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.08934,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.276784,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.142164,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.054301,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.026113,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.187702,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.10774,
+          "std_rank_ic": 0.265872,
+          "information_ratio": 0.405232,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.065271,
+          "quintile_monotonic": true,
+          "top_decile_hit_rate": 0.520997,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.243754,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.018445,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.077155,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.11003,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.306481,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.22538,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.264859,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.207874,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.024018,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.060746,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.169741,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.134017,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.019794,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.391527,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.210395,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.269744,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.11003,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "excess_return_vs_spy_21d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.017035,
+      "best_information_ratio": 0.066585,
+      "direction": "bullish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": -0.007827,
+          "std_rank_ic": 0.260851,
+          "information_ratio": -0.030007,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.000583,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.508537,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.024378,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.006701,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.018361,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.054105,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.004702,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.010525,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.11419,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.020778,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.051844,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.033578,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.137242,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.028389,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.035838,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.07663,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.009067,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.103292,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.013724,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.12253,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": -0.009994,
+          "std_rank_ic": 0.246895,
+          "information_ratio": -0.040479,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.000998,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.502454,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.044538,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.002874,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.021611,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.085052,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.056626,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.028636,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.185559,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.030802,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.093879,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.051767,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.178348,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.026595,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.085194,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.130321,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.022367,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.108431,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.023406,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.206355,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.012652,
+          "std_rank_ic": 0.235235,
+          "information_ratio": 0.053785,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.006281,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.515236,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.012065,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.018435,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.011323,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.066201,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.027256,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.065602,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.149784,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.057176,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.154231,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.035763,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.174021,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.064403,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.120929,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.179595,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.033768,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.05015,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.00884,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.241154,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.017035,
+          "std_rank_ic": 0.255838,
+          "information_ratio": 0.066585,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.011826,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.499344,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.026908,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.004612,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.016103,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.047337,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": 0.24011,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.048669,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.165922,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.086646,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.1265,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.024081,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.122505,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.003612,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.211245,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.00059,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.192149,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.068222,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.047337,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "excess_return_vs_spy_63d": {
+      "best_horizon_days": 10,
+      "best_mean_rank_ic": 0.02519,
+      "best_information_ratio": 0.092017,
+      "direction": "bullish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": false,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.022858,
+          "std_rank_ic": 0.28668,
+          "information_ratio": 0.079734,
+          "n_dates": 786,
+          "n_rows": 31440,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.003319,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.49014,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.004106,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.045443,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.005507,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.073442,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.075041,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.013467,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.047006,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.171661,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.05446,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.064083,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.025792,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.029625,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.020063,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.031177,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.005479,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.085849,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.052418,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.02519,
+          "std_rank_ic": 0.273758,
+          "information_ratio": 0.092017,
+          "n_dates": 781,
+          "n_rows": 31240,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.005714,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.487196,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.000112,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.049949,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.02374,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.141769,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.162593,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.071756,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.086009,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.228496,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.052405,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.09669,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.023992,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.072398,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.058879,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.025343,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.006833,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.149371,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.126811,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.024604,
+          "std_rank_ic": 0.260806,
+          "information_ratio": 0.094339,
+          "n_dates": 770,
+          "n_rows": 30800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.010152,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.476948,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.038343,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.050426,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.029896,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.080763,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.227032,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.029128,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.076884,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.25798,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.012907,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.091584,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.056954,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.18252,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.119969,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.094984,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.075566,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.075764,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.096013,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.017205,
+          "std_rank_ic": 0.23655,
+          "information_ratio": 0.072732,
+          "n_dates": 728,
+          "n_rows": 29120,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.011982,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.45261,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.09768,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.002506,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.032263,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.075793,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.237702,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.00771,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.067495,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.138074,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.052512,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.048414,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.041364,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.13631,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.230615,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.167522,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.057651,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.075793,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "rolling_beta_63d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.151014,
+      "best_information_ratio": 0.418635,
+      "direction": "bullish",
+      "keep": true,
+      "keep_criteria": {
+        "magnitude_pass": true,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.054186,
+          "std_rank_ic": 0.408142,
+          "information_ratio": 0.132762,
+          "n_dates": 786,
+          "n_rows": 31440,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.008556,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.526399,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.086937,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.043191,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.050479,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.029164,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.134432,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.000944,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.126942,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.067917,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.1059,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.062626,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.063711,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.15146,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.253205,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.062858,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.031027,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.12841,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.296164,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.076232,
+          "std_rank_ic": 0.395401,
+          "information_ratio": 0.192797,
+          "n_dates": 781,
+          "n_rows": 31240,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.017262,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.553137,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.128769,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.059378,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.074614,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.02001,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.247762,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.026767,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.169088,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.078722,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.137145,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.052712,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.076477,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.182902,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.387711,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.078817,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.008519,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.153333,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.361103,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.114586,
+          "std_rank_ic": 0.362799,
+          "information_ratio": 0.315838,
+          "n_dates": 770,
+          "n_rows": 30800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.036086,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.590584,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.218241,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.088479,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.08282,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.054548,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.351395,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.041246,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.348801,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.009319,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.155261,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.013271,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.173396,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.270947,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.534606,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.085046,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.025416,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.07799,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.45879,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.151014,
+          "std_rank_ic": 0.36073,
+          "information_ratio": 0.418635,
+          "n_dates": 728,
+          "n_rows": 29120,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.094336,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.619849,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.319507,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.065057,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.10583,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.188175,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.350669,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.292567,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.316275,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.023621,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.019348,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.256391,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.041789,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.123793,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.519893,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.156874,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.36318,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.188175,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "rolling_corr_spy_63d": {
+      "best_horizon_days": 63,
+      "best_mean_rank_ic": 0.109892,
+      "best_information_ratio": 0.349321,
+      "direction": "bullish",
+      "keep": true,
+      "keep_criteria": {
+        "magnitude_pass": true,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.042745,
+          "std_rank_ic": 0.338856,
+          "information_ratio": 0.126144,
+          "n_dates": 786,
+          "n_rows": 31440,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.004189,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.506679,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.074922,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.02958,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.047111,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.003658,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.092028,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.01045,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.122833,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.044656,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.085464,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.067161,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.056942,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.098565,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.217987,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.034604,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.030652,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.123477,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.21908,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": 0.055107,
+          "std_rank_ic": 0.324457,
+          "information_ratio": 0.169845,
+          "n_dates": 781,
+          "n_rows": 31240,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.007882,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.504161,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.0958,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.040409,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.066138,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": -0.01732,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.140122,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.008541,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.157226,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.03936,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.106733,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.061169,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.0777,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.108161,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.308443,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.024428,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.036521,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.150512,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.244768,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": 0.084455,
+          "std_rank_ic": 0.303589,
+          "information_ratio": 0.278187,
+          "n_dates": 770,
+          "n_rows": 30800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.016758,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.495779,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.167615,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.06344,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.065521,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.016281,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.220244,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": -0.004265,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.288537,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.031249,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.082843,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.015036,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.182994,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": -0.15944,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.429665,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.031224,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.020403,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": -0.084339,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.323171,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.109892,
+          "std_rank_ic": 0.314587,
+          "information_ratio": 0.349321,
+          "n_dates": 728,
+          "n_rows": 29120,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.058758,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.468407,
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": 0.246295,
+              "n_dates": 187
+            },
+            {
+              "period": "2024",
+              "rank_ic": 0.065429,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.045857,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.153639,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q2",
+              "rank_ic": 0.169609,
+              "n_dates": 61
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.266464,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": 0.300378,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": 0.00613,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": -0.056136,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.240305,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": 0.066736,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.246614,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": 0.352524,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.049446,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.344134,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.153639,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    },
+    "volume_zscore_21d": {
+      "best_horizon_days": 21,
+      "best_mean_rank_ic": -0.009169,
+      "best_information_ratio": -0.052571,
+      "direction": "bearish",
+      "keep": false,
+      "keep_criteria": {
+        "magnitude_pass": false,
+        "stability_pass": true,
+        "sample_pass": true,
+        "rank_ic_floor": 0.03,
+        "year_sign_min": 3
+      },
+      "horizons": {
+        "5": {
+          "horizon_days": 5,
+          "mean_rank_ic": 0.004247,
+          "std_rank_ic": 0.181487,
+          "information_ratio": 0.023399,
+          "n_dates": 820,
+          "n_rows": 32800,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": 0.001368,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.492988,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.007238,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.004177,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.007972,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.042694,
+              "n_dates": 97
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.007562,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": -0.021068,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.024435,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.025132,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.019838,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.023991,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.00083,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.020324,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.034953,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.011871,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.017,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.026873,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.087734,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": -0.033625,
+              "n_dates": 36
+            }
+          ]
+        },
+        "10": {
+          "horizon_days": 10,
+          "mean_rank_ic": -0.001765,
+          "std_rank_ic": 0.180249,
+          "information_ratio": -0.009792,
+          "n_dates": 815,
+          "n_rows": 32600,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": 0.00082,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.478221,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.009401,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.028237,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.008944,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.059989,
+              "n_dates": 92
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.051481,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": -0.027192,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.026549,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.005801,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.054996,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.025924,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.039974,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.04431,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.061698,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.03789,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": 0.005368,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.008434,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.058044,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.063814,
+              "n_dates": 31
+            }
+          ]
+        },
+        "21": {
+          "horizon_days": 21,
+          "mean_rank_ic": -0.009169,
+          "std_rank_ic": 0.174401,
+          "information_ratio": -0.052571,
+          "n_dates": 804,
+          "n_rows": 32160,
+          "low_confidence": false,
+          "direction": "bearish",
+          "top_minus_bottom_spread": -0.000498,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.47357,
+          "years_present": 4,
+          "years_matching_sign": 3,
+          "year_sign_consistent": true,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.010307,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.029312,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": -0.000345,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.029375,
+              "n_dates": 81
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.057957,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": -0.013221,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.014881,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.007668,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.048793,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.05638,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": -0.036946,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.087465,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.074287,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.02413,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.014148,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": -0.033469,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.018694,
+              "n_dates": 61
+            },
+            {
+              "period": "2026-Q2",
+              "rank_ic": 0.061951,
+              "n_dates": 20
+            }
+          ]
+        },
+        "63": {
+          "horizon_days": 63,
+          "mean_rank_ic": 0.001371,
+          "std_rank_ic": 0.178792,
+          "information_ratio": 0.007668,
+          "n_dates": 762,
+          "n_rows": 30480,
+          "low_confidence": false,
+          "direction": "bullish",
+          "top_minus_bottom_spread": -0.004862,
+          "quintile_monotonic": false,
+          "top_decile_hit_rate": 0.456365,
+          "years_present": 4,
+          "years_matching_sign": 2,
+          "year_sign_consistent": false,
+          "yearly_rank_ic": [
+            {
+              "period": "2023",
+              "rank_ic": -0.016682,
+              "n_dates": 221
+            },
+            {
+              "period": "2024",
+              "rank_ic": -0.006764,
+              "n_dates": 252
+            },
+            {
+              "period": "2025",
+              "rank_ic": 0.021971,
+              "n_dates": 250
+            },
+            {
+              "period": "2026",
+              "rank_ic": 0.024183,
+              "n_dates": 39
+            }
+          ],
+          "quarterly_rank_ic": [
+            {
+              "period": "2023-Q1",
+              "rank_ic": -0.049343,
+              "n_dates": 33
+            },
+            {
+              "period": "2023-Q2",
+              "rank_ic": -0.042683,
+              "n_dates": 62
+            },
+            {
+              "period": "2023-Q3",
+              "rank_ic": 0.021097,
+              "n_dates": 63
+            },
+            {
+              "period": "2023-Q4",
+              "rank_ic": -0.011763,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q1",
+              "rank_ic": -0.015117,
+              "n_dates": 61
+            },
+            {
+              "period": "2024-Q2",
+              "rank_ic": 0.000843,
+              "n_dates": 63
+            },
+            {
+              "period": "2024-Q3",
+              "rank_ic": 0.00389,
+              "n_dates": 64
+            },
+            {
+              "period": "2024-Q4",
+              "rank_ic": -0.016944,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q1",
+              "rank_ic": 0.070829,
+              "n_dates": 60
+            },
+            {
+              "period": "2025-Q2",
+              "rank_ic": -0.004678,
+              "n_dates": 62
+            },
+            {
+              "period": "2025-Q3",
+              "rank_ic": -0.00224,
+              "n_dates": 64
+            },
+            {
+              "period": "2025-Q4",
+              "rank_ic": 0.026193,
+              "n_dates": 64
+            },
+            {
+              "period": "2026-Q1",
+              "rank_ic": 0.024183,
+              "n_dates": 39
+            }
+          ]
+        }
+      }
+    }
+  },
+  "keep_drop": {
+    "keep_ranked": [
+      {
+        "feature": "realized_vol_21d",
+        "best_horizon_days": 63,
+        "mean_rank_ic": 0.129838,
+        "information_ratio": 0.450495,
+        "direction": "bullish"
+      },
+      {
+        "feature": "rolling_beta_63d",
+        "best_horizon_days": 63,
+        "mean_rank_ic": 0.151014,
+        "information_ratio": 0.418635,
+        "direction": "bullish"
+      },
+      {
+        "feature": "downside_vol_21d",
+        "best_horizon_days": 63,
+        "mean_rank_ic": 0.10774,
+        "information_ratio": 0.405232,
+        "direction": "bullish"
+      },
+      {
+        "feature": "realized_vol_63d",
+        "best_horizon_days": 63,
+        "mean_rank_ic": 0.110599,
+        "information_ratio": 0.365652,
+        "direction": "bullish"
+      },
+      {
+        "feature": "rolling_corr_spy_63d",
+        "best_horizon_days": 63,
+        "mean_rank_ic": 0.109892,
+        "information_ratio": 0.349321,
+        "direction": "bullish"
+      },
+      {
+        "feature": "momentum_12_1",
+        "best_horizon_days": 63,
+        "mean_rank_ic": 0.058679,
+        "information_ratio": 0.243033,
+        "direction": "bullish"
+      }
+    ],
+    "drop": [
+      "excess_return_vs_spy_21d",
+      "excess_return_vs_spy_63d",
+      "return_10d",
+      "return_21d",
+      "return_5d",
+      "return_63d",
+      "volume_zscore_21d"
+    ],
+    "n_keep": 6,
+    "n_drop": 7
+  }
+}
