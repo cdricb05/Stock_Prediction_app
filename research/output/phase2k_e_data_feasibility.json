@@ -1,0 +1,378 @@
+{
+  "phase": "2K-E",
+  "generated_at": "2026-06-17T15:46:58",
+  "inputs_read": {
+    "phase2k_d_json": "research\\output\\phase2k_d_data_expansion_plan.json",
+    "phase2l_b_json": "research\\output\\phase2l_b_walk_forward_validation.json",
+    "phase2k_a_json": "research\\output\\phase2k_alpha_backlog.json",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "upstream_phase2k_d_summary": {
+    "phase": "2K-D",
+    "upstream_2lb_recommendation": "NEED_MORE_DATA",
+    "candidate": "avg_dollar_volume_21d",
+    "continue_model_research_now": false,
+    "create_model_candidate_now": false,
+    "kd_recommended_next_phase": "2K-E",
+    "target_min_years_history": 8,
+    "target_recommended_years_history": 10,
+    "target_min_tickers_per_date": 100,
+    "required_requirements": [
+      "benchmark_and_factor_data",
+      "broader_equity_universe",
+      "liquidity_and_volume_history",
+      "longer_price_history",
+      "point_in_time_universe_membership",
+      "survivorship_bias_controls"
+    ]
+  },
+  "local_data_inventory": {
+    "output_dir": "research/output",
+    "existing_output_files_found": [
+      "phase2a_feature_dataset_sample.csv",
+      "phase2b_oos_predictions_sample.csv",
+      "phase2c_calibrated_predictions_sample.csv",
+      "phase2d_model_metadata_sample.json",
+      "phase2d_prediction_outputs_sample.csv",
+      "phase2e_d_predeploy_summary.json",
+      "phase2e_e_flagoff_deploy_plan_summary.json",
+      "phase2e_f_smoke_run.json",
+      "phase2e_gate4_backtest.json",
+      "phase2e_store_dry_run_summary.json",
+      "phase2e_v2_api_response_sample.json",
+      "phase2g_b_real_data_validation_plan.json",
+      "phase2g_c_real_data_run_summary.json",
+      "phase2g_price_history_real.csv",
+      "phase2g_real_data_scored.csv",
+      "phase2g_real_data_validation.json",
+      "phase2g_shadow_validation_sample.csv",
+      "phase2g_shadow_validation_sample.json",
+      "phase2h_no_go_diagnostics.json",
+      "phase2i_b_survivor_robustness.json",
+      "phase2i_feature_ic_horizon_sweep.json",
+      "phase2j_research_decision.json",
+      "phase2k_alpha_backlog.json",
+      "phase2k_b_residual_signal.json",
+      "phase2k_c_residual_robustness.json",
+      "phase2k_d_data_expansion_plan.json",
+      "phase2l_a_walk_forward_design.json",
+      "phase2l_b_walk_forward_validation.json"
+    ],
+    "existing_output_file_count": 28,
+    "current_scored_csv_exists": true,
+    "current_scored_csv": "research/output/phase2g_real_data_scored.csv",
+    "current_price_history_csv_exists": true,
+    "current_price_history_csv": "research/output/phase2g_price_history_real.csv",
+    "current_run_summary_exists": true,
+    "current_date_range": {
+      "start": "2023-01-03",
+      "end": "2026-05-29",
+      "approx_years": 3.4
+    },
+    "current_ticker_count": 41,
+    "current_row_count": 35014,
+    "benchmark_present": true,
+    "volume_present": true,
+    "satisfies_2kd_target_capacity": false,
+    "capacity_gap": {
+      "current_years": 3.4,
+      "target_min_years": 8,
+      "years_short_by": 4.6,
+      "current_tickers": 41,
+      "target_min_tickers_per_date": 100,
+      "tickers_short_by": 59
+    }
+  },
+  "feasibility_by_requirement": {
+    "longer_price_history": {
+      "status": "FEASIBLE_WITH_FREE_EXTENSION",
+      "evidence": "The existing free end-of-day export already supplies daily adjusted OHLCV from 2023-01-03 to 2026-05-29; the same free source can be pulled further back for listed names.",
+      "gap": "Current history is only ~3 years (one regime); free extension must reach 8-10 years including a sustained drawdown.",
+      "risk": "Adjusted-close consistency across the join and corporate-action adjustment with no look-ahead must be verified on the longer span.",
+      "next_check": "Confirm how far back the free source returns adjusted OHLCV for the target universe and validate adjusted-close continuity.",
+      "required_for_retesting_candidate": true,
+      "candidate_sources_to_investigate": [
+        "public end-of-day price-history exports",
+        "exchange-published historical daily bars",
+        "the existing 2G real-data export extended backward"
+      ]
+    },
+    "broader_equity_universe": {
+      "status": "FEASIBLE_WITH_FREE_EXTENSION",
+      "evidence": "The current export covers ~41 mega-caps; a free source can return a materially broader current ticker list (toward the full liquid S&P 500).",
+      "gap": "Breadth alone is free, but the broader list must be the right set per date, which depends on point-in-time membership (assessed separately).",
+      "risk": "A naive current-membership list back-applied to history is survivorship biased and not admissible without an explicit caveat.",
+      "next_check": "Scope a broad liquid universe (>=100 names) the free source can supply and decide whether to carry a survivorship caveat.",
+      "required_for_retesting_candidate": true,
+      "candidate_sources_to_investigate": [
+        "point-in-time index-constituent histories",
+        "exchange listing archives"
+      ]
+    },
+    "point_in_time_universe_membership": {
+      "status": "REQUIRES_PAID_POINT_IN_TIME_DATA",
+      "evidence": "No point-in-time constituent history exists locally; the current export is a fixed present-day ticker set.",
+      "gap": "As-of-date membership is the scarce piece; clean point-in-time constituent history is generally a paid product.",
+      "risk": "Back-applying today's membership injects look-ahead and survivorship bias into every historical cross-section.",
+      "next_check": "Compare free/low-cost point-in-time constituent options; otherwise plan an explicit survivorship caveat for a free build.",
+      "required_for_retesting_candidate": true,
+      "candidate_sources_to_investigate": [
+        "point-in-time index-constituent histories",
+        "exchange listing archives"
+      ]
+    },
+    "survivorship_bias_controls": {
+      "status": "REQUIRES_PAID_POINT_IN_TIME_DATA",
+      "evidence": "Free end-of-day sources typically drop delisted / merged names, so local free data cannot fully cover names over their live span.",
+      "gap": "Clean delisted-name coverage is generally paid; the free path can only approximate it with an explicit survivorship caveat.",
+      "risk": "Restricting to today's survivors inflates measured returns and any signal computed on the survivors.",
+      "next_check": "Check whether any free archive retains delisted bars; otherwise document the survivorship caveat the free build will carry.",
+      "required_for_retesting_candidate": true,
+      "candidate_sources_to_investigate": [
+        "public end-of-day price-history exports",
+        "exchange-published historical daily bars",
+        "the existing 2G real-data export extended backward"
+      ]
+    },
+    "liquidity_and_volume_history": {
+      "status": "FEASIBLE_WITH_FREE_EXTENSION",
+      "evidence": "Daily volume is already present in the current export (volume_present=true); dollar-volume is derivable, and the same free source extends it over the longer span and broader universe.",
+      "gap": "Must extend over the longer history and broader universe alongside the price history.",
+      "risk": "Features must stay trailing-only; event-driven volume spikes leak if not lagged.",
+      "next_check": "Confirm volume coverage over the extended span for the broader universe.",
+      "required_for_retesting_candidate": true,
+      "candidate_sources_to_investigate": [
+        "the volume already in the 2G export",
+        "public end-of-day volume histories"
+      ]
+    },
+    "benchmark_and_factor_data": {
+      "status": "FEASIBLE_NOW",
+      "evidence": "The SPY benchmark series is already present (benchmark_present=true) and deep free history for a broad-market benchmark is readily available.",
+      "gap": "Only needs extension back over the longer span for the residualization controls.",
+      "risk": "Betas / vols must be trailing-only; factor libraries must be date-aligned.",
+      "next_check": "Confirm benchmark history depth and any free factor-return library coverage.",
+      "required_for_retesting_candidate": true,
+      "candidate_sources_to_investigate": [
+        "the SPY series already in the 2G export",
+        "public research factor-return libraries"
+      ]
+    },
+    "sector_industry_classification": {
+      "status": "FEASIBLE_WITH_FREE_EXTENSION",
+      "evidence": "A current free sector / industry snapshot is a usable starting approximation for neutralization and concentration control.",
+      "gap": "Point-in-time reclassification history is harder to obtain than the current snapshot.",
+      "risk": "Applying current classification to history misclassifies reclassified names.",
+      "next_check": "Decide whether the current snapshot is acceptable or a point-in-time mapping is needed for the candidate.",
+      "required_for_retesting_candidate": false,
+      "candidate_sources_to_investigate": [
+        "public sector classification listings",
+        "exchange-published industry tags"
+      ]
+    },
+    "point_in_time_fundamentals": {
+      "status": "REQUIRES_PAID_POINT_IN_TIME_DATA",
+      "evidence": "Not present locally and not required to retest a price/volume liquidity feature.",
+      "gap": "True point-in-time / as-reported fundamentals are largely a paid product.",
+      "risk": "Restated figures and report-date misalignment are the dominant factor-research leakage source.",
+      "next_check": "Defer until a later fundamental / quality-value hypothesis needs it.",
+      "required_for_retesting_candidate": false,
+      "future_phase": true,
+      "candidate_sources_to_investigate": [
+        "regulatory filing archives with filing timestamps",
+        "low-cost fundamentals datasets that expose as-reported snapshots"
+      ]
+    },
+    "analyst_estimates_and_surprise": {
+      "status": "REQUIRES_PAID_POINT_IN_TIME_DATA",
+      "evidence": "Not present locally and not required to retest the liquidity candidate.",
+      "gap": "Revision-timestamped estimate history is largely a paid data product.",
+      "risk": "Using final / current consensus for a past date imports the future.",
+      "next_check": "Defer until a later revision / drift hypothesis needs it.",
+      "required_for_retesting_candidate": false,
+      "future_phase": true,
+      "candidate_sources_to_investigate": [
+        "low-cost estimate datasets that retain revision timestamps"
+      ]
+    }
+  },
+  "feasibility_summary": {
+    "status_counts": {
+      "FEASIBLE_NOW": 1,
+      "FEASIBLE_WITH_FREE_EXTENSION": 4,
+      "FEASIBLE_WITH_LOW_COST_SOURCE": 0,
+      "REQUIRES_PAID_POINT_IN_TIME_DATA": 4,
+      "NOT_FEASIBLE_YET": 0
+    },
+    "required_for_candidate": [
+      "benchmark_and_factor_data",
+      "broader_equity_universe",
+      "liquidity_and_volume_history",
+      "longer_price_history",
+      "point_in_time_universe_membership",
+      "survivorship_bias_controls"
+    ],
+    "required_feasible_free_or_now": [
+      "benchmark_and_factor_data",
+      "broader_equity_universe",
+      "liquidity_and_volume_history",
+      "longer_price_history"
+    ],
+    "required_requiring_paid_for_clean_build": [
+      "point_in_time_universe_membership",
+      "survivorship_bias_controls"
+    ],
+    "clean_retest_status": "REQUIRES_PAID_POINT_IN_TIME_DATA",
+    "caveated_free_retest_status": "FEASIBLE_WITH_FREE_EXTENSION",
+    "headline": "The price/volume pieces required to retest the liquidity candidate (longer adjusted OHLCV, broader current universe, volume, benchmark) are feasible on the free path. Clean point-in-time membership and survivorship coverage are the only paid-leaning gaps; a survivorship-caveated free build is attemptable now, while a strictly clean build would require paid point-in-time data."
+  },
+  "blockers": [
+    {
+      "requirement": "point_in_time_universe_membership",
+      "why": "As-of-date membership is the scarce piece; clean point-in-time constituent history is generally a paid product.",
+      "severity": "blocks_clean_build_only",
+      "workaround": "Carry an explicit survivorship caveat and report the retest as survivorship-biased; reserve a paid point-in-time dataset for a later clean confirmation."
+    },
+    {
+      "requirement": "survivorship_bias_controls",
+      "why": "Clean delisted-name coverage is generally paid; the free path can only approximate it with an explicit survivorship caveat.",
+      "severity": "blocks_clean_build_only",
+      "workaround": "Carry an explicit survivorship caveat and report the retest as survivorship-biased; reserve a paid point-in-time dataset for a later clean confirmation."
+    }
+  ],
+  "recommended_source_strategy": {
+    "ordered_preference": [
+      {
+        "step": 1,
+        "action": "Extend the existing free end-of-day export backward to 8-10 years and widen it to a broad liquid universe (>=100 names).",
+        "cost": "free",
+        "point_in_time_membership": false,
+        "carries_survivorship_caveat": true
+      },
+      {
+        "step": 2,
+        "action": "Investigate a free / low-cost point-in-time constituent history and any free archive that retains delisted bars.",
+        "cost": "low",
+        "point_in_time_membership": "partial",
+        "carries_survivorship_caveat": true
+      },
+      {
+        "step": 3,
+        "action": "Reserve a paid point-in-time + survivorship dataset for a later clean confirmation, only if a caveated free result is promising. Decision deferred; no paid data acquired now.",
+        "cost": "paid",
+        "point_in_time_membership": true,
+        "carries_survivorship_caveat": false,
+        "decision": "later"
+      }
+    ],
+    "rationale": "The candidate is a price/volume liquidity feature, so the free path can supply every required input except clean point-in-time membership and survivorship coverage, which a documented caveat covers for a first retest."
+  },
+  "proposed_data_build_scope": {
+    "note": "This is the SCOPE the next phase (2K-F) would design a free build for. No data is built, downloaded, or acquired in this feasibility phase.",
+    "target_years_min": 8,
+    "target_years_recommended": 10,
+    "target_min_tickers_per_date": 100,
+    "columns": [
+      "date",
+      "ticker",
+      "adjusted_open",
+      "adjusted_high",
+      "adjusted_low",
+      "adjusted_close",
+      "volume",
+      "dollar_volume",
+      "benchmark_close"
+    ],
+    "universe_definition": "Broad liquid universe (toward the full S&P 500); current membership used as a free approximation with an explicit survivorship caveat.",
+    "survivorship_handling": "Retain any delisted bars a free source provides; where unavailable, document the survivorship caveat rather than silently restricting to survivors.",
+    "must_span_regimes": [
+      "market_up",
+      "market_down",
+      "high_volatility",
+      "low_volatility",
+      "at_least_one_sustained_drawdown"
+    ],
+    "builds_executed_now": false,
+    "network_calls_made": false,
+    "paid_data_acquired": false
+  },
+  "data_quality_preflight_plan": {
+    "note": "These preflight checks must pass on the assembled dataset BEFORE any residual-signal retest. They are gates on the data itself, run by the later build phase, not executed here.",
+    "checks": [
+      {
+        "gate_id": "adjusted_close_consistency",
+        "preflight_action": "Reconcile adjusted vs raw closes and verify total-return continuity."
+      },
+      {
+        "gate_id": "split_dividend_adjustment_sanity",
+        "preflight_action": "Spot-check known splits/dividends; confirm adjustments use only as-of-date information."
+      },
+      {
+        "gate_id": "missing_date_handling",
+        "preflight_action": "Validate each name's date index against the exchange calendar."
+      },
+      {
+        "gate_id": "ticker_history_continuity",
+        "preflight_action": "Flag names with interior gaps exceeding a tolerance."
+      },
+      {
+        "gate_id": "delisting_survivorship_treatment",
+        "preflight_action": "Confirm delisted names appear up to their delist date and not after."
+      },
+      {
+        "gate_id": "duplicate_row_detection",
+        "preflight_action": "Assert uniqueness on the (date, ticker) key."
+      },
+      {
+        "gate_id": "no_forward_filled_target_labels",
+        "preflight_action": "Verify labels are computed only from realized future prices."
+      },
+      {
+        "gate_id": "no_lookahead_universe_membership",
+        "preflight_action": "Confirm each date's cross-section uses as-of-date membership only."
+      },
+      {
+        "gate_id": "survivorship_caveat_documented",
+        "preflight_action": "If point-in-time membership is not sourced, assert that the dataset metadata records an explicit survivorship caveat so the retest is reported as survivorship-biased."
+      }
+    ]
+  },
+  "decision": {
+    "can_build_expanded_dataset_without_paid_data": true,
+    "can_retest_avg_dollar_volume_without_paid_data": true,
+    "paid_data_required_now": false,
+    "proceed_to_data_build": true,
+    "clean_build_requires_paid_point_in_time_data": true,
+    "reason": "The price/volume inputs required to retest avg_dollar_volume_21d (longer adjusted OHLCV, a broader current universe, volume, benchmark) are feasible on the free path, so a survivorship-caveated expanded dataset can be assembled without paid data. Clean point-in-time membership and survivorship coverage are the only paid-leaning gaps (a strictly clean build would require paid point-in-time data); that gap is covered for a first retest by an explicit survivorship caveat. Paid data is therefore not required now and is reserved for a later clean confirmation. Proceeding to a free data-build plan is warranted; no model research and no model candidate are authorized here."
+  },
+  "interpretation": {
+    "candidate": "avg_dollar_volume_21d",
+    "continue_model_research_now": false,
+    "create_model_candidate_now": false,
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "data_acquired": false,
+    "paid_data_acquired": false,
+    "network_calls_made": false,
+    "builds_executed_now": false,
+    "narrative": "Phase 2K-E checks only whether the Phase 2K-D expanded dataset can be assembled locally / free / low-cost. It inventories the existing free export, finds the price/volume inputs needed to retest avg_dollar_volume_21d feasible on the free path, and identifies clean point-in-time membership / survivorship coverage as the only paid-leaning gaps (covered for a first retest by an explicit survivorship caveat). No data is downloaded or acquired, no paid data is purchased, no model is trained or served, and no model candidate is created. No production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-F",
+    "title": "Free Expanded Price/Volume Dataset Build Plan",
+    "purpose": "Design a local / free data-build script plan for longer daily adjusted OHLCV and a broader universe (carrying an explicit survivorship caveat), with the data-quality preflight checks, so the Phase 2K-B / 2K-C / 2L battery can be re-run on a multi-regime panel. Still no model training and no model candidate."
+  }
+}
