@@ -1,0 +1,267 @@
+{
+  "phase": "2L-A",
+  "generated_at": "2026-06-17T14:59:29",
+  "inputs_read": {
+    "phase2k_c_json": "research\\output\\phase2k_c_residual_robustness.json",
+    "phase2k_b_json": "research\\output\\phase2k_b_residual_signal.json",
+    "phase2k_a_json": "research\\output\\phase2k_alpha_backlog.json",
+    "phase2j_json": "research\\output\\phase2j_research_decision.json",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "config": {
+    "comparison_horizons_days": [
+      21,
+      63
+    ],
+    "min_train_sessions": 252,
+    "rolling_train_sessions": 504,
+    "validation_sessions": 63,
+    "step_sessions": 63,
+    "rank_ic_floor": 0.03,
+    "majority_sign_fraction": 0.5,
+    "degradation_tolerance_fraction": 0.5,
+    "concentration_top3_threshold": 0.5,
+    "min_effective_obs": 8.0
+  },
+  "upstream_summary": {
+    "phase2k_c_recommended_next_phase": "2L-A",
+    "recommendation_counts": {
+      "KEEP_FOR_MODEL_RESEARCH": 1,
+      "KEEP_AS_RESEARCH_LEAD_ONLY": 2,
+      "DROP": 1,
+      "NEED_MORE_DATA": 0
+    },
+    "keep_for_model_research": [
+      "avg_dollar_volume_21d"
+    ],
+    "keep_as_research_lead_only": [
+      "excess_return_vs_spy_63d",
+      "return_63d"
+    ],
+    "dropped": [
+      "momentum_12_1"
+    ],
+    "need_more_data": [],
+    "panel": {
+      "n_rows": 32800,
+      "n_tickers": 40,
+      "n_dates": 820,
+      "date_start": "2023-02-14",
+      "date_end": "2026-05-21"
+    },
+    "provenance": {
+      "source": "yfinance",
+      "date_start": "2023-01-03",
+      "date_end": "2026-05-29",
+      "price_row_count": 35014,
+      "ticker_count": 41,
+      "phase2j_phase": "2J-A",
+      "phase2j_go_no_go": "NO_GO"
+    }
+  },
+  "candidate_selected": {
+    "feature": "avg_dollar_volume_21d",
+    "is_sole_model_research_candidate": true,
+    "n_model_research_candidates": 1,
+    "primary_horizon_days": 63,
+    "direction": "bullish",
+    "phase2k_c_residual_mean_rank_ic": 0.067368,
+    "phase2k_c_residual_information_ratio": 0.541729,
+    "phase2k_c_n_dates": 762,
+    "phase2k_c_n_rows": 30480,
+    "status": "KEEP_FOR_MODEL_RESEARCH -- robust enough to scope walk-forward validation; not a production edge and not permission to train or serve a model"
+  },
+  "walk_forward_design": {
+    "target_label": {
+      "name": "beta_vol_neutralized_residual_forward_return",
+      "description": "The Phase 2K-B / 2K-C residual label: forward excess-vs-SPY return neutralized cross-sectionally, per date, against the trailing risk controls via OLS (with a demean fallback). Reconstructed identically to upstream; no relabeling.",
+      "base": "forward_excess_return_vs_spy",
+      "controls": [
+        "rolling_beta_63d",
+        "realized_vol_21d",
+        "realized_vol_63d",
+        "downside_vol_21d",
+        "rolling_corr_spy_63d"
+      ],
+      "primary_horizon_days": 63
+    },
+    "candidate_signal": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "comparison_horizons_days": [
+      21,
+      63
+    ],
+    "scheme": "Strictly sequential walk-forward. The validation period is always chronologically after the training period. No random cross-validation and no shuffling of dates.",
+    "no_random_cross_validation": true,
+    "training_windows": {
+      "expanding_window": {
+        "type": "expanding",
+        "min_train_sessions": 252,
+        "description": "Anchored start; the training span grows by one step each fold. Captures all history up to the embargo before each validation block."
+      },
+      "rolling_window": {
+        "type": "rolling",
+        "train_sessions": 504,
+        "description": "Fixed-length trailing training span that slides forward each fold; tests whether the residual signal is stationary or decays as older history drops out."
+      }
+    },
+    "validation_windows": {
+      "type": "sequential_time_splits",
+      "validation_sessions": 63,
+      "step_sessions": 63,
+      "test_period_always_after_training_period": true,
+      "no_overlap_between_train_and_validation_label_windows": true,
+      "embargo_sessions": 63,
+      "embargo_equals_forward_horizon": true,
+      "embargo_rationale": "The forward label spans the horizon, so a training label that ends inside the validation window would peek across the boundary. An embargo equal to the horizon is dropped between the last training label and the first validation label to remove that overlap.",
+      "no_random_cross_validation": true
+    },
+    "fold_plan": {
+      "advance": "one validation block per fold (step = validation length)",
+      "min_train_sessions": 252,
+      "validation_sessions": 63,
+      "embargo_sessions": 63,
+      "panel_window": {
+        "date_start": "2023-02-14",
+        "date_end": "2026-05-21",
+        "n_dates": 820,
+        "n_tickers": 40
+      },
+      "note": "Concrete fold boundaries are derived in Phase 2L-B from the actual session calendar; this design fixes the protocol, not literal dates. On the current ~3-year, ~40-name panel only a few non-overlapping 63d validation blocks exist after the embargo, which itself is a go/no-go signal on whether the data can support model research."
+    }
+  },
+  "model_free_baseline_design": {
+    "run_first": true,
+    "strategy": "rank_only",
+    "fitted_model": false,
+    "description": "Cross-sectionally rank names each date by avg_dollar_volume_21d and read the residual label outcome in each out-of-sample validation window. The long/short direction is fixed from the training window (Phase 2K-C measured it bullish) and applied unchanged to validation. Nothing is fitted; this is a model-free signal check, not a model.",
+    "direction_source": "fixed from training window; not re-fit on validation",
+    "metrics_per_validation_window": [
+      "residual_label_rank_ic",
+      "top_minus_bottom_residual_spread",
+      "top_decile_residual_hit_rate",
+      "turnover_stability_proxy",
+      "ticker_concentration_in_long_leg"
+    ],
+    "turnover_stability_proxy": "Rank-stability of the top quintile across consecutive dates from the existing scored panel (a proxy for turnover); no transaction costs and no order simulation are modeled.",
+    "aggregation": "Aggregate the per-validation-window metrics across folds; report the distribution, not a single pooled number, so a single fold cannot carry the result.",
+    "purpose": "Establish whether the raw residual signal survives genuine out-of-sample walk-forward windows before any model is even considered. If the model-free baseline fails the gates, no model is built."
+  },
+  "later_model_candidate_design": {
+    "authorized_now": false,
+    "gated_behind": "Phase 2L-B model-free walk-forward validation must pass the gates first; only then may a later phase consider the simple model option.",
+    "allowed_model_class_when_unlocked": "univariate monotonic mapping or a rank transform on the single feature only (e.g. isotonic or a monotone rank-to-score map); no parameter-heavy fitting",
+    "single_feature_only": true,
+    "multi_feature_model": false,
+    "neural_network": false,
+    "complex_ml": false,
+    "production_scoring": false,
+    "serving_integration": false,
+    "model_v2_enablement": false,
+    "note": "Described here only to bound what a future, separately gated phase may attempt. This phase authorizes none of it and creates no model candidate."
+  },
+  "pass_fail_gates": [
+    {
+      "id": "validation_mean_ic_above_floor",
+      "description": "Mean residual rank IC across validation windows is positive and clears the inherited IC floor.",
+      "threshold": 0.03,
+      "pass_condition": "validation_mean_residual_ic >= rank_ic_floor"
+    },
+    {
+      "id": "majority_validation_windows_same_sign",
+      "description": "A majority of validation windows share the training-window sign.",
+      "threshold": 0.5,
+      "pass_condition": "frac_windows_same_sign > majority_sign_fraction"
+    },
+    {
+      "id": "bootstrap_ci_excludes_zero_in_validation",
+      "description": "A moving-block bootstrap CI (block = horizon) of the pooled validation per-date IC excludes zero.",
+      "threshold": "95% CI excludes 0",
+      "pass_condition": "ci_low and ci_high on the same side of zero"
+    },
+    {
+      "id": "no_single_validation_period_drives_result",
+      "description": "Leaving any single validation window out preserves the sign and the above-floor magnitude.",
+      "threshold": "leave-one-window-out sign stable",
+      "pass_condition": "sign preserved dropping each validation window"
+    },
+    {
+      "id": "no_excessive_ticker_concentration",
+      "description": "Top-3 long-leg share stays at or below the threshold.",
+      "threshold": 0.5,
+      "pass_condition": "top3_long_leg_share <= concentration_top3_threshold"
+    },
+    {
+      "id": "no_regime_only_dependence",
+      "description": "Validation residual IC does not flip sign between the SPY-up and SPY-down forward windows.",
+      "threshold": "no sign flip across SPY up/down split",
+      "pass_condition": "sign stable across the market-direction regime split"
+    },
+    {
+      "id": "no_degradation_vs_phase2k_c",
+      "description": "Out-of-sample validation IC does not collapse versus the Phase 2K-C full-sample residual IC.",
+      "threshold": 0.033684,
+      "pass_condition": "validation_mean_residual_ic >= degradation_tolerance_fraction * phase2k_c_residual_mean_rank_ic"
+    },
+    {
+      "id": "no_lookahead_leakage",
+      "description": "All leakage controls hold: trailing-only features, point-in-time universe, train-only residualization fit, and the horizon-length embargo between train and validation labels.",
+      "threshold": "all leakage_controls satisfied",
+      "pass_condition": "every leakage control verified for every fold"
+    },
+    {
+      "id": "enough_effective_observations_after_embargo",
+      "description": "Enough effectively independent validation observations remain after the embargo (validation dates / horizon).",
+      "threshold": 8.0,
+      "pass_condition": "effective_validation_obs >= min_effective_obs"
+    }
+  ],
+  "leakage_controls": {
+    "trailing_only_features": "Every feature, including the candidate signal and the residualization controls, is a trailing point-in-time value as of the row date; none uses forward data.",
+    "point_in_time_universe": "Names are included only if they were members of the universe as of each date; no survivorship or forward-membership injection.",
+    "train_only_residualization_fit": "The residualization is fit only from training / same-date cross-section information; no validation-window information enters any fit. The label is strictly forward; the per-date fit mixes only same-date data.",
+    "embargo_between_train_and_validation": {
+      "embargo_sessions": 63,
+      "reason": "The 63d forward labels overlap, so an embargo equal to the horizon is dropped between the last training label and the first validation label to prevent boundary leakage."
+    },
+    "no_current_date_membership_leakage_if_universe_expanded": "If the universe is later broadened, membership must still be resolved point-in-time per date; today's membership must not be back-applied to historical dates.",
+    "no_validation_set_threshold_tuning": "Gate thresholds are fixed in advance (inherited from Phase 2I-A / 2K-B / 2K-C) and are never tuned on validation results."
+  },
+  "implementation_plan": {
+    "next_phase": "2L-B",
+    "trains_a_model": false,
+    "steps": [
+      "Reconstruct the Phase 2K-B/2K-C residual label exactly (import the Phase 2K-B analyzer; no relabeling).",
+      "Derive the concrete sequential walk-forward fold boundaries from the session calendar, applying the horizon-length embargo.",
+      "For each fold, compute the model-free rank-only metrics on the validation window using the training-window direction.",
+      "Aggregate per-fold metrics; run the moving-block bootstrap and the leave-one-window-out check on the pooled validation IC.",
+      "Evaluate every pass/fail gate and record an explicit PASS/FAIL per gate.",
+      "Emit a Phase 2L-B diagnostics JSON with the same safety flags; train, fit, score, and serve nothing."
+    ],
+    "candidate_signal": "avg_dollar_volume_21d",
+    "note": "Phase 2L-B implements the model-free walk-forward validation only. It creates no model candidate and claims no production edge."
+  },
+  "interpretation": {
+    "candidate_is_research_only": true,
+    "candidate_is_production_edge": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "model_candidate_created": false,
+    "narrative": "Phase 2K-C labelled avg_dollar_volume_21d KEEP_FOR_MODEL_RESEARCH at its 63d horizon -- it survived the overlap-aware bootstrap, the permutation null, leave-one-year-out, concentration, and regime checks on a single-regime ~40-name 2023-2026 export. That is enough to justify *designing* out-of-sample walk-forward validation, and nothing more. This phase writes the protocol, gates, and leakage controls; it builds no model, fits nothing, and claims no production edge. The model-free baseline must be validated first in Phase 2L-B; a simple single-feature model remains a separately gated future option, not an action authorized here.",
+    "production_edge_claimed": false
+  },
+  "recommended_next_phase": {
+    "phase": "2L-B",
+    "title": "Model-Free Walk-Forward Residual Signal Validation",
+    "purpose": "Phase 2K-C produced at least one KEEP_FOR_MODEL_RESEARCH candidate, so the next phase implements the model-free walk-forward validation designed here -- a rank-only signal check on out-of-sample, chronologically-ordered validation windows with a horizon-length embargo. Phase 2L-B trains no model, fits nothing, serves nothing, and creates no model candidate; it only decides whether the surviving residual signal holds out of sample. No production edge is claimed."
+  }
+}
