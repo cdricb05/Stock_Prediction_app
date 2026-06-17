@@ -1,0 +1,121 @@
+{
+  "phase": "2J-A",
+  "generated_at": "2026-06-17T12:39:17",
+  "inputs_read": {
+    "phase2i_a_json": "research\\output\\phase2i_feature_ic_horizon_sweep.json",
+    "phase2i_b_json": "research\\output\\phase2i_b_survivor_robustness.json",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "provenance": {
+    "phase2i_a_phase": "2I-A",
+    "phase2i_b_phase": "2I-B",
+    "run_summary_phase": "2G-C",
+    "data_source": "yfinance",
+    "date_start": "2023-01-03",
+    "date_end": "2026-05-29",
+    "ticker_count": 41
+  },
+  "evidence_summary": {
+    "phase2i_a_keep_count": 6,
+    "phase2i_b_keep_for_model_count": 0,
+    "phase2i_b_keep_as_risk_filter_count": 0,
+    "phase2i_b_drop_count": 6,
+    "phase2i_b_need_more_data_count": 0,
+    "phase2i_b_dominant_edge_character": "volatility_risk_premium",
+    "phase2i_b_survivors_tested": 6,
+    "robust_enough_for_phase2j": false,
+    "production_edge_claimed": false
+  },
+  "decision": {
+    "go_no_go": "NO_GO",
+    "promote_model_v2": false,
+    "build_phase2j_model_candidate": false,
+    "reason": "No Phase 2I-A survivor passed Phase 2I-B robustness: 0 KEEP_FOR_MODEL, 0 KEEP_AS_RISK_FILTER_ONLY, 6 DROP, and robust_enough_for_phase2j=False. The only measurable signal was a 63d volatility / beta / correlation tilt that is a regime-dependent risk premium, not market-neutral alpha, so there is nothing robust to build a model on. Building a Phase 2J model candidate or promoting model-v2 now would be fitting to a small-sample, bull-run risk tilt. No production edge is claimed."
+  },
+  "failed_hypotheses": {
+    "short_horizon_momentum": {
+      "claim": "Recent (5/10/21d) momentum ranks forward excess return.",
+      "verdict": "FAILED",
+      "evidence": "Phase 2I-A: edge concentrates only at 63d; every feature is at noise at 5/10/21d."
+    },
+    "raw_return_momentum": {
+      "claim": "Trailing raw returns (return_5d/10d/21d/63d) rank names.",
+      "verdict": "FAILED",
+      "evidence": "Phase 2I-A: every raw-return feature is below the |IC| 0.03 floor at its best confident horizon."
+    },
+    "excess_return_momentum": {
+      "claim": "Trailing SPY-excess returns rank forward excess return.",
+      "verdict": "FAILED",
+      "evidence": "Phase 2I-A: excess_return_vs_spy_21d/63d are below the floor and sign-unstable."
+    },
+    "volume_zscore": {
+      "claim": "Volume z-score (volume_zscore_21d) carries ranking signal.",
+      "verdict": "FAILED",
+      "evidence": "Phase 2I-A: at noise (|IC| ~ 0.009)."
+    },
+    "63d_volatility_beta_correlation_tilt": {
+      "claim": "The surviving 63d vol / beta / correlation tilt is a stable, usable edge.",
+      "verdict": "FAILED",
+      "evidence": "Phase 2I-B: all six survivors DROP under the overlap-aware bootstrap / permutation / leave-one-year-out battery; a regime-dependent risk premium, not market-neutral alpha."
+    }
+  },
+  "what_still_worked": {
+    "local_research_harness": "The offline, vectorized research harness (2G real-data export -> 2I-A IC sweep -> 2I-B robustness) ran in seconds and produced auditable JSON; keep it.",
+    "safety_flags": "Every phase emitted machine-readable safety flags (no DB write, no migration, no deployment, model_v2 off, no production edge); keep enforcing them.",
+    "feature_flag_discipline": "Feature flag discipline kept model-v2 disabled throughout: the PREDICTOR_USE_MODEL_V2 serving flag never moved, so no failed signal leaked toward serving.",
+    "real_data_validation": "Validating on real price-history export (recorded source-provider history, 2023-2026, 41 tickers) is what exposed the tilt as a regime artifact; keep real-data, walk-forward validation as the gate.",
+    "trading_app_separation": "Paper Trader (preview-only, manual review) stayed fully separated from this prediction research; no order, automation, or model path was touched."
+  },
+  "alpha_rebuild_plan": {
+    "new_hypothesis_categories": [
+      {
+        "category": "beta_vol_neutralized_residual_signal",
+        "idea": "Neutralize forward excess return against beta and realized vol, then re-run the IC sweep to test whether any market-neutral residual ranking signal survives once the risk-premium tilt is removed."
+      },
+      {
+        "category": "fundamental_quality_value",
+        "idea": "Cross-sectional quality / value / profitability factors (margins, accruals, earnings revisions) that are not pure market-beta exposure."
+      },
+      {
+        "category": "estimate_revisions_and_surprise",
+        "idea": "Analyst estimate revisions and post-earnings-announcement drift as event-driven, less regime-coupled signals."
+      },
+      {
+        "category": "cross_sectional_mean_reversion",
+        "idea": "Short-horizon residual (beta-neutral) reversal, explicitly separated from the failed raw-return momentum hypothesis."
+      },
+      {
+        "category": "alternative_data_breadth",
+        "idea": "Breadth / dispersion / liquidity microstructure features as candidate ranking signals, validated the same way."
+      }
+    ],
+    "required_additional_data": [
+      "Longer price history (pre-2023) and ideally a full market cycle that includes a sustained drawdown, so a 63d signal can be tested out of a single bull regime.",
+      "A broader universe than the current ~40 mega-caps to reduce ticker concentration in the long leg.",
+      "Point-in-time fundamentals and analyst estimates (survivorship- and look-ahead-free) for the quality / value / revisions hypotheses.",
+      "A captured legacy production prediction series over the same window for a head-to-head IC comparison before any GO."
+    ],
+    "recommended_order_of_research": [
+      "1. Beta/vol-neutralize and re-measure (cheapest; reuses 2G/2I harness).",
+      "2. Acquire and validate longer history + broader universe.",
+      "3. Add point-in-time fundamentals / estimate-revision features.",
+      "4. Run the 2I-A IC sweep + 2I-B robustness battery on each new family.",
+      "5. Only then, if a family passes out-of-sample robustness, scope a walk-forward model candidate."
+    ],
+    "explicit_rule": "No model candidate may be created, and the PREDICTOR_USE_MODEL_V2 serving flag must stay disabled, until a feature family passes out-of-sample robustness (overlap-aware bootstrap CI excluding zero, permutation significance, and leave-one-year-out sign stability) on real data spanning more than one market regime."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-A",
+    "title": "New Alpha Hypothesis Backlog and Data Requirements",
+    "purpose": "Define a new research backlog and the data needed to test it, rather than training a model. No model candidate is created in 2K-A."
+  }
+}
