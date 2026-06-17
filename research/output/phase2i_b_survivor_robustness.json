@@ -1,0 +1,1801 @@
+{
+  "phase": "2I-B",
+  "generated_at": "2026-06-17T12:15:14",
+  "inputs_read": {
+    "phase2i_a_json": "research\\output\\phase2i_feature_ic_horizon_sweep.json",
+    "scored_csv": "research\\output\\phase2g_real_data_scored.csv",
+    "price_history_csv": "research\\output\\phase2g_price_history_real.csv",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "config": {
+    "survivor_horizons": [
+      63
+    ],
+    "bootstrap_n": 1000,
+    "permutation_n": 1000,
+    "ci_alpha": 0.05,
+    "perm_alpha": 0.05,
+    "seed": 12345,
+    "rolling_window_sessions": 126,
+    "min_effective_obs": 8.0,
+    "concentration_top3_threshold": 0.5,
+    "risk_features": [
+      "downside_vol_21d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "rolling_beta_63d",
+      "rolling_corr_spy_63d"
+    ],
+    "market_vol_col": "spy_realized_vol_21d",
+    "recommendation_rule": "NEED_MORE_DATA if n_dates/horizon < min_effective_obs; else DROP if the bootstrap mean-IC CI includes zero OR the sign-flip permutation null is not rejected OR IC sign is unstable leaving any year out; else KEEP_AS_RISK_FILTER_ONLY if overly concentrated or a risk/exposure feature; else KEEP_FOR_MODEL."
+  },
+  "provenance": {
+    "source": "yfinance",
+    "date_start": "2023-01-03",
+    "date_end": "2026-05-29",
+    "price_row_count": 35014,
+    "ticker_count": 41
+  },
+  "panel": {
+    "n_rows": 32800,
+    "n_tickers": 40,
+    "n_dates": 820,
+    "date_start": "2023-02-14",
+    "date_end": "2026-05-21"
+  },
+  "survivors_tested": [
+    "realized_vol_21d",
+    "rolling_beta_63d",
+    "downside_vol_21d",
+    "realized_vol_63d",
+    "rolling_corr_spy_63d",
+    "momentum_12_1"
+  ],
+  "survivors": [
+    {
+      "feature": "realized_vol_21d",
+      "horizon_days": 63,
+      "edge_type": "volatility_risk_premium",
+      "phase2i_a": {
+        "mean_rank_ic": 0.129838,
+        "information_ratio": 0.450495,
+        "direction": "bullish"
+      },
+      "overall": {
+        "mean_rank_ic": 0.129838,
+        "std_rank_ic": 0.288211,
+        "information_ratio": 0.450495,
+        "direction": "bullish",
+        "n_dates": 762,
+        "n_rows": 30480
+      },
+      "stability": {
+        "yearly": [
+          {
+            "year": 2023,
+            "rank_ic": 0.254586,
+            "information_ratio": 1.289291,
+            "n_dates": 221,
+            "n_rows": 8840,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.125372,
+            "top_decile_hit_rate": 0.651584
+          },
+          {
+            "year": 2024,
+            "rank_ic": 0.041812,
+            "information_ratio": 0.17846,
+            "n_dates": 252,
+            "n_rows": 10080,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.018295,
+            "top_decile_hit_rate": 0.499008
+          },
+          {
+            "year": 2025,
+            "rank_ic": 0.109139,
+            "information_ratio": 0.302025,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.076495,
+            "top_decile_hit_rate": 0.488
+          },
+          {
+            "year": 2026,
+            "rank_ic": 0.1244,
+            "information_ratio": 0.454856,
+            "n_dates": 39,
+            "n_rows": 1560,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.217833,
+            "top_decile_hit_rate": 0.769231
+          }
+        ],
+        "quarterly": [
+          {
+            "period": "2023-Q1",
+            "rank_ic": 0.447558,
+            "n_dates": 33,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q2",
+            "rank_ic": 0.264873,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q3",
+            "rank_ic": 0.208517,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q4",
+            "rank_ic": 0.189449,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q1",
+            "rank_ic": 0.037914,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q2",
+            "rank_ic": 0.107832,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q3",
+            "rank_ic": 0.174408,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q4",
+            "rank_ic": -0.152058,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q1",
+            "rank_ic": -0.047036,
+            "n_dates": 60,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q2",
+            "rank_ic": 0.466919,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q3",
+            "rank_ic": 0.266041,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q4",
+            "rank_ic": -0.247948,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2026-Q1",
+            "rank_ic": 0.1244,
+            "n_dates": 39,
+            "sign_matches_overall": true
+          }
+        ],
+        "rolling_6m": {
+          "window_sessions": 126,
+          "available": true,
+          "n_windows": 637,
+          "min_rank_ic": -0.118559,
+          "max_rank_ic": 0.405877,
+          "mean_rank_ic": 0.12419,
+          "frac_windows_same_sign_as_overall": 0.814757
+        },
+        "sign_stability": {
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "frac_years_matching_sign": 1.0,
+          "quarters_present": 13,
+          "quarters_matching_sign": 10,
+          "frac_quarters_matching_sign": 0.769231
+        }
+      },
+      "regimes": {
+        "spy_forward_return": {
+          "threshold": 0.0,
+          "positive": {
+            "rank_ic": 0.203359,
+            "n_dates": 633
+          },
+          "negative": {
+            "rank_ic": -0.230928,
+            "n_dates": 129
+          },
+          "sign_flips_across_regime": true
+        },
+        "market_volatility_21d": {
+          "median_split": 0.119836,
+          "high": {
+            "rank_ic": 0.175119,
+            "n_dates": 381
+          },
+          "low": {
+            "rank_ic": 0.084556,
+            "n_dates": 381
+          }
+        },
+        "feature_cross_sectional_dispersion": {
+          "median_split": 0.133403,
+          "high": {
+            "rank_ic": 0.120693,
+            "n_dates": 381
+          },
+          "low": {
+            "rank_ic": 0.138983,
+            "n_dates": 381
+          }
+        }
+      },
+      "regime_dependent": true,
+      "robustness": {
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.004204,
+          "ci_high": 0.226738,
+          "excludes_zero": false
+        },
+        "permutation_null": {
+          "method": "sign_flip",
+          "n_permutations": 1000,
+          "alpha": 0.05,
+          "p_value": 0.0,
+          "significant": true
+        },
+        "leave_one_year_out": {
+          "per_year": [
+            {
+              "year_left_out": 2023,
+              "rank_ic_remaining": 0.078878,
+              "n_dates_remaining": 541
+            },
+            {
+              "year_left_out": 2024,
+              "rank_ic_remaining": 0.173333,
+              "n_dates_remaining": 510
+            },
+            {
+              "year_left_out": 2025,
+              "rank_ic_remaining": 0.139945,
+              "n_dates_remaining": 512
+            },
+            {
+              "year_left_out": 2026,
+              "rank_ic_remaining": 0.130131,
+              "n_dates_remaining": 723
+            }
+          ],
+          "sign_stable": true
+        },
+        "leave_one_ticker_out": {
+          "dropped_ticker": "TSLA",
+          "mean_rank_ic_excluding": 0.133153,
+          "delta_vs_full": 0.003315,
+          "sign_preserved": true
+        }
+      },
+      "concentration": {
+        "top_quintile_rows": 6096,
+        "n_unique_top_quintile_tickers": 33,
+        "top3_long_leg_share": 0.346785,
+        "overly_concentrated": false,
+        "concentration_threshold": 0.5,
+        "top_contributors": [
+          {
+            "ticker": "TSLA",
+            "top_quintile_share": 0.11893,
+            "n_dates_in_top_quintile": 725,
+            "mean_forward_excess_in_top": 0.055806
+          },
+          {
+            "ticker": "AMD",
+            "top_quintile_share": 0.117946,
+            "n_dates_in_top_quintile": 719,
+            "mean_forward_excess_in_top": 0.08818
+          },
+          {
+            "ticker": "INTC",
+            "top_quintile_share": 0.109908,
+            "n_dates_in_top_quintile": 670,
+            "mean_forward_excess_in_top": 0.094666
+          },
+          {
+            "ticker": "NVDA",
+            "top_quintile_share": 0.088419,
+            "n_dates_in_top_quintile": 539,
+            "mean_forward_excess_in_top": 0.167946
+          },
+          {
+            "ticker": "AVGO",
+            "top_quintile_share": 0.080381,
+            "n_dates_in_top_quintile": 490,
+            "mean_forward_excess_in_top": 0.101519
+          }
+        ]
+      },
+      "recommendation": {
+        "recommendation": "DROP",
+        "effective_obs_est": 12.1,
+        "min_effective_obs": 8.0,
+        "reasons": [
+          "bootstrap CI for mean IC includes zero"
+        ]
+      }
+    },
+    {
+      "feature": "rolling_beta_63d",
+      "horizon_days": 63,
+      "edge_type": "beta_exposure",
+      "phase2i_a": {
+        "mean_rank_ic": 0.151014,
+        "information_ratio": 0.418635,
+        "direction": "bullish"
+      },
+      "overall": {
+        "mean_rank_ic": 0.151014,
+        "std_rank_ic": 0.36073,
+        "information_ratio": 0.418635,
+        "direction": "bullish",
+        "n_dates": 728,
+        "n_rows": 29120
+      },
+      "stability": {
+        "yearly": [
+          {
+            "year": 2023,
+            "rank_ic": 0.319507,
+            "information_ratio": 1.100855,
+            "n_dates": 187,
+            "n_rows": 7480,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.155279,
+            "top_decile_hit_rate": 0.77139
+          },
+          {
+            "year": 2024,
+            "rank_ic": 0.065057,
+            "information_ratio": 0.217838,
+            "n_dates": 252,
+            "n_rows": 10080,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.037586,
+            "top_decile_hit_rate": 0.5
+          },
+          {
+            "year": 2025,
+            "rank_ic": 0.10583,
+            "information_ratio": 0.248687,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.076331,
+            "top_decile_hit_rate": 0.592
+          },
+          {
+            "year": 2026,
+            "rank_ic": 0.188175,
+            "information_ratio": 0.601525,
+            "n_dates": 39,
+            "n_rows": 1560,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.284227,
+            "top_decile_hit_rate": 0.846154
+          }
+        ],
+        "quarterly": [
+          {
+            "period": "2023-Q2",
+            "rank_ic": 0.350669,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q3",
+            "rank_ic": 0.292567,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q4",
+            "rank_ic": 0.316275,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q1",
+            "rank_ic": 0.023621,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q2",
+            "rank_ic": 0.019348,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q3",
+            "rank_ic": 0.256391,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q4",
+            "rank_ic": -0.041789,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q1",
+            "rank_ic": 0.123793,
+            "n_dates": 60,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q2",
+            "rank_ic": 0.519893,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q3",
+            "rank_ic": 0.156874,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q4",
+            "rank_ic": -0.36318,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2026-Q1",
+            "rank_ic": 0.188175,
+            "n_dates": 39,
+            "sign_matches_overall": true
+          }
+        ],
+        "rolling_6m": {
+          "window_sessions": 126,
+          "available": true,
+          "n_windows": 603,
+          "min_rank_ic": -0.1423,
+          "max_rank_ic": 0.439072,
+          "mean_rank_ic": 0.154675,
+          "frac_windows_same_sign_as_overall": 0.875622
+        },
+        "sign_stability": {
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "frac_years_matching_sign": 1.0,
+          "quarters_present": 12,
+          "quarters_matching_sign": 10,
+          "frac_quarters_matching_sign": 0.833333
+        }
+      },
+      "regimes": {
+        "spy_forward_return": {
+          "threshold": 0.0,
+          "positive": {
+            "rank_ic": 0.235855,
+            "n_dates": 600
+          },
+          "negative": {
+            "rank_ic": -0.246676,
+            "n_dates": 128
+          },
+          "sign_flips_across_regime": true
+        },
+        "market_volatility_21d": {
+          "median_split": 0.118215,
+          "high": {
+            "rank_ic": 0.224331,
+            "n_dates": 364
+          },
+          "low": {
+            "rank_ic": 0.077698,
+            "n_dates": 364
+          }
+        },
+        "feature_cross_sectional_dispersion": {
+          "median_split": 0.678281,
+          "high": {
+            "rank_ic": 0.090567,
+            "n_dates": 364
+          },
+          "low": {
+            "rank_ic": 0.211462,
+            "n_dates": 364
+          }
+        }
+      },
+      "regime_dependent": true,
+      "robustness": {
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.021193,
+          "ci_high": 0.292121,
+          "excludes_zero": false
+        },
+        "permutation_null": {
+          "method": "sign_flip",
+          "n_permutations": 1000,
+          "alpha": 0.05,
+          "p_value": 0.0,
+          "significant": true
+        },
+        "leave_one_year_out": {
+          "per_year": [
+            {
+              "year_left_out": 2023,
+              "rank_ic_remaining": 0.092774,
+              "n_dates_remaining": 541
+            },
+            {
+              "year_left_out": 2024,
+              "rank_ic_remaining": 0.196521,
+              "n_dates_remaining": 476
+            },
+            {
+              "year_left_out": 2025,
+              "rank_ic_remaining": 0.174647,
+              "n_dates_remaining": 478
+            },
+            {
+              "year_left_out": 2026,
+              "rank_ic_remaining": 0.148911,
+              "n_dates_remaining": 689
+            }
+          ],
+          "sign_stable": true
+        },
+        "leave_one_ticker_out": {
+          "dropped_ticker": "NVDA",
+          "mean_rank_ic_excluding": 0.131251,
+          "delta_vs_full": -0.019764,
+          "sign_preserved": true
+        }
+      },
+      "concentration": {
+        "top_quintile_rows": 5824,
+        "n_unique_top_quintile_tickers": 24,
+        "top3_long_leg_share": 0.358516,
+        "overly_concentrated": false,
+        "concentration_threshold": 0.5,
+        "top_contributors": [
+          {
+            "ticker": "NVDA",
+            "top_quintile_share": 0.124657,
+            "n_dates_in_top_quintile": 726,
+            "mean_forward_excess_in_top": 0.143993
+          },
+          {
+            "ticker": "AMD",
+            "top_quintile_share": 0.11796,
+            "n_dates_in_top_quintile": 687,
+            "mean_forward_excess_in_top": 0.084345
+          },
+          {
+            "ticker": "TSLA",
+            "top_quintile_share": 0.1159,
+            "n_dates_in_top_quintile": 675,
+            "mean_forward_excess_in_top": 0.035298
+          },
+          {
+            "ticker": "AVGO",
+            "top_quintile_share": 0.111264,
+            "n_dates_in_top_quintile": 648,
+            "mean_forward_excess_in_top": 0.114236
+          },
+          {
+            "ticker": "QCOM",
+            "top_quintile_share": 0.078812,
+            "n_dates_in_top_quintile": 459,
+            "mean_forward_excess_in_top": -0.058187
+          }
+        ]
+      },
+      "recommendation": {
+        "recommendation": "DROP",
+        "effective_obs_est": 11.56,
+        "min_effective_obs": 8.0,
+        "reasons": [
+          "bootstrap CI for mean IC includes zero"
+        ]
+      }
+    },
+    {
+      "feature": "downside_vol_21d",
+      "horizon_days": 63,
+      "edge_type": "volatility_risk_premium",
+      "phase2i_a": {
+        "mean_rank_ic": 0.10774,
+        "information_ratio": 0.405232,
+        "direction": "bullish"
+      },
+      "overall": {
+        "mean_rank_ic": 0.10774,
+        "std_rank_ic": 0.265872,
+        "information_ratio": 0.405232,
+        "direction": "bullish",
+        "n_dates": 762,
+        "n_rows": 30480
+      },
+      "stability": {
+        "yearly": [
+          {
+            "year": 2023,
+            "rank_ic": 0.243754,
+            "information_ratio": 1.404019,
+            "n_dates": 221,
+            "n_rows": 8840,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.113244,
+            "top_decile_hit_rate": 0.593891
+          },
+          {
+            "year": 2024,
+            "rank_ic": 0.018445,
+            "information_ratio": 0.093745,
+            "n_dates": 252,
+            "n_rows": 10080,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.009572,
+            "top_decile_hit_rate": 0.458333
+          },
+          {
+            "year": 2025,
+            "rank_ic": 0.077155,
+            "information_ratio": 0.22806,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.060805,
+            "top_decile_hit_rate": 0.503
+          },
+          {
+            "year": 2026,
+            "rank_ic": 0.11003,
+            "information_ratio": 0.419484,
+            "n_dates": 39,
+            "n_rows": 1560,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.181942,
+            "top_decile_hit_rate": 0.628205
+          }
+        ],
+        "quarterly": [
+          {
+            "period": "2023-Q1",
+            "rank_ic": 0.306481,
+            "n_dates": 33,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q2",
+            "rank_ic": 0.22538,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q3",
+            "rank_ic": 0.264859,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q4",
+            "rank_ic": 0.207874,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q1",
+            "rank_ic": -0.024018,
+            "n_dates": 61,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2024-Q2",
+            "rank_ic": 0.060746,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q3",
+            "rank_ic": 0.169741,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q4",
+            "rank_ic": -0.134017,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q1",
+            "rank_ic": -0.019794,
+            "n_dates": 60,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q2",
+            "rank_ic": 0.391527,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q3",
+            "rank_ic": 0.210395,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q4",
+            "rank_ic": -0.269744,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2026-Q1",
+            "rank_ic": 0.11003,
+            "n_dates": 39,
+            "sign_matches_overall": true
+          }
+        ],
+        "rolling_6m": {
+          "window_sessions": 126,
+          "available": true,
+          "n_windows": 637,
+          "min_rank_ic": -0.106249,
+          "max_rank_ic": 0.360754,
+          "mean_rank_ic": 0.106848,
+          "frac_windows_same_sign_as_overall": 0.800628
+        },
+        "sign_stability": {
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "frac_years_matching_sign": 1.0,
+          "quarters_present": 13,
+          "quarters_matching_sign": 9,
+          "frac_quarters_matching_sign": 0.692308
+        }
+      },
+      "regimes": {
+        "spy_forward_return": {
+          "threshold": 0.0,
+          "positive": {
+            "rank_ic": 0.164788,
+            "n_dates": 633
+          },
+          "negative": {
+            "rank_ic": -0.172193,
+            "n_dates": 129
+          },
+          "sign_flips_across_regime": true
+        },
+        "market_volatility_21d": {
+          "median_split": 0.119836,
+          "high": {
+            "rank_ic": 0.137207,
+            "n_dates": 381
+          },
+          "low": {
+            "rank_ic": 0.078272,
+            "n_dates": 381
+          }
+        },
+        "feature_cross_sectional_dispersion": {
+          "median_split": 0.131943,
+          "high": {
+            "rank_ic": 0.124745,
+            "n_dates": 381
+          },
+          "low": {
+            "rank_ic": 0.090734,
+            "n_dates": 381
+          }
+        }
+      },
+      "regime_dependent": true,
+      "robustness": {
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.025086,
+          "ci_high": 0.198469,
+          "excludes_zero": false
+        },
+        "permutation_null": {
+          "method": "sign_flip",
+          "n_permutations": 1000,
+          "alpha": 0.05,
+          "p_value": 0.0,
+          "significant": true
+        },
+        "leave_one_year_out": {
+          "per_year": [
+            {
+              "year_left_out": 2023,
+              "rank_ic_remaining": 0.052178,
+              "n_dates_remaining": 541
+            },
+            {
+              "year_left_out": 2024,
+              "rank_ic_remaining": 0.151862,
+              "n_dates_remaining": 510
+            },
+            {
+              "year_left_out": 2025,
+              "rank_ic_remaining": 0.122674,
+              "n_dates_remaining": 512
+            },
+            {
+              "year_left_out": 2026,
+              "rank_ic_remaining": 0.107616,
+              "n_dates_remaining": 723
+            }
+          ],
+          "sign_stable": true
+        },
+        "leave_one_ticker_out": {
+          "dropped_ticker": "TSLA",
+          "mean_rank_ic_excluding": 0.110463,
+          "delta_vs_full": 0.002723,
+          "sign_preserved": true
+        }
+      },
+      "concentration": {
+        "top_quintile_rows": 6096,
+        "n_unique_top_quintile_tickers": 37,
+        "top3_long_leg_share": 0.321522,
+        "overly_concentrated": false,
+        "concentration_threshold": 0.5,
+        "top_contributors": [
+          {
+            "ticker": "TSLA",
+            "top_quintile_share": 0.113353,
+            "n_dates_in_top_quintile": 691,
+            "mean_forward_excess_in_top": 0.053552
+          },
+          {
+            "ticker": "AMD",
+            "top_quintile_share": 0.104495,
+            "n_dates_in_top_quintile": 637,
+            "mean_forward_excess_in_top": 0.07414
+          },
+          {
+            "ticker": "INTC",
+            "top_quintile_share": 0.103675,
+            "n_dates_in_top_quintile": 632,
+            "mean_forward_excess_in_top": 0.080774
+          },
+          {
+            "ticker": "NVDA",
+            "top_quintile_share": 0.085794,
+            "n_dates_in_top_quintile": 523,
+            "mean_forward_excess_in_top": 0.169772
+          },
+          {
+            "ticker": "AVGO",
+            "top_quintile_share": 0.062336,
+            "n_dates_in_top_quintile": 380,
+            "mean_forward_excess_in_top": 0.118288
+          }
+        ]
+      },
+      "recommendation": {
+        "recommendation": "DROP",
+        "effective_obs_est": 12.1,
+        "min_effective_obs": 8.0,
+        "reasons": [
+          "bootstrap CI for mean IC includes zero"
+        ]
+      }
+    },
+    {
+      "feature": "realized_vol_63d",
+      "horizon_days": 63,
+      "edge_type": "volatility_risk_premium",
+      "phase2i_a": {
+        "mean_rank_ic": 0.110599,
+        "information_ratio": 0.365652,
+        "direction": "bullish"
+      },
+      "overall": {
+        "mean_rank_ic": 0.110599,
+        "std_rank_ic": 0.30247,
+        "information_ratio": 0.365652,
+        "direction": "bullish",
+        "n_dates": 728,
+        "n_rows": 29120
+      },
+      "stability": {
+        "yearly": [
+          {
+            "year": 2023,
+            "rank_ic": 0.264458,
+            "information_ratio": 1.239479,
+            "n_dates": 187,
+            "n_rows": 7480,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.133904,
+            "top_decile_hit_rate": 0.648396
+          },
+          {
+            "year": 2024,
+            "rank_ic": 0.038858,
+            "information_ratio": 0.172501,
+            "n_dates": 252,
+            "n_rows": 10080,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.026464,
+            "top_decile_hit_rate": 0.486111
+          },
+          {
+            "year": 2025,
+            "rank_ic": 0.061091,
+            "information_ratio": 0.16019,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.059474,
+            "top_decile_hit_rate": 0.581
+          },
+          {
+            "year": 2026,
+            "rank_ic": 0.153774,
+            "information_ratio": 0.578604,
+            "n_dates": 39,
+            "n_rows": 1560,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.197001,
+            "top_decile_hit_rate": 0.878205
+          }
+        ],
+        "quarterly": [
+          {
+            "period": "2023-Q2",
+            "rank_ic": 0.359656,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q3",
+            "rank_ic": 0.249334,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q4",
+            "rank_ic": 0.187406,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q1",
+            "rank_ic": 0.070815,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q2",
+            "rank_ic": 0.074311,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q3",
+            "rank_ic": 0.122869,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q4",
+            "rank_ic": -0.110512,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q1",
+            "rank_ic": -0.179303,
+            "n_dates": 60,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q2",
+            "rank_ic": 0.469373,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q3",
+            "rank_ic": 0.245383,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q4",
+            "rank_ic": -0.293354,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2026-Q1",
+            "rank_ic": 0.153774,
+            "n_dates": 39,
+            "sign_matches_overall": true
+          }
+        ],
+        "rolling_6m": {
+          "window_sessions": 126,
+          "available": true,
+          "n_windows": 603,
+          "min_rank_ic": -0.153012,
+          "max_rank_ic": 0.378515,
+          "mean_rank_ic": 0.103754,
+          "frac_windows_same_sign_as_overall": 0.762852
+        },
+        "sign_stability": {
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "frac_years_matching_sign": 1.0,
+          "quarters_present": 12,
+          "quarters_matching_sign": 9,
+          "frac_quarters_matching_sign": 0.75
+        }
+      },
+      "regimes": {
+        "spy_forward_return": {
+          "threshold": 0.0,
+          "positive": {
+            "rank_ic": 0.192577,
+            "n_dates": 600
+          },
+          "negative": {
+            "rank_ic": -0.273675,
+            "n_dates": 128
+          },
+          "sign_flips_across_regime": true
+        },
+        "market_volatility_21d": {
+          "median_split": 0.118215,
+          "high": {
+            "rank_ic": 0.129252,
+            "n_dates": 364
+          },
+          "low": {
+            "rank_ic": 0.091945,
+            "n_dates": 364
+          }
+        },
+        "feature_cross_sectional_dispersion": {
+          "median_split": 0.122028,
+          "high": {
+            "rank_ic": 0.061293,
+            "n_dates": 364
+          },
+          "low": {
+            "rank_ic": 0.159905,
+            "n_dates": 364
+          }
+        }
+      },
+      "regime_dependent": true,
+      "robustness": {
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.044874,
+          "ci_high": 0.212184,
+          "excludes_zero": false
+        },
+        "permutation_null": {
+          "method": "sign_flip",
+          "n_permutations": 1000,
+          "alpha": 0.05,
+          "p_value": 0.0,
+          "significant": true
+        },
+        "leave_one_year_out": {
+          "per_year": [
+            {
+              "year_left_out": 2023,
+              "rank_ic_remaining": 0.057416,
+              "n_dates_remaining": 541
+            },
+            {
+              "year_left_out": 2024,
+              "rank_ic_remaining": 0.148579,
+              "n_dates_remaining": 476
+            },
+            {
+              "year_left_out": 2025,
+              "rank_ic_remaining": 0.136492,
+              "n_dates_remaining": 478
+            },
+            {
+              "year_left_out": 2026,
+              "rank_ic_remaining": 0.108155,
+              "n_dates_remaining": 689
+            }
+          ],
+          "sign_stable": true
+        },
+        "leave_one_ticker_out": {
+          "dropped_ticker": "AMD",
+          "mean_rank_ic_excluding": 0.111333,
+          "delta_vs_full": 0.000735,
+          "sign_preserved": true
+        }
+      },
+      "concentration": {
+        "top_quintile_rows": 5824,
+        "n_unique_top_quintile_tickers": 23,
+        "top3_long_leg_share": 0.369505,
+        "overly_concentrated": false,
+        "concentration_threshold": 0.5,
+        "top_contributors": [
+          {
+            "ticker": "AMD",
+            "top_quintile_share": 0.125,
+            "n_dates_in_top_quintile": 728,
+            "mean_forward_excess_in_top": 0.082268
+          },
+          {
+            "ticker": "TSLA",
+            "top_quintile_share": 0.123626,
+            "n_dates_in_top_quintile": 720,
+            "mean_forward_excess_in_top": 0.050807
+          },
+          {
+            "ticker": "INTC",
+            "top_quintile_share": 0.120879,
+            "n_dates_in_top_quintile": 704,
+            "mean_forward_excess_in_top": 0.08436
+          },
+          {
+            "ticker": "AVGO",
+            "top_quintile_share": 0.107658,
+            "n_dates_in_top_quintile": 627,
+            "mean_forward_excess_in_top": 0.107649
+          },
+          {
+            "ticker": "NVDA",
+            "top_quintile_share": 0.106971,
+            "n_dates_in_top_quintile": 623,
+            "mean_forward_excess_in_top": 0.166753
+          }
+        ]
+      },
+      "recommendation": {
+        "recommendation": "DROP",
+        "effective_obs_est": 11.56,
+        "min_effective_obs": 8.0,
+        "reasons": [
+          "bootstrap CI for mean IC includes zero"
+        ]
+      }
+    },
+    {
+      "feature": "rolling_corr_spy_63d",
+      "horizon_days": 63,
+      "edge_type": "correlation_regime",
+      "phase2i_a": {
+        "mean_rank_ic": 0.109892,
+        "information_ratio": 0.349321,
+        "direction": "bullish"
+      },
+      "overall": {
+        "mean_rank_ic": 0.109892,
+        "std_rank_ic": 0.314587,
+        "information_ratio": 0.349321,
+        "direction": "bullish",
+        "n_dates": 728,
+        "n_rows": 29120
+      },
+      "stability": {
+        "yearly": [
+          {
+            "year": 2023,
+            "rank_ic": 0.246295,
+            "information_ratio": 1.084164,
+            "n_dates": 187,
+            "n_rows": 7480,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.088477,
+            "top_decile_hit_rate": 0.589572
+          },
+          {
+            "year": 2024,
+            "rank_ic": 0.065429,
+            "information_ratio": 0.242587,
+            "n_dates": 252,
+            "n_rows": 10080,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.043187,
+            "top_decile_hit_rate": 0.316468
+          },
+          {
+            "year": 2025,
+            "rank_ic": 0.045857,
+            "information_ratio": 0.120435,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.039009,
+            "top_decile_hit_rate": 0.489
+          },
+          {
+            "year": 2026,
+            "rank_ic": 0.153639,
+            "information_ratio": 0.554881,
+            "n_dates": 39,
+            "n_rows": 1560,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.14346,
+            "top_decile_hit_rate": 0.737179
+          }
+        ],
+        "quarterly": [
+          {
+            "period": "2023-Q2",
+            "rank_ic": 0.169609,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q3",
+            "rank_ic": 0.266464,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2023-Q4",
+            "rank_ic": 0.300378,
+            "n_dates": 63,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q1",
+            "rank_ic": 0.00613,
+            "n_dates": 61,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q2",
+            "rank_ic": -0.056136,
+            "n_dates": 63,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2024-Q3",
+            "rank_ic": 0.240305,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q4",
+            "rank_ic": 0.066736,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q1",
+            "rank_ic": 0.246614,
+            "n_dates": 60,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q2",
+            "rank_ic": 0.352524,
+            "n_dates": 62,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q3",
+            "rank_ic": -0.049446,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q4",
+            "rank_ic": -0.344134,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2026-Q1",
+            "rank_ic": 0.153639,
+            "n_dates": 39,
+            "sign_matches_overall": true
+          }
+        ],
+        "rolling_6m": {
+          "window_sessions": 126,
+          "available": true,
+          "n_windows": 603,
+          "min_rank_ic": -0.216269,
+          "max_rank_ic": 0.311839,
+          "mean_rank_ic": 0.123486,
+          "frac_windows_same_sign_as_overall": 0.800995
+        },
+        "sign_stability": {
+          "years_present": 4,
+          "years_matching_sign": 4,
+          "frac_years_matching_sign": 1.0,
+          "quarters_present": 12,
+          "quarters_matching_sign": 9,
+          "frac_quarters_matching_sign": 0.75
+        }
+      },
+      "regimes": {
+        "spy_forward_return": {
+          "threshold": 0.0,
+          "positive": {
+            "rank_ic": 0.165239,
+            "n_dates": 600
+          },
+          "negative": {
+            "rank_ic": -0.149547,
+            "n_dates": 128
+          },
+          "sign_flips_across_regime": true
+        },
+        "market_volatility_21d": {
+          "median_split": 0.118215,
+          "high": {
+            "rank_ic": 0.187885,
+            "n_dates": 364
+          },
+          "low": {
+            "rank_ic": 0.031899,
+            "n_dates": 364
+          }
+        },
+        "feature_cross_sectional_dispersion": {
+          "median_split": 0.205792,
+          "high": {
+            "rank_ic": 0.126855,
+            "n_dates": 364
+          },
+          "low": {
+            "rank_ic": 0.092929,
+            "n_dates": 364
+          }
+        }
+      },
+      "regime_dependent": true,
+      "robustness": {
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.032049,
+          "ci_high": 0.24864,
+          "excludes_zero": false
+        },
+        "permutation_null": {
+          "method": "sign_flip",
+          "n_permutations": 1000,
+          "alpha": 0.05,
+          "p_value": 0.0,
+          "significant": true
+        },
+        "leave_one_year_out": {
+          "per_year": [
+            {
+              "year_left_out": 2023,
+              "rank_ic_remaining": 0.062743,
+              "n_dates_remaining": 541
+            },
+            {
+              "year_left_out": 2024,
+              "rank_ic_remaining": 0.133431,
+              "n_dates_remaining": 476
+            },
+            {
+              "year_left_out": 2025,
+              "rank_ic_remaining": 0.143383,
+              "n_dates_remaining": 478
+            },
+            {
+              "year_left_out": 2026,
+              "rank_ic_remaining": 0.107416,
+              "n_dates_remaining": 689
+            }
+          ],
+          "sign_stable": true
+        },
+        "leave_one_ticker_out": {
+          "dropped_ticker": "AMZN",
+          "mean_rank_ic_excluding": 0.108664,
+          "delta_vs_full": -0.001228,
+          "sign_preserved": true
+        }
+      },
+      "concentration": {
+        "top_quintile_rows": 5824,
+        "n_unique_top_quintile_tickers": 28,
+        "top3_long_leg_share": 0.228709,
+        "overly_concentrated": false,
+        "concentration_threshold": 0.5,
+        "top_contributors": [
+          {
+            "ticker": "AMZN",
+            "top_quintile_share": 0.088599,
+            "n_dates_in_top_quintile": 516,
+            "mean_forward_excess_in_top": 0.00649
+          },
+          {
+            "ticker": "NVDA",
+            "top_quintile_share": 0.071944,
+            "n_dates_in_top_quintile": 419,
+            "mean_forward_excess_in_top": 0.092811
+          },
+          {
+            "ticker": "MSFT",
+            "top_quintile_share": 0.068166,
+            "n_dates_in_top_quintile": 397,
+            "mean_forward_excess_in_top": -0.011284
+          },
+          {
+            "ticker": "AAPL",
+            "top_quintile_share": 0.066277,
+            "n_dates_in_top_quintile": 386,
+            "mean_forward_excess_in_top": -0.01876
+          },
+          {
+            "ticker": "QCOM",
+            "top_quintile_share": 0.065934,
+            "n_dates_in_top_quintile": 384,
+            "mean_forward_excess_in_top": -0.061195
+          }
+        ]
+      },
+      "recommendation": {
+        "recommendation": "DROP",
+        "effective_obs_est": 11.56,
+        "min_effective_obs": 8.0,
+        "reasons": [
+          "bootstrap CI for mean IC includes zero"
+        ]
+      }
+    },
+    {
+      "feature": "momentum_12_1",
+      "horizon_days": 63,
+      "edge_type": "momentum",
+      "phase2i_a": {
+        "mean_rank_ic": 0.058679,
+        "information_ratio": 0.243033,
+        "direction": "bullish"
+      },
+      "overall": {
+        "mean_rank_ic": 0.058679,
+        "std_rank_ic": 0.241443,
+        "information_ratio": 0.243033,
+        "direction": "bullish",
+        "n_dates": 539,
+        "n_rows": 21560
+      },
+      "stability": {
+        "yearly": [
+          {
+            "year": 2024,
+            "rank_ic": 0.065223,
+            "information_ratio": 0.289952,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.021393,
+            "top_decile_hit_rate": 0.634
+          },
+          {
+            "year": 2025,
+            "rank_ic": 0.003445,
+            "information_ratio": 0.014504,
+            "n_dates": 250,
+            "n_rows": 10000,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": -0.000324,
+            "top_decile_hit_rate": 0.418
+          },
+          {
+            "year": 2026,
+            "rank_ic": 0.370789,
+            "information_ratio": 6.120236,
+            "n_dates": 39,
+            "n_rows": 1560,
+            "sign_matches_overall": true,
+            "top_minus_bottom_spread": 0.351267,
+            "top_decile_hit_rate": 0.916667
+          }
+        ],
+        "quarterly": [
+          {
+            "period": "2024-Q1",
+            "rank_ic": 0.001158,
+            "n_dates": 59,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q2",
+            "rank_ic": -0.057045,
+            "n_dates": 63,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2024-Q3",
+            "rank_ic": 0.14015,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2024-Q4",
+            "rank_ic": 0.169712,
+            "n_dates": 64,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q1",
+            "rank_ic": 0.225563,
+            "n_dates": 60,
+            "sign_matches_overall": true
+          },
+          {
+            "period": "2025-Q2",
+            "rank_ic": -0.062328,
+            "n_dates": 62,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q3",
+            "rank_ic": -0.116082,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2025-Q4",
+            "rank_ic": -0.021544,
+            "n_dates": 64,
+            "sign_matches_overall": false
+          },
+          {
+            "period": "2026-Q1",
+            "rank_ic": 0.370789,
+            "n_dates": 39,
+            "sign_matches_overall": true
+          }
+        ],
+        "rolling_6m": {
+          "window_sessions": 126,
+          "available": true,
+          "n_windows": 414,
+          "min_rank_ic": -0.134965,
+          "max_rank_ic": 0.199114,
+          "mean_rank_ic": 0.044868,
+          "frac_windows_same_sign_as_overall": 0.690821
+        },
+        "sign_stability": {
+          "years_present": 3,
+          "years_matching_sign": 3,
+          "frac_years_matching_sign": 1.0,
+          "quarters_present": 9,
+          "quarters_matching_sign": 5,
+          "frac_quarters_matching_sign": 0.555556
+        }
+      },
+      "regimes": {
+        "spy_forward_return": {
+          "threshold": 0.0,
+          "positive": {
+            "rank_ic": 0.05889,
+            "n_dates": 448
+          },
+          "negative": {
+            "rank_ic": 0.057636,
+            "n_dates": 91
+          },
+          "sign_flips_across_regime": false
+        },
+        "market_volatility_21d": {
+          "median_split": 0.119739,
+          "high": {
+            "rank_ic": 0.086814,
+            "n_dates": 270
+          },
+          "low": {
+            "rank_ic": 0.030439,
+            "n_dates": 269
+          }
+        },
+        "feature_cross_sectional_dispersion": {
+          "median_split": 0.322848,
+          "high": {
+            "rank_ic": 0.084622,
+            "n_dates": 270
+          },
+          "low": {
+            "rank_ic": 0.032638,
+            "n_dates": 269
+          }
+        }
+      },
+      "regime_dependent": false,
+      "robustness": {
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.051985,
+          "ci_high": 0.145647,
+          "excludes_zero": false
+        },
+        "permutation_null": {
+          "method": "sign_flip",
+          "n_permutations": 1000,
+          "alpha": 0.05,
+          "p_value": 0.0,
+          "significant": true
+        },
+        "leave_one_year_out": {
+          "per_year": [
+            {
+              "year_left_out": 2024,
+              "rank_ic_remaining": 0.053018,
+              "n_dates_remaining": 289
+            },
+            {
+              "year_left_out": 2025,
+              "rank_ic_remaining": 0.106458,
+              "n_dates_remaining": 289
+            },
+            {
+              "year_left_out": 2026,
+              "rank_ic_remaining": 0.034334,
+              "n_dates_remaining": 500
+            }
+          ],
+          "sign_stable": true
+        },
+        "leave_one_ticker_out": {
+          "dropped_ticker": "AVGO",
+          "mean_rank_ic_excluding": 0.032703,
+          "delta_vs_full": -0.025976,
+          "sign_preserved": true
+        }
+      },
+      "concentration": {
+        "top_quintile_rows": 4312,
+        "n_unique_top_quintile_tickers": 30,
+        "top3_long_leg_share": 0.328618,
+        "overly_concentrated": false,
+        "concentration_threshold": 0.5,
+        "top_contributors": [
+          {
+            "ticker": "AVGO",
+            "top_quintile_share": 0.12384,
+            "n_dates_in_top_quintile": 534,
+            "mean_forward_excess_in_top": 0.111036
+          },
+          {
+            "ticker": "NVDA",
+            "top_quintile_share": 0.103432,
+            "n_dates_in_top_quintile": 446,
+            "mean_forward_excess_in_top": 0.093834
+          },
+          {
+            "ticker": "NFLX",
+            "top_quintile_share": 0.101345,
+            "n_dates_in_top_quintile": 437,
+            "mean_forward_excess_in_top": 0.026083
+          },
+          {
+            "ticker": "META",
+            "top_quintile_share": 0.084416,
+            "n_dates_in_top_quintile": 364,
+            "mean_forward_excess_in_top": 0.015788
+          },
+          {
+            "ticker": "JPM",
+            "top_quintile_share": 0.064471,
+            "n_dates_in_top_quintile": 278,
+            "mean_forward_excess_in_top": 0.030488
+          }
+        ]
+      },
+      "recommendation": {
+        "recommendation": "DROP",
+        "effective_obs_est": 8.56,
+        "min_effective_obs": 8.0,
+        "reasons": [
+          "bootstrap CI for mean IC includes zero"
+        ]
+      }
+    }
+  ],
+  "interpretation": {
+    "edge_character_dominant": "volatility_risk_premium",
+    "edge_types": {
+      "volatility_risk_premium": [
+        "realized_vol_21d",
+        "downside_vol_21d",
+        "realized_vol_63d"
+      ],
+      "beta_exposure": [
+        "rolling_beta_63d"
+      ],
+      "correlation_regime": [
+        "rolling_corr_spy_63d"
+      ],
+      "momentum": [
+        "momentum_12_1"
+      ]
+    },
+    "regime_dependent_features": [
+      "realized_vol_21d",
+      "rolling_beta_63d",
+      "downside_vol_21d",
+      "realized_vol_63d",
+      "rolling_corr_spy_63d"
+    ],
+    "overly_concentrated_features": [],
+    "recommendation_counts": {
+      "KEEP_FOR_MODEL": 0,
+      "KEEP_AS_RISK_FILTER_ONLY": 0,
+      "DROP": 6,
+      "NEED_MORE_DATA": 0
+    },
+    "supports_long_horizon_model": true,
+    "supports_short_horizon_model": false,
+    "robust_enough_for_phase2j": false,
+    "notes": [
+      "The Phase 2I-A KEEP set is dominated by volatility / beta / correlation exposure; a surviving edge there is a risk premium that is expected to invert in a drawdown, not market-neutral alpha.",
+      "63d forward windows overlap heavily, so the independent sample is far smaller than the raw date count; the block bootstrap and effective_obs guard are the honest read of significance.",
+      "No production edge is claimed; this is observational research to decide whether Phase 2J long-horizon candidates are worth designing."
+    ]
+  }
+}
