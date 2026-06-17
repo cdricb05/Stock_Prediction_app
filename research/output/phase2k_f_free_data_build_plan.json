@@ -1,0 +1,358 @@
+{
+  "phase": "2K-F",
+  "generated_at": "2026-06-17T16:01:07",
+  "inputs_read": {
+    "phase2k_e_json": "research\\output\\phase2k_e_data_feasibility.json",
+    "phase2k_d_json": "research\\output\\phase2k_d_data_expansion_plan.json",
+    "phase2k_a_json": "research\\output\\phase2k_alpha_backlog.json",
+    "run_summary_json": "research\\output\\phase2g_c_real_data_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "upstream_phase2k_e_summary": {
+    "phase": "2K-E",
+    "candidate": "avg_dollar_volume_21d",
+    "can_build_expanded_dataset_without_paid_data": true,
+    "can_retest_avg_dollar_volume_without_paid_data": true,
+    "paid_data_required_now": false,
+    "proceed_to_data_build": true,
+    "clean_build_requires_paid_point_in_time_data": true,
+    "clean_retest_status": "REQUIRES_PAID_POINT_IN_TIME_DATA",
+    "caveated_free_retest_status": "FEASIBLE_WITH_FREE_EXTENSION",
+    "ke_recommended_next_phase": "2K-F",
+    "ke_recommended_next_phase_title": "Free Expanded Price/Volume Dataset Build Plan",
+    "routed_to_2k_f": true,
+    "target_min_years_history": 8,
+    "target_recommended_years_history": 10,
+    "target_min_tickers_per_date": 100,
+    "current_panel": {
+      "date_range": {
+        "start": "2023-01-03",
+        "end": "2026-05-29",
+        "approx_years": 3.4
+      },
+      "ticker_count": 41,
+      "satisfies_2kd_target_capacity": false
+    }
+  },
+  "build_scope": {
+    "note": "Concrete scope a LATER phase (2K-G) would build to. Nothing is built, fetched, or acquired here.",
+    "target_history_years_min": 8,
+    "target_history_years_recommended": 10,
+    "target_min_tickers_per_date": 100,
+    "target_universe": "Broad liquid U.S. equities (S&P 500-style), at least 100 tickers per date.",
+    "frequency": "daily",
+    "adjusted_ohlcv": true,
+    "columns": [
+      "date",
+      "ticker",
+      "adjusted_open",
+      "adjusted_high",
+      "adjusted_low",
+      "adjusted_close",
+      "volume",
+      "dollar_volume",
+      "benchmark_close"
+    ],
+    "benchmark_ticker": "SPY",
+    "must_span_regimes": [
+      "market_up",
+      "market_down",
+      "high_volatility",
+      "low_volatility",
+      "at_least_one_sustained_drawdown"
+    ],
+    "survivorship_caveat": {
+      "explicitly_documented": true,
+      "no_false_point_in_time_membership_claim": true,
+      "clean_point_in_time_build_deferred": true,
+      "reported_as_survivorship_biased": true
+    },
+    "builds_executed_now": false,
+    "data_fetched_now": false,
+    "paid_data_acquired_now": false
+  },
+  "future_inputs": {
+    "note": "Arguments the future 2K-G build script would accept. The ticker list is a LOCAL / MANUAL file, never a network source.",
+    "ticker_list_file": "research/input/phase2k_g_free_universe_tickers.csv",
+    "start_date": "earliest date reaching >=8 (ideally 10) years before today",
+    "end_date": "2026-05-29",
+    "benchmark_ticker": "SPY",
+    "output_directory": "research/output"
+  },
+  "future_outputs": {
+    "note": "Files the future 2K-G build script would write. They are DECLARED here only; this planning phase creates none of them (exists_now must be false for all unless a later phase has already run).",
+    "expanded_price_history_csv": {
+      "path": "research/output/phase2k_g_expanded_price_history_free.csv",
+      "role": "Longer, broader daily adjusted OHLCV + volume panel.",
+      "exists_now": false,
+      "created_by_this_phase": false
+    },
+    "expanded_scored_csv": {
+      "path": "research/output/phase2k_g_expanded_scored_free.csv",
+      "role": "Feature-ready / scored panel derived from the expanded price history.",
+      "exists_now": false,
+      "created_by_this_phase": false
+    },
+    "data_quality_report_json": {
+      "path": "research/output/phase2k_g_data_quality_report.json",
+      "role": "Result of the data-quality checks with an overall PASS / PASS_WITH_CAVEAT / FAIL status.",
+      "exists_now": false,
+      "created_by_this_phase": false
+    },
+    "data_build_summary_json": {
+      "path": "research/output/phase2k_g_data_build_summary.json",
+      "role": "Reproducible run metadata: date range, ticker count, row count, source, parameters.",
+      "exists_now": false,
+      "created_by_this_phase": false
+    },
+    "survivorship_caveat_json": {
+      "path": "research/output/phase2k_g_survivorship_caveat.json",
+      "role": "Explicit survivorship-caveat metadata documenting that membership is current-as-of, not point-in-time.",
+      "exists_now": false,
+      "created_by_this_phase": false
+    }
+  },
+  "future_script_plan": {
+    "note": "Plan for the future build script. The script itself is NOT created in this phase.",
+    "path": "research/build_phase2k_g_free_expanded_dataset.py",
+    "exists_now": false,
+    "created_by_this_phase": false,
+    "responsibilities": [
+      "Read the local ticker universe file and the run parameters.",
+      "Retrieve free daily adjusted OHLCV + volume per ticker in chunks.",
+      "Assemble a single long-format panel keyed on (date, ticker).",
+      "Derive dollar_volume and align the benchmark series.",
+      "Run the data-quality checks and emit the data-quality report.",
+      "Write the survivorship-caveat metadata file.",
+      "Write a reproducible build-summary JSON with explicit run metadata."
+    ],
+    "must_not": [
+      "write to any database",
+      "integrate with the live service",
+      "score or serve any model",
+      "create orders or automation",
+      "acquire any paid data",
+      "claim point-in-time universe membership"
+    ],
+    "reads": {
+      "ticker_universe_file": "research/input/phase2k_g_free_universe_tickers.csv"
+    },
+    "writes": [
+      "research/output/phase2k_g_expanded_price_history_free.csv",
+      "research/output/phase2k_g_expanded_scored_free.csv",
+      "research/output/phase2k_g_data_quality_report.json",
+      "research/output/phase2k_g_data_build_summary.json",
+      "research/output/phase2k_g_survivorship_caveat.json"
+    ]
+  },
+  "ticker_universe_plan": {
+    "note": "The next phase sources tickers from a LOCAL / MANUAL file, never from a network call. A current-membership list is acceptable ONLY with an explicit survivorship caveat.",
+    "source_must_be_local_or_manual": true,
+    "network_ticker_source_allowed": false,
+    "proposed_universe_file": "research/input/phase2k_g_free_universe_tickers.csv",
+    "proposed_universe_file_exists_now": false,
+    "created_by_this_phase": false,
+    "columns": [
+      "ticker",
+      "name",
+      "sector",
+      "source",
+      "active_as_of",
+      "survivorship_caveat"
+    ],
+    "current_membership_acceptable_with_caveat_only": true,
+    "membership_caveat": "Using a current-membership list back-applied to history is survivorship biased; the active_as_of and survivorship_caveat columns must record this explicitly."
+  },
+  "free_data_retrieval_design": {
+    "note": "Design for the future free retrieval. Not executed here; no network call is made by this planning phase.",
+    "principles": [
+      "chunked per-ticker retrieval in batches",
+      "retry with exponential backoff on transient failures",
+      "local on-disk cache keyed by ticker so reruns avoid refetching",
+      "idempotent output writes (same inputs reproduce the same files)",
+      "no database writes",
+      "no live-service integration",
+      "no model scoring",
+      "reproducible build-summary JSON",
+      "explicit run metadata (parameters, timestamps, source label, counts)"
+    ],
+    "executed_now": false,
+    "network_calls_made": false,
+    "paid_data_acquired": false
+  },
+  "data_quality_checks": [
+    {
+      "check_id": "adjusted_close_continuity",
+      "description": "Adjusted-close series is continuous with no unexplained jumps across the join."
+    },
+    {
+      "check_id": "duplicate_date_ticker_rows",
+      "description": "No duplicate rows on the (date, ticker) key."
+    },
+    {
+      "check_id": "missing_adjusted_close",
+      "description": "Missing adjusted-close values stay below threshold per ticker."
+    },
+    {
+      "check_id": "missing_volume",
+      "description": "Missing volume values stay below threshold per ticker."
+    },
+    {
+      "check_id": "outlier_daily_returns",
+      "description": "Daily returns outside a sane bound are flagged for review."
+    },
+    {
+      "check_id": "zero_or_negative_prices",
+      "description": "No zero or negative adjusted prices."
+    },
+    {
+      "check_id": "zero_or_negative_volume_unexpected",
+      "description": "Zero / negative volume only where genuinely expected (e.g. halts)."
+    },
+    {
+      "check_id": "ticker_level_date_coverage",
+      "description": "Each ticker covers enough of its live span against the calendar."
+    },
+    {
+      "check_id": "benchmark_coverage",
+      "description": "Benchmark series spans the full panel date range."
+    },
+    {
+      "check_id": "minimum_years_achieved",
+      "description": "Panel spans at least 8 years."
+    },
+    {
+      "check_id": "minimum_ticker_count_achieved",
+      "description": "At least 100 tickers per date."
+    },
+    {
+      "check_id": "no_forward_filled_labels",
+      "description": "Target labels use only realized future prices, never forward fill."
+    },
+    {
+      "check_id": "no_point_in_time_membership_claim",
+      "description": "No claim of point-in-time membership; current-as-of only."
+    },
+    {
+      "check_id": "survivorship_caveat_present",
+      "description": "Survivorship-caveat metadata file is present and populated."
+    }
+  ],
+  "future_build_pass_fail_gates": {
+    "note": "Gates the future 2K-G build must satisfy before its output is usable for any retest. Evaluated by the build phase, not here.",
+    "gates": [
+      {
+        "gate_id": "required_files_created",
+        "rule": "All five future output files are written."
+      },
+      {
+        "gate_id": "min_years",
+        "rule": "Panel spans at least 8 years of daily bars."
+      },
+      {
+        "gate_id": "min_tickers",
+        "rule": "At least 100 tickers per date."
+      },
+      {
+        "gate_id": "benchmark_coverage_complete",
+        "rule": "Benchmark coverage is complete enough across the panel range."
+      },
+      {
+        "gate_id": "duplicate_rate_zero",
+        "rule": "Duplicate (date, ticker) rate is exactly zero."
+      },
+      {
+        "gate_id": "missing_critical_fields_below_threshold",
+        "rule": "Missing adjusted-close / volume rates stay below threshold."
+      },
+      {
+        "gate_id": "survivorship_caveat_file_present",
+        "rule": "The survivorship-caveat metadata file exists and is populated."
+      },
+      {
+        "gate_id": "data_quality_report_status",
+        "rule": "data_quality_report.status is one of PASS / PASS_WITH_CAVEAT / FAIL.",
+        "allowed_status": [
+          "PASS",
+          "PASS_WITH_CAVEAT",
+          "FAIL"
+        ]
+      }
+    ]
+  },
+  "survivorship_caveat_policy": {
+    "explicitly_documented": true,
+    "no_false_point_in_time_membership_claim": true,
+    "clean_point_in_time_build_deferred": true,
+    "reported_as_survivorship_biased": true,
+    "caveat_metadata_file": "research/output/phase2k_g_survivorship_caveat.json",
+    "policy": "The free build uses current-as-of membership and whatever delisted coverage a free source provides. Any retest run on it must be reported as survivorship-biased, never as a clean point-in-time result. A clean point-in-time build is deferred to a later paid-source decision."
+  },
+  "implementation_sequence": [
+    {
+      "step": 1,
+      "action": "Phase 2K-G: create the local ticker-universe file with the planned columns and the survivorship caveat recorded."
+    },
+    {
+      "step": 2,
+      "action": "Phase 2K-G: implement the free build script per this plan (chunked retrieval, retry/backoff, local cache, idempotent writes)."
+    },
+    {
+      "step": 3,
+      "action": "Phase 2K-G: assemble the expanded price-history panel and derive dollar-volume + benchmark alignment."
+    },
+    {
+      "step": 4,
+      "action": "Phase 2K-G: run the data-quality checks and emit the data-quality report and survivorship-caveat metadata."
+    },
+    {
+      "step": 5,
+      "action": "Phase 2K-G: evaluate the pass/fail gates; only a passing (or PASS_WITH_CAVEAT) panel is eligible for retesting."
+    },
+    {
+      "step": 6,
+      "action": "Later: re-run the Phase 2K-B / 2K-C / 2L residual-signal battery on the expanded panel. Still no model candidate and no production integration."
+    }
+  ],
+  "decision": {
+    "create_build_script_now": false,
+    "execute_data_build_now": false,
+    "download_data_now": false,
+    "acquire_paid_data_now": false,
+    "create_model_candidate_now": false,
+    "reason": "Phase 2K-F only produces the build plan for a free, survivorship-caveated expanded price/volume dataset to later retest avg_dollar_volume_21d. The actual build script, the data fetch, and the dataset are deferred to Phase 2K-G. No data is fetched, no paid data is acquired, no model candidate is created, and no production integration occurs here."
+  },
+  "interpretation": {
+    "candidate": "avg_dollar_volume_21d",
+    "create_build_script_now": false,
+    "execute_data_build_now": false,
+    "download_data_now": false,
+    "acquire_paid_data_now": false,
+    "create_model_candidate_now": false,
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "data_acquired": false,
+    "paid_data_acquired": false,
+    "network_calls_made": false,
+    "builds_executed_now": false,
+    "future_files_created_now": false,
+    "narrative": "Phase 2K-F turns the Phase 2K-E feasibility result into a concrete, deferred build plan for a free, survivorship-caveated expanded price/volume dataset to later retest avg_dollar_volume_21d. It writes one planning JSON, declares (but does not create) the future build script, the future ticker universe file, and the five future output files, and specifies the data-quality checks and pass/fail gates the later build must satisfy. It builds nothing, fetches nothing, acquires no paid data, trains no model, and creates no model candidate. No production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-G",
+    "title": "Free Expanded Price/Volume Dataset Builder",
+    "purpose": "Implement the local / free expanded dataset builder using this Phase 2K-F plan: assemble the 8-10 year, broader-universe, survivorship-caveated daily adjusted OHLCV panel, run the data-quality checks and pass/fail gates, and emit the build summary and survivorship-caveat metadata. Still no model training, no model candidate, and no production integration."
+  }
+}
