@@ -1,0 +1,399 @@
+{
+  "phase": "2K-O",
+  "generated_at": "2026-06-18T19:22:59",
+  "inputs_read": {
+    "phase2k_n_json": "research/output/phase2k_n_narrow_model_free_retest.json",
+    "phase2k_m_json": "research/output/phase2k_m_targeted_lead_diagnostics.json",
+    "phase2k_k_json": "research/output/phase2k_k_expanded_alpha_screen.json",
+    "phase2k_j_json": "research/output/phase2k_j_alpha_backlog_refresh.json",
+    "phase2k_h_json": "research/output/phase2k_h_manual_build_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "model_trained": false,
+  "model_candidate_created": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "broad_alpha_screen_run": false,
+  "upstream_phase2k_n_summary": {
+    "present": true,
+    "phase": "2K-N",
+    "retest_executed": true,
+    "overall_recommendation": "RESEARCH_LEADS_RECONFIRMED_BUT_NOT_CONFIRMABLE",
+    "pair_recommendation_counts": {
+      "KEEP_FOR_CONFIRMATION_DESIGN": 0,
+      "RESEARCH_LEAD_RECONFIRMED": 3,
+      "DROP_AFTER_NARROW_RETEST": 0,
+      "NEED_POINT_IN_TIME_UNIVERSE": 0
+    },
+    "recommended_next_phase": {
+      "phase": "2K-O",
+      "title": "Decision Gate for Reconfirmed But Sub-Floor Leads",
+      "purpose": "Decide whether the sub-floor but reproducible leads deserve sector-relative variants, better data, or a backlog refresh, before any confirmation work. Still no model training and no model candidate."
+    },
+    "phase_is_2k_n": true,
+    "retest_executed_true": true,
+    "recommendation_is_reconfirmed_not_confirmable": true,
+    "recommended_next_phase_is_2k_o": true,
+    "recommended_next_phase_title_matches": true,
+    "create_model_candidate_now_false": true,
+    "train_model_now_false": true,
+    "all_three_leads_reconfirmed": true,
+    "results_are_survivorship_biased": true,
+    "survivorship_membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "routing_confirmed": true,
+    "upstream_chain": {
+      "phase2k_m_recommendation": "RUN_NARROW_MODEL_FREE_RETEST",
+      "phase2k_k_recommendation": "MODEL_FREE_SCREEN_HAS_RESEARCH_LEADS_ONLY",
+      "phase2k_j_recommendation": "REFRESH_ALPHA_BACKLOG",
+      "phase2k_h_ready_for_retest": true,
+      "phase2k_h_point_in_time_membership_claimed": false
+    }
+  },
+  "reconfirmed_leads": [
+    {
+      "lead_id": "residual_price_momentum_12_1@5d",
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_RECONFIRMED",
+      "mean_residual_rank_ic": 0.013196,
+      "bootstrap_ci_low": 0.000197,
+      "bootstrap_ci_high": 0.026939,
+      "frac_dates_same_sign_as_reference": 0.542387,
+      "information_ratio": 0.072442,
+      "leave_one_year_out_sign_stable": true,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "top3_long_leg_share": 0.070889,
+      "top_quintile_ticker_concentration": 0.028453,
+      "enough_data": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_at_or_above_floor_or_close"
+      ],
+      "prior_phase2k_m_mean_ic": 0.013196,
+      "prior_phase2k_l_diagnostic_score": 68.87,
+      "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_5d@21d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_RECONFIRMED",
+      "mean_residual_rank_ic": 0.010324,
+      "bootstrap_ci_low": 0.001804,
+      "bootstrap_ci_high": 0.0212,
+      "frac_dates_same_sign_as_reference": 0.539969,
+      "information_ratio": 0.077933,
+      "leave_one_year_out_sign_stable": true,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "top3_long_leg_share": 0.039097,
+      "top_quintile_ticker_concentration": 0.01317,
+      "enough_data": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_at_or_above_floor_or_close"
+      ],
+      "prior_phase2k_m_mean_ic": 0.010324,
+      "prior_phase2k_l_diagnostic_score": 65.04,
+      "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_RECONFIRMED",
+      "mean_residual_rank_ic": 0.015069,
+      "bootstrap_ci_low": 0.004072,
+      "bootstrap_ci_high": 0.027893,
+      "frac_dates_same_sign_as_reference": 0.563032,
+      "information_ratio": 0.14342,
+      "leave_one_year_out_sign_stable": true,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "top3_long_leg_share": 0.040306,
+      "top_quintile_ticker_concentration": 0.014189,
+      "enough_data": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_at_or_above_floor_or_close"
+      ],
+      "prior_phase2k_m_mean_ic": 0.015069,
+      "prior_phase2k_l_diagnostic_score": 75.19,
+      "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+    }
+  ],
+  "blocker_diagnosis": {
+    "n_leads": 3,
+    "n_leads_reproducible_above_zero": 3,
+    "n_leads_sub_floor_residual_ic": 3,
+    "n_leads_in_price_volume_family": 3,
+    "primary_blocker_across_leads": "sub_floor_residual_ic",
+    "regime_is_dominant_blocker": false,
+    "concentration_is_dominant_blocker": false,
+    "stability_is_dominant_blocker": false,
+    "data_sufficiency_is_dominant_blocker": false,
+    "survivorship_is_dominant_blocker": false,
+    "all_leads_reproducible_above_zero": true,
+    "all_leads_in_price_volume_family": true,
+    "sector_relative_variant_plausible": true,
+    "per_lead": [
+      {
+        "lead_id": "residual_price_momentum_12_1@5d",
+        "candidate": "residual_price_momentum_12_1",
+        "category": "price_momentum_alternatives",
+        "horizon_days": 5,
+        "mean_residual_rank_ic": 0.013196,
+        "primary_blocker": "sub_floor_residual_ic",
+        "blockers": {
+          "sub_floor_residual_ic": true,
+          "bootstrap_ci_not_above_zero": false,
+          "year_out_sign_unstable": false,
+          "regime_sign_dependence": false,
+          "excessive_concentration": false,
+          "insufficient_data": false
+        },
+        "reproducible_above_zero": true,
+        "in_price_volume_family": true,
+        "classification": "structurally_weak_but_repeatable_sector_relative_candidate"
+      },
+      {
+        "lead_id": "short_horizon_residual_reversal_5d@21d",
+        "candidate": "short_horizon_residual_reversal_5d",
+        "category": "short_term_reversal_mean_reversion",
+        "horizon_days": 21,
+        "mean_residual_rank_ic": 0.010324,
+        "primary_blocker": "sub_floor_residual_ic",
+        "blockers": {
+          "sub_floor_residual_ic": true,
+          "bootstrap_ci_not_above_zero": false,
+          "year_out_sign_unstable": false,
+          "regime_sign_dependence": false,
+          "excessive_concentration": false,
+          "insufficient_data": false
+        },
+        "reproducible_above_zero": true,
+        "in_price_volume_family": true,
+        "classification": "structurally_weak_but_repeatable_sector_relative_candidate"
+      },
+      {
+        "lead_id": "short_horizon_residual_reversal_21d@21d",
+        "candidate": "short_horizon_residual_reversal_21d",
+        "category": "short_term_reversal_mean_reversion",
+        "horizon_days": 21,
+        "mean_residual_rank_ic": 0.015069,
+        "primary_blocker": "sub_floor_residual_ic",
+        "blockers": {
+          "sub_floor_residual_ic": true,
+          "bootstrap_ci_not_above_zero": false,
+          "year_out_sign_unstable": false,
+          "regime_sign_dependence": false,
+          "excessive_concentration": false,
+          "insufficient_data": false
+        },
+        "reproducible_above_zero": true,
+        "in_price_volume_family": true,
+        "classification": "structurally_weak_but_repeatable_sector_relative_candidate"
+      }
+    ]
+  },
+  "strategic_options": [
+    {
+      "option": "SECTOR_RELATIVE_FEATURE_FEASIBILITY",
+      "purpose": "Check whether sector / industry-neutral or sector-relative versions could lift the reconfirmed but sub-floor price / reversal leads over the confirmation floor.",
+      "pros": [
+        "directly targets the single dominant blocker (sub-floor residual IC) without abandoning a reproducible, above-zero, year-stable edge",
+        "still model-free and offline; cheaper and faster than buying point-in-time data",
+        "all reconfirmed leads are price / reversal factors that admit a standard sector / industry neutralization"
+      ],
+      "cons": [
+        "no point-in-time sector / industry map exists, so any sector mapping is current-as-of and usable only as caveated research metadata",
+        "may not lift the IC over the floor; could itself end in another reconfirmed but sub-floor result"
+      ],
+      "requirements": [
+        "a sector / industry mapping by ticker (point-in-time if available; otherwise the current map used only as explicitly caveated research metadata)",
+        "no new candidate families and no model training; a feasibility assessment only"
+      ],
+      "risk": "low (research-only, model-free, no data purchase committed)",
+      "cost": "low (reuses the existing offline panel and tooling)",
+      "next_action": "Phase 2K-P: assess sector-relative feasibility for the reconfirmed leads before any confirmation or model work."
+    },
+    {
+      "option": "POINT_IN_TIME_UNIVERSE_DECISION",
+      "purpose": "Decide whether to obtain proper point-in-time membership / sector / fundamentals data before continuing alpha research.",
+      "pros": [
+        "removes the standing survivorship / current-membership caveat and would let sector / fundamental variants be tested responsibly"
+      ],
+      "cons": [
+        "highest cost and implementation burden; a vendor / data commitment",
+        "the dominant blocker here is sub-floor IC, not survivorship; clean point-in-time data would tighten, not rescue, a sub-floor edge"
+      ],
+      "requirements": [
+        "a vendor / data decision, cost estimate, implementation burden, and expected quality gain"
+      ],
+      "risk": "medium (cost + effort committed before any confirmable edge exists)",
+      "cost": "high (paid point-in-time vendor data and ingestion work)",
+      "next_action": "Phase 2K-P: a point-in-time data decision (defer paid data until a cheaper sector-relative variant is shown to be infeasible or also sub-floor)."
+    },
+    {
+      "option": "STOP_AND_REFRESH_BACKLOG",
+      "purpose": "Stop the reconfirmed but sub-floor leads and redirect to new, orthogonal alpha families.",
+      "pros": [
+        "avoids sinking more effort into weak price / reversal leads"
+      ],
+      "cons": [
+        "discards a reproducible, above-zero, year-stable edge before a cheap, plausible transformation (sector neutralization) has been tried"
+      ],
+      "requirements": [
+        "an updated backlog and no further retest of these standalone leads"
+      ],
+      "risk": "low operationally, but forfeits a plausible cheap improvement path",
+      "cost": "low",
+      "next_action": "Phase 2K-P: refresh the alpha backlog toward stronger non-price-volume factors."
+    },
+    {
+      "option": "CONTINUE_CONFIRMATION_ANYWAY",
+      "purpose": "Proceed directly to confirmation design for the reconfirmed leads.",
+      "pros": [],
+      "cons": [
+        "no lead met KEEP_FOR_CONFIRMATION_DESIGN in Phase 2K-N (0 KEEP, 3 RESEARCH_LEAD_RECONFIRMED); every lead is sub-floor",
+        "would treat a sub-floor research lead as a confirmable edge and is not permitted"
+      ],
+      "requirements": [
+        "at least one lead at KEEP_FOR_CONFIRMATION_DESIGN, which Phase 2K-N did not produce"
+      ],
+      "risk": "rejected by rule",
+      "cost": "n/a",
+      "next_action": "none; explicitly rejected",
+      "rejected": true,
+      "rejected_reason": "Phase 2K-N produced 0 KEEP_FOR_CONFIRMATION_DESIGN leads; confirmation design is not authorized for a reconfirmed but sub-floor lead.",
+      "eligible": false
+    }
+  ],
+  "decision_matrix": [
+    {
+      "option": "SECTOR_RELATIVE_FEATURE_FEASIBILITY",
+      "maps_to_recommendation": "PROCEED_TO_SECTOR_RELATIVE_FEASIBILITY",
+      "selected": true,
+      "conditions": {
+        "leads_reproducible_and_above_zero": true,
+        "primary_blocker_is_sub_floor_ic": true,
+        "regime_concentration_stability_not_dominant": true,
+        "sector_relative_variant_plausible_and_cheaper_than_pit_data": true
+      },
+      "all_conditions_met": true
+    },
+    {
+      "option": "POINT_IN_TIME_UNIVERSE_DECISION",
+      "maps_to_recommendation": "REQUIRE_POINT_IN_TIME_UNIVERSE_DECISION",
+      "selected": false,
+      "conditions": {
+        "survivorship_is_dominant_blocker": false,
+        "sector_or_fundamental_data_untestable_without_pit": false
+      },
+      "all_conditions_met": false
+    },
+    {
+      "option": "STOP_AND_REFRESH_BACKLOG",
+      "maps_to_recommendation": "STOP_RECONFIRMED_SUBFLOOR_LEADS",
+      "selected": false,
+      "conditions": {
+        "leads_too_weak_or_unrepeatable": false,
+        "no_plausible_transformation_justified": false
+      },
+      "all_conditions_met": false
+    },
+    {
+      "option": "CONTINUE_CONFIRMATION_ANYWAY",
+      "maps_to_recommendation": null,
+      "selected": false,
+      "rejected": true,
+      "conditions": {
+        "at_least_one_lead_kept_for_confirmation_design": false
+      },
+      "all_conditions_met": false
+    }
+  ],
+  "selected_path": {
+    "recommendation": "PROCEED_TO_SECTOR_RELATIVE_FEASIBILITY",
+    "option": "SECTOR_RELATIVE_FEATURE_FEASIBILITY",
+    "decision_inputs": {
+      "routing_confirmed": true,
+      "all_leads_reproducible_above_zero": true,
+      "primary_blocker_is_sub_floor_ic": true,
+      "robustness_gates_clean": true,
+      "sector_relative_variant_plausible": true,
+      "survivorship_is_dominant_blocker": false
+    }
+  },
+  "rejected_paths": [
+    {
+      "option": "POINT_IN_TIME_UNIVERSE_DECISION",
+      "recommendation": "REQUIRE_POINT_IN_TIME_UNIVERSE_DECISION",
+      "reason": "The survivorship / current-membership caveat is a standing caveat, not the dominant blocker: the leads reproduced a positive, above-zero, year-stable edge, so the dominant blocker is sub-floor residual IC. A cheaper sector-relative feasibility check should be tried before committing to paid point-in-time data; revisit point-in-time data only if the sector-relative variant is infeasible or also sub-floor."
+    },
+    {
+      "option": "STOP_AND_REFRESH_BACKLOG",
+      "recommendation": "STOP_RECONFIRMED_SUBFLOOR_LEADS",
+      "reason": "Stopping is premature: the reconfirmed leads reproduced a positive, above-zero, year-stable edge and a cheap, plausible transformation (sector / industry neutralization) has not yet been tried. Stop only if the sector-relative feasibility check also fails."
+    },
+    {
+      "option": "CONTINUE_CONFIRMATION_ANYWAY",
+      "recommendation": null,
+      "reason": "Explicitly rejected: no lead met KEEP_FOR_CONFIRMATION_DESIGN in Phase 2K-N (0 KEEP, 3 RESEARCH_LEAD_RECONFIRMED). Confirmation design is not authorized for a reconfirmed but sub-floor lead, and no model candidate may be created."
+    }
+  ],
+  "implementation_constraints": [
+    "This is a decision gate only: no empirical screen is run and no model is trained, fitted, scored, or created.",
+    "No candidate is added and no Phase 2K-N retest is rerun; the large D: price-history CSV is not read.",
+    "If Phase 2K-P assesses a sector-relative variant, any sector / industry map without point-in-time membership may be used only as explicitly caveated research metadata.",
+    "All results remain survivorship-biased / current-as-of; a clean point-in-time universe would tighten, never rescue, a sub-floor edge.",
+    "No deployment, no model-v2 enablement, no migration, no database write, no order, and no automation; nothing here is a production edge."
+  ],
+  "recommendation": {
+    "recommendation": "PROCEED_TO_SECTOR_RELATIVE_FEASIBILITY",
+    "allowed_values": [
+      "PROCEED_TO_SECTOR_RELATIVE_FEASIBILITY",
+      "REQUIRE_POINT_IN_TIME_UNIVERSE_DECISION",
+      "STOP_RECONFIRMED_SUBFLOOR_LEADS",
+      "NO_ACTION_CONFIRMATION_BLOCKED"
+    ],
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "reason": "All 3 reconfirmed leads reproduced a positive, above-zero, year-stable, regime-stable, and non-concentrated residual edge whose single dominant blocker is sub-floor residual IC. They are price / reversal factors that admit a standard sector / industry neutralization, which is cheaper and faster than committing to paid point-in-time data. Proceed to a model-free sector-relative feasibility assessment; no model candidate is created and no confirmation is authorized yet."
+  },
+  "interpretation": {
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "ran_broad_alpha_screen": false,
+    "candidate_set_expanded": false,
+    "reran_narrow_retest": false,
+    "read_large_d_drive_csv": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 2K-O is a decision gate after the Phase 2K-N narrow model-free retest. All 3 narrow-retest leads (residual_price_momentum_12_1 @ 5d, short_horizon_residual_reversal_5d @ 21d, short_horizon_residual_reversal_21d @ 21d) were reconfirmed as research leads -- positive, above-zero by bootstrap, year-stable, regime-stable, and not over-concentrated -- but every one is below the confirmation floor, so the single dominant blocker is sub-floor residual IC, not regime dependence, concentration, instability, or the survivorship caveat. The gate routes to a model-free sector-relative feasibility assessment for the reconfirmed but sub-floor leads. It ran no empirical screen, read no large D: CSV, added no candidate, trained / fitted / scored no model, and created no model candidate; even the chosen path stays model-free and is not a production edge, and all results remain survivorship-biased / current-membership caveated."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-P",
+    "title": "Sector-Relative Feature Feasibility for Reconfirmed Leads",
+    "purpose": "Determine whether sector / industry metadata can support sector-relative versions of the reconfirmed price / reversal leads, still with no model training and no model-candidate design. Results remain survivorship-biased and not a production edge."
+  }
+}
