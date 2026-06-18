@@ -1,0 +1,1463 @@
+{
+  "phase": "2K-I",
+  "generated_at": "2026-06-17T23:06:33",
+  "inputs_read": {
+    "phase2k_h_summary_json": "research/output/phase2k_h_manual_build_run_summary.json",
+    "phase2k_c_json": "research/output/phase2k_c_residual_robustness.json",
+    "phase2k_b_json": "research/output/phase2k_b_residual_signal.json",
+    "phase2l_b_json": "research/output/phase2l_b_walk_forward_validation.json",
+    "expanded_price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "expanded_scored_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
+    "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json"
+  },
+  "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "upstream_phase2k_h_summary": {
+    "present": true,
+    "path": "research/output/phase2k_h_manual_build_run_summary.json",
+    "phase": "2K-H",
+    "manual_build_detected": true,
+    "ready_for_retest": true,
+    "recommended_next_phase": "2K-I",
+    "data_quality_status": "PASS_WITH_CAVEAT",
+    "point_in_time_membership_claimed": false,
+    "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+    "ready_for_2k_i": true
+  },
+  "dataset_summary": {
+    "data_quality": {
+      "present": true,
+      "status": "PASS_WITH_CAVEAT",
+      "passed": true,
+      "row_count": 338169,
+      "ticker_count": 129,
+      "date_count": 2628,
+      "years_span": 10.448,
+      "min_tickers_per_date": 128,
+      "benchmark_coverage_fraction": 1.0,
+      "hard_checks_failed": []
+    },
+    "build_summary": {
+      "row_count": 338169,
+      "ticker_count": 129,
+      "benchmark": "SPY",
+      "date_start": "2016-01-04",
+      "date_end": "2026-06-16",
+      "years_span": 10.448,
+      "data_quality_status": "PASS_WITH_CAVEAT",
+      "model_trained": false,
+      "model_candidate_created": false
+    }
+  },
+  "survivorship_caveat_summary": {
+    "present": true,
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "reported_as_survivorship_biased": true,
+    "clean_point_in_time_build_deferred": true,
+    "universe_ticker_count": 131,
+    "all_results_must_be_reported_survivorship_biased": true
+  },
+  "feature_engineering_summary": {
+    "source_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "source_used": "expanded_price_history_csv",
+    "computed_features": [
+      "avg_dollar_volume_21d",
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "all_features_trailing_point_in_time": true,
+    "labels_forward_filled": false,
+    "forward_label_base": "forward_excess_return_vs_spy",
+    "rows_loaded": 338169,
+    "n_tickers": 128,
+    "n_dates": 2628,
+    "computed": true,
+    "note": null
+  },
+  "residualization_config": {
+    "label_base": "forward_excess_return_vs_spy",
+    "horizons": [
+      21,
+      63
+    ],
+    "primary_horizon_days": 63,
+    "controls": [
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "method": "per-date cross-sectional OLS (usable controls + intercept); residual = forward excess label - fitted (same construction as Phase 2K-B / 2K-C / 2L-B)",
+    "robust_fallback": "cross-sectional demean when no control is usable, a control is constant, or the date has fewer than min_names_for_ols usable names",
+    "min_names_for_ols": 10,
+    "no_lookahead": "controls are trailing point-in-time features computed from the expanded price history; the label is strictly forward; each per-date fit uses no forward information",
+    "residual_label_columns": {
+      "21": "resid_21d",
+      "63": "resid_63d"
+    },
+    "fit_counts": {
+      "21": {
+        "ols_dates": 2586,
+        "fallback_dates": 21
+      },
+      "63": {
+        "ols_dates": 2544,
+        "fallback_dates": 21
+      }
+    }
+  },
+  "candidate": {
+    "feature": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "comparison_horizon_days": 21,
+    "direction": "bullish",
+    "reference_sign": 1,
+    "phase2k_c_residual_mean_rank_ic": 0.067368,
+    "is_research_only": true,
+    "is_production_edge": false
+  },
+  "retest_metrics": {
+    "candidate": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "by_horizon": {
+      "21": {
+        "horizon_days": 21,
+        "n_dates": 2587,
+        "n_rows": 330250,
+        "mean_residual_rank_ic": -0.028376,
+        "median_residual_rank_ic": -0.025081,
+        "std_residual_rank_ic": 0.116825,
+        "information_ratio": -0.242898,
+        "direction": "bearish",
+        "n_dates_same_sign_as_reference": 1048,
+        "frac_dates_same_sign_as_reference": 0.405102,
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 21,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.043735,
+          "ci_high": -0.012912,
+          "excludes_zero": true
+        },
+        "top_minus_bottom_residual_spread": -0.003098,
+        "top_decile_residual_hit_rate": 0.504445,
+        "concentration": {
+          "top_quintile_ticker_concentration": 0.038462,
+          "top3_long_leg_share": 0.115385,
+          "n_unique_top_quintile_tickers": 77,
+          "top_quintile_rows": 67262
+        },
+        "degradation_vs_phase2k_c": {
+          "phase2k_c_residual_mean_rank_ic": 0.067368,
+          "degradation_tolerance_fraction": 0.5,
+          "degradation_floor": 0.033684,
+          "expanded_mean_residual_rank_ic": -0.028376,
+          "degraded": true
+        }
+      },
+      "63": {
+        "horizon_days": 63,
+        "n_dates": 2545,
+        "n_rows": 324874,
+        "mean_residual_rank_ic": -0.049006,
+        "median_residual_rank_ic": -0.046611,
+        "std_residual_rank_ic": 0.116903,
+        "information_ratio": -0.419204,
+        "direction": "bearish",
+        "n_dates_same_sign_as_reference": 861,
+        "frac_dates_same_sign_as_reference": 0.33831,
+        "bootstrap_mean_ic_ci": {
+          "method": "moving_block",
+          "block_len_sessions": 63,
+          "n_resamples": 1000,
+          "alpha": 0.05,
+          "ci_low": -0.074083,
+          "ci_high": -0.019784,
+          "excludes_zero": true
+        },
+        "top_minus_bottom_residual_spread": -0.008745,
+        "top_decile_residual_hit_rate": 0.501677,
+        "concentration": {
+          "top_quintile_ticker_concentration": 0.038462,
+          "top3_long_leg_share": 0.115385,
+          "n_unique_top_quintile_tickers": 77,
+          "top_quintile_rows": 66170
+        },
+        "degradation_vs_phase2k_c": {
+          "phase2k_c_residual_mean_rank_ic": 0.067368,
+          "degradation_tolerance_fraction": 0.5,
+          "degradation_floor": 0.033684,
+          "expanded_mean_residual_rank_ic": -0.049006,
+          "degraded": true
+        }
+      }
+    }
+  },
+  "walk_forward_metrics": {
+    "config": {
+      "candidate_signal": "avg_dollar_volume_21d",
+      "primary_horizon_days": 63,
+      "embargo_sessions": 63,
+      "embargo_equals_forward_horizon": true,
+      "min_train_sessions": 252,
+      "validation_sessions": 63,
+      "step_sessions": 63,
+      "no_random_cross_validation": true,
+      "model_free": true,
+      "fitted_model": false,
+      "n_calendar_sessions": 2545,
+      "calendar_start": "2016-02-02",
+      "calendar_end": "2026-03-17"
+    },
+    "n_folds": 35,
+    "pooled_n_validation_dates": 2205,
+    "total_effective_validation_obs": 35.0,
+    "mean_validation_residual_rank_ic": -0.043478,
+    "pooled_validation_mean_residual_rank_ic": -0.043478,
+    "median_validation_residual_rank_ic": -0.04551,
+    "n_validation_windows_same_sign": 11,
+    "n_validation_windows_positive": 11,
+    "frac_validation_windows_same_sign": 0.314286,
+    "majority_validation_windows_same_sign": false,
+    "bootstrap_pooled_ic_ci": {
+      "method": "moving_block",
+      "block_len_sessions": 63,
+      "n_resamples": 1000,
+      "alpha": 0.05,
+      "ci_low": -0.071072,
+      "ci_high": -0.013402,
+      "excludes_zero": true
+    },
+    "leave_one_fold_out": {
+      "per_fold": [
+        {
+          "fold_left_out": 0,
+          "mean_validation_ic_remaining": -0.042106,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 1,
+          "mean_validation_ic_remaining": -0.046546,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 2,
+          "mean_validation_ic_remaining": -0.043061,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 3,
+          "mean_validation_ic_remaining": -0.044041,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 4,
+          "mean_validation_ic_remaining": -0.044788,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 5,
+          "mean_validation_ic_remaining": -0.042846,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 6,
+          "mean_validation_ic_remaining": -0.03736,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 7,
+          "mean_validation_ic_remaining": -0.043118,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 8,
+          "mean_validation_ic_remaining": -0.042641,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 9,
+          "mean_validation_ic_remaining": -0.046762,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 10,
+          "mean_validation_ic_remaining": -0.048509,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 11,
+          "mean_validation_ic_remaining": -0.046123,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 12,
+          "mean_validation_ic_remaining": -0.045351,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 13,
+          "mean_validation_ic_remaining": -0.042413,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 14,
+          "mean_validation_ic_remaining": -0.042533,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 15,
+          "mean_validation_ic_remaining": -0.040755,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 16,
+          "mean_validation_ic_remaining": -0.04408,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 17,
+          "mean_validation_ic_remaining": -0.042265,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 18,
+          "mean_validation_ic_remaining": -0.039207,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 19,
+          "mean_validation_ic_remaining": -0.041543,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 20,
+          "mean_validation_ic_remaining": -0.040295,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 21,
+          "mean_validation_ic_remaining": -0.040405,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 22,
+          "mean_validation_ic_remaining": -0.042071,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 23,
+          "mean_validation_ic_remaining": -0.044673,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 24,
+          "mean_validation_ic_remaining": -0.04376,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 25,
+          "mean_validation_ic_remaining": -0.042495,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 26,
+          "mean_validation_ic_remaining": -0.046012,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 27,
+          "mean_validation_ic_remaining": -0.045004,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 28,
+          "mean_validation_ic_remaining": -0.041936,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 29,
+          "mean_validation_ic_remaining": -0.045636,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 30,
+          "mean_validation_ic_remaining": -0.044243,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 31,
+          "mean_validation_ic_remaining": -0.044397,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 32,
+          "mean_validation_ic_remaining": -0.04931,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 33,
+          "mean_validation_ic_remaining": -0.044886,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 34,
+          "mean_validation_ic_remaining": -0.040544,
+          "sign_preserved": false,
+          "above_floor": true
+        }
+      ],
+      "sign_stable": false
+    },
+    "fold_metrics": [
+      {
+        "fold_id": 0,
+        "train_start": "2016-02-02",
+        "train_end": "2017-01-31",
+        "embargo_start": "2017-02-01",
+        "embargo_end": "2017-05-02",
+        "validation_start": "2017-05-03",
+        "validation_end": "2017-08-01",
+        "n_train_dates": 252,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.090117,
+        "validation_information_ratio": -2.240699,
+        "train_mean_residual_rank_ic": -0.083973,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 1,
+        "train_start": "2016-02-02",
+        "train_end": "2017-05-02",
+        "embargo_start": "2017-05-03",
+        "embargo_end": "2017-08-01",
+        "validation_start": "2017-08-02",
+        "validation_end": "2017-10-30",
+        "n_train_dates": 315,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.060857,
+        "validation_information_ratio": 0.471314,
+        "train_mean_residual_rank_ic": -0.095146,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 2,
+        "train_start": "2016-02-02",
+        "train_end": "2017-08-01",
+        "embargo_start": "2017-08-02",
+        "embargo_end": "2017-10-30",
+        "validation_start": "2017-10-31",
+        "validation_end": "2018-01-31",
+        "n_train_dates": 378,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.057651,
+        "validation_information_ratio": -0.650593,
+        "train_mean_residual_rank_ic": -0.094307,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 3,
+        "train_start": "2016-02-02",
+        "train_end": "2017-10-30",
+        "embargo_start": "2017-10-31",
+        "embargo_end": "2018-01-31",
+        "validation_start": "2018-02-01",
+        "validation_end": "2018-05-02",
+        "n_train_dates": 441,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.024331,
+        "validation_information_ratio": -0.404029,
+        "train_mean_residual_rank_ic": -0.072141,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 4,
+        "train_start": "2016-02-02",
+        "train_end": "2018-01-31",
+        "embargo_start": "2018-02-01",
+        "embargo_end": "2018-05-02",
+        "validation_start": "2018-05-03",
+        "validation_end": "2018-08-01",
+        "n_train_dates": 504,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.001088,
+        "validation_information_ratio": 0.020437,
+        "train_mean_residual_rank_ic": -0.07033,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 5,
+        "train_start": "2016-02-02",
+        "train_end": "2018-05-02",
+        "embargo_start": "2018-05-03",
+        "embargo_end": "2018-08-01",
+        "validation_start": "2018-08-02",
+        "validation_end": "2018-10-30",
+        "n_train_dates": 567,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.064963,
+        "validation_information_ratio": -0.81373,
+        "train_mean_residual_rank_ic": -0.065219,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 6,
+        "train_start": "2016-02-02",
+        "train_end": "2018-08-01",
+        "embargo_start": "2018-08-02",
+        "embargo_end": "2018-10-30",
+        "validation_start": "2018-10-31",
+        "validation_end": "2019-02-01",
+        "n_train_dates": 630,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.251471,
+        "validation_information_ratio": -5.446854,
+        "train_mean_residual_rank_ic": -0.058588,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 7,
+        "train_start": "2016-02-02",
+        "train_end": "2018-10-30",
+        "embargo_start": "2018-10-31",
+        "embargo_end": "2019-02-01",
+        "validation_start": "2019-02-04",
+        "validation_end": "2019-05-03",
+        "n_train_dates": 693,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.055702,
+        "validation_information_ratio": -0.871012,
+        "train_mean_residual_rank_ic": -0.059168,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 8,
+        "train_start": "2016-02-02",
+        "train_end": "2019-02-01",
+        "embargo_start": "2019-02-04",
+        "embargo_end": "2019-05-03",
+        "validation_start": "2019-05-06",
+        "validation_end": "2019-08-02",
+        "n_train_dates": 756,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.071907,
+        "validation_information_ratio": -1.525565,
+        "train_mean_residual_rank_ic": -0.075193,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 9,
+        "train_start": "2016-02-02",
+        "train_end": "2019-05-03",
+        "embargo_start": "2019-05-06",
+        "embargo_end": "2019-08-02",
+        "validation_start": "2019-08-05",
+        "validation_end": "2019-10-31",
+        "n_train_dates": 819,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.068179,
+        "validation_information_ratio": 1.383433,
+        "train_mean_residual_rank_ic": -0.073694,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 10,
+        "train_start": "2016-02-02",
+        "train_end": "2019-08-02",
+        "embargo_start": "2019-08-05",
+        "embargo_end": "2019-10-31",
+        "validation_start": "2019-11-01",
+        "validation_end": "2020-02-03",
+        "n_train_dates": 882,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.127601,
+        "validation_information_ratio": 1.986457,
+        "train_mean_residual_rank_ic": -0.073566,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 11,
+        "train_start": "2016-02-02",
+        "train_end": "2019-10-31",
+        "embargo_start": "2019-11-01",
+        "embargo_end": "2020-02-03",
+        "validation_start": "2020-02-04",
+        "validation_end": "2020-05-04",
+        "n_train_dates": 945,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.046474,
+        "validation_information_ratio": 0.504271,
+        "train_mean_residual_rank_ic": -0.064116,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 12,
+        "train_start": "2016-02-02",
+        "train_end": "2020-02-03",
+        "embargo_start": "2020-02-04",
+        "embargo_end": "2020-05-04",
+        "validation_start": "2020-05-05",
+        "validation_end": "2020-08-03",
+        "n_train_dates": 1008,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.020234,
+        "validation_information_ratio": 0.256258,
+        "train_mean_residual_rank_ic": -0.052134,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 13,
+        "train_start": "2016-02-02",
+        "train_end": "2020-05-04",
+        "embargo_start": "2020-05-05",
+        "embargo_end": "2020-08-03",
+        "validation_start": "2020-08-04",
+        "validation_end": "2020-10-30",
+        "n_train_dates": 1071,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.079685,
+        "validation_information_ratio": -1.768845,
+        "train_mean_residual_rank_ic": -0.046334,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 14,
+        "train_start": "2016-02-02",
+        "train_end": "2020-08-03",
+        "embargo_start": "2020-08-04",
+        "embargo_end": "2020-10-30",
+        "validation_start": "2020-11-02",
+        "validation_end": "2021-02-02",
+        "n_train_dates": 1134,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.075583,
+        "validation_information_ratio": -0.863642,
+        "train_mean_residual_rank_ic": -0.042635,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 15,
+        "train_start": "2016-02-02",
+        "train_end": "2020-10-30",
+        "embargo_start": "2020-11-02",
+        "embargo_end": "2021-02-02",
+        "validation_start": "2021-02-03",
+        "validation_end": "2021-05-04",
+        "n_train_dates": 1197,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.136041,
+        "validation_information_ratio": -1.857512,
+        "train_mean_residual_rank_ic": -0.044585,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 16,
+        "train_start": "2016-02-02",
+        "train_end": "2021-02-02",
+        "embargo_start": "2021-02-03",
+        "embargo_end": "2021-05-04",
+        "validation_start": "2021-05-05",
+        "validation_end": "2021-08-03",
+        "n_train_dates": 1260,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.022991,
+        "validation_information_ratio": -0.469711,
+        "train_mean_residual_rank_ic": -0.046135,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 17,
+        "train_start": "2016-02-02",
+        "train_end": "2021-05-04",
+        "embargo_start": "2021-05-05",
+        "embargo_end": "2021-08-03",
+        "validation_start": "2021-08-04",
+        "validation_end": "2021-11-01",
+        "n_train_dates": 1323,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.084713,
+        "validation_information_ratio": -2.071845,
+        "train_mean_residual_rank_ic": -0.050416,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 18,
+        "train_start": "2016-02-02",
+        "train_end": "2021-08-03",
+        "embargo_start": "2021-08-04",
+        "embargo_end": "2021-11-01",
+        "validation_start": "2021-11-02",
+        "validation_end": "2022-02-01",
+        "n_train_dates": 1386,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.188674,
+        "validation_information_ratio": -2.138028,
+        "train_mean_residual_rank_ic": -0.04917,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 19,
+        "train_start": "2016-02-02",
+        "train_end": "2021-11-01",
+        "embargo_start": "2021-11-02",
+        "embargo_end": "2022-02-01",
+        "validation_start": "2022-02-02",
+        "validation_end": "2022-05-03",
+        "n_train_dates": 1449,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.109264,
+        "validation_information_ratio": -1.606389,
+        "train_mean_residual_rank_ic": -0.050715,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 20,
+        "train_start": "2016-02-02",
+        "train_end": "2022-02-01",
+        "embargo_start": "2022-02-02",
+        "embargo_end": "2022-05-03",
+        "validation_start": "2022-05-04",
+        "validation_end": "2022-08-03",
+        "n_train_dates": 1512,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.151698,
+        "validation_information_ratio": -2.371333,
+        "train_mean_residual_rank_ic": -0.056463,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 21,
+        "train_start": "2016-02-02",
+        "train_end": "2022-05-03",
+        "embargo_start": "2022-05-04",
+        "embargo_end": "2022-08-03",
+        "validation_start": "2022-08-04",
+        "validation_end": "2022-11-01",
+        "n_train_dates": 1575,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.147945,
+        "validation_information_ratio": -1.851961,
+        "train_mean_residual_rank_ic": -0.058575,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 22,
+        "train_start": "2016-02-02",
+        "train_end": "2022-08-03",
+        "embargo_start": "2022-08-04",
+        "embargo_end": "2022-11-01",
+        "validation_start": "2022-11-02",
+        "validation_end": "2023-02-02",
+        "n_train_dates": 1638,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.09129,
+        "validation_information_ratio": -1.004492,
+        "train_mean_residual_rank_ic": -0.062157,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 23,
+        "train_start": "2016-02-02",
+        "train_end": "2022-11-01",
+        "embargo_start": "2022-11-02",
+        "embargo_end": "2023-02-02",
+        "validation_start": "2023-02-03",
+        "validation_end": "2023-05-04",
+        "n_train_dates": 1701,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.002821,
+        "validation_information_ratio": -0.037149,
+        "train_mean_residual_rank_ic": -0.065334,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 24,
+        "train_start": "2016-02-02",
+        "train_end": "2023-02-02",
+        "embargo_start": "2023-02-03",
+        "embargo_end": "2023-05-04",
+        "validation_start": "2023-05-05",
+        "validation_end": "2023-08-04",
+        "n_train_dates": 1764,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.033871,
+        "validation_information_ratio": -0.687556,
+        "train_mean_residual_rank_ic": -0.066261,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 25,
+        "train_start": "2016-02-02",
+        "train_end": "2023-05-04",
+        "embargo_start": "2023-05-05",
+        "embargo_end": "2023-08-04",
+        "validation_start": "2023-08-07",
+        "validation_end": "2023-11-02",
+        "n_train_dates": 1827,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.076881,
+        "validation_information_ratio": -1.09019,
+        "train_mean_residual_rank_ic": -0.064074,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 26,
+        "train_start": "2016-02-02",
+        "train_end": "2023-08-04",
+        "embargo_start": "2023-08-07",
+        "embargo_end": "2023-11-02",
+        "validation_start": "2023-11-03",
+        "validation_end": "2024-02-05",
+        "n_train_dates": 1890,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.042706,
+        "validation_information_ratio": 1.26526,
+        "train_mean_residual_rank_ic": -0.063067,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 27,
+        "train_start": "2016-02-02",
+        "train_end": "2023-11-02",
+        "embargo_start": "2023-11-03",
+        "embargo_end": "2024-02-05",
+        "validation_start": "2024-02-06",
+        "validation_end": "2024-05-06",
+        "n_train_dates": 1953,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.008412,
+        "validation_information_ratio": 0.110804,
+        "train_mean_residual_rank_ic": -0.063513,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 28,
+        "train_start": "2016-02-02",
+        "train_end": "2024-02-05",
+        "embargo_start": "2024-02-06",
+        "embargo_end": "2024-05-06",
+        "validation_start": "2024-05-07",
+        "validation_end": "2024-08-06",
+        "n_train_dates": 2016,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.095891,
+        "validation_information_ratio": -1.288771,
+        "train_mean_residual_rank_ic": -0.060193,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 29,
+        "train_start": "2016-02-02",
+        "train_end": "2024-05-06",
+        "embargo_start": "2024-05-07",
+        "embargo_end": "2024-08-06",
+        "validation_start": "2024-08-07",
+        "validation_end": "2024-11-04",
+        "n_train_dates": 2079,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.029918,
+        "validation_information_ratio": 0.495561,
+        "train_mean_residual_rank_ic": -0.058114,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 30,
+        "train_start": "2016-02-02",
+        "train_end": "2024-08-06",
+        "embargo_start": "2024-08-07",
+        "embargo_end": "2024-11-04",
+        "validation_start": "2024-11-05",
+        "validation_end": "2025-02-06",
+        "n_train_dates": 2142,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.017461,
+        "validation_information_ratio": -0.136049,
+        "train_mean_residual_rank_ic": -0.059225,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 31,
+        "train_start": "2016-02-02",
+        "train_end": "2024-11-04",
+        "embargo_start": "2024-11-05",
+        "embargo_end": "2025-02-06",
+        "validation_start": "2025-02-07",
+        "validation_end": "2025-05-08",
+        "n_train_dates": 2205,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.012233,
+        "validation_information_ratio": -0.139312,
+        "train_mean_residual_rank_ic": -0.056678,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      },
+      {
+        "fold_id": 32,
+        "train_start": "2016-02-02",
+        "train_end": "2025-02-06",
+        "embargo_start": "2025-02-07",
+        "embargo_end": "2025-05-08",
+        "validation_start": "2025-05-09",
+        "validation_end": "2025-08-08",
+        "n_train_dates": 2268,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.154813,
+        "validation_information_ratio": 2.195389,
+        "train_mean_residual_rank_ic": -0.055589,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 33,
+        "train_start": "2016-02-02",
+        "train_end": "2025-05-08",
+        "embargo_start": "2025-05-09",
+        "embargo_end": "2025-08-08",
+        "validation_start": "2025-08-11",
+        "validation_end": "2025-11-06",
+        "n_train_dates": 2331,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": 0.004422,
+        "validation_information_ratio": 0.034388,
+        "train_mean_residual_rank_ic": -0.054417,
+        "validation_sign": 1,
+        "validation_sign_matches_reference": true
+      },
+      {
+        "fold_id": 34,
+        "train_start": "2016-02-02",
+        "train_end": "2025-08-08",
+        "embargo_start": "2025-08-11",
+        "embargo_end": "2025-11-06",
+        "validation_start": "2025-11-07",
+        "validation_end": "2026-02-09",
+        "n_train_dates": 2394,
+        "n_validation_dates": 63,
+        "validation_mean_residual_rank_ic": -0.143234,
+        "validation_information_ratio": -1.563655,
+        "train_mean_residual_rank_ic": -0.048911,
+        "validation_sign": -1,
+        "validation_sign_matches_reference": false
+      }
+    ]
+  },
+  "regime_metrics": {
+    "primary_horizon_days": 63,
+    "spy_forward_return": {
+      "threshold": 0.0,
+      "positive": {
+        "rank_ic": -0.042048,
+        "n_dates": 1982
+      },
+      "negative": {
+        "rank_ic": -0.073502,
+        "n_dates": 563
+      },
+      "sign_flips_across_regime": false
+    },
+    "market_volatility_21d": {
+      "median_split": 0.007678,
+      "high": {
+        "rank_ic": -0.0679,
+        "n_dates": 1272
+      },
+      "low": {
+        "rank_ic": -0.029963,
+        "n_dates": 1272
+      },
+      "sign_flips_across_regime": false
+    }
+  },
+  "stability_metrics": {
+    "leave_one_year_out": {
+      "per_year": [
+        {
+          "year_left_out": 2016,
+          "rank_ic_remaining": -0.045798,
+          "n_dates_remaining": 2313,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2017,
+          "rank_ic_remaining": -0.048371,
+          "n_dates_remaining": 2294,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2018,
+          "rank_ic_remaining": -0.046214,
+          "n_dates_remaining": 2294,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2019,
+          "rank_ic_remaining": -0.052885,
+          "n_dates_remaining": 2293,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2020,
+          "rank_ic_remaining": -0.053461,
+          "n_dates_remaining": 2292,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2021,
+          "rank_ic_remaining": -0.044193,
+          "n_dates_remaining": 2293,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2022,
+          "rank_ic_remaining": -0.038502,
+          "n_dates_remaining": 2294,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2023,
+          "rank_ic_remaining": -0.052169,
+          "n_dates_remaining": 2295,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2024,
+          "rank_ic_remaining": -0.053791,
+          "n_dates_remaining": 2293,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2025,
+          "rank_ic_remaining": -0.053651,
+          "n_dates_remaining": 2295,
+          "sign_preserved": false
+        },
+        {
+          "year_left_out": 2026,
+          "rank_ic_remaining": -0.049976,
+          "n_dates_remaining": 2494,
+          "sign_preserved": false
+        }
+      ],
+      "sign_stable": false,
+      "years_present": 11
+    },
+    "leave_one_fold_out": {
+      "per_fold": [
+        {
+          "fold_left_out": 0,
+          "mean_validation_ic_remaining": -0.042106,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 1,
+          "mean_validation_ic_remaining": -0.046546,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 2,
+          "mean_validation_ic_remaining": -0.043061,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 3,
+          "mean_validation_ic_remaining": -0.044041,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 4,
+          "mean_validation_ic_remaining": -0.044788,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 5,
+          "mean_validation_ic_remaining": -0.042846,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 6,
+          "mean_validation_ic_remaining": -0.03736,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 7,
+          "mean_validation_ic_remaining": -0.043118,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 8,
+          "mean_validation_ic_remaining": -0.042641,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 9,
+          "mean_validation_ic_remaining": -0.046762,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 10,
+          "mean_validation_ic_remaining": -0.048509,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 11,
+          "mean_validation_ic_remaining": -0.046123,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 12,
+          "mean_validation_ic_remaining": -0.045351,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 13,
+          "mean_validation_ic_remaining": -0.042413,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 14,
+          "mean_validation_ic_remaining": -0.042533,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 15,
+          "mean_validation_ic_remaining": -0.040755,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 16,
+          "mean_validation_ic_remaining": -0.04408,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 17,
+          "mean_validation_ic_remaining": -0.042265,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 18,
+          "mean_validation_ic_remaining": -0.039207,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 19,
+          "mean_validation_ic_remaining": -0.041543,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 20,
+          "mean_validation_ic_remaining": -0.040295,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 21,
+          "mean_validation_ic_remaining": -0.040405,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 22,
+          "mean_validation_ic_remaining": -0.042071,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 23,
+          "mean_validation_ic_remaining": -0.044673,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 24,
+          "mean_validation_ic_remaining": -0.04376,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 25,
+          "mean_validation_ic_remaining": -0.042495,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 26,
+          "mean_validation_ic_remaining": -0.046012,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 27,
+          "mean_validation_ic_remaining": -0.045004,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 28,
+          "mean_validation_ic_remaining": -0.041936,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 29,
+          "mean_validation_ic_remaining": -0.045636,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 30,
+          "mean_validation_ic_remaining": -0.044243,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 31,
+          "mean_validation_ic_remaining": -0.044397,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 32,
+          "mean_validation_ic_remaining": -0.04931,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 33,
+          "mean_validation_ic_remaining": -0.044886,
+          "sign_preserved": false,
+          "above_floor": true
+        },
+        {
+          "fold_left_out": 34,
+          "mean_validation_ic_remaining": -0.040544,
+          "sign_preserved": false,
+          "above_floor": true
+        }
+      ],
+      "sign_stable": false
+    },
+    "degradation_vs_phase2k_c": {
+      "phase2k_c_residual_mean_rank_ic": 0.067368,
+      "degradation_tolerance_fraction": 0.5,
+      "degradation_floor": 0.033684,
+      "expanded_mean_residual_rank_ic": -0.049006,
+      "degraded": true
+    }
+  },
+  "pass_fail_gates": [
+    {
+      "id": "mean_residual_ic_positive",
+      "observed": -0.049006,
+      "threshold": "> 0",
+      "passed": false
+    },
+    {
+      "id": "mean_residual_ic_above_floor",
+      "observed": -0.049006,
+      "threshold": 0.03,
+      "passed": false
+    },
+    {
+      "id": "majority_dates_same_sign",
+      "observed": 0.33831,
+      "threshold": 0.5,
+      "passed": false
+    },
+    {
+      "id": "majority_validation_folds_same_sign",
+      "observed": 0.314286,
+      "threshold": 0.5,
+      "passed": false
+    },
+    {
+      "id": "bootstrap_ci_excludes_zero",
+      "observed": {
+        "ci_low": -0.074083,
+        "ci_high": -0.019784
+      },
+      "threshold": "95% CI excludes 0 (materially above zero)",
+      "passed": true
+    },
+    {
+      "id": "no_single_year_drives_result",
+      "observed": false,
+      "threshold": "leave-one-year-out sign stable",
+      "passed": false
+    },
+    {
+      "id": "no_regime_only_dependence",
+      "observed": false,
+      "threshold": "no sign flip across SPY up/down or market-vol split",
+      "passed": true
+    },
+    {
+      "id": "no_excessive_ticker_concentration",
+      "observed": 0.115385,
+      "threshold": 0.5,
+      "passed": true
+    },
+    {
+      "id": "no_material_degradation_vs_phase2k_c",
+      "observed": -0.049006,
+      "threshold": 0.033684,
+      "passed": false
+    },
+    {
+      "id": "enough_effective_observations_after_embargo",
+      "observed": 35.0,
+      "threshold": 8.0,
+      "passed": true
+    },
+    {
+      "id": "survivorship_caveat_carried_forward",
+      "observed": true,
+      "threshold": "survivorship caveat present and point-in-time not claimed",
+      "passed": true
+    }
+  ],
+  "recommendation": {
+    "recommendation": "EXPANDED_RETEST_FAIL",
+    "allowed_values": [
+      "EXPANDED_RETEST_PASS",
+      "EXPANDED_RETEST_FAIL",
+      "NEED_MORE_DATA_OR_PIT_UNIVERSE"
+    ],
+    "enough_data": true,
+    "all_gates_passed": false,
+    "failed_gates": [
+      "mean_residual_ic_positive",
+      "mean_residual_ic_above_floor",
+      "majority_dates_same_sign",
+      "majority_validation_folds_same_sign",
+      "no_single_year_drives_result",
+      "no_material_degradation_vs_phase2k_c"
+    ],
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "reason": "the expanded panel has enough data but the residual signal failed gate(s): mean_residual_ic_positive, mean_residual_ic_above_floor, majority_dates_same_sign, majority_validation_folds_same_sign, no_single_year_drives_result, no_material_degradation_vs_phase2k_c; it does not hold up on the larger survivorship-caveated panel."
+  },
+  "interpretation": {
+    "candidate": "avg_dollar_volume_21d",
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "expanded_retest_recommendation": "EXPANDED_RETEST_FAIL",
+    "primary_horizon_days": 63,
+    "primary_mean_residual_rank_ic": -0.049006,
+    "pooled_validation_mean_residual_rank_ic": -0.043478,
+    "narrative": "Phase 2K-I retested the lone Phase 2K-C survivor, avg_dollar_volume_21d, at its 63d primary horizon on the expanded free panel produced by the manual Phase 2K-H build. The trailing features and risk controls were recomputed from the expanded adjusted-OHLCV history, the same beta/vol-neutralized residual label was rebuilt, and only model-free rank-only metrics were measured across the full sample and sequential embargoed walk-forward windows -- nothing was fitted. The signal did not hold up on the larger survivorship-caveated panel once retested across full-sample and walk-forward gates. Every result is reported as survivorship-biased / current-membership caveated. No model was trained, fitted, scored, or served, and no model candidate was created. Even an expanded-retest pass only permits a later, separately gated confirmation phase; it is not a production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-J",
+    "title": "Alpha Backlog Refresh After Expanded Retest Failure",
+    "purpose": "Stop the avg_dollar_volume_21d liquidity candidate and refresh the alpha backlog using the expanded-data diagnostics (where and why the residual signal broke down on the larger panel). No model candidate is created."
+  }
+}
