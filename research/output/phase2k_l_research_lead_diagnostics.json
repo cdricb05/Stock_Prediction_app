@@ -1,0 +1,932 @@
+{
+  "phase": "2K-L",
+  "generated_at": "2026-06-18T14:42:24",
+  "inputs_read": {
+    "phase2k_k_json": "research/output/phase2k_k_expanded_alpha_screen.json",
+    "phase2k_j_json": "research/output/phase2k_j_alpha_backlog_refresh.json",
+    "phase2k_i_json": "research/output/phase2k_i_expanded_residual_retest.json",
+    "phase2k_h_summary_json": "research/output/phase2k_h_manual_build_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "ran_new_d_screen": false,
+  "read_large_d_csv": false,
+  "upstream_phase2k_k_summary": {
+    "present": true,
+    "phase": "2K-K",
+    "recommendation": "MODEL_FREE_SCREEN_HAS_RESEARCH_LEADS_ONLY",
+    "n_research_lead_only": 15,
+    "n_keep_for_walk_forward": 0,
+    "screen_executed": true,
+    "recommended_next_phase": {
+      "phase": "2K-L",
+      "title": "Research Lead Diagnostics After Expanded Alpha Screen",
+      "purpose": "Diagnose the research leads that were directionally positive but not robust enough for confirmation (which gate failed, and whether more data or a point-in-time universe would change the verdict). No model candidate is created."
+    },
+    "recommendation_is_research_leads_only": true,
+    "research_lead_count_is_15": true,
+    "keep_count_is_zero": true,
+    "recommended_next_phase_is_2k_l": true,
+    "recommended_next_phase_title_matches": true,
+    "create_model_candidate_now_false": true,
+    "train_model_now_false": true,
+    "stopped_candidate_confirmed": true,
+    "routing_confirmed": true,
+    "phase2k_j_recommendation": "REFRESH_ALPHA_BACKLOG",
+    "phase2k_i_recommendation": "EXPANDED_RETEST_FAIL",
+    "phase2k_h_ready_for_screen": true
+  },
+  "stopped_candidate_policy": {
+    "stopped_candidate": "avg_dollar_volume_21d",
+    "status": "STOPPED_AFTER_EXPANDED_RETEST_FAIL",
+    "excluded_as_standalone_alpha": true,
+    "allowed_as_control_or_diagnostic_only": true,
+    "not_in_screened_candidates": true,
+    "not_in_research_leads": true,
+    "reason": "avg_dollar_volume_21d failed the Phase 2K-I expanded retest and was stopped by Phase 2K-J. Phase 2K-L diagnoses only the price/volume research leads and never re-introduces the stopped liquidity candidate as a standalone alpha; it may remain only a control / diagnostic / neutralizer."
+  },
+  "survivorship_caveat_carried_forward": {
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "all_results_survivorship_biased": true,
+    "note": "Phase 2K-L carries the Phase 2K-K survivorship caveat forward unchanged; no point-in-time universe is claimed."
+  },
+  "research_leads": [
+    {
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 5,
+      "lead_id": "residual_price_momentum_12_1@5d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.013196,
+      "frac_dates_same_sign_as_reference": 0.542387,
+      "bootstrap_ci_low": 0.000197,
+      "bootstrap_ci_high": 0.026939,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "n_failed_keep_gates": 1,
+      "enough_data": true,
+      "top3_long_leg_share": 0.070889,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 68.87,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 15.3953,
+        "same_sign_fraction": 8.4774,
+        "bootstrap_ci_excludes_zero": 20.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 10.0,
+        "max_possible": 100.0
+      },
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "classification_reason": "directionally positive with a bootstrap CI lower bound above zero, year-stable sign, few failed gates, and no severe concentration: worth a focused, model-free follow-up diagnostic (still not a model candidate)"
+    },
+    {
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 21,
+      "lead_id": "residual_price_momentum_12_1@21d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.012455,
+      "frac_dates_same_sign_as_reference": 0.55414,
+      "bootstrap_ci_low": -0.012931,
+      "bootstrap_ci_high": 0.038128,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 3,
+      "enough_data": true,
+      "top3_long_leg_share": 0.070586,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 43.69,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 14.5308,
+        "same_sign_fraction": 10.828,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 3.3333,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    },
+    {
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 63,
+      "lead_id": "residual_price_momentum_12_1@63d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.024494,
+      "frac_dates_same_sign_as_reference": 0.62473,
+      "bootstrap_ci_low": -0.01547,
+      "bootstrap_ci_high": 0.057836,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero"
+      ],
+      "n_failed_keep_gates": 2,
+      "enough_data": true,
+      "top3_long_leg_share": 0.070255,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 70.24,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 28.5763,
+        "same_sign_fraction": 20.0,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 6.6667,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 5,
+      "lead_id": "short_horizon_residual_reversal_5d@5d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.010953,
+      "frac_dates_same_sign_as_reference": 0.530176,
+      "bootstrap_ci_low": 0.002249,
+      "bootstrap_ci_high": 0.019643,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 2,
+      "enough_data": true,
+      "top3_long_leg_share": 0.039049,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 60.48,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 12.7785,
+        "same_sign_fraction": 6.0352,
+        "bootstrap_ci_excludes_zero": 20.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 6.6667,
+        "max_possible": 100.0
+      },
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "classification_reason": "directionally positive with a bootstrap CI lower bound above zero, year-stable sign, few failed gates, and no severe concentration: worth a focused, model-free follow-up diagnostic (still not a model candidate)"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "lead_id": "short_horizon_residual_reversal_5d@21d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.010324,
+      "frac_dates_same_sign_as_reference": 0.539969,
+      "bootstrap_ci_low": 0.001804,
+      "bootstrap_ci_high": 0.0212,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "n_failed_keep_gates": 1,
+      "enough_data": true,
+      "top3_long_leg_share": 0.039097,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 65.04,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 12.0447,
+        "same_sign_fraction": 7.9938,
+        "bootstrap_ci_excludes_zero": 20.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 10.0,
+        "max_possible": 100.0
+      },
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "classification_reason": "directionally positive with a bootstrap CI lower bound above zero, year-stable sign, few failed gates, and no severe concentration: worth a focused, model-free follow-up diagnostic (still not a model candidate)"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 63,
+      "lead_id": "short_horizon_residual_reversal_5d@63d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.007066,
+      "frac_dates_same_sign_as_reference": 0.510547,
+      "bootstrap_ci_low": -0.002097,
+      "bootstrap_ci_high": 0.015364,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 3,
+      "enough_data": true,
+      "top3_long_leg_share": 0.039183,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 28.69,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 8.2437,
+        "same_sign_fraction": 2.1094,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 3.3333,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 5,
+      "lead_id": "short_horizon_residual_reversal_21d@5d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.008589,
+      "frac_dates_same_sign_as_reference": 0.525749,
+      "bootstrap_ci_low": 0.001025,
+      "bootstrap_ci_high": 0.015699,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 2,
+      "enough_data": true,
+      "top3_long_leg_share": 0.040309,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 56.84,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 10.0205,
+        "same_sign_fraction": 5.1498,
+        "bootstrap_ci_excludes_zero": 20.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 6.6667,
+        "max_possible": 100.0
+      },
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "classification_reason": "directionally positive with a bootstrap CI lower bound above zero, year-stable sign, few failed gates, and no severe concentration: worth a focused, model-free follow-up diagnostic (still not a model candidate)"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.015069,
+      "frac_dates_same_sign_as_reference": 0.563032,
+      "bootstrap_ci_low": 0.004072,
+      "bootstrap_ci_high": 0.027893,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "n_failed_keep_gates": 1,
+      "enough_data": true,
+      "top3_long_leg_share": 0.040306,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 75.19,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 17.5805,
+        "same_sign_fraction": 12.6064,
+        "bootstrap_ci_excludes_zero": 20.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 10.0,
+        "max_possible": 100.0
+      },
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "classification_reason": "directionally positive with a bootstrap CI lower bound above zero, year-stable sign, few failed gates, and no severe concentration: worth a focused, model-free follow-up diagnostic (still not a model candidate)"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 63,
+      "lead_id": "short_horizon_residual_reversal_21d@63d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.003366,
+      "frac_dates_same_sign_as_reference": 0.519654,
+      "bootstrap_ci_low": -0.01332,
+      "bootstrap_ci_high": 0.01998,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": false,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_single_year_drives_result",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 4,
+      "enough_data": true,
+      "top3_long_leg_share": 0.040699,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 7.86,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 3.927,
+        "same_sign_fraction": 3.9308,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 0.0,
+        "few_failed_gates": 0.0,
+        "max_possible": 100.0
+      },
+      "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC",
+      "classification_reason": "year-unstable sign and/or nearly every robustness gate failed: deprioritized after this diagnostic rather than carried into focused follow-up"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_63d",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 5,
+      "lead_id": "volatility_adjusted_momentum_63d@5d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.000868,
+      "frac_dates_same_sign_as_reference": 0.525,
+      "bootstrap_ci_low": -0.009798,
+      "bootstrap_ci_high": 0.011529,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": false,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_single_year_drives_result",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 4,
+      "enough_data": true,
+      "top3_long_leg_share": 0.040009,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 6.01,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 1.0127,
+        "same_sign_fraction": 5.0,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 0.0,
+        "few_failed_gates": 0.0,
+        "max_possible": 100.0
+      },
+      "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC",
+      "classification_reason": "year-unstable sign and/or nearly every robustness gate failed: deprioritized after this diagnostic rather than carried into focused follow-up"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_63d",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 21,
+      "lead_id": "volatility_adjusted_momentum_63d@21d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.008621,
+      "frac_dates_same_sign_as_reference": 0.536164,
+      "bootstrap_ci_low": -0.007774,
+      "bootstrap_ci_high": 0.027006,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 3,
+      "enough_data": true,
+      "top3_long_leg_share": 0.039913,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 35.62,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 10.0578,
+        "same_sign_fraction": 7.2328,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 3.3333,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_63d",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 63,
+      "lead_id": "volatility_adjusted_momentum_63d@63d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.008825,
+      "frac_dates_same_sign_as_reference": 0.546363,
+      "bootstrap_ci_low": -0.02414,
+      "bootstrap_ci_high": 0.035809,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 3,
+      "enough_data": true,
+      "top3_long_leg_share": 0.040398,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 37.9,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 10.2958,
+        "same_sign_fraction": 9.2726,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 3.3333,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_126d",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 5,
+      "lead_id": "volatility_adjusted_momentum_126d@5d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.005883,
+      "frac_dates_same_sign_as_reference": 0.52503,
+      "bootstrap_ci_low": -0.006947,
+      "bootstrap_ci_high": 0.018423,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 3,
+      "enough_data": true,
+      "top3_long_leg_share": 0.043652,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 30.2,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 6.8635,
+        "same_sign_fraction": 5.006,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 3.3333,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_126d",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 21,
+      "lead_id": "volatility_adjusted_momentum_126d@21d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.002528,
+      "frac_dates_same_sign_as_reference": 0.539299,
+      "bootstrap_ci_low": -0.021065,
+      "bootstrap_ci_high": 0.023389,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": false,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_single_year_drives_result",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 4,
+      "enough_data": true,
+      "top3_long_leg_share": 0.043903,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": true,
+      "diagnostic_score": 10.81,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 2.9493,
+        "same_sign_fraction": 7.8598,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 0.0,
+        "few_failed_gates": 0.0,
+        "max_possible": 100.0
+      },
+      "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC",
+      "classification_reason": "year-unstable sign and/or nearly every robustness gate failed: deprioritized after this diagnostic rather than carried into focused follow-up"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_126d",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 63,
+      "lead_id": "volatility_adjusted_momentum_126d@63d",
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.015737,
+      "frac_dates_same_sign_as_reference": 0.575646,
+      "bootstrap_ci_low": -0.015825,
+      "bootstrap_ci_high": 0.043049,
+      "bootstrap_ci_excludes_zero": false,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero"
+      ],
+      "n_failed_keep_gates": 2,
+      "enough_data": true,
+      "top3_long_leg_share": 0.044659,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "diagnostic_score": 55.16,
+      "diagnostic_score_components": {
+        "ic_vs_floor": 18.3598,
+        "same_sign_fraction": 15.1292,
+        "bootstrap_ci_excludes_zero": 0.0,
+        "leave_one_year_out_stability": 15.0,
+        "few_failed_gates": 6.6667,
+        "max_possible": 100.0
+      },
+      "classification": "WEAK_RESEARCH_LEAD",
+      "classification_reason": "directionally positive but several robustness / stability gates failed (notably a sub-floor IC and/or a bootstrap CI straddling zero): a weak research lead that may inform future feature engineering, not ready for confirmation"
+    }
+  ],
+  "lead_rankings": {
+    "ranked_by": "diagnostic_score_desc",
+    "rankings": [
+      {
+        "rank": 1,
+        "lead_id": "short_horizon_residual_reversal_21d@21d",
+        "candidate": "short_horizon_residual_reversal_21d",
+        "horizon_days": 21,
+        "diagnostic_score": 75.19,
+        "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+      },
+      {
+        "rank": 2,
+        "lead_id": "residual_price_momentum_12_1@63d",
+        "candidate": "residual_price_momentum_12_1",
+        "horizon_days": 63,
+        "diagnostic_score": 70.24,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 3,
+        "lead_id": "residual_price_momentum_12_1@5d",
+        "candidate": "residual_price_momentum_12_1",
+        "horizon_days": 5,
+        "diagnostic_score": 68.87,
+        "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+      },
+      {
+        "rank": 4,
+        "lead_id": "short_horizon_residual_reversal_5d@21d",
+        "candidate": "short_horizon_residual_reversal_5d",
+        "horizon_days": 21,
+        "diagnostic_score": 65.04,
+        "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+      },
+      {
+        "rank": 5,
+        "lead_id": "short_horizon_residual_reversal_5d@5d",
+        "candidate": "short_horizon_residual_reversal_5d",
+        "horizon_days": 5,
+        "diagnostic_score": 60.48,
+        "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+      },
+      {
+        "rank": 6,
+        "lead_id": "short_horizon_residual_reversal_21d@5d",
+        "candidate": "short_horizon_residual_reversal_21d",
+        "horizon_days": 5,
+        "diagnostic_score": 56.84,
+        "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+      },
+      {
+        "rank": 7,
+        "lead_id": "volatility_adjusted_momentum_126d@63d",
+        "candidate": "volatility_adjusted_momentum_126d",
+        "horizon_days": 63,
+        "diagnostic_score": 55.16,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 8,
+        "lead_id": "residual_price_momentum_12_1@21d",
+        "candidate": "residual_price_momentum_12_1",
+        "horizon_days": 21,
+        "diagnostic_score": 43.69,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 9,
+        "lead_id": "volatility_adjusted_momentum_63d@63d",
+        "candidate": "volatility_adjusted_momentum_63d",
+        "horizon_days": 63,
+        "diagnostic_score": 37.9,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 10,
+        "lead_id": "volatility_adjusted_momentum_63d@21d",
+        "candidate": "volatility_adjusted_momentum_63d",
+        "horizon_days": 21,
+        "diagnostic_score": 35.62,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 11,
+        "lead_id": "volatility_adjusted_momentum_126d@5d",
+        "candidate": "volatility_adjusted_momentum_126d",
+        "horizon_days": 5,
+        "diagnostic_score": 30.2,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 12,
+        "lead_id": "short_horizon_residual_reversal_5d@63d",
+        "candidate": "short_horizon_residual_reversal_5d",
+        "horizon_days": 63,
+        "diagnostic_score": 28.69,
+        "classification": "WEAK_RESEARCH_LEAD"
+      },
+      {
+        "rank": 13,
+        "lead_id": "volatility_adjusted_momentum_126d@21d",
+        "candidate": "volatility_adjusted_momentum_126d",
+        "horizon_days": 21,
+        "diagnostic_score": 10.81,
+        "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC"
+      },
+      {
+        "rank": 14,
+        "lead_id": "short_horizon_residual_reversal_21d@63d",
+        "candidate": "short_horizon_residual_reversal_21d",
+        "horizon_days": 63,
+        "diagnostic_score": 7.86,
+        "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC"
+      },
+      {
+        "rank": 15,
+        "lead_id": "volatility_adjusted_momentum_63d@5d",
+        "candidate": "volatility_adjusted_momentum_63d",
+        "horizon_days": 5,
+        "diagnostic_score": 6.01,
+        "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC"
+      }
+    ],
+    "best_lead": {
+      "rank": 1,
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "horizon_days": 21,
+      "diagnostic_score": 75.19,
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+    },
+    "worst_lead": {
+      "rank": 15,
+      "lead_id": "volatility_adjusted_momentum_63d@5d",
+      "candidate": "volatility_adjusted_momentum_63d",
+      "horizon_days": 5,
+      "diagnostic_score": 6.01,
+      "classification": "DEPRIORITIZE_AFTER_DIAGNOSTIC"
+    }
+  },
+  "failed_gate_diagnostics": {
+    "n_leads": 15,
+    "gate_failure_counts": {
+      "mean_residual_ic_above_floor": 15,
+      "bootstrap_ci_above_zero": 10,
+      "no_regime_only_dependence": 10,
+      "no_single_year_drives_result": 3,
+      "majority_dates_same_sign": 0,
+      "mean_residual_ic_positive": 0,
+      "no_excessive_ticker_concentration": 0
+    },
+    "most_common_failed_gate": "mean_residual_ic_above_floor",
+    "all_leads_fail_ic_floor": true
+  },
+  "candidate_family_diagnostics": [
+    {
+      "family": "residual_price_momentum",
+      "group_key": "price_momentum_alternatives",
+      "n_leads": 3,
+      "n_targeted": 1,
+      "n_weak": 2,
+      "n_deprioritized": 0,
+      "mean_diagnostic_score": 60.93,
+      "mean_residual_rank_ic": 0.016715,
+      "best_lead_id": "residual_price_momentum_12_1@63d",
+      "best_diagnostic_score": 70.24
+    },
+    {
+      "family": "short_horizon_reversal",
+      "group_key": "short_term_reversal_mean_reversion",
+      "n_leads": 6,
+      "n_targeted": 4,
+      "n_weak": 1,
+      "n_deprioritized": 1,
+      "mean_diagnostic_score": 49.02,
+      "mean_residual_rank_ic": 0.009228,
+      "best_lead_id": "short_horizon_residual_reversal_21d@21d",
+      "best_diagnostic_score": 75.19
+    },
+    {
+      "family": "volatility_adjusted_momentum",
+      "group_key": "volatility_adjusted_momentum",
+      "n_leads": 6,
+      "n_targeted": 0,
+      "n_weak": 4,
+      "n_deprioritized": 2,
+      "mean_diagnostic_score": 29.28,
+      "mean_residual_rank_ic": 0.007077,
+      "best_lead_id": "volatility_adjusted_momentum_126d@63d",
+      "best_diagnostic_score": 55.16
+    }
+  ],
+  "horizon_diagnostics": [
+    {
+      "horizon_days": 5,
+      "group_key": 5,
+      "n_leads": 5,
+      "n_targeted": 3,
+      "n_weak": 1,
+      "n_deprioritized": 1,
+      "mean_diagnostic_score": 44.48,
+      "mean_residual_rank_ic": 0.007898,
+      "best_lead_id": "residual_price_momentum_12_1@5d",
+      "best_diagnostic_score": 68.87
+    },
+    {
+      "horizon_days": 21,
+      "group_key": 21,
+      "n_leads": 5,
+      "n_targeted": 2,
+      "n_weak": 2,
+      "n_deprioritized": 1,
+      "mean_diagnostic_score": 46.07,
+      "mean_residual_rank_ic": 0.009799,
+      "best_lead_id": "short_horizon_residual_reversal_21d@21d",
+      "best_diagnostic_score": 75.19
+    },
+    {
+      "horizon_days": 63,
+      "group_key": 63,
+      "n_leads": 5,
+      "n_targeted": 0,
+      "n_weak": 4,
+      "n_deprioritized": 1,
+      "mean_diagnostic_score": 39.97,
+      "mean_residual_rank_ic": 0.011898,
+      "best_lead_id": "residual_price_momentum_12_1@63d",
+      "best_diagnostic_score": 70.24
+    }
+  ],
+  "recurring_failure_themes": [
+    {
+      "theme": "sub_floor_information_coefficient",
+      "affected_leads": 15,
+      "detail": "Every research lead has a positive but sub-floor mean residual rank IC (below 0.03); the signals are directionally real but economically tiny, which is the dominant reason none reached confirmation."
+    },
+    {
+      "theme": "wide_bootstrap_confidence_interval",
+      "affected_leads": 10,
+      "detail": "The moving-block 95% bootstrap CI straddles zero, concentrated at the longer (21d / 63d) horizons where the number of effective observations is smallest, so the small IC is not statistically separable from zero."
+    },
+    {
+      "theme": "regime_sign_instability",
+      "affected_leads": 10,
+      "detail": "The IC sign flips across a SPY up/down or market-volatility regime split, concentrated in the volatility-adjusted momentum family and the 5d reversal, indicating regime dependence rather than a stable edge."
+    },
+    {
+      "theme": "single_year_fragility",
+      "affected_leads": 3,
+      "detail": "The IC sign is not stable under leave-one-year-out; these leads also fail the other robustness gates and are the deprioritized set."
+    },
+    {
+      "theme": "survivorship_caveat",
+      "affected_leads": 15,
+      "detail": "All leads are measured on a current-as-of, survivorship-caveated universe (point-in-time membership not claimed); a clean point-in-time universe would only tighten, never rescue, these results."
+    }
+  ],
+  "follow_up_diagnostic_plan": {
+    "no_model_training": true,
+    "no_model_candidate": true,
+    "no_deployment": true,
+    "no_trading_app_changes": true,
+    "no_new_d_screen": true,
+    "targeted_lead_ids": [
+      "residual_price_momentum_12_1@5d",
+      "short_horizon_residual_reversal_5d@5d",
+      "short_horizon_residual_reversal_5d@21d",
+      "short_horizon_residual_reversal_21d@5d",
+      "short_horizon_residual_reversal_21d@21d"
+    ],
+    "suggested_diagnostics": [
+      {
+        "rank": 1,
+        "action": "Inspect the failed gates of the TARGETED_DIAGNOSTIC_CANDIDATE leads by family and horizon to confirm a sub-floor IC (not instability or concentration) is the sole obstruction.",
+        "model_free": true
+      },
+      {
+        "rank": 2,
+        "action": "Re-rank the best leads under stricter concentration filters and alternate quintile / decile cutoffs (model-free) to check the small IC is not a ranking artifact.",
+        "model_free": true
+      },
+      {
+        "rank": 3,
+        "action": "Re-measure the regime-flipping leads within each SPY up/down and market-volatility regime separately to quantify how much of the IC is regime-dependent.",
+        "model_free": true
+      },
+      {
+        "rank": 4,
+        "action": "Test sector-relative versions of the reversal / momentum leads only if a low-cost point-in-time sector map becomes available, still model-free and with no model training.",
+        "model_free": true
+      },
+      {
+        "rank": 5,
+        "action": "Retest alternate holding windows only where economically justified for the reversal family, without expanding the candidate universe.",
+        "model_free": true
+      },
+      {
+        "rank": 6,
+        "action": "Decide whether a point-in-time membership universe is required before any further alpha screen; do not purchase or build on paid data yet.",
+        "model_free": true
+      }
+    ]
+  },
+  "lead_classification_counts": {
+    "TARGETED_DIAGNOSTIC_CANDIDATE": 5,
+    "WEAK_RESEARCH_LEAD": 7,
+    "DEPRIORITIZE_AFTER_DIAGNOSTIC": 3
+  },
+  "allowed_lead_classifications": [
+    "TARGETED_DIAGNOSTIC_CANDIDATE",
+    "WEAK_RESEARCH_LEAD",
+    "DEPRIORITIZE_AFTER_DIAGNOSTIC"
+  ],
+  "recommendation": {
+    "recommendation": "TARGETED_DIAGNOSTICS_FOR_BEST_RESEARCH_LEADS",
+    "allowed_values": [
+      "TARGETED_DIAGNOSTICS_FOR_BEST_RESEARCH_LEADS",
+      "ALL_RESEARCH_LEADS_TOO_WEAK",
+      "NEED_POINT_IN_TIME_UNIVERSE_BEFORE_MORE_DIAGNOSTICS"
+    ],
+    "n_research_leads": 15,
+    "n_targeted_diagnostic_candidates": 5,
+    "n_weak_research_leads": 7,
+    "n_deprioritized": 3,
+    "upstream_routing_confirmed": true,
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "ran_new_d_screen": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "reason": "5 research lead(s) are directionally positive with a bootstrap CI above zero, year-stable sign, and few failed gates; they warrant a focused, model-free follow-up diagnostic. No lead becomes a model candidate, nothing is trained, and the results remain survivorship-biased and not a production edge."
+  },
+  "interpretation": {
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "ran_new_d_screen": false,
+    "read_large_d_csv": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 2K-L diagnosed the 15 RESEARCH_LEAD_ONLY candidate/horizon pairs from the Phase 2K-K expanded model-free screen using the Phase 2K-K metrics only -- it ran no new D: screen, read no large D: CSV, and fitted nothing. It scored and ranked the leads, found the dominant blocker to be a positive but sub-floor information coefficient (compounded by wide bootstrap CIs and regime sign instability), and classified each lead into targeted / weak / deprioritized buckets. The phase identified a small set of best research leads worth focused, model-free follow-up diagnostics. The stopped liquidity candidate avg_dollar_volume_21d stays excluded as a standalone alpha. No model was trained, fitted, or created, every result is reported as survivorship-biased, and no production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-M",
+    "title": "Targeted Diagnostics for Best Expanded Alpha Leads",
+    "purpose": "Run focused, model-free diagnostics on the best expanded-screen research leads (failed-gate inspection, stricter concentration filters, regime-split IC), still with no model training and no model-candidate design. Results remain survivorship-biased and not a production edge."
+  }
+}
