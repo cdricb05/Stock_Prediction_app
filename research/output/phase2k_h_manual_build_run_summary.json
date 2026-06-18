@@ -1,6 +1,6 @@
 {
   "phase": "2K-H",
-  "generated_at": "2026-06-17T22:37:10",
+  "generated_at": "2026-06-17T22:41:35",
   "inputs_read": {
     "upstream_phase2k_g_validation_json": "research/output/phase2k_g_builder_validation.json",
     "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
@@ -29,23 +29,23 @@
   "detected_outputs": {
     "expanded_price_history_csv": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
-      "exists": false
+      "exists": true
     },
     "expanded_scored_csv": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
-      "exists": false
+      "exists": true
     },
     "data_quality_report_json": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
-      "exists": false
+      "exists": true
     },
     "data_build_summary_json": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
-      "exists": false
+      "exists": true
     },
     "survivorship_caveat_json": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
-      "exists": false
+      "exists": true
     }
   },
   "repo_large_outputs_present": [],
@@ -60,30 +60,83 @@
     "routed_to_2k_h": true
   },
   "data_quality_summary": {
-    "present": false
+    "present": true,
+    "status": "PASS_WITH_CAVEAT",
+    "passed": true,
+    "row_count": 338169,
+    "ticker_count": 129,
+    "date_count": 2628,
+    "years_span": 10.448,
+    "min_tickers_per_date": 128,
+    "benchmark_coverage_fraction": 1.0,
+    "check_count": 14,
+    "hard_checks_failed": []
   },
   "build_summary": {
-    "present": false
+    "present": true,
+    "phase": "2K-G",
+    "mode": "execute",
+    "source": "yfinance",
+    "row_count": 338169,
+    "ticker_count": 129,
+    "universe_ticker_count": 131,
+    "benchmark": "SPY",
+    "date_start": "2016-01-04",
+    "date_end": "2026-06-16",
+    "years_span": 10.448,
+    "data_quality_status": "PASS_WITH_CAVEAT",
+    "model_trained": false,
+    "model_candidate_created": false
   },
   "survivorship_caveat_summary": {
-    "present": false
+    "present": true,
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "reported_as_survivorship_biased": true,
+    "clean_point_in_time_build_deferred": true,
+    "universe_ticker_count": 131
   },
   "csv_metadata": {
     "expanded_price_history_csv": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
-      "exists": false,
-      "header": null,
-      "column_count": 0,
-      "data_row_count": 0,
-      "sample_first_row": null
+      "exists": true,
+      "header": [
+        "ticker",
+        "date",
+        "adjusted_open",
+        "adjusted_high",
+        "adjusted_low",
+        "adjusted_close",
+        "volume"
+      ],
+      "column_count": 7,
+      "data_row_count": 338169,
+      "sample_first_row": {
+        "date": "2016-01-04",
+        "ticker": "AAPL"
+      }
     },
     "expanded_scored_csv": {
       "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
-      "exists": false,
-      "header": null,
-      "column_count": 0,
-      "data_row_count": 0,
-      "sample_first_row": null
+      "exists": true,
+      "header": [
+        "date",
+        "ticker",
+        "adjusted_open",
+        "adjusted_high",
+        "adjusted_low",
+        "adjusted_close",
+        "volume",
+        "dollar_volume",
+        "benchmark_close",
+        "daily_return"
+      ],
+      "column_count": 10,
+      "data_row_count": 338169,
+      "sample_first_row": {
+        "date": "2016-01-04",
+        "ticker": "AAPL"
+      }
     }
   },
   "interpretation": {
@@ -97,19 +150,19 @@
     "narrative": "Phase 2K-H is the manual free expanded dataset build run. This analyzer is a read-only tracking artifact: it inspects the D: outputs after the manual run, summarizes the data-quality report, build summary, and survivorship caveat, and writes one small Git-tracked summary JSON. It runs no build, fetches nothing, modifies no D: file, trains no model, and claims no production edge."
   },
   "decision": {
-    "manual_build_detected": false,
-    "ready_for_retest": false,
-    "data_quality_passed": false,
-    "survivorship_caveat_present": false,
-    "point_in_time_membership_claimed": null,
-    "large_data_on_d_drive": false,
+    "manual_build_detected": true,
+    "ready_for_retest": true,
+    "data_quality_passed": true,
+    "survivorship_caveat_present": true,
+    "point_in_time_membership_claimed": false,
+    "large_data_on_d_drive": true,
     "repo_large_outputs_created": false,
     "model_candidate_created": false,
-    "reason": "No completed manual build was detected on the D: data root (D:/Stock_Prediction_app_data/phase2k_g/output): one or more of the five expected outputs is absent. Assemble the full local universe and run the builder's manual network build mode separately, then re-run this analyzer. No live build, no model, and no production integration were performed here."
+    "reason": "A completed manual build was detected on the D: data root: all five outputs are present, the data-quality status is PASS or PASS_WITH_CAVEAT, the survivorship caveat records a current-as-of (not point-in-time) membership basis, and the build summary confirms no model candidate was created. The expanded, survivorship-caveated dataset is ready for the residual-signal retest (Phase 2K-I). No model was trained and no production edge is claimed."
   },
   "recommended_next_phase": {
-    "phase": "2K-H-RUN",
-    "title": "Run the Manual Free Expanded Dataset Build",
-    "purpose": "The manual free build has not been completed yet. Assemble the full local ticker universe on the D: data root and run the Phase 2K-G builder's manual network build mode to produce the five expanded outputs, then re-run this analyzer."
+    "phase": "2K-I",
+    "title": "Expanded Dataset Residual Signal Retest",
+    "purpose": "Retest the liquidity candidate avg_dollar_volume_21d on the expanded, survivorship-caveated panel produced by the manual 2K-H build, reporting all results as survivorship-biased. Still no model training, no model candidate, and no production integration."
   }
 }
