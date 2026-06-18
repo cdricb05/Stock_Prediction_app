@@ -1,0 +1,1523 @@
+{
+  "phase": "2K-K",
+  "generated_at": "2026-06-18T13:01:40",
+  "inputs_read": {
+    "phase2k_j_json": "research/output/phase2k_j_alpha_backlog_refresh.json",
+    "phase2k_i_json": "research/output/phase2k_i_expanded_residual_retest.json",
+    "phase2k_h_summary_json": "research/output/phase2k_h_manual_build_run_summary.json",
+    "expanded_price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json"
+  },
+  "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "screen_executed": true,
+  "upstream_phase2k_j_summary": {
+    "present": true,
+    "phase": "2K-J",
+    "recommendation": "REFRESH_ALPHA_BACKLOG",
+    "failed_candidate": "avg_dollar_volume_21d",
+    "failed_candidate_status": "STOPPED_AFTER_EXPANDED_RETEST_FAIL",
+    "standalone_liquidity_candidate_stopped": true,
+    "recommended_next_phase": {
+      "phase": "2K-K",
+      "title": "Expanded Dataset Model-Free Alpha Screen",
+      "purpose": "Run a new model-free screen of prioritized price/volume alpha candidates (residual momentum, short-horizon residual reversal, volatility-adjusted momentum) on the expanded survivorship-caveated dataset, explicitly excluding standalone avg_dollar_volume_21d as an alpha candidate. Still no model training, no model candidate, and no production integration."
+    },
+    "recommendation_is_refresh_alpha_backlog": true,
+    "failed_candidate_status_is_stopped": true,
+    "standalone_liquidity_stopped_confirmed": true,
+    "recommended_next_phase_is_2k_k": true,
+    "recommended_next_phase_title_matches": true,
+    "routing_confirmed": true,
+    "phase2k_h_summary": {
+      "present": true,
+      "phase": "2K-H",
+      "manual_build_detected": true,
+      "ready_for_retest": true,
+      "data_quality_status": "PASS_WITH_CAVEAT",
+      "point_in_time_membership_claimed": false,
+      "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+      "ready_for_screen": true
+    },
+    "phase2k_i_recommendation": "EXPANDED_RETEST_FAIL"
+  },
+  "dataset_summary": {
+    "data_quality": {
+      "present": true,
+      "status": "PASS_WITH_CAVEAT",
+      "passed": true,
+      "row_count": 338169,
+      "ticker_count": 129,
+      "date_count": 2628,
+      "years_span": 10.448,
+      "min_tickers_per_date": 128,
+      "benchmark_coverage_fraction": 1.0,
+      "hard_checks_failed": []
+    },
+    "build_summary": {
+      "row_count": 338169,
+      "ticker_count": 129,
+      "benchmark": "SPY",
+      "date_start": "2016-01-04",
+      "date_end": "2026-06-16",
+      "years_span": 10.448,
+      "data_quality_status": "PASS_WITH_CAVEAT",
+      "model_trained": false,
+      "model_candidate_created": false
+    }
+  },
+  "survivorship_caveat_summary": {
+    "present": true,
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "reported_as_survivorship_biased": true,
+    "clean_point_in_time_build_deferred": true,
+    "universe_ticker_count": 131,
+    "all_results_must_be_reported_survivorship_biased": true
+  },
+  "stopped_candidate_policy": {
+    "stopped_candidate": "avg_dollar_volume_21d",
+    "status": "STOPPED_AFTER_EXPANDED_RETEST_FAIL",
+    "excluded_as_standalone_alpha": true,
+    "allowed_as_control_or_diagnostic_only": true,
+    "reason": "The standalone liquidity candidate avg_dollar_volume_21d failed the Phase 2K-I expanded survivorship-caveated retest (residual rank IC reversed negative) and Phase 2K-J stopped it. Phase 2K-K does NOT re-screen it as a standalone alpha; it may appear only as a control / diagnostic / neutralizer if needed."
+  },
+  "screened_candidates": [
+    {
+      "id": "residual_price_momentum_12_1",
+      "name": "Residual Price Momentum (12-1)",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "reference_sign": 1,
+      "standalone_alpha": true,
+      "production_allowed": false
+    },
+    {
+      "id": "short_horizon_residual_reversal_5d",
+      "name": "Short-Horizon Residual Reversal (5d)",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "reference_sign": 1,
+      "standalone_alpha": true,
+      "production_allowed": false
+    },
+    {
+      "id": "short_horizon_residual_reversal_21d",
+      "name": "Short-Horizon Residual Reversal (21d)",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "reference_sign": 1,
+      "standalone_alpha": true,
+      "production_allowed": false
+    },
+    {
+      "id": "volatility_adjusted_momentum_63d",
+      "name": "Volatility-Adjusted Momentum (63d)",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "reference_sign": 1,
+      "standalone_alpha": true,
+      "production_allowed": false
+    },
+    {
+      "id": "volatility_adjusted_momentum_126d",
+      "name": "Volatility-Adjusted Momentum (126d)",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "reference_sign": 1,
+      "standalone_alpha": true,
+      "production_allowed": false
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "feature": "avg_dollar_volume_21d",
+      "role": "control_or_diagnostic_only",
+      "screened_as_standalone_alpha": false,
+      "reason": "avg_dollar_volume_21d failed the Phase 2K-I expanded retest and was stopped by Phase 2K-J as a standalone alpha. It is excluded from the screen as a ranking signal and is only ever computed as a size / liquidity control or diagnostic, never screened or ranked here."
+    }
+  ],
+  "feature_engineering_summary": {
+    "source_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "source_used": "expanded_price_history_csv",
+    "candidate_features": [
+      "momentum_12_1",
+      "reversal_5d",
+      "reversal_21d",
+      "vol_adjusted_momentum_63d",
+      "vol_adjusted_momentum_126d"
+    ],
+    "control_features": [
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "diagnostic_only_features": [
+      "avg_dollar_volume_21d"
+    ],
+    "all_features_trailing_point_in_time": true,
+    "labels_forward_filled": false,
+    "forward_label_base": "forward_excess_return_vs_spy",
+    "horizons": [
+      5,
+      21,
+      63
+    ],
+    "rows_loaded": 338169,
+    "n_tickers": 128,
+    "n_dates": 2628,
+    "computed": true,
+    "note": null
+  },
+  "residualization_config": {
+    "label_base": "forward_excess_return_vs_spy",
+    "horizons": [
+      5,
+      21,
+      63
+    ],
+    "controls": [
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "method": "per-date cross-sectional OLS (usable controls + intercept); residual = forward excess label - fitted (same construction as Phase 2K-B / 2K-C / 2L-B / 2K-I)",
+    "robust_fallback": "cross-sectional demean when no control is usable, a control is constant, or the date has fewer than min_names usable names",
+    "min_names_for_ols": 10,
+    "no_lookahead": "controls are trailing point-in-time features; the label is strictly forward; each per-date fit uses no forward information",
+    "residual_label_columns": {
+      "5": "resid_5d",
+      "21": "resid_21d",
+      "63": "resid_63d"
+    },
+    "fit_counts": {
+      "5": {
+        "ols_dates": 2602,
+        "fallback_dates": 21
+      },
+      "21": {
+        "ols_dates": 2586,
+        "fallback_dates": 21
+      },
+      "63": {
+        "ols_dates": 2544,
+        "fallback_dates": 21
+      }
+    }
+  },
+  "screen_metrics": {
+    "horizons": [
+      5,
+      21,
+      63
+    ],
+    "by_candidate": {
+      "residual_price_momentum_12_1": {
+        "feature": "momentum_12_1",
+        "category": "price_momentum_alternatives",
+        "reference_sign": 1,
+        "by_horizon": {
+          "5": {
+            "horizon_days": 5,
+            "n_dates": 2371,
+            "n_rows": 302645,
+            "effective_obs": 474.2,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.013196,
+            "median_residual_rank_ic": 0.018332,
+            "std_residual_rank_ic": 0.182159,
+            "information_ratio": 0.072442,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1286,
+            "frac_dates_same_sign_as_reference": 0.542387,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 5,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": 0.000197,
+              "ci_high": 0.026939,
+              "excludes_zero": true
+            },
+            "top_minus_bottom_residual_spread": 0.000815,
+            "top_decile_residual_hit_rate": 0.510625,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.028453,
+              "top3_long_leg_share": 0.070889,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 61646
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.012162,
+              "spy_down_rank_ic": 0.014904,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": 0.005048,
+              "low_vol_rank_ic": 0.02135,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 10,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": true,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": true,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "21": {
+            "horizon_days": 21,
+            "n_dates": 2355,
+            "n_rows": 300597,
+            "effective_obs": 112.143,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.012455,
+            "median_residual_rank_ic": 0.026077,
+            "std_residual_rank_ic": 0.178643,
+            "information_ratio": 0.06972,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1305,
+            "frac_dates_same_sign_as_reference": 0.55414,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 21,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.012931,
+              "ci_high": 0.038128,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.003207,
+            "top_decile_residual_hit_rate": 0.500441,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.028385,
+              "top3_long_leg_share": 0.070586,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 61230
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.001808,
+              "spy_down_rank_ic": 0.037122,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": -0.004795,
+              "low_vol_rank_ic": 0.02972,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 10,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "63": {
+            "horizon_days": 63,
+            "n_dates": 2313,
+            "n_rows": 295221,
+            "effective_obs": 36.714,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.024494,
+            "median_residual_rank_ic": 0.042071,
+            "std_residual_rank_ic": 0.151167,
+            "information_ratio": 0.162034,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1445,
+            "frac_dates_same_sign_as_reference": 0.62473,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 63,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.01547,
+              "ci_high": 0.057836,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.009349,
+            "top_decile_residual_hit_rate": 0.487645,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.028202,
+              "top3_long_leg_share": 0.070255,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 60138
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.008931,
+              "spy_down_rank_ic": 0.076091,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": 0.009967,
+              "low_vol_rank_ic": 0.039034,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 10,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": true,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero; kept only as a research lead, not a confirmation candidate"
+            }
+          }
+        }
+      },
+      "short_horizon_residual_reversal_5d": {
+        "feature": "reversal_5d",
+        "category": "short_term_reversal_mean_reversion",
+        "reference_sign": 1,
+        "by_horizon": {
+          "5": {
+            "horizon_days": 5,
+            "n_dates": 2618,
+            "n_rows": 334203,
+            "effective_obs": 523.6,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.010953,
+            "median_residual_rank_ic": 0.010376,
+            "std_residual_rank_ic": 0.139374,
+            "information_ratio": 0.078584,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1388,
+            "frac_dates_same_sign_as_reference": 0.530176,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 5,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": 0.002249,
+              "ci_high": 0.019643,
+              "excludes_zero": true
+            },
+            "top_minus_bottom_residual_spread": 0.000681,
+            "top_decile_residual_hit_rate": 0.507257,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.013193,
+              "top3_long_leg_share": 0.039049,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 68068
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.019994,
+              "spy_down_rank_ic": -0.003964,
+              "spy_sign_flips_across_regime": true,
+              "high_vol_rank_ic": 0.015319,
+              "low_vol_rank_ic": 0.007492,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": true,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "21": {
+            "horizon_days": 21,
+            "n_dates": 2602,
+            "n_rows": 332155,
+            "effective_obs": 123.905,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.010324,
+            "median_residual_rank_ic": 0.011509,
+            "std_residual_rank_ic": 0.132474,
+            "information_ratio": 0.077933,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1405,
+            "frac_dates_same_sign_as_reference": 0.539969,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 21,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": 0.001804,
+              "ci_high": 0.0212,
+              "excludes_zero": true
+            },
+            "top_minus_bottom_residual_spread": 0.000869,
+            "top_decile_residual_hit_rate": 0.502513,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.01317,
+              "top3_long_leg_share": 0.039097,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 67652
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.010937,
+              "spy_down_rank_ic": 0.008869,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": 0.012391,
+              "low_vol_rank_ic": 0.00935,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": true,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": true,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "63": {
+            "horizon_days": 63,
+            "n_dates": 2560,
+            "n_rows": 326779,
+            "effective_obs": 40.635,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.007066,
+            "median_residual_rank_ic": 0.002414,
+            "std_residual_rank_ic": 0.120852,
+            "information_ratio": 0.058471,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1307,
+            "frac_dates_same_sign_as_reference": 0.510547,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 63,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.002097,
+              "ci_high": 0.015364,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.000986,
+            "top_decile_residual_hit_rate": 0.489093,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.013191,
+              "top3_long_leg_share": 0.039183,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 66560
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.010005,
+              "spy_down_rank_ic": -0.003358,
+              "spy_sign_flips_across_regime": true,
+              "high_vol_rank_ic": 0.007433,
+              "low_vol_rank_ic": 0.005622,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          }
+        }
+      },
+      "short_horizon_residual_reversal_21d": {
+        "feature": "reversal_21d",
+        "category": "short_term_reversal_mean_reversion",
+        "reference_sign": 1,
+        "by_horizon": {
+          "5": {
+            "horizon_days": 5,
+            "n_dates": 2602,
+            "n_rows": 332171,
+            "effective_obs": 520.4,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.008589,
+            "median_residual_rank_ic": 0.007119,
+            "std_residual_rank_ic": 0.1133,
+            "information_ratio": 0.075809,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1368,
+            "frac_dates_same_sign_as_reference": 0.525749,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 5,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": 0.001025,
+              "ci_high": 0.015699,
+              "excludes_zero": true
+            },
+            "top_minus_bottom_residual_spread": 0.000601,
+            "top_decile_residual_hit_rate": 0.503252,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.014102,
+              "top3_long_leg_share": 0.040309,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 67652
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.014175,
+              "spy_down_rank_ic": -0.000671,
+              "spy_sign_flips_across_regime": true,
+              "high_vol_rank_ic": 0.00789,
+              "low_vol_rank_ic": 0.009289,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": true,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "21": {
+            "horizon_days": 21,
+            "n_dates": 2586,
+            "n_rows": 330123,
+            "effective_obs": 123.143,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.015069,
+            "median_residual_rank_ic": 0.014036,
+            "std_residual_rank_ic": 0.105066,
+            "information_ratio": 0.14342,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1456,
+            "frac_dates_same_sign_as_reference": 0.563032,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 21,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": 0.004072,
+              "ci_high": 0.027893,
+              "excludes_zero": true
+            },
+            "top_minus_bottom_residual_spread": 0.001427,
+            "top_decile_residual_hit_rate": 0.503123,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.014189,
+              "top3_long_leg_share": 0.040306,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 67236
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.012752,
+              "spy_down_rank_ic": 0.020564,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": 0.017031,
+              "low_vol_rank_ic": 0.013106,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": true,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": true,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "63": {
+            "horizon_days": 63,
+            "n_dates": 2544,
+            "n_rows": 324747,
+            "effective_obs": 40.381,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.003366,
+            "median_residual_rank_ic": 0.005117,
+            "std_residual_rank_ic": 0.099133,
+            "information_ratio": 0.033953,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1322,
+            "frac_dates_same_sign_as_reference": 0.519654,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 63,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.01332,
+              "ci_high": 0.01998,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": -0.001794,
+            "top_decile_residual_hit_rate": 0.48724,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.014423,
+              "top3_long_leg_share": 0.040699,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 66144
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.001152,
+              "spy_down_rank_ic": 0.011155,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": 0.009827,
+              "low_vol_rank_ic": -0.003096,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": false,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": false,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_single_year_drives_result",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_single_year_drives_result, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          }
+        }
+      },
+      "volatility_adjusted_momentum_63d": {
+        "feature": "vol_adjusted_momentum_63d",
+        "category": "volatility_adjusted_momentum",
+        "reference_sign": 1,
+        "by_horizon": {
+          "5": {
+            "horizon_days": 5,
+            "n_dates": 2560,
+            "n_rows": 326837,
+            "effective_obs": 512.0,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.000868,
+            "median_residual_rank_ic": 0.008627,
+            "std_residual_rank_ic": 0.159013,
+            "information_ratio": 0.00546,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1344,
+            "frac_dates_same_sign_as_reference": 0.525,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 5,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.009798,
+              "ci_high": 0.011529,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": -0.000206,
+            "top_decile_residual_hit_rate": 0.508173,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.014694,
+              "top3_long_leg_share": 0.040009,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 66560
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": -0.000595,
+              "spy_down_rank_ic": 0.003275,
+              "spy_sign_flips_across_regime": true,
+              "high_vol_rank_ic": -0.006201,
+              "low_vol_rank_ic": 0.007938,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": false,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": false,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_single_year_drives_result",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_single_year_drives_result, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "21": {
+            "horizon_days": 21,
+            "n_dates": 2544,
+            "n_rows": 324789,
+            "effective_obs": 121.143,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.008621,
+            "median_residual_rank_ic": 0.014629,
+            "std_residual_rank_ic": 0.139532,
+            "information_ratio": 0.061785,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1364,
+            "frac_dates_same_sign_as_reference": 0.536164,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 21,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.007774,
+              "ci_high": 0.027006,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.001345,
+            "top_decile_residual_hit_rate": 0.511792,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.014665,
+              "top3_long_leg_share": 0.039913,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 66144
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.011447,
+              "spy_down_rank_ic": 0.00206,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": -0.00818,
+              "low_vol_rank_ic": 0.025422,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "63": {
+            "horizon_days": 63,
+            "n_dates": 2502,
+            "n_rows": 319413,
+            "effective_obs": 39.714,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.008825,
+            "median_residual_rank_ic": 0.016174,
+            "std_residual_rank_ic": 0.133133,
+            "information_ratio": 0.066287,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1367,
+            "frac_dates_same_sign_as_reference": 0.546363,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 63,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.02414,
+              "ci_high": 0.035809,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.006275,
+            "top_decile_residual_hit_rate": 0.519677,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.014773,
+              "top3_long_leg_share": 0.040398,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 65052
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.010645,
+              "spy_down_rank_ic": 0.002527,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": -0.010742,
+              "low_vol_rank_ic": 0.028392,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          }
+        }
+      },
+      "volatility_adjusted_momentum_126d": {
+        "feature": "vol_adjusted_momentum_126d",
+        "category": "volatility_adjusted_momentum",
+        "reference_sign": 1,
+        "by_horizon": {
+          "5": {
+            "horizon_days": 5,
+            "n_dates": 2497,
+            "n_rows": 318773,
+            "effective_obs": 499.4,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.005883,
+            "median_residual_rank_ic": 0.01225,
+            "std_residual_rank_ic": 0.177171,
+            "information_ratio": 0.033207,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1311,
+            "frac_dates_same_sign_as_reference": 0.52503,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 5,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.006947,
+              "ci_high": 0.018423,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.000246,
+            "top_decile_residual_hit_rate": 0.505653,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.016435,
+              "top3_long_leg_share": 0.043652,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 64922
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.003257,
+              "spy_down_rank_ic": 0.010227,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": -0.001903,
+              "low_vol_rank_ic": 0.013676,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "21": {
+            "horizon_days": 21,
+            "n_dates": 2481,
+            "n_rows": 316725,
+            "effective_obs": 118.143,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.002528,
+            "median_residual_rank_ic": 0.015611,
+            "std_residual_rank_ic": 0.160603,
+            "information_ratio": 0.015738,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1338,
+            "frac_dates_same_sign_as_reference": 0.539299,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 21,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.021065,
+              "ci_high": 0.023389,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.000972,
+            "top_decile_residual_hit_rate": 0.503116,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.016541,
+              "top3_long_leg_share": 0.043903,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 64506
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": -0.001606,
+              "spy_down_rank_ic": 0.012105,
+              "spy_sign_flips_across_regime": true,
+              "high_vol_rank_ic": -0.011904,
+              "low_vol_rank_ic": 0.016971,
+              "vol_sign_flips_across_regime": true
+            },
+            "leave_one_year_out_sign_stable": false,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": false,
+                "no_regime_only_dependence": false,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero",
+                "no_single_year_drives_result",
+                "no_regime_only_dependence"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_single_year_drives_result, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+            }
+          },
+          "63": {
+            "horizon_days": 63,
+            "n_dates": 2439,
+            "n_rows": 311349,
+            "effective_obs": 38.714,
+            "enough_data": true,
+            "mean_residual_rank_ic": 0.015737,
+            "median_residual_rank_ic": 0.03057,
+            "std_residual_rank_ic": 0.141111,
+            "information_ratio": 0.111521,
+            "direction": "bullish",
+            "n_dates_same_sign_as_reference": 1404,
+            "frac_dates_same_sign_as_reference": 0.575646,
+            "bootstrap_mean_ic_ci": {
+              "method": "moving_block",
+              "block_len_sessions": 63,
+              "n_resamples": 1000,
+              "alpha": 0.05,
+              "ci_low": -0.015825,
+              "ci_high": 0.043049,
+              "excludes_zero": false
+            },
+            "top_minus_bottom_residual_spread": 0.007706,
+            "top_decile_residual_hit_rate": 0.503611,
+            "concentration": {
+              "top_quintile_ticker_concentration": 0.016826,
+              "top3_long_leg_share": 0.044659,
+              "n_unique_top_quintile_tickers": 128,
+              "top_quintile_rows": 63414
+            },
+            "regime_summary": {
+              "spy_up_rank_ic": 0.008872,
+              "spy_down_rank_ic": 0.038717,
+              "spy_sign_flips_across_regime": false,
+              "high_vol_rank_ic": 0.00072,
+              "low_vol_rank_ic": 0.030766,
+              "vol_sign_flips_across_regime": false
+            },
+            "leave_one_year_out_sign_stable": true,
+            "years_present": 11,
+            "verdict": {
+              "status": "RESEARCH_LEAD_ONLY",
+              "gates": {
+                "enough_data": true,
+                "mean_residual_ic_positive": true,
+                "mean_residual_ic_above_floor": false,
+                "majority_dates_same_sign": true,
+                "bootstrap_ci_above_zero": false,
+                "no_single_year_drives_result": true,
+                "no_regime_only_dependence": true,
+                "no_excessive_ticker_concentration": true
+              },
+              "failed_keep_gates": [
+                "mean_residual_ic_above_floor",
+                "bootstrap_ci_above_zero"
+              ],
+              "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero; kept only as a research lead, not a confirmation candidate"
+            }
+          }
+        }
+      }
+    }
+  },
+  "candidate_recommendations": [
+    {
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.013196,
+      "frac_dates_same_sign_as_reference": 0.542387,
+      "bootstrap_ci_low": 0.000197,
+      "bootstrap_ci_high": 0.026939,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.012455,
+      "frac_dates_same_sign_as_reference": 0.55414,
+      "bootstrap_ci_low": -0.012931,
+      "bootstrap_ci_high": 0.038128,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 63,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.024494,
+      "frac_dates_same_sign_as_reference": 0.62473,
+      "bootstrap_ci_low": -0.01547,
+      "bootstrap_ci_high": 0.057836,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.010953,
+      "frac_dates_same_sign_as_reference": 0.530176,
+      "bootstrap_ci_low": 0.002249,
+      "bootstrap_ci_high": 0.019643,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.010324,
+      "frac_dates_same_sign_as_reference": 0.539969,
+      "bootstrap_ci_low": 0.001804,
+      "bootstrap_ci_high": 0.0212,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 63,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.007066,
+      "frac_dates_same_sign_as_reference": 0.510547,
+      "bootstrap_ci_low": -0.002097,
+      "bootstrap_ci_high": 0.015364,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.008589,
+      "frac_dates_same_sign_as_reference": 0.525749,
+      "bootstrap_ci_low": 0.001025,
+      "bootstrap_ci_high": 0.015699,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.015069,
+      "frac_dates_same_sign_as_reference": 0.563032,
+      "bootstrap_ci_low": 0.004072,
+      "bootstrap_ci_high": 0.027893,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 63,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.003366,
+      "frac_dates_same_sign_as_reference": 0.519654,
+      "bootstrap_ci_low": -0.01332,
+      "bootstrap_ci_high": 0.01998,
+      "leave_one_year_out_sign_stable": false,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_single_year_drives_result",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_single_year_drives_result, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_63d",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.000868,
+      "frac_dates_same_sign_as_reference": 0.525,
+      "bootstrap_ci_low": -0.009798,
+      "bootstrap_ci_high": 0.011529,
+      "leave_one_year_out_sign_stable": false,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_single_year_drives_result",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_single_year_drives_result, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_63d",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.008621,
+      "frac_dates_same_sign_as_reference": 0.536164,
+      "bootstrap_ci_low": -0.007774,
+      "bootstrap_ci_high": 0.027006,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_63d",
+      "feature": "vol_adjusted_momentum_63d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 63,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.008825,
+      "frac_dates_same_sign_as_reference": 0.546363,
+      "bootstrap_ci_low": -0.02414,
+      "bootstrap_ci_high": 0.035809,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_126d",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.005883,
+      "frac_dates_same_sign_as_reference": 0.52503,
+      "bootstrap_ci_low": -0.006947,
+      "bootstrap_ci_high": 0.018423,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_126d",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.002528,
+      "frac_dates_same_sign_as_reference": 0.539299,
+      "bootstrap_ci_low": -0.021065,
+      "bootstrap_ci_high": 0.023389,
+      "leave_one_year_out_sign_stable": false,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero",
+        "no_single_year_drives_result",
+        "no_regime_only_dependence"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero, no_single_year_drives_result, no_regime_only_dependence; kept only as a research lead, not a confirmation candidate"
+    },
+    {
+      "candidate": "volatility_adjusted_momentum_126d",
+      "feature": "vol_adjusted_momentum_126d",
+      "category": "volatility_adjusted_momentum",
+      "horizon_days": 63,
+      "status": "RESEARCH_LEAD_ONLY",
+      "mean_residual_rank_ic": 0.015737,
+      "frac_dates_same_sign_as_reference": 0.575646,
+      "bootstrap_ci_low": -0.015825,
+      "bootstrap_ci_high": 0.043049,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "bootstrap_ci_above_zero"
+      ],
+      "enough_data": true,
+      "reason": "directionally positive but failed robustness / stability gate(s): mean_residual_ic_above_floor, bootstrap_ci_above_zero; kept only as a research lead, not a confirmation candidate"
+    }
+  ],
+  "pass_fail_gates": {
+    "keep_gate_definitions": {
+      "mean_residual_ic_positive": "mean residual rank IC > 0",
+      "mean_residual_ic_above_floor": "mean residual rank IC >= 0.03",
+      "majority_dates_same_sign": "fraction of dates same sign as reference > 0.5",
+      "bootstrap_ci_above_zero": "moving-block 95% CI lower bound > 0",
+      "no_single_year_drives_result": "leave-one-year-out sign stable",
+      "no_regime_only_dependence": "no sign flip across SPY up/down or market-vol split",
+      "no_excessive_ticker_concentration": "top-3 long-leg share <= 0.5",
+      "enough_data": ">= 60 IC dates and >= 8.0 effective obs"
+    },
+    "verdict_counts": {
+      "KEEP_FOR_WALK_FORWARD_CONFIRMATION": 0,
+      "RESEARCH_LEAD_ONLY": 15,
+      "DROP": 0,
+      "NEED_MORE_DATA_OR_PIT_UNIVERSE": 0
+    },
+    "allowed_pair_statuses": [
+      "KEEP_FOR_WALK_FORWARD_CONFIRMATION",
+      "RESEARCH_LEAD_ONLY",
+      "DROP",
+      "NEED_MORE_DATA_OR_PIT_UNIVERSE"
+    ]
+  },
+  "research_priorities": [
+    {
+      "rank": 1,
+      "action": "Promote only the candidate / horizon pairs that earn KEEP_FOR_WALK_FORWARD_CONFIRMATION to a stricter embargoed walk-forward confirmation phase; do not train a model and do not create a model candidate yet.",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    },
+    {
+      "rank": 2,
+      "action": "Diagnose RESEARCH_LEAD_ONLY pairs (which robustness / stability gate failed and why) before deciding whether they justify more data or a point-in-time universe.",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    },
+    {
+      "rank": 3,
+      "action": "Attach a low-cost point-in-time sector map and screen sector-relative momentum / reversal model-free (deferred backlog item), still with no model training.",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    },
+    {
+      "rank": 4,
+      "action": "Scope a point-in-time membership universe to remove the survivorship caveat before any production claim; do not purchase or build on paid data yet.",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    }
+  ],
+  "recommendation": {
+    "recommendation": "MODEL_FREE_SCREEN_HAS_RESEARCH_LEADS_ONLY",
+    "allowed_values": [
+      "MODEL_FREE_SCREEN_HAS_CONFIRMATION_CANDIDATES",
+      "MODEL_FREE_SCREEN_HAS_RESEARCH_LEADS_ONLY",
+      "MODEL_FREE_SCREEN_ALL_DROPPED",
+      "NEED_MORE_DATA_OR_PIT_UNIVERSE"
+    ],
+    "n_keep_for_walk_forward": 0,
+    "n_research_lead_only": 15,
+    "n_drop": 0,
+    "n_need_more_data": 0,
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "reason": "No pair cleared every confirmation gate, but 15 pair(s) were directionally positive and survive only as research leads; they need diagnostics before any confirmation. No model candidate is created."
+  },
+  "interpretation": {
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 2K-K screened the prioritized price/volume alpha candidates from the Phase 2K-J refreshed backlog on the expanded, survivorship-caveated D: panel, explicitly excluding standalone avg_dollar_volume_21d (stopped after the Phase 2K-I expanded retest failure). Only model-free, rank-only metrics on the beta/vol-neutralized residual forward-excess label were measured across the full sample and regime / year stability splits -- nothing was fitted. The screen produced only directionally-positive research leads, none robust enough for confirmation. Every result is reported as survivorship-biased / current-membership caveated. No model was trained, fitted, scored, or served, and no model candidate was created. Even a KEEP only permits a later, separately gated confirmation phase; it is not a production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-L",
+    "title": "Research Lead Diagnostics After Expanded Alpha Screen",
+    "purpose": "Diagnose the research leads that were directionally positive but not robust enough for confirmation (which gate failed, and whether more data or a point-in-time universe would change the verdict). No model candidate is created."
+  }
+}
