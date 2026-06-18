@@ -1,0 +1,567 @@
+{
+  "phase": "2K-N",
+  "generated_at": "2026-06-18T16:00:06",
+  "inputs_read": {
+    "phase2k_m_json": "research/output/phase2k_m_targeted_lead_diagnostics.json",
+    "phase2k_l_json": "research/output/phase2k_l_research_lead_diagnostics.json",
+    "phase2k_k_json": "research/output/phase2k_k_expanded_alpha_screen.json",
+    "phase2k_h_summary_json": "research/output/phase2k_h_manual_build_run_summary.json",
+    "expanded_price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json"
+  },
+  "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "model_trained": false,
+  "model_candidate_created": false,
+  "ran_broad_alpha_screen": false,
+  "candidate_set_expanded": false,
+  "d_drive_written": false,
+  "retest_executed": true,
+  "upstream_phase2k_m_summary": {
+    "present": true,
+    "phase": "2K-M",
+    "recommendation": "RUN_NARROW_MODEL_FREE_RETEST",
+    "follow_up_type_counts": {
+      "NARROW_RETEST_CANDIDATE": 3,
+      "DIAGNOSTIC_ONLY": 0,
+      "HOLD_FOR_SECTOR_RELATIVE_VARIANT": 2
+    },
+    "n_narrow_retest_candidates": 3,
+    "narrow_retest_candidate_lead_ids": [
+      "residual_price_momentum_12_1@5d",
+      "short_horizon_residual_reversal_5d@21d",
+      "short_horizon_residual_reversal_21d@21d"
+    ],
+    "pre_registered_lead_ids": [
+      "residual_price_momentum_12_1@5d",
+      "short_horizon_residual_reversal_5d@21d",
+      "short_horizon_residual_reversal_21d@21d"
+    ],
+    "recommended_next_phase": {
+      "phase": "2K-N",
+      "title": "Narrow Model-Free Retest for Best Targeted Alpha Leads",
+      "purpose": "Run a narrow, pre-registered, model-free retest only on the best targeted leads (re-measuring residual rank IC and its bootstrap CI at each lead's own horizon), still with no model training and no model-candidate design. Results remain survivorship-biased and not a production edge."
+    },
+    "phase_is_2k_m": true,
+    "recommendation_is_run_narrow_retest": true,
+    "recommended_next_phase_is_2k_n": true,
+    "recommended_next_phase_title_matches": true,
+    "narrow_retest_candidate_count_is_3": true,
+    "pre_registered_pairs_match_phase2k_m_narrow_leads": true,
+    "create_model_candidate_now_false": true,
+    "train_model_now_false": true,
+    "ran_new_d_screen_false": true,
+    "routing_confirmed": true,
+    "phase2k_l_recommendation": "TARGETED_DIAGNOSTICS_FOR_BEST_RESEARCH_LEADS",
+    "phase2k_k_recommendation": "MODEL_FREE_SCREEN_HAS_RESEARCH_LEADS_ONLY"
+  },
+  "data_quality_summary": {
+    "present": true,
+    "status": "PASS_WITH_CAVEAT",
+    "passed": true,
+    "row_count": 338169,
+    "ticker_count": 129,
+    "date_count": 2628,
+    "years_span": 10.448,
+    "min_tickers_per_date": 128,
+    "benchmark_coverage_fraction": 1.0,
+    "hard_checks_failed": []
+  },
+  "survivorship_caveat_summary": {
+    "present": true,
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "reported_as_survivorship_biased": true,
+    "clean_point_in_time_build_deferred": true,
+    "universe_ticker_count": 131,
+    "all_results_must_be_reported_survivorship_biased": true,
+    "carried_forward_from": [
+      "phase2k_k",
+      "phase2k_l",
+      "phase2k_m"
+    ],
+    "note": "Phase 2K-N carries the survivorship / current-membership caveat forward unchanged; no point-in-time universe is claimed and no narrow-retest lead is a production edge."
+  },
+  "pre_registered_candidate_set": [
+    {
+      "lead_id": "residual_price_momentum_12_1@5d",
+      "candidate": "residual_price_momentum_12_1",
+      "name": "Residual Price Momentum (12-1)",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "reference_sign": 1,
+      "horizon_days": 5,
+      "standalone_alpha": true,
+      "production_allowed": false
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_5d@21d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "name": "Short-Horizon Residual Reversal (5d)",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "reference_sign": 1,
+      "horizon_days": 21,
+      "standalone_alpha": true,
+      "production_allowed": false
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "name": "Short-Horizon Residual Reversal (21d)",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "reference_sign": 1,
+      "horizon_days": 21,
+      "standalone_alpha": true,
+      "production_allowed": false
+    }
+  ],
+  "explicitly_excluded_candidates": [
+    {
+      "lead_id": "short_horizon_residual_reversal_5d@5d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "horizon_days": 5,
+      "role": "hold_for_sector_relative_variant",
+      "reason": "Phase 2K-M classified this lead HOLD_FOR_SECTOR_RELATIVE_VARIANT (its IC sign is regime-dependent at the 5d horizon); it is NOT retested in Phase 2K-N and must wait for a sector-relative feasibility assessment."
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_21d@5d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "horizon_days": 5,
+      "role": "hold_for_sector_relative_variant",
+      "reason": "Phase 2K-M classified this lead HOLD_FOR_SECTOR_RELATIVE_VARIANT (its IC sign is regime-dependent at the 5d horizon); it is NOT retested in Phase 2K-N and must wait for a sector-relative feasibility assessment."
+    },
+    {
+      "lead_id": "avg_dollar_volume_21d",
+      "candidate": "avg_dollar_volume_21d",
+      "horizon_days": null,
+      "role": "control_or_diagnostic_only",
+      "reason": "avg_dollar_volume_21d failed the Phase 2K-I expanded retest and was stopped by Phase 2K-J as a standalone alpha. It is excluded from the retest as a ranking signal and may only ever be computed as a size / liquidity control or diagnostic, never retested or ranked here."
+    },
+    {
+      "lead_id": "all_other_candidates_and_horizons",
+      "candidate": "ALL_OTHERS",
+      "horizon_days": null,
+      "role": "out_of_scope",
+      "reason": "Phase 2K-N is a narrow, pre-registered retest of exactly 3 candidate / horizon pairs; no other candidate or horizon is retested and the candidate set is never expanded."
+    }
+  ],
+  "feature_engineering_summary": {
+    "source_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "source_used": "expanded_price_history_csv",
+    "signal_features": [
+      "momentum_12_1",
+      "reversal_5d",
+      "reversal_21d"
+    ],
+    "trailing_return_windows": [
+      "return_5d",
+      "return_21d",
+      "return_63d",
+      "return_252d"
+    ],
+    "control_features": [
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "diagnostic_only_features": [
+      "avg_dollar_volume_21d"
+    ],
+    "benchmark_feature": "spy_return",
+    "all_features_trailing_point_in_time": true,
+    "labels_forward_filled": false,
+    "forward_label_base": "forward_excess_return_vs_spy",
+    "horizons": [
+      5,
+      21
+    ],
+    "rows_loaded": 338169,
+    "n_tickers": 128,
+    "n_dates": 2628,
+    "computed": true,
+    "note": null
+  },
+  "residualization_config": {
+    "label_base": "forward_excess_return_vs_spy",
+    "horizons": [
+      5,
+      21
+    ],
+    "controls": [
+      "rolling_beta_63d",
+      "realized_vol_21d",
+      "realized_vol_63d",
+      "downside_vol_21d",
+      "rolling_corr_spy_63d"
+    ],
+    "method": "per-date cross-sectional ordinary-least-squares residual (usable controls + intercept) via numpy.linalg.lstsq; residual = forward excess label - fitted values (same construction as Phase 2K-B / 2K-C / 2L-B / 2K-I / 2K-K). This is a per-date linear projection, not a trained, persisted, or scored model.",
+    "robust_fallback": "cross-sectional demean when no control is usable, a control is constant, or the date has fewer than min_names usable names",
+    "min_names_for_ols": 10,
+    "no_lookahead": "controls are trailing point-in-time features; the label is strictly forward; each per-date projection uses no forward information",
+    "residual_label_columns": {
+      "5": "resid_5d",
+      "21": "resid_21d"
+    },
+    "fit_counts": {
+      "5": {
+        "ols_dates": 2602,
+        "fallback_dates": 21
+      },
+      "21": {
+        "ols_dates": 2586,
+        "fallback_dates": 21
+      }
+    }
+  },
+  "narrow_retest_results": [
+    {
+      "horizon_days": 5,
+      "n_dates": 2371,
+      "n_tickers": 128,
+      "n_obs": 302645,
+      "effective_obs": 474.2,
+      "enough_data": true,
+      "mean_residual_rank_ic": 0.013196,
+      "median_residual_rank_ic": 0.018332,
+      "std_residual_rank_ic": 0.182159,
+      "information_ratio": 0.072442,
+      "direction": "bullish",
+      "n_dates_same_sign_as_reference": 1286,
+      "frac_dates_same_sign_as_reference": 0.542387,
+      "bootstrap_mean_ic_ci": {
+        "method": "moving_block",
+        "block_len_sessions": 5,
+        "n_resamples": 1000,
+        "alpha": 0.05,
+        "ci_low": 0.000197,
+        "ci_high": 0.026939,
+        "excludes_zero": true
+      },
+      "top_minus_bottom_residual_spread": 0.000815,
+      "top_decile_residual_hit_rate": 0.510625,
+      "concentration": {
+        "top_quintile_ticker_concentration": 0.028453,
+        "top3_long_leg_share": 0.070889,
+        "n_unique_top_quintile_tickers": 128,
+        "top_quintile_rows": 61646
+      },
+      "regime_summary": {
+        "spy_up_rank_ic": 0.012162,
+        "spy_down_rank_ic": 0.014904,
+        "spy_sign_flips_across_regime": false,
+        "high_vol_rank_ic": 0.005048,
+        "low_vol_rank_ic": 0.02135,
+        "vol_sign_flips_across_regime": false
+      },
+      "leave_one_year_out_sign_stable": true,
+      "years_present": 10,
+      "lead_id": "residual_price_momentum_12_1@5d",
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "prior_phase2k_m": {
+        "prior_mean_residual_rank_ic": 0.013196,
+        "prior_bootstrap_ci_low": 0.000197,
+        "prior_diagnostic_score": 68.87,
+        "prior_failed_keep_gates": [
+          "mean_residual_ic_above_floor"
+        ]
+      },
+      "recommendation": {
+        "status": "RESEARCH_LEAD_RECONFIRMED",
+        "gates": {
+          "enough_data": true,
+          "mean_residual_ic_positive": true,
+          "mean_residual_ic_at_or_above_floor_or_close": false,
+          "majority_dates_same_sign": true,
+          "bootstrap_ci_above_zero": true,
+          "no_single_year_drives_result": true,
+          "no_regime_only_dependence": true,
+          "no_excessive_ticker_concentration": true
+        },
+        "failed_keep_gates": [
+          "mean_residual_ic_at_or_above_floor_or_close"
+        ],
+        "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+      }
+    },
+    {
+      "horizon_days": 21,
+      "n_dates": 2602,
+      "n_tickers": 128,
+      "n_obs": 332155,
+      "effective_obs": 123.905,
+      "enough_data": true,
+      "mean_residual_rank_ic": 0.010324,
+      "median_residual_rank_ic": 0.011509,
+      "std_residual_rank_ic": 0.132474,
+      "information_ratio": 0.077933,
+      "direction": "bullish",
+      "n_dates_same_sign_as_reference": 1405,
+      "frac_dates_same_sign_as_reference": 0.539969,
+      "bootstrap_mean_ic_ci": {
+        "method": "moving_block",
+        "block_len_sessions": 21,
+        "n_resamples": 1000,
+        "alpha": 0.05,
+        "ci_low": 0.001804,
+        "ci_high": 0.0212,
+        "excludes_zero": true
+      },
+      "top_minus_bottom_residual_spread": 0.000869,
+      "top_decile_residual_hit_rate": 0.502513,
+      "concentration": {
+        "top_quintile_ticker_concentration": 0.01317,
+        "top3_long_leg_share": 0.039097,
+        "n_unique_top_quintile_tickers": 128,
+        "top_quintile_rows": 67652
+      },
+      "regime_summary": {
+        "spy_up_rank_ic": 0.010937,
+        "spy_down_rank_ic": 0.008869,
+        "spy_sign_flips_across_regime": false,
+        "high_vol_rank_ic": 0.012391,
+        "low_vol_rank_ic": 0.00935,
+        "vol_sign_flips_across_regime": false
+      },
+      "leave_one_year_out_sign_stable": true,
+      "years_present": 11,
+      "lead_id": "short_horizon_residual_reversal_5d@21d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "prior_phase2k_m": {
+        "prior_mean_residual_rank_ic": 0.010324,
+        "prior_bootstrap_ci_low": 0.001804,
+        "prior_diagnostic_score": 65.04,
+        "prior_failed_keep_gates": [
+          "mean_residual_ic_above_floor"
+        ]
+      },
+      "recommendation": {
+        "status": "RESEARCH_LEAD_RECONFIRMED",
+        "gates": {
+          "enough_data": true,
+          "mean_residual_ic_positive": true,
+          "mean_residual_ic_at_or_above_floor_or_close": false,
+          "majority_dates_same_sign": true,
+          "bootstrap_ci_above_zero": true,
+          "no_single_year_drives_result": true,
+          "no_regime_only_dependence": true,
+          "no_excessive_ticker_concentration": true
+        },
+        "failed_keep_gates": [
+          "mean_residual_ic_at_or_above_floor_or_close"
+        ],
+        "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+      }
+    },
+    {
+      "horizon_days": 21,
+      "n_dates": 2586,
+      "n_tickers": 128,
+      "n_obs": 330123,
+      "effective_obs": 123.143,
+      "enough_data": true,
+      "mean_residual_rank_ic": 0.015069,
+      "median_residual_rank_ic": 0.014036,
+      "std_residual_rank_ic": 0.105066,
+      "information_ratio": 0.14342,
+      "direction": "bullish",
+      "n_dates_same_sign_as_reference": 1456,
+      "frac_dates_same_sign_as_reference": 0.563032,
+      "bootstrap_mean_ic_ci": {
+        "method": "moving_block",
+        "block_len_sessions": 21,
+        "n_resamples": 1000,
+        "alpha": 0.05,
+        "ci_low": 0.004072,
+        "ci_high": 0.027893,
+        "excludes_zero": true
+      },
+      "top_minus_bottom_residual_spread": 0.001427,
+      "top_decile_residual_hit_rate": 0.503123,
+      "concentration": {
+        "top_quintile_ticker_concentration": 0.014189,
+        "top3_long_leg_share": 0.040306,
+        "n_unique_top_quintile_tickers": 128,
+        "top_quintile_rows": 67236
+      },
+      "regime_summary": {
+        "spy_up_rank_ic": 0.012752,
+        "spy_down_rank_ic": 0.020564,
+        "spy_sign_flips_across_regime": false,
+        "high_vol_rank_ic": 0.017031,
+        "low_vol_rank_ic": 0.013106,
+        "vol_sign_flips_across_regime": false
+      },
+      "leave_one_year_out_sign_stable": true,
+      "years_present": 11,
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "prior_phase2k_m": {
+        "prior_mean_residual_rank_ic": 0.015069,
+        "prior_bootstrap_ci_low": 0.004072,
+        "prior_diagnostic_score": 75.19,
+        "prior_failed_keep_gates": [
+          "mean_residual_ic_above_floor"
+        ]
+      },
+      "recommendation": {
+        "status": "RESEARCH_LEAD_RECONFIRMED",
+        "gates": {
+          "enough_data": true,
+          "mean_residual_ic_positive": true,
+          "mean_residual_ic_at_or_above_floor_or_close": false,
+          "majority_dates_same_sign": true,
+          "bootstrap_ci_above_zero": true,
+          "no_single_year_drives_result": true,
+          "no_regime_only_dependence": true,
+          "no_excessive_ticker_concentration": true
+        },
+        "failed_keep_gates": [
+          "mean_residual_ic_at_or_above_floor_or_close"
+        ],
+        "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+      }
+    }
+  ],
+  "pair_recommendations": [
+    {
+      "lead_id": "residual_price_momentum_12_1@5d",
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "horizon_days": 5,
+      "status": "RESEARCH_LEAD_RECONFIRMED",
+      "mean_residual_rank_ic": 0.013196,
+      "frac_dates_same_sign_as_reference": 0.542387,
+      "bootstrap_ci_low": 0.000197,
+      "bootstrap_ci_high": 0.026939,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_at_or_above_floor_or_close"
+      ],
+      "enough_data": true,
+      "prior_phase2k_m_mean_ic": 0.013196,
+      "prior_phase2k_l_diagnostic_score": 68.87,
+      "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_5d@21d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_RECONFIRMED",
+      "mean_residual_rank_ic": 0.010324,
+      "frac_dates_same_sign_as_reference": 0.539969,
+      "bootstrap_ci_low": 0.001804,
+      "bootstrap_ci_high": 0.0212,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_at_or_above_floor_or_close"
+      ],
+      "enough_data": true,
+      "prior_phase2k_m_mean_ic": 0.010324,
+      "prior_phase2k_l_diagnostic_score": 65.04,
+      "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "horizon_days": 21,
+      "status": "RESEARCH_LEAD_RECONFIRMED",
+      "mean_residual_rank_ic": 0.015069,
+      "frac_dates_same_sign_as_reference": 0.563032,
+      "bootstrap_ci_low": 0.004072,
+      "bootstrap_ci_high": 0.027893,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_at_or_above_floor_or_close"
+      ],
+      "enough_data": true,
+      "prior_phase2k_m_mean_ic": 0.015069,
+      "prior_phase2k_l_diagnostic_score": 75.19,
+      "reason": "the narrow retest reproduced a positive, above-zero, year-stable residual rank IC, but it is still below the confirmation floor (and/or short of the same-sign majority); the lead is reconfirmed as a research lead but is not confirmable yet and is not a model candidate (failed gate(s): mean_residual_ic_at_or_above_floor_or_close)"
+    }
+  ],
+  "gate_summary": {
+    "keep_gate_definitions": {
+      "mean_residual_ic_positive": "mean residual rank IC > 0",
+      "mean_residual_ic_at_or_above_floor_or_close": "mean residual rank IC >= 0.03, or >= 0.025 with strong supporting diagnostics (CI above zero, same-sign fraction >= 0.55, information ratio >= 0.1, year- and regime-stable, not over-concentrated)",
+      "majority_dates_same_sign": "fraction of dates same sign as reference > 0.52",
+      "bootstrap_ci_above_zero": "moving-block 95% CI lower bound > 0",
+      "no_single_year_drives_result": "leave-one-year-out sign stable",
+      "no_regime_only_dependence": "no sign flip across SPY up/down or market-vol split",
+      "no_excessive_ticker_concentration": "top-3 long-leg share <= 0.5",
+      "enough_data": ">= 60 IC dates and >= 8.0 effective obs"
+    },
+    "pair_recommendation_counts": {
+      "KEEP_FOR_CONFIRMATION_DESIGN": 0,
+      "RESEARCH_LEAD_RECONFIRMED": 3,
+      "DROP_AFTER_NARROW_RETEST": 0,
+      "NEED_POINT_IN_TIME_UNIVERSE": 0
+    },
+    "allowed_pair_recommendations": [
+      "KEEP_FOR_CONFIRMATION_DESIGN",
+      "RESEARCH_LEAD_RECONFIRMED",
+      "DROP_AFTER_NARROW_RETEST",
+      "NEED_POINT_IN_TIME_UNIVERSE"
+    ]
+  },
+  "overall_recommendation": {
+    "recommendation": "RESEARCH_LEADS_RECONFIRMED_BUT_NOT_CONFIRMABLE",
+    "allowed_values": [
+      "PROCEED_TO_CONFIRMATION_DESIGN",
+      "RESEARCH_LEADS_RECONFIRMED_BUT_NOT_CONFIRMABLE",
+      "DROP_NARROW_RETEST_LEADS",
+      "NEED_POINT_IN_TIME_UNIVERSE_BEFORE_CONFIRMATION"
+    ],
+    "n_keep_for_confirmation_design": 0,
+    "n_research_lead_reconfirmed": 3,
+    "n_drop_after_narrow_retest": 0,
+    "n_need_point_in_time_universe": 0,
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "reason": "No lead cleared the confirmation bar, but 3 reproduced a positive, above-zero, year-stable but sub-floor residual edge; they are reconfirmed as research leads that are not confirmable yet and need sector-relative variants, better data, or backlog refresh. No model candidate is created."
+  },
+  "interpretation": {
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "ran_broad_alpha_screen": false,
+    "candidate_set_expanded": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 2K-N ran a narrow, pre-registered, model-free retest of ONLY the 3 Phase 2K-M NARROW_RETEST_CANDIDATE pairs (residual_price_momentum_12_1 @ 5d, short_horizon_residual_reversal_5d @ 21d, short_horizon_residual_reversal_21d @ 21d) on the expanded, survivorship-caveated D: panel, each at its own horizon. It recomputed the trailing signals and the beta/vol-neutralized residual forward-excess labels and measured only model-free, rank-only metrics -- nothing was fitted, no broad alpha screen was run, the candidate set was not expanded, the two HOLD_FOR_SECTOR_RELATIVE_VARIANT leads were not retested, and avg_dollar_volume_21d stayed excluded as a standalone alpha. The retest reconfirmed a positive but sub-floor research-lead edge that is not confirmable yet. Every result is reported as survivorship-biased / current-membership caveated. No model was trained, fitted, scored, or served, and no model candidate was created; even a KEEP only permits a later, separately gated confirmation-design phase and is not a production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-O",
+    "title": "Decision Gate for Reconfirmed But Sub-Floor Leads",
+    "purpose": "Decide whether the sub-floor but reproducible leads deserve sector-relative variants, better data, or a backlog refresh, before any confirmation work. Still no model training and no model candidate."
+  }
+}
