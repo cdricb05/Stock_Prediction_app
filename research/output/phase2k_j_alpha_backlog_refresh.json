@@ -1,0 +1,473 @@
+{
+  "phase": "2K-J",
+  "generated_at": "2026-06-17T23:26:49",
+  "inputs_read": {
+    "phase2k_i_json": "research/output/phase2k_i_expanded_residual_retest.json",
+    "phase2k_h_summary_json": "research/output/phase2k_h_manual_build_run_summary.json",
+    "phase2k_alpha_backlog_json": "research/output/phase2k_alpha_backlog.json",
+    "phase2k_c_json": "research/output/phase2k_c_residual_robustness.json",
+    "phase2l_b_json": "research/output/phase2l_b_walk_forward_validation.json",
+    "phase2k_d_json": "research/output/phase2k_d_data_expansion_plan.json",
+    "phase2k_e_json": "research/output/phase2k_e_data_feasibility.json",
+    "phase2k_f_json": "research/output/phase2k_f_free_data_build_plan.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "upstream_phase2k_i_summary": {
+    "present": true,
+    "phase": "2K-I",
+    "recommendation": "EXPANDED_RETEST_FAIL",
+    "recommendation_reason": "the expanded panel has enough data but the residual signal failed gate(s): mean_residual_ic_positive, mean_residual_ic_above_floor, majority_dates_same_sign, majority_validation_folds_same_sign, no_single_year_drives_result, no_material_degradation_vs_phase2k_c; it does not hold up on the larger survivorship-caveated panel.",
+    "failed_gates": [
+      "mean_residual_ic_positive",
+      "mean_residual_ic_above_floor",
+      "majority_dates_same_sign",
+      "majority_validation_folds_same_sign",
+      "no_single_year_drives_result",
+      "no_material_degradation_vs_phase2k_c"
+    ],
+    "candidate_feature": "avg_dollar_volume_21d",
+    "primary_horizon_days": 63,
+    "primary_residual_mean_rank_ic": -0.049006,
+    "n_walk_forward_folds": 35,
+    "total_effective_validation_obs": 35.0,
+    "pooled_validation_mean_residual_rank_ic": -0.043478,
+    "majority_validation_windows_same_sign": false,
+    "regime_summary": {
+      "spy_up_rank_ic": -0.042048,
+      "spy_down_rank_ic": -0.073502,
+      "spy_sign_flips_across_regime": false,
+      "high_vol_rank_ic": -0.0679,
+      "low_vol_rank_ic": -0.029963,
+      "vol_sign_flips_across_regime": false
+    },
+    "stability_summary": {
+      "leave_one_year_out_sign_stable": false,
+      "leave_one_fold_out_sign_stable": false,
+      "degraded_vs_phase2k_c": true,
+      "phase2k_c_residual_mean_rank_ic": 0.067368
+    },
+    "survivorship_caveat_summary": {
+      "present": true,
+      "membership_basis": "current_as_of",
+      "point_in_time_membership_claimed": false,
+      "reported_as_survivorship_biased": true,
+      "clean_point_in_time_build_deferred": true,
+      "universe_ticker_count": 131,
+      "all_results_must_be_reported_survivorship_biased": true
+    },
+    "recommended_next_phase": {
+      "phase": "2K-J",
+      "title": "Alpha Backlog Refresh After Expanded Retest Failure",
+      "purpose": "Stop the avg_dollar_volume_21d liquidity candidate and refresh the alpha backlog using the expanded-data diagnostics (where and why the residual signal broke down on the larger panel). No model candidate is created."
+    },
+    "results_are_survivorship_biased": true,
+    "routing_confirmation": {
+      "phase2k_i_present": true,
+      "recommendation_is_expanded_retest_fail": true,
+      "recommended_next_phase_is_2k_j": true,
+      "recommended_next_phase_title_matches": true,
+      "routing_confirmed": true
+    },
+    "phase2k_h_present": true
+  },
+  "failed_candidate_decision": {
+    "candidate": "avg_dollar_volume_21d",
+    "status": "STOPPED_AFTER_EXPANDED_RETEST_FAIL",
+    "stopped_as_standalone_alpha": true,
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "no_model_candidate_allowed": true,
+    "no_model_training_allowed": true,
+    "reason": "avg_dollar_volume_21d was the lone Phase 2K-C residual survivor but failed the Phase 2K-I expanded retest on the larger, longer, survivorship-caveated free panel: its primary residual rank IC turned negative (mean ~-0.049006) and the model-free walk-forward did not hold the reference sign. It is stopped as a standalone alpha. No model candidate is created, no model is trained, and no production edge is claimed."
+  },
+  "failure_diagnostics": {
+    "full_sample_residual_ic_negative": true,
+    "full_sample_primary_residual_mean_rank_ic": -0.049006,
+    "walk_forward_validation_failed": true,
+    "walk_forward_pooled_validation_mean_residual_rank_ic": -0.043478,
+    "n_walk_forward_folds": 35,
+    "effective_validation_obs": 35.0,
+    "signal_direction_reversed_vs_prior_thin_data": true,
+    "prior_thin_data_phase2k_c_residual_mean_rank_ic": 0.067368,
+    "prior_thin_data_phase2l_b_pooled_validation_ic": 0.040803,
+    "expanded_primary_residual_mean_rank_ic": -0.049006,
+    "failure_is_pervasive_not_single_regime_or_year": true,
+    "leave_one_year_out_sign_stable": false,
+    "no_single_regime_split_rescues_signal": true,
+    "regime_spy_up_rank_ic": -0.042048,
+    "regime_spy_down_rank_ic": -0.073502,
+    "regime_high_vol_rank_ic": -0.0679,
+    "regime_low_vol_rank_ic": -0.029963,
+    "degraded_vs_phase2k_c": true,
+    "failed_gates": [
+      "mean_residual_ic_positive",
+      "mean_residual_ic_above_floor",
+      "majority_dates_same_sign",
+      "majority_validation_folds_same_sign",
+      "no_single_year_drives_result",
+      "no_material_degradation_vs_phase2k_c"
+    ],
+    "survivorship_caveat_implications": "The expanded universe is a current-as-of (not point-in-time) membership approximation, so every result is reported as survivorship-biased. The thin-data positive IC was likely an artifact of the small single-regime mega-cap sample; on the broader, longer panel the apparent liquidity edge does not survive even before the survivorship caveat is resolved. A clean point-in-time universe would only tighten, not rescue, this negative result.",
+    "data_expansion_lesson": "Acquiring more, longer, broader data -- rather than fitting a model to the thin sample -- correctly overturned the earlier conclusion. The Phase 2K-C / 2L-B positive residual IC for the liquidity candidate was a small-sample, single-regime artifact: it reversed sign and turned negative once retested across ~10 years and ~129 names. Broader data changed the conclusion, which is exactly why the data was expanded before any model was built."
+  },
+  "alpha_backlog_refresh": {
+    "preserved_prior_backlog_source": "research/output/phase2k_alpha_backlog.json",
+    "preserved_prior_backlog": [
+      {
+        "hypothesis_id": "beta_vol_neutralized_residual_signal",
+        "title": "Beta/Vol-Neutralized Residual Ranking Signal",
+        "priority": "high",
+        "prior_go_to_test": true,
+        "data_availability": "available_now"
+      },
+      {
+        "hypothesis_id": "cross_sectional_mean_reversion",
+        "title": "Short-Horizon Residual Mean Reversion",
+        "priority": "high",
+        "prior_go_to_test": true,
+        "data_availability": "available_now"
+      },
+      {
+        "hypothesis_id": "fundamental_quality_value",
+        "title": "Cross-Sectional Quality / Value",
+        "priority": "medium",
+        "prior_go_to_test": false,
+        "data_availability": "needs_acquisition"
+      },
+      {
+        "hypothesis_id": "estimate_revisions_and_surprise",
+        "title": "Analyst Estimate Revisions & Surprise",
+        "priority": "medium",
+        "prior_go_to_test": false,
+        "data_availability": "needs_acquisition"
+      },
+      {
+        "hypothesis_id": "earnings_event_drift",
+        "title": "Post-Earnings-Announcement Drift",
+        "priority": "medium",
+        "prior_go_to_test": false,
+        "data_availability": "needs_acquisition"
+      },
+      {
+        "hypothesis_id": "liquidity_breadth_and_microstructure",
+        "title": "Liquidity, Breadth & Microstructure",
+        "priority": "medium",
+        "prior_go_to_test": true,
+        "data_availability": "available_now"
+      },
+      {
+        "hypothesis_id": "sector_relative_strength",
+        "title": "Sector-Relative Strength",
+        "priority": "high",
+        "prior_go_to_test": true,
+        "data_availability": "low_cost"
+      },
+      {
+        "hypothesis_id": "regime_conditional_signals",
+        "title": "Regime-Conditional Signal Activation",
+        "priority": "medium",
+        "prior_go_to_test": true,
+        "data_availability": "available_now"
+      }
+    ],
+    "refreshed_backlog": [
+      {
+        "id": "residual_price_momentum_12_1",
+        "name": "Residual Price Momentum (12-1)",
+        "category": "price_momentum_alternatives",
+        "primary_feature": "momentum_12_1",
+        "standalone_alpha": true,
+        "rationale": "Price momentum (12-1) was DROPped in Phase 2K-C on thin data because its bootstrap CI included zero, not because the mechanism was disproven. Retest it model-free as a beta/vol-neutralized residual signal on the expanded multi-regime panel, where more effective observations and a real drawdown are available.",
+        "required_data": [
+          "expanded_price_volume_panel"
+        ],
+        "leakage_risks": "Formation window must be trailing-only and skip the most recent month; overlapping holding windows require a block bootstrap at the holding horizon.",
+        "expected_horizon": "63d-252d",
+        "priority": "high",
+        "status": "QUEUED_MODEL_FREE_SCREEN",
+        "next_test": "2K-K residual rank-IC screen on the expanded price/volume panel",
+        "production_allowed": false
+      },
+      {
+        "id": "short_horizon_residual_reversal",
+        "name": "Short-Horizon Residual Mean Reversion",
+        "category": "short_term_reversal_mean_reversion",
+        "primary_feature": "residual_reversal_5_21d",
+        "standalone_alpha": true,
+        "rationale": "Names extended versus their beta-neutral peers over a short window tend to revert. This is the residual (beta-neutral) reversal hypothesis from Phase 2K-A, kept distinct from the raw-return momentum that already failed, and it is testable model-free on the expanded panel.",
+        "required_data": [
+          "expanded_price_volume_panel"
+        ],
+        "leakage_risks": "Overlapping short windows inflate significance (block-bootstrap at the holding horizon); bid/ask bounce can masquerade as reversal.",
+        "expected_horizon": "5d-21d",
+        "priority": "high",
+        "status": "QUEUED_MODEL_FREE_SCREEN",
+        "next_test": "2K-K residual rank-IC screen on the expanded price/volume panel",
+        "production_allowed": false
+      },
+      {
+        "id": "volatility_adjusted_momentum",
+        "name": "Volatility-Adjusted Momentum",
+        "category": "volatility_adjusted_momentum",
+        "primary_feature": "vol_adjusted_momentum_63d",
+        "standalone_alpha": true,
+        "rationale": "Scaling trailing momentum by realized volatility targets selection that is not merely the 63d vol/beta risk tilt that failed in Phase 2I/2J. The trailing vol controls are already computed on the expanded panel, so this is a cheap model-free residual screen.",
+        "required_data": [
+          "expanded_price_volume_panel"
+        ],
+        "leakage_risks": "Volatility and beta must be trailing-only; the residualization must regress out the same risk controls per date so the signal is not a repackaged vol premium.",
+        "expected_horizon": "63d-126d",
+        "priority": "medium",
+        "status": "QUEUED_MODEL_FREE_SCREEN",
+        "next_test": "2K-K residual rank-IC screen on the expanded price/volume panel",
+        "production_allowed": false
+      },
+      {
+        "id": "sector_relative_momentum",
+        "name": "Sector-Relative Momentum",
+        "category": "sector_relative_momentum",
+        "primary_feature": "sector_relative_momentum_21_63d",
+        "standalone_alpha": true,
+        "rationale": "De-meaning returns within a name's own sector strips the broad market move that the failed 63d tilt was riding, isolating intra-sector selection. Needs only a low-cost sector map on top of the expanded price/volume panel.",
+        "required_data": [
+          "expanded_price_volume_panel",
+          "point_in_time_sector_industry_mapping"
+        ],
+        "leakage_risks": "Sector membership must be point-in-time (no current GICS applied to history); thin sectors give unstable cross-sections.",
+        "expected_horizon": "21d-63d",
+        "priority": "medium",
+        "status": "DEFERRED_NEEDS_SECTOR_MAP",
+        "next_test": "model-free residual rank-IC screen once a low-cost point-in-time sector map is attached (after the price/volume-only 2K-K screen)",
+        "production_allowed": false
+      },
+      {
+        "id": "liquidity_illiquidity_diagnostic",
+        "name": "Liquidity / Illiquidity (Amihud, dollar volume) -- Diagnostic Only",
+        "category": "liquidity_deprioritized_diagnostic_only",
+        "primary_feature": "avg_dollar_volume_21d",
+        "standalone_alpha": false,
+        "rationale": "The standalone liquidity candidate avg_dollar_volume_21d FAILED the expanded retest (residual IC reversed negative). Liquidity / illiquidity is therefore deprioritized to a diagnostic-only role: usable as a size/liquidity neutralizer or a control when paired with another mechanism, but NOT as a standalone alpha. It is not reintroduced as a standalone alpha candidate.",
+        "required_data": [
+          "expanded_price_volume_panel"
+        ],
+        "leakage_risks": "Liquidity correlates with size and price level; only ever used trailing-only and size/price-neutralized as a control, never as a standalone ranking signal.",
+        "expected_horizon": "n/a (diagnostic control only)",
+        "priority": "deprioritized",
+        "status": "DEPRIORITIZED_DIAGNOSTIC_ONLY",
+        "next_test": "no standalone retest; available only as a neutralizer / control",
+        "production_allowed": false
+      },
+      {
+        "id": "estimate_revisions_and_surprise",
+        "name": "Analyst Estimate Revisions & Earnings Surprise",
+        "category": "earnings_fundamentals_estimate_revision_future_data",
+        "primary_feature": "estimate_revision_ratio_and_standardized_surprise",
+        "standalone_alpha": true,
+        "rationale": "An information-diffusion signal largely orthogonal to a price-only liquidity or vol/beta premium, so it is unlikely to be the same artifact that just failed. Requires point-in-time estimate and earnings-date data, so it is a future-data backlog item, not part of the immediate price/volume screen.",
+        "required_data": [
+          "point_in_time_analyst_estimates",
+          "earnings_calendar_and_surprise",
+          "broader_point_in_time_universe"
+        ],
+        "leakage_risks": "Revisions must be timestamped at the moment they became public; using the final consensus for a past date imports the future; earnings dates must be actual.",
+        "expected_horizon": "21d-63d",
+        "priority": "medium",
+        "status": "FUTURE_DATA_BACKLOG",
+        "next_test": "deferred until point-in-time estimate / earnings data is scoped",
+        "production_allowed": false
+      },
+      {
+        "id": "quality_profitability",
+        "name": "Quality / Profitability Factor",
+        "category": "quality_profitability_future_data",
+        "primary_feature": "quality_profitability_composite",
+        "standalone_alpha": true,
+        "rationale": "Quality / profitability ranks forward returns through a channel that is not pure market beta or liquidity, diversifying away from the failed price-only tilt. Requires point-in-time fundamentals, so it is a future-data backlog item.",
+        "required_data": [
+          "point_in_time_fundamentals",
+          "broader_point_in_time_universe"
+        ],
+        "leakage_risks": "Restated / as-reported financials and report-date misalignment are the dominant leakage source; only as-first-reported data with correct report-date lags is admissible. Survivorship bias if delisted names are dropped.",
+        "expected_horizon": "63d-252d",
+        "priority": "medium",
+        "status": "FUTURE_DATA_BACKLOG",
+        "next_test": "deferred until point-in-time fundamentals are scoped",
+        "production_allowed": false
+      }
+    ],
+    "refreshed_categories": [
+      "earnings_fundamentals_estimate_revision_future_data",
+      "liquidity_deprioritized_diagnostic_only",
+      "price_momentum_alternatives",
+      "quality_profitability_future_data",
+      "sector_relative_momentum",
+      "short_term_reversal_mean_reversion",
+      "volatility_adjusted_momentum"
+    ],
+    "stopped_standalone_candidates": [
+      "avg_dollar_volume_21d"
+    ],
+    "liquidity_status": "deprioritized_diagnostic_only",
+    "required_item_fields": [
+      "id",
+      "name",
+      "category",
+      "rationale",
+      "required_data",
+      "leakage_risks",
+      "expected_horizon",
+      "priority",
+      "status",
+      "next_test",
+      "production_allowed"
+    ],
+    "note": "Liquidity is deprioritized to diagnostic-only after the expanded retest failure; avg_dollar_volume_21d is not reintroduced as a standalone alpha candidate. All items are research-only with production_allowed = false."
+  },
+  "research_priorities": [
+    {
+      "rank": 1,
+      "action": "Run a model-free residual rank-IC screen of prioritized price/volume alpha candidates (residual momentum, short-horizon residual reversal, volatility-adjusted momentum) on the expanded survivorship-caveated panel.",
+      "uses_data": "expanded_price_volume_panel",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    },
+    {
+      "rank": 2,
+      "action": "Attach a low-cost point-in-time sector map and screen sector-relative momentum / reversal model-free; still no model training.",
+      "uses_data": "expanded_price_volume_panel + point_in_time_sector_industry_mapping",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    },
+    {
+      "rank": 3,
+      "action": "Only if a price/volume feature family clears the model-free screen across more than one regime, scope (do not yet build) a separately gated walk-forward single-feature candidate.",
+      "uses_data": "validated_price_volume_feature_family",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    },
+    {
+      "rank": 4,
+      "action": "Scope point-in-time fundamentals, estimate-revision, and earnings data (cost, coverage, leakage controls) for the future-data backlog items; do not purchase or build on paid data yet.",
+      "uses_data": "future_data_scoping_only",
+      "model_free": true,
+      "excludes_standalone_avg_dollar_volume": true
+    }
+  ],
+  "next_model_free_tests": [
+    {
+      "id": "residual_price_momentum_12_1",
+      "name": "Residual Price Momentum (12-1)",
+      "uses_data": "expanded_price_volume_panel",
+      "model_free": true,
+      "trains_model": false
+    },
+    {
+      "id": "short_horizon_residual_reversal",
+      "name": "Short-Horizon Residual Mean Reversion",
+      "uses_data": "expanded_price_volume_panel",
+      "model_free": true,
+      "trains_model": false
+    },
+    {
+      "id": "volatility_adjusted_momentum",
+      "name": "Volatility-Adjusted Momentum",
+      "uses_data": "expanded_price_volume_panel",
+      "model_free": true,
+      "trains_model": false
+    }
+  ],
+  "data_requirements": {
+    "expanded_price_volume_panel": {
+      "description": "The Phase 2K-H expanded adjusted-OHLCV + volume panel on the D: data root (~10.4 years, ~129 names incl. SPY), used for price/volume-only model-free screens. Read by the screen analyzer, never modified.",
+      "availability": "available_now",
+      "must_be_point_in_time": false,
+      "is_paid_data": false,
+      "survivorship_caveated": true
+    },
+    "point_in_time_sector_industry_mapping": {
+      "description": "Low-cost point-in-time sector / industry map for sector-relative tests.",
+      "availability": "low_cost",
+      "must_be_point_in_time": true,
+      "is_paid_data": false,
+      "survivorship_caveated": true
+    },
+    "point_in_time_analyst_estimates": {
+      "description": "Revision-timestamped consensus estimates (future-data backlog only).",
+      "availability": "needs_acquisition",
+      "must_be_point_in_time": true,
+      "is_paid_data": true,
+      "survivorship_caveated": true
+    },
+    "earnings_calendar_and_surprise": {
+      "description": "Actual earnings dates and realized-vs-expected surprise (future-data).",
+      "availability": "needs_acquisition",
+      "must_be_point_in_time": true,
+      "is_paid_data": true,
+      "survivorship_caveated": true
+    },
+    "point_in_time_fundamentals": {
+      "description": "As-first-reported fundamentals with report-date lags (future-data).",
+      "availability": "needs_acquisition",
+      "must_be_point_in_time": true,
+      "is_paid_data": true,
+      "survivorship_caveated": true
+    },
+    "broader_point_in_time_universe": {
+      "description": "A point-in-time constituent universe to replace the current-as-of approximation and remove the survivorship caveat; the scarce, deferred piece.",
+      "availability": "needs_acquisition",
+      "must_be_point_in_time": true,
+      "is_paid_data": true,
+      "survivorship_caveated": true
+    }
+  },
+  "leakage_controls": {
+    "features_trailing_point_in_time_only": true,
+    "labels_strictly_forward": true,
+    "labels_forward_filled": false,
+    "per_date_cross_sectional_residualization": true,
+    "embargo_equals_forward_horizon": true,
+    "block_bootstrap_at_holding_horizon": true,
+    "no_random_cross_validation": true,
+    "survivorship_caveat_carried_forward": true,
+    "point_in_time_membership_claimed": false,
+    "notes": "Every next-phase screen keeps controls trailing-only and labels strictly forward, residualizes per date and cross-sectionally, embargoes by the forward horizon, and reports every result as survivorship-biased until a point-in-time universe is acquired. No look-ahead and no forward-filled labels."
+  },
+  "interpretation": {
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 2K-J is the disciplined response to the Phase 2K-I expanded retest failure. The liquidity candidate avg_dollar_volume_21d, the lone Phase 2K-C survivor, reversed sign and turned negative on the broader ~10-year, ~129-name survivorship-caveated panel, so it is stopped as a standalone alpha. The earlier thin-data positive IC was a small-sample, single-regime artifact -- expanding the data, rather than fitting a model, correctly overturned it. The alpha backlog is refreshed toward diversified, model-free price/volume hypotheses now and future-data factor families later. This artifact computes no new alpha, reads no D: dataset, trains nothing, fits nothing, creates no model candidate, and claims no production edge."
+  },
+  "recommendation": {
+    "recommendation": "REFRESH_ALPHA_BACKLOG",
+    "allowed_values": [
+      "REFRESH_ALPHA_BACKLOG"
+    ],
+    "standalone_liquidity_candidate_stopped": true,
+    "continue_model_research_now": false,
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "reason": "The standalone liquidity candidate failed the expanded survivorship-caveated retest, so it is stopped and the alpha backlog is refreshed toward diversified, model-free price/volume hypotheses (and future-data factor families). No model candidate is created and no model is trained now; the disciplined next step is a model-free screen on the expanded panel, not model training. No production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-K",
+    "title": "Expanded Dataset Model-Free Alpha Screen",
+    "purpose": "Run a new model-free screen of prioritized price/volume alpha candidates (residual momentum, short-horizon residual reversal, volatility-adjusted momentum) on the expanded survivorship-caveated dataset, explicitly excluding standalone avg_dollar_volume_21d as an alpha candidate. Still no model training, no model candidate, and no production integration."
+  }
+}
