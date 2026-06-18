@@ -1,0 +1,164 @@
+{
+  "phase": "2K-H",
+  "generated_at": "2026-06-17T22:17:42",
+  "inputs_read": {
+    "upstream_phase2k_g_validation_json": "research/output/phase2k_g_builder_validation.json",
+    "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
+    "expanded_price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "expanded_scored_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv"
+  },
+  "data_root": "D:/Stock_Prediction_app_data/phase2k_g",
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "expected_d_drive_outputs": {
+    "expanded_price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "expanded_scored_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
+    "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json"
+  },
+  "detected_outputs": {
+    "expanded_price_history_csv": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+      "exists": true
+    },
+    "expanded_scored_csv": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
+      "exists": true
+    },
+    "data_quality_report_json": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+      "exists": true
+    },
+    "data_build_summary_json": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+      "exists": true
+    },
+    "survivorship_caveat_json": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
+      "exists": true
+    }
+  },
+  "repo_large_outputs_present": [],
+  "upstream_phase2k_g_summary": {
+    "present": true,
+    "path": "research/output/phase2k_g_builder_validation.json",
+    "phase": "2K-G",
+    "builder_script_created": true,
+    "sample_universe_created": true,
+    "ready_for_manual_live_build": true,
+    "recommended_next_phase": "2K-H",
+    "routed_to_2k_h": true
+  },
+  "data_quality_summary": {
+    "present": true,
+    "status": "FAIL",
+    "passed": false,
+    "row_count": 0,
+    "ticker_count": 0,
+    "date_count": 0,
+    "years_span": 0.0,
+    "min_tickers_per_date": 0,
+    "benchmark_coverage_fraction": 0.0,
+    "check_count": 14,
+    "hard_checks_failed": [
+      "missing_adjusted_close"
+    ]
+  },
+  "build_summary": {
+    "present": true,
+    "phase": "2K-G",
+    "mode": "execute",
+    "source": "yfinance",
+    "row_count": 0,
+    "ticker_count": 0,
+    "universe_ticker_count": 92,
+    "benchmark": "SPY",
+    "date_start": null,
+    "date_end": null,
+    "years_span": 0.0,
+    "data_quality_status": "FAIL",
+    "model_trained": false,
+    "model_candidate_created": false
+  },
+  "survivorship_caveat_summary": {
+    "present": true,
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "reported_as_survivorship_biased": true,
+    "clean_point_in_time_build_deferred": true,
+    "universe_ticker_count": 92
+  },
+  "csv_metadata": {
+    "expanded_price_history_csv": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+      "exists": true,
+      "header": [
+        "ticker",
+        "date",
+        "adjusted_open",
+        "adjusted_high",
+        "adjusted_low",
+        "adjusted_close",
+        "volume"
+      ],
+      "column_count": 7,
+      "data_row_count": 0,
+      "sample_first_row": null
+    },
+    "expanded_scored_csv": {
+      "path": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_scored_free.csv",
+      "exists": true,
+      "header": [
+        "date",
+        "ticker",
+        "adjusted_open",
+        "adjusted_high",
+        "adjusted_low",
+        "adjusted_close",
+        "volume",
+        "dollar_volume",
+        "benchmark_close",
+        "daily_return"
+      ],
+      "column_count": 10,
+      "data_row_count": 0,
+      "sample_first_row": null
+    }
+  },
+  "interpretation": {
+    "analyzer_ran_the_build": false,
+    "network_calls_made": false,
+    "d_drive_files_modified": false,
+    "model_trained": false,
+    "model_candidate_created": false,
+    "production_edge_claimed": false,
+    "read_only_with_respect_to_d_drive": true,
+    "narrative": "Phase 2K-H is the manual free expanded dataset build run. This analyzer is a read-only tracking artifact: it inspects the D: outputs after the manual run, summarizes the data-quality report, build summary, and survivorship caveat, and writes one small Git-tracked summary JSON. It runs no build, fetches nothing, modifies no D: file, trains no model, and claims no production edge."
+  },
+  "decision": {
+    "manual_build_detected": true,
+    "ready_for_retest": false,
+    "data_quality_passed": false,
+    "survivorship_caveat_present": true,
+    "point_in_time_membership_claimed": false,
+    "large_data_on_d_drive": true,
+    "repo_large_outputs_created": false,
+    "model_candidate_created": false,
+    "reason": "A manual build was detected but it is not yet ready for retest: data-quality status is not PASS/PASS_WITH_CAVEAT (got 'FAIL'). Resolve these and re-run this analyzer. No model was trained and no production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-H-RUN",
+    "title": "Run the Manual Free Expanded Dataset Build",
+    "purpose": "The manual free build has not been completed yet. Assemble the full local ticker universe on the D: data root and run the Phase 2K-G builder's manual network build mode to produce the five expanded outputs, then re-run this analyzer."
+  }
+}
