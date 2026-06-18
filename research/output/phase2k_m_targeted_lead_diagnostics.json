@@ -1,0 +1,486 @@
+{
+  "phase": "2K-M",
+  "generated_at": "2026-06-18T15:11:27",
+  "inputs_read": {
+    "phase2k_l_json": "research/output/phase2k_l_research_lead_diagnostics.json",
+    "phase2k_k_json": "research/output/phase2k_k_expanded_alpha_screen.json",
+    "phase2k_j_json": "research/output/phase2k_j_alpha_backlog_refresh.json",
+    "phase2k_i_json": "research/output/phase2k_i_expanded_residual_retest.json",
+    "phase2k_h_summary_json": "research/output/phase2k_h_manual_build_run_summary.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "ran_new_d_screen": false,
+  "read_large_d_csv": false,
+  "upstream_phase2k_l_summary": {
+    "present": true,
+    "phase": "2K-L",
+    "recommendation": "TARGETED_DIAGNOSTICS_FOR_BEST_RESEARCH_LEADS",
+    "lead_classification_counts": {
+      "TARGETED_DIAGNOSTIC_CANDIDATE": 5,
+      "WEAK_RESEARCH_LEAD": 7,
+      "DEPRIORITIZE_AFTER_DIAGNOSTIC": 3
+    },
+    "n_targeted_diagnostic_candidates": 5,
+    "recommended_next_phase": {
+      "phase": "2K-M",
+      "title": "Targeted Diagnostics for Best Expanded Alpha Leads",
+      "purpose": "Run focused, model-free diagnostics on the best expanded-screen research leads (failed-gate inspection, stricter concentration filters, regime-split IC), still with no model training and no model-candidate design. Results remain survivorship-biased and not a production edge."
+    },
+    "phase_is_2k_l": true,
+    "recommendation_is_targeted_diagnostics": true,
+    "recommended_next_phase_is_2k_m": true,
+    "recommended_next_phase_title_matches": true,
+    "targeted_candidate_count_is_5": true,
+    "create_model_candidate_now_false": true,
+    "train_model_now_false": true,
+    "best_lead": {
+      "rank": 1,
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "horizon_days": 21,
+      "diagnostic_score": 75.19,
+      "classification": "TARGETED_DIAGNOSTIC_CANDIDATE"
+    },
+    "routing_confirmed": true,
+    "phase2k_k_recommendation": "MODEL_FREE_SCREEN_HAS_RESEARCH_LEADS_ONLY",
+    "phase2k_j_recommendation": "REFRESH_ALPHA_BACKLOG",
+    "phase2k_i_recommendation": "EXPANDED_RETEST_FAIL",
+    "phase2k_h_ready_for_screen": true,
+    "all_targeted_from_phase2k_k_research_lead_pairs": true
+  },
+  "stopped_candidate_policy": {
+    "stopped_candidate": "avg_dollar_volume_21d",
+    "status": "STOPPED_AFTER_EXPANDED_RETEST_FAIL",
+    "excluded_as_standalone_alpha": true,
+    "allowed_as_control_or_diagnostic_only": true,
+    "not_in_targeted_leads": true,
+    "reason": "avg_dollar_volume_21d failed the Phase 2K-I expanded retest and was stopped by Phase 2K-J. Phase 2K-M diagnoses only the price/volume targeted research leads and never re-introduces the stopped liquidity candidate as a standalone alpha; it may remain only a control / diagnostic / neutralizer."
+  },
+  "survivorship_caveat_carried_forward": {
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "all_results_survivorship_biased": true,
+    "note": "Phase 2K-M carries the Phase 2K-L / 2K-K survivorship caveat forward unchanged; no point-in-time universe is claimed and no targeted lead is a production edge."
+  },
+  "targeted_leads": [
+    {
+      "lead_id": "residual_price_momentum_12_1@5d",
+      "candidate": "residual_price_momentum_12_1",
+      "feature": "momentum_12_1",
+      "category": "price_momentum_alternatives",
+      "family": "residual_price_momentum",
+      "horizon_days": 5,
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "source_classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "from_phase2k_k_research_lead_pair": true,
+      "mean_residual_rank_ic": 0.013196,
+      "frac_dates_same_sign_as_reference": 0.542387,
+      "bootstrap_ci_low": 0.000197,
+      "bootstrap_ci_high": 0.026939,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "n_failed_keep_gates": 1,
+      "top3_long_leg_share": 0.070889,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "regime_dependent": false,
+      "severe_concentration": false,
+      "diagnostic_score": 68.87,
+      "why_targeted": "directionally positive with a bootstrap CI lower bound above zero, a year-stable IC sign, few failed keep gates, and no severe concentration: the best of the Phase 2K-K expanded-screen research leads, worth a focused, model-free follow-up diagnostic (still not a model candidate)",
+      "why_not_confirmation_ready": "still below the Phase 2K-K mean-residual-IC keep floor of 0.03: directionally real but economically tiny, so it has not cleared the stricter walk-forward confirmation battery and is not a confirmation or model candidate",
+      "follow_up_type": "NARROW_RETEST_CANDIDATE",
+      "suggested_follow_up_test": "Pre-register a narrow, model-free retest of this single lead at its own horizon (no expanded universe, no model training): re-measure the residual rank IC and its moving-block bootstrap CI to confirm the small but year-stable, above-zero edge persists out-of-sample."
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_5d@5d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "family": "short_horizon_reversal",
+      "horizon_days": 5,
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "source_classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "from_phase2k_k_research_lead_pair": true,
+      "mean_residual_rank_ic": 0.010953,
+      "frac_dates_same_sign_as_reference": 0.530176,
+      "bootstrap_ci_low": 0.002249,
+      "bootstrap_ci_high": 0.019643,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 2,
+      "top3_long_leg_share": 0.039049,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": false,
+      "regime_dependent": true,
+      "severe_concentration": false,
+      "diagnostic_score": 60.48,
+      "why_targeted": "directionally positive with a bootstrap CI lower bound above zero, a year-stable IC sign, few failed keep gates, and no severe concentration: the best of the Phase 2K-K expanded-screen research leads, worth a focused, model-free follow-up diagnostic (still not a model candidate)",
+      "why_not_confirmation_ready": "still below the Phase 2K-K mean-residual-IC keep floor of 0.03: directionally real but economically tiny, so it has not cleared the stricter walk-forward confirmation battery and is not a confirmation or model candidate; its IC sign is also regime-dependent across a SPY up/down or volatility split",
+      "follow_up_type": "HOLD_FOR_SECTOR_RELATIVE_VARIANT",
+      "suggested_follow_up_test": "Hold for a sector-relative variant: re-construct the signal sector-relative (model-free) once a low-cost point-in-time sector map is available, to test whether neutralizing sector exposure removes the regime dependence before any retest."
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_5d@21d",
+      "candidate": "short_horizon_residual_reversal_5d",
+      "feature": "reversal_5d",
+      "category": "short_term_reversal_mean_reversion",
+      "family": "short_horizon_reversal",
+      "horizon_days": 21,
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "source_classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "from_phase2k_k_research_lead_pair": true,
+      "mean_residual_rank_ic": 0.010324,
+      "frac_dates_same_sign_as_reference": 0.539969,
+      "bootstrap_ci_low": 0.001804,
+      "bootstrap_ci_high": 0.0212,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "n_failed_keep_gates": 1,
+      "top3_long_leg_share": 0.039097,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "regime_dependent": false,
+      "severe_concentration": false,
+      "diagnostic_score": 65.04,
+      "why_targeted": "directionally positive with a bootstrap CI lower bound above zero, a year-stable IC sign, few failed keep gates, and no severe concentration: the best of the Phase 2K-K expanded-screen research leads, worth a focused, model-free follow-up diagnostic (still not a model candidate)",
+      "why_not_confirmation_ready": "still below the Phase 2K-K mean-residual-IC keep floor of 0.03: directionally real but economically tiny, so it has not cleared the stricter walk-forward confirmation battery and is not a confirmation or model candidate",
+      "follow_up_type": "NARROW_RETEST_CANDIDATE",
+      "suggested_follow_up_test": "Pre-register a narrow, model-free retest of this single lead at its own horizon (no expanded universe, no model training): re-measure the residual rank IC and its moving-block bootstrap CI to confirm the small but year-stable, above-zero edge persists out-of-sample."
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_21d@5d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "family": "short_horizon_reversal",
+      "horizon_days": 5,
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "source_classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "from_phase2k_k_research_lead_pair": true,
+      "mean_residual_rank_ic": 0.008589,
+      "frac_dates_same_sign_as_reference": 0.525749,
+      "bootstrap_ci_low": 0.001025,
+      "bootstrap_ci_high": 0.015699,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor",
+        "no_regime_only_dependence"
+      ],
+      "n_failed_keep_gates": 2,
+      "top3_long_leg_share": 0.040309,
+      "spy_sign_flips_across_regime": true,
+      "vol_sign_flips_across_regime": false,
+      "regime_dependent": true,
+      "severe_concentration": false,
+      "diagnostic_score": 56.84,
+      "why_targeted": "directionally positive with a bootstrap CI lower bound above zero, a year-stable IC sign, few failed keep gates, and no severe concentration: the best of the Phase 2K-K expanded-screen research leads, worth a focused, model-free follow-up diagnostic (still not a model candidate)",
+      "why_not_confirmation_ready": "still below the Phase 2K-K mean-residual-IC keep floor of 0.03: directionally real but economically tiny, so it has not cleared the stricter walk-forward confirmation battery and is not a confirmation or model candidate; its IC sign is also regime-dependent across a SPY up/down or volatility split",
+      "follow_up_type": "HOLD_FOR_SECTOR_RELATIVE_VARIANT",
+      "suggested_follow_up_test": "Hold for a sector-relative variant: re-construct the signal sector-relative (model-free) once a low-cost point-in-time sector map is available, to test whether neutralizing sector exposure removes the regime dependence before any retest."
+    },
+    {
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "feature": "reversal_21d",
+      "category": "short_term_reversal_mean_reversion",
+      "family": "short_horizon_reversal",
+      "horizon_days": 21,
+      "source_status": "RESEARCH_LEAD_ONLY",
+      "source_classification": "TARGETED_DIAGNOSTIC_CANDIDATE",
+      "from_phase2k_k_research_lead_pair": true,
+      "mean_residual_rank_ic": 0.015069,
+      "frac_dates_same_sign_as_reference": 0.563032,
+      "bootstrap_ci_low": 0.004072,
+      "bootstrap_ci_high": 0.027893,
+      "bootstrap_ci_excludes_zero": true,
+      "leave_one_year_out_sign_stable": true,
+      "failed_keep_gates": [
+        "mean_residual_ic_above_floor"
+      ],
+      "n_failed_keep_gates": 1,
+      "top3_long_leg_share": 0.040306,
+      "spy_sign_flips_across_regime": false,
+      "vol_sign_flips_across_regime": false,
+      "regime_dependent": false,
+      "severe_concentration": false,
+      "diagnostic_score": 75.19,
+      "why_targeted": "directionally positive with a bootstrap CI lower bound above zero, a year-stable IC sign, few failed keep gates, and no severe concentration: the best of the Phase 2K-K expanded-screen research leads, worth a focused, model-free follow-up diagnostic (still not a model candidate)",
+      "why_not_confirmation_ready": "still below the Phase 2K-K mean-residual-IC keep floor of 0.03: directionally real but economically tiny, so it has not cleared the stricter walk-forward confirmation battery and is not a confirmation or model candidate",
+      "follow_up_type": "NARROW_RETEST_CANDIDATE",
+      "suggested_follow_up_test": "Pre-register a narrow, model-free retest of this single lead at its own horizon (no expanded universe, no model training): re-measure the residual rank IC and its moving-block bootstrap CI to confirm the small but year-stable, above-zero edge persists out-of-sample."
+    }
+  ],
+  "targeted_lead_rankings": {
+    "ranked_by": "diagnostic_score_desc",
+    "rankings": [
+      {
+        "rank": 1,
+        "lead_id": "short_horizon_residual_reversal_21d@21d",
+        "candidate": "short_horizon_residual_reversal_21d",
+        "family": "short_horizon_reversal",
+        "horizon_days": 21,
+        "diagnostic_score": 75.19,
+        "follow_up_type": "NARROW_RETEST_CANDIDATE"
+      },
+      {
+        "rank": 2,
+        "lead_id": "residual_price_momentum_12_1@5d",
+        "candidate": "residual_price_momentum_12_1",
+        "family": "residual_price_momentum",
+        "horizon_days": 5,
+        "diagnostic_score": 68.87,
+        "follow_up_type": "NARROW_RETEST_CANDIDATE"
+      },
+      {
+        "rank": 3,
+        "lead_id": "short_horizon_residual_reversal_5d@21d",
+        "candidate": "short_horizon_residual_reversal_5d",
+        "family": "short_horizon_reversal",
+        "horizon_days": 21,
+        "diagnostic_score": 65.04,
+        "follow_up_type": "NARROW_RETEST_CANDIDATE"
+      },
+      {
+        "rank": 4,
+        "lead_id": "short_horizon_residual_reversal_5d@5d",
+        "candidate": "short_horizon_residual_reversal_5d",
+        "family": "short_horizon_reversal",
+        "horizon_days": 5,
+        "diagnostic_score": 60.48,
+        "follow_up_type": "HOLD_FOR_SECTOR_RELATIVE_VARIANT"
+      },
+      {
+        "rank": 5,
+        "lead_id": "short_horizon_residual_reversal_21d@5d",
+        "candidate": "short_horizon_residual_reversal_21d",
+        "family": "short_horizon_reversal",
+        "horizon_days": 5,
+        "diagnostic_score": 56.84,
+        "follow_up_type": "HOLD_FOR_SECTOR_RELATIVE_VARIANT"
+      }
+    ],
+    "best_lead": {
+      "rank": 1,
+      "lead_id": "short_horizon_residual_reversal_21d@21d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "family": "short_horizon_reversal",
+      "horizon_days": 21,
+      "diagnostic_score": 75.19,
+      "follow_up_type": "NARROW_RETEST_CANDIDATE"
+    },
+    "worst_lead": {
+      "rank": 5,
+      "lead_id": "short_horizon_residual_reversal_21d@5d",
+      "candidate": "short_horizon_residual_reversal_21d",
+      "family": "short_horizon_reversal",
+      "horizon_days": 5,
+      "diagnostic_score": 56.84,
+      "follow_up_type": "HOLD_FOR_SECTOR_RELATIVE_VARIANT"
+    }
+  },
+  "family_diagnostics": [
+    {
+      "family": "residual_price_momentum",
+      "group_key": "price_momentum_alternatives",
+      "n_targeted_leads": 1,
+      "n_narrow_retest": 1,
+      "n_diagnostic_only": 0,
+      "n_hold_for_sector_relative": 0,
+      "n_regime_dependent": 0,
+      "mean_diagnostic_score": 68.87,
+      "mean_residual_rank_ic": 0.013196,
+      "best_lead_id": "residual_price_momentum_12_1@5d",
+      "best_diagnostic_score": 68.87
+    },
+    {
+      "family": "short_horizon_reversal",
+      "group_key": "short_term_reversal_mean_reversion",
+      "n_targeted_leads": 4,
+      "n_narrow_retest": 2,
+      "n_diagnostic_only": 0,
+      "n_hold_for_sector_relative": 2,
+      "n_regime_dependent": 2,
+      "mean_diagnostic_score": 64.39,
+      "mean_residual_rank_ic": 0.011234,
+      "best_lead_id": "short_horizon_residual_reversal_21d@21d",
+      "best_diagnostic_score": 75.19
+    }
+  ],
+  "horizon_diagnostics": [
+    {
+      "horizon_days": 5,
+      "group_key": 5,
+      "n_targeted_leads": 3,
+      "n_narrow_retest": 1,
+      "n_diagnostic_only": 0,
+      "n_hold_for_sector_relative": 2,
+      "n_regime_dependent": 2,
+      "mean_diagnostic_score": 62.06,
+      "mean_residual_rank_ic": 0.010913,
+      "best_lead_id": "residual_price_momentum_12_1@5d",
+      "best_diagnostic_score": 68.87
+    },
+    {
+      "horizon_days": 21,
+      "group_key": 21,
+      "n_targeted_leads": 2,
+      "n_narrow_retest": 2,
+      "n_diagnostic_only": 0,
+      "n_hold_for_sector_relative": 0,
+      "n_regime_dependent": 0,
+      "mean_diagnostic_score": 70.12,
+      "mean_residual_rank_ic": 0.012696,
+      "best_lead_id": "short_horizon_residual_reversal_21d@21d",
+      "best_diagnostic_score": 75.19
+    }
+  ],
+  "blocker_analysis": {
+    "n_targeted_leads": 5,
+    "gate_failure_counts": {
+      "mean_residual_ic_above_floor": 5,
+      "no_regime_only_dependence": 2,
+      "bootstrap_ci_above_zero": 0,
+      "majority_dates_same_sign": 0,
+      "mean_residual_ic_positive": 0,
+      "no_excessive_ticker_concentration": 0,
+      "no_single_year_drives_result": 0
+    },
+    "most_common_failed_gate": "mean_residual_ic_above_floor",
+    "all_targeted_leads_fail_ic_floor": true,
+    "only_blocking_gate_is_sub_floor_ic": false,
+    "n_regime_dependent": 2,
+    "n_severe_concentration": 0,
+    "n_bootstrap_ci_straddles_zero": 0,
+    "n_leave_one_year_out_unstable": 0,
+    "family_counts": {
+      "residual_price_momentum": 1,
+      "short_horizon_reversal": 4
+    },
+    "horizon_counts": {
+      "5": 3,
+      "21": 2
+    },
+    "dominant_family": "short_horizon_reversal",
+    "targeted_set_clusters_around": "short_horizon_reversal",
+    "summary": "The dominant blocker across every targeted lead is a positive but sub-floor mean residual rank IC (below 0.03); none has a severe long-leg concentration problem. The targeted set clusters in the short-horizon reversal family, with the remaining obstruction on a minority of leads being regime sign dependence rather than concentration or single-year fragility. A clean point-in-time universe would only tighten, never rescue, these results."
+  },
+  "narrow_retest_plan": {
+    "no_model_training": true,
+    "no_model_candidate": true,
+    "no_deployment": true,
+    "no_trading_app_changes": true,
+    "no_new_d_screen": true,
+    "no_large_d_csv_read": true,
+    "narrow_retest_criteria": [
+      "mean residual rank IC is positive",
+      "moving-block bootstrap 95% CI lower bound is above zero",
+      "IC sign is stable under leave-one-year-out",
+      "at most the IC-floor keep gate failed (no regime / concentration / single-year failure)",
+      "no severe long-leg concentration (top-3 long-leg share at or below 0.5)",
+      "no regime sign dependence across SPY up/down or volatility splits",
+      "still no model candidate and no model training"
+    ],
+    "narrow_retest_candidate_lead_ids": [
+      "residual_price_momentum_12_1@5d",
+      "short_horizon_residual_reversal_5d@21d",
+      "short_horizon_residual_reversal_21d@21d"
+    ],
+    "hold_for_sector_relative_lead_ids": [
+      "short_horizon_residual_reversal_5d@5d",
+      "short_horizon_residual_reversal_21d@5d"
+    ],
+    "suggested_retest_steps": [
+      {
+        "rank": 1,
+        "action": "Pre-register the narrow retest: fix the exact leads, horizons, residualization, ranking, and CI method before touching data, so the retest cannot be over-fit.",
+        "model_free": true
+      },
+      {
+        "rank": 2,
+        "action": "Re-measure the residual rank IC and its moving-block bootstrap CI for each NARROW_RETEST_CANDIDATE lead at its own horizon only, with no expanded universe and no new candidates.",
+        "model_free": true
+      },
+      {
+        "rank": 3,
+        "action": "Hold the regime-dependent leads for a sector-relative variant: re-test them model-free only once a low-cost point-in-time sector map is available, to check whether sector neutralization removes the regime dependence.",
+        "model_free": true
+      },
+      {
+        "rank": 4,
+        "action": "Keep the stopped liquidity candidate avg_dollar_volume_21d excluded as a standalone alpha throughout; it may serve only as a control / neutralizer.",
+        "model_free": true
+      },
+      {
+        "rank": 5,
+        "action": "Stop and refresh the alpha backlog instead of escalating if the narrow retest does not reproduce an above-zero, year-stable edge; do not create a model candidate on a sub-floor IC.",
+        "model_free": true
+      }
+    ]
+  },
+  "follow_up_type_counts": {
+    "NARROW_RETEST_CANDIDATE": 3,
+    "DIAGNOSTIC_ONLY": 0,
+    "HOLD_FOR_SECTOR_RELATIVE_VARIANT": 2
+  },
+  "allowed_follow_up_types": [
+    "NARROW_RETEST_CANDIDATE",
+    "DIAGNOSTIC_ONLY",
+    "HOLD_FOR_SECTOR_RELATIVE_VARIANT"
+  ],
+  "recommendation": {
+    "recommendation": "RUN_NARROW_MODEL_FREE_RETEST",
+    "allowed_values": [
+      "RUN_NARROW_MODEL_FREE_RETEST",
+      "HOLD_FOR_SECTOR_RELATIVE_FEATURES",
+      "STOP_TARGETED_LEADS_AND_REFRESH_BACKLOG"
+    ],
+    "n_targeted_leads": 5,
+    "n_narrow_retest_candidates": 3,
+    "n_diagnostic_only": 0,
+    "n_hold_for_sector_relative": 2,
+    "upstream_routing_confirmed": true,
+    "create_model_candidate_now": false,
+    "train_model_now": false,
+    "deploy_now": false,
+    "ran_new_d_screen": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "reason": "3 of 5 targeted lead(s) clear the conservative narrow-retest bar (positive mean IC, bootstrap CI above zero, year-stable sign, only the IC floor failed, no severe concentration, no regime dependence); a narrow, pre-registered, model-free retest of just those leads is justified. No lead becomes a model candidate, nothing is trained, no new D: screen is run, and the results remain survivorship-biased and not a production edge."
+  },
+  "interpretation": {
+    "model_trained": false,
+    "model_fitted": false,
+    "model_candidate_created": false,
+    "authorized_to_train_model": false,
+    "authorized_to_serve_model": false,
+    "ran_new_d_screen": false,
+    "read_large_d_csv": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 2K-M took only the 5 TARGETED_DIAGNOSTIC_CANDIDATE leads from the Phase 2K-L diagnostics and profiled them using the Phase 2K-K / 2K-L metrics only -- it ran no new D: screen, read no large D: CSV, and fitted nothing. It confirmed each targeted lead traces back to a RESEARCH_LEAD_ONLY Phase 2K-K pair, found the dominant blocker to be a positive but sub-floor information coefficient (with regime sign dependence on a minority of leads and no concentration problem), assigned each lead a conservative follow-up type, and justified a narrow, pre-registered, model-free retest of the best targeted leads. The stopped liquidity candidate avg_dollar_volume_21d stays excluded as a standalone alpha. No model was trained, fitted, or created, every result is reported as survivorship-biased, and no production edge is claimed."
+  },
+  "recommended_next_phase": {
+    "phase": "2K-N",
+    "title": "Narrow Model-Free Retest for Best Targeted Alpha Leads",
+    "purpose": "Run a narrow, pre-registered, model-free retest only on the best targeted leads (re-measuring residual rank IC and its bootstrap CI at each lead's own horizon), still with no model training and no model-candidate design. Results remain survivorship-biased and not a production edge."
+  }
+}
