@@ -451,6 +451,159 @@ def test_doc_has_required_phrases():
 
 
 # --------------------------------------------------------------------------- #
+# 21-27. Robust --execute retrieval normalization, diagnostics, and loud failure
+#        (monkeypatch-free: local DataFrames + plain function injection; no network)
+# --------------------------------------------------------------------------- #
+def _fake_yf_single_level(pd, n=5):
+    """A single-level-column download frame, like yfinance returns for one ticker."""
+    idx = pd.to_datetime([f"2020-01-0{i + 1}" for i in range(n)])
+    return pd.DataFrame({
+        "Open": [10.0 + i for i in range(n)],
+        "High": [11.0 + i for i in range(n)],
+        "Low": [9.0 + i for i in range(n)],
+        "Close": [10.5 + i for i in range(n)],
+        "Volume": [1000 + i for i in range(n)],
+    }, index=idx)
+
+
+def _fake_yf_multiindex(pd, ticker="MMC", n=5):
+    """A multi-index (field, ticker) column download frame, the shape that broke the build."""
+    idx = pd.to_datetime([f"2020-01-0{i + 1}" for i in range(n)])
+    cols = pd.MultiIndex.from_tuples([
+        ("Open", ticker), ("High", ticker), ("Low", ticker),
+        ("Close", ticker), ("Volume", ticker)])
+    data = [[10.0 + i, 11.0 + i, 9.0 + i, 10.5 + i, 1000 + i] for i in range(n)]
+    return pd.DataFrame(data, index=idx, columns=cols)
+
+
+def test_normalize_single_level_yf_frame():
+    import pandas as pd
+    builder = _import_builder()
+    out = builder._normalize_yf_frame(_fake_yf_single_level(pd, 5), "abc")
+    assert out is not None and len(out) == 5
+    assert list(out.columns) == list(builder.RAW_COLUMNS)
+    assert set(out["ticker"]) == {"ABC"}
+    assert bool(out["adjusted_close"].notna().all())
+    assert float(out["adjusted_open"].iloc[0]) == 10.0
+    assert float(out["adjusted_close"].iloc[0]) == 10.5
+
+
+def test_normalize_multiindex_yf_frame():
+    import pandas as pd
+    builder = _import_builder()
+    out = builder._normalize_yf_frame(_fake_yf_multiindex(pd, "MMC", 5), "MMC")
+    assert out is not None and len(out) == 5, \
+        "a multi-index download must normalize, not collapse to empty"
+    assert list(out.columns) == list(builder.RAW_COLUMNS)
+    assert set(out["ticker"]) == {"MMC"}
+    assert float(out["adjusted_close"].iloc[0]) == 10.5
+
+
+def test_normalize_close_only_fallback():
+    import pandas as pd
+    builder = _import_builder()
+    idx = pd.to_datetime(["2020-01-01", "2020-01-02", "2020-01-03"])
+    raw = pd.DataFrame({"Close": [10.0, 11.0, 12.0]}, index=idx)
+    out = builder._normalize_yf_frame(raw, "ZZZ")
+    assert out is not None and len(out) == 3
+    # Open/High/Low safely mirror the close; volume stays missing (not forward filled).
+    for col in ("adjusted_open", "adjusted_high", "adjusted_low"):
+        assert list(out[col]) == list(out["adjusted_close"])
+    assert bool(out["volume"].isna().all())
+
+
+def test_retrieval_diagnostics_one_failure_not_empty():
+    import pandas as pd
+    builder = _import_builder()
+    f1 = builder._normalize_yf_frame(_fake_yf_single_level(pd, 4), "AAA")
+    f2 = builder._normalize_yf_frame(_fake_yf_multiindex(pd, "BBB", 4), "BBB")
+    combined = pd.concat([f1, f2], ignore_index=True)
+    diag = builder.build_retrieval_diagnostics(
+        requested=["AAA", "BBB", "MMC"], successful=["AAA", "BBB"],
+        failed=["MMC"], empty=[], rows_downloaded=int(len(combined)))
+    # One failed ticker must NOT empty the whole panel.
+    assert len(combined) == 8
+    assert diag["requested_ticker_count"] == 3
+    assert diag["successful_ticker_count"] == 2
+    assert diag["failed_ticker_count"] == 1
+    assert diag["failed_tickers"] == ["MMC"]
+    assert diag["rows_downloaded"] == 8
+
+
+def test_evaluate_build_result_refuses_fail_or_empty():
+    builder = _import_builder()
+    # Refuse: zero rows, and/or DQ FAIL, and/or non-PASS status.
+    assert builder.evaluate_build_result(0, "PASS")["ok"] is False
+    assert builder.evaluate_build_result(0, "FAIL")["ok"] is False
+    assert builder.evaluate_build_result(100, "FAIL")["ok"] is False
+    assert builder.evaluate_build_result(100, None)["ok"] is False
+    # Accept only a positive row count with PASS / PASS_WITH_CAVEAT.
+    assert builder.evaluate_build_result(100, "PASS")["ok"] is True
+    assert builder.evaluate_build_result(100, "PASS_WITH_CAVEAT")["ok"] is True
+
+
+def test_execute_refuses_on_empty_build():
+    """execute_build must exit non-zero on a zero-row / DQ-FAIL build (no network)."""
+    import pandas as pd
+    builder = _import_builder()
+    orig = builder._retrieve_free_price_history
+
+    def _fake_retrieve(tickers, start, end, *, cache_dir=None, max_retries=3):
+        diag = builder.build_retrieval_diagnostics(
+            requested=list(tickers), successful=[], failed=list(tickers),
+            empty=[], rows_downloaded=0)
+        return pd.DataFrame(columns=list(builder.RAW_COLUMNS)), diag
+
+    builder._retrieve_free_price_history = _fake_retrieve
+    out_dir = tempfile.mkdtemp(prefix="phase2k_g_execute_refuse_")
+    try:
+        raised = False
+        try:
+            builder.execute_build(
+                universe_path=_SAMPLE_UNIVERSE, start="2016-01-01", end="2026-01-01",
+                allow_network=True, output_dir=out_dir, cache_dir=None)
+        except builder.BuilderRefusal as e:
+            raised = True
+            assert e.exit_code != 0, "a bad build must carry a non-zero exit code"
+        assert raised, "execute_build must refuse a zero-row / DQ-FAIL build"
+        # It still wrote a build summary for inspection, marked NOT BUILD_OK.
+        summ = json.loads(_read(
+            os.path.join(out_dir, "phase2k_g_data_build_summary.json")))
+        assert summ["row_count"] == 0
+        assert summ["data_quality_status"] == "FAIL"
+        assert summ["build_ok"] is False
+        assert "retrieval_diagnostics" in summ
+    finally:
+        builder._retrieve_free_price_history = orig
+    # We passed output_dir=out_dir, so the failure outputs landed in the temp dir.
+    assert os.path.isfile(os.path.join(out_dir, "phase2k_g_data_build_summary.json"))
+
+
+def test_build_summary_carries_retrieval_diagnostics():
+    builder = _import_builder()
+    raw = builder.make_fixture_raw()
+    panel = builder.normalize_price_history(raw)
+    scored = builder.compute_basic_features(panel, builder.BENCHMARK)
+    universe = builder.load_universe(_SAMPLE_UNIVERSE)
+    dq = builder.run_data_quality_checks(scored, universe, builder.BENCHMARK)
+    retrieval = builder.build_retrieval_diagnostics(
+        requested=["AAPL", "MSFT", "SPY"], successful=["AAPL", "MSFT", "SPY"],
+        failed=[], empty=[], rows_downloaded=int(len(panel)))
+    summ = builder.build_summary(
+        scored, universe_df=universe, benchmark=builder.BENCHMARK,
+        source="fixture", mode="execute", dq=dq, params={}, retrieval=retrieval)
+    assert "retrieval_diagnostics" in summ
+    for k in ("requested_ticker_count", "successful_ticker_count", "failed_ticker_count",
+              "failed_tickers", "empty_tickers", "rows_downloaded"):
+        assert k in summ["retrieval_diagnostics"], f"diagnostics missing: {k}"
+    # Without retrieval (fixture mode) the key is absent — back-compat preserved.
+    summ2 = builder.build_summary(
+        scored, universe_df=universe, benchmark=builder.BENCHMARK,
+        source="fixture", mode="fixture-mode", dq=dq, params={})
+    assert "retrieval_diagnostics" not in summ2
+
+
+# --------------------------------------------------------------------------- #
 # Self-running harness (no pytest required)
 # --------------------------------------------------------------------------- #
 def _run_all():

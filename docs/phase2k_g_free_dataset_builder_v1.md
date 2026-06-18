@@ -141,6 +141,31 @@ checks and pass/fail gates, and write the five real outputs into
 **does not enable** the model-v2 flag, **does not write to production DB**, **does not run
 migrations**, **does not trade**, and claims no **production edge**.
 
+## Robust retrieval and loud build failure (BUILD_OK vs. refusal)
+
+The first manual `--execute` run exited 0 while producing `rows=0 dq=FAIL`, so a completely
+empty dataset was almost mistaken for a good build. The builder now guards against that:
+
+- **Robust per-ticker normalization.** `_normalize_yf_frame` handles single-level columns,
+  multi-index `(field, ticker)` columns, and a close-only frame (Open/High/Low safely mirror
+  the adjusted close; volume stays missing rather than being forward filled). A single ticker
+  returning an unexpected shape no longer raises through the loop and silently empties the
+  whole build.
+- **Individual ticker failures are allowed and reported.** A failed or empty ticker (e.g. MMC)
+  is recorded — it does **not** abort the run — and the per-run retrieval diagnostics
+  (`requested_ticker_count`, `successful_ticker_count`, `failed_ticker_count`,
+  `failed_tickers`, `empty_tickers`, `rows_downloaded`) are printed to stdout and embedded in
+  the build summary JSON as `retrieval_diagnostics`.
+- **A bad live build fails loudly.** `evaluate_build_result` treats a build as **failed** when
+  the normalized `row_count == 0` **or** `data_quality_status == FAIL`. In that case
+  `execute_build` still writes the five outputs (so the failed run can be inspected), marks the
+  summary `build_ok = false`, prints a clear refusal message, and the CLI **exits non-zero** so
+  PowerShell never reports it as `BUILD_OK`.
+- **A successful command must create non-empty data with a passing data quality.** The only
+  acceptable result is a positive row count together with a `PASS` or `PASS_WITH_CAVEAT`
+  data-quality status. The large outputs always remain on
+  `D:\Stock_Prediction_app_data\phase2k_g`, never in the C: repo.
+
 ## Why no model candidate is created yet
 
 This phase builds tooling and data plumbing, not models. The Phase 2K-A model-candidate gate

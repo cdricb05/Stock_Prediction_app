@@ -107,6 +107,33 @@ confirms no model candidate was created, the analyzer records
 **"Expanded Dataset Residual Signal Retest"**. The expanded panel is then ready to retest the
 liquidity candidate `avg_dollar_volume_21d`, with every result reported as survivorship-biased.
 
+## When a manual run must be treated as failed
+
+The first manual `--execute` run exited 0 but produced `rows=0 dq=FAIL`: the free retrieval
+returned unexpected column shapes per ticker, every ticker was skipped, and an empty dataset
+was nearly mistaken for a good build. The analyzer correctly recorded
+`manual_build_detected = true`, `data_quality_status = FAIL`, `ready_for_retest = false`, and
+routed back to **2K-H-RUN**. The Phase 2K-G builder has since been hardened so this cannot be
+silently mistaken for `BUILD_OK`:
+
+- **A live build is failed when `row_count == 0` or `data_quality_status == FAIL`.** In that
+  case the builder still writes the five outputs for inspection but marks the summary
+  `build_ok = false` and **exits non-zero**, so PowerShell never treats it as `BUILD_OK`.
+- **Individual ticker failures are allowed, but must be reported.** A failed or empty ticker
+  does not abort the run; it is recorded in the build summary's `retrieval_diagnostics`
+  (`failed_tickers`, `empty_tickers`, plus requested/successful/rows counts) and printed to
+  stdout.
+- **A successful command must create non-empty data with `PASS` or `PASS_WITH_CAVEAT`.** Only
+  then is the run a real build, and only then does this analyzer route forward to 2K-I.
+- **Large outputs remain on `D:\Stock_Prediction_app_data\phase2k_g`** in every case, never in
+  the C: repo.
+
+Re-run the hardened manual build command above, then re-run this analyzer; once the run
+produces non-empty data that is `PASS` / `PASS_WITH_CAVEAT`, the analyzer routes to 2K-I. This
+phase still **does not deploy**, **does not restart stock-api.service**, **does not enable** the
+model-v2 flag, **does not run migrations**, **does not write to production DB**, **does not
+trade**, and claims no **production edge**.
+
 ## Why no model candidate is created yet
 
 This phase produces and tracks data, not models. The Phase 2K-A model-candidate gate stays

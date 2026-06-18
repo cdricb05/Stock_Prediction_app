@@ -13,7 +13,10 @@ no file. All work happens behind explicit CLI modes:
                      write only into a caller-provided temp output directory. No network.
   * --execute:      LATER, MANUAL use only. Guarded free-data retrieval that additionally
                      requires --allow-network. Without --allow-network it fails safely and
-                     fetches nothing. This mode is never run in the tests or the analyzer.
+                     fetches nothing. Per-ticker retrieval is robust to varied column shapes
+                     and records per-ticker successes/failures; a build that yields zero rows
+                     or a FAIL data-quality status exits non-zero (never reported as BUILD_OK).
+                     This mode is never run in the tests or the analyzer.
 
 The pure helpers (load_universe / validate_universe / normalize_price_history /
 compute_basic_features / run_data_quality_checks / build_summary / build_survivorship_caveat)
@@ -365,13 +368,18 @@ def run_data_quality_checks(price_df: "pd.DataFrame", universe_df: "pd.DataFrame
 # --------------------------------------------------------------------------- #
 def build_summary(price_df: "pd.DataFrame", *, universe_df: "pd.DataFrame",
                   benchmark: str, source: str, mode: str,
-                  dq: Dict[str, Any], params: Optional[Dict[str, Any]] = None
-                  ) -> Dict[str, Any]:
-    """Assemble the reproducible build-summary with all required safety flags."""
+                  dq: Dict[str, Any], params: Optional[Dict[str, Any]] = None,
+                  retrieval: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """Assemble the reproducible build-summary with all required safety flags.
+
+    When `retrieval` diagnostics are supplied (the --execute path), they are embedded so a
+    later reader can see how many tickers were requested / succeeded / failed and how many
+    rows were actually downloaded.
+    """
     n = len(price_df)
     dates = sorted(set(price_df["date"].tolist())) if n else []
     tickers = sorted(set(price_df["ticker"].tolist())) if n else []
-    return {
+    summary: Dict[str, Any] = {
         "phase": PHASE,
         "source": source,
         "mode": mode,
@@ -398,6 +406,47 @@ def build_summary(price_df: "pd.DataFrame", *, universe_df: "pd.DataFrame",
         "model_trained": False,
         "model_candidate_created": False,
         "params": dict(params or {}),
+    }
+    if retrieval is not None:
+        summary["retrieval_diagnostics"] = dict(retrieval)
+    return summary
+
+
+def evaluate_build_result(row_count: int,
+                          dq_status: Optional[str]) -> Dict[str, Any]:
+    """Decide whether an --execute build produced a usable dataset.
+
+    A live build is a FAILURE — it must exit non-zero and must never be reported as BUILD_OK —
+    when it produced zero rows OR the data-quality status is FAIL. The only acceptable result
+    is a positive row count with a PASS or PASS_WITH_CAVEAT data-quality status. Individual
+    ticker failures are tolerated upstream (and recorded in the retrieval diagnostics); this
+    gate fires only on a globally unusable dataset.
+    """
+    row_count = int(row_count or 0)
+    status = (dq_status or "").upper()
+    empty = row_count <= 0
+    dq_failed = status == "FAIL"
+    ok = (not empty) and (not dq_failed) and status in ("PASS", "PASS_WITH_CAVEAT")
+    if ok:
+        reason = f"Build OK: rows={row_count}, data_quality_status={status}."
+    elif empty and dq_failed:
+        reason = (f"Build FAILED: zero usable rows and data_quality_status=FAIL "
+                  f"(rows={row_count}).")
+    elif empty:
+        reason = (f"Build FAILED: zero usable rows "
+                  f"(rows={row_count}, status={status or 'NONE'}).")
+    elif dq_failed:
+        reason = f"Build FAILED: data_quality_status=FAIL (rows={row_count})."
+    else:
+        reason = (f"Build FAILED: data_quality_status={status or 'NONE'} is not "
+                  f"PASS/PASS_WITH_CAVEAT (rows={row_count}).")
+    return {
+        "ok": ok,
+        "row_count": row_count,
+        "data_quality_status": status or None,
+        "empty": empty,
+        "data_quality_failed": dq_failed,
+        "reason": reason,
     }
 
 
@@ -548,50 +597,162 @@ def fixture_run(output_dir: str,
     return result
 
 
+def _column_series(raw: "pd.DataFrame", field: str) -> Optional["pd.Series"]:
+    """Extract one OHLCV field as a 1-D Series from a single- or multi-index column frame.
+
+    The free data library may return either single-level columns
+    (`Open/High/Low/Close/Volume`) or a `MultiIndex` (e.g. `(field, ticker)` or
+    `(ticker, field)`), depending on version and call shape. This locates `field` at whichever
+    column level carries it and squeezes to a 1-D Series. Returns None when the field is
+    absent. Pure; no network.
+    """
+    cols = raw.columns
+    if isinstance(cols, pd.MultiIndex):
+        for level in range(cols.nlevels):
+            if field in set(cols.get_level_values(level)):
+                sub = raw.xs(field, axis=1, level=level)
+                if isinstance(sub, pd.DataFrame):
+                    if sub.shape[1] == 0:
+                        return None
+                    sub = sub.iloc[:, 0]
+                return sub
+        return None
+    if field in cols:
+        col = raw[field]
+        if isinstance(col, pd.DataFrame):  # duplicate column labels
+            col = col.iloc[:, 0]
+        return col
+    return None
+
+
+def _normalize_yf_frame(raw: Optional["pd.DataFrame"],
+                        ticker: str) -> Optional["pd.DataFrame"]:
+    """Normalize one free-source download into the RAW_COLUMNS schema. Pure; no network.
+
+    Robust to single-level and multi-index columns, missing `Open/High/Low` (safe fallback to
+    the adjusted close), and missing/empty volume. Returns None when the frame is empty or has
+    no usable close. No price is forward filled.
+    """
+    if raw is None or len(raw) == 0:
+        return None
+    close = _column_series(raw, "Close")
+    if close is None:
+        close = _column_series(raw, "Adj Close")
+    if close is None:
+        return None
+    close_v = pd.to_numeric(pd.Series(list(close)), errors="coerce")
+    if not bool(close_v.notna().any()):
+        return None
+    idx = pd.to_datetime(raw.index)
+    dates = [d.date().isoformat() for d in idx]
+
+    def _num(field: str) -> Optional["pd.Series"]:
+        s = _column_series(raw, field)
+        if s is None:
+            return None
+        return pd.to_numeric(pd.Series(list(s)), errors="coerce")
+
+    open_v = _num("Open")
+    high_v = _num("High")
+    low_v = _num("Low")
+    vol_v = _num("Volume")
+    # Safe fallback: if Open/High/Low are missing but a close exists, mirror the close.
+    if open_v is None:
+        open_v = close_v
+    if high_v is None:
+        high_v = close_v
+    if low_v is None:
+        low_v = close_v
+    if vol_v is None:
+        vol_v = pd.Series([math.nan] * len(close_v))
+    out = pd.DataFrame({
+        "ticker": str(ticker).strip().upper(),
+        "date": dates,
+        "adjusted_open": open_v.to_numpy(),
+        "adjusted_high": high_v.to_numpy(),
+        "adjusted_low": low_v.to_numpy(),
+        "adjusted_close": close_v.to_numpy(),
+        "volume": vol_v.to_numpy(),
+    }, columns=list(RAW_COLUMNS))
+    return out if len(out) else None
+
+
+def build_retrieval_diagnostics(*, requested: Sequence[str], successful: Sequence[str],
+                                failed: Sequence[str], empty: Sequence[str],
+                                rows_downloaded: int) -> Dict[str, Any]:
+    """Assemble per-run retrieval diagnostics. Pure; no network.
+
+    A single failed or empty ticker is recorded here and tolerated; it must never silently
+    collapse the whole build to zero rows without being reported.
+    """
+    return {
+        "requested_ticker_count": len(list(requested)),
+        "successful_ticker_count": len(list(successful)),
+        "failed_ticker_count": len(list(failed)),
+        "failed_tickers": [str(t) for t in failed],
+        "empty_tickers": [str(t) for t in empty],
+        "rows_downloaded": int(rows_downloaded),
+    }
+
+
 def _retrieve_free_price_history(tickers: Sequence[str], start: str, end: str,
                                  *, cache_dir: Optional[str] = None,
-                                 max_retries: int = 3) -> "pd.DataFrame":
+                                 max_retries: int = 3):
     """GUARDED free retrieval for the manual --execute path only.
 
     Lazily imports the free data library so importing this module stays network-free. Uses a
-    chunked per-ticker loop with retry / backoff and an optional local on-disk cache. Never
-    reached by the tests or the analyzer.
+    per-ticker loop with retry / backoff, robust column normalization, and an optional local
+    on-disk cache. Returns a `(combined_raw_frame, diagnostics)` tuple so a single ticker
+    failure (e.g. MMC) is recorded in the diagnostics instead of silently emptying the build.
+    Never reached by the tests or the analyzer.
     """
     import yfinance as yf  # local import keeps module import network-free
 
+    requested = [str(t) for t in tickers]
     frames: List["pd.DataFrame"] = []
-    for ticker in tickers:
+    successful: List[str] = []
+    failed: List[str] = []
+    empty: List[str] = []
+    for ticker in requested:
         cache_path = (os.path.join(cache_dir, f"{ticker}.csv") if cache_dir else None)
         if cache_path and os.path.isfile(cache_path):
-            frames.append(pd.read_csv(cache_path))
+            cached = pd.read_csv(cache_path)
+            if len(cached):
+                frames.append(cached)
+                successful.append(ticker)
+            else:
+                empty.append(ticker)
             continue
         one: Optional["pd.DataFrame"] = None
+        errored = False
         for attempt in range(max_retries):
+            errored = False
             try:
                 raw = yf.download(ticker, start=start, end=end, auto_adjust=True,
                                   progress=False, threads=False)
-                if raw is not None and len(raw):
-                    idx = pd.to_datetime(raw.index)
-                    one = pd.DataFrame({
-                        "ticker": ticker,
-                        "date": [d.date().isoformat() for d in idx],
-                        "adjusted_open": pd.to_numeric(raw["Open"].to_numpy(), errors="coerce"),
-                        "adjusted_high": pd.to_numeric(raw["High"].to_numpy(), errors="coerce"),
-                        "adjusted_low": pd.to_numeric(raw["Low"].to_numpy(), errors="coerce"),
-                        "adjusted_close": pd.to_numeric(raw["Close"].to_numpy(), errors="coerce"),
-                        "volume": pd.to_numeric(raw["Volume"].to_numpy(), errors="coerce"),
-                    })
+                one = _normalize_yf_frame(raw, ticker)
                 break
-            except Exception:  # noqa: BLE001 - transient; back off and retry
+            except Exception:  # noqa: BLE001 - transient or unexpected shape; back off + retry
+                errored = True
                 time.sleep(min(2 ** attempt, 8))
-        if one is not None and len(one):
-            if cache_path:
-                _ensure_dir(cache_path)
-                one.to_csv(cache_path, index=False)
-            frames.append(one)
-    if not frames:
-        return pd.DataFrame(columns=list(RAW_COLUMNS))
-    return pd.concat(frames, ignore_index=True)
+        if errored and one is None:
+            failed.append(ticker)
+            continue
+        if one is None or len(one) == 0:
+            empty.append(ticker)
+            continue
+        if cache_path:
+            _ensure_dir(cache_path)
+            one.to_csv(cache_path, index=False)
+        frames.append(one)
+        successful.append(ticker)
+    rows_downloaded = int(sum(len(f) for f in frames))
+    combined = (pd.concat(frames, ignore_index=True) if frames
+                else pd.DataFrame(columns=list(RAW_COLUMNS)))
+    diagnostics = build_retrieval_diagnostics(
+        requested=requested, successful=successful, failed=failed, empty=empty,
+        rows_downloaded=rows_downloaded)
+    return combined, diagnostics
 
 
 def execute_build(*, universe_path: str, start: Optional[str], end: Optional[str],
@@ -611,15 +772,19 @@ def execute_build(*, universe_path: str, start: Optional[str], end: Optional[str
 
     universe = load_universe(universe_path)
     tickers = [t for t in universe["ticker"].tolist() if t]
-    raw = _retrieve_free_price_history(tickers, start, end, cache_dir=cache_dir)
+    raw, retrieval = _retrieve_free_price_history(tickers, start, end, cache_dir=cache_dir)
     panel = normalize_price_history(raw)
     scored = compute_basic_features(panel, BENCHMARK)
     dq = run_data_quality_checks(scored, universe, BENCHMARK)
+    verdict = evaluate_build_result(int(len(panel)), dq.get("status"))
     caveat = build_survivorship_caveat(universe, {"active_as_of": end, "source": SOURCE})
     summary = build_summary(scored, universe_df=universe, benchmark=BENCHMARK,
                             source=SOURCE, mode="execute", dq=dq,
                             params={"universe_file": _norm(universe_path),
-                                    "start": start, "end": end})
+                                    "start": start, "end": end},
+                            retrieval=retrieval)
+    summary["build_ok"] = verdict["ok"]
+    summary["build_result_reason"] = verdict["reason"]
 
     os.makedirs(output_dir, exist_ok=True)
     panel.to_csv(os.path.join(output_dir, os.path.basename(REAL_PRICE_HISTORY_CSV)),
@@ -629,6 +794,26 @@ def execute_build(*, universe_path: str, start: Optional[str], end: Optional[str
     _write_json(dq, os.path.join(output_dir, os.path.basename(REAL_DATA_QUALITY_JSON)))
     _write_json(summary, os.path.join(output_dir, os.path.basename(REAL_BUILD_SUMMARY_JSON)))
     _write_json(caveat, os.path.join(output_dir, os.path.basename(REAL_SURVIVORSHIP_JSON)))
+
+    # Always surface retrieval diagnostics in execute mode.
+    print(f"[phase2k-g] execute retrieval: "
+          f"requested={retrieval['requested_ticker_count']} "
+          f"ok={retrieval['successful_ticker_count']} "
+          f"failed={retrieval['failed_ticker_count']} "
+          f"empty={len(retrieval['empty_tickers'])} "
+          f"rows={retrieval['rows_downloaded']}")
+    if retrieval["failed_tickers"]:
+        print(f"[phase2k-g] execute failed_tickers: {retrieval['failed_tickers']}")
+
+    # Fail loudly: a zero-row or DQ-FAIL build must never be mistaken for BUILD_OK.
+    if not verdict["ok"]:
+        raise BuilderRefusal(
+            f"live build is NOT usable -> {verdict['reason']} "
+            f"successful_tickers={retrieval['successful_ticker_count']}/"
+            f"{retrieval['requested_ticker_count']}; "
+            f"failed_tickers={retrieval['failed_tickers']}. Outputs were written for "
+            f"inspection only; this run is NOT BUILD_OK. Fix retrieval and re-run.",
+            exit_code=1)
     return summary
 
 
@@ -676,7 +861,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 allow_network=args.allow_network,
                 output_dir=output_dir, cache_dir=cache_dir)
             print(f"[phase2k-g] execute: rows={summary['row_count']} "
-                  f"dq={summary['data_quality_status']}")
+                  f"dq={summary['data_quality_status']} "
+                  f"build_ok={summary.get('build_ok')} -> BUILD_OK")
             return 0
         if args.fixture_mode:
             out_dir = args.output_dir or tempfile.mkdtemp(prefix="phase2k_g_fixture_")
