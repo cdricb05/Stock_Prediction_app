@@ -1,0 +1,26 @@
+ticker,warning_type,fiscal_period_end,fiscal_period,normalized_field,current_value,prior_value,pct_change,severity,note
+AAPL,extreme_pct_change,2017-09-30,FY,revenue,229234000000,45408000000,4.0483,info,abs pct change vs prior same-form period exceeds 300%
+AAPL,extreme_pct_change,2018-09-29,FY,revenue,265595000000,53265000000,3.9863,info,abs pct change vs prior same-form period exceeds 300%
+MSFT,extreme_pct_change,2010-06-30,FY,revenue,62484000000,14503000000,3.3083,info,abs pct change vs prior same-form period exceeds 300%
+AMZN,extreme_pct_change,2017-12-31,FY,revenue,177866000000,43744000000,3.0661,info,abs pct change vs prior same-form period exceeds 300%
+BAC,sign_flip,2024-09-30,Q3,operating_cash_flow,-34719000000,2557000000,-14.578,warning,value changed sign vs prior same-form period
+BAC,extreme_pct_change,2024-09-30,Q3,operating_cash_flow,-34719000000,2557000000,-14.578,info,abs pct change vs prior same-form period exceeds 300%
+BAC,extreme_pct_change,2025-06-30,Q2,operating_cash_flow,-11316000000,-2184000000,-4.1813,info,abs pct change vs prior same-form period exceeds 300%
+BAC,sign_flip,2025-09-30,Q3,operating_cash_flow,35558000000,-11316000000,4.1423,warning,value changed sign vs prior same-form period
+BAC,extreme_pct_change,2025-09-30,Q3,operating_cash_flow,35558000000,-11316000000,4.1423,info,abs pct change vs prior same-form period exceeds 300%
+BAC,sign_flip,2025-12-31,FY,operating_cash_flow,12613000000,-8805000000,2.4325,warning,value changed sign vs prior same-form period
+PFE,sign_flip,2024-09-29,Q3,operating_cash_flow,6023000000,-691000000,9.7164,warning,value changed sign vs prior same-form period
+PFE,extreme_pct_change,2024-09-29,Q3,operating_cash_flow,6023000000,-691000000,9.7164,info,abs pct change vs prior same-form period exceeds 300%
+PFE,sign_flip,2024-09-29,Q3,free_cash_flow,4031000000,-2032000000,2.9838,warning,value changed sign vs prior same-form period
+PFE,extreme_pct_change,2025-09-28,Q3,free_cash_flow,4572000000,571000000,7.007,info,abs pct change vs prior same-form period exceeds 300%
+KO,sign_flip,2025-03-28,Q1,operating_cash_flow,-5202000000,2854000000,-2.8227,warning,value changed sign vs prior same-form period
+KO,sign_flip,2025-09-26,Q3,operating_cash_flow,3652000000,-1391000000,3.6254,warning,value changed sign vs prior same-form period
+KO,extreme_pct_change,2025-09-26,Q3,operating_cash_flow,3652000000,-1391000000,3.6254,info,abs pct change vs prior same-form period exceeds 300%
+KO,sign_flip,2025-03-28,Q1,free_cash_flow,-5511000000,1593000000,-4.4595,warning,value changed sign vs prior same-form period
+KO,extreme_pct_change,2025-03-28,Q1,free_cash_flow,-5511000000,1593000000,-4.4595,info,abs pct change vs prior same-form period exceeds 300%
+KO,sign_flip,2025-09-26,Q3,free_cash_flow,2422000000,-2142000000,2.1307,warning,value changed sign vs prior same-form period
+DIS,extreme_pct_change,2026-03-28,Q2,operating_cash_flow,7649000000,735000000,9.4068,info,abs pct change vs prior same-form period exceeds 300%
+DIS,extreme_pct_change,2025-03-29,Q2,free_cash_flow,5630000000,739000000,6.6184,info,abs pct change vs prior same-form period exceeds 300%
+DIS,sign_flip,2025-12-27,Q1,free_cash_flow,-2278000000,7519000000,-1.303,warning,value changed sign vs prior same-form period
+DIS,sign_flip,2026-03-28,Q2,free_cash_flow,2663000000,-2278000000,2.169,warning,value changed sign vs prior same-form period
+CAT,extreme_pct_change,2025-06-30,Q2,free_cash_flow,3146000000,579000000,4.4335,info,abs pct change vs prior same-form period exceeds 300%

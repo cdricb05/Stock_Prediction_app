@@ -1,0 +1,102 @@
+{
+ "0": {
+  "cik_str": 1045810,
+  "ticker": "NVDA",
+  "title": "NVIDIA CORP"
+ },
+ "1": {
+  "cik_str": 1652044,
+  "ticker": "GOOGL",
+  "title": "Alphabet Inc."
+ },
+ "2": {
+  "cik_str": 320193,
+  "ticker": "AAPL",
+  "title": "Apple Inc."
+ },
+ "3": {
+  "cik_str": 789019,
+  "ticker": "MSFT",
+  "title": "MICROSOFT CORP"
+ },
+ "4": {
+  "cik_str": 1018724,
+  "ticker": "AMZN",
+  "title": "AMAZON COM INC"
+ },
+ "5": {
+  "cik_str": 1326801,
+  "ticker": "META",
+  "title": "Meta Platforms, Inc."
+ },
+ "6": {
+  "cik_str": 19617,
+  "ticker": "JPM",
+  "title": "JPMORGAN CHASE & CO"
+ },
+ "7": {
+  "cik_str": 34088,
+  "ticker": "XOM",
+  "title": "EXXON MOBIL CORP"
+ },
+ "8": {
+  "cik_str": 200406,
+  "ticker": "JNJ",
+  "title": "JOHNSON & JOHNSON"
+ },
+ "9": {
+  "cik_str": 18230,
+  "ticker": "CAT",
+  "title": "CATERPILLAR INC"
+ },
+ "10": {
+  "cik_str": 70858,
+  "ticker": "BAC",
+  "title": "BANK OF AMERICA CORP /DE/"
+ },
+ "11": {
+  "cik_str": 93410,
+  "ticker": "CVX",
+  "title": "CHEVRON CORP"
+ },
+ "12": {
+  "cik_str": 731766,
+  "ticker": "UNH",
+  "title": "UNITEDHEALTH GROUP INC"
+ },
+ "13": {
+  "cik_str": 21344,
+  "ticker": "KO",
+  "title": "COCA COLA CO"
+ },
+ "14": {
+  "cik_str": 40545,
+  "ticker": "GE",
+  "title": "GENERAL ELECTRIC CO"
+ },
+ "15": {
+  "cik_str": 80424,
+  "ticker": "PG",
+  "title": "PROCTER & GAMBLE Co"
+ },
+ "16": {
+  "cik_str": 354950,
+  "ticker": "HD",
+  "title": "HOME DEPOT, INC."
+ },
+ "17": {
+  "cik_str": 753308,
+  "ticker": "NEE",
+  "title": "NEXTERA ENERGY INC"
+ },
+ "18": {
+  "cik_str": 1744489,
+  "ticker": "DIS",
+  "title": "Walt Disney Co"
+ },
+ "19": {
+  "cik_str": 78003,
+  "ticker": "PFE",
+  "title": "PFIZER INC"
+ }
+}

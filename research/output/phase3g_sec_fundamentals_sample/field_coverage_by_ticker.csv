@@ -1,0 +1,201 @@
+ticker,sector,field,rows,has_field,latest_fiscal_period_end,earliest_fiscal_period_end,availability_coverage,point_in_time_usable_fraction
+AAPL,Information Technology,revenue,8,True,2018-09-29,2016-12-31,1.0,1.0
+AAPL,Information Technology,net_income,8,True,2026-03-28,2024-06-29,1.0,1.0
+AAPL,Information Technology,operating_income,8,True,2026-03-28,2024-06-29,1.0,1.0
+AAPL,Information Technology,eps_diluted,8,True,2026-03-28,2024-06-29,1.0,1.0
+AAPL,Information Technology,total_assets,8,True,2026-03-28,2024-12-28,1.0,1.0
+AAPL,Information Technology,total_liabilities,8,True,2026-03-28,2024-12-28,1.0,1.0
+AAPL,Information Technology,shareholder_equity,8,True,2026-03-28,2025-03-29,1.0,1.0
+AAPL,Information Technology,operating_cash_flow,8,True,2026-03-28,2024-06-29,1.0,1.0
+AAPL,Information Technology,capital_expenditures,8,True,2026-03-28,2024-06-29,1.0,1.0
+AAPL,Information Technology,free_cash_flow,8,True,2026-03-28,2024-06-29,1.0,1.0
+MSFT,Information Technology,revenue,8,True,2010-12-31,2009-09-30,1.0,1.0
+MSFT,Information Technology,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+MSFT,Information Technology,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+MSFT,Information Technology,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+MSFT,Information Technology,total_assets,8,True,2026-03-31,2025-03-31,1.0,1.0
+MSFT,Information Technology,total_liabilities,8,True,2026-03-31,2025-03-31,1.0,1.0
+MSFT,Information Technology,shareholder_equity,8,True,2026-03-31,2025-03-31,1.0,1.0
+MSFT,Information Technology,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+MSFT,Information Technology,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+MSFT,Information Technology,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+JPM,Financials,revenue,8,True,2025-12-31,2018-12-31,1.0,1.0
+JPM,Financials,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+JPM,Financials,operating_income,0,False,,,0.0,0.0
+JPM,Financials,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+JPM,Financials,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+JPM,Financials,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+JPM,Financials,shareholder_equity,8,True,2026-03-31,2024-12-31,1.0,1.0
+JPM,Financials,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+JPM,Financials,capital_expenditures,0,False,,,0.0,0.0
+JPM,Financials,free_cash_flow,0,False,,,0.0,0.0
+XOM,Energy,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+XOM,Energy,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+XOM,Energy,operating_income,0,False,,,0.0,0.0
+XOM,Energy,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+XOM,Energy,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+XOM,Energy,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+XOM,Energy,shareholder_equity,8,True,2026-03-31,2024-12-31,1.0,1.0
+XOM,Energy,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+XOM,Energy,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+XOM,Energy,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+UNH,Health Care,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+UNH,Health Care,shareholder_equity,8,True,2015-06-30,2014-03-31,1.0,1.0
+UNH,Health Care,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+UNH,Health Care,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+AMZN,Consumer Discretionary,revenue,8,True,2018-06-30,2017-03-31,1.0,1.0
+AMZN,Consumer Discretionary,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+AMZN,Consumer Discretionary,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+AMZN,Consumer Discretionary,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+AMZN,Consumer Discretionary,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+AMZN,Consumer Discretionary,total_liabilities,0,False,,,0.0,0.0
+AMZN,Consumer Discretionary,shareholder_equity,8,True,2026-03-31,2025-03-31,1.0,1.0
+AMZN,Consumer Discretionary,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+AMZN,Consumer Discretionary,capital_expenditures,8,True,2017-03-31,2015-06-30,1.0,1.0
+AMZN,Consumer Discretionary,free_cash_flow,0,False,,,0.0,0.0
+NVDA,Information Technology,revenue,8,True,2026-04-26,2024-07-28,1.0,1.0
+NVDA,Information Technology,net_income,8,True,2026-04-26,2024-07-28,1.0,1.0
+NVDA,Information Technology,operating_income,8,True,2026-04-26,2024-07-28,1.0,1.0
+NVDA,Information Technology,eps_diluted,8,True,2026-04-26,2024-07-28,1.0,1.0
+NVDA,Information Technology,total_assets,8,True,2026-04-26,2025-01-26,1.0,1.0
+NVDA,Information Technology,total_liabilities,8,True,2026-04-26,2025-01-26,1.0,1.0
+NVDA,Information Technology,shareholder_equity,8,True,2026-04-26,2025-04-27,1.0,1.0
+NVDA,Information Technology,operating_cash_flow,8,True,2026-04-26,2024-07-28,1.0,1.0
+NVDA,Information Technology,capital_expenditures,8,True,2020-07-26,2018-04-29,1.0,1.0
+NVDA,Information Technology,free_cash_flow,0,False,,,0.0,0.0
+GOOGL,Communication Services,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+GOOGL,Communication Services,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+GOOGL,Communication Services,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+GOOGL,Communication Services,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+GOOGL,Communication Services,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+GOOGL,Communication Services,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+GOOGL,Communication Services,shareholder_equity,8,True,2026-03-31,2025-03-31,1.0,1.0
+GOOGL,Communication Services,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+GOOGL,Communication Services,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+GOOGL,Communication Services,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+META,Communication Services,revenue,8,True,2018-09-30,2016-12-31,1.0,1.0
+META,Communication Services,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+META,Communication Services,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+META,Communication Services,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+META,Communication Services,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+META,Communication Services,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+META,Communication Services,shareholder_equity,8,True,2026-03-31,2025-03-31,1.0,1.0
+META,Communication Services,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+META,Communication Services,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+META,Communication Services,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+JNJ,Health Care,revenue,8,True,2014-09-28,2012-07-01,1.0,1.0
+JNJ,Health Care,net_income,8,True,2026-03-29,2024-06-30,1.0,1.0
+JNJ,Health Care,operating_income,8,True,2015-03-29,2013-06-30,1.0,1.0
+JNJ,Health Care,eps_diluted,8,True,2026-03-29,2024-06-30,1.0,1.0
+JNJ,Health Care,total_assets,8,True,2026-03-29,2024-12-29,1.0,1.0
+JNJ,Health Care,total_liabilities,8,True,2026-03-29,2024-12-29,1.0,1.0
+JNJ,Health Care,shareholder_equity,8,True,2026-03-29,2024-12-29,1.0,1.0
+JNJ,Health Care,operating_cash_flow,8,True,2026-03-29,2024-06-30,1.0,1.0
+JNJ,Health Care,capital_expenditures,8,True,2026-03-29,2024-06-30,1.0,1.0
+JNJ,Health Care,free_cash_flow,8,True,2026-03-29,2024-06-30,1.0,1.0
+PG,Consumer Staples,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+PG,Consumer Staples,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+PG,Consumer Staples,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+PG,Consumer Staples,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+PG,Consumer Staples,total_assets,8,True,2026-03-31,2025-03-31,1.0,1.0
+PG,Consumer Staples,total_liabilities,8,True,2026-03-31,2025-03-31,1.0,1.0
+PG,Consumer Staples,shareholder_equity,0,False,,,0.0,0.0
+PG,Consumer Staples,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+PG,Consumer Staples,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+PG,Consumer Staples,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+HD,Consumer Discretionary,revenue,8,True,2010-10-31,2009-02-01,1.0,1.0
+HD,Consumer Discretionary,net_income,8,True,2026-05-03,2024-07-28,1.0,1.0
+HD,Consumer Discretionary,operating_income,8,True,2026-05-03,2024-07-28,1.0,1.0
+HD,Consumer Discretionary,eps_diluted,8,True,2026-05-03,2024-07-28,1.0,1.0
+HD,Consumer Discretionary,total_assets,8,True,2026-05-03,2025-02-02,1.0,1.0
+HD,Consumer Discretionary,total_liabilities,8,True,2026-05-03,2025-02-02,1.0,1.0
+HD,Consumer Discretionary,shareholder_equity,8,True,2026-05-03,2025-02-02,1.0,1.0
+HD,Consumer Discretionary,operating_cash_flow,8,True,2026-05-03,2024-07-28,1.0,1.0
+HD,Consumer Discretionary,capital_expenditures,0,False,,,0.0,0.0
+HD,Consumer Discretionary,free_cash_flow,0,False,,,0.0,0.0
+BAC,Financials,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+BAC,Financials,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+BAC,Financials,operating_income,0,False,,,0.0,0.0
+BAC,Financials,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+BAC,Financials,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+BAC,Financials,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+BAC,Financials,shareholder_equity,8,True,2026-03-31,2025-03-31,1.0,1.0
+BAC,Financials,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+BAC,Financials,capital_expenditures,0,False,,,0.0,0.0
+BAC,Financials,free_cash_flow,0,False,,,0.0,0.0
+CVX,Energy,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+CVX,Energy,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+CVX,Energy,operating_income,0,False,,,0.0,0.0
+CVX,Energy,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+CVX,Energy,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+CVX,Energy,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+CVX,Energy,shareholder_equity,8,True,2026-03-31,2024-12-31,1.0,1.0
+CVX,Energy,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+CVX,Energy,capital_expenditures,0,False,,,0.0,0.0
+CVX,Energy,free_cash_flow,0,False,,,0.0,0.0
+PFE,Health Care,revenue,8,True,2026-03-29,2024-06-30,1.0,1.0
+PFE,Health Care,net_income,8,True,2026-03-29,2024-06-30,1.0,1.0
+PFE,Health Care,operating_income,0,False,,,0.0,0.0
+PFE,Health Care,eps_diluted,8,True,2026-03-29,2024-06-30,1.0,1.0
+PFE,Health Care,total_assets,8,True,2026-03-29,2024-12-31,1.0,1.0
+PFE,Health Care,total_liabilities,8,True,2026-03-29,2024-12-31,1.0,1.0
+PFE,Health Care,shareholder_equity,8,True,2026-03-29,2024-12-31,1.0,1.0
+PFE,Health Care,operating_cash_flow,8,True,2026-03-29,2024-06-30,1.0,1.0
+PFE,Health Care,capital_expenditures,8,True,2026-03-29,2024-06-30,1.0,1.0
+PFE,Health Care,free_cash_flow,8,True,2026-03-29,2024-06-30,1.0,1.0
+KO,Consumer Staples,revenue,8,True,2026-04-03,2024-06-28,1.0,1.0
+KO,Consumer Staples,net_income,8,True,2026-04-03,2024-06-28,1.0,1.0
+KO,Consumer Staples,operating_income,8,True,2026-04-03,2024-06-28,1.0,1.0
+KO,Consumer Staples,eps_diluted,8,True,2026-04-03,2024-06-28,1.0,1.0
+KO,Consumer Staples,total_assets,8,True,2026-04-03,2024-12-31,1.0,1.0
+KO,Consumer Staples,total_liabilities,0,False,,,0.0,0.0
+KO,Consumer Staples,shareholder_equity,8,True,2026-04-03,2024-12-31,1.0,1.0
+KO,Consumer Staples,operating_cash_flow,8,True,2026-04-03,2024-06-28,1.0,1.0
+KO,Consumer Staples,capital_expenditures,8,True,2026-04-03,2024-06-28,1.0,1.0
+KO,Consumer Staples,free_cash_flow,8,True,2026-04-03,2024-06-28,1.0,1.0
+DIS,Communication Services,revenue,8,True,2026-03-28,2024-06-29,1.0,1.0
+DIS,Communication Services,net_income,8,True,2026-03-28,2024-06-29,1.0,1.0
+DIS,Communication Services,operating_income,8,True,2026-03-28,2024-06-29,1.0,1.0
+DIS,Communication Services,eps_diluted,8,True,2026-03-28,2024-06-29,1.0,1.0
+DIS,Communication Services,total_assets,8,True,2026-03-28,2024-12-28,1.0,1.0
+DIS,Communication Services,total_liabilities,0,False,,,0.0,0.0
+DIS,Communication Services,shareholder_equity,8,True,2026-03-28,2024-12-28,1.0,1.0
+DIS,Communication Services,operating_cash_flow,8,True,2026-03-28,2024-06-29,1.0,1.0
+DIS,Communication Services,capital_expenditures,8,True,2026-03-28,2024-06-29,1.0,1.0
+DIS,Communication Services,free_cash_flow,8,True,2026-03-28,2024-06-29,1.0,1.0
+CAT,Industrials,revenue,8,True,2026-03-31,2024-06-30,1.0,1.0
+CAT,Industrials,net_income,8,True,2011-09-30,2010-06-30,1.0,1.0
+CAT,Industrials,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+CAT,Industrials,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+CAT,Industrials,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+CAT,Industrials,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+CAT,Industrials,shareholder_equity,0,False,,,0.0,0.0
+CAT,Industrials,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+CAT,Industrials,capital_expenditures,8,True,2026-03-31,2024-06-30,1.0,1.0
+CAT,Industrials,free_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+GE,Industrials,revenue,8,True,2026-03-31,2024-09-30,1.0,1.0
+GE,Industrials,net_income,8,True,2026-03-31,2024-09-30,1.0,1.0
+GE,Industrials,operating_income,8,True,2014-06-30,2012-06-30,1.0,1.0
+GE,Industrials,eps_diluted,8,True,2026-03-31,2024-09-30,1.0,1.0
+GE,Industrials,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+GE,Industrials,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+GE,Industrials,shareholder_equity,8,True,2026-03-31,2024-12-31,1.0,1.0
+GE,Industrials,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+GE,Industrials,capital_expenditures,8,True,2023-03-31,2021-06-30,1.0,1.0
+GE,Industrials,free_cash_flow,0,False,,,0.0,0.0
+NEE,Utilities,revenue,8,True,2013-09-30,2012-06-30,1.0,1.0
+NEE,Utilities,net_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+NEE,Utilities,operating_income,8,True,2026-03-31,2024-06-30,1.0,1.0
+NEE,Utilities,eps_diluted,8,True,2026-03-31,2024-06-30,1.0,1.0
+NEE,Utilities,total_assets,8,True,2026-03-31,2024-12-31,1.0,1.0
+NEE,Utilities,total_liabilities,8,True,2026-03-31,2024-12-31,1.0,1.0
+NEE,Utilities,shareholder_equity,8,True,2026-03-31,2024-12-31,1.0,1.0
+NEE,Utilities,operating_cash_flow,8,True,2026-03-31,2024-06-30,1.0,1.0
+NEE,Utilities,capital_expenditures,0,False,,,0.0,0.0
+NEE,Utilities,free_cash_flow,0,False,,,0.0,0.0

@@ -1,0 +1,345 @@
+ticker,sector,fiscal_year,fiscal_period,available_field_count,required_field_count,required_field_coverage_fraction,has_revenue,has_net_income,has_total_assets,has_operating_cash_flow
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2018,FY,1,4,0.25,True,False,False,False
+AAPL,Information Technology,2024,Q3,6,4,0.5,False,True,False,True
+AAPL,Information Technology,2024,FY,6,4,0.5,False,True,False,True
+AAPL,Information Technology,2025,Q1,8,4,0.75,False,True,True,True
+AAPL,Information Technology,2025,Q2,8,4,0.75,False,True,True,True
+AAPL,Information Technology,2025,Q3,1,4,0.0,False,False,False,False
+AAPL,Information Technology,2025,Q3,9,4,0.75,False,True,True,True
+AAPL,Information Technology,2025,FY,9,4,0.75,False,True,True,True
+AAPL,Information Technology,2026,Q1,3,4,0.25,False,False,True,False
+AAPL,Information Technology,2026,Q2,3,4,0.25,False,False,True,False
+AAPL,Information Technology,2026,Q1,9,4,0.75,False,True,True,True
+AAPL,Information Technology,2026,Q2,1,4,0.0,False,False,False,False
+AAPL,Information Technology,2026,Q2,9,4,0.75,False,True,True,True
+AMZN,Consumer Discretionary,2016,Q2,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2016,Q3,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2015,FY,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2016,Q1,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2016,Q2,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2016,Q3,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2016,FY,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2018,Q1,2,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2017,FY,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2017,Q2,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2017,FY,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2017,Q3,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2017,FY,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2018,Q1,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2018,Q2,1,4,0.25,True,False,False,False
+AMZN,Consumer Discretionary,2025,Q2,4,4,0.5,False,True,False,True
+AMZN,Consumer Discretionary,2025,Q3,4,4,0.5,False,True,False,True
+AMZN,Consumer Discretionary,2024,FY,4,4,0.5,False,True,False,True
+AMZN,Consumer Discretionary,2025,Q2,1,4,0.25,False,False,True,False
+AMZN,Consumer Discretionary,2025,Q3,1,4,0.25,False,False,True,False
+AMZN,Consumer Discretionary,2025,Q1,6,4,0.75,False,True,True,True
+AMZN,Consumer Discretionary,2025,Q2,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2025,Q2,6,4,0.75,False,True,True,True
+AMZN,Consumer Discretionary,2025,Q3,1,4,0.0,False,False,False,False
+AMZN,Consumer Discretionary,2025,Q3,6,4,0.75,False,True,True,True
+AMZN,Consumer Discretionary,2025,FY,6,4,0.75,False,True,True,True
+AMZN,Consumer Discretionary,2026,Q1,2,4,0.25,False,False,True,False
+AMZN,Consumer Discretionary,2026,Q1,6,4,0.75,False,True,True,True
+BAC,Financials,2024,Q2,4,4,0.75,True,True,False,True
+BAC,Financials,2024,Q3,4,4,0.75,True,True,False,True
+BAC,Financials,2024,FY,4,4,0.75,True,True,False,True
+BAC,Financials,2025,Q2,2,4,0.25,False,False,True,False
+BAC,Financials,2025,Q3,2,4,0.25,False,False,True,False
+BAC,Financials,2025,Q1,7,4,1.0,True,True,True,True
+BAC,Financials,2025,Q2,1,4,0.0,False,False,False,False
+BAC,Financials,2025,Q2,7,4,1.0,True,True,True,True
+BAC,Financials,2025,Q3,1,4,0.0,False,False,False,False
+BAC,Financials,2025,Q3,7,4,1.0,True,True,True,True
+BAC,Financials,2025,FY,7,4,1.0,True,True,True,True
+BAC,Financials,2026,Q1,3,4,0.25,False,False,True,False
+BAC,Financials,2026,Q1,7,4,1.0,True,True,True,True
+CAT,Industrials,2010,FY,1,4,0.25,False,True,False,False
+CAT,Industrials,2011,Q2,1,4,0.25,False,True,False,False
+CAT,Industrials,2010,FY,1,4,0.25,False,True,False,False
+CAT,Industrials,2010,Q3,1,4,0.25,False,True,False,False
+CAT,Industrials,2010,FY,1,4,0.25,False,True,False,False
+CAT,Industrials,2011,Q1,1,4,0.25,False,True,False,False
+CAT,Industrials,2011,Q2,1,4,0.25,False,True,False,False
+CAT,Industrials,2011,Q3,1,4,0.25,False,True,False,False
+CAT,Industrials,2024,Q2,6,4,0.5,True,False,False,True
+CAT,Industrials,2024,Q3,6,4,0.5,True,False,False,True
+CAT,Industrials,2024,FY,6,4,0.5,True,False,False,True
+CAT,Industrials,2025,Q2,2,4,0.25,False,False,True,False
+CAT,Industrials,2025,Q3,2,4,0.25,False,False,True,False
+CAT,Industrials,2025,Q1,8,4,0.75,True,False,True,True
+CAT,Industrials,2025,Q2,8,4,0.75,True,False,True,True
+CAT,Industrials,2025,Q3,8,4,0.75,True,False,True,True
+CAT,Industrials,2025,FY,8,4,0.75,True,False,True,True
+CAT,Industrials,2026,Q1,2,4,0.25,False,False,True,False
+CAT,Industrials,2026,Q1,8,4,0.75,True,False,True,True
+CVX,Energy,2024,Q2,4,4,0.75,True,True,False,True
+CVX,Energy,2024,Q3,4,4,0.75,True,True,False,True
+CVX,Energy,2024,FY,4,4,0.75,True,True,False,True
+CVX,Energy,2025,Q2,3,4,0.25,False,False,True,False
+CVX,Energy,2025,Q3,3,4,0.25,False,False,True,False
+CVX,Energy,2025,Q1,7,4,1.0,True,True,True,True
+CVX,Energy,2025,Q2,7,4,1.0,True,True,True,True
+CVX,Energy,2025,Q3,7,4,1.0,True,True,True,True
+CVX,Energy,2025,FY,7,4,1.0,True,True,True,True
+CVX,Energy,2026,Q1,3,4,0.25,False,False,True,False
+CVX,Energy,2026,Q1,7,4,1.0,True,True,True,True
+DIS,Communication Services,2024,Q3,7,4,0.75,True,True,False,True
+DIS,Communication Services,2024,FY,7,4,0.75,True,True,False,True
+DIS,Communication Services,2025,Q1,9,4,1.0,True,True,True,True
+DIS,Communication Services,2025,Q2,9,4,1.0,True,True,True,True
+DIS,Communication Services,2025,Q3,9,4,1.0,True,True,True,True
+DIS,Communication Services,2025,FY,9,4,1.0,True,True,True,True
+DIS,Communication Services,2026,Q1,2,4,0.25,False,False,True,False
+DIS,Communication Services,2026,Q2,2,4,0.25,False,False,True,False
+DIS,Communication Services,2026,Q1,9,4,1.0,True,True,True,True
+DIS,Communication Services,2026,Q2,9,4,1.0,True,True,True,True
+GE,Industrials,2013,Q2,1,4,0.0,False,False,False,False
+GE,Industrials,2012,Q3,1,4,0.0,False,False,False,False
+GE,Industrials,2012,FY,1,4,0.0,False,False,False,False
+GE,Industrials,2013,Q1,1,4,0.0,False,False,False,False
+GE,Industrials,2013,Q2,1,4,0.0,False,False,False,False
+GE,Industrials,2013,Q3,1,4,0.0,False,False,False,False
+GE,Industrials,2014,Q1,1,4,0.0,False,False,False,False
+GE,Industrials,2014,Q2,1,4,0.0,False,False,False,False
+GE,Industrials,2021,Q2,1,4,0.0,False,False,False,False
+GE,Industrials,2021,Q3,1,4,0.0,False,False,False,False
+GE,Industrials,2021,FY,1,4,0.0,False,False,False,False
+GE,Industrials,2022,Q1,1,4,0.0,False,False,False,False
+GE,Industrials,2022,Q2,1,4,0.0,False,False,False,False
+GE,Industrials,2022,Q3,1,4,0.0,False,False,False,False
+GE,Industrials,2022,FY,1,4,0.0,False,False,False,False
+GE,Industrials,2023,Q1,1,4,0.0,False,False,False,False
+GE,Industrials,2024,Q2,1,4,0.25,False,False,False,True
+GE,Industrials,2024,FY,3,4,0.5,True,True,False,False
+GE,Industrials,2025,Q3,4,4,0.75,True,True,False,True
+GE,Industrials,2024,FY,4,4,0.75,True,True,False,True
+GE,Industrials,2025,Q2,3,4,0.25,False,False,True,False
+GE,Industrials,2025,Q3,3,4,0.25,False,False,True,False
+GE,Industrials,2025,Q1,7,4,1.0,True,True,True,True
+GE,Industrials,2025,Q2,7,4,1.0,True,True,True,True
+GE,Industrials,2025,Q3,7,4,1.0,True,True,True,True
+GE,Industrials,2025,FY,7,4,1.0,True,True,True,True
+GE,Industrials,2026,Q1,3,4,0.25,False,False,True,False
+GE,Industrials,2026,Q1,7,4,1.0,True,True,True,True
+GOOGL,Communication Services,2025,Q2,7,4,0.75,True,True,False,True
+GOOGL,Communication Services,2025,Q3,7,4,0.75,True,True,False,True
+GOOGL,Communication Services,2025,FY,7,4,0.75,True,True,False,True
+GOOGL,Communication Services,2025,Q2,2,4,0.25,False,False,True,False
+GOOGL,Communication Services,2025,Q3,2,4,0.25,False,False,True,False
+GOOGL,Communication Services,2026,Q1,10,4,1.0,True,True,True,True
+GOOGL,Communication Services,2025,Q2,1,4,0.0,False,False,False,False
+GOOGL,Communication Services,2025,Q2,10,4,1.0,True,True,True,True
+GOOGL,Communication Services,2025,Q3,1,4,0.0,False,False,False,False
+GOOGL,Communication Services,2025,Q3,10,4,1.0,True,True,True,True
+GOOGL,Communication Services,2025,FY,10,4,1.0,True,True,True,True
+GOOGL,Communication Services,2026,Q1,3,4,0.25,False,False,True,False
+GOOGL,Communication Services,2026,Q1,10,4,1.0,True,True,True,True
+HD,Consumer Discretionary,2009,FY,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2010,Q1,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2009,Q2,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2009,Q3,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2009,FY,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2010,Q1,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2010,Q2,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2010,Q3,1,4,0.25,True,False,False,False
+HD,Consumer Discretionary,2024,Q2,4,4,0.5,False,True,False,True
+HD,Consumer Discretionary,2024,Q3,4,4,0.5,False,True,False,True
+HD,Consumer Discretionary,2024,FY,4,4,0.5,False,True,False,True
+HD,Consumer Discretionary,2025,Q2,3,4,0.25,False,False,True,False
+HD,Consumer Discretionary,2025,Q3,3,4,0.25,False,False,True,False
+HD,Consumer Discretionary,2025,Q1,7,4,0.75,False,True,True,True
+HD,Consumer Discretionary,2025,Q2,7,4,0.75,False,True,True,True
+HD,Consumer Discretionary,2025,Q3,7,4,0.75,False,True,True,True
+HD,Consumer Discretionary,2025,FY,7,4,0.75,False,True,True,True
+HD,Consumer Discretionary,2026,Q1,3,4,0.25,False,False,True,False
+HD,Consumer Discretionary,2026,Q1,7,4,0.75,False,True,True,True
+JNJ,Health Care,2013,Q2,1,4,0.25,True,False,False,False
+JNJ,Health Care,2013,Q3,1,4,0.25,True,False,False,False
+JNJ,Health Care,2014,Q1,1,4,0.25,True,False,False,False
+JNJ,Health Care,2013,Q2,2,4,0.25,True,False,False,False
+JNJ,Health Care,2013,Q3,2,4,0.25,True,False,False,False
+JNJ,Health Care,2013,FY,1,4,0.0,False,False,False,False
+JNJ,Health Care,2014,Q1,2,4,0.25,True,False,False,False
+JNJ,Health Care,2014,Q2,2,4,0.25,True,False,False,False
+JNJ,Health Care,2014,Q3,2,4,0.25,True,False,False,False
+JNJ,Health Care,2014,FY,1,4,0.0,False,False,False,False
+JNJ,Health Care,2015,Q1,1,4,0.0,False,False,False,False
+JNJ,Health Care,2024,Q2,5,4,0.5,False,True,False,True
+JNJ,Health Care,2024,Q3,5,4,0.5,False,True,False,True
+JNJ,Health Care,2024,FY,5,4,0.5,False,True,False,True
+JNJ,Health Care,2025,Q1,1,4,0.0,False,False,False,False
+JNJ,Health Care,2025,Q2,3,4,0.25,False,False,True,False
+JNJ,Health Care,2025,Q3,3,4,0.25,False,False,True,False
+JNJ,Health Care,2025,Q1,8,4,0.75,False,True,True,True
+JNJ,Health Care,2025,Q2,8,4,0.75,False,True,True,True
+JNJ,Health Care,2025,Q3,8,4,0.75,False,True,True,True
+JNJ,Health Care,2025,FY,7,4,0.75,False,True,True,True
+JNJ,Health Care,2026,Q1,3,4,0.25,False,False,True,False
+JNJ,Health Care,2026,Q1,8,4,0.75,False,True,True,True
+JPM,Financials,2018,FY,1,4,0.25,True,False,False,False
+JPM,Financials,2019,FY,1,4,0.25,True,False,False,False
+JPM,Financials,2020,FY,1,4,0.25,True,False,False,False
+JPM,Financials,2021,FY,1,4,0.25,True,False,False,False
+JPM,Financials,2022,FY,1,4,0.25,True,False,False,False
+JPM,Financials,2023,FY,1,4,0.25,True,False,False,False
+JPM,Financials,2024,Q2,3,4,0.5,False,True,False,True
+JPM,Financials,2024,Q3,3,4,0.5,False,True,False,True
+JPM,Financials,2024,FY,4,4,0.75,True,True,False,True
+JPM,Financials,2025,Q2,3,4,0.25,False,False,True,False
+JPM,Financials,2025,Q3,3,4,0.25,False,False,True,False
+JPM,Financials,2025,Q1,6,4,0.75,False,True,True,True
+JPM,Financials,2025,Q2,6,4,0.75,False,True,True,True
+JPM,Financials,2025,Q3,6,4,0.75,False,True,True,True
+JPM,Financials,2025,FY,7,4,1.0,True,True,True,True
+JPM,Financials,2026,Q1,3,4,0.25,False,False,True,False
+JPM,Financials,2026,Q1,6,4,0.75,False,True,True,True
+KO,Consumer Staples,2024,Q2,7,4,0.75,True,True,False,True
+KO,Consumer Staples,2024,Q3,7,4,0.75,True,True,False,True
+KO,Consumer Staples,2024,FY,7,4,0.75,True,True,False,True
+KO,Consumer Staples,2025,Q2,2,4,0.25,False,False,True,False
+KO,Consumer Staples,2025,Q3,2,4,0.25,False,False,True,False
+KO,Consumer Staples,2025,Q1,9,4,1.0,True,True,True,True
+KO,Consumer Staples,2025,Q2,9,4,1.0,True,True,True,True
+KO,Consumer Staples,2025,Q3,9,4,1.0,True,True,True,True
+KO,Consumer Staples,2025,FY,9,4,1.0,True,True,True,True
+KO,Consumer Staples,2026,Q1,2,4,0.25,False,False,True,False
+KO,Consumer Staples,2026,Q1,9,4,1.0,True,True,True,True
+META,Communication Services,2016,FY,1,4,0.25,True,False,False,False
+META,Communication Services,2017,Q1,1,4,0.25,True,False,False,False
+META,Communication Services,2017,Q2,1,4,0.25,True,False,False,False
+META,Communication Services,2017,Q3,1,4,0.25,True,False,False,False
+META,Communication Services,2017,FY,1,4,0.25,True,False,False,False
+META,Communication Services,2018,Q1,1,4,0.25,True,False,False,False
+META,Communication Services,2018,Q2,1,4,0.25,True,False,False,False
+META,Communication Services,2018,Q3,1,4,0.25,True,False,False,False
+META,Communication Services,2024,Q2,6,4,0.5,False,True,False,True
+META,Communication Services,2024,Q3,6,4,0.5,False,True,False,True
+META,Communication Services,2024,FY,6,4,0.5,False,True,False,True
+META,Communication Services,2025,Q2,2,4,0.25,False,False,True,False
+META,Communication Services,2025,Q3,2,4,0.25,False,False,True,False
+META,Communication Services,2025,Q1,9,4,0.75,False,True,True,True
+META,Communication Services,2025,Q2,1,4,0.0,False,False,False,False
+META,Communication Services,2025,Q2,9,4,0.75,False,True,True,True
+META,Communication Services,2025,Q3,1,4,0.0,False,False,False,False
+META,Communication Services,2025,Q3,9,4,0.75,False,True,True,True
+META,Communication Services,2025,FY,9,4,0.75,False,True,True,True
+META,Communication Services,2026,Q1,3,4,0.25,False,False,True,False
+META,Communication Services,2026,Q1,9,4,0.75,False,True,True,True
+MSFT,Information Technology,2011,Q1,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2010,FY,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2011,Q2,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2010,FY,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2010,Q3,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2010,FY,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2011,Q1,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2011,Q2,1,4,0.25,True,False,False,False
+MSFT,Information Technology,2024,FY,6,4,0.5,False,True,False,True
+MSFT,Information Technology,2025,Q1,6,4,0.5,False,True,False,True
+MSFT,Information Technology,2025,Q2,6,4,0.5,False,True,False,True
+MSFT,Information Technology,2025,Q3,9,4,0.75,False,True,True,True
+MSFT,Information Technology,2025,FY,9,4,0.75,False,True,True,True
+MSFT,Information Technology,2026,Q1,3,4,0.25,False,False,True,False
+MSFT,Information Technology,2026,Q2,3,4,0.25,False,False,True,False
+MSFT,Information Technology,2026,Q3,3,4,0.25,False,False,True,False
+MSFT,Information Technology,2026,Q1,9,4,0.75,False,True,True,True
+MSFT,Information Technology,2026,Q2,9,4,0.75,False,True,True,True
+MSFT,Information Technology,2026,Q3,9,4,0.75,False,True,True,True
+NEE,Utilities,2012,FY,1,4,0.25,True,False,False,False
+NEE,Utilities,2013,Q2,1,4,0.25,True,False,False,False
+NEE,Utilities,2012,FY,1,4,0.25,True,False,False,False
+NEE,Utilities,2012,Q3,1,4,0.25,True,False,False,False
+NEE,Utilities,2012,FY,1,4,0.25,True,False,False,False
+NEE,Utilities,2013,Q1,1,4,0.25,True,False,False,False
+NEE,Utilities,2013,Q2,1,4,0.25,True,False,False,False
+NEE,Utilities,2013,Q3,1,4,0.25,True,False,False,False
+NEE,Utilities,2024,Q2,4,4,0.5,False,True,False,True
+NEE,Utilities,2024,Q3,4,4,0.5,False,True,False,True
+NEE,Utilities,2024,FY,4,4,0.5,False,True,False,True
+NEE,Utilities,2025,Q2,3,4,0.25,False,False,True,False
+NEE,Utilities,2025,Q3,3,4,0.25,False,False,True,False
+NEE,Utilities,2025,Q1,7,4,0.75,False,True,True,True
+NEE,Utilities,2025,Q2,7,4,0.75,False,True,True,True
+NEE,Utilities,2025,Q3,7,4,0.75,False,True,True,True
+NEE,Utilities,2025,FY,7,4,0.75,False,True,True,True
+NEE,Utilities,2026,Q1,3,4,0.25,False,False,True,False
+NEE,Utilities,2026,Q1,7,4,0.75,False,True,True,True
+NVDA,Information Technology,2019,Q1,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2019,Q2,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2019,Q3,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2020,Q1,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2020,Q2,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2020,Q3,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2020,Q1,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2020,Q2,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2025,Q2,5,4,0.75,True,True,False,True
+NVDA,Information Technology,2025,Q3,5,4,0.75,True,True,False,True
+NVDA,Information Technology,2025,FY,5,4,0.75,True,True,False,True
+NVDA,Information Technology,2026,Q2,2,4,0.25,False,False,True,False
+NVDA,Information Technology,2026,Q3,2,4,0.25,False,False,True,False
+NVDA,Information Technology,2026,Q1,8,4,1.0,True,True,True,True
+NVDA,Information Technology,2026,Q2,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2026,Q2,8,4,1.0,True,True,True,True
+NVDA,Information Technology,2026,Q3,1,4,0.0,False,False,False,False
+NVDA,Information Technology,2026,Q3,8,4,1.0,True,True,True,True
+NVDA,Information Technology,2026,FY,8,4,1.0,True,True,True,True
+NVDA,Information Technology,2027,Q1,3,4,0.25,False,False,True,False
+NVDA,Information Technology,2027,Q1,8,4,1.0,True,True,True,True
+PFE,Health Care,2024,Q2,6,4,0.75,True,True,False,True
+PFE,Health Care,2024,Q3,6,4,0.75,True,True,False,True
+PFE,Health Care,2024,FY,6,4,0.75,True,True,False,True
+PFE,Health Care,2025,Q2,3,4,0.25,False,False,True,False
+PFE,Health Care,2025,Q3,3,4,0.25,False,False,True,False
+PFE,Health Care,2025,Q1,9,4,1.0,True,True,True,True
+PFE,Health Care,2025,Q2,9,4,1.0,True,True,True,True
+PFE,Health Care,2025,Q3,9,4,1.0,True,True,True,True
+PFE,Health Care,2025,FY,9,4,1.0,True,True,True,True
+PFE,Health Care,2026,Q1,3,4,0.25,False,False,True,False
+PFE,Health Care,2026,Q1,9,4,1.0,True,True,True,True
+PG,Consumer Staples,2024,FY,7,4,0.75,True,True,False,True
+PG,Consumer Staples,2025,Q1,7,4,0.75,True,True,False,True
+PG,Consumer Staples,2025,Q2,7,4,0.75,True,True,False,True
+PG,Consumer Staples,2025,Q3,9,4,1.0,True,True,True,True
+PG,Consumer Staples,2025,FY,9,4,1.0,True,True,True,True
+PG,Consumer Staples,2026,Q1,2,4,0.25,False,False,True,False
+PG,Consumer Staples,2026,Q2,2,4,0.25,False,False,True,False
+PG,Consumer Staples,2026,Q3,2,4,0.25,False,False,True,False
+PG,Consumer Staples,2026,Q1,9,4,1.0,True,True,True,True
+PG,Consumer Staples,2026,Q2,9,4,1.0,True,True,True,True
+PG,Consumer Staples,2026,Q3,9,4,1.0,True,True,True,True
+UNH,Health Care,2014,Q1,1,4,0.0,False,False,False,False
+UNH,Health Care,2014,Q2,1,4,0.0,False,False,False,False
+UNH,Health Care,2014,Q3,1,4,0.0,False,False,False,False
+UNH,Health Care,2014,FY,1,4,0.0,False,False,False,False
+UNH,Health Care,2015,Q1,1,4,0.0,False,False,False,False
+UNH,Health Care,2015,Q2,1,4,0.0,False,False,False,False
+UNH,Health Care,2015,Q1,1,4,0.0,False,False,False,False
+UNH,Health Care,2015,Q2,1,4,0.0,False,False,False,False
+UNH,Health Care,2024,Q2,7,4,0.75,True,True,False,True
+UNH,Health Care,2024,Q3,7,4,0.75,True,True,False,True
+UNH,Health Care,2024,FY,7,4,0.75,True,True,False,True
+UNH,Health Care,2025,Q2,2,4,0.25,False,False,True,False
+UNH,Health Care,2025,Q3,2,4,0.25,False,False,True,False
+UNH,Health Care,2025,Q1,9,4,1.0,True,True,True,True
+UNH,Health Care,2025,Q2,9,4,1.0,True,True,True,True
+UNH,Health Care,2025,Q3,9,4,1.0,True,True,True,True
+UNH,Health Care,2025,FY,9,4,1.0,True,True,True,True
+UNH,Health Care,2026,Q1,2,4,0.25,False,False,True,False
+UNH,Health Care,2026,Q1,9,4,1.0,True,True,True,True
+XOM,Energy,2024,Q2,6,4,0.75,True,True,False,True
+XOM,Energy,2024,Q3,6,4,0.75,True,True,False,True
+XOM,Energy,2024,FY,6,4,0.75,True,True,False,True
+XOM,Energy,2025,Q2,3,4,0.25,False,False,True,False
+XOM,Energy,2025,Q3,3,4,0.25,False,False,True,False
+XOM,Energy,2025,Q1,9,4,1.0,True,True,True,True
+XOM,Energy,2025,Q2,9,4,1.0,True,True,True,True
+XOM,Energy,2025,Q3,9,4,1.0,True,True,True,True
+XOM,Energy,2025,FY,9,4,1.0,True,True,True,True
+XOM,Energy,2026,Q1,3,4,0.25,False,False,True,False
+XOM,Energy,2026,Q1,9,4,1.0,True,True,True,True

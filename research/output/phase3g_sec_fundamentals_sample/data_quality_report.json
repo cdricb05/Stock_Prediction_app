@@ -1,0 +1,241 @@
+{
+  "sample_tickers_requested": [
+    "AAPL",
+    "MSFT",
+    "JPM",
+    "XOM",
+    "UNH",
+    "AMZN",
+    "NVDA",
+    "GOOGL",
+    "META",
+    "JNJ",
+    "PG",
+    "HD",
+    "BAC",
+    "CVX",
+    "PFE",
+    "KO",
+    "DIS",
+    "CAT",
+    "GE",
+    "NEE"
+  ],
+  "sample_tickers_processed": [
+    "AAPL",
+    "MSFT",
+    "JPM",
+    "XOM",
+    "UNH",
+    "AMZN",
+    "NVDA",
+    "GOOGL",
+    "META",
+    "JNJ",
+    "PG",
+    "HD",
+    "BAC",
+    "CVX",
+    "PFE",
+    "KO",
+    "DIS",
+    "CAT",
+    "GE",
+    "NEE"
+  ],
+  "sample_tickers_failed": [],
+  "raw_files_written": [
+    "company_tickers.json",
+    "companyfacts_0000018230.json",
+    "companyfacts_0000019617.json",
+    "companyfacts_0000021344.json",
+    "companyfacts_0000034088.json",
+    "companyfacts_0000040545.json",
+    "companyfacts_0000070858.json",
+    "companyfacts_0000078003.json",
+    "companyfacts_0000080424.json",
+    "companyfacts_0000093410.json",
+    "companyfacts_0000200406.json",
+    "companyfacts_0000320193.json",
+    "companyfacts_0000354950.json",
+    "companyfacts_0000731766.json",
+    "companyfacts_0000753308.json",
+    "companyfacts_0000789019.json",
+    "companyfacts_0001018724.json",
+    "companyfacts_0001045810.json",
+    "companyfacts_0001326801.json",
+    "companyfacts_0001652044.json",
+    "companyfacts_0001744489.json",
+    "submissions_0000018230.json",
+    "submissions_0000019617.json",
+    "submissions_0000021344.json",
+    "submissions_0000034088.json",
+    "submissions_0000040545.json",
+    "submissions_0000070858.json",
+    "submissions_0000078003.json",
+    "submissions_0000080424.json",
+    "submissions_0000093410.json",
+    "submissions_0000200406.json",
+    "submissions_0000320193.json",
+    "submissions_0000354950.json",
+    "submissions_0000731766.json",
+    "submissions_0000753308.json",
+    "submissions_0000789019.json",
+    "submissions_0001018724.json",
+    "submissions_0001045810.json",
+    "submissions_0001326801.json",
+    "submissions_0001652044.json",
+    "submissions_0001744489.json"
+  ],
+  "identity_rows": 20,
+  "fundamentals_rows": 1416,
+  "fields_attempted": [
+    "revenue",
+    "net_income",
+    "operating_income",
+    "eps_diluted",
+    "total_assets",
+    "total_liabilities",
+    "shareholder_equity",
+    "operating_cash_flow",
+    "capital_expenditures",
+    "free_cash_flow"
+  ],
+  "fields_found": [
+    "capital_expenditures",
+    "eps_diluted",
+    "free_cash_flow",
+    "net_income",
+    "operating_cash_flow",
+    "operating_income",
+    "revenue",
+    "shareholder_equity",
+    "total_assets",
+    "total_liabilities"
+  ],
+  "missing_fields_by_ticker": {
+    "JPM": [
+      "operating_income",
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "XOM": [
+      "operating_income"
+    ],
+    "AMZN": [
+      "total_liabilities",
+      "free_cash_flow"
+    ],
+    "NVDA": [
+      "free_cash_flow"
+    ],
+    "PG": [
+      "shareholder_equity"
+    ],
+    "HD": [
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "BAC": [
+      "operating_income",
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "CVX": [
+      "operating_income",
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "PFE": [
+      "operating_income"
+    ],
+    "KO": [
+      "total_liabilities"
+    ],
+    "DIS": [
+      "total_liabilities"
+    ],
+    "CAT": [
+      "shareholder_equity"
+    ],
+    "GE": [
+      "free_cash_flow"
+    ],
+    "NEE": [
+      "capital_expenditures",
+      "free_cash_flow"
+    ]
+  },
+  "availability_datetime_coverage": 1.0,
+  "point_in_time_usable_fraction": 1.0,
+  "duplicate_key_count": 0,
+  "ticker_coverage_fraction": 1.0,
+  "field_coverage_summary": {
+    "revenue": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "net_income": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "operating_income": {
+      "tickers_with_field": 15,
+      "ticker_fraction": 0.75
+    },
+    "eps_diluted": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "total_assets": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "total_liabilities": {
+      "tickers_with_field": 17,
+      "ticker_fraction": 0.85
+    },
+    "shareholder_equity": {
+      "tickers_with_field": 18,
+      "ticker_fraction": 0.9
+    },
+    "operating_cash_flow": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "capital_expenditures": {
+      "tickers_with_field": 15,
+      "ticker_fraction": 0.75
+    },
+    "free_cash_flow": {
+      "tickers_with_field": 12,
+      "ticker_fraction": 0.6
+    }
+  },
+  "period_coverage_summary": {
+    "period_rows": 344,
+    "periods_with_full_required_coverage": 57,
+    "full_required_coverage_fraction": 0.1657,
+    "required_fields": [
+      "revenue",
+      "net_income",
+      "total_assets",
+      "operating_cash_flow"
+    ]
+  },
+  "reconciliation_warning_count": 25,
+  "sign_flip_warning_count": 11,
+  "source_limitations": [
+    "SEC public data covers fundamentals only; it does NOT provide earnings consensus or analyst estimate revisions.",
+    "companyfacts may include later restated values; this mini-pipeline keeps the first-reported (earliest filed) value per fiscal period and treats restatements as caveated.",
+    "cached payloads are pruned to the mapped concepts and most-recent periods to stay Git-small; this is a controlled 20-ticker research sample, not full historical coverage.",
+    "the sector / industry attached to identity is current-as-of (not point-in-time), so downstream results remain survivorship-caveated.",
+    "financial-sector filers (e.g. banks) do not report OperatingIncomeLoss or capital expenditures the same way industrials do, so some fields are legitimately absent per sector."
+  ],
+  "sec_request_count": 0,
+  "used_cache_count": 41,
+  "network_request_count": 0,
+  "raw_cache_bytes": 1087370,
+  "errors": [],
+  "recommendation": "SEC_FUNDAMENTALS_MINIPIPELINE_SUCCESS"
+}

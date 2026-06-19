@@ -1,0 +1,639 @@
+{
+  "phase": "3-G",
+  "generated_at": "2026-06-18T23:17:41",
+  "inputs_read": {
+    "phase3f_prototype_json": "research/output/phase3f_sec_fundamentals_prototype.json",
+    "phase3f_identity_csv": "research/output/phase3f_sec_fundamentals_sample/company_identity_sample.csv",
+    "phase3f_fundamentals_csv": "research/output/phase3f_sec_fundamentals_sample/fundamentals_sample.csv",
+    "phase3f_data_quality_json": "research/output/phase3f_sec_fundamentals_sample/data_quality_report.json",
+    "phase3e_feasibility_json": "research/output/phase3e_fundamentals_earnings_feasibility.json",
+    "phase3e_schema_catalog_csv": "research/output/phase3e_external_data_schema_catalog.csv",
+    "phase3e_ingestion_contract_json": "research/output/phase3e_ingestion_contract.json",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv"
+  },
+  "outputs_written": {
+    "minipipeline_json": "research/output/phase3g_sec_fundamentals_minipipeline.json",
+    "company_identity_20ticker_sample_csv": "research/output/phase3g_sec_fundamentals_sample/company_identity_20ticker_sample.csv",
+    "fundamentals_20ticker_sample_csv": "research/output/phase3g_sec_fundamentals_sample/fundamentals_20ticker_sample.csv",
+    "data_quality_report_json": "research/output/phase3g_sec_fundamentals_sample/data_quality_report.json",
+    "field_coverage_by_ticker_csv": "research/output/phase3g_sec_fundamentals_sample/field_coverage_by_ticker.csv",
+    "period_coverage_by_ticker_csv": "research/output/phase3g_sec_fundamentals_sample/period_coverage_by_ticker.csv",
+    "reconciliation_warnings_csv": "research/output/phase3g_sec_fundamentals_sample/reconciliation_warnings.csv",
+    "raw_cache_dir": "research/output/phase3g_sec_fundamentals_sample/raw/"
+  },
+  "phase3f_summary": {
+    "phase3f_confirmed": {
+      "phase3f_present": true,
+      "phase_is_3f": true,
+      "recommendation_is_prototype_success": true,
+      "next_phase_is_3g": true,
+      "sec_public_data_used_true": true,
+      "external_data_ingested_true": true,
+      "production_data_ingested_false": true,
+      "research_model_trained_false": true,
+      "production_model_trained_false": true,
+      "production_model_candidate_created_false": true,
+      "deployable_model_artifact_written_false": true,
+      "d_drive_read_false": true,
+      "d_drive_written_false": true,
+      "vendor_api_called_false": true,
+      "paid_vendor_api_called_false": true,
+      "data_purchase_made_false": true,
+      "all_confirmed": true
+    },
+    "phase3f_recommendation": "SEC_FUNDAMENTALS_PROTOTYPE_SUCCESS",
+    "phase3f_fundamentals_rows": 368
+  },
+  "phase3e_contract_summary": {
+    "ingestion_contract_confirmed": {
+      "contract_present": true,
+      "has_company_identity_table": true,
+      "has_fundamentals_table": true,
+      "no_database_write_by_default": true,
+      "no_production_integration": true,
+      "pit_columns_include_accepted_datetime": true,
+      "pit_columns_include_availability_datetime": true,
+      "all_confirmed": true
+    },
+    "schema_catalog": {
+      "present": true,
+      "row_count": 91,
+      "has_company_identity": true,
+      "has_fundamentals": true
+    }
+  },
+  "source_selection": {
+    "selected_source": "SEC EDGAR (public companyfacts + submissions JSON)",
+    "rationale": "SEC public companyfacts + submissions remain the free, point-in-time fundamentals source validated in Phase 3-F; Phase 3-G expands the same source to a controlled 20-ticker sample before any feature engineering.",
+    "official_sec_public_source": true,
+    "covers_fundamentals": true,
+    "covers_earnings_consensus": false,
+    "covers_analyst_estimate_revisions": false,
+    "endpoints_used": [
+      "https://www.sec.gov/files/company_tickers.json",
+      "https://data.sec.gov/submissions/CIK##########.json",
+      "https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json"
+    ]
+  },
+  "sec_access_summary": {
+    "user_agent_declared": true,
+    "allowed_hosts": [
+      "www.sec.gov",
+      "data.sec.gov"
+    ],
+    "min_request_interval_seconds": 0.25,
+    "max_total_requests": 45,
+    "sec_request_count": 0,
+    "network_request_count": 0,
+    "used_cache_count": 41,
+    "raw_cache_bytes": 1087370,
+    "raw_cache_soft_limit_bytes": 5242880,
+    "raw_cache_hard_limit_bytes": 15728640,
+    "raw_cache_within_hard_limit": true,
+    "cache_first": true,
+    "errors": []
+  },
+  "sample_universe": {
+    "sample_tickers_requested": [
+      "AAPL",
+      "MSFT",
+      "JPM",
+      "XOM",
+      "UNH",
+      "AMZN",
+      "NVDA",
+      "GOOGL",
+      "META",
+      "JNJ",
+      "PG",
+      "HD",
+      "BAC",
+      "CVX",
+      "PFE",
+      "KO",
+      "DIS",
+      "CAT",
+      "GE",
+      "NEE"
+    ],
+    "max_sample_tickers": 20,
+    "sample_tickers_in_scope": [
+      "AAPL",
+      "MSFT",
+      "JPM",
+      "XOM",
+      "UNH",
+      "AMZN",
+      "NVDA",
+      "GOOGL",
+      "META",
+      "JNJ",
+      "PG",
+      "HD",
+      "BAC",
+      "CVX",
+      "PFE",
+      "KO",
+      "DIS",
+      "CAT",
+      "GE",
+      "NEE"
+    ],
+    "sample_tickers_processed": [
+      "AAPL",
+      "MSFT",
+      "JPM",
+      "XOM",
+      "UNH",
+      "AMZN",
+      "NVDA",
+      "GOOGL",
+      "META",
+      "JNJ",
+      "PG",
+      "HD",
+      "BAC",
+      "CVX",
+      "PFE",
+      "KO",
+      "DIS",
+      "CAT",
+      "GE",
+      "NEE"
+    ],
+    "sample_tickers_failed": [],
+    "ticker_coverage_fraction": 1.0,
+    "full_128_ticker_ingestion": false
+  },
+  "company_identity_summary": {
+    "rows": 20,
+    "columns": [
+      "ticker",
+      "company_name",
+      "cik",
+      "sector",
+      "industry",
+      "source",
+      "effective_from",
+      "effective_to"
+    ],
+    "tickers": [
+      "AAPL",
+      "MSFT",
+      "JPM",
+      "XOM",
+      "UNH",
+      "AMZN",
+      "NVDA",
+      "GOOGL",
+      "META",
+      "JNJ",
+      "PG",
+      "HD",
+      "BAC",
+      "CVX",
+      "PFE",
+      "KO",
+      "DIS",
+      "CAT",
+      "GE",
+      "NEE"
+    ]
+  },
+  "fundamentals_summary": {
+    "rows": 1416,
+    "columns": [
+      "ticker",
+      "cik",
+      "fiscal_period_end",
+      "fiscal_year",
+      "fiscal_period",
+      "form",
+      "filed",
+      "frame",
+      "source_concept",
+      "normalized_field",
+      "value",
+      "unit",
+      "source",
+      "availability_datetime",
+      "point_in_time_usable",
+      "restatement_policy",
+      "validation_note"
+    ],
+    "fields_attempted": [
+      "revenue",
+      "net_income",
+      "operating_income",
+      "eps_diluted",
+      "total_assets",
+      "total_liabilities",
+      "shareholder_equity",
+      "operating_cash_flow",
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "fields_found": [
+      "capital_expenditures",
+      "eps_diluted",
+      "free_cash_flow",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "revenue",
+      "shareholder_equity",
+      "total_assets",
+      "total_liabilities"
+    ],
+    "availability_datetime_coverage": 1.0,
+    "point_in_time_usable_fraction": 1.0,
+    "duplicate_key_count": 0
+  },
+  "field_coverage_summary": {
+    "revenue": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "net_income": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "operating_income": {
+      "tickers_with_field": 15,
+      "ticker_fraction": 0.75
+    },
+    "eps_diluted": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "total_assets": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "total_liabilities": {
+      "tickers_with_field": 17,
+      "ticker_fraction": 0.85
+    },
+    "shareholder_equity": {
+      "tickers_with_field": 18,
+      "ticker_fraction": 0.9
+    },
+    "operating_cash_flow": {
+      "tickers_with_field": 20,
+      "ticker_fraction": 1.0
+    },
+    "capital_expenditures": {
+      "tickers_with_field": 15,
+      "ticker_fraction": 0.75
+    },
+    "free_cash_flow": {
+      "tickers_with_field": 12,
+      "ticker_fraction": 0.6
+    }
+  },
+  "period_coverage_summary": {
+    "period_rows": 344,
+    "periods_with_full_required_coverage": 57,
+    "full_required_coverage_fraction": 0.1657,
+    "required_fields": [
+      "revenue",
+      "net_income",
+      "total_assets",
+      "operating_cash_flow"
+    ]
+  },
+  "reconciliation_summary": {
+    "reconciliation_warning_count": 25,
+    "sign_flip_warning_count": 11,
+    "warning_type_counts": {
+      "extreme_pct_change": 14,
+      "sign_flip": 11
+    },
+    "warnings_are_blocking": false
+  },
+  "data_quality_summary": {
+    "sample_tickers_requested": [
+      "AAPL",
+      "MSFT",
+      "JPM",
+      "XOM",
+      "UNH",
+      "AMZN",
+      "NVDA",
+      "GOOGL",
+      "META",
+      "JNJ",
+      "PG",
+      "HD",
+      "BAC",
+      "CVX",
+      "PFE",
+      "KO",
+      "DIS",
+      "CAT",
+      "GE",
+      "NEE"
+    ],
+    "sample_tickers_processed": [
+      "AAPL",
+      "MSFT",
+      "JPM",
+      "XOM",
+      "UNH",
+      "AMZN",
+      "NVDA",
+      "GOOGL",
+      "META",
+      "JNJ",
+      "PG",
+      "HD",
+      "BAC",
+      "CVX",
+      "PFE",
+      "KO",
+      "DIS",
+      "CAT",
+      "GE",
+      "NEE"
+    ],
+    "sample_tickers_failed": [],
+    "raw_files_written": [
+      "company_tickers.json",
+      "companyfacts_0000018230.json",
+      "companyfacts_0000019617.json",
+      "companyfacts_0000021344.json",
+      "companyfacts_0000034088.json",
+      "companyfacts_0000040545.json",
+      "companyfacts_0000070858.json",
+      "companyfacts_0000078003.json",
+      "companyfacts_0000080424.json",
+      "companyfacts_0000093410.json",
+      "companyfacts_0000200406.json",
+      "companyfacts_0000320193.json",
+      "companyfacts_0000354950.json",
+      "companyfacts_0000731766.json",
+      "companyfacts_0000753308.json",
+      "companyfacts_0000789019.json",
+      "companyfacts_0001018724.json",
+      "companyfacts_0001045810.json",
+      "companyfacts_0001326801.json",
+      "companyfacts_0001652044.json",
+      "companyfacts_0001744489.json",
+      "submissions_0000018230.json",
+      "submissions_0000019617.json",
+      "submissions_0000021344.json",
+      "submissions_0000034088.json",
+      "submissions_0000040545.json",
+      "submissions_0000070858.json",
+      "submissions_0000078003.json",
+      "submissions_0000080424.json",
+      "submissions_0000093410.json",
+      "submissions_0000200406.json",
+      "submissions_0000320193.json",
+      "submissions_0000354950.json",
+      "submissions_0000731766.json",
+      "submissions_0000753308.json",
+      "submissions_0000789019.json",
+      "submissions_0001018724.json",
+      "submissions_0001045810.json",
+      "submissions_0001326801.json",
+      "submissions_0001652044.json",
+      "submissions_0001744489.json"
+    ],
+    "identity_rows": 20,
+    "fundamentals_rows": 1416,
+    "fields_attempted": [
+      "revenue",
+      "net_income",
+      "operating_income",
+      "eps_diluted",
+      "total_assets",
+      "total_liabilities",
+      "shareholder_equity",
+      "operating_cash_flow",
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "fields_found": [
+      "capital_expenditures",
+      "eps_diluted",
+      "free_cash_flow",
+      "net_income",
+      "operating_cash_flow",
+      "operating_income",
+      "revenue",
+      "shareholder_equity",
+      "total_assets",
+      "total_liabilities"
+    ],
+    "missing_fields_by_ticker": {
+      "JPM": [
+        "operating_income",
+        "capital_expenditures",
+        "free_cash_flow"
+      ],
+      "XOM": [
+        "operating_income"
+      ],
+      "AMZN": [
+        "total_liabilities",
+        "free_cash_flow"
+      ],
+      "NVDA": [
+        "free_cash_flow"
+      ],
+      "PG": [
+        "shareholder_equity"
+      ],
+      "HD": [
+        "capital_expenditures",
+        "free_cash_flow"
+      ],
+      "BAC": [
+        "operating_income",
+        "capital_expenditures",
+        "free_cash_flow"
+      ],
+      "CVX": [
+        "operating_income",
+        "capital_expenditures",
+        "free_cash_flow"
+      ],
+      "PFE": [
+        "operating_income"
+      ],
+      "KO": [
+        "total_liabilities"
+      ],
+      "DIS": [
+        "total_liabilities"
+      ],
+      "CAT": [
+        "shareholder_equity"
+      ],
+      "GE": [
+        "free_cash_flow"
+      ],
+      "NEE": [
+        "capital_expenditures",
+        "free_cash_flow"
+      ]
+    },
+    "availability_datetime_coverage": 1.0,
+    "point_in_time_usable_fraction": 1.0,
+    "duplicate_key_count": 0,
+    "ticker_coverage_fraction": 1.0,
+    "field_coverage_summary": {
+      "revenue": {
+        "tickers_with_field": 20,
+        "ticker_fraction": 1.0
+      },
+      "net_income": {
+        "tickers_with_field": 20,
+        "ticker_fraction": 1.0
+      },
+      "operating_income": {
+        "tickers_with_field": 15,
+        "ticker_fraction": 0.75
+      },
+      "eps_diluted": {
+        "tickers_with_field": 20,
+        "ticker_fraction": 1.0
+      },
+      "total_assets": {
+        "tickers_with_field": 20,
+        "ticker_fraction": 1.0
+      },
+      "total_liabilities": {
+        "tickers_with_field": 17,
+        "ticker_fraction": 0.85
+      },
+      "shareholder_equity": {
+        "tickers_with_field": 18,
+        "ticker_fraction": 0.9
+      },
+      "operating_cash_flow": {
+        "tickers_with_field": 20,
+        "ticker_fraction": 1.0
+      },
+      "capital_expenditures": {
+        "tickers_with_field": 15,
+        "ticker_fraction": 0.75
+      },
+      "free_cash_flow": {
+        "tickers_with_field": 12,
+        "ticker_fraction": 0.6
+      }
+    },
+    "period_coverage_summary": {
+      "period_rows": 344,
+      "periods_with_full_required_coverage": 57,
+      "full_required_coverage_fraction": 0.1657,
+      "required_fields": [
+        "revenue",
+        "net_income",
+        "total_assets",
+        "operating_cash_flow"
+      ]
+    },
+    "reconciliation_warning_count": 25,
+    "sign_flip_warning_count": 11,
+    "source_limitations": [
+      "SEC public data covers fundamentals only; it does NOT provide earnings consensus or analyst estimate revisions.",
+      "companyfacts may include later restated values; this mini-pipeline keeps the first-reported (earliest filed) value per fiscal period and treats restatements as caveated.",
+      "cached payloads are pruned to the mapped concepts and most-recent periods to stay Git-small; this is a controlled 20-ticker research sample, not full historical coverage.",
+      "the sector / industry attached to identity is current-as-of (not point-in-time), so downstream results remain survivorship-caveated.",
+      "financial-sector filers (e.g. banks) do not report OperatingIncomeLoss or capital expenditures the same way industrials do, so some fields are legitimately absent per sector."
+    ],
+    "sec_request_count": 0,
+    "used_cache_count": 41,
+    "network_request_count": 0,
+    "raw_cache_bytes": 1087370,
+    "errors": [],
+    "recommendation": "SEC_FUNDAMENTALS_MINIPIPELINE_SUCCESS"
+  },
+  "source_limitations": [
+    "SEC public data covers fundamentals only; it does NOT provide earnings consensus or analyst estimate revisions.",
+    "companyfacts may include later restated values; this mini-pipeline keeps the first-reported (earliest filed) value per fiscal period and treats restatements as caveated.",
+    "cached payloads are pruned to the mapped concepts and most-recent periods to stay Git-small; this is a controlled 20-ticker research sample, not full historical coverage.",
+    "the sector / industry attached to identity is current-as-of (not point-in-time), so downstream results remain survivorship-caveated.",
+    "financial-sector filers (e.g. banks) do not report OperatingIncomeLoss or capital expenditures the same way industrials do, so some fields are legitimately absent per sector."
+  ],
+  "earnings_revisions_gap": {
+    "sec_provides_earnings_consensus": false,
+    "sec_provides_analyst_estimate_revisions": false,
+    "gap_description": "SEC public filings provide as-reported fundamentals and filing timestamps but not forward analyst consensus or estimate revisions; a separate provider must be researched and selected (see the Phase 3-E provider requirements matrix) before earnings surprise and revision-momentum features can be prototyped.",
+    "provider_selection_required": true
+  },
+  "recommendation": {
+    "recommendation": "SEC_FUNDAMENTALS_MINIPIPELINE_SUCCESS",
+    "allowed_values": [
+      "SEC_FUNDAMENTALS_MINIPIPELINE_SUCCESS",
+      "SEC_FUNDAMENTALS_MINIPIPELINE_PARTIAL_SUCCESS",
+      "SEC_FUNDAMENTALS_MINIPIPELINE_BLOCKED",
+      "SEC_FUNDAMENTALS_MINIPIPELINE_REJECTED"
+    ],
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "selected_source": "SEC EDGAR (public companyfacts + submissions JSON)",
+    "full_128_ticker_ingestion_now": false,
+    "model_training_now": false,
+    "feature_engineering_now": false,
+    "reason": "SEC public companyfacts + submissions scaled cleanly from the Phase 3-F 5-ticker proof-of-concept to the controlled 20-ticker sample: at least 18 of 20 tickers processed, more than 500 normalized fundamentals rows, full availability-timestamp coverage, point-in-time usable throughout, no duplicate keys, and a Git-safe raw cache. The mini-pipeline is validated; build trailing-only point-in-time fundamental features from this sample next (no model training). SEC still provides no earnings consensus or analyst revisions, so that provider gap remains open."
+  },
+  "interpretation": {
+    "mini_pipeline_only": true,
+    "price_volume_only_modeling_stopped": true,
+    "model_trained": false,
+    "model_features_computed": false,
+    "labels_computed": false,
+    "research_model_trained": false,
+    "production_model_trained": false,
+    "production_model_candidate_created": false,
+    "deployable_model_artifact_written": false,
+    "external_data_ingested": true,
+    "production_data_ingested": false,
+    "full_128_ticker_ingestion": false,
+    "sec_public_data_used": true,
+    "paid_vendor_called": false,
+    "data_purchased": false,
+    "read_from_d_drive": false,
+    "wrote_to_d_drive": false,
+    "network_used": false,
+    "results_context_remains_survivorship_biased": true,
+    "production_edge_claimed": false,
+    "narrative": "Phase 3-G is a controlled, read-only research mini-pipeline. It read the committed Phase 3-F prototype result, confirmed it succeeded and routed here, re-confirmed the Phase 3-E ingestion contract + schema catalog, and expanded the validated SEC fundamentals path from 5 to a controlled 20-ticker sample fetched (throttled, cached) from official SEC public endpoints only. It normalized company identity + a small subset of fundamentals into the Phase 3-E schema with point-in-time availability timestamps and added stronger data-quality checks (field coverage, period coverage, cross-period reconciliation / sign-flip warnings). It computed no model features or labels, trained no model, created no production model candidate, wrote no deployable model artifact, called no paid vendor, purchased no data, used no third-party market-data vendor package, touched no database, ran no migration, restarted no prediction service, enabled no serving flag, wrote nothing to the D: drive, read no D: price CSV, placed no orders, and traded nothing. SEC does not provide earnings consensus or analyst revisions, so that provider gap stays open for a later phase. This is a research mini-pipeline only and claims no production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "3-H",
+    "title": "SEC Fundamentals Feature Engineering Prototype",
+    "purpose": "Build trailing-only, point-in-time fundamental features from the 20-ticker sample and validate feature availability alignment; still no model training."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_model_trained": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "network_used": false,
+  "sec_public_data_used": true,
+  "vendor_api_called": false,
+  "paid_vendor_api_called": false,
+  "data_purchase_made": false,
+  "external_data_ingested": true,
+  "production_data_ingested": false,
+  "full_128_ticker_ingestion": false,
+  "model_features_computed": false,
+  "labels_computed": false
+}
