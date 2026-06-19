@@ -1,0 +1,627 @@
+{
+  "phase": "3-I",
+  "generated_at": "2026-06-19T09:34:09",
+  "inputs_read": {
+    "phase3h_features_json": "research/output/phase3h_sec_fundamental_features.json",
+    "phase3h_feature_snapshot_csv": "research/output/phase3h_sec_fundamental_features/feature_snapshot_20ticker_sample.csv",
+    "phase3h_feature_dictionary_csv": "research/output/phase3h_sec_fundamental_features/feature_dictionary.csv",
+    "phase3h_feature_quality_report_json": "research/output/phase3h_sec_fundamental_features/feature_quality_report.json",
+    "phase3h_feature_alignment_warnings_csv": "research/output/phase3h_sec_fundamental_features/feature_alignment_warnings.csv",
+    "price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "price_data_quality_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "price_data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "price_survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3i_fundamental_price_alignment.json",
+    "aligned_feature_price_panel_csv": "research/output/phase3i_fundamental_price_alignment/aligned_feature_price_panel_20ticker_sample.csv",
+    "alignment_quality_report_json": "research/output/phase3i_fundamental_price_alignment/alignment_quality_report.json",
+    "label_summary_by_horizon_csv": "research/output/phase3i_fundamental_price_alignment/label_summary_by_horizon.csv",
+    "leakage_checks_csv": "research/output/phase3i_fundamental_price_alignment/leakage_checks.csv",
+    "date_alignment_summary_csv": "research/output/phase3i_fundamental_price_alignment/date_alignment_summary.csv"
+  },
+  "phase3h_summary": {
+    "phase3h_confirmed": {
+      "phase3h_present": true,
+      "phase_is_3h": true,
+      "recommendation_is_features_success": true,
+      "next_phase_is_3i": true,
+      "model_features_computed_true": true,
+      "labels_computed_false": true,
+      "model_training_ready_false": true,
+      "research_model_trained_false": true,
+      "production_model_trained_false": true,
+      "production_model_candidate_created_false": true,
+      "deployable_model_artifact_written_false": true,
+      "network_used_false": true,
+      "d_drive_read_false": true,
+      "d_drive_written_false": true,
+      "full_128_ticker_ingestion_false": true,
+      "production_edge_claimed_false": true,
+      "all_confirmed": true
+    },
+    "phase3h_recommendation": "SEC_FUNDAMENTAL_FEATURES_PROTOTYPE_SUCCESS",
+    "phase3h_snapshot_rows": 353,
+    "phase3h_feature_columns_count": 23
+  },
+  "alignment_config": {
+    "universe": "Phase 3-H 20 feature tickers plus the SPY benchmark only",
+    "benchmark": "SPY",
+    "forward_return_horizons_trading_days": [
+      21,
+      63,
+      126
+    ],
+    "scoring_grid": "every trading day with an available adjusted_close, strictly after a ticker's first feature_asof_date",
+    "feature_activation_rule": "a feature snapshot becomes active on the first trading day strictly after its feature_asof_date (date part); the active snapshot for a scoring date is the latest such snapshot, never using fiscal_period_end as the availability date",
+    "active_snapshot_tie_break": "latest feature_asof_date, then latest fiscal_period_end, then highest source_field_count",
+    "label_definition": "forward_return_h = adjusted_close[t+h]/adjusted_close[t] - 1; SPY excess measured over the identical calendar window; binary_outperform_spy = 1 if excess > 0; rank is ordinal ascending across the sample per scoring date",
+    "labels_for_validation_only": true,
+    "labels_forward_filled": false,
+    "model_trained": false,
+    "predictions_computed": false
+  },
+  "price_data_summary": {
+    "panel": "Phase 2K-G expanded price history (free, current-as-of), read-only",
+    "price_rows_read": 55188,
+    "price_tickers_read": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "SPY",
+      "UNH",
+      "XOM"
+    ],
+    "benchmark": "SPY",
+    "spy_available": true,
+    "earliest_price_date": "2016-01-04",
+    "latest_price_date": "2026-06-16",
+    "membership_basis": "current_as_of (survivorship-biased; not point-in-time)",
+    "read_only": true
+  },
+  "aligned_panel_summary": {
+    "aligned_rows": 32882,
+    "aligned_tickers": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "UNH",
+      "XOM"
+    ],
+    "aligned_start_date": "2016-01-04",
+    "aligned_end_date": "2026-06-16",
+    "feature_columns_carried": 23,
+    "feature_age_days_summary": {
+      "count": 32882,
+      "min": 1.0,
+      "p25": 62.0,
+      "median": 819.0,
+      "p75": 2259.0,
+      "max": 5009.0,
+      "mean": 1293.4291
+    },
+    "feature_age_median_reasonable": false,
+    "max_reasonable_median_feature_age_days": 400,
+    "annual_vs_quarterly_active_snapshot_mix": {
+      "annual": 5336,
+      "quarterly": 27546
+    },
+    "rows_by_sector": {
+      "Communication Services": 3294,
+      "Consumer Discretionary": 5237,
+      "Consumer Staples": 939,
+      "Energy": 932,
+      "Financials": 2307,
+      "Health Care": 5723,
+      "Industrials": 5256,
+      "Information Technology": 6566,
+      "Utilities": 2628
+    },
+    "panel_columns": [
+      "ticker",
+      "company_name",
+      "sector",
+      "industry",
+      "scoring_date",
+      "adjusted_close",
+      "active_feature_asof_date",
+      "feature_age_days",
+      "active_fiscal_period_end",
+      "active_fiscal_year",
+      "active_fiscal_period",
+      "active_form",
+      "active_snapshot_type",
+      "operating_margin",
+      "net_margin",
+      "fcf_margin",
+      "operating_cash_flow_margin",
+      "debt_proxy_total_liabilities_to_assets",
+      "equity_to_assets",
+      "asset_turnover_proxy",
+      "liability_to_equity",
+      "revenue_yoy_growth",
+      "net_income_yoy_growth",
+      "operating_income_yoy_growth",
+      "eps_diluted_yoy_growth",
+      "total_assets_yoy_growth",
+      "operating_cash_flow_yoy_growth",
+      "free_cash_flow_yoy_growth",
+      "cash_conversion",
+      "fcf_to_net_income",
+      "capex_intensity",
+      "accrual_proxy",
+      "log_total_assets",
+      "log_revenue_abs",
+      "log_total_liabilities_abs",
+      "filing_lag_days",
+      "forward_return_21d",
+      "forward_return_63d",
+      "forward_return_126d",
+      "forward_spy_return_21d",
+      "forward_spy_return_63d",
+      "forward_spy_return_126d",
+      "forward_excess_return_vs_spy_21d",
+      "forward_excess_return_vs_spy_63d",
+      "forward_excess_return_vs_spy_126d",
+      "binary_outperform_spy_21d",
+      "binary_outperform_spy_63d",
+      "binary_outperform_spy_126d",
+      "forward_return_rank_by_date_21d",
+      "forward_return_rank_by_date_63d",
+      "forward_return_rank_by_date_126d"
+    ]
+  },
+  "label_summary": {
+    "label_coverage_by_horizon": {
+      "21d": 0.9872,
+      "63d": 0.9617,
+      "126d": 0.9234
+    },
+    "by_horizon": [
+      {
+        "horizon": "21d",
+        "total_rows": 32882,
+        "non_null_forward_return": 32462,
+        "non_null_forward_excess_return_vs_spy": 32462,
+        "non_null_binary_outperform_spy": 32462,
+        "non_null_rank": 32462,
+        "mean_forward_return": 0.019255,
+        "mean_forward_excess_return_vs_spy": 0.005488,
+        "positive_return_fraction": 0.6102,
+        "outperform_spy_fraction": 0.523,
+        "earliest_scoring_date": "2016-01-04",
+        "latest_scoring_date": "2026-05-15"
+      },
+      {
+        "horizon": "63d",
+        "total_rows": 32882,
+        "non_null_forward_return": 31622,
+        "non_null_forward_excess_return_vs_spy": 31622,
+        "non_null_binary_outperform_spy": 31622,
+        "non_null_rank": 31622,
+        "mean_forward_return": 0.058136,
+        "mean_forward_excess_return_vs_spy": 0.019002,
+        "positive_return_fraction": 0.6565,
+        "outperform_spy_fraction": 0.5354,
+        "earliest_scoring_date": "2016-01-04",
+        "latest_scoring_date": "2026-03-17"
+      },
+      {
+        "horizon": "126d",
+        "total_rows": 32882,
+        "non_null_forward_return": 30362,
+        "non_null_forward_excess_return_vs_spy": 30362,
+        "non_null_binary_outperform_spy": 30362,
+        "non_null_rank": 30362,
+        "mean_forward_return": 0.12096,
+        "mean_forward_excess_return_vs_spy": 0.043274,
+        "positive_return_fraction": 0.7124,
+        "outperform_spy_fraction": 0.5507,
+        "earliest_scoring_date": "2016-01-04",
+        "latest_scoring_date": "2025-12-12"
+      }
+    ]
+  },
+  "leakage_check_summary": {
+    "leakage_check_count": 197292,
+    "leakage_failure_count": 0,
+    "leakage_warning_count": 0,
+    "checks_evaluated": [
+      "active_feature_asof_date_present",
+      "active_feature_asof_before_scoring_date",
+      "active_feature_asof_after_or_equal_fiscal_period_end",
+      "no_fiscal_period_end_as_availability_date",
+      "label_date_after_scoring_date",
+      "no_price_join_before_feature_available"
+    ],
+    "all_checks_passed": true
+  },
+  "alignment_quality_summary": {
+    "input_feature_rows": 353,
+    "input_feature_tickers": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "UNH",
+      "XOM"
+    ],
+    "price_rows_read": 55188,
+    "price_tickers_read": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "SPY",
+      "UNH",
+      "XOM"
+    ],
+    "rows_by_ticker": {
+      "AAPL": 1911,
+      "AMZN": 2609,
+      "BAC": 471,
+      "CAT": 2628,
+      "CVX": 465,
+      "DIS": 465,
+      "GE": 2628,
+      "GOOGL": 476,
+      "HD": 2628,
+      "JNJ": 2628,
+      "JPM": 1836,
+      "KO": 472,
+      "META": 2353,
+      "MSFT": 2628,
+      "NEE": 2628,
+      "NVDA": 2027,
+      "PFE": 467,
+      "PG": 467,
+      "UNH": 2628,
+      "XOM": 467
+    },
+    "null_feature_summary": {
+      "operating_margin": {
+        "non_null": 3008,
+        "null": 29874,
+        "non_null_fraction": 0.0915
+      },
+      "net_margin": {
+        "non_null": 4861,
+        "null": 28021,
+        "non_null_fraction": 0.1478
+      },
+      "fcf_margin": {
+        "non_null": 3438,
+        "null": 29444,
+        "non_null_fraction": 0.1046
+      },
+      "operating_cash_flow_margin": {
+        "non_null": 5272,
+        "null": 27610,
+        "non_null_fraction": 0.1603
+      },
+      "debt_proxy_total_liabilities_to_assets": {
+        "non_null": 4835,
+        "null": 28047,
+        "non_null_fraction": 0.147
+      },
+      "equity_to_assets": {
+        "non_null": 4723,
+        "null": 28159,
+        "non_null_fraction": 0.1436
+      },
+      "asset_turnover_proxy": {
+        "non_null": 3419,
+        "null": 29463,
+        "non_null_fraction": 0.104
+      },
+      "liability_to_equity": {
+        "non_null": 3818,
+        "null": 29064,
+        "non_null_fraction": 0.1161
+      },
+      "revenue_yoy_growth": {
+        "non_null": 10946,
+        "null": 21936,
+        "non_null_fraction": 0.3329
+      },
+      "net_income_yoy_growth": {
+        "non_null": 6048,
+        "null": 26834,
+        "non_null_fraction": 0.1839
+      },
+      "operating_income_yoy_growth": {
+        "non_null": 6379,
+        "null": 26503,
+        "non_null_fraction": 0.194
+      },
+      "eps_diluted_yoy_growth": {
+        "non_null": 4231,
+        "null": 28651,
+        "non_null_fraction": 0.1287
+      },
+      "total_assets_yoy_growth": {
+        "non_null": 738,
+        "null": 32144,
+        "non_null_fraction": 0.0224
+      },
+      "operating_cash_flow_yoy_growth": {
+        "non_null": 4181,
+        "null": 28701,
+        "non_null_fraction": 0.1272
+      },
+      "free_cash_flow_yoy_growth": {
+        "non_null": 2581,
+        "null": 30301,
+        "non_null_fraction": 0.0785
+      },
+      "cash_conversion": {
+        "non_null": 8575,
+        "null": 24307,
+        "non_null_fraction": 0.2608
+      },
+      "fcf_to_net_income": {
+        "non_null": 5106,
+        "null": 27776,
+        "non_null_fraction": 0.1553
+      },
+      "capex_intensity": {
+        "non_null": 3492,
+        "null": 29390,
+        "non_null_fraction": 0.1062
+      },
+      "accrual_proxy": {
+        "non_null": 5462,
+        "null": 27420,
+        "non_null_fraction": 0.1661
+      },
+      "log_total_assets": {
+        "non_null": 5740,
+        "null": 27142,
+        "non_null_fraction": 0.1746
+      },
+      "log_revenue_abs": {
+        "non_null": 18264,
+        "null": 14618,
+        "non_null_fraction": 0.5554
+      },
+      "log_total_liabilities_abs": {
+        "non_null": 4835,
+        "null": 28047,
+        "non_null_fraction": 0.147
+      },
+      "filing_lag_days": {
+        "non_null": 32882,
+        "null": 0,
+        "non_null_fraction": 1.0
+      }
+    },
+    "null_label_summary": {
+      "forward_return_21d": {
+        "non_null": 32462,
+        "null": 420,
+        "non_null_fraction": 0.9872
+      },
+      "forward_return_63d": {
+        "non_null": 31622,
+        "null": 1260,
+        "non_null_fraction": 0.9617
+      },
+      "forward_return_126d": {
+        "non_null": 30362,
+        "null": 2520,
+        "non_null_fraction": 0.9234
+      },
+      "forward_spy_return_21d": {
+        "non_null": 32462,
+        "null": 420,
+        "non_null_fraction": 0.9872
+      },
+      "forward_spy_return_63d": {
+        "non_null": 31622,
+        "null": 1260,
+        "non_null_fraction": 0.9617
+      },
+      "forward_spy_return_126d": {
+        "non_null": 30362,
+        "null": 2520,
+        "non_null_fraction": 0.9234
+      },
+      "forward_excess_return_vs_spy_21d": {
+        "non_null": 32462,
+        "null": 420,
+        "non_null_fraction": 0.9872
+      },
+      "forward_excess_return_vs_spy_63d": {
+        "non_null": 31622,
+        "null": 1260,
+        "non_null_fraction": 0.9617
+      },
+      "forward_excess_return_vs_spy_126d": {
+        "non_null": 30362,
+        "null": 2520,
+        "non_null_fraction": 0.9234
+      },
+      "binary_outperform_spy_21d": {
+        "non_null": 32462,
+        "null": 420,
+        "non_null_fraction": 0.9872
+      },
+      "binary_outperform_spy_63d": {
+        "non_null": 31622,
+        "null": 1260,
+        "non_null_fraction": 0.9617
+      },
+      "binary_outperform_spy_126d": {
+        "non_null": 30362,
+        "null": 2520,
+        "non_null_fraction": 0.9234
+      },
+      "forward_return_rank_by_date_21d": {
+        "non_null": 32462,
+        "null": 420,
+        "non_null_fraction": 0.9872
+      },
+      "forward_return_rank_by_date_63d": {
+        "non_null": 31622,
+        "null": 1260,
+        "non_null_fraction": 0.9617
+      },
+      "forward_return_rank_by_date_126d": {
+        "non_null": 30362,
+        "null": 2520,
+        "non_null_fraction": 0.9234
+      }
+    },
+    "spy_available": true
+  },
+  "source_limitations": [
+    "Features come only from SEC as-reported fundamentals (via the Phase 3-H point-in-time snapshot); SEC public data provides no earnings consensus or analyst estimate revisions, so surprise / revision-momentum signals cannot be aligned here.",
+    "The historical price panel is the Phase 2K-G current-as-of free panel; its membership is NOT point-in-time, so this alignment and any downstream result must be reported as survivorship-biased (a clean point-in-time price universe is deferred to a later paid-source decision).",
+    "Forward-return labels are generated for VALIDATION ONLY (leakage proof and coverage measurement); they are not a target for any model in this phase and are never forward-filled.",
+    "The sector / industry attached to each row is current-as-of (not point-in-time), so cross-sectional results remain survivorship-caveated.",
+    "Feature coverage carried from Phase 3-H is sparse for some ratios (the 20-ticker sample is pruned to recent fiscal periods and some sector-specific fields are legitimately absent); this is an alignment dry run, not a feature-completeness exercise.",
+    "The Phase 3-H sample is temporally sparse for several tickers (it captured only very old companyfacts records plus the most recent ones, with multi-year gaps between them), so the carry-forward rule yields very stale active features and an unreasonable median feature age; this is leakage-free but must be repaired (denser upstream sampling or an explicit staleness cap) before a model-readiness diagnostic.",
+    "This is a controlled 20-ticker sample plus the SPY benchmark, not the full 128-ticker universe."
+  ],
+  "earnings_revisions_gap": {
+    "sec_provides_earnings_consensus": false,
+    "sec_provides_analyst_estimate_revisions": false,
+    "gap_description": "SEC as-reported fundamentals support the trailing fundamental features aligned here but provide no forward analyst consensus or estimate revisions; a separate provider must be researched and selected (see the Phase 3-E provider requirements matrix) before earnings-surprise or revision-momentum features can be aligned.",
+    "provider_selection_required": true
+  },
+  "recommendation": {
+    "recommendation": "FUNDAMENTAL_PRICE_ALIGNMENT_PARTIAL_SUCCESS",
+    "allowed_values": [
+      "FUNDAMENTAL_PRICE_ALIGNMENT_DRY_RUN_SUCCESS",
+      "FUNDAMENTAL_PRICE_ALIGNMENT_PARTIAL_SUCCESS",
+      "FUNDAMENTAL_PRICE_ALIGNMENT_BLOCKED",
+      "FUNDAMENTAL_PRICE_ALIGNMENT_REJECTED"
+    ],
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "full_128_ticker_ingestion_now": false,
+    "model_training_now": false,
+    "labels_for_validation_only": true,
+    "reason": "Alignment ran with zero leakage failures and full ticker/label coverage, but the active feature age is not yet reasonable: the Phase 3-H sample is temporally sparse for several tickers (it captured only very old companyfacts records plus the most recent ones, with multi-year gaps between them), so decade-old fundamentals are carried forward and the median active feature age exceeds the conservative threshold. This is leakage-free but the panel is not ready for a model-readiness diagnostic; the Phase 3-H sampling (temporal density) or a staleness cap must be repaired first."
+  },
+  "interpretation": {
+    "price_alignment_dry_run_only": true,
+    "price_volume_only_modeling_stopped": true,
+    "model_features_computed": true,
+    "price_join_performed": true,
+    "labels_computed": true,
+    "labels_for_validation_only": true,
+    "forward_returns_computed": true,
+    "predictions_computed": false,
+    "scores_computed": false,
+    "portfolio_weights_computed": false,
+    "model_trained": false,
+    "research_model_trained": false,
+    "production_model_trained": false,
+    "production_model_candidate_created": false,
+    "deployable_model_artifact_written": false,
+    "model_training_ready": false,
+    "sec_public_data_used": true,
+    "read_from_d_drive": true,
+    "wrote_to_d_drive": false,
+    "network_used": false,
+    "full_128_ticker_ingestion": false,
+    "results_context_remains_survivorship_biased": true,
+    "production_edge_claimed": false,
+    "narrative": "Phase 3-I is a controlled, read-only research alignment dry run. It read the committed Phase 3-H feature result, confirmed it succeeded (SEC_FUNDAMENTAL_FEATURES_PROTOTYPE_SUCCESS) and routed here, loaded the 20-ticker point-in-time feature snapshot, and read the Phase 2K-G historical price panel read-only on the D: drive (restricted to the 20 feature tickers plus the SPY benchmark). It built a daily scoring-date grid, activated for each ticker/scoring date only the latest feature snapshot already public strictly before that day, attached the active snapshot's age and identity, and generated 21/63/126 trading-day forward-return labels - and SPY excess returns over identical calendar windows - for validation only, never forward-filled. It ran explicit leakage checks proving every feature is observable strictly before its scoring date and on/after its fiscal period end. It fitted no model, computed no predictions, scores, or portfolio weights, trained no model, created no production model candidate, wrote no deployable model artifact, touched no database, ran no migration, restarted no prediction service, enabled no serving flag, used no network, wrote nothing to the D: drive, placed no orders, and traded nothing. The price panel is current-as-of (survivorship-caveated) and SEC provides no earnings consensus or analyst revisions, so that provider gap stays open. This is a research alignment dry run only and claims no production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "3-J",
+    "title": "Repair Fundamental Price Alignment",
+    "purpose": "Fix alignment gaps, label coverage gaps, or feature-age issues before any model-readiness diagnostic."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_model_trained": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "network_used": false,
+  "sec_public_data_used": true,
+  "vendor_api_called": false,
+  "paid_vendor_api_called": false,
+  "data_purchase_made": false,
+  "d_drive_read": true,
+  "d_drive_written": false,
+  "external_data_ingested": false,
+  "production_data_ingested": false,
+  "full_128_ticker_ingestion": false,
+  "model_features_computed": true,
+  "price_join_performed": true,
+  "labels_computed": true,
+  "labels_for_validation_only": true,
+  "model_training_ready": false
+}

@@ -1,0 +1,327 @@
+{
+  "source_phase": "3-H",
+  "input_feature_rows": 353,
+  "input_feature_tickers": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "CAT",
+    "CVX",
+    "DIS",
+    "GE",
+    "GOOGL",
+    "HD",
+    "JNJ",
+    "JPM",
+    "KO",
+    "META",
+    "MSFT",
+    "NEE",
+    "NVDA",
+    "PFE",
+    "PG",
+    "UNH",
+    "XOM"
+  ],
+  "price_rows_read": 55188,
+  "price_tickers_read": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "CAT",
+    "CVX",
+    "DIS",
+    "GE",
+    "GOOGL",
+    "HD",
+    "JNJ",
+    "JPM",
+    "KO",
+    "META",
+    "MSFT",
+    "NEE",
+    "NVDA",
+    "PFE",
+    "PG",
+    "SPY",
+    "UNH",
+    "XOM"
+  ],
+  "aligned_rows": 32882,
+  "aligned_tickers": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "CAT",
+    "CVX",
+    "DIS",
+    "GE",
+    "GOOGL",
+    "HD",
+    "JNJ",
+    "JPM",
+    "KO",
+    "META",
+    "MSFT",
+    "NEE",
+    "NVDA",
+    "PFE",
+    "PG",
+    "UNH",
+    "XOM"
+  ],
+  "aligned_start_date": "2016-01-04",
+  "aligned_end_date": "2026-06-16",
+  "rows_by_ticker": {
+    "AAPL": 1911,
+    "AMZN": 2609,
+    "BAC": 471,
+    "CAT": 2628,
+    "CVX": 465,
+    "DIS": 465,
+    "GE": 2628,
+    "GOOGL": 476,
+    "HD": 2628,
+    "JNJ": 2628,
+    "JPM": 1836,
+    "KO": 472,
+    "META": 2353,
+    "MSFT": 2628,
+    "NEE": 2628,
+    "NVDA": 2027,
+    "PFE": 467,
+    "PG": 467,
+    "UNH": 2628,
+    "XOM": 467
+  },
+  "rows_by_sector": {
+    "Communication Services": 3294,
+    "Consumer Discretionary": 5237,
+    "Consumer Staples": 939,
+    "Energy": 932,
+    "Financials": 2307,
+    "Health Care": 5723,
+    "Industrials": 5256,
+    "Information Technology": 6566,
+    "Utilities": 2628
+  },
+  "feature_age_days_summary": {
+    "count": 32882,
+    "min": 1.0,
+    "p25": 62.0,
+    "median": 819.0,
+    "p75": 2259.0,
+    "max": 5009.0,
+    "mean": 1293.4291
+  },
+  "feature_age_median_reasonable": false,
+  "max_reasonable_median_feature_age_days": 400,
+  "annual_vs_quarterly_active_snapshot_mix": {
+    "annual": 5336,
+    "quarterly": 27546
+  },
+  "label_coverage_by_horizon": {
+    "21d": 0.9872,
+    "63d": 0.9617,
+    "126d": 0.9234
+  },
+  "leakage_check_count": 197292,
+  "leakage_failure_count": 0,
+  "leakage_warning_count": 0,
+  "null_feature_summary": {
+    "operating_margin": {
+      "non_null": 3008,
+      "null": 29874,
+      "non_null_fraction": 0.0915
+    },
+    "net_margin": {
+      "non_null": 4861,
+      "null": 28021,
+      "non_null_fraction": 0.1478
+    },
+    "fcf_margin": {
+      "non_null": 3438,
+      "null": 29444,
+      "non_null_fraction": 0.1046
+    },
+    "operating_cash_flow_margin": {
+      "non_null": 5272,
+      "null": 27610,
+      "non_null_fraction": 0.1603
+    },
+    "debt_proxy_total_liabilities_to_assets": {
+      "non_null": 4835,
+      "null": 28047,
+      "non_null_fraction": 0.147
+    },
+    "equity_to_assets": {
+      "non_null": 4723,
+      "null": 28159,
+      "non_null_fraction": 0.1436
+    },
+    "asset_turnover_proxy": {
+      "non_null": 3419,
+      "null": 29463,
+      "non_null_fraction": 0.104
+    },
+    "liability_to_equity": {
+      "non_null": 3818,
+      "null": 29064,
+      "non_null_fraction": 0.1161
+    },
+    "revenue_yoy_growth": {
+      "non_null": 10946,
+      "null": 21936,
+      "non_null_fraction": 0.3329
+    },
+    "net_income_yoy_growth": {
+      "non_null": 6048,
+      "null": 26834,
+      "non_null_fraction": 0.1839
+    },
+    "operating_income_yoy_growth": {
+      "non_null": 6379,
+      "null": 26503,
+      "non_null_fraction": 0.194
+    },
+    "eps_diluted_yoy_growth": {
+      "non_null": 4231,
+      "null": 28651,
+      "non_null_fraction": 0.1287
+    },
+    "total_assets_yoy_growth": {
+      "non_null": 738,
+      "null": 32144,
+      "non_null_fraction": 0.0224
+    },
+    "operating_cash_flow_yoy_growth": {
+      "non_null": 4181,
+      "null": 28701,
+      "non_null_fraction": 0.1272
+    },
+    "free_cash_flow_yoy_growth": {
+      "non_null": 2581,
+      "null": 30301,
+      "non_null_fraction": 0.0785
+    },
+    "cash_conversion": {
+      "non_null": 8575,
+      "null": 24307,
+      "non_null_fraction": 0.2608
+    },
+    "fcf_to_net_income": {
+      "non_null": 5106,
+      "null": 27776,
+      "non_null_fraction": 0.1553
+    },
+    "capex_intensity": {
+      "non_null": 3492,
+      "null": 29390,
+      "non_null_fraction": 0.1062
+    },
+    "accrual_proxy": {
+      "non_null": 5462,
+      "null": 27420,
+      "non_null_fraction": 0.1661
+    },
+    "log_total_assets": {
+      "non_null": 5740,
+      "null": 27142,
+      "non_null_fraction": 0.1746
+    },
+    "log_revenue_abs": {
+      "non_null": 18264,
+      "null": 14618,
+      "non_null_fraction": 0.5554
+    },
+    "log_total_liabilities_abs": {
+      "non_null": 4835,
+      "null": 28047,
+      "non_null_fraction": 0.147
+    },
+    "filing_lag_days": {
+      "non_null": 32882,
+      "null": 0,
+      "non_null_fraction": 1.0
+    }
+  },
+  "null_label_summary": {
+    "forward_return_21d": {
+      "non_null": 32462,
+      "null": 420,
+      "non_null_fraction": 0.9872
+    },
+    "forward_return_63d": {
+      "non_null": 31622,
+      "null": 1260,
+      "non_null_fraction": 0.9617
+    },
+    "forward_return_126d": {
+      "non_null": 30362,
+      "null": 2520,
+      "non_null_fraction": 0.9234
+    },
+    "forward_spy_return_21d": {
+      "non_null": 32462,
+      "null": 420,
+      "non_null_fraction": 0.9872
+    },
+    "forward_spy_return_63d": {
+      "non_null": 31622,
+      "null": 1260,
+      "non_null_fraction": 0.9617
+    },
+    "forward_spy_return_126d": {
+      "non_null": 30362,
+      "null": 2520,
+      "non_null_fraction": 0.9234
+    },
+    "forward_excess_return_vs_spy_21d": {
+      "non_null": 32462,
+      "null": 420,
+      "non_null_fraction": 0.9872
+    },
+    "forward_excess_return_vs_spy_63d": {
+      "non_null": 31622,
+      "null": 1260,
+      "non_null_fraction": 0.9617
+    },
+    "forward_excess_return_vs_spy_126d": {
+      "non_null": 30362,
+      "null": 2520,
+      "non_null_fraction": 0.9234
+    },
+    "binary_outperform_spy_21d": {
+      "non_null": 32462,
+      "null": 420,
+      "non_null_fraction": 0.9872
+    },
+    "binary_outperform_spy_63d": {
+      "non_null": 31622,
+      "null": 1260,
+      "non_null_fraction": 0.9617
+    },
+    "binary_outperform_spy_126d": {
+      "non_null": 30362,
+      "null": 2520,
+      "non_null_fraction": 0.9234
+    },
+    "forward_return_rank_by_date_21d": {
+      "non_null": 32462,
+      "null": 420,
+      "non_null_fraction": 0.9872
+    },
+    "forward_return_rank_by_date_63d": {
+      "non_null": 31622,
+      "null": 1260,
+      "non_null_fraction": 0.9617
+    },
+    "forward_return_rank_by_date_126d": {
+      "non_null": 30362,
+      "null": 2520,
+      "non_null_fraction": 0.9234
+    }
+  },
+  "spy_available": true,
+  "recommendation": "FUNDAMENTAL_PRICE_ALIGNMENT_PARTIAL_SUCCESS"
+}
