@@ -1,0 +1,129 @@
+ticker,sector,industry,source,as_of_date,point_in_time,notes
+AAPL,Information Technology,"Technology Hardware, Storage & Peripherals",curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ABBV,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ABT,Health Care,Health Care Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ACN,Information Technology,IT Consulting & Other Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ADBE,Information Technology,Application Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ADI,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ADP,Industrials,Human Resource & Employment Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AMAT,Information Technology,Semiconductor Materials & Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AMD,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AMGN,Health Care,Biotechnology,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AMZN,Consumer Discretionary,Broadline Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AON,Financials,Insurance Brokers,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+APD,Materials,Industrial Gases,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+APH,Information Technology,Electronic Components,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AVGO,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+AXP,Financials,Consumer Finance,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+BA,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+BAC,Financials,Diversified Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+BKNG,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+BLK,Financials,Asset Management & Custody Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+BMY,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+BSX,Health Care,Health Care Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+C,Financials,Diversified Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CAT,Industrials,Construction Machinery & Heavy Transportation Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CB,Financials,Property & Casualty Insurance,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CDNS,Information Technology,Application Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CI,Health Care,Health Care Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CL,Consumer Staples,Household Products,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CME,Financials,Financial Exchanges & Data,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CMG,Consumer Discretionary,Restaurants,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+COP,Energy,Oil & Gas Exploration & Production,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+COST,Consumer Staples,Consumer Staples Merchandise Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CRM,Information Technology,Application Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CSCO,Information Technology,Communications Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CVS,Health Care,Health Care Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+CVX,Energy,Integrated Oil & Gas,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+DE,Industrials,Agricultural & Farm Machinery,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+DIS,Communication Services,Movies & Entertainment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+DUK,Utilities,Electric Utilities,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ELV,Health Care,Managed Health Care,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+EMR,Industrials,Electrical Components & Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+EOG,Energy,Oil & Gas Exploration & Production,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+EQIX,Real Estate,Data Center REITs,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ETN,Industrials,Electrical Components & Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+FDX,Industrials,Air Freight & Logistics,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+GD,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+GE,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+GILD,Health Care,Biotechnology,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+GOOG,Communication Services,Interactive Media & Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+GOOGL,Communication Services,Interactive Media & Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+GS,Financials,Investment Banking & Brokerage,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+HCA,Health Care,Health Care Facilities,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+HD,Consumer Discretionary,Home Improvement Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+HON,Industrials,Industrial Conglomerates,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+IBM,Information Technology,IT Consulting & Other Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ICE,Financials,Financial Exchanges & Data,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+INTC,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+INTU,Information Technology,Application Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ISRG,Health Care,Health Care Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ITW,Industrials,Industrial Machinery & Supplies & Components,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+JNJ,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+JPM,Financials,Diversified Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+KLAC,Information Technology,Semiconductor Materials & Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+KO,Consumer Staples,Soft Drinks & Non-alcoholic Beverages,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+LIN,Materials,Industrial Gases,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+LLY,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+LMT,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+LOW,Consumer Discretionary,Home Improvement Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MA,Financials,Transaction & Payment Processing Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MAR,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MCD,Consumer Discretionary,Restaurants,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MCO,Financials,Financial Exchanges & Data,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MDLZ,Consumer Staples,Packaged Foods & Meats,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MDT,Health Care,Health Care Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+META,Communication Services,Interactive Media & Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MO,Consumer Staples,Tobacco,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MRK,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MS,Financials,Investment Banking & Brokerage,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MSFT,Information Technology,Systems Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+MU,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+NEE,Utilities,Electric Utilities,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+NFLX,Communication Services,Movies & Entertainment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+NKE,Consumer Discretionary,"Apparel, Accessories & Luxury Goods",curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+NOC,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+NOW,Information Technology,Systems Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+NVDA,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ORCL,Information Technology,Systems Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ORLY,Consumer Discretionary,Automotive Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PANW,Information Technology,Systems Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PEP,Consumer Staples,Soft Drinks & Non-alcoholic Beverages,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PFE,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PG,Consumer Staples,Household Products,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PH,Industrials,Industrial Machinery & Supplies & Components,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PLD,Real Estate,Industrial REITs,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PM,Consumer Staples,Tobacco,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PNC,Financials,Regional Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+PYPL,Financials,Transaction & Payment Processing Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+QCOM,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+REGN,Health Care,Biotechnology,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ROP,Information Technology,Application Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+RTX,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SBUX,Consumer Discretionary,Restaurants,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SCHW,Financials,Investment Banking & Brokerage,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SHW,Materials,Specialty Chemicals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SLB,Energy,Oil & Gas Equipment & Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SNPS,Information Technology,Application Software,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SO,Utilities,Electric Utilities,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SPGI,Financials,Financial Exchanges & Data,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+SYK,Health Care,Health Care Equipment,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+T,Communication Services,Integrated Telecommunication Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+TDG,Industrials,Aerospace & Defense,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+TJX,Consumer Discretionary,Apparel Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+TMO,Health Care,Life Sciences Tools & Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+TSLA,Consumer Discretionary,Automobile Manufacturers,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+TXN,Information Technology,Semiconductors,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+UBER,Industrials,Passenger Ground Transportation,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+UNH,Health Care,Managed Health Care,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+UNP,Industrials,Rail Transportation,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+UPS,Industrials,Air Freight & Logistics,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+USB,Financials,Regional Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+V,Financials,Transaction & Payment Processing Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+VRTX,Health Care,Biotechnology,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+VZ,Communication Services,Integrated Telecommunication Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+WFC,Financials,Diversified Banks,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+WM,Industrials,Environmental & Facilities Services,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+WMT,Consumer Staples,Consumer Staples Merchandise Retail,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+XOM,Energy,Integrated Oil & Gas,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
+ZTS,Health Care,Pharmaceuticals,curated_static_mapping_current_as_of_2026_06_18,2026-06-18,false,current-as-of sector map; not point-in-time; for caveated research only
