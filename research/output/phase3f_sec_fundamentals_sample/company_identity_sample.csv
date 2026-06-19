@@ -1,0 +1,6 @@
+ticker,company_name,cik,sector,industry,source,effective_from,effective_to
+AAPL,Apple Inc.,0000320193,Information Technology,"Technology Hardware, Storage & Peripherals",SEC EDGAR (public companyfacts + submissions JSON),2026-06-18,
+MSFT,MICROSOFT CORP,0000789019,Information Technology,Systems Software,SEC EDGAR (public companyfacts + submissions JSON),2026-06-18,
+JPM,JPMORGAN CHASE & CO,0000019617,Financials,Diversified Banks,SEC EDGAR (public companyfacts + submissions JSON),2026-06-18,
+XOM,EXXON MOBIL CORP,0000034088,Energy,Integrated Oil & Gas,SEC EDGAR (public companyfacts + submissions JSON),2026-06-18,
+UNH,UNITEDHEALTH GROUP INC,0000731766,Health Care,Managed Health Care,SEC EDGAR (public companyfacts + submissions JSON),2026-06-18,
