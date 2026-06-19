@@ -1,0 +1,19 @@
+decision_item,value,passed,note
+price_panel_present,True,True,Phase 2K-G price panel readable on D: (read-only)
+sector_map_present,True,True,current-as-of sector map present
+phase3l_aligned_panel_present,True,True,Phase 3-L aligned SEC + label panel present
+phase3m_collection_progress_present,True,True,Phase 3-M collection progress present
+earnings_cache_ticker_count,25,,recorded only; no new earnings data fetched
+feature_panel_rows,303201,True,unified research feature panel rows
+feature_panel_tickers,128,True,tickers in the unified panel
+implemented_feature_families,7,True,technical/seasonality/regime/sector/SEC/earnings/time-series implemented locally
+blocked_feature_families,2,,"macro_inflation + sentiment: external_*_data_required (declared, not faked)"
+earnings_family_partial_coverage,25,,tickers carrying earnings-surprise values (Phase 3-M cache only)
+max_implemented_family_abs_ic,0.037744,True,FAILS if no implemented family clears the faint IC floor (0.01)
+max_baseline_abs_ic,0.046256,,best baseline ranking signal |IC|
+no_production_model_trained,True,True,research-only baselines; no production model
+no_portfolio_weights,True,True,no portfolio weights computed
+no_production_predictions,True,True,no production predictions/scores computed
+d_drive_written,False,True,wrote nothing to the D: drive
+alpha_vantage_called,False,True,no provider / Alpha Vantage call
+recommendation,MULTISIGNAL_FEATURE_FACTORY_PARTIAL_MACRO_SENTIMENT_MISSING,True,allowed values only

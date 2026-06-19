@@ -1,0 +1,28 @@
+feature_family,horizon,implemented,cross_sectional,num_features,num_features_with_ic,best_feature,best_feature_abs_mean_ic,best_feature_mean_ic,mean_abs_mean_ic,max_ic_date_count,note
+technical_price,21d,True,True,12,12,volatility_21d,0.049871,0.049871,0.021042,2602,cross-sectional daily rank IC measured across implemented features
+technical_price,63d,True,True,12,12,volatility_63d,0.08459,0.08459,0.030612,2560,cross-sectional daily rank IC measured across implemented features
+technical_price,126d,True,True,12,12,volatility_63d,0.114723,0.114723,0.032169,2497,cross-sectional daily rank IC measured across implemented features
+seasonality_calendar,21d,True,True,13,3,historical_same_month_win_rate_by_ticker,0.009625,0.009625,0.006068,2335,cross-sectional daily rank IC measured across implemented features
+seasonality_calendar,63d,True,True,13,3,historical_same_month_avg_return_by_ticker,0.022917,0.022917,0.011943,2293,cross-sectional daily rank IC measured across implemented features
+seasonality_calendar,126d,True,True,13,3,historical_same_month_avg_return_by_ticker,0.041692,0.041692,0.027108,2230,cross-sectional daily rank IC measured across implemented features
+market_regime,21d,True,False,10,0,,,,,0,"time-series / calendar conditioning feature: identical across tickers on a given date, so a cross-sectional daily IC is undefined by construction (regime / calendar context)"
+market_regime,63d,True,False,10,0,,,,,0,"time-series / calendar conditioning feature: identical across tickers on a given date, so a cross-sectional daily IC is undefined by construction (regime / calendar context)"
+market_regime,126d,True,False,10,0,,,,,0,"time-series / calendar conditioning feature: identical across tickers on a given date, so a cross-sectional daily IC is undefined by construction (regime / calendar context)"
+sector_relative,21d,True,True,8,8,ticker_vol_21d_minus_sector_vol_21d,0.028629,0.028629,0.019526,2586,cross-sectional daily rank IC measured across implemented features
+sector_relative,63d,True,True,8,8,ticker_rank_within_sector_63d,0.039705,0.039705,0.022615,2544,cross-sectional daily rank IC measured across implemented features
+sector_relative,126d,True,True,8,8,ticker_vol_21d_minus_sector_vol_21d,0.04841,0.04841,0.023149,2481,cross-sectional daily rank IC measured across implemented features
+sec_fundamental,21d,True,True,9,9,accrual_proxy,0.030173,-0.030173,0.015604,2607,cross-sectional daily rank IC measured across implemented features
+sec_fundamental,63d,True,True,9,9,log_total_assets,0.048866,-0.048866,0.026152,2565,cross-sectional daily rank IC measured across implemented features
+sec_fundamental,126d,True,True,9,9,net_margin,0.076358,-0.076358,0.037187,2502,cross-sectional daily rank IC measured across implemented features
+earnings_surprise,21d,True,True,6,6,eps_surprise_pct,0.018396,0.018396,0.013979,2206,cross-sectional daily rank IC measured across implemented features
+earnings_surprise,63d,True,True,6,6,trailing_4q_avg_surprise_pct,0.039029,-0.039029,0.02373,2164,cross-sectional daily rank IC measured across implemented features
+earnings_surprise,126d,True,True,6,6,trailing_4q_avg_surprise_pct,0.063267,-0.063267,0.037744,2101,cross-sectional daily rank IC measured across implemented features
+macro_inflation,21d,False,False,0,0,,,,,0,family not implemented (external data required); no IC computed
+macro_inflation,63d,False,False,0,0,,,,,0,family not implemented (external data required); no IC computed
+macro_inflation,126d,False,False,0,0,,,,,0,family not implemented (external data required); no IC computed
+sentiment,21d,False,False,0,0,,,,,0,family not implemented (external data required); no IC computed
+sentiment,63d,False,False,0,0,,,,,0,family not implemented (external data required); no IC computed
+sentiment,126d,False,False,0,0,,,,,0,family not implemented (external data required); no IC computed
+time_series_arima_style,21d,True,True,5,5,rolling_mean_reversion_signal_21d,0.019219,0.019219,0.007879,2587,cross-sectional daily rank IC measured across implemented features
+time_series_arima_style,63d,True,True,5,5,rolling_mean_reversion_signal_21d,0.023911,0.023911,0.01027,2545,cross-sectional daily rank IC measured across implemented features
+time_series_arima_style,126d,True,True,5,5,rolling_mean_reversion_signal_21d,0.020542,0.020542,0.005438,2482,cross-sectional daily rank IC measured across implemented features

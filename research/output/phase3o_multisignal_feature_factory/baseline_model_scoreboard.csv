@@ -1,0 +1,28 @@
+model,horizon,sample_rows,sample_tickers,mean_forward_excess_return,information_coefficient,top_decile_minus_bottom_decile_spread,hit_rate,annual_coverage_years,notes
+benchmark_spy,21d,300513,128,0.0,,,,11,passive SPY benchmark; forward excess return defined relative to it
+equal_weight_universe,21d,300513,128,0.00221,,,0.5012,11,equal-weight all eligible names; universe tilt vs SPY
+momentum_rank_composite,21d,299291,128,0.006436,-0.011805,-0.000574,0.5994,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+seasonality_rank_composite,21d,284816,128,0.006788,0.007378,0.001435,0.5931,10,prior-years-only seasonal ranking; research diagnostic
+sector_neutral_momentum,21d,299291,128,0.006138,-0.00918,0.000693,0.5878,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+ar_style_mean_reversion,21d,299350,128,0.004032,0.019219,0.003151,0.5632,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+sec_fundamental_rank_composite,21d,259592,128,0.007355,0.02241,0.005724,0.6099,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+market_regime_adjusted_momentum,21d,299291,128,0.007904,0.002146,0.004089,0.6098,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+combined_multisignal_rank_composite,21d,299946,128,0.006909,-0.005643,0.003756,0.6007,11,equal-weight blend of available family rank composites; research only
+benchmark_spy,63d,295137,128,0.0,,,,11,passive SPY benchmark; forward excess return defined relative to it
+equal_weight_universe,63d,295137,128,0.00705,,,0.5024,11,equal-weight all eligible names; universe tilt vs SPY
+momentum_rank_composite,63d,293915,128,0.022978,-0.009287,0.009046,0.6329,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+seasonality_rank_composite,63d,279440,128,0.024961,0.022917,0.011273,0.6668,10,prior-years-only seasonal ranking; research diagnostic
+sector_neutral_momentum,63d,293915,128,0.019203,-0.017634,0.00712,0.6285,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+ar_style_mean_reversion,63d,293974,128,0.009801,0.023911,0.008205,0.5686,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+sec_fundamental_rank_composite,63d,254216,128,0.021896,0.035918,0.019099,0.6573,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+market_regime_adjusted_momentum,63d,293915,128,0.024686,0.017746,0.01866,0.658,11,"research-only cross-sectional ranking signal; no weights, no production scores"
+combined_multisignal_rank_composite,63d,294570,128,0.023433,0.000688,0.014889,0.655,11,equal-weight blend of available family rank composites; research only
+benchmark_spy,126d,287073,128,0.0,,,,10,passive SPY benchmark; forward excess return defined relative to it
+equal_weight_universe,126d,287073,128,0.015524,,,0.5014,10,equal-weight all eligible names; universe tilt vs SPY
+momentum_rank_composite,126d,285851,128,0.045518,0.016328,0.020193,0.6252,10,"research-only cross-sectional ranking signal; no weights, no production scores"
+seasonality_rank_composite,126d,271376,128,0.05715,0.041692,0.030917,0.7099,9,prior-years-only seasonal ranking; research diagnostic
+sector_neutral_momentum,126d,285851,128,0.042057,-0.007001,0.017613,0.68,10,"research-only cross-sectional ranking signal; no weights, no production scores"
+ar_style_mean_reversion,126d,285910,128,0.017674,0.020542,0.004949,0.5665,10,"research-only cross-sectional ranking signal; no weights, no production scores"
+sec_fundamental_rank_composite,126d,246152,128,0.043052,0.046256,0.03632,0.6639,10,"research-only cross-sectional ranking signal; no weights, no production scores"
+market_regime_adjusted_momentum,126d,285851,128,0.047453,0.033123,0.034456,0.6405,10,"research-only cross-sectional ranking signal; no weights, no production scores"
+combined_multisignal_rank_composite,126d,286506,128,0.044747,0.025031,0.032562,0.6643,10,equal-weight blend of available family rank composites; research only

@@ -1,0 +1,9 @@
+feature,rows,non_null_count,non_null_fraction,mean,std,min,median,max
+ticker_return_21d_minus_sector_return_21d,303201,301979,0.996,-0.000123,0.063809,-0.506179,-0.001314,1.063737
+ticker_return_63d_minus_sector_return_63d,303201,299512,0.9878,-0.000359,0.114215,-0.770564,-0.004321,1.616993
+ticker_vol_21d_minus_sector_vol_21d,303201,301979,0.996,-0.000341,0.097979,-0.615458,-0.013059,1.334035
+sector_return_21d_minus_spy_return_21d,303201,301983,0.996,0.002332,0.037287,-0.272993,0.001984,0.369044
+sector_return_63d_minus_spy_return_63d,303201,299558,0.988,0.007596,0.064263,-0.354153,0.008114,0.526606
+sector_relative_strength_rank_by_date,303201,301983,0.996,5.90071,3.014119,1.0,6.0,11.0
+ticker_rank_within_sector_21d,303201,301979,0.996,9.208173,6.468856,1.0,8.0,25.0
+ticker_rank_within_sector_63d,303201,299512,0.9878,9.206409,6.466662,1.0,8.0,25.0
