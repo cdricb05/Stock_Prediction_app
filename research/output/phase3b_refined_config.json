@@ -1,0 +1,81 @@
+{
+  "phase": "3-B",
+  "generated_at": "2026-06-18T21:50:10",
+  "source": "Derived from Phase 3-A diagnostics; for a Phase 3-C rerun only.",
+  "for_next_phase": "3-C",
+  "selected_models": [
+    {
+      "name": "RIDGE_LINEAR_RANK_MODEL",
+      "role": "primary",
+      "note": "Keep the numpy closed-form ridge as the primary learned model."
+    },
+    {
+      "name": "OPTIONAL_LOGISTIC_OUTPERFORMER",
+      "role": "secondary_benchmark",
+      "note": "Keep only as a stability benchmark; it was more stable at 21d than 63d."
+    },
+    {
+      "name": "MODEL_FREE_COMPOSITE_BASELINE",
+      "role": "model_free_benchmark",
+      "note": "Keep the fixed composite as the must-beat benchmark; it was robust in the catastrophic regime."
+    }
+  ],
+  "selected_horizons": {
+    "primary": [
+      21
+    ],
+    "secondary": [
+      63
+    ],
+    "diagnostic_only": [
+      5
+    ],
+    "note": "Promote 21d to primary (most stable); keep 63d as secondary WITH an overlapping-label correction; demote 5d to diagnostic-only."
+  },
+  "selected_feature_families": [
+    "price_momentum",
+    "reversal",
+    "volatility_risk",
+    "market_relative",
+    "sector_relative"
+  ],
+  "pruned_feature_families": [
+    "cross_sectional_ranks"
+  ],
+  "pruned_feature_notes": [
+    "Drop cross_sectional_ranks entirely: they are monotone rank transforms of their base features (identical |IC|) and add collinearity, not information.",
+    "Within price_momentum, drop the raw return_5/10/21d columns that are the exact negatives of the reversal features (keep one sign per horizon).",
+    "Collapse volume_liquidity to a single liquidity control (e.g. avg_dollar_volume_21d); the rest are near-noise on this panel."
+  ],
+  "required_feature_transforms": [
+    "Cross-sectionally winsorize / clip extreme feature values before standardisation.",
+    "De-duplicate sign-mirrored features (return_Nd vs reversal_Nd) to one per horizon.",
+    "Orthogonalise / neutralise the low-volatility and momentum blocks against each other to remove the conflicting realized_vol_63d vs realized_vol_126d collinearity.",
+    "Sector-neutralise (demean within sector) the learned prediction before ranking."
+  ],
+  "fold_handling_notes": [
+    "Investigate the catastrophic folds explicitly (Phase 3-A best config: folds 5, 6, 10, 11 at 63d; worst is fold 5, 2021-10-05..2022-04-04).",
+    "Report rank IC split by market regime (risk-on / risk-off / high-vol) per fold.",
+    "At 63d, correct for overlapping forward windows (e.g. sample non-overlapping every-horizon dates or block-bootstrap the fold IC) so fold variance is not understated."
+  ],
+  "risk_controls": [
+    "Cap the net low-volatility / low-beta tilt of the long-short book.",
+    "Beta- and volatility-neutralise the long-short portfolio before scoring.",
+    "Cap per-name and per-fold gross exposure so no single regime bet dominates a fold."
+  ],
+  "sector_controls": [
+    "Cap the top-quintile single-sector share at <= 0.35 (Phase 3-A best config ran ~0.38, catastrophic folds higher).",
+    "Sector-neutralise the long book; carry sector-relative features forward (they lower concentration by construction)."
+  ],
+  "validation_changes": [
+    "Keep the embargo >= the maximum label horizon (no leakage).",
+    "Add per-regime IC reporting and a worst-fold gate.",
+    "Advance from 3-C only if the chosen primary horizon has NO catastrophic fold (all folds rank IC > -0.05) AND fold win rate >= 0.60."
+  ],
+  "kill_switch_rules": [
+    "If the Phase 3-C refined rerun still produces ANY catastrophic fold (rank IC < -0.05) at the chosen primary horizon, OR fold win rate < 0.60, OR an unstable mean IC, then STOP price/volume-only modeling.",
+    "On kill-switch trip, do NOT keep tuning price/volume features: escalate to the external-data decision (fundamentals / estimates / earnings / news / options).",
+    "Do not add internet data, fundamentals, news, or options in Phase 3-C itself; that is only considered after a kill-switch trip.",
+    "Never create a production model candidate or a deployable model artifact in 3-C."
+  ]
+}

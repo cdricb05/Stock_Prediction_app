@@ -1,0 +1,8 @@
+family,n_features,mean_abs_full_sample_ic,max_abs_full_sample_ic,mean_signed_full_sample_ic,ridge_abs_coef_load_63d_top12,classification,recommended_action
+price_momentum,7,0.013719,0.023981,-0.007729,0.039436,"unstable_regime_sensitive,redundant",prune_redundant_then_transform
+reversal,3,0.020206,0.023981,0.020206,0.0,strongest_positive,keep
+volatility_risk,6,0.048731,0.06039,0.022348,0.029812,"strongest_positive,unstable_regime_sensitive",keep_but_neutralize
+volume_liquidity,4,0.008311,0.01431,-0.006957,0.0,weak_low_information,prune_to_single_control
+market_relative,5,0.023048,0.045177,0.002745,0.025544,"strongest_positive,unstable_regime_sensitive",keep_but_neutralize
+sector_relative,6,0.013459,0.028703,0.006438,0.0,weak_low_information,keep
+cross_sectional_ranks,12,0.018227,0.048843,0.007547,0.063198,redundant,prune

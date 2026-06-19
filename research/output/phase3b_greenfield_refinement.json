@@ -1,0 +1,749 @@
+{
+  "phase": "3-B",
+  "generated_at": "2026-06-18T21:50:10",
+  "inputs_read": {
+    "phase3a_json": "research/output/phase3a_greenfield_baseline.json",
+    "phase3a_feature_summary_csv": "research/output/phase3a_greenfield_feature_summary.csv",
+    "phase3a_walkforward_summary_csv": "research/output/phase3a_greenfield_walkforward_summary.csv",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv",
+    "expanded_price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "data_quality_report_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_quality_report.json",
+    "data_build_summary_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_data_build_summary.json",
+    "survivorship_caveat_json": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_survivorship_caveat.json",
+    "d_drive_spy_series_read": true
+  },
+  "outputs_written": {
+    "results_json": "research/output/phase3b_greenfield_refinement.json",
+    "feature_family_diagnostics_csv": "research/output/phase3b_feature_family_diagnostics.csv",
+    "fold_diagnostics_csv": "research/output/phase3b_fold_diagnostics.csv",
+    "refined_config_json": "research/output/phase3b_refined_config.json"
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_model_trained": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "d_drive_read": true,
+  "d_drive_written": false,
+  "network_used": false,
+  "phase3a_summary": {
+    "phase3a_recommendation": "GREENFIELD_BASELINE_WEAK_BUT_IMPROVABLE",
+    "phase3a_confirmed": {
+      "phase_is_3a": true,
+      "recommendation_is_weak_but_improvable": true,
+      "recommended_next_phase_is_3b": true,
+      "research_model_trained_true": true,
+      "production_model_trained_false": true,
+      "production_model_candidate_created_false": true,
+      "deployable_model_artifact_written_false": true,
+      "all_confirmed": true,
+      "phase3a_recommendation": "GREENFIELD_BASELINE_WEAK_BUT_IMPROVABLE",
+      "phase3a_recommended_next_phase": "3-B"
+    },
+    "best_model": "RIDGE_LINEAR_RANK_MODEL",
+    "best_horizon_days": 63,
+    "best_mean_rank_ic": 0.050641,
+    "best_fold_win_rate": 0.642857,
+    "best_worst_fold_rank_ic": -0.114291,
+    "best_top_quintile_max_sector_share": 0.375694,
+    "matches_expected_best_model": true,
+    "matches_expected_best_horizon": true
+  },
+  "catastrophic_fold_diagnostics": {
+    "best_model": "RIDGE_LINEAR_RANK_MODEL",
+    "best_horizon_days": 63,
+    "n_folds_total": 15,
+    "n_catastrophic_folds": 4,
+    "n_weak_negative_folds": 1,
+    "n_positive_folds": 9,
+    "catastrophic_fold_ids": [
+      5,
+      11,
+      10,
+      6
+    ],
+    "worst_fold": {
+      "fold": 5,
+      "val_start": "2021-10-05",
+      "val_end": "2022-04-04",
+      "n_dates": 126,
+      "mean_rank_ic": -0.114291,
+      "classification": "catastrophic",
+      "information_ratio": -1.093806,
+      "top_minus_bottom_spread": -0.047668,
+      "positive_spread_fraction": 0.119048,
+      "hit_rate_top_quintile": 0.393773,
+      "top_quintile_max_sector_share": 0.437118,
+      "turnover_proxy": 0.095077,
+      "spy_window_return": 0.061715,
+      "spy_window_vol_annualized": 0.179281,
+      "spy_max_drawdown": -0.128656,
+      "regime_label": "risk_off_drawdown"
+    },
+    "worst_fold_cross_model_rank_ic": {
+      "MODEL_FREE_COMPOSITE_BASELINE": 0.124453,
+      "RIDGE_LINEAR_RANK_MODEL": -0.114291,
+      "OPTIONAL_LOGISTIC_OUTPERFORMER": -0.124674
+    },
+    "model_free_composite_beat_learned_at_worst_fold": true,
+    "catastrophic_vs_positive": {
+      "spy_window_return": {
+        "catastrophic_mean": -0.007417,
+        "positive_mean": 0.138565
+      },
+      "spy_window_vol_annualized": {
+        "catastrophic_mean": 0.201578,
+        "positive_mean": 0.147123
+      },
+      "top_quintile_max_sector_share": {
+        "catastrophic_mean": 0.432769,
+        "positive_mean": 0.357137
+      },
+      "top_minus_bottom_spread": {
+        "catastrophic_mean": -0.023736,
+        "positive_mean": 0.056676
+      },
+      "hit_rate_top_quintile": {
+        "catastrophic_mean": 0.450397,
+        "positive_mean": 0.540033
+      },
+      "turnover_proxy": {
+        "catastrophic_mean": 0.096923,
+        "positive_mean": 0.094582
+      }
+    }
+  },
+  "fold_diagnostics": [
+    {
+      "fold": 5,
+      "val_start": "2021-10-05",
+      "val_end": "2022-04-04",
+      "n_dates": 126,
+      "mean_rank_ic": -0.114291,
+      "classification": "catastrophic",
+      "information_ratio": -1.093806,
+      "top_minus_bottom_spread": -0.047668,
+      "positive_spread_fraction": 0.119048,
+      "hit_rate_top_quintile": 0.393773,
+      "top_quintile_max_sector_share": 0.437118,
+      "turnover_proxy": 0.095077,
+      "spy_window_return": 0.061715,
+      "spy_window_vol_annualized": 0.179281,
+      "spy_max_drawdown": -0.128656,
+      "regime_label": "risk_off_drawdown"
+    },
+    {
+      "fold": 11,
+      "val_start": "2024-10-08",
+      "val_end": "2025-04-09",
+      "n_dates": 126,
+      "mean_rank_ic": -0.082777,
+      "classification": "catastrophic",
+      "information_ratio": -0.394591,
+      "top_minus_bottom_spread": -0.013364,
+      "positive_spread_fraction": 0.333333,
+      "hit_rate_top_quintile": 0.461538,
+      "top_quintile_max_sector_share": 0.452686,
+      "turnover_proxy": 0.107385,
+      "spy_window_return": -0.036721,
+      "spy_window_vol_annualized": 0.234693,
+      "spy_max_drawdown": -0.187552,
+      "regime_label": "risk_off_drawdown_high_vol"
+    },
+    {
+      "fold": 10,
+      "val_start": "2024-04-09",
+      "val_end": "2024-10-07",
+      "n_dates": 126,
+      "mean_rank_ic": -0.061262,
+      "classification": "catastrophic",
+      "information_ratio": -0.632812,
+      "top_minus_bottom_spread": -0.02133,
+      "positive_spread_fraction": 0.238095,
+      "hit_rate_top_quintile": 0.442308,
+      "top_quintile_max_sector_share": 0.461844,
+      "turnover_proxy": 0.104615,
+      "spy_window_return": 0.100245,
+      "spy_window_vol_annualized": 0.133915,
+      "spy_max_drawdown": -0.084056,
+      "regime_label": "risk_on_rally"
+    },
+    {
+      "fold": 6,
+      "val_start": "2022-04-05",
+      "val_end": "2022-10-04",
+      "n_dates": 126,
+      "mean_rank_ic": -0.050189,
+      "classification": "catastrophic",
+      "information_ratio": -0.238163,
+      "top_minus_bottom_spread": -0.012583,
+      "positive_spread_fraction": 0.515873,
+      "hit_rate_top_quintile": 0.503968,
+      "top_quintile_max_sector_share": 0.379426,
+      "turnover_proxy": 0.080615,
+      "spy_window_return": -0.154908,
+      "spy_window_vol_annualized": 0.258423,
+      "spy_max_drawdown": -0.201391,
+      "regime_label": "risk_off_drawdown_high_vol"
+    },
+    {
+      "fold": 1,
+      "val_start": "2019-10-04",
+      "val_end": "2020-04-03",
+      "n_dates": 126,
+      "mean_rank_ic": -0.000392,
+      "classification": "weak_negative",
+      "information_ratio": -0.001962,
+      "top_minus_bottom_spread": 0.022331,
+      "positive_spread_fraction": 0.515873,
+      "hit_rate_top_quintile": 0.516178,
+      "top_quintile_max_sector_share": 0.314408,
+      "turnover_proxy": 0.112923,
+      "spy_window_return": -0.147692,
+      "spy_window_vol_annualized": 0.397108,
+      "spy_max_drawdown": -0.337173,
+      "regime_label": "risk_off_drawdown_high_vol"
+    },
+    {
+      "fold": 0,
+      "val_start": "2019-04-05",
+      "val_end": "2019-10-03",
+      "n_dates": 126,
+      "mean_rank_ic": 0.028613,
+      "classification": "positive",
+      "information_ratio": 0.2149,
+      "top_minus_bottom_spread": 0.02407,
+      "positive_spread_fraction": 0.626984,
+      "hit_rate_top_quintile": 0.579365,
+      "top_quintile_max_sector_share": 0.455739,
+      "turnover_proxy": 0.093538,
+      "spy_window_return": 0.015976,
+      "spy_window_vol_annualized": 0.138286,
+      "spy_max_drawdown": -0.066184,
+      "regime_label": "choppy_sideways"
+    },
+    {
+      "fold": 4,
+      "val_start": "2021-04-07",
+      "val_end": "2021-10-04",
+      "n_dates": 126,
+      "mean_rank_ic": 0.031201,
+      "classification": "positive",
+      "information_ratio": 0.17961,
+      "top_minus_bottom_spread": 0.019188,
+      "positive_spread_fraction": 0.539683,
+      "hit_rate_top_quintile": 0.473138,
+      "top_quintile_max_sector_share": 0.318376,
+      "turnover_proxy": 0.097846,
+      "spy_window_return": 0.061069,
+      "spy_window_vol_annualized": 0.111754,
+      "spy_max_drawdown": -0.051141,
+      "regime_label": "choppy_sideways"
+    },
+    {
+      "fold": 9,
+      "val_start": "2023-10-06",
+      "val_end": "2024-04-08",
+      "n_dates": 126,
+      "mean_rank_ic": 0.053184,
+      "classification": "positive",
+      "information_ratio": 0.7709,
+      "top_minus_bottom_spread": 0.030175,
+      "positive_spread_fraction": 0.809524,
+      "hit_rate_top_quintile": 0.450549,
+      "top_quintile_max_sector_share": 0.22558,
+      "turnover_proxy": 0.106154,
+      "spy_window_return": 0.216281,
+      "spy_window_vol_annualized": 0.114228,
+      "spy_max_drawdown": -0.058764,
+      "regime_label": "risk_on_rally"
+    },
+    {
+      "fold": 3,
+      "val_start": "2020-10-05",
+      "val_end": "2021-04-06",
+      "n_dates": 126,
+      "mean_rank_ic": 0.070798,
+      "classification": "positive",
+      "information_ratio": 0.406651,
+      "top_minus_bottom_spread": 0.01688,
+      "positive_spread_fraction": 0.68254,
+      "hit_rate_top_quintile": 0.510073,
+      "top_quintile_max_sector_share": 0.351343,
+      "turnover_proxy": 0.071385,
+      "spy_window_return": 0.204341,
+      "spy_window_vol_annualized": 0.157509,
+      "spy_max_drawdown": -0.073461,
+      "regime_label": "risk_on_rally"
+    },
+    {
+      "fold": 13,
+      "val_start": "2025-10-10",
+      "val_end": "2026-04-13",
+      "n_dates": 108,
+      "mean_rank_ic": 0.101847,
+      "classification": "positive",
+      "information_ratio": 0.607033,
+      "top_minus_bottom_spread": 0.077512,
+      "positive_spread_fraction": 0.592593,
+      "hit_rate_top_quintile": 0.519943,
+      "top_quintile_max_sector_share": 0.448362,
+      "turnover_proxy": 0.080158,
+      "spy_window_return": 0.056639,
+      "spy_window_vol_annualized": 0.13439,
+      "spy_max_drawdown": -0.08885,
+      "regime_label": "choppy_sideways"
+    },
+    {
+      "fold": 2,
+      "val_start": "2020-04-06",
+      "val_end": "2020-10-02",
+      "n_dates": 126,
+      "mean_rank_ic": 0.120608,
+      "classification": "positive",
+      "information_ratio": 0.607389,
+      "top_minus_bottom_spread": 0.057399,
+      "positive_spread_fraction": 0.738095,
+      "hit_rate_top_quintile": 0.519231,
+      "top_quintile_max_sector_share": 0.252137,
+      "turnover_proxy": 0.083692,
+      "spy_window_return": 0.271054,
+      "spy_window_vol_annualized": 0.220851,
+      "spy_max_drawdown": -0.094404,
+      "regime_label": "risk_on_rally_high_vol"
+    },
+    {
+      "fold": 8,
+      "val_start": "2023-04-06",
+      "val_end": "2023-10-05",
+      "n_dates": 126,
+      "mean_rank_ic": 0.189439,
+      "classification": "positive",
+      "information_ratio": 1.28713,
+      "top_minus_bottom_spread": 0.071077,
+      "positive_spread_fraction": 0.960317,
+      "hit_rate_top_quintile": 0.642857,
+      "top_quintile_max_sector_share": 0.365385,
+      "turnover_proxy": 0.112923,
+      "spy_window_return": 0.044942,
+      "spy_window_vol_annualized": 0.115024,
+      "spy_max_drawdown": -0.075827,
+      "regime_label": "choppy_sideways"
+    },
+    {
+      "fold": 7,
+      "val_start": "2022-10-05",
+      "val_end": "2023-04-05",
+      "n_dates": 126,
+      "mean_rank_ic": 0.197218,
+      "classification": "positive",
+      "information_ratio": 1.757131,
+      "top_minus_bottom_spread": 0.098881,
+      "positive_spread_fraction": 0.960317,
+      "hit_rate_top_quintile": 0.621184,
+      "top_quintile_max_sector_share": 0.353175,
+      "turnover_proxy": 0.113846,
+      "spy_window_return": 0.090017,
+      "spy_window_vol_annualized": 0.205812,
+      "spy_max_drawdown": -0.075388,
+      "regime_label": "risk_on_rally_high_vol"
+    },
+    {
+      "fold": 12,
+      "val_start": "2025-04-10",
+      "val_end": "2025-10-09",
+      "n_dates": 126,
+      "mean_rank_ic": 0.224971,
+      "classification": "positive",
+      "information_ratio": 2.165052,
+      "top_minus_bottom_spread": 0.114902,
+      "positive_spread_fraction": 1.0,
+      "hit_rate_top_quintile": 0.543956,
+      "top_quintile_max_sector_share": 0.444139,
+      "turnover_proxy": 0.091692,
+      "spy_window_return": 0.286763,
+      "spy_window_vol_annualized": 0.126254,
+      "spy_max_drawdown": -0.046817,
+      "regime_label": "risk_on_rally"
+    },
+    {
+      "fold": 14,
+      "val_start": "2026-04-14",
+      "val_end": "2026-06-16",
+      "n_dates": 0,
+      "mean_rank_ic": null,
+      "classification": "no_data",
+      "information_ratio": null,
+      "top_minus_bottom_spread": null,
+      "positive_spread_fraction": null,
+      "hit_rate_top_quintile": null,
+      "top_quintile_max_sector_share": null,
+      "turnover_proxy": null,
+      "spy_window_return": 0.080451,
+      "spy_window_vol_annualized": 0.131282,
+      "spy_max_drawdown": -0.044947,
+      "regime_label": "risk_on_rally"
+    }
+  ],
+  "feature_family_diagnostics": {
+    "by_family": [
+      {
+        "family": "price_momentum",
+        "n_features": 7,
+        "mean_abs_full_sample_ic": 0.013719,
+        "max_abs_full_sample_ic": 0.023981,
+        "mean_signed_full_sample_ic": -0.007729,
+        "ridge_abs_coef_load_63d_top12": 0.039436,
+        "classification": "unstable_regime_sensitive,redundant",
+        "recommended_action": "prune_redundant_then_transform"
+      },
+      {
+        "family": "reversal",
+        "n_features": 3,
+        "mean_abs_full_sample_ic": 0.020206,
+        "max_abs_full_sample_ic": 0.023981,
+        "mean_signed_full_sample_ic": 0.020206,
+        "ridge_abs_coef_load_63d_top12": 0.0,
+        "classification": "strongest_positive",
+        "recommended_action": "keep"
+      },
+      {
+        "family": "volatility_risk",
+        "n_features": 6,
+        "mean_abs_full_sample_ic": 0.048731,
+        "max_abs_full_sample_ic": 0.06039,
+        "mean_signed_full_sample_ic": 0.022348,
+        "ridge_abs_coef_load_63d_top12": 0.029812,
+        "classification": "strongest_positive,unstable_regime_sensitive",
+        "recommended_action": "keep_but_neutralize"
+      },
+      {
+        "family": "volume_liquidity",
+        "n_features": 4,
+        "mean_abs_full_sample_ic": 0.008311,
+        "max_abs_full_sample_ic": 0.01431,
+        "mean_signed_full_sample_ic": -0.006957,
+        "ridge_abs_coef_load_63d_top12": 0.0,
+        "classification": "weak_low_information",
+        "recommended_action": "prune_to_single_control"
+      },
+      {
+        "family": "market_relative",
+        "n_features": 5,
+        "mean_abs_full_sample_ic": 0.023048,
+        "max_abs_full_sample_ic": 0.045177,
+        "mean_signed_full_sample_ic": 0.002745,
+        "ridge_abs_coef_load_63d_top12": 0.025544,
+        "classification": "strongest_positive,unstable_regime_sensitive",
+        "recommended_action": "keep_but_neutralize"
+      },
+      {
+        "family": "sector_relative",
+        "n_features": 6,
+        "mean_abs_full_sample_ic": 0.013459,
+        "max_abs_full_sample_ic": 0.028703,
+        "mean_signed_full_sample_ic": 0.006438,
+        "ridge_abs_coef_load_63d_top12": 0.0,
+        "classification": "weak_low_information",
+        "recommended_action": "keep"
+      },
+      {
+        "family": "cross_sectional_ranks",
+        "n_features": 12,
+        "mean_abs_full_sample_ic": 0.018227,
+        "max_abs_full_sample_ic": 0.048843,
+        "mean_signed_full_sample_ic": 0.007547,
+        "ridge_abs_coef_load_63d_top12": 0.063198,
+        "classification": "redundant",
+        "recommended_action": "prune"
+      }
+    ],
+    "summary": {
+      "strongest_positive_families": [
+        "volatility_risk",
+        "market_relative",
+        "reversal"
+      ],
+      "unstable_families": [
+        "volatility_risk",
+        "market_relative",
+        "price_momentum"
+      ],
+      "redundant_families": [
+        "cross_sectional_ranks",
+        "price_momentum"
+      ],
+      "weak_low_information_families": [
+        "sector_relative",
+        "volume_liquidity"
+      ],
+      "leakage_risk_families": [],
+      "families_to_keep": [
+        "reversal",
+        "volatility_risk",
+        "market_relative",
+        "sector_relative"
+      ],
+      "families_to_prune": [
+        "price_momentum",
+        "volume_liquidity",
+        "cross_sectional_ranks"
+      ],
+      "families_to_transform": [
+        "price_momentum",
+        "volatility_risk",
+        "market_relative"
+      ],
+      "redundancy_evidence": [
+        "return_5d is the exact negative of reversal_5d (identical |IC|): one of the pair is redundant.",
+        "return_10d is the exact negative of reversal_10d (identical |IC|): one of the pair is redundant.",
+        "return_21d is the exact negative of reversal_21d (identical |IC|): one of the pair is redundant.",
+        "market_rank_return_21d is a monotone rank transform of return_21d (identical |IC|): the rank duplicates the base.",
+        "market_rank_reversal_5d is a monotone rank transform of reversal_5d (identical |IC|): the rank duplicates the base.",
+        "market_rank_reversal_21d is a monotone rank transform of reversal_21d (identical |IC|): the rank duplicates the base.",
+        "market_rank_realized_vol_63d is a monotone rank transform of realized_vol_63d (identical |IC|): the rank duplicates the base."
+      ],
+      "per_family_action": {
+        "price_momentum": "prune_redundant_then_transform",
+        "reversal": "keep",
+        "volatility_risk": "keep_but_neutralize",
+        "volume_liquidity": "prune_to_single_control",
+        "market_relative": "keep_but_neutralize",
+        "sector_relative": "keep",
+        "cross_sectional_ranks": "prune"
+      }
+    }
+  },
+  "horizon_diagnostics": {
+    "by_horizon": {
+      "5": {
+        "RIDGE_LINEAR_RANK_MODEL": {
+          "mean_rank_ic": 0.01976,
+          "fold_win_rate": 0.733333,
+          "positive_spread_fraction": 0.666667,
+          "worst_fold_rank_ic": -0.024719,
+          "mean_top_quintile_max_sector_share": 0.288279
+        },
+        "OPTIONAL_LOGISTIC_OUTPERFORMER": {
+          "mean_rank_ic": 0.021698,
+          "fold_win_rate": 0.733333,
+          "positive_spread_fraction": 0.6,
+          "worst_fold_rank_ic": -0.029631,
+          "mean_top_quintile_max_sector_share": 0.314055
+        },
+        "MODEL_FREE_COMPOSITE_BASELINE": {
+          "mean_rank_ic": 0.00323,
+          "fold_win_rate": 0.4,
+          "positive_spread_fraction": 0.466667,
+          "worst_fold_rank_ic": -0.063727,
+          "mean_top_quintile_max_sector_share": 0.221695
+        }
+      },
+      "21": {
+        "RIDGE_LINEAR_RANK_MODEL": {
+          "mean_rank_ic": 0.026528,
+          "fold_win_rate": 0.666667,
+          "positive_spread_fraction": 0.8,
+          "worst_fold_rank_ic": -0.041894,
+          "mean_top_quintile_max_sector_share": 0.308425
+        },
+        "OPTIONAL_LOGISTIC_OUTPERFORMER": {
+          "mean_rank_ic": 0.020114,
+          "fold_win_rate": 0.733333,
+          "positive_spread_fraction": 0.733333,
+          "worst_fold_rank_ic": -0.069486,
+          "mean_top_quintile_max_sector_share": 0.327183
+        },
+        "MODEL_FREE_COMPOSITE_BASELINE": {
+          "mean_rank_ic": -0.014943,
+          "fold_win_rate": 0.466667,
+          "positive_spread_fraction": 0.4,
+          "worst_fold_rank_ic": -0.164249,
+          "mean_top_quintile_max_sector_share": 0.224751
+        }
+      },
+      "63": {
+        "RIDGE_LINEAR_RANK_MODEL": {
+          "mean_rank_ic": 0.050641,
+          "fold_win_rate": 0.642857,
+          "positive_spread_fraction": 0.714286,
+          "worst_fold_rank_ic": -0.114291,
+          "mean_top_quintile_max_sector_share": 0.375694
+        },
+        "OPTIONAL_LOGISTIC_OUTPERFORMER": {
+          "mean_rank_ic": 0.039356,
+          "fold_win_rate": 0.642857,
+          "positive_spread_fraction": 0.785714,
+          "worst_fold_rank_ic": -0.124674,
+          "mean_top_quintile_max_sector_share": 0.381309
+        },
+        "MODEL_FREE_COMPOSITE_BASELINE": {
+          "mean_rank_ic": -0.034555,
+          "fold_win_rate": 0.428571,
+          "positive_spread_fraction": 0.428571,
+          "worst_fold_rank_ic": -0.231503,
+          "mean_top_quintile_max_sector_share": 0.226169
+        }
+      }
+    },
+    "ridge_worst_fold_by_horizon": {
+      "5": -0.024719,
+      "21": -0.041894,
+      "63": -0.114291
+    },
+    "ridge_fold_win_rate_by_horizon": {
+      "5": 0.733333,
+      "21": 0.666667,
+      "63": 0.642857
+    },
+    "stable_horizons": [
+      5,
+      21
+    ],
+    "catastrophic_horizons": [
+      63
+    ],
+    "best_ic_horizon": 63,
+    "most_stable_horizon": 21,
+    "overlapping_label_risk": {
+      "5": "low (5d windows barely overlap at daily step)",
+      "21": "moderate (21d forward windows overlap; autocorrelation inflates fold variance)",
+      "63": "high (63d forward windows overlap heavily across consecutive dates; autocorrelation inflates both apparent IC and fold-level variance)"
+    },
+    "interpretation": "63d has the highest learned mean rank IC and the widest long-short spread but also the worst worst-fold and the highest top-quintile sector concentration, and its overlapping forward windows inflate both IC and fold variance; 21d is materially more stable (no catastrophic ridge fold, highest positive-spread fraction); 5d is lowest-signal. Phase 3-C should treat 21d as primary and 63d as secondary with an overlapping-label correction, and keep 5d only as a diagnostic."
+  },
+  "sector_risk_diagnostics": {
+    "best_config_mean_top_quintile_max_sector_share": 0.375694,
+    "catastrophic_vs_positive_sector_share": {
+      "catastrophic_mean": 0.432769,
+      "positive_mean": 0.357137
+    },
+    "catastrophic_vs_positive_spy_return": {
+      "catastrophic_mean": -0.007417,
+      "positive_mean": 0.138565
+    },
+    "ridge_63d_risk_loadings": {
+      "low_volatility_tilt": -0.015621,
+      "long_horizon_reversal_tilt": -0.015217,
+      "relative_strength_tilt": 0.016525,
+      "momentum_tilt": 0.014618,
+      "anti_megacap_liquidity_tilt": -0.013548,
+      "market_correlation_tilt": -0.009019
+    },
+    "sector_count": 11,
+    "catastrophic_fold_is_risk_regime_related": true,
+    "sector_relative_features_helped": true,
+    "interpretation": "The best 63d ridge book is a long relative-strength / momentum, low-absolute-volatility, anti-mega-cap (smaller-name) tilt that also shorts long-term winners; it carries high single-sector concentration (catastrophic folds run materially more concentrated than positive folds). The catastrophic folds cluster at regime turning points where that learned tilt inverts while the fixed model-free composite stays positive -- a non-stationarity / risk-regime signature rather than a coding leak. Sector-relative features (demeaned within sector) lower concentration and should be carried forward; Phase 3-C should add explicit sector and risk/beta/volatility neutralisation."
+  },
+  "refined_config_summary": {
+    "selected_models": [
+      "RIDGE_LINEAR_RANK_MODEL",
+      "OPTIONAL_LOGISTIC_OUTPERFORMER",
+      "MODEL_FREE_COMPOSITE_BASELINE"
+    ],
+    "selected_horizons": {
+      "primary": [
+        21
+      ],
+      "secondary": [
+        63
+      ],
+      "diagnostic_only": [
+        5
+      ],
+      "note": "Promote 21d to primary (most stable); keep 63d as secondary WITH an overlapping-label correction; demote 5d to diagnostic-only."
+    },
+    "selected_feature_families": [
+      "price_momentum",
+      "reversal",
+      "volatility_risk",
+      "market_relative",
+      "sector_relative"
+    ],
+    "pruned_feature_families": [
+      "cross_sectional_ranks"
+    ],
+    "refined_config_path": "research/output/phase3b_refined_config.json"
+  },
+  "survivorship_caveat": {
+    "present": true,
+    "membership_basis": "current_as_of",
+    "point_in_time_membership_claimed": false,
+    "reported_as_survivorship_biased": true,
+    "clean_point_in_time_build_deferred": true,
+    "note": "Membership is a current-as-of approximation, never a point-in-time constituent claim. Any retest on this panel must be reported as survivorship-biased. A clean point-in-time build is deferred to a later paid-source decision.",
+    "carried_forward": true
+  },
+  "failure_modes": [],
+  "recommendation": {
+    "recommendation": "PROCEED_TO_REFINED_GREENFIELD_RERUN",
+    "allowed_values": [
+      "PROCEED_TO_REFINED_GREENFIELD_RERUN",
+      "NEED_MORE_DIAGNOSTICS_BEFORE_RERUN",
+      "PRICE_VOLUME_MODELING_TOO_UNSTABLE",
+      "GREENFIELD_REFINEMENT_BLOCKED"
+    ],
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "decision_inputs": {
+      "n_catastrophic_folds_best_config": 4,
+      "stable_horizons": [
+        5,
+        21
+      ],
+      "catastrophic_horizons": [
+        63
+      ],
+      "instability_is_structural_across_horizons": false,
+      "identified_drivers": [
+        "non_stationary_learned_coefficients_vs_fixed_composite",
+        "sector_concentration",
+        "feature_redundancy",
+        "long_horizon_overlapping_labels_and_volatility_regime",
+        "risk_beta_low_volatility_tilt_inversion"
+      ],
+      "concrete_refined_config_produced": true
+    },
+    "reason": "The catastrophic folds are attributable to concrete, fixable drivers (non-stationary learned low-volatility / momentum coefficients that invert at regime turning points, high single-sector concentration, structural feature redundancy, and 63d overlapping-label autocorrelation), and a more stable horizon (21d) exists with no catastrophic fold. A concrete refined configuration is produced for Phase 3-C. No model is trained, no production model candidate is created, and no production edge is claimed."
+  },
+  "interpretation": {
+    "research_model_trained": false,
+    "production_model_trained": false,
+    "production_model_candidate_created": false,
+    "deployable_model_artifact_written": false,
+    "model_v2_enabled": false,
+    "ran_diagnostics_only": true,
+    "retrained_any_model": false,
+    "read_from_d_drive": true,
+    "wrote_to_d_drive": false,
+    "fetched_data_from_network": false,
+    "production_edge_claimed": false,
+    "results_are_survivorship_biased": true,
+    "narrative": "Phase 3-B is a diagnostic / refinement phase over the committed Phase 3-A greenfield baseline. It retrains nothing: it reads the Phase 3-A results JSON and the two summary CSVs, ranks every walk-forward fold of the best configuration (the 63d ridge), identifies the catastrophic folds and the market regimes they correspond to, attributes the instability to feature families, horizon / overlapping-label choice, sector concentration, and a low-volatility / beta tilt that inverts across regimes, and emits a concrete refined configuration with a kill switch for a Phase 3-C rerun. It optionally reads only the SPY benchmark series from the D: panel read-only to label each window's regime; it wrote nothing to the D: drive, fetched nothing from the network, trained no model, created no production model candidate, wrote no deployable model artifact, touched no database, ran no migration, deployed nothing, and placed no orders. Every result is survivorship-biased / current-as-of caveated and is not a production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "3-C",
+    "title": "Refined Greenfield Walk-Forward Rerun",
+    "purpose": "Run the refined 3-B configuration through a stricter walk-forward test with the catastrophic-fold fixes applied. Still no deployment, no model candidate, and no production edge claim."
+  },
+  "implementation_constraints": [
+    "Diagnostic / refinement phase only: NO model (research or production) is trained, fitted, or scored; the Phase 3-A walk-forward is not rerun here.",
+    "No production model candidate and no deployable model artifact (pickle / joblib / binary) is created or written.",
+    "The committed Phase 3-A JSON and summary CSVs are the primary inputs; only the SPY benchmark series may be read from the D: panel READ-ONLY for regime labelling.",
+    "Nothing is written to the D: drive; only four small C: outputs are written under research/output.",
+    "No network access: no data is fetched and no third-party data source is used.",
+    "The universe is survivorship-biased / current-membership and the sector map is current-as-of (not point-in-time); all results are reported as such and are not a production edge.",
+    "No deployment, no model-v2 enablement, no service restart, no migration, no database write, no order, and no automation."
+  ]
+}
