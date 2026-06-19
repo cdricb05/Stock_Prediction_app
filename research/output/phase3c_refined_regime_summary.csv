@@ -1,0 +1,6 @@
+regime_label,model,horizon_days,n_folds,fold_ids,mean_rank_ic,min_rank_ic,max_rank_ic,fold_win_rate,mean_top_minus_bottom_spread,n_catastrophic_folds
+choppy_sideways,REFINED_RIDGE_LINEAR_RANK_MODEL,21,4,"[0, 4, 8, 13]",0.021036,-0.018706,0.087646,0.75,0.001417,0
+risk_off_drawdown,REFINED_RIDGE_LINEAR_RANK_MODEL,21,1,[5],0.018476,0.018476,0.018476,1.0,0.001379,0
+risk_off_drawdown_high_vol,REFINED_RIDGE_LINEAR_RANK_MODEL,21,3,"[1, 6, 11]",-0.008945,-0.067016,0.040512,0.333333,0.000994,1
+risk_on_rally,REFINED_RIDGE_LINEAR_RANK_MODEL,21,5,"[3, 9, 10, 12, 14]",-0.025257,-0.103648,0.047072,0.4,-0.011241,2
+risk_on_rally_high_vol,REFINED_RIDGE_LINEAR_RANK_MODEL,21,2,"[2, 7]",0.055685,-0.001307,0.112677,0.5,0.009503,0
