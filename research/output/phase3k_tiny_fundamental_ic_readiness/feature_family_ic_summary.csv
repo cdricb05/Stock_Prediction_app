@@ -1,0 +1,19 @@
+feature_family,horizon,num_features,best_feature,best_feature_abs_mean_ic,median_abs_mean_ic,mean_abs_mean_ic,moderate_or_better_count,strong_count,best_top_minus_bottom_spread,stable_signal,stability_note
+profitability_margin,21d,4,,,,,0,0,0.037671,False,no judgeable feature (insufficient dates or low non-null coverage)
+profitability_margin,63d,4,,,,,0,0,0.122651,False,no judgeable feature (insufficient dates or low non-null coverage)
+profitability_margin,126d,4,,,,,0,0,0.205377,False,no judgeable feature (insufficient dates or low non-null coverage)
+balance_sheet_leverage,21d,4,,,,,0,0,0.039655,False,no judgeable feature (insufficient dates or low non-null coverage)
+balance_sheet_leverage,63d,4,,,,,0,0,0.125178,False,no judgeable feature (insufficient dates or low non-null coverage)
+balance_sheet_leverage,126d,4,,,,,0,0,0.266039,False,no judgeable feature (insufficient dates or low non-null coverage)
+growth_change,21d,7,,,,,0,0,0.088706,False,no judgeable feature (insufficient dates or low non-null coverage)
+growth_change,63d,7,,,,,0,0,0.149185,False,no judgeable feature (insufficient dates or low non-null coverage)
+growth_change,126d,7,,,,,0,0,0.30578,False,no judgeable feature (insufficient dates or low non-null coverage)
+cash_quality,21d,4,cash_conversion,0.058947,0.058947,0.058947,1,1,0.013349,True,at least one moderate-or-better feature with a consistent IC direction
+cash_quality,63d,4,cash_conversion,0.121814,0.121814,0.121814,1,1,0.08514,True,at least one moderate-or-better feature with a consistent IC direction
+cash_quality,126d,4,cash_conversion,0.20472,0.20472,0.20472,1,1,0.148546,True,at least one moderate-or-better feature with a consistent IC direction
+size_scale,21d,3,log_revenue_abs,0.003123,0.003123,0.003123,0,0,0.023532,False,features measurable but none clears the moderate gate on this horizon
+size_scale,63d,3,log_revenue_abs,0.088471,0.088471,0.088471,1,0,0.064525,True,at least one moderate-or-better feature with a consistent IC direction
+size_scale,126d,3,log_revenue_abs,0.092011,0.092011,0.092011,1,0,0.150644,True,at least one moderate-or-better feature with a consistent IC direction
+availability_recency,21d,1,filing_lag_days,0.020615,0.020615,0.020615,0,0,0.011451,False,features measurable but none clears the moderate gate on this horizon
+availability_recency,63d,1,filing_lag_days,0.101374,0.101374,0.101374,1,1,0.041126,True,at least one moderate-or-better feature with a consistent IC direction
+availability_recency,126d,1,filing_lag_days,0.141787,0.141787,0.141787,1,1,0.062104,True,at least one moderate-or-better feature with a consistent IC direction

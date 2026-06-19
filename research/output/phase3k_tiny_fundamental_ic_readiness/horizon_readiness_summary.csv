@@ -1,0 +1,4 @@
+horizon,label_coverage,avg_daily_cross_section_size,valid_ic_date_count,distinct_ic_years,best_feature,best_feature_abs_mean_ic,moderate_or_better_count,strong_count,horizon_readiness
+21d,0.9706,5.31,450,3,cash_conversion,0.058947,1,1,diagnostic_only
+63d,0.9117,5.07,408,3,cash_conversion,0.121814,3,2,diagnostic_only
+126d,0.8235,4.7,345,2,cash_conversion,0.20472,3,2,diagnostic_only

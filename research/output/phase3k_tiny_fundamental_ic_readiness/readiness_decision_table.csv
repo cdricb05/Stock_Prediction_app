@@ -1,0 +1,16 @@
+decision_item,value,passed,note
+phase3j_confirmed,True,True,"Phase 3-J confirmed as FUNDAMENTAL_ALIGNMENT_REPAIR_SUCCESS, cap 365d, leakage-free, routed to 3-K"
+selected_cap_days_is_365,True,True,Phase 3-J selected a 365-day staleness cap
+leakage_guard_failures,0,True,inherited point-in-time invariant re-checked on the repaired panel; must be 0
+engineered_feature_count,23,True,candidate fundamental features evaluated (metadata and labels excluded)
+moderate_or_better_feature_count,3,True,tiny-model gate wants >= 3 moderate-or-better features
+strong_feature_count,2,True,tiny-model gate wants >= 1 strong feature
+stable_family_count,7,True,tiny-model gate wants >= 1 stable family
+any_horizon_ready_for_tiny_model,False,False,at least one horizon must be ready_for_tiny_model
+distinct_ic_years_max,3,False,qualifying dense cross-sections must span >= 4 distinct years to certify a gate (guards single-regime / overlapping-window inflation)
+single_regime_small_sample,True,False,True means every IC observation falls in too few distinct years - diagnostic only
+max_absolute_mean_ic,0.20472,,largest |mean rank IC| over features/horizons (diagnostic magnitude; not a gate)
+no_model_training,True,True,this phase trains no model
+no_predictions_computed,True,True,this phase computes no predictions or scores
+no_portfolio_weights,True,True,this phase computes no portfolio weights
+recommendation,FUNDAMENTAL_IC_DIAGNOSTIC_INCONCLUSIVE_SMALL_SAMPLE,True,allowed values only

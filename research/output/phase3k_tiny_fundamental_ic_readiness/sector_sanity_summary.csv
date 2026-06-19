@@ -1,0 +1,10 @@
+sector,ticker_count,row_count,row_fraction,tickers,operating_margin_non_null_fraction,capex_intensity_non_null_fraction,note
+Communication Services,3,2100,0.1471,DIS|GOOGL|META,0.329,0.329,
+Consumer Discretionary,2,1804,0.1264,AMZN|HD,0.0,0.0,thin sector (<=2 tickers); cross-sectional weight is limited
+Consumer Staples,2,939,0.0658,KO|PG,1.0,1.0,thin sector (<=2 tickers); cross-sectional weight is limited
+Energy,2,932,0.0653,CVX|XOM,0.0,0.5011,thin sector (<=2 tickers); cross-sectional weight is limited
+Financials,2,2307,0.1616,BAC|JPM,0.0,0.0,bank accounting: operating_margin / capex_intensity largely undefined; thin sector (<=2 tickers); cross-sectional weight is limited
+Health Care,3,1630,0.1142,JNJ|PFE|UNH,0.284,0.5706,
+Industrials,2,1631,0.1142,CAT|GE,0.2851,0.2851,thin sector (<=2 tickers); cross-sectional weight is limited
+Information Technology,3,2458,0.1722,AAPL|MSFT|NVDA,0.1831,0.0,
+Utilities,1,475,0.0333,NEE,0.0,0.0,thin sector (<=2 tickers); cross-sectional weight is limited
