@@ -103,6 +103,8 @@ Environment-variable controls (read as scalars only — never a key value):
 | `PHASE3M_ALLOW_PARTIAL_COLLECTION` | 1 | allow stopping mid-universe and resuming later |
 | `PHASE3M_MIN_TICKERS_FOR_SIGNAL_GATE` | 75 | cached tickers required before the IC gate runs |
 | `PHASE3M_FORCE_SIGNAL_GATE` | 0 | force the gate even below the minimum (diagnostic) |
+| `PHASE3M_STATUS_ONLY` | 0 | inspect/refresh progress from the cache with **no** provider network call |
+| `PHASE3M_IGNORE_LIMIT_GUARD` | 0 | deliberately bypass the same-day provider-limit guard |
 
 Progress is written to `collection_progress.json` and a flat `collection_progress.csv`, recording the
 selected provider, the four supported keys as booleans, the universe size, cached counts before/after,
@@ -131,6 +133,61 @@ collector that fits nothing, computes no predictions / scores / portfolio weight
 deployable artifact. The collector still **does not deploy**, **does not restart stock-api.service**,
 **does not enable** any serving flag, **does not run migrations**, **does not write to production
 DB**, and **does not trade**; it claims no **production edge**.
+
+### Phase 3-N hardening: status-only mode, cache preservation, and the same-day limit guard
+
+The collector is built so that an *accidental* or *quota-exhausted* run can never destroy good
+work. Three safeguards make this explicit.
+
+**Status-only mode (`PHASE3M_STATUS_ONLY=1`).** Set this to inspect and refresh the collection
+state without touching the provider at all:
+
+```powershell
+$env:PHASE3M_STATUS_ONLY = "1"
+$env:PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN = "0"
+python -B research/run_phase3m_earnings_estimates_signal_gate.py
+```
+
+In this mode the run reads only the cached `raw/` files, recomputes earnings events / trailing
+features for everything already cached, and rewrites `collection_progress.json` /
+`collection_progress.csv` and the result JSON — **no network request is made**, the raw cache is
+untouched, and the IC gate does **not** run unless `PHASE3M_FORCE_SIGNAL_GATE=1` *and* enough
+tickers are already cached. It is the safe way to ask "where does collection stand today?".
+
+**Why a keyless run preserves the cache.** If no supported provider key is present but cached raw
+files already exist, the run no longer emits zeroed/header-only artifacts. Instead it rebuilds the
+truthful partial state from the cache, keeps `cached_ticker_count_after_run` and the existing
+`earnings_events_universe.csv` intact, reports
+`EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY`, and sets `next_action` to
+`SET_PROVIDER_KEY_TO_CONTINUE_COLLECTION`. A forgotten `$env:ALPHAVANTAGE_API_KEY` therefore costs
+nothing — the 25 already-cached tickers are never discarded. Only a genuinely empty cache produces
+the zeroed `EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY` result, and even then no unrelated file
+is destroyed.
+
+**Why the same-day provider-limit guard exists.** Alpha Vantage's free `EARNINGS` quota resets per
+UTC day, so once a run records `provider_limit_hit` there is nothing to gain from spending the one
+remaining (already-failing) request again before the reset. When the previous
+`collection_progress.json` shows `provider_limit_hit` on the **same UTC date** as the current run,
+the collector skips the network entirely, sets `network_requests_this_run = 0`,
+`same_day_limit_guard_active = true`, `can_attempt_network_now = false`, and `next_action` to
+`WAIT_FOR_PROVIDER_LIMIT_RESET_OR_USE_HIGHER_LIMIT_PROVIDER`. The progress record also carries
+`generated_at_utc`, `provider_limit_last_hit_utc`, and `reason_network_not_attempted` so the state
+is fully auditable.
+
+**How to resume safely tomorrow.** On the next UTC day the guard clears automatically (the recorded
+limit date no longer matches today), so simply re-run the standard command with the key set; the
+collector resumes from the cache and fetches the next batch of missing tickers up to the budget.
+
+**How to bypass the guard deliberately.** If you have switched to a higher-limit provider or a paid
+tier and want to force another attempt the same day, set `PHASE3M_IGNORE_LIMIT_GUARD=1` for that
+run. Use it consciously — on the free tier it will simply burn the one request that is still being
+rate-limited.
+
+All four behaviors keep every existing safety guarantee: the collector **does not deploy**, **does
+not restart stock-api.service**, **does not enable** any serving flag, **does not run migrations**,
+**does not write to production DB**, and **does not trade**; it trains no model, computes no
+predictions / scores / portfolio weights, writes no deployable artifact, and claims no **production
+edge**.
 
 ## Earnings event normalization
 

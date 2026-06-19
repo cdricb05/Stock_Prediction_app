@@ -1,6 +1,7 @@
 metric,value
 phase,3-N
-generated_at,2026-06-19T15:58:48
+generated_at,2026-06-19T16:26:28
+generated_at_utc,2026-06-19T20:26:28+00:00
 selected_provider,alpha_vantage
 universe_ticker_count,128
 cached_ticker_count_before_run,25
@@ -10,6 +11,11 @@ cached_ticker_count_after_run,25
 missing_ticker_count_after_run,103
 provider_limit_hit,False
 provider_limit_message_sanitized,
+provider_limit_last_hit_utc,
+same_day_limit_guard_active,False
+status_only,True
+can_attempt_network_now,False
+reason_network_not_attempted,status_only mode (PHASE3M_STATUS_ONLY=1): no provider network attempted
 signal_gate_min_tickers,75
 signal_gate_allowed_now,False
 estimated_additional_runs_needed_at_current_budget,

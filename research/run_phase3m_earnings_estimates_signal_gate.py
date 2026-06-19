@@ -42,7 +42,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timezone
 
 PHASE = "3-M"
 
@@ -620,7 +620,84 @@ def read_collection_controls(env=None, provider=None):
                      DEFAULT_MIN_TICKERS_FOR_SIGNAL_GATE),
         "force_signal_gate":
             _env_int(env, "PHASE3M_FORCE_SIGNAL_GATE", 0) != 0,
+        # ---- Phase 3-N hardening controls ----
+        "status_only":
+            _env_int(env, "PHASE3M_STATUS_ONLY", 0) != 0,
+        "ignore_limit_guard":
+            _env_int(env, "PHASE3M_IGNORE_LIMIT_GUARD", 0) != 0,
     }
+
+
+# next_action vocabulary (Phase 3-N controller).
+NEXT_ACTION_READY = "READY_RUN_SIGNAL_GATE"
+NEXT_ACTION_SET_KEY = "SET_PROVIDER_KEY"
+NEXT_ACTION_SET_KEY_TO_CONTINUE = "SET_PROVIDER_KEY_TO_CONTINUE_COLLECTION"
+NEXT_ACTION_RUN_AGAIN = "RUN_AGAIN_TO_COLLECT_MORE_TICKERS"
+NEXT_ACTION_WAIT_LIMIT = "WAIT_FOR_PROVIDER_LIMIT_RESET_OR_USE_HIGHER_LIMIT_PROVIDER"
+NEXT_ACTION_DIAGNOSE = "DIAGNOSE_COLLECTION_ERROR"
+
+
+def _utc_now_iso():
+    """Current UTC timestamp (seconds), for same-day provider-limit reasoning."""
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def _utc_date_of(ts):
+    """Return the leading YYYY-MM-DD date of an ISO timestamp string (or None)."""
+    if not ts:
+        return None
+    s = str(ts).strip()
+    return s[:10] if len(s) >= 10 else None
+
+
+def read_existing_progress(path=None):
+    """Read the previously written collection_progress.json (or None if absent/unreadable).
+
+    Read-only: this never fetches, never reads a key value, and never mutates state.  It exists so a
+    run can honor the same-day provider-limit guard and carry forward the last-limit timestamp.
+    """
+    path = COLLECTION_PROGRESS_JSON if path is None else path
+    if not os.path.isfile(path):
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, ValueError, json.JSONDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def _detect_cached_provider(raw_dir, universe):
+    """When no provider key is present, find which supported provider already has cached raw files.
+
+    Returns (provider_name_or_None, cached_ticker_set).  Cache-first and read-only: scans `raw/` for
+    `{provider}_{TICKER}.json` files already on disk; performs no network call and reads no key.
+    """
+    best_provider, best_cached = None, set()
+    for provider, _env_var, _host in PROVIDER_PRIORITY:
+        cached = _cached_tickers(raw_dir, provider, universe)
+        if len(cached) > len(best_cached):
+            best_provider, best_cached = provider, cached
+    return best_provider, best_cached
+
+
+def compute_same_day_limit_guard(existing_progress, ignore_guard, today_utc=None):
+    """Return (guard_active, provider_limit_last_hit_utc).
+
+    The guard is active when the previous run already recorded a provider rate-limit / entitlement
+    response on the *same* UTC calendar date as this run, so we do not waste the single failed
+    provider call again before the daily quota resets.  Setting PHASE3M_IGNORE_LIMIT_GUARD=1
+    deliberately bypasses the guard.  Read-only: no network, no key.
+    """
+    last_hit = None
+    if existing_progress and existing_progress.get("provider_limit_hit"):
+        last_hit = _utc_date_of(existing_progress.get("provider_limit_last_hit_utc")
+                                or existing_progress.get("generated_at_utc")
+                                or existing_progress.get("generated_at"))
+    if ignore_guard or not last_hit:
+        return False, last_hit
+    today = today_utc or _utc_date_of(_utc_now_iso())
+    return (last_hit == today), last_hit
 
 
 def _cached_tickers(raw_dir, provider, universe):
@@ -671,11 +748,15 @@ def _sanitize_provider_message(msg):
 def build_collection_progress(provider_selected, detected_keys, universe, cached_before_count,
                               network_budget, network_requests_this_run, cached_after_count,
                               missing_after_count, provider_limit_hit, provider_limit_message,
-                              min_tickers, signal_gate_allowed, fetch_error=False):
+                              min_tickers, signal_gate_allowed, fetch_error=False,
+                              status_only=False, same_day_limit_guard_active=False,
+                              can_attempt_network_now=True, reason_network_not_attempted="",
+                              provider_limit_last_hit_utc=None):
     """Assemble the resumable-collection progress record (collection_progress.json content)."""
+    has_cache = cached_after_count > 0
     if signal_gate_allowed:
         est_runs = 0
-        next_action = "READY_RUN_SIGNAL_GATE"
+        next_action = NEXT_ACTION_READY
     else:
         still_needed = max(0, min_tickers - cached_after_count)
         still_needed = min(still_needed, missing_after_count)
@@ -684,16 +765,19 @@ def build_collection_progress(provider_selected, detected_keys, universe, cached
         else:
             est_runs = None
         if provider_selected is None:
-            next_action = "SET_PROVIDER_KEY"
+            # No key: preserve any cached coverage and ask for a key to continue collecting.
+            next_action = (NEXT_ACTION_SET_KEY_TO_CONTINUE if has_cache else NEXT_ACTION_SET_KEY)
+        elif same_day_limit_guard_active or provider_limit_hit:
+            next_action = NEXT_ACTION_WAIT_LIMIT
         elif fetch_error:
-            next_action = "DIAGNOSE_COLLECTION_ERROR"
-        elif provider_limit_hit:
-            next_action = "RESUME_AFTER_PROVIDER_LIMIT_RESETS"
+            next_action = NEXT_ACTION_DIAGNOSE
         else:
-            next_action = "RUN_AGAIN_TO_COLLECT_MORE_TICKERS"
+            next_action = NEXT_ACTION_RUN_AGAIN
+    now_utc = _utc_now_iso()
     return {
         "phase": "3-N",
         "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "generated_at_utc": now_utc,
         "selected_provider": provider_selected,
         "supported_provider_keys_detected_as_booleans": dict(detected_keys),
         "universe_ticker_count": len(universe),
@@ -704,6 +788,11 @@ def build_collection_progress(provider_selected, detected_keys, universe, cached
         "missing_ticker_count_after_run": missing_after_count,
         "provider_limit_hit": bool(provider_limit_hit),
         "provider_limit_message_sanitized": _sanitize_provider_message(provider_limit_message),
+        "provider_limit_last_hit_utc": provider_limit_last_hit_utc,
+        "same_day_limit_guard_active": bool(same_day_limit_guard_active),
+        "status_only": bool(status_only),
+        "can_attempt_network_now": bool(can_attempt_network_now),
+        "reason_network_not_attempted": reason_network_not_attempted or "",
         "signal_gate_min_tickers": min_tickers,
         "signal_gate_allowed_now": bool(signal_gate_allowed),
         "estimated_additional_runs_needed_at_current_budget": est_runs,
@@ -720,10 +809,12 @@ def write_collection_progress(progress):
     _dump_json(COLLECTION_PROGRESS_JSON, progress)
     rows = []
     for k in (
-        "phase", "generated_at", "selected_provider", "universe_ticker_count",
+        "phase", "generated_at", "generated_at_utc", "selected_provider", "universe_ticker_count",
         "cached_ticker_count_before_run", "network_request_budget", "network_requests_this_run",
         "cached_ticker_count_after_run", "missing_ticker_count_after_run", "provider_limit_hit",
-        "provider_limit_message_sanitized", "signal_gate_min_tickers", "signal_gate_allowed_now",
+        "provider_limit_message_sanitized", "provider_limit_last_hit_utc",
+        "same_day_limit_guard_active", "status_only", "can_attempt_network_now",
+        "reason_network_not_attempted", "signal_gate_min_tickers", "signal_gate_allowed_now",
         "estimated_additional_runs_needed_at_current_budget", "next_action",
         "no_key_values_written",
     ):
@@ -1951,28 +2042,74 @@ def run(result_json_path=RESULT_JSON, m_dir=_M_DIR, raw_dir=_RAW_DIR,
 
     provider_selected, selected_env, detected_keys, host = detect_providers(env)
     controls = read_collection_controls(env, provider_selected)
+    status_only = controls["status_only"]
+    min_tickers = controls["min_tickers_for_signal_gate"]
+    budget = controls["max_network_requests_per_run"]
+    # Same-day provider-limit guard: never waste another request if today's quota was already spent.
+    existing_progress = read_existing_progress()
+    guard_active, limit_last_hit_utc = compute_same_day_limit_guard(
+        existing_progress, controls["ignore_limit_guard"])
 
-    # ---- BLOCKED: no provider key (still emit truthful collection progress) ----
+    # ---- No provider key: preserve any cached coverage; never wipe useful derived progress ----
     if provider_selected is None:
+        cache_provider, cached_set = _detect_cached_provider(raw_dir, universe)
+        cached_count = len(cached_set)
+        reason_no_net = "no supported provider API key present in the environment"
+        if cached_count == 0:
+            # Nothing cached yet: header-only BLOCKED artifacts destroy no real state.
+            progress = build_collection_progress(
+                None, detected_keys, universe, 0, budget, 0, 0, len(universe), False, "",
+                min_tickers, False, status_only=status_only,
+                same_day_limit_guard_active=guard_active, can_attempt_network_now=False,
+                reason_network_not_attempted=reason_no_net,
+                provider_limit_last_hit_utc=limit_last_hit_utc)
+            return _finish_blocked(
+                result_json_path, REC_BLOCKED_KEY, confirmed, None, detected_keys, None, False,
+                verbose, sec_baseline, progress)
+        # Cached coverage exists: rebuild truthful partial state from cache and PRESERVE it; the
+        # earnings_events / features / coverage CSVs are re-written from cache, never zeroed.
+        events_by_ticker = _load_cached_events(raw_dir, cache_provider, universe)
+        processed = sorted(events_by_ticker)
+        failed = [{"ticker": t, "reason": "no usable earnings events"}
+                  for t in sorted(cached_set) if t not in events_by_ticker]
+        all_events = []
+        for t in processed:
+            all_events.extend(events_by_ticker[t])
+        feature_rows = build_earnings_features(events_by_ticker)
+        feature_coverage = build_earnings_feature_coverage(feature_rows, sector_of)
+        eft_count = len({r["ticker"] for r in feature_rows})
         progress = build_collection_progress(
-            None, detected_keys, universe, 0, controls["max_network_requests_per_run"], 0, 0,
-            len(universe), False, "", controls["min_tickers_for_signal_gate"], False)
-        return _finish_blocked(
-            result_json_path, REC_BLOCKED_KEY, confirmed, None, detected_keys, None, False,
-            verbose, sec_baseline, progress)
+            None, detected_keys, universe, cached_count, budget, 0, cached_count,
+            len(universe) - cached_count, False, "", min_tickers, False,
+            status_only=status_only, same_day_limit_guard_active=guard_active,
+            can_attempt_network_now=False, reason_network_not_attempted=reason_no_net,
+            provider_limit_last_hit_utc=limit_last_hit_utc)
+        return _finish_collecting(
+            result_json_path, REC_COLLECT_BLOCKED_KEY, confirmed, phase3l, None, detected_keys,
+            None, False, sec_baseline, progress, all_events, feature_rows, feature_coverage,
+            eft_count, processed, failed, False, False, verbose)
 
-    # ---- Resumable collection: fetch ONLY missing tickers under a per-run network budget ----
+    # ---- Resumable collection: decide whether this run may touch the provider network at all ----
     client = ProviderClient(provider_selected, (env or os.environ).get(selected_env, ""), host,
                             raw_dir, min_interval=controls["min_provider_sleep_seconds"])
     cached_before = _cached_tickers(raw_dir, provider_selected, universe)
     missing_before = [t for t in universe if t.upper() not in cached_before]
-    budget = controls["max_network_requests_per_run"]
+    reason_no_net = ""
+    if status_only:
+        reason_no_net = "status_only mode (PHASE3M_STATUS_ONLY=1): no provider network attempted"
+    elif guard_active:
+        reason_no_net = ("same-day provider-limit guard active: a provider rate-limit was already "
+                         "recorded today (UTC); waiting for the daily reset. Set "
+                         "PHASE3M_IGNORE_LIMIT_GUARD=1 to override.")
+    elif budget <= 0:
+        reason_no_net = "network budget is 0 (PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN=0)"
+    attempt_network = not reason_no_net
     provider_limit_hit = False
     limit_message = ""
     fetch_error = False
     fetch_failures = []
     net_attempts = 0
-    if controls["allow_partial_collection"] or budget > 0:
+    if attempt_network:
         for t in missing_before:
             if net_attempts >= budget:
                 break
@@ -1985,6 +2122,7 @@ def run(result_json_path=RESULT_JSON, m_dir=_M_DIR, raw_dir=_RAW_DIR,
             except _ProviderLimited as e:
                 provider_limit_hit = True
                 limit_message = _sanitize_provider_message(str(e))
+                limit_last_hit_utc = _utc_date_of(_utc_now_iso())
                 client.errors.append("%s: provider limit" % t)
                 break
             except (urllib.error.URLError, OSError, ValueError, RuntimeError,
@@ -2014,22 +2152,34 @@ def run(result_json_path=RESULT_JSON, m_dir=_M_DIR, raw_dir=_RAW_DIR,
     feature_coverage = build_earnings_feature_coverage(feature_rows, sector_of)
     earnings_feature_ticker_count = len({r["ticker"] for r in feature_rows})
 
-    signal_gate_allowed = (cached_after_count >= controls["min_tickers_for_signal_gate"]
-                           or controls["force_signal_gate"])
+    # status-only never runs the IC gate unless PHASE3M_FORCE_SIGNAL_GATE=1 and coverage suffices.
+    enough_coverage = cached_after_count >= min_tickers
+    if status_only:
+        signal_gate_allowed = controls["force_signal_gate"] and enough_coverage
+    else:
+        signal_gate_allowed = enough_coverage or controls["force_signal_gate"]
+    provider_limited_state = provider_limit_hit or guard_active
     progress = build_collection_progress(
         provider_selected, detected_keys, universe, len(cached_before), budget,
         network_requests_this_run, cached_after_count, missing_after_count, provider_limit_hit,
-        limit_message, controls["min_tickers_for_signal_gate"], signal_gate_allowed,
-        fetch_error=fetch_error)
+        limit_message, min_tickers, signal_gate_allowed, fetch_error=fetch_error,
+        status_only=status_only, same_day_limit_guard_active=guard_active,
+        can_attempt_network_now=attempt_network, reason_network_not_attempted=reason_no_net,
+        provider_limit_last_hit_utc=limit_last_hit_utc)
 
-    # ---- Not enough cached coverage yet: preserve partial progress, do NOT run the IC gate ----
+    # ---- Not running the IC gate yet: preserve partial progress, do NOT erase cached state ----
     if not signal_gate_allowed:
-        collection_rec = REC_COLLECT_BLOCKED_LIMIT if provider_limit_hit else REC_COLLECTING
-        if fetch_error and not provider_limit_hit and network_requests_this_run == 0:
+        if provider_limited_state:
+            collection_rec = REC_COLLECT_BLOCKED_LIMIT
+        elif fetch_error and network_requests_this_run == 0:
             collection_rec = REC_COLLECT_ERROR
+        elif enough_coverage:
+            collection_rec = REC_COLLECT_READY
+        else:
+            collection_rec = REC_COLLECTING
         return _finish_collecting(
             result_json_path, collection_rec, confirmed, phase3l, provider_selected, detected_keys,
-            client, provider_limit_hit, sec_baseline, progress, all_events, feature_rows,
+            client, provider_limited_state, sec_baseline, progress, all_events, feature_rows,
             feature_coverage, earnings_feature_ticker_count, processed, failed, network_used,
             vendor_called, verbose)
 

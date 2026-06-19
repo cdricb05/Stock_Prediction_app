@@ -430,20 +430,32 @@ def test_leakage_zero_unless_blocked():
 
 
 def test_blocked_when_no_key_present():
-    """If no provider was selected, the result must be the BLOCKED_NEEDS_API_KEY routing."""
+    """No provider selected -> a BLOCKED_NEEDS_API_KEY routing that never allows a model.
+
+    Phase 3-N hardening: when raw cache already exists the keyless run preserves it (the
+    collection variant), and only an empty cache yields the zeroed gate variant. Both route to
+    "Configure Earnings Estimates Provider" and allow no research model.
+    """
     if not os.path.isfile(_RESULT):
         raise _Skip("committed result JSON not present")
     d = _result()
-    if d["provider_access_summary"]["selected_provider"] is None:
-        assert d["recommendation"]["recommendation"] == \
-            "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY"
-        assert d["recommendation"]["research_model_allowed_next"] is False
-        assert d["research_model_allowed_next"] is False
-        assert d["recommended_next_phase"]["phase"] == "3-N"
-        assert d["recommended_next_phase"]["title"] == "Configure Earnings Estimates Provider"
-        # No data faked: no events / features / combined rows.
+    if d["provider_access_summary"]["selected_provider"] is not None:
+        raise _Skip("committed run had a provider key; no-key branch not exercised")
+    rec = d["recommendation"]["recommendation"]
+    assert rec in ("EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
+                   "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY")
+    assert d["recommendation"]["research_model_allowed_next"] is False
+    assert d["research_model_allowed_next"] is False
+    assert d["recommended_next_phase"]["phase"] == "3-N"
+    assert d["recommended_next_phase"]["title"] == "Configure Earnings Estimates Provider"
+    if rec == "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY":
+        # Empty cache -> nothing faked: no events / features / combined rows.
         assert d["earnings_events_summary"]["event_rows"] == 0
         assert d.get("combined_panel_summary", {}).get("combined_panel_rows", 0) == 0
+    else:
+        # Cache present -> partial state is PRESERVED, not zeroed.
+        assert d["collection_progress"]["cached_ticker_count_after_run"] >= 1
+        assert d["earnings_events_summary"]["event_rows"] >= 0
 
 
 # --------------------------------------------------------------------------- #
@@ -634,6 +646,188 @@ def test_committed_collection_result_when_in_progress():
     assert d["recommended_next_phase"]["phase"] == "3-N"
     if d["recommendation"]["recommendation"] == "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS":
         assert d["recommended_next_phase"]["title"] == "Continue Resumable Earnings Collection"
+
+
+# --------------------------------------------------------------------------- #
+# 8c. Phase 3-N hardening: status-only mode, no-key cache preservation, same-day limit guard
+# --------------------------------------------------------------------------- #
+# Output path constants redirected into a temp dir so run() never touches committed artifacts.
+_OUTPUT_PATH_ATTRS = (
+    "RESULT_JSON", "PROVIDER_ACCESS_JSON", "EARNINGS_EVENTS_CSV", "EARNINGS_FEATURES_CSV",
+    "COMBINED_PANEL_CSV", "EARNINGS_FEATURE_COVERAGE_CSV", "EARNINGS_LABEL_SUMMARY_CSV",
+    "EARNINGS_FEATURE_IC_CSV", "EARNINGS_FEATURE_FAMILY_IC_CSV", "EARNINGS_HORIZON_READINESS_CSV",
+    "EARNINGS_YEARLY_IC_CSV", "EARNINGS_SECTOR_SANITY_CSV", "DECISION_TABLE_CSV",
+    "COLLECTION_PROGRESS_JSON", "COLLECTION_PROGRESS_CSV",
+)
+_DUMMY_KEY = "DUMMY-NOT-A-REAL-KEY"
+
+
+def _sandbox_run(env, seed_cached=0, seed_progress=None, block_network=True):
+    """Run the analyzer with ALL outputs redirected into a temp dir; never touches committed state.
+
+    Optionally seeds the temp raw cache from real committed alpha_vantage_*.json payloads and/or a
+    prior collection_progress.json. Network is tripwired OFF by default so no provider request can
+    ever be made: if run() tries to fetch, the test fails loudly instead of hitting the network.
+    Returns (mod, tmpdir, result).
+    """
+    import tempfile
+    import shutil
+    mod = _import_analyzer()
+    tmp = tempfile.mkdtemp(prefix="phase3m_hard_")
+    raw = os.path.join(tmp, "raw")
+    os.makedirs(raw, exist_ok=True)
+    for attr in _OUTPUT_PATH_ATTRS:
+        setattr(mod, attr, os.path.join(tmp, os.path.basename(getattr(mod, attr))))
+    src_raw = os.path.join(_M_DIR, "raw")
+    if seed_cached and os.path.isdir(src_raw):
+        files = sorted(f for f in os.listdir(src_raw)
+                       if f.startswith("alpha_vantage_") and f.endswith(".json"))[:seed_cached]
+        for f in files:
+            shutil.copyfile(os.path.join(src_raw, f), os.path.join(raw, f))
+    if seed_progress is not None:
+        with open(mod.COLLECTION_PROGRESS_JSON, "w", encoding="utf-8") as fh:
+            json.dump(seed_progress, fh)
+    if block_network:
+        def _no_net(self, symbol):  # noqa: ARG001
+            raise AssertionError("network must not be attempted in this scenario: %s" % symbol)
+        mod.ProviderClient.get_earnings = _no_net
+    res = mod.run(result_json_path=mod.RESULT_JSON, m_dir=tmp, raw_dir=raw, env=env, verbose=False)
+    return mod, tmp, res
+
+
+def test_status_only_and_guard_controls_exist():
+    """PHASE3M_STATUS_ONLY and PHASE3M_IGNORE_LIMIT_GUARD parse as scalar booleans (default 0)."""
+    mod = _import_analyzer()
+    default = mod.read_collection_controls(env={}, provider=mod.PROVIDER_ALPHAVANTAGE)
+    assert default["status_only"] is False
+    assert default["ignore_limit_guard"] is False
+    on = mod.read_collection_controls(
+        env={"PHASE3M_STATUS_ONLY": "1", "PHASE3M_IGNORE_LIMIT_GUARD": "1"},
+        provider=mod.PROVIDER_ALPHAVANTAGE)
+    assert on["status_only"] is True
+    assert on["ignore_limit_guard"] is True
+
+
+def test_same_day_limit_guard_logic():
+    """The same-day guard fires only for a prior same-UTC-date limit, and the ignore flag bypasses."""
+    mod = _import_analyzer()
+    today = mod._utc_date_of(mod._utc_now_iso())
+    hit_today = {"provider_limit_hit": True, "provider_limit_last_hit_utc": today}
+    active, last = mod.compute_same_day_limit_guard(hit_today, ignore_guard=False)
+    assert active is True and last == today
+    # Deliberate bypass.
+    assert mod.compute_same_day_limit_guard(hit_today, ignore_guard=True)[0] is False
+    # A limit from another day no longer guards.
+    old = {"provider_limit_hit": True, "provider_limit_last_hit_utc": "2000-01-01"}
+    a3, l3 = mod.compute_same_day_limit_guard(old, ignore_guard=False)
+    assert a3 is False and l3 == "2000-01-01"
+    # No prior limit / no prior progress -> never active.
+    assert mod.compute_same_day_limit_guard({"provider_limit_hit": False}, False) == (False, None)
+    assert mod.compute_same_day_limit_guard(None, False) == (False, None)
+
+
+def test_progress_builder_has_hardening_fields_and_next_actions():
+    """build_collection_progress carries the new helper fields and routes next_action correctly."""
+    mod = _import_analyzer()
+    detected = {e: False for e in mod.SUPPORTED_ENV_VARS}
+    no_key = mod.build_collection_progress(
+        None, detected, ["AAPL"] * 30, 25, 20, 0, 25, 5, provider_limit_hit=False,
+        provider_limit_message="", min_tickers=75, signal_gate_allowed=False,
+        status_only=True, same_day_limit_guard_active=True, can_attempt_network_now=False,
+        reason_network_not_attempted="status_only mode", provider_limit_last_hit_utc="2026-06-19")
+    for k in ("generated_at_utc", "provider_limit_last_hit_utc", "same_day_limit_guard_active",
+              "status_only", "can_attempt_network_now", "reason_network_not_attempted"):
+        assert k in no_key, "progress missing hardening field: %s" % k
+    assert no_key["status_only"] is True
+    assert no_key["same_day_limit_guard_active"] is True
+    assert no_key["can_attempt_network_now"] is False
+    # No key but cache present -> ask the operator to set a key to continue collecting.
+    assert no_key["next_action"] == "SET_PROVIDER_KEY_TO_CONTINUE_COLLECTION"
+    # No key and no cache -> the plain set-key action.
+    no_cache = mod.build_collection_progress(
+        None, detected, ["AAPL"] * 30, 0, 20, 0, 0, 30, provider_limit_hit=False,
+        provider_limit_message="", min_tickers=75, signal_gate_allowed=False)
+    assert no_cache["next_action"] == "SET_PROVIDER_KEY"
+    # Provider limit / same-day guard -> wait-for-reset action.
+    limited = mod.build_collection_progress(
+        mod.PROVIDER_ALPHAVANTAGE, detected, ["AAPL"] * 30, 25, 20, 0, 25, 5,
+        provider_limit_hit=True, provider_limit_message="rate limit", min_tickers=75,
+        signal_gate_allowed=False)
+    assert limited["next_action"] == "WAIT_FOR_PROVIDER_LIMIT_RESET_OR_USE_HIGHER_LIMIT_PROVIDER"
+
+
+def test_no_key_with_cache_preserves_state_and_does_not_wipe_events():
+    """A keyless run with cached raw files preserves the cached count and the events CSV."""
+    if not os.path.isdir(os.path.join(_M_DIR, "raw")):
+        raise _Skip("no committed raw cache to seed from")
+    mod, tmp, res = _sandbox_run(env={}, seed_cached=3)
+    assert res["recommendation"]["recommendation"] == \
+        "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY"
+    prog = res["collection_progress"]
+    assert prog["cached_ticker_count_after_run"] == 3
+    assert prog["missing_ticker_count_after_run"] == prog["universe_ticker_count"] - 3
+    assert prog["next_action"] == "SET_PROVIDER_KEY_TO_CONTINUE_COLLECTION"
+    assert prog["status_only"] is False
+    assert prog["network_requests_this_run"] == 0
+    # The events CSV must NOT be wiped: it carries real rows from the 3 cached tickers.
+    rows = _read_csv_rows(mod.EARNINGS_EVENTS_CSV)
+    assert len(rows) > 0, "keyless run with cache must NOT zero earnings_events_universe.csv"
+    # Raw cache is intact (no file deleted, none added).
+    assert len([f for f in os.listdir(tmp + os.sep + "raw") if f.endswith(".json")]) == 3
+    # No modeling of any kind.
+    for k in ("model_trained", "predictions_computed", "portfolio_weights_computed",
+              "production_model_candidate_created", "deployable_model_artifact_written",
+              "d_drive_written"):
+        assert res[k] is False, "%s must be false" % k
+    # No key value is ever written.
+    assert json.loads(_read(mod.COLLECTION_PROGRESS_JSON))["no_key_values_written"] is True
+
+
+def test_no_key_without_cache_blocks_without_destroying_unrelated_files():
+    """A keyless run with no cache still produces a clean BLOCKED result (header-only artifacts)."""
+    mod, tmp, res = _sandbox_run(env={}, seed_cached=0)
+    assert res["recommendation"]["recommendation"] == "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY"
+    prog = res["collection_progress"]
+    assert prog["cached_ticker_count_after_run"] == 0
+    assert prog["next_action"] == "SET_PROVIDER_KEY"
+    assert _read_csv_rows(mod.EARNINGS_EVENTS_CSV) == []
+
+
+def test_status_only_mode_does_not_call_provider():
+    """status-only mode reads the cache and writes status, but never attempts a provider request."""
+    if not os.path.isdir(os.path.join(_M_DIR, "raw")):
+        raise _Skip("no committed raw cache to seed from")
+    env = {"ALPHAVANTAGE_API_KEY": _DUMMY_KEY, "PHASE3M_STATUS_ONLY": "1"}
+    mod, tmp, res = _sandbox_run(env, seed_cached=3, block_network=True)
+    prog = res["collection_progress"]
+    assert prog["status_only"] is True
+    assert prog["can_attempt_network_now"] is False
+    assert prog["network_requests_this_run"] == 0
+    assert "status_only" in prog["reason_network_not_attempted"]
+    assert prog["cached_ticker_count_after_run"] == 3
+    # The dummy key value must never reach any written artifact.
+    blob = _read(mod.RESULT_JSON) + _read(mod.COLLECTION_PROGRESS_JSON) + _read(mod.PROVIDER_ACCESS_JSON)
+    assert _DUMMY_KEY not in blob, "API key value must never be written to any artifact"
+
+
+def test_same_day_guard_prevents_provider_request_in_run():
+    """A prior same-UTC-day provider limit blocks another request without any network call."""
+    if not os.path.isdir(os.path.join(_M_DIR, "raw")):
+        raise _Skip("no committed raw cache to seed from")
+    mod0 = _import_analyzer()
+    today = mod0._utc_date_of(mod0._utc_now_iso())
+    seed = {"phase": "3-N", "provider_limit_hit": True, "provider_limit_last_hit_utc": today,
+            "generated_at_utc": mod0._utc_now_iso(), "cached_ticker_count_after_run": 3}
+    env = {"ALPHAVANTAGE_API_KEY": _DUMMY_KEY}
+    mod, tmp, res = _sandbox_run(env, seed_cached=3, seed_progress=seed, block_network=True)
+    prog = res["collection_progress"]
+    assert prog["same_day_limit_guard_active"] is True
+    assert prog["can_attempt_network_now"] is False
+    assert prog["network_requests_this_run"] == 0
+    assert prog["next_action"] == "WAIT_FOR_PROVIDER_LIMIT_RESET_OR_USE_HIGHER_LIMIT_PROVIDER"
+    assert prog["provider_limit_last_hit_utc"] == today
+    assert res["recommendation"]["recommendation"] == \
+        "EARNINGS_PROVIDER_COLLECTION_BLOCKED_PROVIDER_LIMIT"
 
 
 # --------------------------------------------------------------------------- #
