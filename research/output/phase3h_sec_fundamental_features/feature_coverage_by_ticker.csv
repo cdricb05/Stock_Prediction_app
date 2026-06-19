@@ -1,0 +1,461 @@
+ticker,sector,feature_name,non_null_count,total_snapshot_count,coverage_fraction,latest_feature_asof_date,earliest_feature_asof_date
+AAPL,Information Technology,operating_margin,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,net_margin,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,fcf_margin,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,operating_cash_flow_margin,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,debt_proxy_total_liabilities_to_assets,8,20,0.4,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,equity_to_assets,6,20,0.3,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,asset_turnover_proxy,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,liability_to_equity,6,20,0.3,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,revenue_yoy_growth,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,net_income_yoy_growth,4,20,0.2,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,operating_income_yoy_growth,4,20,0.2,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,eps_diluted_yoy_growth,4,20,0.2,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,total_assets_yoy_growth,4,20,0.2,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,operating_cash_flow_yoy_growth,4,20,0.2,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,free_cash_flow_yoy_growth,4,20,0.2,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,cash_conversion,8,20,0.4,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,fcf_to_net_income,8,20,0.4,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,capex_intensity,0,20,0.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,accrual_proxy,6,20,0.3,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,log_total_assets,8,20,0.4,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,log_revenue_abs,8,20,0.4,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,log_total_liabilities_abs,8,20,0.4,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AAPL,Information Technology,filing_lag_days,20,20,1.0,2026-05-01T10:01:00.000Z,2018-11-05T13:01:40.000Z
+AMZN,Consumer Discretionary,operating_margin,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,net_margin,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,fcf_margin,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,operating_cash_flow_margin,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,debt_proxy_total_liabilities_to_assets,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,equity_to_assets,6,31,0.1935,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,asset_turnover_proxy,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,liability_to_equity,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,revenue_yoy_growth,1,31,0.0323,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,net_income_yoy_growth,2,31,0.0645,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,operating_income_yoy_growth,4,31,0.129,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,eps_diluted_yoy_growth,4,31,0.129,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,total_assets_yoy_growth,2,31,0.0645,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,operating_cash_flow_yoy_growth,2,31,0.0645,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,free_cash_flow_yoy_growth,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,cash_conversion,8,31,0.2581,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,fcf_to_net_income,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,capex_intensity,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,accrual_proxy,5,31,0.1613,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,log_total_assets,8,31,0.2581,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,log_revenue_abs,8,31,0.2581,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,log_total_liabilities_abs,0,31,0.0,2026-04-29T18:48:09.000Z,2016-01-29
+AMZN,Consumer Discretionary,filing_lag_days,31,31,1.0,2026-04-29T18:48:09.000Z,2016-01-29
+BAC,Financials,operating_margin,0,13,0.0,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,net_margin,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,fcf_margin,0,13,0.0,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,operating_cash_flow_margin,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,debt_proxy_total_liabilities_to_assets,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,equity_to_assets,6,13,0.4615,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,asset_turnover_proxy,5,13,0.3846,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,liability_to_equity,6,13,0.4615,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,revenue_yoy_growth,4,13,0.3077,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,net_income_yoy_growth,4,13,0.3077,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,operating_income_yoy_growth,0,13,0.0,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,eps_diluted_yoy_growth,4,13,0.3077,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,total_assets_yoy_growth,2,13,0.1538,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,operating_cash_flow_yoy_growth,4,13,0.3077,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,free_cash_flow_yoy_growth,0,13,0.0,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,cash_conversion,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,fcf_to_net_income,0,13,0.0,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,capex_intensity,0,13,0.0,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,accrual_proxy,5,13,0.3846,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,log_total_assets,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,log_revenue_abs,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,log_total_liabilities_abs,8,13,0.6154,2026-05-01T20:39:01.000Z,2024-07-30
+BAC,Financials,filing_lag_days,13,13,1.0,2026-05-01T20:39:01.000Z,2024-07-30
+CAT,Industrials,operating_margin,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,net_margin,0,19,0.0,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,fcf_margin,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,operating_cash_flow_margin,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,debt_proxy_total_liabilities_to_assets,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,equity_to_assets,0,19,0.0,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,asset_turnover_proxy,5,19,0.2632,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,liability_to_equity,0,19,0.0,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,revenue_yoy_growth,4,19,0.2105,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,net_income_yoy_growth,1,19,0.0526,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,operating_income_yoy_growth,4,19,0.2105,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,eps_diluted_yoy_growth,4,19,0.2105,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,total_assets_yoy_growth,2,19,0.1053,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,operating_cash_flow_yoy_growth,4,19,0.2105,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,free_cash_flow_yoy_growth,4,19,0.2105,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,cash_conversion,0,19,0.0,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,fcf_to_net_income,0,19,0.0,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,capex_intensity,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,accrual_proxy,0,19,0.0,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,log_total_assets,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,log_revenue_abs,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,log_total_liabilities_abs,8,19,0.4211,2026-05-06T15:08:09.000Z,2010-11-04
+CAT,Industrials,filing_lag_days,19,19,1.0,2026-05-06T15:08:09.000Z,2010-11-04
+CVX,Energy,operating_margin,0,11,0.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,net_margin,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,fcf_margin,0,11,0.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,operating_cash_flow_margin,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,debt_proxy_total_liabilities_to_assets,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,equity_to_assets,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,asset_turnover_proxy,5,11,0.4545,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,liability_to_equity,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,revenue_yoy_growth,4,11,0.3636,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,net_income_yoy_growth,4,11,0.3636,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,operating_income_yoy_growth,0,11,0.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,eps_diluted_yoy_growth,4,11,0.3636,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,total_assets_yoy_growth,2,11,0.1818,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,operating_cash_flow_yoy_growth,4,11,0.3636,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,free_cash_flow_yoy_growth,0,11,0.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,cash_conversion,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,fcf_to_net_income,0,11,0.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,capex_intensity,0,11,0.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,accrual_proxy,5,11,0.4545,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,log_total_assets,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,log_revenue_abs,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,log_total_liabilities_abs,8,11,0.7273,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+CVX,Energy,filing_lag_days,11,11,1.0,2026-05-07T15:39:23.000Z,2024-08-07T15:11:12.000Z
+DIS,Communication Services,operating_margin,8,11,0.7273,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,net_margin,8,11,0.7273,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,fcf_margin,7,11,0.6364,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,operating_cash_flow_margin,7,11,0.6364,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,debt_proxy_total_liabilities_to_assets,0,11,0.0,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,equity_to_assets,8,11,0.7273,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,asset_turnover_proxy,6,11,0.5455,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,liability_to_equity,0,11,0.0,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,revenue_yoy_growth,4,11,0.3636,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,net_income_yoy_growth,4,11,0.3636,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,operating_income_yoy_growth,4,11,0.3636,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,eps_diluted_yoy_growth,4,11,0.3636,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,total_assets_yoy_growth,4,11,0.3636,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,operating_cash_flow_yoy_growth,3,11,0.2727,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,free_cash_flow_yoy_growth,3,11,0.2727,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,cash_conversion,7,11,0.6364,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,fcf_to_net_income,7,11,0.6364,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,capex_intensity,8,11,0.7273,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,accrual_proxy,6,11,0.5455,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,log_total_assets,8,11,0.7273,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,log_revenue_abs,8,11,0.7273,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,log_total_liabilities_abs,0,11,0.0,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+DIS,Communication Services,filing_lag_days,11,11,1.0,2026-05-06T10:41:43.000Z,2024-08-07T10:54:11.000Z
+GE,Industrials,operating_margin,0,29,0.0,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,net_margin,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,fcf_margin,0,29,0.0,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,operating_cash_flow_margin,6,29,0.2069,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,debt_proxy_total_liabilities_to_assets,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,equity_to_assets,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,asset_turnover_proxy,5,29,0.1724,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,liability_to_equity,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,revenue_yoy_growth,2,29,0.069,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,net_income_yoy_growth,2,29,0.069,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,operating_income_yoy_growth,3,29,0.1034,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,eps_diluted_yoy_growth,2,29,0.069,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,total_assets_yoy_growth,2,29,0.069,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,operating_cash_flow_yoy_growth,4,29,0.1379,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,free_cash_flow_yoy_growth,0,29,0.0,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,cash_conversion,6,29,0.2069,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,fcf_to_net_income,0,29,0.0,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,capex_intensity,0,29,0.0,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,accrual_proxy,5,29,0.1724,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,log_total_assets,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,log_revenue_abs,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,log_total_liabilities_abs,8,29,0.2759,2026-04-21T10:36:02.000Z,2012-11-07
+GE,Industrials,filing_lag_days,29,29,1.0,2026-04-21T10:36:02.000Z,2012-11-07
+GOOGL,Communication Services,operating_margin,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,net_margin,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,fcf_margin,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,operating_cash_flow_margin,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,debt_proxy_total_liabilities_to_assets,8,17,0.4706,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,equity_to_assets,6,17,0.3529,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,asset_turnover_proxy,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,liability_to_equity,6,17,0.3529,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,revenue_yoy_growth,0,17,0.0,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,net_income_yoy_growth,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,operating_income_yoy_growth,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,eps_diluted_yoy_growth,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,total_assets_yoy_growth,2,17,0.1176,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,operating_cash_flow_yoy_growth,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,free_cash_flow_yoy_growth,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,cash_conversion,8,17,0.4706,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,fcf_to_net_income,8,17,0.4706,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,capex_intensity,4,17,0.2353,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,accrual_proxy,5,17,0.2941,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,log_total_assets,8,17,0.4706,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,log_revenue_abs,8,17,0.4706,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,log_total_liabilities_abs,8,17,0.4706,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+GOOGL,Communication Services,filing_lag_days,17,17,1.0,2026-04-30T01:02:11.000Z,2024-07-23T23:12:07.000Z
+HD,Consumer Discretionary,operating_margin,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,net_margin,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,fcf_margin,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,operating_cash_flow_margin,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,debt_proxy_total_liabilities_to_assets,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,equity_to_assets,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,asset_turnover_proxy,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,liability_to_equity,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,revenue_yoy_growth,2,19,0.1053,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,net_income_yoy_growth,4,19,0.2105,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,operating_income_yoy_growth,4,19,0.2105,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,eps_diluted_yoy_growth,4,19,0.2105,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,total_assets_yoy_growth,2,19,0.1053,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,operating_cash_flow_yoy_growth,4,19,0.2105,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,free_cash_flow_yoy_growth,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,cash_conversion,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,fcf_to_net_income,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,capex_intensity,0,19,0.0,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,accrual_proxy,5,19,0.2632,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,log_total_assets,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,log_revenue_abs,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,log_total_liabilities_abs,8,19,0.4211,2026-05-26T21:48:01.000Z,2009-09-03
+HD,Consumer Discretionary,filing_lag_days,19,19,1.0,2026-05-26T21:48:01.000Z,2009-09-03
+JNJ,Health Care,operating_margin,5,23,0.2174,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,net_margin,0,23,0.0,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,fcf_margin,0,23,0.0,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,operating_cash_flow_margin,0,23,0.0,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,debt_proxy_total_liabilities_to_assets,8,23,0.3478,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,equity_to_assets,7,23,0.3043,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,asset_turnover_proxy,0,23,0.0,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,liability_to_equity,7,23,0.3043,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,revenue_yoy_growth,2,23,0.087,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,net_income_yoy_growth,4,23,0.1739,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,operating_income_yoy_growth,4,23,0.1739,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,eps_diluted_yoy_growth,4,23,0.1739,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,total_assets_yoy_growth,2,23,0.087,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,operating_cash_flow_yoy_growth,4,23,0.1739,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,free_cash_flow_yoy_growth,4,23,0.1739,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,cash_conversion,8,23,0.3478,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,fcf_to_net_income,8,23,0.3478,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,capex_intensity,0,23,0.0,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,accrual_proxy,5,23,0.2174,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,log_total_assets,8,23,0.3478,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,log_revenue_abs,8,23,0.3478,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,log_total_liabilities_abs,8,23,0.3478,2026-04-22T16:02:41.000Z,2013-08-01
+JNJ,Health Care,filing_lag_days,23,23,1.0,2026-04-22T16:02:41.000Z,2013-08-01
+JPM,Financials,operating_margin,0,17,0.0,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,net_margin,2,17,0.1176,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,fcf_margin,0,17,0.0,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,operating_cash_flow_margin,2,17,0.1176,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,debt_proxy_total_liabilities_to_assets,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,equity_to_assets,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,asset_turnover_proxy,1,17,0.0588,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,liability_to_equity,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,revenue_yoy_growth,7,17,0.4118,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,net_income_yoy_growth,4,17,0.2353,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,operating_income_yoy_growth,0,17,0.0,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,eps_diluted_yoy_growth,4,17,0.2353,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,total_assets_yoy_growth,2,17,0.1176,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,operating_cash_flow_yoy_growth,4,17,0.2353,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,free_cash_flow_yoy_growth,0,17,0.0,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,cash_conversion,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,fcf_to_net_income,0,17,0.0,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,capex_intensity,0,17,0.0,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,accrual_proxy,5,17,0.2941,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,log_total_assets,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,log_revenue_abs,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,log_total_liabilities_abs,8,17,0.4706,2026-05-01T20:18:43.000Z,2019-02-26
+JPM,Financials,filing_lag_days,17,17,1.0,2026-05-01T20:18:43.000Z,2019-02-26
+KO,Consumer Staples,operating_margin,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,net_margin,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,fcf_margin,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,operating_cash_flow_margin,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,debt_proxy_total_liabilities_to_assets,0,11,0.0,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,equity_to_assets,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,asset_turnover_proxy,5,11,0.4545,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,liability_to_equity,0,11,0.0,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,revenue_yoy_growth,4,11,0.3636,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,net_income_yoy_growth,4,11,0.3636,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,operating_income_yoy_growth,4,11,0.3636,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,eps_diluted_yoy_growth,4,11,0.3636,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,total_assets_yoy_growth,2,11,0.1818,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,operating_cash_flow_yoy_growth,4,11,0.3636,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,free_cash_flow_yoy_growth,4,11,0.3636,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,cash_conversion,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,fcf_to_net_income,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,capex_intensity,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,accrual_proxy,5,11,0.4545,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,log_total_assets,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,log_revenue_abs,8,11,0.7273,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,log_total_liabilities_abs,0,11,0.0,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+KO,Consumer Staples,filing_lag_days,11,11,1.0,2026-04-30T15:17:45.000Z,2024-07-29T15:54:36.000Z
+META,Communication Services,operating_margin,0,21,0.0,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,net_margin,0,21,0.0,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,fcf_margin,0,21,0.0,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,operating_cash_flow_margin,0,21,0.0,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,debt_proxy_total_liabilities_to_assets,8,21,0.381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,equity_to_assets,6,21,0.2857,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,asset_turnover_proxy,0,21,0.0,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,liability_to_equity,6,21,0.2857,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,revenue_yoy_growth,4,21,0.1905,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,net_income_yoy_growth,4,21,0.1905,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,operating_income_yoy_growth,4,21,0.1905,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,eps_diluted_yoy_growth,4,21,0.1905,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,total_assets_yoy_growth,2,21,0.0952,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,operating_cash_flow_yoy_growth,4,21,0.1905,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,free_cash_flow_yoy_growth,4,21,0.1905,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,cash_conversion,8,21,0.381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,fcf_to_net_income,8,21,0.381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,capex_intensity,0,21,0.0,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,accrual_proxy,5,21,0.2381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,log_total_assets,8,21,0.381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,log_revenue_abs,8,21,0.381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,log_total_liabilities_abs,8,21,0.381,2026-04-29T23:54:11.000Z,2017-02-03
+META,Communication Services,filing_lag_days,21,21,1.0,2026-04-29T23:54:11.000Z,2017-02-03
+MSFT,Information Technology,operating_margin,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,net_margin,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,fcf_margin,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,operating_cash_flow_margin,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,debt_proxy_total_liabilities_to_assets,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,equity_to_assets,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,asset_turnover_proxy,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,liability_to_equity,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,revenue_yoy_growth,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,net_income_yoy_growth,4,19,0.2105,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,operating_income_yoy_growth,4,19,0.2105,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,eps_diluted_yoy_growth,4,19,0.2105,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,total_assets_yoy_growth,2,19,0.1053,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,operating_cash_flow_yoy_growth,4,19,0.2105,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,free_cash_flow_yoy_growth,4,19,0.2105,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,cash_conversion,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,fcf_to_net_income,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,capex_intensity,0,19,0.0,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,accrual_proxy,5,19,0.2632,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,log_total_assets,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,log_revenue_abs,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,log_total_liabilities_abs,8,19,0.4211,2026-04-29T20:06:24.000Z,2010-04-22
+MSFT,Information Technology,filing_lag_days,19,19,1.0,2026-04-29T20:06:24.000Z,2010-04-22
+NEE,Utilities,operating_margin,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,net_margin,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,fcf_margin,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,operating_cash_flow_margin,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,debt_proxy_total_liabilities_to_assets,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,equity_to_assets,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,asset_turnover_proxy,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,liability_to_equity,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,revenue_yoy_growth,1,19,0.0526,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,net_income_yoy_growth,4,19,0.2105,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,operating_income_yoy_growth,4,19,0.2105,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,eps_diluted_yoy_growth,4,19,0.2105,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,total_assets_yoy_growth,2,19,0.1053,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,operating_cash_flow_yoy_growth,4,19,0.2105,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,free_cash_flow_yoy_growth,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,cash_conversion,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,fcf_to_net_income,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,capex_intensity,0,19,0.0,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,accrual_proxy,5,19,0.2632,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,log_total_assets,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,log_revenue_abs,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,log_total_liabilities_abs,8,19,0.4211,2026-04-23T20:52:23.000Z,2012-10-26
+NEE,Utilities,filing_lag_days,19,19,1.0,2026-04-23T20:52:23.000Z,2012-10-26
+NVDA,Information Technology,operating_margin,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,net_margin,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,fcf_margin,0,21,0.0,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,operating_cash_flow_margin,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,debt_proxy_total_liabilities_to_assets,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,equity_to_assets,6,21,0.2857,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,asset_turnover_proxy,5,21,0.2381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,liability_to_equity,6,21,0.2857,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,revenue_yoy_growth,4,21,0.1905,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,net_income_yoy_growth,4,21,0.1905,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,operating_income_yoy_growth,4,21,0.1905,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,eps_diluted_yoy_growth,4,21,0.1905,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,total_assets_yoy_growth,2,21,0.0952,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,operating_cash_flow_yoy_growth,4,21,0.1905,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,free_cash_flow_yoy_growth,0,21,0.0,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,cash_conversion,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,fcf_to_net_income,0,21,0.0,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,capex_intensity,0,21,0.0,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,accrual_proxy,5,21,0.2381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,log_total_assets,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,log_revenue_abs,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,log_total_liabilities_abs,8,21,0.381,2026-05-20T20:35:52.000Z,2018-05-22
+NVDA,Information Technology,filing_lag_days,21,21,1.0,2026-05-20T20:35:52.000Z,2018-05-22
+PFE,Health Care,operating_margin,0,11,0.0,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,net_margin,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,fcf_margin,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,operating_cash_flow_margin,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,debt_proxy_total_liabilities_to_assets,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,equity_to_assets,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,asset_turnover_proxy,5,11,0.4545,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,liability_to_equity,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,revenue_yoy_growth,4,11,0.3636,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,net_income_yoy_growth,4,11,0.3636,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,operating_income_yoy_growth,0,11,0.0,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,eps_diluted_yoy_growth,4,11,0.3636,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,total_assets_yoy_growth,2,11,0.1818,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,operating_cash_flow_yoy_growth,4,11,0.3636,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,free_cash_flow_yoy_growth,4,11,0.3636,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,cash_conversion,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,fcf_to_net_income,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,capex_intensity,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,accrual_proxy,5,11,0.4545,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,log_total_assets,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,log_revenue_abs,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,log_total_liabilities_abs,8,11,0.7273,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PFE,Health Care,filing_lag_days,11,11,1.0,2026-05-05T11:03:03.000Z,2024-08-05T19:54:43.000Z
+PG,Consumer Staples,operating_margin,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,net_margin,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,fcf_margin,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,operating_cash_flow_margin,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,debt_proxy_total_liabilities_to_assets,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,equity_to_assets,0,11,0.0,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,asset_turnover_proxy,5,11,0.4545,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,liability_to_equity,0,11,0.0,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,revenue_yoy_growth,4,11,0.3636,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,net_income_yoy_growth,4,11,0.3636,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,operating_income_yoy_growth,4,11,0.3636,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,eps_diluted_yoy_growth,4,11,0.3636,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,total_assets_yoy_growth,2,11,0.1818,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,operating_cash_flow_yoy_growth,4,11,0.3636,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,free_cash_flow_yoy_growth,4,11,0.3636,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,cash_conversion,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,fcf_to_net_income,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,capex_intensity,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,accrual_proxy,5,11,0.4545,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,log_total_assets,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,log_revenue_abs,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,log_total_liabilities_abs,8,11,0.7273,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+PG,Consumer Staples,filing_lag_days,11,11,1.0,2026-04-24T20:14:30.000Z,2024-08-05T20:16:53.000Z
+UNH,Health Care,operating_margin,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,net_margin,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,fcf_margin,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,operating_cash_flow_margin,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,debt_proxy_total_liabilities_to_assets,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,equity_to_assets,0,19,0.0,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,asset_turnover_proxy,5,19,0.2632,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,liability_to_equity,0,19,0.0,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,revenue_yoy_growth,4,19,0.2105,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,net_income_yoy_growth,4,19,0.2105,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,operating_income_yoy_growth,4,19,0.2105,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,eps_diluted_yoy_growth,4,19,0.2105,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,total_assets_yoy_growth,2,19,0.1053,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,operating_cash_flow_yoy_growth,4,19,0.2105,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,free_cash_flow_yoy_growth,4,19,0.2105,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,cash_conversion,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,fcf_to_net_income,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,capex_intensity,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,accrual_proxy,5,19,0.2632,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,log_total_assets,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,log_revenue_abs,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,log_total_liabilities_abs,8,19,0.4211,2026-05-05T20:38:11.000Z,2014-05-06
+UNH,Health Care,filing_lag_days,19,19,1.0,2026-05-05T20:38:11.000Z,2014-05-06
+XOM,Energy,operating_margin,0,11,0.0,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,net_margin,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,fcf_margin,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,operating_cash_flow_margin,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,debt_proxy_total_liabilities_to_assets,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,equity_to_assets,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,asset_turnover_proxy,5,11,0.4545,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,liability_to_equity,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,revenue_yoy_growth,4,11,0.3636,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,net_income_yoy_growth,4,11,0.3636,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,operating_income_yoy_growth,0,11,0.0,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,eps_diluted_yoy_growth,4,11,0.3636,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,total_assets_yoy_growth,2,11,0.1818,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,operating_cash_flow_yoy_growth,4,11,0.3636,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,free_cash_flow_yoy_growth,4,11,0.3636,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,cash_conversion,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,fcf_to_net_income,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,capex_intensity,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,accrual_proxy,5,11,0.4545,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,log_total_assets,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,log_revenue_abs,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,log_total_liabilities_abs,8,11,0.7273,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z
+XOM,Energy,filing_lag_days,11,11,1.0,2026-05-04T16:40:35.000Z,2024-08-05T17:15:44.000Z

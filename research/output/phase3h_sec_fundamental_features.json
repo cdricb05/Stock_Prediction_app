@@ -1,0 +1,671 @@
+{
+  "phase": "3-H",
+  "generated_at": "2026-06-19T09:01:12",
+  "inputs_read": {
+    "phase3g_minipipeline_json": "research/output/phase3g_sec_fundamentals_minipipeline.json",
+    "phase3g_company_identity_csv": "research/output/phase3g_sec_fundamentals_sample/company_identity_20ticker_sample.csv",
+    "phase3g_fundamentals_csv": "research/output/phase3g_sec_fundamentals_sample/fundamentals_20ticker_sample.csv",
+    "phase3g_data_quality_json": "research/output/phase3g_sec_fundamentals_sample/data_quality_report.json",
+    "phase3g_field_coverage_csv": "research/output/phase3g_sec_fundamentals_sample/field_coverage_by_ticker.csv",
+    "phase3g_period_coverage_csv": "research/output/phase3g_sec_fundamentals_sample/period_coverage_by_ticker.csv",
+    "phase3g_reconciliation_csv": "research/output/phase3g_sec_fundamentals_sample/reconciliation_warnings.csv",
+    "phase3e_ingestion_contract_json": "research/output/phase3e_ingestion_contract.json",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv"
+  },
+  "outputs_written": {
+    "features_json": "research/output/phase3h_sec_fundamental_features.json",
+    "feature_snapshot_csv": "research/output/phase3h_sec_fundamental_features/feature_snapshot_20ticker_sample.csv",
+    "feature_dictionary_csv": "research/output/phase3h_sec_fundamental_features/feature_dictionary.csv",
+    "feature_coverage_by_ticker_csv": "research/output/phase3h_sec_fundamental_features/feature_coverage_by_ticker.csv",
+    "feature_quality_report_json": "research/output/phase3h_sec_fundamental_features/feature_quality_report.json",
+    "feature_alignment_warnings_csv": "research/output/phase3h_sec_fundamental_features/feature_alignment_warnings.csv"
+  },
+  "phase3g_summary": {
+    "phase3g_confirmed": {
+      "phase3g_present": true,
+      "phase_is_3g": true,
+      "recommendation_is_minipipeline_success": true,
+      "next_phase_is_3h": true,
+      "sec_public_data_used_true": true,
+      "external_data_ingested_true": true,
+      "production_data_ingested_false": true,
+      "full_128_ticker_ingestion_false": true,
+      "model_features_computed_false": true,
+      "labels_computed_false": true,
+      "research_model_trained_false": true,
+      "production_model_trained_false": true,
+      "production_model_candidate_created_false": true,
+      "deployable_model_artifact_written_false": true,
+      "d_drive_read_false": true,
+      "d_drive_written_false": true,
+      "vendor_api_called_false": true,
+      "paid_vendor_api_called_false": true,
+      "data_purchase_made_false": true,
+      "all_confirmed": true
+    },
+    "phase3g_recommendation": "SEC_FUNDAMENTALS_MINIPIPELINE_SUCCESS",
+    "phase3g_fundamentals_rows": 1416,
+    "ingestion_contract_confirmed": {
+      "contract_present": true,
+      "has_company_identity_table": true,
+      "has_fundamentals_table": true,
+      "no_database_write_by_default": true,
+      "no_production_integration": true,
+      "pit_columns_include_availability_datetime": true,
+      "all_confirmed": true
+    }
+  },
+  "feature_engineering_config": {
+    "raw_pivot_fields": [
+      "revenue",
+      "net_income",
+      "operating_income",
+      "eps_diluted",
+      "total_assets",
+      "total_liabilities",
+      "shareholder_equity",
+      "operating_cash_flow",
+      "capital_expenditures",
+      "free_cash_flow"
+    ],
+    "required_source_fields": [
+      "revenue",
+      "net_income",
+      "total_assets",
+      "operating_cash_flow"
+    ],
+    "snapshot_key": [
+      "ticker",
+      "fiscal_period_end",
+      "fiscal_year",
+      "fiscal_period",
+      "form"
+    ],
+    "feature_asof_date_rule": "max(availability_datetime) across the fields used in the snapshot; never the fiscal_period_end",
+    "annual_definition": "form in {10-K, 10-K/A} or fiscal_period == FY",
+    "quarterly_definition": "form in {10-Q, 10-Q/A} or fiscal_period in {Q1,Q2,Q3,Q4}",
+    "annual_quarterly_mixing": "kept separate; embedded FY-tagged quarterly durations are flagged annual_quarterly_mix_risk and excluded from annual yoy comparisons",
+    "missing_value_policy": "missing financial fields are left null, never zero-filled; ratios are null when numerator or denominator is missing or the denominator is zero",
+    "extreme_ratio_abs_threshold": 10.0,
+    "extreme_growth_abs_threshold": 5.0,
+    "price_features_computed": false,
+    "labels_computed": false,
+    "forward_returns_computed": false
+  },
+  "snapshot_summary": {
+    "snapshot_rows": 353,
+    "annual_snapshot_rows": 81,
+    "quarterly_snapshot_rows": 272,
+    "feature_asof_date_coverage": 1.0,
+    "point_in_time_usable_fraction": 1.0,
+    "feature_asof_before_period_end_count": 0,
+    "tickers_with_features": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "UNH",
+      "XOM"
+    ],
+    "columns": [
+      "ticker",
+      "company_name",
+      "sector",
+      "industry",
+      "cik",
+      "fiscal_period_end",
+      "fiscal_year",
+      "fiscal_period",
+      "form",
+      "snapshot_type",
+      "feature_asof_date",
+      "source_field_count",
+      "required_field_coverage_fraction",
+      "point_in_time_usable",
+      "is_annual_snapshot",
+      "is_quarterly_snapshot",
+      "operating_margin",
+      "net_margin",
+      "fcf_margin",
+      "operating_cash_flow_margin",
+      "debt_proxy_total_liabilities_to_assets",
+      "equity_to_assets",
+      "asset_turnover_proxy",
+      "liability_to_equity",
+      "revenue_yoy_growth",
+      "net_income_yoy_growth",
+      "operating_income_yoy_growth",
+      "eps_diluted_yoy_growth",
+      "total_assets_yoy_growth",
+      "operating_cash_flow_yoy_growth",
+      "free_cash_flow_yoy_growth",
+      "cash_conversion",
+      "fcf_to_net_income",
+      "capex_intensity",
+      "accrual_proxy",
+      "log_total_assets",
+      "log_revenue_abs",
+      "log_total_liabilities_abs",
+      "filing_lag_days"
+    ]
+  },
+  "feature_dictionary_summary": {
+    "feature_columns_count": 23,
+    "documented_feature_count": 24,
+    "feature_families": [
+      "availability_metadata",
+      "balance_sheet",
+      "growth",
+      "profitability",
+      "quality",
+      "size"
+    ],
+    "emitted_features": [
+      "operating_margin",
+      "net_margin",
+      "fcf_margin",
+      "operating_cash_flow_margin",
+      "debt_proxy_total_liabilities_to_assets",
+      "equity_to_assets",
+      "asset_turnover_proxy",
+      "liability_to_equity",
+      "revenue_yoy_growth",
+      "net_income_yoy_growth",
+      "operating_income_yoy_growth",
+      "eps_diluted_yoy_growth",
+      "total_assets_yoy_growth",
+      "operating_cash_flow_yoy_growth",
+      "free_cash_flow_yoy_growth",
+      "cash_conversion",
+      "fcf_to_net_income",
+      "capex_intensity",
+      "accrual_proxy",
+      "log_total_assets",
+      "log_revenue_abs",
+      "log_total_liabilities_abs",
+      "filing_lag_days"
+    ],
+    "documented_but_omitted": [
+      "gross_margin"
+    ]
+  },
+  "feature_coverage_summary": {
+    "coverage_rows": 460,
+    "coverage_by_feature_family": {
+      "availability_metadata": 1.0,
+      "balance_sheet": 0.2982,
+      "growth": 0.1769,
+      "profitability": 0.2075,
+      "quality": 0.2783,
+      "size": 0.4306
+    },
+    "null_coverage_summary": {
+      "operating_margin": {
+        "non_null": 57,
+        "null": 296,
+        "non_null_fraction": 0.1615
+      },
+      "net_margin": {
+        "non_null": 86,
+        "null": 267,
+        "non_null_fraction": 0.2436
+      },
+      "fcf_margin": {
+        "non_null": 59,
+        "null": 294,
+        "non_null_fraction": 0.1671
+      },
+      "operating_cash_flow_margin": {
+        "non_null": 91,
+        "null": 262,
+        "non_null_fraction": 0.2578
+      },
+      "debt_proxy_total_liabilities_to_assets": {
+        "non_null": 136,
+        "null": 217,
+        "non_null_fraction": 0.3853
+      },
+      "equity_to_assets": {
+        "non_null": 123,
+        "null": 230,
+        "non_null_fraction": 0.3484
+      },
+      "asset_turnover_proxy": {
+        "non_null": 61,
+        "null": 292,
+        "non_null_fraction": 0.1728
+      },
+      "liability_to_equity": {
+        "non_null": 101,
+        "null": 252,
+        "non_null_fraction": 0.2861
+      },
+      "revenue_yoy_growth": {
+        "non_null": 59,
+        "null": 294,
+        "non_null_fraction": 0.1671
+      },
+      "net_income_yoy_growth": {
+        "non_null": 73,
+        "null": 280,
+        "non_null_fraction": 0.2068
+      },
+      "operating_income_yoy_growth": {
+        "non_null": 59,
+        "null": 294,
+        "non_null_fraction": 0.1671
+      },
+      "eps_diluted_yoy_growth": {
+        "non_null": 78,
+        "null": 275,
+        "non_null_fraction": 0.221
+      },
+      "total_assets_yoy_growth": {
+        "non_null": 44,
+        "null": 309,
+        "non_null_fraction": 0.1246
+      },
+      "operating_cash_flow_yoy_growth": {
+        "non_null": 77,
+        "null": 276,
+        "non_null_fraction": 0.2181
+      },
+      "free_cash_flow_yoy_growth": {
+        "non_null": 47,
+        "null": 306,
+        "non_null_fraction": 0.1331
+      },
+      "cash_conversion": {
+        "non_null": 149,
+        "null": 204,
+        "non_null_fraction": 0.4221
+      },
+      "fcf_to_net_income": {
+        "non_null": 87,
+        "null": 266,
+        "non_null_fraction": 0.2465
+      },
+      "capex_intensity": {
+        "non_null": 60,
+        "null": 293,
+        "non_null_fraction": 0.17
+      },
+      "accrual_proxy": {
+        "non_null": 97,
+        "null": 256,
+        "non_null_fraction": 0.2748
+      },
+      "log_total_assets": {
+        "non_null": 160,
+        "null": 193,
+        "non_null_fraction": 0.4533
+      },
+      "log_revenue_abs": {
+        "non_null": 160,
+        "null": 193,
+        "non_null_fraction": 0.4533
+      },
+      "log_total_liabilities_abs": {
+        "non_null": 136,
+        "null": 217,
+        "non_null_fraction": 0.3853
+      },
+      "filing_lag_days": {
+        "non_null": 353,
+        "null": 0,
+        "non_null_fraction": 1.0
+      }
+    }
+  },
+  "feature_quality_summary": {
+    "source_phase": "3-G",
+    "input_rows": 1416,
+    "input_tickers": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "UNH",
+      "XOM"
+    ],
+    "snapshot_rows": 353,
+    "annual_snapshot_rows": 81,
+    "quarterly_snapshot_rows": 272,
+    "feature_columns_count": 23,
+    "feature_families": [
+      "availability_metadata",
+      "balance_sheet",
+      "growth",
+      "profitability",
+      "quality",
+      "size"
+    ],
+    "feature_asof_date_coverage": 1.0,
+    "point_in_time_usable_fraction": 1.0,
+    "feature_asof_before_period_end_count": 0,
+    "null_coverage_summary": {
+      "operating_margin": {
+        "non_null": 57,
+        "null": 296,
+        "non_null_fraction": 0.1615
+      },
+      "net_margin": {
+        "non_null": 86,
+        "null": 267,
+        "non_null_fraction": 0.2436
+      },
+      "fcf_margin": {
+        "non_null": 59,
+        "null": 294,
+        "non_null_fraction": 0.1671
+      },
+      "operating_cash_flow_margin": {
+        "non_null": 91,
+        "null": 262,
+        "non_null_fraction": 0.2578
+      },
+      "debt_proxy_total_liabilities_to_assets": {
+        "non_null": 136,
+        "null": 217,
+        "non_null_fraction": 0.3853
+      },
+      "equity_to_assets": {
+        "non_null": 123,
+        "null": 230,
+        "non_null_fraction": 0.3484
+      },
+      "asset_turnover_proxy": {
+        "non_null": 61,
+        "null": 292,
+        "non_null_fraction": 0.1728
+      },
+      "liability_to_equity": {
+        "non_null": 101,
+        "null": 252,
+        "non_null_fraction": 0.2861
+      },
+      "revenue_yoy_growth": {
+        "non_null": 59,
+        "null": 294,
+        "non_null_fraction": 0.1671
+      },
+      "net_income_yoy_growth": {
+        "non_null": 73,
+        "null": 280,
+        "non_null_fraction": 0.2068
+      },
+      "operating_income_yoy_growth": {
+        "non_null": 59,
+        "null": 294,
+        "non_null_fraction": 0.1671
+      },
+      "eps_diluted_yoy_growth": {
+        "non_null": 78,
+        "null": 275,
+        "non_null_fraction": 0.221
+      },
+      "total_assets_yoy_growth": {
+        "non_null": 44,
+        "null": 309,
+        "non_null_fraction": 0.1246
+      },
+      "operating_cash_flow_yoy_growth": {
+        "non_null": 77,
+        "null": 276,
+        "non_null_fraction": 0.2181
+      },
+      "free_cash_flow_yoy_growth": {
+        "non_null": 47,
+        "null": 306,
+        "non_null_fraction": 0.1331
+      },
+      "cash_conversion": {
+        "non_null": 149,
+        "null": 204,
+        "non_null_fraction": 0.4221
+      },
+      "fcf_to_net_income": {
+        "non_null": 87,
+        "null": 266,
+        "non_null_fraction": 0.2465
+      },
+      "capex_intensity": {
+        "non_null": 60,
+        "null": 293,
+        "non_null_fraction": 0.17
+      },
+      "accrual_proxy": {
+        "non_null": 97,
+        "null": 256,
+        "non_null_fraction": 0.2748
+      },
+      "log_total_assets": {
+        "non_null": 160,
+        "null": 193,
+        "non_null_fraction": 0.4533
+      },
+      "log_revenue_abs": {
+        "non_null": 160,
+        "null": 193,
+        "non_null_fraction": 0.4533
+      },
+      "log_total_liabilities_abs": {
+        "non_null": 136,
+        "null": 217,
+        "non_null_fraction": 0.3853
+      },
+      "filing_lag_days": {
+        "non_null": 353,
+        "null": 0,
+        "non_null_fraction": 1.0
+      }
+    },
+    "coverage_by_feature_family": {
+      "availability_metadata": 1.0,
+      "balance_sheet": 0.2982,
+      "growth": 0.1769,
+      "profitability": 0.2075,
+      "quality": 0.2783,
+      "size": 0.4306
+    },
+    "warning_count": 812,
+    "warning_type_counts": {
+      "annual_quarterly_mix_risk": 19,
+      "missing_required_source_field": 772,
+      "extreme_ratio": 21
+    },
+    "leakage_warning_count": 0,
+    "extreme_ratio_warning_count": 21,
+    "annual_quarterly_mix_warning_count": 19,
+    "tickers_with_features": [
+      "AAPL",
+      "AMZN",
+      "BAC",
+      "CAT",
+      "CVX",
+      "DIS",
+      "GE",
+      "GOOGL",
+      "HD",
+      "JNJ",
+      "JPM",
+      "KO",
+      "META",
+      "MSFT",
+      "NEE",
+      "NVDA",
+      "PFE",
+      "PG",
+      "UNH",
+      "XOM"
+    ],
+    "sector_summary": {
+      "Communication Services": {
+        "snapshot_rows": 49,
+        "ticker_count": 3
+      },
+      "Consumer Discretionary": {
+        "snapshot_rows": 50,
+        "ticker_count": 2
+      },
+      "Consumer Staples": {
+        "snapshot_rows": 22,
+        "ticker_count": 2
+      },
+      "Energy": {
+        "snapshot_rows": 22,
+        "ticker_count": 2
+      },
+      "Financials": {
+        "snapshot_rows": 30,
+        "ticker_count": 2
+      },
+      "Health Care": {
+        "snapshot_rows": 53,
+        "ticker_count": 3
+      },
+      "Industrials": {
+        "snapshot_rows": 48,
+        "ticker_count": 2
+      },
+      "Information Technology": {
+        "snapshot_rows": 60,
+        "ticker_count": 3
+      },
+      "Utilities": {
+        "snapshot_rows": 19,
+        "ticker_count": 1
+      }
+    },
+    "recommendation": "SEC_FUNDAMENTAL_FEATURES_PROTOTYPE_SUCCESS"
+  },
+  "warning_summary": {
+    "warning_count": 812,
+    "warning_type_counts": {
+      "annual_quarterly_mix_risk": 19,
+      "missing_required_source_field": 772,
+      "extreme_ratio": 21
+    },
+    "leakage_warning_count": 0,
+    "extreme_ratio_warning_count": 21,
+    "annual_quarterly_mix_warning_count": 19,
+    "warnings_are_advisory_unless_leakage": true
+  },
+  "source_limitations": [
+    "Features are built only from SEC as-reported fundamentals; SEC public data provides no earnings consensus or analyst estimate revisions, so surprise / revision-momentum features cannot be built here.",
+    "No price or market-cap data is joined in this phase, so price-based valuation features (P/E, EV/EBITDA, market cap, dividend yield) are intentionally not computed.",
+    "companyfacts tags some quarterly-duration facts with fiscal_period=FY inside 10-K filings; such embedded quarterly durations are flagged annual_quarterly_mix_risk and excluded from annual year-over-year comparisons rather than mixed with true full-year durations.",
+    "Financial-sector filers (e.g. banks) do not report operating_income, capital_expenditures, or free_cash_flow the same way industrials do, so those features are legitimately blank for them and are reported as sector-specific missing fields, never filled with zero.",
+    "The sector / industry attached to each feature row is current-as-of (the sector map is not point-in-time), so downstream results remain survivorship-caveated.",
+    "This is a controlled 20-ticker research sample pruned to the most-recent fiscal periods, not full historical coverage."
+  ],
+  "earnings_revisions_gap": {
+    "sec_provides_earnings_consensus": false,
+    "sec_provides_analyst_estimate_revisions": false,
+    "gap_description": "SEC as-reported fundamentals support the trailing fundamental features built here but provide no forward analyst consensus or estimate revisions; a separate provider must be researched and selected (see the Phase 3-E provider requirements matrix) before earnings-surprise or revision-momentum features can be prototyped.",
+    "provider_selection_required": true
+  },
+  "recommendation": {
+    "recommendation": "SEC_FUNDAMENTAL_FEATURES_PROTOTYPE_SUCCESS",
+    "allowed_values": [
+      "SEC_FUNDAMENTAL_FEATURES_PROTOTYPE_SUCCESS",
+      "SEC_FUNDAMENTAL_FEATURES_PARTIAL_SUCCESS",
+      "SEC_FUNDAMENTAL_FEATURES_BLOCKED",
+      "SEC_FUNDAMENTAL_FEATURES_REJECTED"
+    ],
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "full_128_ticker_ingestion_now": false,
+    "model_training_now": false,
+    "label_generation_now": false,
+    "price_join_now": false,
+    "reason": "Trailing-only, point-in-time fundamental features were built cleanly for all 20 tickers of the Phase 3-G sample: more than 100 canonical filing snapshots, a feature_asof_date present on every row (never the fiscal period end), full point-in-time usability, zero rows whose as-of date precedes the period end, zero leakage-risk warnings, and well over 20 engineered feature columns. Annual and quarterly durations are kept separate and embedded FY-tagged quarterly durations are flagged, not mixed. The feature snapshot is ready for a leakage-checked price alignment dry run next (still no model training, no labels). SEC still provides no earnings consensus or analyst revisions, so that provider gap remains open."
+  },
+  "interpretation": {
+    "feature_engineering_only": true,
+    "price_volume_only_modeling_stopped": true,
+    "model_trained": false,
+    "model_features_computed": true,
+    "labels_computed": false,
+    "forward_returns_computed": false,
+    "price_join_performed": false,
+    "research_model_trained": false,
+    "production_model_trained": false,
+    "production_model_candidate_created": false,
+    "deployable_model_artifact_written": false,
+    "model_training_ready": false,
+    "external_data_ingested": false,
+    "production_data_ingested": false,
+    "full_128_ticker_ingestion": false,
+    "sec_public_data_used": true,
+    "paid_vendor_called": false,
+    "data_purchased": false,
+    "read_from_d_drive": false,
+    "wrote_to_d_drive": false,
+    "network_used": false,
+    "results_context_remains_survivorship_biased": true,
+    "production_edge_claimed": false,
+    "narrative": "Phase 3-H is a controlled, read-only research feature-engineering prototype. It read the committed Phase 3-G mini-pipeline result, confirmed it succeeded (SEC_FUNDAMENTALS_MINIPIPELINE_SUCCESS) and routed here, re-confirmed the Phase 3-E ingestion contract, and converted the already-normalized 20-ticker SEC fundamentals sample into a point-in-time feature snapshot. It grouped the normalized rows into canonical filing snapshots, derived a safe feature_asof_date as the latest availability timestamp of the fields used (never the fiscal period end), kept annual (10-K / FY) and quarterly (10-Q / Qn) durations strictly separate, flagged embedded FY-tagged quarterly durations instead of mixing them, handled sector-specific missing fields explicitly (never filled with zero), and computed trailing-only profitability, leverage, growth, cash-conversion-quality, size, and availability/recency features. It used no network in this phase, computed no target labels and no forward returns, performed no price join, trained no model, created no production model candidate, wrote no deployable model artifact, touched no database, ran no migration, restarted no prediction service, enabled no serving flag, wrote nothing to the D: drive, read no D: price CSV, placed no orders, and traded nothing. SEC provides no earnings consensus or analyst revisions, so that provider gap stays open. This is a research feature prototype only and claims no production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "3-I",
+    "title": "Fundamental Feature Price-Alignment Dry Run",
+    "purpose": "Join the 20-ticker point-in-time feature snapshot to historical price dates in a dry-run alignment, generate forward labels for validation only, and verify no leakage before any model training."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_model_trained": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "network_used": false,
+  "sec_public_data_used": true,
+  "vendor_api_called": false,
+  "paid_vendor_api_called": false,
+  "data_purchase_made": false,
+  "external_data_ingested": false,
+  "production_data_ingested": false,
+  "full_128_ticker_ingestion": false,
+  "model_features_computed": true,
+  "labels_computed": false,
+  "model_training_ready": false
+}

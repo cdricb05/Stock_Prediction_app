@@ -1,0 +1,236 @@
+{
+  "source_phase": "3-G",
+  "input_rows": 1416,
+  "input_tickers": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "CAT",
+    "CVX",
+    "DIS",
+    "GE",
+    "GOOGL",
+    "HD",
+    "JNJ",
+    "JPM",
+    "KO",
+    "META",
+    "MSFT",
+    "NEE",
+    "NVDA",
+    "PFE",
+    "PG",
+    "UNH",
+    "XOM"
+  ],
+  "snapshot_rows": 353,
+  "annual_snapshot_rows": 81,
+  "quarterly_snapshot_rows": 272,
+  "feature_columns_count": 23,
+  "feature_families": [
+    "availability_metadata",
+    "balance_sheet",
+    "growth",
+    "profitability",
+    "quality",
+    "size"
+  ],
+  "feature_asof_date_coverage": 1.0,
+  "point_in_time_usable_fraction": 1.0,
+  "feature_asof_before_period_end_count": 0,
+  "null_coverage_summary": {
+    "operating_margin": {
+      "non_null": 57,
+      "null": 296,
+      "non_null_fraction": 0.1615
+    },
+    "net_margin": {
+      "non_null": 86,
+      "null": 267,
+      "non_null_fraction": 0.2436
+    },
+    "fcf_margin": {
+      "non_null": 59,
+      "null": 294,
+      "non_null_fraction": 0.1671
+    },
+    "operating_cash_flow_margin": {
+      "non_null": 91,
+      "null": 262,
+      "non_null_fraction": 0.2578
+    },
+    "debt_proxy_total_liabilities_to_assets": {
+      "non_null": 136,
+      "null": 217,
+      "non_null_fraction": 0.3853
+    },
+    "equity_to_assets": {
+      "non_null": 123,
+      "null": 230,
+      "non_null_fraction": 0.3484
+    },
+    "asset_turnover_proxy": {
+      "non_null": 61,
+      "null": 292,
+      "non_null_fraction": 0.1728
+    },
+    "liability_to_equity": {
+      "non_null": 101,
+      "null": 252,
+      "non_null_fraction": 0.2861
+    },
+    "revenue_yoy_growth": {
+      "non_null": 59,
+      "null": 294,
+      "non_null_fraction": 0.1671
+    },
+    "net_income_yoy_growth": {
+      "non_null": 73,
+      "null": 280,
+      "non_null_fraction": 0.2068
+    },
+    "operating_income_yoy_growth": {
+      "non_null": 59,
+      "null": 294,
+      "non_null_fraction": 0.1671
+    },
+    "eps_diluted_yoy_growth": {
+      "non_null": 78,
+      "null": 275,
+      "non_null_fraction": 0.221
+    },
+    "total_assets_yoy_growth": {
+      "non_null": 44,
+      "null": 309,
+      "non_null_fraction": 0.1246
+    },
+    "operating_cash_flow_yoy_growth": {
+      "non_null": 77,
+      "null": 276,
+      "non_null_fraction": 0.2181
+    },
+    "free_cash_flow_yoy_growth": {
+      "non_null": 47,
+      "null": 306,
+      "non_null_fraction": 0.1331
+    },
+    "cash_conversion": {
+      "non_null": 149,
+      "null": 204,
+      "non_null_fraction": 0.4221
+    },
+    "fcf_to_net_income": {
+      "non_null": 87,
+      "null": 266,
+      "non_null_fraction": 0.2465
+    },
+    "capex_intensity": {
+      "non_null": 60,
+      "null": 293,
+      "non_null_fraction": 0.17
+    },
+    "accrual_proxy": {
+      "non_null": 97,
+      "null": 256,
+      "non_null_fraction": 0.2748
+    },
+    "log_total_assets": {
+      "non_null": 160,
+      "null": 193,
+      "non_null_fraction": 0.4533
+    },
+    "log_revenue_abs": {
+      "non_null": 160,
+      "null": 193,
+      "non_null_fraction": 0.4533
+    },
+    "log_total_liabilities_abs": {
+      "non_null": 136,
+      "null": 217,
+      "non_null_fraction": 0.3853
+    },
+    "filing_lag_days": {
+      "non_null": 353,
+      "null": 0,
+      "non_null_fraction": 1.0
+    }
+  },
+  "coverage_by_feature_family": {
+    "availability_metadata": 1.0,
+    "balance_sheet": 0.2982,
+    "growth": 0.1769,
+    "profitability": 0.2075,
+    "quality": 0.2783,
+    "size": 0.4306
+  },
+  "warning_count": 812,
+  "warning_type_counts": {
+    "annual_quarterly_mix_risk": 19,
+    "missing_required_source_field": 772,
+    "extreme_ratio": 21
+  },
+  "leakage_warning_count": 0,
+  "extreme_ratio_warning_count": 21,
+  "annual_quarterly_mix_warning_count": 19,
+  "tickers_with_features": [
+    "AAPL",
+    "AMZN",
+    "BAC",
+    "CAT",
+    "CVX",
+    "DIS",
+    "GE",
+    "GOOGL",
+    "HD",
+    "JNJ",
+    "JPM",
+    "KO",
+    "META",
+    "MSFT",
+    "NEE",
+    "NVDA",
+    "PFE",
+    "PG",
+    "UNH",
+    "XOM"
+  ],
+  "sector_summary": {
+    "Communication Services": {
+      "snapshot_rows": 49,
+      "ticker_count": 3
+    },
+    "Consumer Discretionary": {
+      "snapshot_rows": 50,
+      "ticker_count": 2
+    },
+    "Consumer Staples": {
+      "snapshot_rows": 22,
+      "ticker_count": 2
+    },
+    "Energy": {
+      "snapshot_rows": 22,
+      "ticker_count": 2
+    },
+    "Financials": {
+      "snapshot_rows": 30,
+      "ticker_count": 2
+    },
+    "Health Care": {
+      "snapshot_rows": 53,
+      "ticker_count": 3
+    },
+    "Industrials": {
+      "snapshot_rows": 48,
+      "ticker_count": 2
+    },
+    "Information Technology": {
+      "snapshot_rows": 60,
+      "ticker_count": 3
+    },
+    "Utilities": {
+      "snapshot_rows": 19,
+      "ticker_count": 1
+    }
+  },
+  "recommendation": "SEC_FUNDAMENTAL_FEATURES_PROTOTYPE_SUCCESS"
+}
