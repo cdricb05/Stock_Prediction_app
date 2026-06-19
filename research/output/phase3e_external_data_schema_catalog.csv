@@ -1,0 +1,92 @@
+field_name,data_family,table_name,required_or_optional,data_type,periodicity,point_in_time_required,availability_timestamp_required,restatement_sensitive,can_be_lagged,example_feature_use,validation_note
+ticker,company_identity,company_identity,required,string,static,yes,no,no,yes,exchange/sector grouping key,primary join key to the 128-ticker panel
+company_name,company_identity,company_identity,optional,string,static,yes,no,no,yes,human-readable label,non-feature; descriptive only
+cik,company_identity,company_identity,required,string,static,yes,no,no,yes,join key to SEC filings,stable SEC identifier; preferred filing join
+figi,company_identity,company_identity,optional,string,static,yes,no,no,yes,cross-vendor instrument mapping,stable instrument id when ticker changes
+exchange,company_identity,company_identity,optional,string,static,yes,no,no,yes,listing/liquidity grouping,used for venue-level filtering
+sector,company_identity,company_identity,required,string,static,yes,no,no,yes,sector-neutralization grouping,must match the current-as-of sector map
+industry,company_identity,company_identity,optional,string,static,yes,no,no,yes,finer peer grouping,optional finer neutralization bucket
+effective_from,company_identity,company_identity,required,date,static,yes,yes,yes,yes,membership/identity as-of windowing,identity edits must be effective-dated so historical joins are point-in-time
+effective_to,company_identity,company_identity,optional,date,static,yes,yes,yes,yes,membership/identity as-of windowing,open-ended (null) means currently effective
+source,company_identity,company_identity,required,string,static,no,no,no,yes,provenance / audit,records which provider supplied the identity row
+ticker,fundamentals,fundamentals,required,string,quarterly_or_annual,yes,no,no,yes,join key,panel join key
+statement_type,fundamentals,fundamentals,required,string,quarterly_or_annual,no,no,no,yes,income_statement / balance_sheet / cash_flow grouping,tags the originating statement; enables per-statement validation
+periodicity,fundamentals,fundamentals,required,string,quarterly_or_annual,no,no,no,yes,quarterly vs annual selection,explicit quarterly/annual flag; never mix periodicities in one feature
+fiscal_period_end,fundamentals,fundamentals,required,date,quarterly_or_annual,yes,no,no,yes,period alignment,the period the statement describes; NOT an availability date
+fiscal_year,fundamentals,fundamentals,required,int,quarterly_or_annual,no,no,no,yes,period alignment,fiscal-year label
+fiscal_quarter,fundamentals,fundamentals,optional,int,quarterly_or_annual,no,no,no,yes,period alignment,null for annual rows
+filing_date,fundamentals,fundamentals,required,date,quarterly_or_annual,yes,yes,no,yes,filing recency,calendar date of the filing
+accepted_datetime,fundamentals,fundamentals,required,datetime,quarterly_or_annual,yes,yes,no,yes,earliest safe availability timestamp,filing acceptance time is the earliest point-in-time a filing value may be used
+availability_datetime,fundamentals,fundamentals,required,datetime,quarterly_or_annual,yes,yes,no,yes,feature_asof gate,no feature may use this row before availability_datetime
+report_date,fundamentals,fundamentals,optional,date,quarterly_or_annual,yes,yes,no,yes,vendor availability fallback,vendor-provided availability when accepted_datetime is absent
+revenue,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,"valuation/growth (sales yield, sales growth)",restatement-sensitive: use first-reported value with its true availability date
+gross_profit,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,quality (gross margin),restatement-sensitive: use first-reported value with its true availability date
+operating_income,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,quality/profitability (operating margin),restatement-sensitive: use first-reported value with its true availability date
+net_income,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,"valuation/quality (earnings yield, ROE)",restatement-sensitive: use first-reported value with its true availability date
+eps_basic,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,valuation (earnings yield),restatement-sensitive: use first-reported value with its true availability date
+eps_diluted,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,valuation (diluted earnings yield),restatement-sensitive: use first-reported value with its true availability date
+shares_basic,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,per-share normalization,restatement-sensitive: use first-reported value with its true availability date
+shares_diluted,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,per-share normalization / market cap,restatement-sensitive: use first-reported value with its true availability date
+total_assets,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,"leverage/quality (asset turnover, ROA)",restatement-sensitive: use first-reported value with its true availability date
+total_liabilities,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,leverage (liabilities/assets),restatement-sensitive: use first-reported value with its true availability date
+shareholder_equity,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,"valuation/leverage (book yield, debt/equity)",restatement-sensitive: use first-reported value with its true availability date
+cash_and_equivalents,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,balance-sheet strength (net debt),restatement-sensitive: use first-reported value with its true availability date
+short_term_debt,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,leverage (net debt),restatement-sensitive: use first-reported value with its true availability date
+long_term_debt,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,"leverage (debt/equity, net debt)",restatement-sensitive: use first-reported value with its true availability date
+operating_cash_flow,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,"quality (accruals, cash conversion)",restatement-sensitive: use first-reported value with its true availability date
+capital_expenditures,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,free-cash-flow construction,restatement-sensitive: use first-reported value with its true availability date
+free_cash_flow,fundamentals,fundamentals,required,decimal,quarterly_or_annual,yes,yes,yes,yes,valuation (FCF yield),restatement-sensitive: use first-reported value with its true availability date
+dividends_paid,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,capital returns (payout / shareholder yield),restatement-sensitive: use first-reported value with its true availability date
+stock_repurchases,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,capital returns (buyback yield),restatement-sensitive: use first-reported value with its true availability date
+depreciation_amortization,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,accruals / EBITDA construction,restatement-sensitive: use first-reported value with its true availability date
+research_and_development,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,quality / intensity ratios,restatement-sensitive: use first-reported value with its true availability date
+sg_and_a,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,operating-efficiency ratios,restatement-sensitive: use first-reported value with its true availability date
+interest_expense,fundamentals,fundamentals,optional,decimal,quarterly_or_annual,yes,yes,yes,yes,leverage / coverage ratios,restatement-sensitive: use first-reported value with its true availability date
+ticker,earnings_events,earnings_events,required,string,event,yes,no,no,yes,join key,panel join key
+fiscal_period_end,earnings_events,earnings_events,required,date,event,yes,no,no,yes,period alignment,period the announcement covers
+fiscal_year,earnings_events,earnings_events,required,int,event,no,no,no,yes,period alignment,fiscal-year label
+fiscal_quarter,earnings_events,earnings_events,optional,int,event,no,no,no,yes,period alignment,quarter label when applicable
+earnings_announcement_datetime,earnings_events,earnings_events,required,datetime,event,yes,yes,no,yes,event-window features,exact announcement timestamp anchors the event study
+announcement_timing,earnings_events,earnings_events,required,string,event,yes,yes,no,yes,first-tradable-date logic,before_open / after_close / intraday / unknown determines the first tradable session
+reported_eps,earnings_events,earnings_events,required,decimal,event,yes,yes,no,yes,earnings surprise (SUE),as-reported actual EPS
+consensus_eps_before_announcement,earnings_events,earnings_events,required,decimal,event,yes,yes,no,yes,earnings surprise (SUE),consensus snapshot strictly BEFORE the announcement; no post-event consensus
+eps_surprise,earnings_events,earnings_events,optional,decimal,event,yes,yes,no,yes,earnings surprise (SUE),reported minus pre-announcement consensus
+eps_surprise_pct,earnings_events,earnings_events,optional,decimal,event,yes,yes,no,yes,standardized surprise,percentage / standardized surprise
+reported_revenue,earnings_events,earnings_events,optional,decimal,event,yes,yes,no,yes,revenue surprise,as-reported actual revenue
+consensus_revenue_before_announcement,earnings_events,earnings_events,optional,decimal,event,yes,yes,no,yes,revenue surprise,pre-announcement consensus revenue
+revenue_surprise,earnings_events,earnings_events,optional,decimal,event,yes,yes,no,yes,revenue surprise,reported minus consensus revenue
+revenue_surprise_pct,earnings_events,earnings_events,optional,decimal,event,yes,yes,no,yes,standardized revenue surprise,percentage revenue surprise
+availability_datetime,earnings_events,earnings_events,required,datetime,event,yes,yes,no,yes,feature_asof gate,no event feature may be used before availability_datetime
+source,earnings_events,earnings_events,required,string,event,no,no,no,yes,provenance / audit,records the earnings-data provider
+ticker,analyst_estimates_revisions,analyst_estimates_revisions,required,string,snapshot,yes,no,no,yes,join key,panel join key
+estimate_date,analyst_estimates_revisions,analyst_estimates_revisions,required,date,snapshot,yes,yes,no,yes,revision-momentum windowing,the date this consensus snapshot was known
+fiscal_period_end,analyst_estimates_revisions,analyst_estimates_revisions,required,date,snapshot,yes,no,no,yes,period alignment,the period the estimate targets
+fiscal_year,analyst_estimates_revisions,analyst_estimates_revisions,required,int,snapshot,no,no,no,yes,period alignment,fiscal-year label
+fiscal_quarter,analyst_estimates_revisions,analyst_estimates_revisions,optional,int,snapshot,no,no,no,yes,period alignment,quarter label when applicable
+estimate_type,analyst_estimates_revisions,analyst_estimates_revisions,required,string,snapshot,no,no,no,yes,estimate selection,EPS / revenue / EBITDA / price_target / recommendation
+consensus_mean,analyst_estimates_revisions,analyst_estimates_revisions,required,decimal,snapshot,yes,yes,no,yes,revision level / change,mean consensus at the snapshot
+consensus_median,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,robust consensus level,median consensus at the snapshot
+consensus_high,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,dispersion,high estimate
+consensus_low,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,dispersion,low estimate
+analyst_count,analyst_estimates_revisions,analyst_estimates_revisions,optional,int,snapshot,yes,yes,no,yes,coverage / confidence,number of contributing analysts
+standard_deviation,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,estimate dispersion,cross-analyst dispersion of estimates
+up_revision_count_30d,analyst_estimates_revisions,analyst_estimates_revisions,optional,int,snapshot,yes,yes,no,yes,estimate revision momentum,count of upward revisions in the trailing 30d
+down_revision_count_30d,analyst_estimates_revisions,analyst_estimates_revisions,optional,int,snapshot,yes,yes,no,yes,estimate revision momentum,count of downward revisions in the trailing 30d
+net_revision_ratio_30d,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,estimate revision momentum,(up - down) / total over the trailing 30d
+consensus_change_7d,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,revision momentum,trailing 7d consensus change
+consensus_change_30d,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,revision momentum,trailing 30d consensus change
+consensus_change_90d,analyst_estimates_revisions,analyst_estimates_revisions,optional,decimal,snapshot,yes,yes,no,yes,revision momentum,trailing 90d consensus change
+availability_datetime,analyst_estimates_revisions,analyst_estimates_revisions,required,datetime,snapshot,yes,yes,no,yes,feature_asof gate,each snapshot must be timestamped to when the estimate changed or was known
+source,analyst_estimates_revisions,analyst_estimates_revisions,required,string,snapshot,no,no,no,yes,provenance / audit,records the estimates provider
+valuation,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,earnings/book/sales/FCF yields,built from fundamentals; trailing as-reported only
+quality,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,"margins, ROE/ROA, accruals",ratios of trailing as-reported fundamentals
+profitability,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,operating/net margins,trailing as-reported only
+growth,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,sales / earnings growth,year-over-year on first-reported values
+leverage,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,"debt/equity, net debt, coverage","balance-sheet ratios, as-reported"
+accruals,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,cash vs accrual earnings gap,operating cash flow vs net income
+capital_returns,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,payout / buyback / shareholder yield,dividends and repurchases over market cap
+earnings_surprise,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,standardized unexpected earnings (SUE),uses pre-announcement consensus only
+post_earnings_announcement_drift,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,drift after the event window,anchored to announcement timing
+estimate_revision_momentum,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,net / directional revisions,uses point-in-time consensus snapshots
+estimate_dispersion,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,cross-analyst dispersion,std-dev / high-low of consensus
+recommendation_momentum,derived_feature_blocks,derived_features,optional,feature_block,derived,yes,no,no,yes,rating upgrades / downgrades,point-in-time recommendation changes

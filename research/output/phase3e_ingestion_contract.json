@@ -1,0 +1,179 @@
+{
+  "source_name": "TO_BE_SELECTED_IN_PHASE_3F",
+  "source_version": "TO_BE_RECORDED_AT_INGESTION_TIME",
+  "extraction_timestamp": "TO_BE_RECORDED_AT_INGESTION_TIME",
+  "raw_file_location": "research/output/ (repo-local research area only; never the D: drive)",
+  "normalized_tables": [
+    "company_identity",
+    "fundamentals",
+    "earnings_events",
+    "analyst_estimates_revisions"
+  ],
+  "required_table_schemas": {
+    "company_identity": [
+      "ticker",
+      "company_name",
+      "cik",
+      "figi",
+      "exchange",
+      "sector",
+      "industry",
+      "effective_from",
+      "effective_to",
+      "source"
+    ],
+    "fundamentals": [
+      "ticker",
+      "statement_type",
+      "periodicity",
+      "fiscal_period_end",
+      "fiscal_year",
+      "fiscal_quarter",
+      "filing_date",
+      "accepted_datetime",
+      "availability_datetime",
+      "report_date",
+      "revenue",
+      "gross_profit",
+      "operating_income",
+      "net_income",
+      "eps_basic",
+      "eps_diluted",
+      "shares_basic",
+      "shares_diluted",
+      "total_assets",
+      "total_liabilities",
+      "shareholder_equity",
+      "cash_and_equivalents",
+      "short_term_debt",
+      "long_term_debt",
+      "operating_cash_flow",
+      "capital_expenditures",
+      "free_cash_flow",
+      "dividends_paid",
+      "stock_repurchases",
+      "depreciation_amortization",
+      "research_and_development",
+      "sg_and_a",
+      "interest_expense"
+    ],
+    "earnings_events": [
+      "ticker",
+      "fiscal_period_end",
+      "fiscal_year",
+      "fiscal_quarter",
+      "earnings_announcement_datetime",
+      "announcement_timing",
+      "reported_eps",
+      "consensus_eps_before_announcement",
+      "eps_surprise",
+      "eps_surprise_pct",
+      "reported_revenue",
+      "consensus_revenue_before_announcement",
+      "revenue_surprise",
+      "revenue_surprise_pct",
+      "availability_datetime",
+      "source"
+    ],
+    "analyst_estimates_revisions": [
+      "ticker",
+      "estimate_date",
+      "fiscal_period_end",
+      "fiscal_year",
+      "fiscal_quarter",
+      "estimate_type",
+      "consensus_mean",
+      "consensus_median",
+      "consensus_high",
+      "consensus_low",
+      "analyst_count",
+      "standard_deviation",
+      "up_revision_count_30d",
+      "down_revision_count_30d",
+      "net_revision_ratio_30d",
+      "consensus_change_7d",
+      "consensus_change_30d",
+      "consensus_change_90d",
+      "availability_datetime",
+      "source"
+    ]
+  },
+  "primary_keys": {
+    "company_identity": [
+      "ticker",
+      "effective_from"
+    ],
+    "fundamentals": [
+      "ticker",
+      "fiscal_period_end",
+      "periodicity",
+      "statement_type"
+    ],
+    "earnings_events": [
+      "ticker",
+      "fiscal_period_end"
+    ],
+    "analyst_estimates_revisions": [
+      "ticker",
+      "estimate_date",
+      "fiscal_period_end",
+      "estimate_type"
+    ]
+  },
+  "unique_constraints": {
+    "fundamentals": [
+      "ticker + fiscal_period_end + periodicity + statement_type + source"
+    ],
+    "earnings_events": [
+      "ticker + fiscal_period_end + source"
+    ],
+    "analyst_estimates_revisions": [
+      "ticker + estimate_date + fiscal_period_end + estimate_type + source"
+    ]
+  },
+  "point_in_time_columns": [
+    "accepted_datetime",
+    "availability_datetime",
+    "earnings_announcement_datetime",
+    "estimate_date",
+    "filing_date",
+    "effective_from"
+  ],
+  "restatement_policy": "Store first-reported values with their true availability_datetime. Keep restated values only in a separate versioned column / row; never overwrite the as-reported history used for features.",
+  "availability_datetime_policy": "Every fundamentals / earnings / estimate record must carry an availability_datetime; rows without one are quarantined and excluded from features.",
+  "ticker_mapping_policy": "Map provider identifiers (cik / figi / ticker) to the panel ticker via the effective-dated company_identity table.",
+  "currency_policy": "Normalize all monetary fields to reporting currency (USD for this universe); record the original currency when not USD.",
+  "split_adjustment_policy": "Keep per-share fundamentals on an as-reported basis; apply split adjustments consistently with the existing price panel only when constructing per-share features, never retroactively to filings.",
+  "data_quality_checks": [
+    "no duplicate primary keys unless versioned",
+    "monetary fields within sane bounds; flag sign flips vs prior period",
+    "fundamentals reconcile across statements where applicable",
+    "announcement_timing in {before_open, after_close, intraday, unknown}"
+  ],
+  "coverage_checks": [
+    "ticker coverage >= 95% of the 128-ticker universe",
+    "quarterly fundamentals >= 90% of ticker-quarter pairs",
+    "earnings dates >= 90% of ticker-quarter pairs",
+    "estimates / revisions >= 80% of ticker-quarter pairs if included"
+  ],
+  "leakage_checks": [
+    "feature_asof_date <= scoring_date for every feature row",
+    "no consensus dated on/after its earnings announcement used for that surprise",
+    "no restated value used before its restatement availability_datetime",
+    "target labels remain strictly forward of the feature_asof_date"
+  ],
+  "allowed_output_locations": [
+    "research/output/"
+  ],
+  "forbidden_actions": [
+    "no network fetch, no vendor API call, no data purchase in the feasibility phase",
+    "no production database write",
+    "no migration",
+    "no deployment and no prediction-service restart",
+    "no model training, no production model candidate, no deployable model artifact",
+    "no writes to the D: drive",
+    "no orders, no trading, no automation"
+  ],
+  "no_database_write_by_default": true,
+  "no_production_integration": true
+}

@@ -1,0 +1,323 @@
+{
+  "phase": "3-E",
+  "generated_at": "2026-06-18T22:47:39",
+  "inputs_read": {
+    "phase3d_decision_json": "research/output/phase3d_external_data_decision.json",
+    "phase3d_recommended_track_json": "research/output/phase3d_recommended_data_track.json",
+    "phase3d_option_matrix_csv": "research/output/phase3d_external_data_option_matrix.csv",
+    "phase3c_json": "research/output/phase3c_refined_greenfield_rerun.json",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv"
+  },
+  "outputs_written": {
+    "feasibility_json": "research/output/phase3e_fundamentals_earnings_feasibility.json",
+    "schema_catalog_csv": "research/output/phase3e_external_data_schema_catalog.csv",
+    "provider_requirements_matrix_csv": "research/output/phase3e_provider_requirements_matrix.csv",
+    "ingestion_contract_json": "research/output/phase3e_ingestion_contract.json"
+  },
+  "phase3d_summary": {
+    "phase3d_confirmed": {
+      "phase3d_present": true,
+      "phase_is_3d": true,
+      "recommendation_is_fundamentals": true,
+      "next_phase_is_3e": true,
+      "selected_track_name_matches": true,
+      "research_model_trained_false": true,
+      "production_model_trained_false": true,
+      "production_model_candidate_created_false": true,
+      "deployable_model_artifact_written_false": true,
+      "d_drive_read_false": true,
+      "network_used_false": true,
+      "vendor_api_called_false": true,
+      "data_purchase_made_false": true,
+      "all_confirmed": true
+    },
+    "phase3d_recommendation": "PROCEED_TO_FUNDAMENTALS_EARNINGS_DATA_FEASIBILITY",
+    "phase3d_selected_track": "Fundamentals + Earnings + Estimate Revisions",
+    "phase3d_next_phase": {
+      "phase": "3-E",
+      "title": "Fundamentals and Earnings Data Feasibility",
+      "purpose": "Determine the exact point-in-time data source, schema, historical coverage, cost, and ingestion plan for fundamentals, earnings events, and analyst estimate revisions before any model training."
+    },
+    "sector_map": {
+      "present": true,
+      "ticker_count": 128,
+      "sector_count": 11,
+      "point_in_time": false,
+      "membership_basis": "current_as_of"
+    }
+  },
+  "phase3c_kill_switch_summary": {
+    "phase3c_confirmed": {
+      "phase3c_present": true,
+      "phase_is_3c": true,
+      "recommendation_is_kill_switch": true,
+      "kill_switch_triggered_true": true,
+      "all_confirmed": true
+    },
+    "recommendation": "PRICE_VOLUME_ONLY_KILL_SWITCH_TRIGGERED",
+    "kill_switch_triggered": true,
+    "primary_horizon_days": 21,
+    "primary_mean_rank_ic": 0.004058,
+    "primary_catastrophic_fold_count": 3,
+    "why_this_track_is_necessary": "Phase 3-C's kill switch triggered: the refined price/volume-only ridge had a near-zero mean rank IC, a sub-0.60 fold win rate, and catastrophic folds once the risk tilt was neutralized. There is no robust residual price/volume alpha, so the next edge must come from structured external data - fundamentals, earnings, and analyst revisions."
+  },
+  "selected_track_summary": {
+    "track_name": "Fundamentals + Earnings + Estimate Revisions",
+    "components": [
+      "fundamentals",
+      "earnings_events",
+      "analyst_estimates_revisions"
+    ],
+    "component_data_families": [
+      "Fundamentals",
+      "Earnings events",
+      "Analyst estimates and revisions"
+    ],
+    "includes_fundamentals": true,
+    "includes_earnings": true,
+    "includes_estimate_revisions": true,
+    "source": "Phase 3-D selected_data_track"
+  },
+  "schema_catalog_summary": {
+    "total_fields": 91,
+    "fields_by_data_family": {
+      "company_identity": 10,
+      "fundamentals": 33,
+      "earnings_events": 16,
+      "analyst_estimates_revisions": 20,
+      "derived_feature_blocks": 12
+    },
+    "required_field_count": 40,
+    "data_families": [
+      "analyst_estimates_revisions",
+      "company_identity",
+      "derived_feature_blocks",
+      "earnings_events",
+      "fundamentals"
+    ],
+    "tables": [
+      "analyst_estimates_revisions",
+      "company_identity",
+      "derived_features",
+      "earnings_events",
+      "fundamentals"
+    ],
+    "note": "Vendor-agnostic schema: field definitions are independent of any specific provider. Every fundamentals / earnings / estimate field carries an explicit availability_datetime so features can be gated point-in-time."
+  },
+  "point_in_time_rules": [
+    "No feature may use a value before its availability_datetime; feature_asof_date must be <= scoring_date for every row used on that date.",
+    "For SEC filings, accepted_datetime (filing acceptance time) is the earliest safe availability_datetime; the fiscal_period_end is NOT an availability date.",
+    "For earnings, the earnings_announcement_datetime plus announcement_timing (before_open / after_close / intraday / unknown) determines the first tradable date.",
+    "For analyst revisions, each consensus snapshot must carry an availability_datetime equal to when the estimate changed or first became known; never back-date a revision.",
+    "Restated fundamentals must not be used historically unless the provider offers as-reported point-in-time history; if only restated values exist, mark the track as caveated / prototype only.",
+    "Every target label must remain strictly forward of the feature_asof_date, preserving the embargo used by the existing walk-forward harness.",
+    "Consensus used for an earnings surprise must be the pre-announcement consensus snapshot, never a post-event consensus."
+  ],
+  "minimum_coverage_gates": [
+    {
+      "gate": "ticker_coverage",
+      "threshold": ">= 95% of the 128-ticker universe",
+      "rationale": "cross-sectional ranks degrade if too many names are missing"
+    },
+    {
+      "gate": "history_start",
+      "threshold": ">= 2016-01-01 to latest available, or documented gaps",
+      "rationale": "needs enough history for >=3y train + multiple walk-forward folds"
+    },
+    {
+      "gate": "quarterly_fundamentals_coverage",
+      "threshold": ">= 90% of ticker-quarter pairs",
+      "rationale": "sparse fundamentals bias the cross-section"
+    },
+    {
+      "gate": "earnings_dates_coverage",
+      "threshold": ">= 90% of ticker-quarter pairs",
+      "rationale": "event studies require reliable announcement timing"
+    },
+    {
+      "gate": "estimates_revisions_coverage",
+      "threshold": ">= 80% of ticker-quarter pairs if revisions are in the first model",
+      "rationale": "revision momentum needs broad coverage to rank across names"
+    },
+    {
+      "gate": "no_duplicate_records",
+      "threshold": "no duplicate ticker-period-source records unless explicitly versioned",
+      "rationale": "duplicates corrupt joins and double-count features"
+    },
+    {
+      "gate": "availability_timestamp_present",
+      "threshold": "100% of fundamentals / earnings / estimate records have availability_datetime",
+      "rationale": "point-in-time gating is impossible without it"
+    },
+    {
+      "gate": "restatement_handling_documented",
+      "threshold": "first-reported-vs-restated policy explicitly documented",
+      "rationale": "restated values silently introduce look-ahead bias"
+    },
+    {
+      "gate": "license_permits_local_research_storage",
+      "threshold": "provider license permits local research storage",
+      "rationale": "storage / redistribution terms must be cleared before acquisition"
+    },
+    {
+      "gate": "no_production_db_write_required",
+      "threshold": "ingestion can run without production database writes",
+      "rationale": "feasibility and prototyping stay isolated from production state"
+    }
+  ],
+  "provider_requirements_summary": {
+    "provider_categories_evaluated": 6,
+    "is_requirements_template_only": true,
+    "asserts_current_vendor_pricing_or_availability": false,
+    "free_or_low_cost_fundamentals_candidates": [
+      "SEC EDGAR / company-facts style fundamentals",
+      "low-cost market-data APIs with fundamentals",
+      "earnings-calendar providers"
+    ],
+    "categories_that_could_cover_full_track": [
+      "dedicated fundamentals / estimates APIs",
+      "professional institutional providers"
+    ],
+    "fundamentals_free_prototype_source": "SEC EDGAR / company-facts style fundamentals",
+    "estimates_revisions_provider_selection_required": true,
+    "note": "This matrix is a requirements / evaluation template, not a live vendor research result. It does not browse the web, assert current prices, or claim provider features are currently available; manual vendor research is required before any acquisition."
+  },
+  "ingestion_contract_summary": {
+    "normalized_tables": [
+      "company_identity",
+      "fundamentals",
+      "earnings_events",
+      "analyst_estimates_revisions"
+    ],
+    "point_in_time_columns": [
+      "accepted_datetime",
+      "availability_datetime",
+      "earnings_announcement_datetime",
+      "estimate_date",
+      "filing_date",
+      "effective_from"
+    ],
+    "no_database_write_by_default": true,
+    "no_production_integration": true,
+    "allowed_output_locations": [
+      "research/output/"
+    ],
+    "leakage_check_count": 4,
+    "coverage_check_count": 4
+  },
+  "feasibility_scores": {
+    "scale": "Each criterion is scored 1-5 where 5 is the most favorable feasibility outcome.",
+    "positive_polarity_notes": {
+      "cost_risk": "cost risk (scored as low-cost: 5 = low cost risk, 1 = high cost risk)",
+      "implementation_complexity": "implementation complexity (scored as ease: 5 = low complexity)",
+      "leakage_risk": "leakage risk (scored as safety: 5 = low leakage risk, 1 = high leakage risk)"
+    },
+    "scores": {
+      "point_in_time_feasibility": 4,
+      "schema_completeness": 5,
+      "coverage_feasibility": 4,
+      "cost_risk": 3,
+      "implementation_complexity": 4,
+      "leakage_risk": 4,
+      "compatibility_with_existing_walkforward": 5,
+      "expected_incremental_predictive_value": 4,
+      "readiness_for_ingestion_prototype": 4
+    },
+    "rationale": {
+      "point_in_time_feasibility": "SEC filing-acceptance timestamps make fundamentals and earnings point-in-time clean; estimate revisions need a provider that timestamps consensus snapshots.",
+      "schema_completeness": "The vendor-agnostic schema covers identity, full financial statements, earnings events, and analyst revisions with explicit availability timestamps.",
+      "coverage_feasibility": "The 128 large-cap names are well covered by SEC fundamentals and earnings; revisions coverage depends on the chosen estimates provider.",
+      "cost_risk": "Fundamentals are free via SEC, but clean point-in-time earnings consensus and analyst revisions usually require a paid provider, creating moderate cost risk.",
+      "implementation_complexity": "Structured fields are straightforward; SEC normalization and reported-vs-restated handling are moderate, not heavy NLP.",
+      "leakage_risk": "Leakage hazards (restatement, consensus snapshot timing) are well understood and handled by explicit availability_datetime gating.",
+      "compatibility_with_existing_walkforward": "All fields convert to strictly trailing cross-sectional features that drop directly into the existing embargoed walk-forward harness.",
+      "expected_incremental_predictive_value": "Fundamentals, earnings surprise / drift, and estimate-revision momentum are well-studied cross-sectional anomalies complementary to price/volume.",
+      "readiness_for_ingestion_prototype": "A free SEC fundamentals prototype can be built immediately; the earnings/revisions provider still needs selection before that part can be prototyped."
+    },
+    "mean_score": 4.1111,
+    "min_score": 3,
+    "free_fundamentals_prototype_possible": true,
+    "estimates_revisions_need_provider": true,
+    "as_reported_paid_only_blocker": false,
+    "provider_capability_too_uncertain_to_prototype": false
+  },
+  "implementation_plan": [
+    "Phase 3-F (free prototype): build a read-only local downloader / normalizer for SEC fundamentals on a tiny ticker sample; write only to research/output; no production DB.",
+    "Normalize SEC filings into the company_identity + fundamentals tables with accepted_datetime as the availability_datetime; preserve first-reported-vs-restated values.",
+    "Separately document the earnings-events and analyst-revisions gap and the candidate providers to research manually (see the provider requirements matrix).",
+    "Only after a provider is selected and licensed, extend ingestion to earnings_events and analyst_estimates_revisions with point-in-time consensus snapshots.",
+    "Build trailing-only cross-sectional features (valuation, quality, growth, leverage, earnings surprise / drift, revision momentum / dispersion) aligned to the 128-ticker panel.",
+    "Validate any feature under the existing embargoed walk-forward harness against the model-free composite must-beat benchmark before any model is considered.",
+    "Keep every step research-only and preview-only: no model training, no production model candidate, no deployable artifact, and no production integration in this track."
+  ],
+  "risks_and_caveats": [
+    "Restatement / point-in-time risk: fundamentals are frequently restated; only first-reported values with true availability_datetime are safe historically.",
+    "Consensus-snapshot leakage: earnings surprise must use the pre-announcement consensus, and revision snapshots must be timestamped to when the estimate changed.",
+    "Cost risk: clean point-in-time earnings consensus and analyst revisions usually require a paid provider; the free SEC prototype covers fundamentals only.",
+    "Coverage gaps: some fields or earlier history may be missing for parts of the 128-ticker universe, biasing cross-sectional ranks.",
+    "Licensing: provider terms may restrict local storage or redistribution and must be cleared before any acquisition.",
+    "Survivorship bias persists: the universe and sector map are current-as-of, so any downstream result remains survivorship-caveated.",
+    "Provider-availability uncertainty: this blueprint asserts no current vendor pricing or availability; those must be confirmed by manual research in Phase 3-F."
+  ],
+  "recommendation": {
+    "recommendation": "PROCEED_TO_VENDOR_SELECTION_AND_FREE_SOURCE_PROTOTYPE",
+    "allowed_values": [
+      "PROCEED_TO_VENDOR_SELECTION_AND_FREE_SOURCE_PROTOTYPE",
+      "PROCEED_TO_FREE_SEC_FUNDAMENTALS_PROTOTYPE_ONLY",
+      "REQUIRE_PAID_POINT_IN_TIME_VENDOR_BEFORE_MODELING",
+      "REQUIRE_MANUAL_VENDOR_RESEARCH_BEFORE_IMPLEMENTATION",
+      "FUNDAMENTALS_EARNINGS_FEASIBILITY_BLOCKED"
+    ],
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "selected_track": "Fundamentals + Earnings + Estimate Revisions",
+    "provider_selection_required": true,
+    "free_source_prototype_allowed": true,
+    "feasibility_phase_only": true,
+    "reason": "The schema and point-in-time rules are clear and a free fundamentals prototype can be built from SEC filing-acceptance data, but clean point-in-time earnings consensus and analyst revisions still need a selected provider. Proceed to Phase 3-F to choose the first no/low-cost fundamentals source and build a read-only local prototype for a tiny sample, while separately documenting what is still missing for earnings and analyst revisions. No model is trained, no data is purchased, no vendor API is called, and no production edge is claimed."
+  },
+  "interpretation": {
+    "feasibility_phase_only": true,
+    "price_volume_only_modeling_stopped": true,
+    "model_trained": false,
+    "research_model_trained": false,
+    "production_model_trained": false,
+    "production_model_candidate_created": false,
+    "deployable_model_artifact_written": false,
+    "external_data_ingested": false,
+    "data_fetched_from_network": false,
+    "data_purchased": false,
+    "data_vendor_called": false,
+    "read_from_d_drive": false,
+    "wrote_to_d_drive": false,
+    "production_edge_claimed": false,
+    "results_context_remains_survivorship_biased": true,
+    "narrative": "Phase 3-E is a disciplined feasibility / planning artifact. It read the committed Phase 3-D decision and Phase 3-C kill-switch result plus the current-as-of sector map, confirmed Phase 3-D routed here and the Phase 3-C kill switch triggered, and produced a vendor-agnostic schema catalog, point-in-time rules, minimum coverage gates, a provider requirements / evaluation template, an ingestion contract, a feasibility score, and a Phase 3-F recommendation. It fetched nothing from the network, called no data vendor, purchased no data, ingested no external data, trained no model, created no production model candidate, wrote no deployable model artifact, read nothing on the D: drive, wrote nothing to the D: drive, touched no database, ran no migration, restarted no prediction service, enabled no serving flag, placed no orders, and traded nothing. The blueprint is a feasibility direction only and claims no production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "3-F",
+    "title": "Fundamentals Source Selection and Free Prototype",
+    "purpose": "Choose the first no/low-cost fundamentals source, build a read-only local prototype downloader / normalizer for a tiny sample only, and separately document what is still missing for earnings and analyst revisions."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_model_trained": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "network_used": false,
+  "vendor_api_called": false,
+  "data_purchase_made": false,
+  "external_data_ingested": false
+}
