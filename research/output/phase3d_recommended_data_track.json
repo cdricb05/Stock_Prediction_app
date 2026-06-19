@@ -1,0 +1,56 @@
+{
+  "phase": "3-D",
+  "generated_at": "2026-06-18T22:32:45",
+  "recommendation": "PROCEED_TO_FUNDAMENTALS_EARNINGS_DATA_FEASIBILITY",
+  "selected_track": {
+    "track_name": "Fundamentals + Earnings + Estimate Revisions",
+    "recommendation": "PROCEED_TO_FUNDAMENTALS_EARNINGS_DATA_FEASIBILITY",
+    "component_families": [
+      "fundamentals",
+      "earnings_events",
+      "analyst_estimates_revisions"
+    ],
+    "component_data_families": [
+      "Fundamentals",
+      "Earnings events",
+      "Analyst estimates and revisions"
+    ],
+    "all_components_pass_decision_gate": true,
+    "combined_mean_weighted_score": 4.2898,
+    "example_feature_blocks": [
+      "valuation (e.g. earnings/book/sales yields)",
+      "quality (profitability, margins, accruals)",
+      "growth (sales / earnings growth)",
+      "leverage and balance-sheet strength",
+      "estimate revision momentum and dispersion",
+      "earnings surprise (SUE) and post-earnings-announcement drift"
+    ],
+    "why_selected": "Structured company fundamentals, earnings events, and analyst estimate revisions are the most practical first external-data track: they are highly relevant beyond price/volume, can be made point-in-time, map naturally onto cross-sectional equity ranking over the 128-ticker universe, convert cleanly into trailing-only features, fit the existing walk-forward framework, and are far easier to validate leakage-free than raw news, options, or alternative data. All three components clear every decision gate and occupy the top three ranks of the option matrix."
+  },
+  "backup_track": {
+    "track_name": "Options / implied volatility",
+    "family_key": "options_implied_vol",
+    "recommendation_if_chosen": "PROCEED_TO_OPTIONS_DATA_FEASIBILITY",
+    "weighted_priority_score": 3.3913,
+    "example_feature_blocks": [
+      "IV level",
+      "IV term structure",
+      "put-call skew",
+      "realized-implied spread"
+    ],
+    "why_backup": "Options / implied-volatility data is the strongest gate-passing family outside the structured bundle: it is natively point-in-time and forward-looking, but it is more expensive, narrower in coverage, and harder to turn into stable trailing features, so it is the backup rather than the first track. News / sentiment is a secondary fallback with lower validation cleanliness and robustness."
+  },
+  "recommended_next_phase": {
+    "phase": "3-E",
+    "title": "Fundamentals and Earnings Data Feasibility",
+    "purpose": "Determine the exact point-in-time data source, schema, historical coverage, cost, and ingestion plan for fundamentals, earnings events, and analyst estimate revisions before any model training."
+  },
+  "create_production_model_candidate_now": false,
+  "train_production_model_now": false,
+  "deploy_now": false,
+  "production_edge_claimed": false,
+  "data_purchase_made": false,
+  "vendor_api_called": false,
+  "network_used": false,
+  "d_drive_read": false
+}

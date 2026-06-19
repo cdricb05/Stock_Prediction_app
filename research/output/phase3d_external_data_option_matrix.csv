@@ -1,0 +1,12 @@
+rank,data_family,family_key,expected_predictive_relevance,point_in_time_feasibility,cost_accessibility,implementation_simplicity,validation_cleanliness,universe_coverage_128,walk_forward_compatibility,signal_robustness,next_phase_suitability,equal_weight_total,weighted_priority_score,decision_gate_pass,verdict,example_signals
+1,Fundamentals,fundamentals,4,4,4,4,4,5,5,4,5,39,4.3043,True,selected_primary_track_component,"valuation, quality, growth, profitability, leverage, accruals"
+2,Earnings events,earnings_events,4,4,4,4,4,5,5,4,5,39,4.3043,True,selected_primary_track_component,"earnings surprise (SUE), post-earnings-announcement drift, event dates"
+3,Analyst estimates and revisions,analyst_estimates_revisions,5,3,3,4,4,5,5,4,5,38,4.2609,True,selected_primary_track_component,"estimate revision momentum, dispersion, recommendation changes"
+4,Options / implied volatility,options_implied_vol,4,4,3,3,3,3,4,3,3,30,3.3913,True,selected_backup_track,"IV level, IV term structure, put-call skew, realized-implied spread"
+5,Insider transactions,insider_transactions,3,4,5,3,3,3,3,3,3,30,3.3043,True,feasible_not_selected,"Form 4 net buying / selling, cluster buys"
+6,Company guidance / transcripts,guidance_transcripts,3,4,3,2,3,4,3,3,2,27,3.0,False,rejected,"guidance changes, management-tone NLP from call transcripts"
+7,Short interest / securities lending,short_interest_lending,3,2,3,3,3,4,4,3,2,27,2.913,False,rejected,"short interest ratio, days-to-cover, borrow fee / utilization"
+8,News and sentiment,news_sentiment,3,3,3,2,2,4,3,2,3,25,2.7826,False,rejected,"news volume, headline / article sentiment scores"
+9,Macro / rates / commodities,macro_rates_commodities,2,4,5,4,3,2,2,2,1,25,2.6957,False,rejected,"rates level / slope, credit spreads, oil and commodity moves"
+10,Institutional ownership / 13F,institutional_ownership_13f,2,2,4,3,2,4,3,2,1,23,2.3913,False,rejected,"13F holdings changes, ownership concentration"
+11,Alternative data,alternative_data,4,3,1,1,2,2,2,2,1,18,2.1739,False,rejected,"credit-card panels, web traffic, satellite, app downloads"
