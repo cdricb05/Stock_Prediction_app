@@ -1,0 +1,37 @@
+model,horizon,model_family,fold_count,train_rows_total,test_rows_total,test_tickers,mean_daily_rank_ic,median_daily_rank_ic,rank_ic_hit_rate,top_decile_minus_bottom_decile_spread,top_quintile_minus_bottom_quintile_spread,top_decile_hit_rate,annual_coverage_years,worst_year_ic,best_year_ic,stability_score,notes
+momentum_rank_composite,21d,baseline_composite,7,0,203707,128,-0.006625,0.020037,0.5328,0.000629,-0.000334,0.5715,7,-0.09018,0.065798,0.4286,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+momentum_rank_composite,63d,baseline_composite,7,0,198331,128,-0.0102,0.016431,0.5337,0.008137,0.002354,0.585,7,-0.119433,0.132345,0.5714,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+momentum_rank_composite,126d,baseline_composite,6,0,190267,128,0.00373,0.010779,0.5167,0.009878,0.002897,0.5441,6,-0.153127,0.163392,0.5,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+seasonality_rank_composite,21d,baseline_composite,7,0,203707,128,0.014447,0.013428,0.5253,0.003384,0.002285,0.5959,7,-0.093026,0.071517,0.5714,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+seasonality_rank_composite,63d,baseline_composite,7,0,198331,128,0.021414,0.031536,0.5978,0.012274,0.005962,0.6389,7,-0.063625,0.093392,0.5714,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+seasonality_rank_composite,126d,baseline_composite,6,0,190267,128,0.039703,0.050335,0.5976,0.032042,0.020024,0.7005,6,-0.129719,0.11099,0.8333,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+sector_neutral_momentum,21d,baseline_composite,7,0,203707,128,-0.00687,0.006733,0.5141,0.001627,-0.000489,0.5709,7,-0.044422,0.033156,0.4286,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+sector_neutral_momentum,63d,baseline_composite,7,0,198331,128,-0.013438,-0.007866,0.4849,0.005874,0.000119,0.5625,7,-0.092029,0.054208,0.4286,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+sector_neutral_momentum,126d,baseline_composite,6,0,190267,128,-0.002427,-0.001368,0.498,0.012667,0.005839,0.6123,6,-0.087099,0.08133,0.5,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+ar_style_mean_reversion,21d,baseline_composite,7,0,203707,128,0.008509,0.001406,0.5022,0.002405,0.001809,0.544,7,-0.03929,0.048053,0.5714,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+ar_style_mean_reversion,63d,baseline_composite,7,0,198331,128,0.027698,0.029176,0.5536,0.01022,0.010349,0.5619,7,-0.027377,0.061505,0.7143,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+ar_style_mean_reversion,126d,baseline_composite,6,0,190267,128,0.021025,0.020485,0.5528,0.005685,0.007996,0.5381,6,-0.01558,0.072936,0.5,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+sec_fundamental_rank_composite,21d,baseline_composite,7,0,203707,128,0.020546,0.02315,0.5572,0.007555,0.006907,0.6271,7,-0.026998,0.086254,0.7143,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+sec_fundamental_rank_composite,63d,baseline_composite,7,0,198331,128,0.016,0.008433,0.5125,0.016707,0.014682,0.653,7,-0.053256,0.138452,0.5714,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+sec_fundamental_rank_composite,126d,baseline_composite,6,0,190267,128,-0.008951,-0.035153,0.4078,0.020538,0.011316,0.7286,6,-0.093908,0.156624,0.3333,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+combined_multisignal_rank_composite,21d,baseline_composite,7,0,203707,128,0.004185,0.019111,0.5303,0.006904,0.003873,0.589,7,-0.061789,0.080711,0.4286,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+combined_multisignal_rank_composite,63d,baseline_composite,7,0,198331,128,0.002675,0.021964,0.5375,0.016305,0.007714,0.6094,7,-0.122494,0.087528,0.5714,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+combined_multisignal_rank_composite,126d,baseline_composite,6,0,190267,128,0.014709,0.019966,0.5261,0.023685,0.015375,0.5902,6,-0.129405,0.185448,0.6667,Phase 3-O baseline rank composite; evaluated out-of-sample on test folds
+ridge_technical_only,21d,ridge_linear,7,1330577,203707,128,0.026179,0.028045,0.5609,0.016921,0.011084,0.6009,7,-0.012601,0.059838,0.7143,
+ridge_technical_only,63d,ridge_linear,7,1293181,198331,128,0.057373,0.063297,0.603,0.055324,0.038058,0.6928,7,-0.058966,0.203288,0.7143,
+ridge_technical_only,126d,ridge_linear,6,964630,190267,128,0.08195,0.078348,0.6618,0.109819,0.08062,0.6952,6,-0.108464,0.216972,0.6667,
+ridge_sec_fundamental_only,21d,ridge_linear,7,1330577,203707,128,0.005499,0.001749,0.5078,0.003059,0.002639,0.5778,7,-0.092223,0.09995,0.4286,
+ridge_sec_fundamental_only,63d,ridge_linear,7,1293181,198331,128,0.024448,0.013867,0.5273,0.009671,0.011268,0.6139,7,-0.149085,0.18792,0.5714,
+ridge_sec_fundamental_only,126d,ridge_linear,6,964630,190267,128,0.013549,-0.002576,0.4973,0.044056,0.018588,0.6999,6,-0.221033,0.164368,0.6667,
+ridge_combined_no_earnings,21d,ridge_linear,7,1330577,203707,128,0.017848,0.017781,0.5315,0.011107,0.007589,0.5828,7,-0.037147,0.111081,0.5714,
+ridge_combined_no_earnings,63d,ridge_linear,7,1293181,198331,128,0.051534,0.027559,0.5523,0.036212,0.028939,0.6357,7,-0.06655,0.201858,0.5714,
+ridge_combined_no_earnings,126d,ridge_linear,6,964630,190267,128,0.0464,0.007382,0.5174,0.086516,0.058205,0.6825,6,-0.104676,0.247137,0.6667,
+ridge_combined_with_partial_earnings,21d,ridge_linear,7,1330577,203707,128,0.017745,0.010698,0.5259,0.009723,0.007271,0.5771,7,-0.034171,0.116429,0.5714,
+ridge_combined_with_partial_earnings,63d,ridge_linear,7,1293181,198331,128,0.051358,0.02286,0.5491,0.035161,0.026145,0.6299,7,-0.056139,0.211719,0.5714,
+ridge_combined_with_partial_earnings,126d,ridge_linear,6,964630,190267,128,0.045219,0.007293,0.5167,0.082463,0.053242,0.6952,6,-0.094708,0.267946,0.6667,
+ridge_combined_regime_interactions,21d,ridge_linear,7,1330577,203707,128,0.020352,0.012681,0.5197,0.010847,0.007216,0.5646,7,-0.039335,0.121095,0.5714,
+ridge_combined_regime_interactions,63d,ridge_linear,7,1293181,198331,128,0.048116,0.024577,0.5561,0.037375,0.026145,0.6434,7,-0.063417,0.211376,0.5714,
+ridge_combined_regime_interactions,126d,ridge_linear,6,964630,190267,128,0.03993,0.01752,0.5348,0.076952,0.047527,0.6939,6,-0.093359,0.267853,0.6667,
+regime_aware_ensemble,21d,regime_aware_ensemble,7,1330577,203707,128,0.02715,0.013082,0.5253,0.011061,0.008532,0.5621,7,-0.062832,0.104533,0.7143,regime-aware ensemble: risk-on / risk-off sub-models routed per test row; fallback to global model when a regime subset < 5000 train rows (no fallback needed)
+regime_aware_ensemble,63d,regime_aware_ensemble,7,1293181,198331,128,0.044597,0.03132,0.5895,0.030711,0.023513,0.6562,7,-0.08254,0.165765,0.5714,regime-aware ensemble: risk-on / risk-off sub-models routed per test row; fallback to global model when a regime subset < 5000 train rows (no fallback needed)
+regime_aware_ensemble,126d,regime_aware_ensemble,6,964630,190267,128,0.035816,0.016069,0.5254,0.066199,0.046751,0.7079,6,-0.120055,0.231146,0.6667,regime-aware ensemble: risk-on / risk-off sub-models routed per test row; fallback to global model when a regime subset < 5000 train rows (no fallback needed)

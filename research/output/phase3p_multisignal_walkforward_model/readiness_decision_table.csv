@@ -1,0 +1,18 @@
+decision_item,value,passed,note
+phase3o_confirmed,True,True,"Phase 3-O result present, research-ready, next phase 3-P, macro/sentiment not faked"
+feature_panel_rows,303201,True,unified research feature panel rebuilt in memory
+feature_panel_tickers,128,True,tickers in the rebuilt panel
+best_model,ridge_technical_only @ 126d,,best model by mean daily rank IC
+best_model_folds,6,True,PASS needs >= 4 yearly folds
+best_model_test_tickers,128,True,PASS needs >= 75 tickers in test coverage
+best_model_mean_daily_rank_ic,0.08195,True,PASS needs >= 0.030 on at least one horizon
+best_model_decile_spread,0.109819,True,PASS needs a positive top-minus-bottom decile spread
+best_model_rank_ic_hit_rate,0.6618,True,PASS needs hit rate >= 0.52
+best_model_worst_year_ic,-0.108464,False,PASS needs worst-year IC > -0.05
+no_production_model_trained,True,True,research-only models trained in memory
+no_production_predictions,True,True,no production predictions/scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized-estimator file written
+d_drive_written,False,True,wrote nothing to the D: drive
+alpha_vantage_called,False,True,no provider / Alpha Vantage call
+recommendation,MULTISIGNAL_WALKFORWARD_MODEL_WEAK_BUT_PROMISING,True,allowed values only
