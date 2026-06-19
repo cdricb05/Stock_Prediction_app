@@ -1,0 +1,7 @@
+check_name,severity,rows_checked,failures,passed,note
+active_feature_asof_date_present,hard,303201,0,True,every aligned row carries an availability timestamp
+active_feature_asof_before_scoring_date,hard,303201,0,True,feature became public strictly before the scoring day
+active_feature_asof_after_or_equal_fiscal_period_end,hard,303201,0,True,availability is on/after the fiscal period end (no pre-dating)
+no_fiscal_period_end_as_availability_date,hard,303201,0,True,"availability is a filing timestamp, not the fiscal period end"
+label_date_after_scoring_date,hard,303201,0,True,forward labels use realized future closes h>0 trading days ahead
+no_price_join_before_feature_available,hard,303201,0,True,"the joined price row is the scoring day, strictly after the feature was public"

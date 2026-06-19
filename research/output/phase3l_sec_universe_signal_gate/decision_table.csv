@@ -1,0 +1,21 @@
+decision_item,value,passed,note
+phase3k_confirmed,True,True,"Phase 3-K confirmed as FUNDAMENTAL_IC_DIAGNOSTIC_INCONCLUSIVE_SMALL_SAMPLE, routed to 3-L"
+sec_access_ok,True,True,SEC company_tickers + per-ticker facts reachable (network or cache)
+processed_ticker_count,128,True,PASS wants >= 90 processed tickers (partial floor 60)
+aligned_ticker_count,128,True,PASS wants >= 75 aligned tickers
+aligned_rows,303201,True,PASS wants >= 75000 aligned rows
+leakage_failure_count,0,True,must be 0
+label_coverage_21d,0.9911,True,PASS wants >= 0.80
+label_coverage_63d,0.9734,True,PASS wants >= 0.70
+label_coverage_126d,0.9468,True,PASS wants >= 0.60
+moderate_or_better_feature_count,4,False,PASS wants >= 5 moderate-or-better features
+strong_feature_count,1,False,PASS wants >= 2 strong features
+stable_family_count,6,True,PASS wants >= 2 stable feature families
+any_horizon_ready_for_research_model,True,True,at least one horizon must be ready_for_research_model
+distinct_dense_ic_years_max,11,True,PASS wants >= 6 distinct dense IC years (partial floor 4)
+single_regime_small_sample,False,True,True means qualifying dense cross-sections fall in < 4 distinct years
+max_absolute_mean_ic,0.073827,,largest |mean rank IC| over features/horizons (diagnostic magnitude; not a gate)
+no_model_training,True,True,this phase trains no model
+no_predictions_computed,True,True,this phase computes no predictions or scores
+no_portfolio_weights,True,True,this phase computes no portfolio weights
+recommendation,SEC_UNIVERSE_SIGNAL_GATE_WEAK_BUT_EXPAND_OR_ADD_REVISIONS,True,allowed values only

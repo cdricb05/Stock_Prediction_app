@@ -1,0 +1,1169 @@
+ticker,sector,field,periods_present,non_null_value_count,coverage_note
+AAPL,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AAPL,Information Technology,eps_diluted,29,32,
+AAPL,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AAPL,Information Technology,net_income,29,32,
+AAPL,Information Technology,operating_cash_flow,40,40,
+AAPL,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AAPL,Information Technology,revenue,9,9,
+AAPL,Information Technology,shareholder_equity,23,47,
+AAPL,Information Technology,total_assets,35,60,
+AAPL,Information Technology,total_liabilities,35,60,
+ABBV,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ABBV,Health Care,eps_diluted,28,28,
+ABBV,Health Care,free_cash_flow,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ABBV,Health Care,net_income,28,28,
+ABBV,Health Care,operating_cash_flow,41,41,
+ABBV,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ABBV,Health Care,revenue,28,28,
+ABBV,Health Care,shareholder_equity,34,60,
+ABBV,Health Care,total_assets,35,60,
+ABT,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ABT,Health Care,eps_diluted,30,30,
+ABT,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ABT,Health Care,net_income,30,30,
+ABT,Health Care,operating_cash_flow,40,40,
+ABT,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ABT,Health Care,revenue,21,34,
+ABT,Health Care,shareholder_equity,35,60,
+ABT,Health Care,total_assets,35,60,
+ACN,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ACN,Information Technology,eps_diluted,20,32,
+ACN,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ACN,Information Technology,net_income,20,32,
+ACN,Information Technology,operating_cash_flow,40,40,
+ACN,Information Technology,operating_income,20,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ACN,Information Technology,revenue,20,32,
+ACN,Information Technology,shareholder_equity,36,60,
+ACN,Information Technology,total_assets,36,60,
+ADBE,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ADBE,Information Technology,eps_diluted,29,32,
+ADBE,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ADBE,Information Technology,net_income,29,32,
+ADBE,Information Technology,operating_cash_flow,40,40,
+ADBE,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ADBE,Information Technology,revenue,29,32,
+ADBE,Information Technology,shareholder_equity,23,47,
+ADBE,Information Technology,total_assets,35,60,
+ADBE,Information Technology,total_liabilities,35,60,
+ADI,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ADI,Information Technology,eps_diluted,30,31,
+ADI,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ADI,Information Technology,net_income,29,29,
+ADI,Information Technology,operating_cash_flow,40,40,
+ADI,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ADI,Information Technology,revenue,9,11,
+ADI,Information Technology,shareholder_equity,35,60,
+ADI,Information Technology,total_assets,35,60,
+ADP,Industrials,eps_diluted,29,29,
+ADP,Industrials,net_income,28,31,
+ADP,Industrials,operating_cash_flow,40,40,
+ADP,Industrials,revenue,23,35,
+ADP,Industrials,shareholder_equity,23,48,
+ADP,Industrials,total_assets,36,60,
+ADP,Industrials,total_liabilities,36,60,
+AMAT,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMAT,Information Technology,eps_diluted,29,32,
+AMAT,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMAT,Information Technology,net_income,29,32,
+AMAT,Information Technology,operating_cash_flow,40,40,
+AMAT,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMAT,Information Technology,revenue,19,26,
+AMAT,Information Technology,shareholder_equity,23,47,
+AMAT,Information Technology,total_assets,35,60,
+AMAT,Information Technology,total_liabilities,35,60,
+AMD,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMD,Information Technology,eps_diluted,30,33,
+AMD,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMD,Information Technology,net_income,30,33,
+AMD,Information Technology,operating_cash_flow,40,40,
+AMD,Information Technology,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMD,Information Technology,revenue,2,2,
+AMD,Information Technology,shareholder_equity,31,51,
+AMD,Information Technology,total_assets,35,60,
+AMGN,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMGN,Health Care,eps_diluted,30,33,
+AMGN,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMGN,Health Care,net_income,24,36,
+AMGN,Health Care,operating_cash_flow,40,40,
+AMGN,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMGN,Health Care,revenue,29,29,
+AMGN,Health Care,shareholder_equity,23,48,
+AMGN,Health Care,total_assets,35,60,
+AMZN,Consumer Discretionary,capital_expenditures,22,22,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMZN,Consumer Discretionary,eps_diluted,30,33,
+AMZN,Consumer Discretionary,net_income,22,22,
+AMZN,Consumer Discretionary,operating_cash_flow,22,22,
+AMZN,Consumer Discretionary,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AMZN,Consumer Discretionary,revenue,23,35,
+AMZN,Consumer Discretionary,shareholder_equity,23,47,
+AMZN,Consumer Discretionary,total_assets,35,60,
+AON,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AON,Financials,eps_diluted,30,30,
+AON,Financials,free_cash_flow,39,39,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AON,Financials,net_income,35,38,
+AON,Financials,operating_cash_flow,39,42,
+AON,Financials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AON,Financials,revenue,21,33,
+AON,Financials,shareholder_equity,35,60,
+AON,Financials,total_assets,35,60,
+AON,Financials,total_liabilities,35,60,
+APD,Materials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+APD,Materials,eps_diluted,29,32,
+APD,Materials,free_cash_flow,21,21,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+APD,Materials,net_income,29,32,
+APD,Materials,operating_cash_flow,38,38,
+APD,Materials,operating_income,29,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+APD,Materials,revenue,29,32,
+APD,Materials,shareholder_equity,35,60,
+APD,Materials,total_assets,34,60,
+APD,Materials,total_liabilities,34,60,
+APH,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+APH,Information Technology,eps_diluted,30,33,
+APH,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+APH,Information Technology,net_income,30,33,
+APH,Information Technology,operating_cash_flow,40,40,
+APH,Information Technology,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+APH,Information Technology,revenue,4,4,
+APH,Information Technology,shareholder_equity,35,60,
+APH,Information Technology,total_assets,35,60,
+APH,Information Technology,total_liabilities,19,32,
+AVGO,Information Technology,capital_expenditures,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AVGO,Information Technology,eps_diluted,29,32,
+AVGO,Information Technology,free_cash_flow,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AVGO,Information Technology,net_income,15,20,
+AVGO,Information Technology,operating_cash_flow,38,38,
+AVGO,Information Technology,operating_income,29,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AVGO,Information Technology,revenue,9,13,
+AVGO,Information Technology,shareholder_equity,8,13,
+AVGO,Information Technology,total_assets,34,59,
+AVGO,Information Technology,total_liabilities,34,59,
+AXP,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AXP,Financials,eps_diluted,29,33,
+AXP,Financials,free_cash_flow,33,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AXP,Financials,net_income,30,33,
+AXP,Financials,operating_cash_flow,45,45,
+AXP,Financials,operating_income,11,12,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+AXP,Financials,revenue,3,3,
+AXP,Financials,shareholder_equity,23,47,
+AXP,Financials,total_assets,31,51,
+AXP,Financials,total_liabilities,35,60,
+BA,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BA,Industrials,eps_diluted,30,33,
+BA,Industrials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BA,Industrials,net_income,30,33,
+BA,Industrials,operating_cash_flow,40,40,
+BA,Industrials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BA,Industrials,revenue,30,33,
+BA,Industrials,shareholder_equity,35,60,
+BA,Industrials,total_assets,35,60,
+BA,Industrials,total_liabilities,36,60,
+BAC,Financials,eps_diluted,30,30,
+BAC,Financials,net_income,30,30,
+BAC,Financials,operating_cash_flow,44,44,
+BAC,Financials,revenue,30,30,
+BAC,Financials,shareholder_equity,23,47,
+BAC,Financials,total_assets,33,55,
+BAC,Financials,total_liabilities,35,60,
+BKNG,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BKNG,Consumer Discretionary,eps_diluted,30,30,
+BKNG,Consumer Discretionary,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BKNG,Consumer Discretionary,net_income,17,29,
+BKNG,Consumer Discretionary,operating_cash_flow,45,45,
+BKNG,Consumer Discretionary,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BKNG,Consumer Discretionary,revenue,30,30,
+BKNG,Consumer Discretionary,shareholder_equity,23,47,
+BKNG,Consumer Discretionary,total_assets,35,60,
+BKNG,Consumer Discretionary,total_liabilities,35,60,
+BLK,Financials,capital_expenditures,12,12,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BLK,Financials,eps_diluted,12,12,
+BLK,Financials,free_cash_flow,12,12,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BLK,Financials,net_income,12,12,
+BLK,Financials,operating_cash_flow,12,12,
+BLK,Financials,operating_income,12,12,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BLK,Financials,revenue,3,3,
+BLK,Financials,shareholder_equity,8,13,
+BLK,Financials,total_assets,8,13,
+BLK,Financials,total_liabilities,8,13,
+BMY,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BMY,Health Care,eps_diluted,30,33,
+BMY,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BMY,Health Care,net_income,30,33,
+BMY,Health Care,operating_cash_flow,40,40,
+BMY,Health Care,operating_income,2,2,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BMY,Health Care,revenue,30,33,
+BMY,Health Care,shareholder_equity,35,60,
+BMY,Health Care,total_assets,31,60,
+BMY,Health Care,total_liabilities,35,60,
+BSX,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BSX,Health Care,eps_diluted,30,30,
+BSX,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BSX,Health Care,net_income,4,4,
+BSX,Health Care,operating_cash_flow,40,40,
+BSX,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+BSX,Health Care,revenue,20,20,
+BSX,Health Care,shareholder_equity,18,28,
+BSX,Health Care,total_assets,35,60,
+C,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+C,Financials,eps_diluted,25,31,
+C,Financials,free_cash_flow,26,26,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+C,Financials,net_income,25,31,
+C,Financials,operating_cash_flow,26,26,
+C,Financials,revenue,25,31,
+C,Financials,shareholder_equity,36,60,
+C,Financials,total_assets,36,60,
+C,Financials,total_liabilities,36,60,
+CAT,Industrials,capital_expenditures,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CAT,Industrials,eps_diluted,30,33,
+CAT,Industrials,free_cash_flow,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CAT,Industrials,net_income,15,22,
+CAT,Industrials,operating_cash_flow,45,46,
+CAT,Industrials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CAT,Industrials,revenue,30,33,
+CAT,Industrials,total_assets,35,60,
+CAT,Industrials,total_liabilities,35,60,
+CB,Financials,eps_diluted,30,30,
+CB,Financials,net_income,30,30,
+CB,Financials,operating_cash_flow,45,45,
+CB,Financials,revenue,30,30,
+CB,Financials,shareholder_equity,33,54,
+CB,Financials,total_assets,35,60,
+CB,Financials,total_liabilities,35,60,
+CDNS,Information Technology,capital_expenditures,39,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CDNS,Information Technology,eps_diluted,29,32,
+CDNS,Information Technology,free_cash_flow,39,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CDNS,Information Technology,net_income,29,32,
+CDNS,Information Technology,operating_cash_flow,39,42,
+CDNS,Information Technology,operating_income,29,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CDNS,Information Technology,revenue,29,29,
+CDNS,Information Technology,shareholder_equity,23,47,
+CDNS,Information Technology,total_assets,34,60,
+CI,Health Care,capital_expenditures,10,10,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CI,Health Care,eps_diluted,30,30,
+CI,Health Care,free_cash_flow,10,10,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CI,Health Care,net_income,5,5,
+CI,Health Care,operating_cash_flow,35,35,
+CI,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CI,Health Care,revenue,30,30,
+CI,Health Care,shareholder_equity,31,53,
+CI,Health Care,total_assets,31,53,
+CI,Health Care,total_liabilities,31,53,
+CL,Consumer Staples,capital_expenditures,12,15,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CL,Consumer Staples,eps_diluted,30,33,
+CL,Consumer Staples,free_cash_flow,8,11,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CL,Consumer Staples,net_income,30,33,
+CL,Consumer Staples,operating_cash_flow,39,42,
+CL,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CL,Consumer Staples,revenue,25,28,
+CL,Consumer Staples,shareholder_equity,34,60,
+CL,Consumer Staples,total_assets,34,60,
+CL,Consumer Staples,total_liabilities,34,60,
+CME,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CME,Financials,eps_diluted,30,33,
+CME,Financials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CME,Financials,net_income,24,33,
+CME,Financials,operating_cash_flow,40,40,
+CME,Financials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CME,Financials,revenue,30,33,
+CME,Financials,shareholder_equity,32,60,
+CME,Financials,total_assets,35,60,
+CME,Financials,total_liabilities,35,60,
+CMG,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CMG,Consumer Discretionary,eps_diluted,30,33,
+CMG,Consumer Discretionary,free_cash_flow,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CMG,Consumer Discretionary,net_income,22,37,
+CMG,Consumer Discretionary,operating_cash_flow,44,44,
+CMG,Consumer Discretionary,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CMG,Consumer Discretionary,revenue,30,33,
+CMG,Consumer Discretionary,shareholder_equity,22,47,
+CMG,Consumer Discretionary,total_assets,35,60,
+CMG,Consumer Discretionary,total_liabilities,35,60,
+COP,Energy,eps_diluted,30,30,
+COP,Energy,net_income,30,30,
+COP,Energy,operating_cash_flow,39,39,
+COP,Energy,revenue,30,30,
+COP,Energy,shareholder_equity,22,48,
+COP,Energy,total_assets,35,60,
+COP,Energy,total_liabilities,35,60,
+COST,Consumer Staples,capital_expenditures,37,43,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+COST,Consumer Staples,eps_diluted,28,31,
+COST,Consumer Staples,free_cash_flow,33,35,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+COST,Consumer Staples,net_income,28,31,
+COST,Consumer Staples,operating_cash_flow,45,47,
+COST,Consumer Staples,operating_income,25,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+COST,Consumer Staples,revenue,25,38,
+COST,Consumer Staples,shareholder_equity,31,60,
+COST,Consumer Staples,total_assets,34,60,
+COST,Consumer Staples,total_liabilities,34,60,
+CRM,Information Technology,capital_expenditures,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CRM,Information Technology,eps_diluted,29,29,
+CRM,Information Technology,free_cash_flow,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CRM,Information Technology,net_income,22,37,
+CRM,Information Technology,operating_cash_flow,29,29,
+CRM,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CRM,Information Technology,revenue,25,36,
+CRM,Information Technology,shareholder_equity,22,47,
+CRM,Information Technology,total_assets,35,60,
+CRM,Information Technology,total_liabilities,35,60,
+CSCO,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CSCO,Information Technology,eps_diluted,28,31,
+CSCO,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CSCO,Information Technology,net_income,28,31,
+CSCO,Information Technology,operating_cash_flow,41,41,
+CSCO,Information Technology,operating_income,28,31,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CSCO,Information Technology,revenue,32,33,
+CSCO,Information Technology,shareholder_equity,22,47,
+CSCO,Information Technology,total_assets,33,60,
+CSCO,Information Technology,total_liabilities,36,60,
+CVS,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CVS,Health Care,eps_diluted,30,30,
+CVS,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CVS,Health Care,net_income,30,30,
+CVS,Health Care,operating_cash_flow,40,40,
+CVS,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+CVS,Health Care,revenue,30,30,
+CVS,Health Care,shareholder_equity,35,60,
+CVS,Health Care,total_assets,35,60,
+CVS,Health Care,total_liabilities,35,60,
+CVX,Energy,eps_diluted,29,31,
+CVX,Energy,net_income,29,31,
+CVX,Energy,operating_cash_flow,39,41,
+CVX,Energy,revenue,29,31,
+CVX,Energy,shareholder_equity,34,60,
+CVX,Energy,total_assets,34,60,
+CVX,Energy,total_liabilities,34,60,
+DE,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DE,Industrials,eps_diluted,29,32,
+DE,Industrials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DE,Industrials,net_income,29,32,
+DE,Industrials,operating_cash_flow,40,40,
+DE,Industrials,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DE,Industrials,revenue,29,32,
+DE,Industrials,shareholder_equity,33,55,
+DE,Industrials,total_assets,31,51,
+DE,Industrials,total_liabilities,33,55,
+DIS,Communication Services,capital_expenditures,34,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DIS,Communication Services,eps_diluted,29,38,
+DIS,Communication Services,free_cash_flow,14,14,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DIS,Communication Services,net_income,27,39,
+DIS,Communication Services,operating_cash_flow,14,14,
+DIS,Communication Services,operating_income,29,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DIS,Communication Services,revenue,29,38,
+DIS,Communication Services,shareholder_equity,30,50,
+DIS,Communication Services,total_assets,30,50,
+DUK,Utilities,capital_expenditures,39,39,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DUK,Utilities,eps_diluted,25,34,
+DUK,Utilities,free_cash_flow,39,39,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DUK,Utilities,net_income,30,30,
+DUK,Utilities,operating_cash_flow,39,39,
+DUK,Utilities,operating_income,25,34,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+DUK,Utilities,revenue,23,34,
+DUK,Utilities,shareholder_equity,35,60,
+DUK,Utilities,total_assets,35,60,
+ELV,Health Care,capital_expenditures,38,43,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ELV,Health Care,eps_diluted,26,34,
+ELV,Health Care,free_cash_flow,38,43,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ELV,Health Care,net_income,26,34,
+ELV,Health Care,operating_cash_flow,38,43,
+ELV,Health Care,operating_income,28,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ELV,Health Care,revenue,26,34,
+ELV,Health Care,shareholder_equity,30,60,
+ELV,Health Care,total_assets,34,60,
+ELV,Health Care,total_liabilities,34,60,
+EMR,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+EMR,Industrials,eps_diluted,22,35,
+EMR,Industrials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+EMR,Industrials,net_income,23,35,
+EMR,Industrials,operating_cash_flow,40,40,
+EMR,Industrials,revenue,5,5,
+EMR,Industrials,shareholder_equity,35,58,
+EMR,Industrials,total_assets,35,60,
+EOG,Energy,eps_diluted,30,33,
+EOG,Energy,net_income,30,33,
+EOG,Energy,operating_cash_flow,40,40,
+EOG,Energy,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+EOG,Energy,revenue,30,33,
+EOG,Energy,shareholder_equity,24,46,
+EOG,Energy,total_assets,35,60,
+EQIX,Real Estate,capital_expenditures,27,27,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+EQIX,Real Estate,eps_diluted,30,33,
+EQIX,Real Estate,free_cash_flow,7,7,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+EQIX,Real Estate,net_income,30,35,
+EQIX,Real Estate,operating_cash_flow,40,40,
+EQIX,Real Estate,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+EQIX,Real Estate,revenue,24,35,
+EQIX,Real Estate,shareholder_equity,34,60,
+EQIX,Real Estate,total_assets,35,60,
+EQIX,Real Estate,total_liabilities,35,60,
+ETN,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ETN,Industrials,eps_diluted,30,30,
+ETN,Industrials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ETN,Industrials,net_income,30,30,
+ETN,Industrials,operating_cash_flow,40,40,
+ETN,Industrials,operating_income,16,16,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ETN,Industrials,revenue,6,6,
+ETN,Industrials,shareholder_equity,35,60,
+ETN,Industrials,total_assets,35,60,
+FDX,Industrials,eps_diluted,28,31,
+FDX,Industrials,net_income,28,31,
+FDX,Industrials,operating_cash_flow,45,45,
+FDX,Industrials,operating_income,28,31,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+FDX,Industrials,revenue,22,34,
+FDX,Industrials,shareholder_equity,30,49,
+FDX,Industrials,total_assets,36,60,
+GD,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GD,Industrials,eps_diluted,30,30,
+GD,Industrials,free_cash_flow,33,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GD,Industrials,net_income,30,30,
+GD,Industrials,operating_cash_flow,45,45,
+GD,Industrials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GD,Industrials,revenue,30,30,
+GD,Industrials,shareholder_equity,23,47,
+GD,Industrials,total_assets,35,60,
+GE,Industrials,capital_expenditures,39,45,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GE,Industrials,eps_diluted,22,34,
+GE,Industrials,free_cash_flow,28,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GE,Industrials,net_income,22,34,
+GE,Industrials,operating_cash_flow,40,42,
+GE,Industrials,operating_income,19,19,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GE,Industrials,revenue,22,34,
+GE,Industrials,shareholder_equity,36,60,
+GE,Industrials,total_assets,36,60,
+GE,Industrials,total_liabilities,36,60,
+GILD,Health Care,capital_expenditures,42,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GILD,Health Care,eps_diluted,30,33,
+GILD,Health Care,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GILD,Health Care,net_income,30,33,
+GILD,Health Care,operating_cash_flow,40,40,
+GILD,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GILD,Health Care,revenue,28,42,
+GILD,Health Care,shareholder_equity,35,60,
+GILD,Health Care,total_assets,35,60,
+GOOG,Communication Services,capital_expenditures,36,36,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GOOG,Communication Services,eps_diluted,30,30,
+GOOG,Communication Services,free_cash_flow,36,36,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GOOG,Communication Services,net_income,30,30,
+GOOG,Communication Services,operating_cash_flow,40,40,
+GOOG,Communication Services,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GOOG,Communication Services,revenue,36,36,
+GOOG,Communication Services,shareholder_equity,23,47,
+GOOG,Communication Services,total_assets,35,60,
+GOOG,Communication Services,total_liabilities,35,60,
+GOOGL,Communication Services,capital_expenditures,36,36,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GOOGL,Communication Services,eps_diluted,30,30,
+GOOGL,Communication Services,free_cash_flow,36,36,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GOOGL,Communication Services,net_income,30,30,
+GOOGL,Communication Services,operating_cash_flow,40,40,
+GOOGL,Communication Services,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GOOGL,Communication Services,revenue,36,36,
+GOOGL,Communication Services,shareholder_equity,23,47,
+GOOGL,Communication Services,total_assets,35,60,
+GOOGL,Communication Services,total_liabilities,35,60,
+GS,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GS,Financials,eps_diluted,30,30,
+GS,Financials,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+GS,Financials,net_income,30,30,
+GS,Financials,operating_cash_flow,37,37,
+GS,Financials,shareholder_equity,31,51,
+GS,Financials,total_assets,28,60,
+GS,Financials,total_liabilities,29,60,
+HCA,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+HCA,Health Care,eps_diluted,30,30,
+HCA,Health Care,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+HCA,Health Care,net_income,30,30,
+HCA,Health Care,operating_cash_flow,43,43,
+HCA,Health Care,revenue,23,23,
+HCA,Health Care,shareholder_equity,35,60,
+HCA,Health Care,total_assets,35,60,
+HCA,Health Care,total_liabilities,33,56,
+HD,Consumer Discretionary,eps_diluted,30,30,
+HD,Consumer Discretionary,net_income,30,30,
+HD,Consumer Discretionary,operating_cash_flow,40,40,
+HD,Consumer Discretionary,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+HD,Consumer Discretionary,revenue,11,11,
+HD,Consumer Discretionary,shareholder_equity,31,51,
+HD,Consumer Discretionary,total_assets,35,60,
+HD,Consumer Discretionary,total_liabilities,35,60,
+HON,Industrials,capital_expenditures,40,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+HON,Industrials,eps_diluted,26,36,
+HON,Industrials,free_cash_flow,40,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+HON,Industrials,net_income,26,36,
+HON,Industrials,operating_cash_flow,41,43,
+HON,Industrials,operating_income,20,20,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+HON,Industrials,revenue,18,28,
+HON,Industrials,shareholder_equity,36,60,
+HON,Industrials,total_assets,36,60,
+IBM,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+IBM,Information Technology,eps_diluted,30,30,
+IBM,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+IBM,Information Technology,net_income,30,30,
+IBM,Information Technology,operating_cash_flow,40,40,
+IBM,Information Technology,revenue,29,31,
+IBM,Information Technology,shareholder_equity,35,60,
+IBM,Information Technology,total_assets,35,60,
+IBM,Information Technology,total_liabilities,35,60,
+ICE,Financials,capital_expenditures,39,41,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ICE,Financials,eps_diluted,30,33,
+ICE,Financials,free_cash_flow,39,41,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ICE,Financials,net_income,30,33,
+ICE,Financials,operating_cash_flow,39,41,
+ICE,Financials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ICE,Financials,revenue,24,24,
+ICE,Financials,shareholder_equity,34,60,
+ICE,Financials,total_assets,34,60,
+ICE,Financials,total_liabilities,34,60,
+INTC,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+INTC,Information Technology,eps_diluted,30,30,
+INTC,Information Technology,free_cash_flow,32,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+INTC,Information Technology,net_income,30,30,
+INTC,Information Technology,operating_cash_flow,45,45,
+INTC,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+INTC,Information Technology,revenue,29,29,
+INTC,Information Technology,shareholder_equity,31,59,
+INTC,Information Technology,total_assets,35,60,
+INTU,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+INTU,Information Technology,eps_diluted,28,31,
+INTU,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+INTU,Information Technology,net_income,28,31,
+INTU,Information Technology,operating_cash_flow,40,40,
+INTU,Information Technology,operating_income,28,31,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+INTU,Information Technology,revenue,31,31,
+INTU,Information Technology,shareholder_equity,22,47,
+INTU,Information Technology,total_assets,36,60,
+INTU,Information Technology,total_liabilities,36,60,
+ISRG,Health Care,capital_expenditures,2,2,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ISRG,Health Care,eps_diluted,26,32,
+ISRG,Health Care,net_income,26,32,
+ISRG,Health Care,operating_cash_flow,40,40,
+ISRG,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ISRG,Health Care,revenue,23,35,
+ISRG,Health Care,shareholder_equity,35,60,
+ISRG,Health Care,total_assets,35,60,
+ISRG,Health Care,total_liabilities,35,60,
+ITW,Industrials,capital_expenditures,39,43,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ITW,Industrials,eps_diluted,28,33,
+ITW,Industrials,free_cash_flow,39,43,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ITW,Industrials,operating_cash_flow,39,43,
+ITW,Industrials,operating_income,28,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ITW,Industrials,revenue,9,13,
+ITW,Industrials,shareholder_equity,3,4,
+ITW,Industrials,total_assets,34,60,
+JNJ,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+JNJ,Health Care,eps_diluted,27,33,
+JNJ,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+JNJ,Health Care,net_income,27,33,
+JNJ,Health Care,operating_cash_flow,40,40,
+JNJ,Health Care,operating_income,21,21,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+JNJ,Health Care,revenue,8,8,
+JNJ,Health Care,shareholder_equity,13,18,
+JNJ,Health Care,total_assets,35,60,
+JNJ,Health Care,total_liabilities,35,60,
+JPM,Financials,eps_diluted,30,30,
+JPM,Financials,net_income,30,30,
+JPM,Financials,operating_cash_flow,40,40,
+JPM,Financials,revenue,30,32,
+JPM,Financials,shareholder_equity,31,51,
+JPM,Financials,total_assets,31,51,
+JPM,Financials,total_liabilities,35,60,
+KLAC,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+KLAC,Information Technology,eps_diluted,28,33,
+KLAC,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+KLAC,Information Technology,net_income,21,36,
+KLAC,Information Technology,operating_cash_flow,40,40,
+KLAC,Information Technology,operating_income,20,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+KLAC,Information Technology,revenue,4,4,
+KLAC,Information Technology,shareholder_equity,31,60,
+KLAC,Information Technology,total_assets,36,60,
+KLAC,Information Technology,total_liabilities,36,60,
+KO,Consumer Staples,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+KO,Consumer Staples,eps_diluted,30,30,
+KO,Consumer Staples,free_cash_flow,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+KO,Consumer Staples,net_income,30,30,
+KO,Consumer Staples,operating_cash_flow,43,43,
+KO,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+KO,Consumer Staples,revenue,30,30,
+KO,Consumer Staples,shareholder_equity,35,60,
+KO,Consumer Staples,total_assets,35,60,
+LIN,Materials,capital_expenditures,35,35,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LIN,Materials,eps_diluted,30,30,
+LIN,Materials,free_cash_flow,26,26,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LIN,Materials,net_income,30,30,
+LIN,Materials,operating_cash_flow,28,28,
+LIN,Materials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LIN,Materials,revenue,30,30,
+LIN,Materials,shareholder_equity,34,58,
+LIN,Materials,total_assets,33,57,
+LIN,Materials,total_liabilities,31,53,
+LLY,Health Care,eps_diluted,30,30,
+LLY,Health Care,net_income,30,30,
+LLY,Health Care,operating_cash_flow,40,40,
+LLY,Health Care,revenue,30,30,
+LLY,Health Care,shareholder_equity,35,60,
+LLY,Health Care,total_assets,35,60,
+LMT,Industrials,capital_expenditures,23,23,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LMT,Industrials,eps_diluted,30,33,
+LMT,Industrials,net_income,30,33,
+LMT,Industrials,operating_cash_flow,39,42,
+LMT,Industrials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LMT,Industrials,revenue,30,33,
+LMT,Industrials,shareholder_equity,28,54,
+LMT,Industrials,total_assets,34,60,
+LMT,Industrials,total_liabilities,34,60,
+LOW,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LOW,Consumer Discretionary,eps_diluted,30,30,
+LOW,Consumer Discretionary,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LOW,Consumer Discretionary,net_income,30,30,
+LOW,Consumer Discretionary,operating_cash_flow,40,40,
+LOW,Consumer Discretionary,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+LOW,Consumer Discretionary,revenue,30,30,
+LOW,Consumer Discretionary,shareholder_equity,22,46,
+LOW,Consumer Discretionary,total_assets,33,55,
+LOW,Consumer Discretionary,total_liabilities,33,55,
+MA,Financials,capital_expenditures,40,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MA,Financials,eps_diluted,30,30,
+MA,Financials,free_cash_flow,40,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MA,Financials,net_income,22,35,
+MA,Financials,operating_cash_flow,40,42,
+MA,Financials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MA,Financials,revenue,30,30,
+MA,Financials,shareholder_equity,34,60,
+MA,Financials,total_assets,34,60,
+MA,Financials,total_liabilities,34,60,
+MAR,Consumer Discretionary,capital_expenditures,41,41,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MAR,Consumer Discretionary,eps_diluted,30,33,
+MAR,Consumer Discretionary,free_cash_flow,39,39,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MAR,Consumer Discretionary,net_income,22,37,
+MAR,Consumer Discretionary,operating_cash_flow,40,40,
+MAR,Consumer Discretionary,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MAR,Consumer Discretionary,revenue,30,33,
+MAR,Consumer Discretionary,shareholder_equity,22,47,
+MAR,Consumer Discretionary,total_assets,35,60,
+MCD,Consumer Discretionary,capital_expenditures,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MCD,Consumer Discretionary,eps_diluted,30,30,
+MCD,Consumer Discretionary,free_cash_flow,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MCD,Consumer Discretionary,net_income,30,30,
+MCD,Consumer Discretionary,operating_cash_flow,30,30,
+MCD,Consumer Discretionary,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MCD,Consumer Discretionary,revenue,30,30,
+MCD,Consumer Discretionary,shareholder_equity,23,47,
+MCD,Consumer Discretionary,total_assets,35,60,
+MCO,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MCO,Financials,eps_diluted,30,30,
+MCO,Financials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MCO,Financials,net_income,30,30,
+MCO,Financials,operating_cash_flow,40,40,
+MCO,Financials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MCO,Financials,revenue,23,35,
+MCO,Financials,shareholder_equity,35,60,
+MCO,Financials,total_assets,35,60,
+MCO,Financials,total_liabilities,35,60,
+MDLZ,Consumer Staples,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MDLZ,Consumer Staples,eps_diluted,30,33,
+MDLZ,Consumer Staples,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MDLZ,Consumer Staples,net_income,30,33,
+MDLZ,Consumer Staples,operating_cash_flow,40,40,
+MDLZ,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MDLZ,Consumer Staples,revenue,30,33,
+MDLZ,Consumer Staples,shareholder_equity,35,60,
+MDLZ,Consumer Staples,total_assets,35,60,
+MDLZ,Consumer Staples,total_liabilities,35,60,
+MDT,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MDT,Health Care,eps_diluted,29,29,
+MDT,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MDT,Health Care,net_income,29,29,
+MDT,Health Care,operating_cash_flow,40,40,
+MDT,Health Care,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MDT,Health Care,revenue,21,33,
+MDT,Health Care,shareholder_equity,36,60,
+MDT,Health Care,total_assets,36,60,
+MDT,Health Care,total_liabilities,36,60,
+META,Communication Services,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+META,Communication Services,eps_diluted,30,30,
+META,Communication Services,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+META,Communication Services,net_income,30,30,
+META,Communication Services,operating_cash_flow,40,40,
+META,Communication Services,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+META,Communication Services,revenue,29,29,
+META,Communication Services,shareholder_equity,23,47,
+META,Communication Services,total_assets,35,60,
+META,Communication Services,total_liabilities,35,60,
+MO,Consumer Staples,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MO,Consumer Staples,eps_diluted,30,31,
+MO,Consumer Staples,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MO,Consumer Staples,net_income,30,33,
+MO,Consumer Staples,operating_cash_flow,40,40,
+MO,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MO,Consumer Staples,revenue,22,35,
+MO,Consumer Staples,shareholder_equity,35,60,
+MO,Consumer Staples,total_assets,35,60,
+MO,Consumer Staples,total_liabilities,35,60,
+MRK,Health Care,capital_expenditures,16,16,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MRK,Health Care,eps_diluted,30,30,
+MRK,Health Care,free_cash_flow,15,15,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MRK,Health Care,net_income,30,30,
+MRK,Health Care,operating_cash_flow,46,46,
+MRK,Health Care,revenue,30,30,
+MRK,Health Care,shareholder_equity,35,60,
+MRK,Health Care,total_assets,35,60,
+MS,Financials,eps_diluted,30,33,
+MS,Financials,net_income,30,33,
+MS,Financials,operating_cash_flow,41,41,
+MS,Financials,revenue,23,35,
+MS,Financials,shareholder_equity,35,60,
+MS,Financials,total_assets,35,60,
+MS,Financials,total_liabilities,35,60,
+MSFT,Information Technology,capital_expenditures,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MSFT,Information Technology,eps_diluted,28,31,
+MSFT,Information Technology,free_cash_flow,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MSFT,Information Technology,net_income,28,31,
+MSFT,Information Technology,operating_cash_flow,29,29,
+MSFT,Information Technology,operating_income,28,31,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MSFT,Information Technology,revenue,14,20,
+MSFT,Information Technology,shareholder_equity,31,52,
+MSFT,Information Technology,total_assets,36,60,
+MSFT,Information Technology,total_liabilities,36,60,
+MU,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MU,Information Technology,eps_diluted,29,32,
+MU,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MU,Information Technology,net_income,23,37,
+MU,Information Technology,operating_cash_flow,41,41,
+MU,Information Technology,operating_income,29,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+MU,Information Technology,revenue,9,9,
+MU,Information Technology,shareholder_equity,20,47,
+MU,Information Technology,total_assets,35,60,
+MU,Information Technology,total_liabilities,35,60,
+NEE,Utilities,eps_diluted,30,33,
+NEE,Utilities,net_income,30,30,
+NEE,Utilities,operating_cash_flow,40,40,
+NEE,Utilities,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NEE,Utilities,revenue,22,34,
+NEE,Utilities,shareholder_equity,35,60,
+NEE,Utilities,total_assets,35,60,
+NEE,Utilities,total_liabilities,23,39,
+NFLX,Communication Services,capital_expenditures,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NFLX,Communication Services,eps_diluted,30,33,
+NFLX,Communication Services,free_cash_flow,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NFLX,Communication Services,net_income,30,33,
+NFLX,Communication Services,operating_cash_flow,30,30,
+NFLX,Communication Services,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NFLX,Communication Services,revenue,30,33,
+NFLX,Communication Services,shareholder_equity,23,47,
+NFLX,Communication Services,total_assets,34,60,
+NFLX,Communication Services,total_liabilities,34,60,
+NKE,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NKE,Consumer Discretionary,eps_diluted,29,29,
+NKE,Consumer Discretionary,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NKE,Consumer Discretionary,net_income,29,29,
+NKE,Consumer Discretionary,operating_cash_flow,40,40,
+NKE,Consumer Discretionary,revenue,29,29,
+NKE,Consumer Discretionary,shareholder_equity,22,47,
+NKE,Consumer Discretionary,total_assets,36,60,
+NOC,Industrials,capital_expenditures,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NOC,Industrials,eps_diluted,30,33,
+NOC,Industrials,free_cash_flow,38,38,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NOC,Industrials,net_income,30,33,
+NOC,Industrials,operating_cash_flow,40,40,
+NOC,Industrials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NOC,Industrials,revenue,30,33,
+NOC,Industrials,shareholder_equity,31,51,
+NOC,Industrials,total_assets,35,60,
+NOC,Industrials,total_liabilities,35,60,
+NOW,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NOW,Information Technology,eps_diluted,30,30,
+NOW,Information Technology,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NOW,Information Technology,net_income,30,30,
+NOW,Information Technology,operating_cash_flow,40,40,
+NOW,Information Technology,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NOW,Information Technology,revenue,27,27,
+NOW,Information Technology,shareholder_equity,23,47,
+NOW,Information Technology,total_assets,35,60,
+NOW,Information Technology,total_liabilities,35,60,
+NVDA,Information Technology,capital_expenditures,32,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NVDA,Information Technology,eps_diluted,30,30,
+NVDA,Information Technology,free_cash_flow,12,12,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NVDA,Information Technology,net_income,30,30,
+NVDA,Information Technology,operating_cash_flow,40,40,
+NVDA,Information Technology,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+NVDA,Information Technology,revenue,30,30,
+NVDA,Information Technology,shareholder_equity,23,47,
+NVDA,Information Technology,total_assets,35,60,
+NVDA,Information Technology,total_liabilities,35,60,
+ORCL,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ORCL,Information Technology,eps_diluted,29,29,
+ORCL,Information Technology,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ORCL,Information Technology,net_income,29,29,
+ORCL,Information Technology,operating_cash_flow,45,45,
+ORCL,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ORCL,Information Technology,revenue,30,30,
+ORCL,Information Technology,shareholder_equity,36,60,
+ORCL,Information Technology,total_assets,36,60,
+ORLY,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ORLY,Consumer Discretionary,eps_diluted,25,34,
+ORLY,Consumer Discretionary,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ORLY,Consumer Discretionary,net_income,25,34,
+ORLY,Consumer Discretionary,operating_cash_flow,40,40,
+ORLY,Consumer Discretionary,operating_income,25,34,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ORLY,Consumer Discretionary,revenue,21,36,
+ORLY,Consumer Discretionary,shareholder_equity,23,47,
+ORLY,Consumer Discretionary,total_assets,35,60,
+PANW,Information Technology,capital_expenditures,2,2,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PANW,Information Technology,eps_diluted,35,37,
+PANW,Information Technology,free_cash_flow,2,2,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PANW,Information Technology,net_income,28,31,
+PANW,Information Technology,operating_cash_flow,40,40,
+PANW,Information Technology,operating_income,28,31,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PANW,Information Technology,revenue,8,8,
+PANW,Information Technology,shareholder_equity,29,56,
+PANW,Information Technology,total_assets,36,60,
+PANW,Information Technology,total_liabilities,17,29,
+PEP,Consumer Staples,eps_diluted,30,30,
+PEP,Consumer Staples,net_income,30,30,
+PEP,Consumer Staples,operating_cash_flow,40,40,
+PEP,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PEP,Consumer Staples,revenue,30,30,
+PEP,Consumer Staples,shareholder_equity,35,60,
+PEP,Consumer Staples,total_assets,35,60,
+PEP,Consumer Staples,total_liabilities,35,60,
+PFE,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PFE,Health Care,eps_diluted,30,30,
+PFE,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PFE,Health Care,net_income,30,30,
+PFE,Health Care,operating_cash_flow,40,40,
+PFE,Health Care,revenue,19,19,
+PFE,Health Care,shareholder_equity,35,60,
+PFE,Health Care,total_assets,35,60,
+PFE,Health Care,total_liabilities,35,60,
+PG,Consumer Staples,capital_expenditures,39,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PG,Consumer Staples,eps_diluted,28,32,
+PG,Consumer Staples,free_cash_flow,39,42,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PG,Consumer Staples,net_income,28,32,
+PG,Consumer Staples,operating_cash_flow,39,42,
+PG,Consumer Staples,operating_income,28,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PG,Consumer Staples,revenue,28,32,
+PG,Consumer Staples,total_assets,33,60,
+PG,Consumer Staples,total_liabilities,34,60,
+PH,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PH,Industrials,eps_diluted,28,33,
+PH,Industrials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PH,Industrials,net_income,28,35,
+PH,Industrials,operating_cash_flow,40,40,
+PH,Industrials,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PH,Industrials,revenue,13,13,
+PH,Industrials,shareholder_equity,36,60,
+PH,Industrials,total_assets,36,60,
+PH,Industrials,total_liabilities,36,60,
+PLD,Real Estate,eps_diluted,22,35,
+PLD,Real Estate,net_income,30,30,
+PLD,Real Estate,operating_cash_flow,45,45,
+PLD,Real Estate,operating_income,22,35,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PLD,Real Estate,revenue,22,35,
+PLD,Real Estate,shareholder_equity,35,60,
+PLD,Real Estate,total_assets,35,60,
+PLD,Real Estate,total_liabilities,35,60,
+PM,Consumer Staples,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PM,Consumer Staples,eps_diluted,30,33,
+PM,Consumer Staples,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PM,Consumer Staples,net_income,30,33,
+PM,Consumer Staples,operating_cash_flow,40,40,
+PM,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PM,Consumer Staples,revenue,21,34,
+PM,Consumer Staples,shareholder_equity,35,60,
+PM,Consumer Staples,total_assets,35,60,
+PM,Consumer Staples,total_liabilities,35,60,
+PNC,Financials,eps_diluted,30,30,
+PNC,Financials,net_income,6,6,
+PNC,Financials,operating_cash_flow,43,43,
+PNC,Financials,revenue,33,33,
+PNC,Financials,shareholder_equity,35,60,
+PNC,Financials,total_assets,35,60,
+PNC,Financials,total_liabilities,35,60,
+PYPL,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PYPL,Financials,eps_diluted,30,33,
+PYPL,Financials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PYPL,Financials,net_income,22,37,
+PYPL,Financials,operating_cash_flow,40,40,
+PYPL,Financials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+PYPL,Financials,revenue,30,33,
+PYPL,Financials,shareholder_equity,23,50,
+PYPL,Financials,total_assets,35,60,
+PYPL,Financials,total_liabilities,35,60,
+QCOM,Information Technology,eps_diluted,29,32,
+QCOM,Information Technology,net_income,29,29,
+QCOM,Information Technology,operating_cash_flow,41,43,
+QCOM,Information Technology,operating_income,29,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+QCOM,Information Technology,revenue,29,32,
+QCOM,Information Technology,shareholder_equity,36,60,
+QCOM,Information Technology,total_assets,35,60,
+QCOM,Information Technology,total_liabilities,35,60,
+REGN,Health Care,eps_diluted,30,33,
+REGN,Health Care,net_income,22,37,
+REGN,Health Care,operating_cash_flow,40,40,
+REGN,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+REGN,Health Care,revenue,22,35,
+REGN,Health Care,shareholder_equity,22,47,
+REGN,Health Care,total_assets,35,60,
+REGN,Health Care,total_liabilities,35,60,
+ROP,Information Technology,eps_diluted,22,34,
+ROP,Information Technology,net_income,22,34,
+ROP,Information Technology,operating_cash_flow,42,42,
+ROP,Information Technology,operating_income,22,34,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ROP,Information Technology,revenue,23,35,
+ROP,Information Technology,shareholder_equity,23,47,
+ROP,Information Technology,total_assets,35,60,
+ROP,Information Technology,total_liabilities,35,60,
+RTX,Industrials,capital_expenditures,20,20,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+RTX,Industrials,eps_diluted,30,33,
+RTX,Industrials,free_cash_flow,17,17,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+RTX,Industrials,net_income,30,33,
+RTX,Industrials,operating_cash_flow,36,36,
+RTX,Industrials,operating_income,27,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+RTX,Industrials,revenue,25,36,
+RTX,Industrials,shareholder_equity,34,60,
+RTX,Industrials,total_assets,35,60,
+RTX,Industrials,total_liabilities,35,60,
+SBUX,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SBUX,Consumer Discretionary,eps_diluted,29,32,
+SBUX,Consumer Discretionary,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SBUX,Consumer Discretionary,net_income,29,32,
+SBUX,Consumer Discretionary,operating_cash_flow,40,40,
+SBUX,Consumer Discretionary,operating_income,29,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SBUX,Consumer Discretionary,revenue,29,32,
+SBUX,Consumer Discretionary,shareholder_equity,35,60,
+SBUX,Consumer Discretionary,total_assets,35,60,
+SBUX,Consumer Discretionary,total_liabilities,35,60,
+SCHW,Financials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SCHW,Financials,eps_diluted,30,33,
+SCHW,Financials,free_cash_flow,36,36,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SCHW,Financials,net_income,30,33,
+SCHW,Financials,operating_cash_flow,45,45,
+SCHW,Financials,revenue,30,33,
+SCHW,Financials,shareholder_equity,23,47,
+SCHW,Financials,total_assets,35,60,
+SCHW,Financials,total_liabilities,35,60,
+SHW,Materials,capital_expenditures,14,14,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SHW,Materials,eps_diluted,26,32,
+SHW,Materials,net_income,22,37,
+SHW,Materials,operating_cash_flow,40,40,
+SHW,Materials,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SHW,Materials,revenue,24,33,
+SHW,Materials,shareholder_equity,22,47,
+SHW,Materials,total_assets,31,51,
+SLB,Energy,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SLB,Energy,eps_diluted,30,30,
+SLB,Energy,free_cash_flow,36,36,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SLB,Energy,net_income,30,30,
+SLB,Energy,operating_cash_flow,44,44,
+SLB,Energy,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SLB,Energy,revenue,30,30,
+SLB,Energy,shareholder_equity,35,60,
+SLB,Energy,total_assets,35,60,
+SLB,Energy,total_liabilities,35,60,
+SNPS,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SNPS,Information Technology,eps_diluted,29,29,
+SNPS,Information Technology,free_cash_flow,33,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SNPS,Information Technology,net_income,29,29,
+SNPS,Information Technology,operating_cash_flow,45,45,
+SNPS,Information Technology,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SNPS,Information Technology,revenue,25,34,
+SNPS,Information Technology,shareholder_equity,35,60,
+SNPS,Information Technology,total_assets,35,60,
+SNPS,Information Technology,total_liabilities,35,60,
+SO,Utilities,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SO,Utilities,eps_diluted,30,30,
+SO,Utilities,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SO,Utilities,net_income,27,27,
+SO,Utilities,operating_cash_flow,40,40,
+SO,Utilities,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SO,Utilities,revenue,30,30,
+SO,Utilities,shareholder_equity,26,38,
+SO,Utilities,total_assets,35,60,
+SO,Utilities,total_liabilities,35,60,
+SPGI,Financials,capital_expenditures,11,11,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SPGI,Financials,eps_diluted,30,34,
+SPGI,Financials,net_income,30,35,
+SPGI,Financials,operating_cash_flow,42,42,
+SPGI,Financials,operating_income,30,34,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SPGI,Financials,revenue,22,35,
+SPGI,Financials,shareholder_equity,35,60,
+SPGI,Financials,total_assets,35,60,
+SPGI,Financials,total_liabilities,35,60,
+SYK,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SYK,Health Care,eps_diluted,22,35,
+SYK,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SYK,Health Care,net_income,22,35,
+SYK,Health Care,operating_cash_flow,40,40,
+SYK,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+SYK,Health Care,revenue,22,35,
+SYK,Health Care,shareholder_equity,36,60,
+SYK,Health Care,total_assets,35,60,
+SYK,Health Care,total_liabilities,35,60,
+T,Communication Services,capital_expenditures,7,7,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+T,Communication Services,eps_diluted,30,32,
+T,Communication Services,free_cash_flow,6,6,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+T,Communication Services,net_income,30,32,
+T,Communication Services,operating_cash_flow,47,48,
+T,Communication Services,operating_income,25,35,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+T,Communication Services,revenue,25,35,
+T,Communication Services,total_assets,36,60,
+T,Communication Services,total_liabilities,3,3,
+TDG,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TDG,Industrials,eps_diluted,20,20,
+TDG,Industrials,free_cash_flow,32,32,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TDG,Industrials,net_income,23,37,
+TDG,Industrials,operating_cash_flow,45,45,
+TDG,Industrials,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TDG,Industrials,revenue,29,29,
+TDG,Industrials,shareholder_equity,34,60,
+TDG,Industrials,total_assets,35,60,
+TDG,Industrials,total_liabilities,35,60,
+TJX,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TJX,Consumer Discretionary,eps_diluted,30,33,
+TJX,Consumer Discretionary,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TJX,Consumer Discretionary,net_income,30,33,
+TJX,Consumer Discretionary,operating_cash_flow,45,45,
+TJX,Consumer Discretionary,operating_income,25,25,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TJX,Consumer Discretionary,revenue,23,35,
+TJX,Consumer Discretionary,shareholder_equity,23,47,
+TJX,Consumer Discretionary,total_assets,32,51,
+TMO,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TMO,Health Care,eps_diluted,30,30,
+TMO,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TMO,Health Care,net_income,27,39,
+TMO,Health Care,operating_cash_flow,40,40,
+TMO,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TMO,Health Care,revenue,22,35,
+TMO,Health Care,shareholder_equity,32,60,
+TMO,Health Care,total_assets,35,60,
+TSLA,Consumer Discretionary,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TSLA,Consumer Discretionary,eps_diluted,29,32,
+TSLA,Consumer Discretionary,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TSLA,Consumer Discretionary,net_income,29,35,
+TSLA,Consumer Discretionary,operating_cash_flow,45,45,
+TSLA,Consumer Discretionary,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TSLA,Consumer Discretionary,revenue,30,33,
+TSLA,Consumer Discretionary,shareholder_equity,35,60,
+TSLA,Consumer Discretionary,total_assets,35,60,
+TSLA,Consumer Discretionary,total_liabilities,35,60,
+TXN,Information Technology,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TXN,Information Technology,eps_diluted,30,33,
+TXN,Information Technology,free_cash_flow,37,37,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TXN,Information Technology,net_income,30,33,
+TXN,Information Technology,operating_cash_flow,41,41,
+TXN,Information Technology,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+TXN,Information Technology,revenue,22,35,
+TXN,Information Technology,shareholder_equity,35,60,
+TXN,Information Technology,total_assets,35,60,
+TXN,Information Technology,total_liabilities,35,60,
+UBER,Industrials,capital_expenditures,34,34,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UBER,Industrials,eps_diluted,30,30,
+UBER,Industrials,free_cash_flow,34,34,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UBER,Industrials,net_income,30,30,
+UBER,Industrials,operating_cash_flow,34,34,
+UBER,Industrials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UBER,Industrials,revenue,30,30,
+UBER,Industrials,shareholder_equity,33,58,
+UBER,Industrials,total_assets,30,52,
+UBER,Industrials,total_liabilities,30,52,
+UNH,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UNH,Health Care,eps_diluted,30,30,
+UNH,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UNH,Health Care,net_income,30,30,
+UNH,Health Care,operating_cash_flow,40,40,
+UNH,Health Care,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UNH,Health Care,revenue,30,30,
+UNH,Health Care,shareholder_equity,28,48,
+UNH,Health Care,total_assets,35,60,
+UNH,Health Care,total_liabilities,35,60,
+UNP,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UNP,Industrials,eps_diluted,30,33,
+UNP,Industrials,free_cash_flow,33,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UNP,Industrials,net_income,30,33,
+UNP,Industrials,operating_cash_flow,45,45,
+UNP,Industrials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UNP,Industrials,revenue,20,32,
+UNP,Industrials,shareholder_equity,23,47,
+UNP,Industrials,total_assets,35,60,
+UNP,Industrials,total_liabilities,35,60,
+UPS,Industrials,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UPS,Industrials,eps_diluted,30,33,
+UPS,Industrials,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UPS,Industrials,net_income,30,34,
+UPS,Industrials,operating_cash_flow,40,40,
+UPS,Industrials,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+UPS,Industrials,revenue,25,33,
+UPS,Industrials,shareholder_equity,35,60,
+UPS,Industrials,total_assets,35,60,
+USB,Financials,eps_diluted,30,30,
+USB,Financials,net_income,30,30,
+USB,Financials,operating_cash_flow,45,45,
+USB,Financials,revenue,34,34,
+USB,Financials,shareholder_equity,35,60,
+USB,Financials,total_assets,35,60,
+USB,Financials,total_liabilities,35,60,
+V,Financials,net_income,29,29,
+V,Financials,operating_cash_flow,40,40,
+V,Financials,operating_income,29,29,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+V,Financials,revenue,29,29,
+V,Financials,shareholder_equity,13,20,
+V,Financials,total_assets,35,60,
+V,Financials,total_liabilities,35,60,
+VRTX,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+VRTX,Health Care,eps_diluted,30,33,
+VRTX,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+VRTX,Health Care,net_income,30,33,
+VRTX,Health Care,operating_cash_flow,40,40,
+VRTX,Health Care,operating_income,30,33,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+VRTX,Health Care,revenue,22,35,
+VRTX,Health Care,shareholder_equity,23,47,
+VRTX,Health Care,total_assets,35,60,
+VRTX,Health Care,total_liabilities,35,60,
+VZ,Communication Services,eps_diluted,30,30,
+VZ,Communication Services,net_income,30,30,
+VZ,Communication Services,operating_cash_flow,40,40,
+VZ,Communication Services,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+VZ,Communication Services,revenue,30,30,
+VZ,Communication Services,total_assets,35,60,
+WFC,Financials,eps_diluted,30,30,
+WFC,Financials,net_income,30,30,
+WFC,Financials,operating_cash_flow,45,45,
+WFC,Financials,revenue,16,16,
+WFC,Financials,shareholder_equity,35,60,
+WFC,Financials,total_assets,33,57,
+WFC,Financials,total_liabilities,35,60,
+WM,Industrials,capital_expenditures,10,10,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+WM,Industrials,eps_diluted,30,30,
+WM,Industrials,free_cash_flow,9,9,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+WM,Industrials,net_income,30,30,
+WM,Industrials,operating_cash_flow,41,41,
+WM,Industrials,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+WM,Industrials,revenue,22,35,
+WM,Industrials,shareholder_equity,35,60,
+WM,Industrials,total_assets,35,60,
+WM,Industrials,total_liabilities,35,60,
+WMT,Consumer Staples,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+WMT,Consumer Staples,eps_diluted,30,30,
+WMT,Consumer Staples,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+WMT,Consumer Staples,net_income,30,30,
+WMT,Consumer Staples,operating_cash_flow,40,40,
+WMT,Consumer Staples,operating_income,30,30,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+WMT,Consumer Staples,revenue,30,30,
+WMT,Consumer Staples,shareholder_equity,33,55,
+WMT,Consumer Staples,total_assets,31,51,
+XOM,Energy,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+XOM,Energy,eps_diluted,30,30,
+XOM,Energy,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+XOM,Energy,net_income,30,30,
+XOM,Energy,operating_cash_flow,41,41,
+XOM,Energy,revenue,30,30,
+XOM,Energy,shareholder_equity,35,60,
+XOM,Energy,total_assets,35,60,
+XOM,Energy,total_liabilities,35,60,
+ZTS,Health Care,capital_expenditures,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ZTS,Health Care,eps_diluted,30,30,
+ZTS,Health Care,free_cash_flow,40,40,"bank/sector-specific fields (operating_income, capex, fcf) may be legitimately absent"
+ZTS,Health Care,net_income,30,30,
+ZTS,Health Care,operating_cash_flow,40,40,
+ZTS,Health Care,revenue,30,30,
+ZTS,Health Care,shareholder_equity,36,60,
+ZTS,Health Care,total_assets,35,60,
+ZTS,Health Care,total_liabilities,35,60,

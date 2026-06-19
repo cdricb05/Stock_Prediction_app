@@ -1,0 +1,4 @@
+horizon,total_rows,non_null_forward_return,non_null_forward_excess_return_vs_spy,non_null_binary_outperform_spy,non_null_rank,mean_forward_return,mean_forward_excess_return_vs_spy,positive_return_fraction,outperform_spy_fraction,earliest_scoring_date,latest_scoring_date
+21d,303201,300513,300513,300513,300513,0.015474,0.00221,0.5859,0.5012,2016-01-04,2026-05-15
+63d,303201,295137,295137,295137,295137,0.045163,0.00705,0.6304,0.5024,2016-01-04,2026-03-17
+126d,303201,287073,287073,287073,287073,0.091374,0.015524,0.6741,0.5014,2016-01-04,2025-12-12

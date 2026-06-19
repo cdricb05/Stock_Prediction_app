@@ -1,0 +1,4 @@
+cap_days,is_applied_cap,aligned_rows_after_cap,retained_row_fraction,aligned_ticker_count,median_feature_age_days,p90_feature_age_days,max_feature_age_days,label_coverage_21d,label_coverage_63d,label_coverage_126d,dense_ic_dates_21d,distinct_dense_years_21d,leakage_failure_count
+365,True,303201,1.0,128,47.0,87.0,365.0,0.9911,0.9734,0.9468,2607,11,0
+540,False,304380,1.0039,128,47.0,88.0,540.0,0.9912,0.9735,0.947,2607,11,0
+730,False,305919,1.009,128,47.0,88.0,730.0,0.9912,0.9736,0.9473,2607,11,0

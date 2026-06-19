@@ -1,0 +1,4 @@
+horizon,label_coverage,avg_daily_cross_section_size,valid_ic_date_count,dense_ic_date_count,distinct_ic_years,best_feature,best_feature_abs_mean_ic,moderate_or_better_count,strong_count,horizon_readiness
+21d,0.9911,115.27,2607,2607,11,accrual_proxy,0.030173,1,0,ready_for_research_model
+63d,0.9734,115.06,2565,2565,11,log_total_assets,0.048866,4,0,ready_for_research_model
+126d,0.9468,114.74,2502,2502,10,log_total_assets,0.073827,3,1,ready_for_research_model
