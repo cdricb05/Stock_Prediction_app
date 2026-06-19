@@ -5,6 +5,13 @@
 > `research/output/phase3m_earnings_estimates_signal_gate.json` and its CSVs. When the run executes
 > with no supported provider key in the environment, the artifact records the
 > `EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY` result described under "Final recommendation".
+>
+> Phase 3-N update: with an Alpha Vantage key configured, the workflow now runs as a **resumable,
+> cache-first, network-budgeted collector** (see "Resumable collection (Phase 3-N controller)"). The
+> committed artifact currently records `EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS` — 25 of 128 tickers
+> cached, below the 75-ticker minimum — so the IC signal gate has not yet run. The gate (and every
+> result section below) populates automatically on the run where cached coverage first clears the
+> minimum.
 
 ## Why Phase 3-M follows Phase 3-L
 
@@ -65,6 +72,65 @@ respect the ~5-requests/minute free tier), under a hard cap of 200 total request
 purchased and no account is created. If a provider returns a rate-limit / entitlement /
 premium-required response, the phase writes a `EARNINGS_ESTIMATES_GATE_BLOCKED_PROVIDER_LIMIT` result
 instead of crashing.
+
+## Resumable collection (Phase 3-N controller)
+
+Alpha Vantage's free tier caps how many `EARNINGS` calls can be made before it returns a
+rate-limit / "thank you for using" note (in practice roughly 20–25 symbols before the daily cap is
+hit), so the 128-ticker universe cannot be fetched in a single run. Phase 3-N upgrades the existing
+Phase 3-M workflow into a **resumable, cache-first, network-budgeted collector** so the same gate can
+be driven safely across multiple days without ever re-fetching or discarding work.
+
+How it works each run:
+
+1. **Count what is cached.** Before any network call, the collector scans `raw/` for
+   `alpha_vantage_<TICKER>.json` files already present and treats those tickers as done.
+2. **Fetch only what is missing**, in priority order, stopping as soon as the per-run network budget
+   is reached or the provider signals a limit. Cached tickers are never re-fetched.
+3. **Preserve partial progress.** A rate-limit response after some symbols were cached does **not**
+   erase anything: every cached file is kept, the run exits 0, and the state is recorded as
+   in-progress rather than as a misleading zero-processed failure.
+4. **Gate on coverage.** The earnings IC signal gate runs **only** once at least
+   `PHASE3M_MIN_TICKERS_FOR_SIGNAL_GATE` (default 75) tickers are cached; below that the run reports
+   `EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS` and computes no IC.
+
+Environment-variable controls (read as scalars only — never a key value):
+
+| Variable | Default | Meaning |
+| --- | --- | --- |
+| `PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN` | 20 | per-run network fetch budget (Alpha-Vantage-friendly) |
+| `PHASE3M_MIN_PROVIDER_SLEEP_SECONDS` | 15 | courtesy throttle between provider requests |
+| `PHASE3M_ALLOW_PARTIAL_COLLECTION` | 1 | allow stopping mid-universe and resuming later |
+| `PHASE3M_MIN_TICKERS_FOR_SIGNAL_GATE` | 75 | cached tickers required before the IC gate runs |
+| `PHASE3M_FORCE_SIGNAL_GATE` | 0 | force the gate even below the minimum (diagnostic) |
+
+Progress is written to `collection_progress.json` and a flat `collection_progress.csv`, recording the
+selected provider, the four supported keys as booleans, the universe size, cached counts before/after,
+the per-run budget and requests used, whether a provider limit was hit (with a **sanitized** message
+that never contains a URL or key), the gate minimum, whether the gate is allowed yet, the estimated
+additional runs needed at the current budget, and the next action.
+
+**Why ~20–25 tickers/day does not harm model validity.** These are *historical* quarterly earnings
+events, not live observations: AAPL's 2018 Q3 report is identical whether it is fetched today or next
+week. Collecting the universe over several days only delays *when* the cross-sectional panel is
+complete; it changes none of the point-in-time availability dates (still `reported_date`), none of
+the trailing-only features, and none of the reused Phase 3-L labels. No look-ahead is introduced by
+spreading collection across calendar days.
+
+**Current state.** As of this revision, **25 of the 128** universe tickers are cached (earnings events
+and trailing features are already built for them); **103** remain. At the default budget of 20
+network fetches per run, roughly **3 more runs** are needed to clear the 75-ticker gate minimum (and
+about 6 to cover the full universe), subject to the provider's daily cap.
+
+**How to re-run safely (Windows PowerShell).** With the key set in the session
+(`$env:ALPHAVANTAGE_API_KEY = "<key>"`; never committed or printed), simply re-run
+`python -B research/run_phase3m_earnings_estimates_signal_gate.py` on later days. Each run resumes
+from the cache, fetches only missing tickers up to the budget, and updates the progress artifacts.
+**No model is trained until the minimum coverage is reached** — until then the run is a pure data
+collector that fits nothing, computes no predictions / scores / portfolio weights, and writes no
+deployable artifact. The collector still **does not deploy**, **does not restart stock-api.service**,
+**does not enable** any serving flag, **does not run migrations**, **does not write to production
+DB**, and **does not trade**; it claims no **production edge**.
 
 ## Earnings event normalization
 

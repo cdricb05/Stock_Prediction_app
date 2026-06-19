@@ -1,6 +1,6 @@
 {
   "detected_keys": {
-    "ALPHAVANTAGE_API_KEY": false,
+    "ALPHAVANTAGE_API_KEY": true,
     "FMP_API_KEY": false,
     "FINNHUB_API_KEY": false,
     "INTRINIO_API_KEY": false
@@ -17,13 +17,13 @@
     "finnhub",
     "intrinio"
   ],
-  "selected_provider": null,
-  "endpoint_used": null,
-  "entitlement_status": "no_key",
+  "selected_provider": "alpha_vantage",
+  "endpoint_used": "https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=REDACTED",
+  "entitlement_status": "ok",
   "network_used": false,
   "request_count": 0,
   "cache_hit_count": 0,
   "rate_limit_or_premium_errors": 0,
   "key_values_never_stored": true,
-  "recommendation": "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY"
+  "recommendation": "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS"
 }

@@ -1,23 +1,9 @@
 decision_item,value,passed,note
-phase3l_confirmed,True,True,"Phase 3-L confirmed as SEC_UNIVERSE_SIGNAL_GATE_WEAK_BUT_EXPAND_OR_ADD_REVISIONS, routed to 3-M"
-provider_selected,,False,"an earnings-estimates provider key must be present (priority: ALPHAVANTAGE_API_KEY, FMP_API_KEY, FINNHUB_API_KEY, INTRINIO_API_KEY)"
-provider_not_rate_limited,True,True,provider must not return a rate-limit / entitlement / premium error
-processed_ticker_count,0,False,PASS wants >= 90 processed tickers
-earnings_feature_ticker_count,0,False,PASS wants >= 75 tickers with earnings features
-combined_panel_rows,0,False,PASS wants >= 75000 combined rows
-leakage_failure_count,0,True,must be 0
-label_coverage_21d,,False,PASS wants >= 0.80 (reused Phase 3-L labels)
-label_coverage_63d,,False,PASS wants >= 0.70
-label_coverage_126d,,False,PASS wants >= 0.60
-earnings_only_moderate_or_better,0,False,earnings-only moderate-or-better features
-earnings_only_strong,0,False,earnings-only strong
-combined_moderate_or_better,0,False,combined moderate-or-better features
-combined_strong,0,False,combined strong
-stable_family_count,0,False,PASS wants >= 2 stable families
-max_distinct_dense_ic_years,0,False,PASS wants >= 6 distinct dense IC years
-sec_baseline_moderate_or_better,4,,Phase 3-L SEC-only baseline moderate-or-better feature count (for comparison)
+collection_recommendation,EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS,,resumable collection state (not a signal decision)
+cached_ticker_count_after_run,25,False,signal gate needs >= 75 cached tickers
+missing_ticker_count_after_run,103,,tickers still to collect in later runs
+network_requests_this_run,0,,bounded by PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN=0
+provider_limit_hit,False,,
+signal_gate_allowed_now,False,False,IC gate not run below the minimum
 no_model_training,True,True,this phase trains no model
-no_predictions_computed,True,True,this phase computes no predictions or scores
-no_portfolio_weights,True,True,this phase computes no portfolio weights
-labels_reused_not_recomputed,True,True,Phase 3-L labels reused; no new target
-recommendation,EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY,True,allowed values only
+labels_reused_not_recomputed,True,True,no new target computed during collection

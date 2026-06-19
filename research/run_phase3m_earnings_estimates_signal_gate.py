@@ -79,6 +79,8 @@ EARNINGS_HORIZON_READINESS_CSV = os.path.join(_M_DIR, "earnings_horizon_readines
 EARNINGS_YEARLY_IC_CSV = os.path.join(_M_DIR, "earnings_yearly_ic_summary.csv")
 EARNINGS_SECTOR_SANITY_CSV = os.path.join(_M_DIR, "earnings_sector_sanity_summary.csv")
 DECISION_TABLE_CSV = os.path.join(_M_DIR, "decision_table.csv")
+COLLECTION_PROGRESS_JSON = os.path.join(_M_DIR, "collection_progress.json")
+COLLECTION_PROGRESS_CSV = os.path.join(_M_DIR, "collection_progress.csv")
 
 # --------------------------------------------------------------------------- #
 # Upstream confirmation contract (Phase 3-L)
@@ -247,6 +249,45 @@ REC_INCONCLUSIVE = "EARNINGS_ESTIMATES_SIGNAL_GATE_INCONCLUSIVE_COVERAGE"
 ALLOWED_RECOMMENDATIONS = [
     REC_PASSES, REC_WEAK, REC_BLOCKED_KEY, REC_BLOCKED_LIMIT, REC_FAILS, REC_INCONCLUSIVE,
 ]
+
+# Resumable-collection recommendation vocabulary (Phase 3-N controller).  These describe the state
+# of the multi-day Alpha Vantage free-tier collection rather than the signal decision; the signal
+# decision still uses the REC_* vocabulary above once enough tickers are cached.
+REC_COLLECTING = "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS"
+REC_COLLECT_READY = "EARNINGS_PROVIDER_COLLECTION_READY_FOR_SIGNAL_GATE"
+REC_COLLECT_BLOCKED_KEY = "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY"
+REC_COLLECT_BLOCKED_LIMIT = "EARNINGS_PROVIDER_COLLECTION_BLOCKED_PROVIDER_LIMIT"
+REC_COLLECT_ERROR = "EARNINGS_PROVIDER_COLLECTION_ERROR"
+COLLECTION_RECOMMENDATIONS = [
+    REC_COLLECTING, REC_COLLECT_READY, REC_COLLECT_BLOCKED_KEY, REC_COLLECT_BLOCKED_LIMIT,
+    REC_COLLECT_ERROR,
+]
+
+# Resumable-collection control defaults (overridable via environment variables).  All are read as
+# scalars only; no key value is ever read here.
+DEFAULT_MAX_NETWORK_REQUESTS_PER_RUN = 20      # Alpha Vantage free-tier friendly
+DEFAULT_MIN_PROVIDER_SLEEP_SECONDS_AV = 15.0   # ~5 requests/min courtesy throttle
+DEFAULT_MIN_TICKERS_FOR_SIGNAL_GATE = 75       # mirrors PASS_MIN_EARNINGS_FEATURE_TICKERS
+
+COLLECTION_NEXT_PHASE_TABLE = {
+    REC_COLLECTING: (
+        "Continue Resumable Earnings Collection",
+        "Re-run the collector on later days to cache more tickers (cache-first, network-budgeted) "
+        "until the minimum coverage for the signal gate is reached; no model is trained yet."),
+    REC_COLLECT_READY: (
+        "Run Earnings Signal Gate on Cached Coverage",
+        "Enough tickers are cached; the next run computes the IC signal gate on cached data."),
+    REC_COLLECT_BLOCKED_KEY: (
+        "Configure Earnings Estimates Provider",
+        "Set ALPHAVANTAGE_API_KEY or another supported provider key before collecting."),
+    REC_COLLECT_BLOCKED_LIMIT: (
+        "Continue Resumable Earnings Collection",
+        "The provider returned a rate-limit response; partial progress is preserved. Re-run later "
+        "(e.g. the next day) to resume collecting the remaining tickers."),
+    REC_COLLECT_ERROR: (
+        "Diagnose Earnings Collection Error",
+        "An unexpected collection error occurred; inspect the provider-access report and re-run."),
+}
 
 NEXT_PHASE_TABLE = {
     REC_PASSES: ("Research-Only Earnings + Fundamentals Model Walk-Forward",
@@ -537,13 +578,171 @@ def detect_providers(env=None):
 
 
 # --------------------------------------------------------------------------- #
+# Resumable-collection controls + progress (Phase 3-N controller)
+# --------------------------------------------------------------------------- #
+def _env_int(env, name, default):
+    raw = (env.get(name) or "").strip()
+    if not raw:
+        return default
+    try:
+        v = int(float(raw))
+    except ValueError:
+        return default
+    return v if v >= 0 else default
+
+
+def _env_float(env, name, default):
+    raw = (env.get(name) or "").strip()
+    if not raw:
+        return default
+    try:
+        v = float(raw)
+    except ValueError:
+        return default
+    return v if v >= 0 else default
+
+
+def read_collection_controls(env=None, provider=None):
+    """Read the resumable-collection controls (scalars only; never reads a key value)."""
+    env = os.environ if env is None else env
+    default_sleep = (DEFAULT_MIN_PROVIDER_SLEEP_SECONDS_AV if provider == PROVIDER_ALPHAVANTAGE
+                     else PROVIDER_MIN_INTERVAL_S.get(provider, 1.0))
+    return {
+        "max_network_requests_per_run":
+            _env_int(env, "PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN",
+                     DEFAULT_MAX_NETWORK_REQUESTS_PER_RUN),
+        "min_provider_sleep_seconds":
+            _env_float(env, "PHASE3M_MIN_PROVIDER_SLEEP_SECONDS", default_sleep),
+        "allow_partial_collection":
+            _env_int(env, "PHASE3M_ALLOW_PARTIAL_COLLECTION", 1) != 0,
+        "min_tickers_for_signal_gate":
+            _env_int(env, "PHASE3M_MIN_TICKERS_FOR_SIGNAL_GATE",
+                     DEFAULT_MIN_TICKERS_FOR_SIGNAL_GATE),
+        "force_signal_gate":
+            _env_int(env, "PHASE3M_FORCE_SIGNAL_GATE", 0) != 0,
+    }
+
+
+def _cached_tickers(raw_dir, provider, universe):
+    """Return the set of universe tickers that already have a cached raw response file."""
+    cached = set()
+    if not provider or not os.path.isdir(raw_dir):
+        return cached
+    uni = {t.upper() for t in universe}
+    for t in uni:
+        if os.path.isfile(os.path.join(raw_dir, "%s_%s.json" % (provider, t))):
+            cached.add(t)
+    return cached
+
+
+def _load_cached_events(raw_dir, provider, universe):
+    """Load + normalize earnings events for every universe ticker with a cached raw file.
+
+    Cache-first and resumable: this reads only response bodies already on disk (no network, no
+    key), so a multi-day partial collection is assembled from whatever has been cached so far.
+    """
+    events_by_ticker = {}
+    if not provider:
+        return events_by_ticker
+    for t in universe:
+        cache_path = os.path.join(raw_dir, "%s_%s.json" % (provider, t.upper()))
+        if not os.path.isfile(cache_path):
+            continue
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                payload = json.load(f)
+        except (OSError, ValueError, json.JSONDecodeError):
+            continue
+        events = normalize_events(t, provider, payload)
+        if any(e.get("point_in_time_usable") for e in events):
+            events_by_ticker[t] = events
+    return events_by_ticker
+
+
+def _sanitize_provider_message(msg):
+    """Return a provider message safe to persist - never echo a URL or any key-bearing token."""
+    if not msg:
+        return ""
+    safe = [tok for tok in str(msg).split()
+            if not tok.lower().startswith(("http", "apikey", "token", "api_key"))]
+    return " ".join(safe)[:200]
+
+
+def build_collection_progress(provider_selected, detected_keys, universe, cached_before_count,
+                              network_budget, network_requests_this_run, cached_after_count,
+                              missing_after_count, provider_limit_hit, provider_limit_message,
+                              min_tickers, signal_gate_allowed, fetch_error=False):
+    """Assemble the resumable-collection progress record (collection_progress.json content)."""
+    if signal_gate_allowed:
+        est_runs = 0
+        next_action = "READY_RUN_SIGNAL_GATE"
+    else:
+        still_needed = max(0, min_tickers - cached_after_count)
+        still_needed = min(still_needed, missing_after_count)
+        if network_budget > 0 and still_needed > 0:
+            est_runs = int(math.ceil(still_needed / float(network_budget)))
+        else:
+            est_runs = None
+        if provider_selected is None:
+            next_action = "SET_PROVIDER_KEY"
+        elif fetch_error:
+            next_action = "DIAGNOSE_COLLECTION_ERROR"
+        elif provider_limit_hit:
+            next_action = "RESUME_AFTER_PROVIDER_LIMIT_RESETS"
+        else:
+            next_action = "RUN_AGAIN_TO_COLLECT_MORE_TICKERS"
+    return {
+        "phase": "3-N",
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "selected_provider": provider_selected,
+        "supported_provider_keys_detected_as_booleans": dict(detected_keys),
+        "universe_ticker_count": len(universe),
+        "cached_ticker_count_before_run": cached_before_count,
+        "network_request_budget": network_budget,
+        "network_requests_this_run": network_requests_this_run,
+        "cached_ticker_count_after_run": cached_after_count,
+        "missing_ticker_count_after_run": missing_after_count,
+        "provider_limit_hit": bool(provider_limit_hit),
+        "provider_limit_message_sanitized": _sanitize_provider_message(provider_limit_message),
+        "signal_gate_min_tickers": min_tickers,
+        "signal_gate_allowed_now": bool(signal_gate_allowed),
+        "estimated_additional_runs_needed_at_current_budget": est_runs,
+        "next_action": next_action,
+        "no_key_values_written": True,
+    }
+
+
+_COLLECTION_PROGRESS_CSV_COLUMNS = ["metric", "value"]
+
+
+def write_collection_progress(progress):
+    """Write collection_progress.json and a flat metric/value collection_progress.csv."""
+    _dump_json(COLLECTION_PROGRESS_JSON, progress)
+    rows = []
+    for k in (
+        "phase", "generated_at", "selected_provider", "universe_ticker_count",
+        "cached_ticker_count_before_run", "network_request_budget", "network_requests_this_run",
+        "cached_ticker_count_after_run", "missing_ticker_count_after_run", "provider_limit_hit",
+        "provider_limit_message_sanitized", "signal_gate_min_tickers", "signal_gate_allowed_now",
+        "estimated_additional_runs_needed_at_current_budget", "next_action",
+        "no_key_values_written",
+    ):
+        rows.append({"metric": k, "value": progress.get(k)})
+    for env_var in SUPPORTED_ENV_VARS:
+        rows.append({"metric": "provider_key_present[%s]" % env_var,
+                     "value": progress.get("supported_provider_keys_detected_as_booleans",
+                                           {}).get(env_var)})
+    _write_csv(COLLECTION_PROGRESS_CSV, _COLLECTION_PROGRESS_CSV_COLUMNS, rows)
+
+
+# --------------------------------------------------------------------------- #
 # Provider client (cache-first; throttled; key never logged or persisted)
 # --------------------------------------------------------------------------- #
 class ProviderClient:
     """Minimal stdlib provider client.  The API key is held only as a local attribute, is never
     written to disk, never printed, and never placed in any persisted endpoint string."""
 
-    def __init__(self, provider, api_key, host, raw_dir):
+    def __init__(self, provider, api_key, host, raw_dir, min_interval=None):
         self.provider = provider
         self._api_key = api_key            # private; never serialized
         self.host = host
@@ -554,7 +753,8 @@ class ProviderClient:
         self.errors = []
         self.rate_limit_or_premium_errors = 0
         self._last_request_time = 0.0
-        self._min_interval = PROVIDER_MIN_INTERVAL_S.get(provider, 1.0)
+        self._min_interval = (min_interval if min_interval is not None
+                              else PROVIDER_MIN_INTERVAL_S.get(provider, 1.0))
 
     def _throttle(self):
         elapsed = time.time() - self._last_request_time
@@ -1413,8 +1613,59 @@ def build_recommendation(recommendation, provider_selected, earnings_metrics, co
     }
 
 
+def build_collection_recommendation(recommendation, provider_selected, progress):
+    """Recommendation object for a resumable-collection (non-gate) result."""
+    cached = progress.get("cached_ticker_count_after_run")
+    missing = progress.get("missing_ticker_count_after_run")
+    min_t = progress.get("signal_gate_min_tickers")
+    est = progress.get("estimated_additional_runs_needed_at_current_budget")
+    reasons = {
+        REC_COLLECTING: (
+            "Resumable earnings-estimates collection is in progress: %s of the %s-ticker universe "
+            "are cached, below the %s-ticker minimum required to run the signal gate. Alpha Vantage "
+            "free-tier limits cap how many tickers can be fetched per run, so collection is "
+            "cache-first and network-budgeted across multiple runs (about %s more run(s) needed at "
+            "the current budget). Partial progress is preserved; no model is trained, no "
+            "predictions or portfolio weights are computed, and no production edge is claimed."
+            % (cached, progress.get("universe_ticker_count"), min_t,
+               est if est is not None else "an unknown number of")),
+        REC_COLLECT_READY: (
+            "Enough tickers (%s) are cached to run the earnings signal gate on the next run." % cached),
+        REC_COLLECT_BLOCKED_KEY: (
+            "No supported earnings-estimates provider key is present in the environment (checked "
+            "%s). Set ALPHAVANTAGE_API_KEY (preferred) and re-run; nothing was fetched, faked, or "
+            "modeled." % ", ".join(SUPPORTED_ENV_VARS)),
+        REC_COLLECT_BLOCKED_LIMIT: (
+            "The provider returned a rate-limit / entitlement response after caching %s ticker(s) "
+            "(%s still missing). All cached files are preserved; re-run later to resume collecting "
+            "the remainder. No data was purchased." % (cached, missing)),
+        REC_COLLECT_ERROR: (
+            "An unexpected collection error occurred; inspect the provider-access report and "
+            "re-run. No model was trained and no edge is claimed."),
+    }
+    return {
+        "recommendation": recommendation,
+        "allowed_values": COLLECTION_RECOMMENDATIONS + ALLOWED_RECOMMENDATIONS,
+        "selected_provider": provider_selected,
+        "create_production_model_candidate_now": False,
+        "train_production_model_now": False,
+        "deploy_now": False,
+        "production_edge_claimed": False,
+        "research_model_allowed_next": False,
+        "collection_in_progress": recommendation == REC_COLLECTING,
+        "signal_gate_allowed_now": progress.get("signal_gate_allowed_now", False),
+        "cached_ticker_count_after_run": cached,
+        "missing_ticker_count_after_run": missing,
+        "configure_provider_next": recommendation == REC_COLLECT_BLOCKED_KEY,
+        "reason": reasons.get(recommendation, reasons[REC_COLLECTING]),
+    }
+
+
 def build_recommended_next_phase(recommendation):
-    title, purpose = NEXT_PHASE_TABLE[recommendation]
+    if recommendation in COLLECTION_NEXT_PHASE_TABLE:
+        title, purpose = COLLECTION_NEXT_PHASE_TABLE[recommendation]
+    else:
+        title, purpose = NEXT_PHASE_TABLE[recommendation]
     return {"phase": "3-N", "title": title, "purpose": purpose}
 
 
@@ -1674,6 +1925,10 @@ _OUTPUTS_WRITTEN = {
         "earnings_sector_sanity_summary.csv",
     "decision_table_csv":
         "research/output/phase3m_earnings_estimates_signal_gate/decision_table.csv",
+    "collection_progress_json":
+        "research/output/phase3m_earnings_estimates_signal_gate/collection_progress.json",
+    "collection_progress_csv":
+        "research/output/phase3m_earnings_estimates_signal_gate/collection_progress.csv",
     "raw_cache_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw/",
 }
 
@@ -1695,57 +1950,88 @@ def run(result_json_path=RESULT_JSON, m_dir=_M_DIR, raw_dir=_RAW_DIR,
     sec_baseline = load_phase3l_sec_baseline(PHASE3L_FEATURE_IC_CSV)
 
     provider_selected, selected_env, detected_keys, host = detect_providers(env)
+    controls = read_collection_controls(env, provider_selected)
 
-    # ---- BLOCKED: no provider key ----
+    # ---- BLOCKED: no provider key (still emit truthful collection progress) ----
     if provider_selected is None:
+        progress = build_collection_progress(
+            None, detected_keys, universe, 0, controls["max_network_requests_per_run"], 0, 0,
+            len(universe), False, "", controls["min_tickers_for_signal_gate"], False)
         return _finish_blocked(
             result_json_path, REC_BLOCKED_KEY, confirmed, None, detected_keys, None, False,
-            verbose, sec_baseline)
+            verbose, sec_baseline, progress)
 
-    # ---- Provider present: ingest earnings (cache-first) ----
+    # ---- Resumable collection: fetch ONLY missing tickers under a per-run network budget ----
     client = ProviderClient(provider_selected, (env or os.environ).get(selected_env, ""), host,
-                            raw_dir)
-    events_by_ticker = {}
-    processed, failed = [], []
-    provider_limited = False
-    for n, t in enumerate(universe):
-        if verbose and n and n % 10 == 0:
-            print("  ... processed %d/%d tickers (reqs=%d, cache=%d)"
-                  % (n, len(universe), client.request_count, client.cache_hits))
-        try:
-            payload, _src = client.get_earnings(t)
-        except _ProviderLimited as e:
-            client.errors.append("%s: %s" % (t, e))
-            provider_limited = True
-            break
-        except (urllib.error.URLError, OSError, ValueError, RuntimeError,
-                json.JSONDecodeError) as e:
-            client.errors.append("%s fetch failed: %s" % (t, e))
-            failed.append({"ticker": t, "reason": "provider fetch/cache failed"})
-            continue
-        events = normalize_events(t, provider_selected, payload)
-        usable = [e for e in events if e.get("point_in_time_usable")]
-        if usable:
-            events_by_ticker[t] = events
-            processed.append(t)
-        else:
-            failed.append({"ticker": t, "reason": "no usable earnings events"})
+                            raw_dir, min_interval=controls["min_provider_sleep_seconds"])
+    cached_before = _cached_tickers(raw_dir, provider_selected, universe)
+    missing_before = [t for t in universe if t.upper() not in cached_before]
+    budget = controls["max_network_requests_per_run"]
+    provider_limit_hit = False
+    limit_message = ""
+    fetch_error = False
+    fetch_failures = []
+    net_attempts = 0
+    if controls["allow_partial_collection"] or budget > 0:
+        for t in missing_before:
+            if net_attempts >= budget:
+                break
+            net_attempts += 1
+            if verbose:
+                print("  ... collecting %s (%d/%d this run, cached_before=%d)"
+                      % (t, net_attempts, budget, len(cached_before)))
+            try:
+                client.get_earnings(t)            # cache-first; these are guaranteed-missing
+            except _ProviderLimited as e:
+                provider_limit_hit = True
+                limit_message = _sanitize_provider_message(str(e))
+                client.errors.append("%s: provider limit" % t)
+                break
+            except (urllib.error.URLError, OSError, ValueError, RuntimeError,
+                    json.JSONDecodeError) as e:
+                fetch_error = True
+                fetch_failures.append({"ticker": t, "reason": "provider fetch/cache failed"})
+                client.errors.append("%s fetch failed: %s" % (t, e))
+                continue
 
+    cached_after = _cached_tickers(raw_dir, provider_selected, universe)
+    cached_after_count = len(cached_after)
+    missing_after_count = len(universe) - cached_after_count
+    network_requests_this_run = client.network_requests
     network_used = client.network_requests > 0
     vendor_called = client.network_requests > 0
 
-    if provider_limited:
-        return _finish_blocked(
-            result_json_path, REC_BLOCKED_LIMIT, confirmed, provider_selected, detected_keys,
-            client, True, verbose, sec_baseline)
-
-    # ---- normalize events + build trailing features ----
+    # ---- build events + trailing features from ALL cached tickers (resumable, no network) ----
+    events_by_ticker = _load_cached_events(raw_dir, provider_selected, universe)
+    processed = sorted(events_by_ticker)
+    failed = [{"ticker": t, "reason": "no usable earnings events"}
+              for t in sorted(cached_after) if t not in events_by_ticker]
+    failed.extend(fetch_failures)
     all_events = []
     for t in sorted(events_by_ticker):
         all_events.extend(events_by_ticker[t])
     feature_rows = build_earnings_features(events_by_ticker)
     feature_coverage = build_earnings_feature_coverage(feature_rows, sector_of)
     earnings_feature_ticker_count = len({r["ticker"] for r in feature_rows})
+
+    signal_gate_allowed = (cached_after_count >= controls["min_tickers_for_signal_gate"]
+                           or controls["force_signal_gate"])
+    progress = build_collection_progress(
+        provider_selected, detected_keys, universe, len(cached_before), budget,
+        network_requests_this_run, cached_after_count, missing_after_count, provider_limit_hit,
+        limit_message, controls["min_tickers_for_signal_gate"], signal_gate_allowed,
+        fetch_error=fetch_error)
+
+    # ---- Not enough cached coverage yet: preserve partial progress, do NOT run the IC gate ----
+    if not signal_gate_allowed:
+        collection_rec = REC_COLLECT_BLOCKED_LIMIT if provider_limit_hit else REC_COLLECTING
+        if fetch_error and not provider_limit_hit and network_requests_this_run == 0:
+            collection_rec = REC_COLLECT_ERROR
+        return _finish_collecting(
+            result_json_path, collection_rec, confirmed, phase3l, provider_selected, detected_keys,
+            client, provider_limit_hit, sec_baseline, progress, all_events, feature_rows,
+            feature_coverage, earnings_feature_ticker_count, processed, failed, network_used,
+            vendor_called, verbose)
 
     # ---- combine with the Phase 3-L panel (reuse labels) ----
     active_by_ticker = _active_feature_snapshots(feature_rows)
@@ -1892,17 +2178,124 @@ def run(result_json_path=RESULT_JSON, m_dir=_M_DIR, raw_dir=_RAW_DIR,
         stable_families=stable_families, decision_table=decision_table,
         features_computed=True, price_join=True, labels_reused=True, best_earnings=best_earnings)
 
+    write_collection_progress(progress)
+    result["collection_progress"] = progress
     _dump_json(result_json_path, result)
+    if verbose:
+        print("Phase 3-M signal gate run on %d cached tickers -> %s"
+              % (cached_after_count, recommendation))
+    return result
+
+
+def _finish_collecting(result_json_path, recommendation, confirmed, phase3l, provider_selected,
+                       detected_keys, client, provider_limit_hit, sec_baseline, progress,
+                       all_events, feature_rows, feature_coverage, earnings_feature_ticker_count,
+                       processed, failed, network_used, vendor_called, verbose):
+    """Resumable-collection result (below the signal-gate minimum): write truthful partial state
+    and progress artifacts WITHOUT running the IC gate and WITHOUT erasing cached progress."""
+    # Real partial artifacts (earnings events / features / coverage from cached tickers); the
+    # IC-dependent artifacts stay header-only because the gate has not run yet.
+    _write_csv(EARNINGS_EVENTS_CSV, EARNINGS_EVENT_COLUMNS, all_events)
+    _write_csv(EARNINGS_FEATURES_CSV, EARNINGS_FEATURE_COLUMNS, feature_rows)
+    _write_csv(EARNINGS_FEATURE_COVERAGE_CSV, EARNINGS_FEATURE_COVERAGE_COLUMNS, feature_coverage)
+    _write_csv(COMBINED_PANEL_CSV, COMBINED_PANEL_COLUMNS, [])
+    _write_csv(EARNINGS_LABEL_SUMMARY_CSV, LABEL_SUMMARY_COLUMNS, [])
+    _write_csv(EARNINGS_FEATURE_IC_CSV, FEATURE_IC_COLUMNS, [])
+    _write_csv(EARNINGS_FEATURE_FAMILY_IC_CSV, FEATURE_FAMILY_IC_COLUMNS, [])
+    _write_csv(EARNINGS_HORIZON_READINESS_CSV, HORIZON_READINESS_COLUMNS, [])
+    _write_csv(EARNINGS_YEARLY_IC_CSV, YEARLY_IC_COLUMNS, [])
+    _write_csv(EARNINGS_SECTOR_SANITY_CSV, SECTOR_SANITY_COLUMNS, [])
+
+    provider_summary = build_provider_access_summary(
+        provider_selected, detected_keys, client, provider_limit_hit, recommendation)
+    _dump_json(PROVIDER_ACCESS_JSON, provider_summary)
+    write_collection_progress(progress)
+
+    decision_table = [
+        {"decision_item": "collection_recommendation", "value": recommendation, "passed": "",
+         "note": "resumable collection state (not a signal decision)"},
+        {"decision_item": "cached_ticker_count_after_run",
+         "value": progress["cached_ticker_count_after_run"],
+         "passed": progress["signal_gate_allowed_now"],
+         "note": "signal gate needs >= %d cached tickers" % progress["signal_gate_min_tickers"]},
+        {"decision_item": "missing_ticker_count_after_run",
+         "value": progress["missing_ticker_count_after_run"], "passed": "",
+         "note": "tickers still to collect in later runs"},
+        {"decision_item": "network_requests_this_run",
+         "value": progress["network_requests_this_run"], "passed": "",
+         "note": "bounded by PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN=%d"
+                 % progress["network_request_budget"]},
+        {"decision_item": "provider_limit_hit", "value": progress["provider_limit_hit"],
+         "passed": "", "note": progress["provider_limit_message_sanitized"]},
+        {"decision_item": "signal_gate_allowed_now", "value": progress["signal_gate_allowed_now"],
+         "passed": progress["signal_gate_allowed_now"], "note": "IC gate not run below the minimum"},
+        {"decision_item": "no_model_training", "value": True, "passed": True,
+         "note": "this phase trains no model"},
+        {"decision_item": "labels_reused_not_recomputed", "value": True, "passed": True,
+         "note": "no new target computed during collection"},
+    ]
+    _write_csv(DECISION_TABLE_CSV, DECISION_TABLE_COLUMNS, decision_table)
+
+    result = {
+        "phase": PHASE,                                   # result phase stays 3-M
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "inputs_read": dict(_INPUTS_READ),
+        "outputs_written": dict(_OUTPUTS_WRITTEN),
+        "selected_provider": provider_selected,
+        "cached_ticker_count_after_run": progress["cached_ticker_count_after_run"],
+        "missing_ticker_count_after_run": progress["missing_ticker_count_after_run"],
+        "signal_gate_allowed_now": progress["signal_gate_allowed_now"],
+        "phase3l_summary": {
+            "phase3l_confirmed": confirmed,
+            "phase3l_recommendation": (phase3l or {}).get("recommendation", {}).get("recommendation"),
+            "sec_only_baseline": sec_baseline,
+        },
+        "provider_access_summary": provider_summary,
+        "earnings_events_summary": {
+            "provider": provider_selected, "event_rows": len(all_events),
+            "processed_ticker_count": len(processed), "failed_ticker_count": len(failed),
+            "failed_tickers": failed,
+            "point_in_time_usable_event_rows": sum(1 for e in all_events
+                                                   if e.get("point_in_time_usable")),
+            "availability_is_reported_date": True,
+        },
+        "earnings_feature_summary": {
+            "earnings_feature_count": len(EARNINGS_FEATURES),
+            "earnings_features": list(EARNINGS_FEATURES),
+            "earnings_feature_ticker_count": earnings_feature_ticker_count,
+            "feature_rows": len(feature_rows),
+            "estimate_revision_proxy_available": False,
+        },
+        "collection_progress": progress,
+        "source_limitations": list(_SOURCE_LIMITATIONS),
+        "recommendation": build_collection_recommendation(recommendation, provider_selected,
+                                                          progress),
+        "interpretation": build_interpretation(
+            recommendation, provider_selected, network_used, vendor_called,
+            features_computed=bool(feature_rows), price_join=False, labels_reused=False),
+        "recommended_next_phase": build_recommended_next_phase(recommendation),
+    }
+    result.update(build_safety_flags(
+        recommendation, network_used, vendor_called, provider_selected,
+        features_computed=bool(feature_rows), price_join=False, labels_reused=False))
+    _dump_json(result_json_path, result)
+    if verbose:
+        print("Phase 3-N collection %s: cached=%d/%d, this_run=%d, gate_allowed=%s"
+              % (recommendation, progress["cached_ticker_count_after_run"],
+                 progress["universe_ticker_count"], progress["network_requests_this_run"],
+                 progress["signal_gate_allowed_now"]))
     return result
 
 
 def _finish_blocked(result_json_path, recommendation, confirmed, provider_selected, detected_keys,
-                    client, provider_limited, verbose, sec_baseline):
+                    client, provider_limited, verbose, sec_baseline, progress=None):
     """Write provider report, header-only artifacts, and a BLOCKED result JSON; no modeling."""
     _write_all_empty_artifacts()
     provider_summary = build_provider_access_summary(
         provider_selected, detected_keys, client, provider_limited, recommendation)
     _dump_json(PROVIDER_ACCESS_JSON, provider_summary)
+    if progress is not None:
+        write_collection_progress(progress)
     empty_metrics = {"moderate_feature_count": 0, "moderate_features": [], "strong_feature_count":
                      0, "strong_features": [], "any_horizon_ready": False,
                      "max_distinct_ic_years": 0, "max_abs_ic": None}
@@ -1943,6 +2336,8 @@ def _finish_blocked(result_json_path, recommendation, confirmed, provider_select
         sector_rows=[], earnings_metrics=empty_metrics, combined_metrics=empty_metrics,
         stable_families=0, decision_table=decision_table,
         features_computed=False, price_join=False, labels_reused=False, best_earnings=[])
+    if progress is not None:
+        result["collection_progress"] = progress
     _dump_json(result_json_path, result)
     if verbose:
         print("Phase 3-M BLOCKED: %s" % recommendation)
@@ -2051,8 +2446,10 @@ def main():
     rec = result["recommendation"]
     nxt = result["recommended_next_phase"]
     pas = result["provider_access_summary"]
-    es = result["earnings_events_summary"]
-    cs = result["combined_panel_summary"]
+    es = result.get("earnings_events_summary", {})
+    cs = result.get("combined_panel_summary", {})
+    cp = result.get("collection_progress", {})
+    sg = result.get("signal_gate_summary", {})
     print("Phase %s - Earnings Estimates / Surprise Data Gate + Immediate Signal Test"
           % result["phase"])
     print("  phase3l confirmed        : %s"
@@ -2061,17 +2458,33 @@ def main():
     print("  selected provider        : %s" % pas["selected_provider"])
     print("  network used / vendor    : %s / %s" % (result["network_used"],
                                                      result["vendor_api_called"]))
-    print("  processed tickers        : %s" % es["processed_ticker_count"])
+    if cp:
+        print("  --- resumable collection ---")
+        print("  cached before / after    : %s / %s"
+              % (cp.get("cached_ticker_count_before_run"),
+                 cp.get("cached_ticker_count_after_run")))
+        print("  network requests this run: %s" % cp.get("network_requests_this_run"))
+        print("  missing after run        : %s" % cp.get("missing_ticker_count_after_run"))
+        print("  provider limit hit       : %s" % cp.get("provider_limit_hit"))
+        print("  signal gate min / allowed: %s / %s"
+              % (cp.get("signal_gate_min_tickers"), cp.get("signal_gate_allowed_now")))
+        print("  est. additional runs     : %s"
+              % cp.get("estimated_additional_runs_needed_at_current_budget"))
+        print("  next action              : %s" % cp.get("next_action"))
+    print("  processed tickers        : %s" % es.get("processed_ticker_count"))
     print("  earnings feature tickers : %s"
-          % result["earnings_feature_summary"]["earnings_feature_ticker_count"])
-    print("  combined panel rows      : %s" % cs["combined_panel_rows"])
-    print("  leakage failures         : %s" % result["leakage_check_summary"]["leakage_failure_count"])
-    print("  earnings-only mod/strong : %s / %s"
-          % (result["signal_gate_summary"]["earnings_only_metrics"]["moderate_feature_count"],
-             result["signal_gate_summary"]["earnings_only_metrics"]["strong_feature_count"]))
-    print("  combined mod/strong      : %s / %s"
-          % (result["signal_gate_summary"]["combined_metrics"]["moderate_feature_count"],
-             result["signal_gate_summary"]["combined_metrics"]["strong_feature_count"]))
+          % result.get("earnings_feature_summary", {}).get("earnings_feature_ticker_count"))
+    print("  combined panel rows      : %s" % cs.get("combined_panel_rows", "n/a (not gated yet)"))
+    if "leakage_check_summary" in result:
+        print("  leakage failures         : %s"
+              % result["leakage_check_summary"]["leakage_failure_count"])
+    if sg:
+        print("  earnings-only mod/strong : %s / %s"
+              % (sg["earnings_only_metrics"]["moderate_feature_count"],
+                 sg["earnings_only_metrics"]["strong_feature_count"]))
+        print("  combined mod/strong      : %s / %s"
+              % (sg["combined_metrics"]["moderate_feature_count"],
+                 sg["combined_metrics"]["strong_feature_count"]))
     print("  model trained            : %s" % result["model_trained"])
     print("  recommendation           : %s" % rec["recommendation"])
     print("  research model next      : %s" % rec["research_model_allowed_next"])

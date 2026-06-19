@@ -119,11 +119,16 @@ _SUPPORTED_ENV_VARS = {
     "ALPHAVANTAGE_API_KEY", "FMP_API_KEY", "FINNHUB_API_KEY", "INTRINIO_API_KEY",
 }
 
-_REQUIRED_JSON_FIELDS = (
+# Always present, whether the run computed the signal gate or is still collecting tickers.
+_REQUIRED_JSON_FIELDS_BASE = (
     "phase", "generated_at", "inputs_read", "outputs_written", "phase3l_summary",
     "provider_access_summary", "earnings_events_summary", "earnings_feature_summary",
+    "recommendation", "interpretation", "recommended_next_phase",
+)
+# Present only when the IC signal gate actually ran (i.e. not a resumable-collection result).
+_GATE_ONLY_JSON_FIELDS = (
     "combined_panel_summary", "leakage_check_summary", "signal_gate_summary",
-    "comparison_to_phase3l_sec_only", "recommendation", "interpretation", "recommended_next_phase",
+    "comparison_to_phase3l_sec_only",
 )
 # Always false regardless of provider availability.
 _REQUIRED_FALSE = (
@@ -138,7 +143,7 @@ _REQUIRED_FALSE = (
 _REQUIRED_TRUE = (
     "no_trading", "no_orders", "no_automation", "labels_for_validation_only",
 )
-_ALLOWED_RECOMMENDATIONS = {
+_GATE_RECOMMENDATIONS = {
     "EARNINGS_ESTIMATES_SIGNAL_GATE_PASSES_RESEARCH_MODEL_ALLOWED",
     "EARNINGS_ESTIMATES_SIGNAL_GATE_WEAK_BUT_USEFUL",
     "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
@@ -146,6 +151,15 @@ _ALLOWED_RECOMMENDATIONS = {
     "EARNINGS_ESTIMATES_SIGNAL_GATE_FAILS",
     "EARNINGS_ESTIMATES_SIGNAL_GATE_INCONCLUSIVE_COVERAGE",
 }
+# Phase 3-N resumable-collection controller recommendations (the result may carry either set).
+_COLLECTION_RECOMMENDATIONS = {
+    "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS",
+    "EARNINGS_PROVIDER_COLLECTION_READY_FOR_SIGNAL_GATE",
+    "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY",
+    "EARNINGS_PROVIDER_COLLECTION_BLOCKED_PROVIDER_LIMIT",
+    "EARNINGS_PROVIDER_COLLECTION_ERROR",
+}
+_ALLOWED_RECOMMENDATIONS = _GATE_RECOMMENDATIONS | _COLLECTION_RECOMMENDATIONS
 _REQUIRED_DOC_PHRASES = [
     "does not deploy",
     "does not restart stock-api.service",
@@ -322,12 +336,20 @@ def _result():
     return json.loads(_read(_RESULT))
 
 
+def _is_collection_result(d):
+    """A resumable-collection (non-gate) result carries a collection recommendation."""
+    return d.get("recommendation", {}).get("recommendation") in _COLLECTION_RECOMMENDATIONS
+
+
 def test_committed_result_artifact_valid():
     if not os.path.isfile(_RESULT):
         raise _Skip("committed result JSON not present")
     d = _result()
-    for k in _REQUIRED_JSON_FIELDS:
+    for k in _REQUIRED_JSON_FIELDS_BASE:
         assert k in d, "committed JSON missing field: %s" % k
+    if not _is_collection_result(d):
+        for k in _GATE_ONLY_JSON_FIELDS:
+            assert k in d, "committed gate JSON missing field: %s" % k
     assert d["phase"] == "3-M"
     for k in _REQUIRED_FALSE:
         assert d[k] is False, "%s must be false" % k
@@ -381,7 +403,8 @@ def test_labels_reused_not_recomputed():
     d = _result()
     assert d["labels_computed"] is False
     assert d["labels_for_validation_only"] is True
-    assert d["signal_gate_summary"]["labels_for_validation_only"] is True
+    if "signal_gate_summary" in d:
+        assert d["signal_gate_summary"]["labels_for_validation_only"] is True
 
 
 def test_no_paid_vendor_or_purchase():
@@ -397,8 +420,11 @@ def test_leakage_zero_unless_blocked():
         raise _Skip("committed result JSON not present")
     d = _result()
     rec = d["recommendation"]["recommendation"]
-    if rec not in ("EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
-                   "EARNINGS_ESTIMATES_GATE_BLOCKED_PROVIDER_LIMIT"):
+    # Leakage is only meaningful once the gate ran (combined panel built). BLOCKED and
+    # resumable-collection results carry no leakage summary.
+    if ("leakage_check_summary" in d
+            and rec not in ("EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
+                            "EARNINGS_ESTIMATES_GATE_BLOCKED_PROVIDER_LIMIT")):
         assert d["leakage_check_summary"]["leakage_failure_count"] == 0, \
             "a non-blocked run must be leakage-free"
 
@@ -417,7 +443,7 @@ def test_blocked_when_no_key_present():
         assert d["recommended_next_phase"]["title"] == "Configure Earnings Estimates Provider"
         # No data faked: no events / features / combined rows.
         assert d["earnings_events_summary"]["event_rows"] == 0
-        assert d["combined_panel_summary"]["combined_panel_rows"] == 0
+        assert d.get("combined_panel_summary", {}).get("combined_panel_rows", 0) == 0
 
 
 # --------------------------------------------------------------------------- #
@@ -480,10 +506,134 @@ def test_recommendation_and_next_phase():
 
 def test_all_recommendations_route_to_3n():
     mod = _import_analyzer()
-    for rec in mod.ALLOWED_RECOMMENDATIONS:
+    for rec in list(mod.ALLOWED_RECOMMENDATIONS) + list(mod.COLLECTION_RECOMMENDATIONS):
         nxt = mod.build_recommended_next_phase(rec)
         assert nxt["phase"] == "3-N"
         assert nxt["title"] and nxt["purpose"]
+
+
+# --------------------------------------------------------------------------- #
+# 8b. Phase 3-N resumable-collection controller
+# --------------------------------------------------------------------------- #
+def _collection_progress():
+    mod = _import_analyzer()
+    return json.loads(_read(mod.COLLECTION_PROGRESS_JSON))
+
+
+def test_collection_controls_defaults():
+    """Env-var controls default exactly as specified and read scalars only (no key value)."""
+    mod = _import_analyzer()
+    c = mod.read_collection_controls(env={}, provider=mod.PROVIDER_ALPHAVANTAGE)
+    assert c["max_network_requests_per_run"] == 20
+    assert c["min_provider_sleep_seconds"] == 15.0
+    assert c["allow_partial_collection"] is True
+    assert c["min_tickers_for_signal_gate"] == 75
+    assert c["force_signal_gate"] is False
+    # Overrides parse correctly.
+    c2 = mod.read_collection_controls(env={
+        "PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN": "5",
+        "PHASE3M_MIN_PROVIDER_SLEEP_SECONDS": "20",
+        "PHASE3M_ALLOW_PARTIAL_COLLECTION": "0",
+        "PHASE3M_MIN_TICKERS_FOR_SIGNAL_GATE": "40",
+        "PHASE3M_FORCE_SIGNAL_GATE": "1",
+    }, provider=mod.PROVIDER_ALPHAVANTAGE)
+    assert c2["max_network_requests_per_run"] == 5
+    assert c2["min_provider_sleep_seconds"] == 20.0
+    assert c2["allow_partial_collection"] is False
+    assert c2["min_tickers_for_signal_gate"] == 40
+    assert c2["force_signal_gate"] is True
+
+
+def test_collection_progress_builder_no_key_values():
+    """build_collection_progress reports booleans only and never persists a key value."""
+    mod = _import_analyzer()
+    detected = {e: (e == "ALPHAVANTAGE_API_KEY") for e in mod.SUPPORTED_ENV_VARS}
+    prog = mod.build_collection_progress(
+        mod.PROVIDER_ALPHAVANTAGE, detected, ["AAPL", "MSFT", "IBM"], 1, 20, 2, 3, 0,
+        provider_limit_hit=True, provider_limit_message="provider returned a rate-limit response",
+        min_tickers=75, signal_gate_allowed=False)
+    assert prog["phase"] == "3-N"
+    assert prog["no_key_values_written"] is True
+    for v in prog["supported_provider_keys_detected_as_booleans"].values():
+        assert isinstance(v, bool)
+    assert isinstance(prog["signal_gate_allowed_now"], bool)
+    assert prog["cached_ticker_count_after_run"] == 3
+    assert prog["missing_ticker_count_after_run"] == 0
+    # The sanitized provider message never carries a URL or key-bearing token.
+    msg = prog["provider_limit_message_sanitized"]
+    assert "http" not in msg.lower() and "token" not in msg.lower() and "apikey" not in msg.lower()
+    # Serialize and confirm no obvious secret leaks.
+    blob = json.dumps(prog)
+    assert "REDACTED" not in blob  # nothing key-shaped is even referenced here
+    assert "DUMMY" not in blob
+
+
+def test_collection_progress_partial_limit_does_not_fail():
+    """A provider-limit partial collection still yields a valid, complete progress record."""
+    mod = _import_analyzer()
+    detected = {e: False for e in mod.SUPPORTED_ENV_VARS}
+    detected["ALPHAVANTAGE_API_KEY"] = True
+    prog = mod.build_collection_progress(
+        mod.PROVIDER_ALPHAVANTAGE, detected, ["A"] * 128, 25, 20, 0, 25, 103,
+        provider_limit_hit=True, provider_limit_message="rate limit", min_tickers=75,
+        signal_gate_allowed=False)
+    required = {
+        "phase", "generated_at", "selected_provider",
+        "supported_provider_keys_detected_as_booleans", "universe_ticker_count",
+        "cached_ticker_count_before_run", "network_request_budget", "network_requests_this_run",
+        "cached_ticker_count_after_run", "missing_ticker_count_after_run", "provider_limit_hit",
+        "provider_limit_message_sanitized", "signal_gate_min_tickers", "signal_gate_allowed_now",
+        "estimated_additional_runs_needed_at_current_budget", "next_action",
+        "no_key_values_written",
+    }
+    assert required <= set(prog), "progress missing fields: %s" % (required - set(prog))
+    assert prog["provider_limit_hit"] is True
+    assert prog["signal_gate_allowed_now"] is False
+    # 50 still needed (75-25), 20/run -> ceil(50/20) = 3 additional runs.
+    assert prog["estimated_additional_runs_needed_at_current_budget"] == 3
+
+
+def test_committed_collection_progress_artifacts():
+    """When the committed run was a resumable-collection run, its progress artifacts are valid."""
+    if not os.path.isfile(_RESULT):
+        raise _Skip("committed result JSON not present")
+    mod = _import_analyzer()
+    if not (os.path.isfile(mod.COLLECTION_PROGRESS_JSON)
+            and os.path.isfile(mod.COLLECTION_PROGRESS_CSV)):
+        raise _Skip("no committed collection progress artifacts")
+    prog = _collection_progress()
+    assert prog["phase"] == "3-N"
+    assert prog["no_key_values_written"] is True
+    assert isinstance(prog["cached_ticker_count_after_run"], int)
+    assert isinstance(prog["missing_ticker_count_after_run"], int)
+    assert isinstance(prog["signal_gate_allowed_now"], bool)
+    for v in prog["supported_provider_keys_detected_as_booleans"].values():
+        assert isinstance(v, bool)
+    # The CSV is a flat metric/value table that mirrors the JSON metrics.
+    rows = _read_csv_rows(mod.COLLECTION_PROGRESS_CSV)
+    metrics = {r["metric"] for r in rows}
+    for m in ("cached_ticker_count_after_run", "missing_ticker_count_after_run",
+              "signal_gate_allowed_now", "phase"):
+        assert m in metrics, "collection_progress.csv missing metric: %s" % m
+
+
+def test_committed_collection_result_when_in_progress():
+    """If the committed result is a collection result, it carries the contract fields."""
+    if not os.path.isfile(_RESULT):
+        raise _Skip("committed result JSON not present")
+    d = _result()
+    if not _is_collection_result(d):
+        raise _Skip("committed result is a gate result, not a collection result")
+    assert d["phase"] == "3-M"
+    assert "collection_progress" in d
+    assert isinstance(d["cached_ticker_count_after_run"], int)
+    assert isinstance(d["missing_ticker_count_after_run"], int)
+    assert d["signal_gate_allowed_now"] is False
+    assert d["research_model_allowed_next"] is False
+    assert d["recommendation"]["research_model_allowed_next"] is False
+    assert d["recommended_next_phase"]["phase"] == "3-N"
+    if d["recommendation"]["recommendation"] == "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS":
+        assert d["recommended_next_phase"]["title"] == "Continue Resumable Earnings Collection"
 
 
 # --------------------------------------------------------------------------- #
