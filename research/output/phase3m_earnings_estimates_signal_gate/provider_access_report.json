@@ -1,0 +1,29 @@
+{
+  "detected_keys": {
+    "ALPHAVANTAGE_API_KEY": false,
+    "FMP_API_KEY": false,
+    "FINNHUB_API_KEY": false,
+    "INTRINIO_API_KEY": false
+  },
+  "supported_env_vars": [
+    "ALPHAVANTAGE_API_KEY",
+    "FMP_API_KEY",
+    "FINNHUB_API_KEY",
+    "INTRINIO_API_KEY"
+  ],
+  "provider_priority_order": [
+    "alpha_vantage",
+    "fmp",
+    "finnhub",
+    "intrinio"
+  ],
+  "selected_provider": null,
+  "endpoint_used": null,
+  "entitlement_status": "no_key",
+  "network_used": false,
+  "request_count": 0,
+  "cache_hit_count": 0,
+  "rate_limit_or_premium_errors": 0,
+  "key_values_never_stored": true,
+  "recommendation": "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY"
+}

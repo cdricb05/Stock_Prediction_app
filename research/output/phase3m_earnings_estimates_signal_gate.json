@@ -1,0 +1,507 @@
+{
+  "phase": "3-M",
+  "generated_at": "2026-06-19T12:05:42",
+  "inputs_read": {
+    "phase3l_result_json": "research/output/phase3l_sec_universe_signal_gate.json",
+    "phase3l_aligned_panel_csv": "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv",
+    "phase3l_company_identity_csv": "research/output/phase3l_sec_universe_signal_gate/company_identity_universe.csv",
+    "phase3l_label_summary_csv": "research/output/phase3l_sec_universe_signal_gate/label_summary_by_horizon.csv",
+    "phase3l_feature_ic_summary_csv": "research/output/phase3l_sec_universe_signal_gate/feature_ic_summary.csv",
+    "phase3l_horizon_readiness_csv": "research/output/phase3l_sec_universe_signal_gate/horizon_readiness_summary.csv",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3m_earnings_estimates_signal_gate.json",
+    "provider_access_report_json": "research/output/phase3m_earnings_estimates_signal_gate/provider_access_report.json",
+    "earnings_events_universe_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_events_universe.csv",
+    "earnings_features_universe_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_features_universe.csv",
+    "combined_fundamental_earnings_panel_csv": "research/output/phase3m_earnings_estimates_signal_gate/combined_fundamental_earnings_panel.csv",
+    "earnings_feature_coverage_by_ticker_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_feature_coverage_by_ticker.csv",
+    "earnings_label_summary_by_horizon_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_label_summary_by_horizon.csv",
+    "earnings_feature_ic_summary_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_feature_ic_summary.csv",
+    "earnings_feature_family_ic_summary_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_feature_family_ic_summary.csv",
+    "earnings_horizon_readiness_summary_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_horizon_readiness_summary.csv",
+    "earnings_yearly_ic_summary_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_yearly_ic_summary.csv",
+    "earnings_sector_sanity_summary_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_sector_sanity_summary.csv",
+    "decision_table_csv": "research/output/phase3m_earnings_estimates_signal_gate/decision_table.csv",
+    "raw_cache_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw/"
+  },
+  "phase3l_summary": {
+    "phase3l_confirmed": {
+      "phase3l_present": true,
+      "phase_is_3l": true,
+      "recommendation_is_weak_add_revisions": true,
+      "next_phase_is_3m": true,
+      "processed_ticker_count_128": true,
+      "aligned_ticker_count_128": true,
+      "leakage_failure_count_zero": true,
+      "research_model_allowed_next_false": true,
+      "model_trained_false": true,
+      "predictions_computed_false": true,
+      "portfolio_weights_computed_false": true,
+      "production_model_candidate_created_false": true,
+      "all_confirmed": true
+    },
+    "phase3l_recommendation": "SEC_UNIVERSE_SIGNAL_GATE_WEAK_BUT_EXPAND_OR_ADD_REVISIONS",
+    "phase3l_processed_ticker_count": 128,
+    "phase3l_aligned_ticker_count": 128,
+    "sec_only_baseline": {
+      "available": true,
+      "moderate_or_better_count": 4,
+      "strong_count": 1,
+      "moderate_or_better_features": [
+        "accrual_proxy",
+        "filing_lag_days",
+        "log_total_assets",
+        "log_total_liabilities_abs"
+      ],
+      "strong_features": [
+        "log_total_assets"
+      ],
+      "max_absolute_mean_ic": 0.091227
+    }
+  },
+  "provider_access_summary": {
+    "detected_keys": {
+      "ALPHAVANTAGE_API_KEY": false,
+      "FMP_API_KEY": false,
+      "FINNHUB_API_KEY": false,
+      "INTRINIO_API_KEY": false
+    },
+    "supported_env_vars": [
+      "ALPHAVANTAGE_API_KEY",
+      "FMP_API_KEY",
+      "FINNHUB_API_KEY",
+      "INTRINIO_API_KEY"
+    ],
+    "provider_priority_order": [
+      "alpha_vantage",
+      "fmp",
+      "finnhub",
+      "intrinio"
+    ],
+    "selected_provider": null,
+    "endpoint_used": null,
+    "entitlement_status": "no_key",
+    "network_used": false,
+    "request_count": 0,
+    "cache_hit_count": 0,
+    "rate_limit_or_premium_errors": 0,
+    "key_values_never_stored": true,
+    "recommendation": "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY"
+  },
+  "earnings_events_summary": {
+    "provider": null,
+    "event_rows": 0,
+    "processed_ticker_count": 0,
+    "failed_ticker_count": 0,
+    "failed_tickers": [],
+    "point_in_time_usable_event_rows": 0,
+    "availability_is_reported_date": true,
+    "blocked_reason": "no supported provider API key in environment"
+  },
+  "earnings_feature_summary": {
+    "earnings_feature_count": 12,
+    "earnings_features": [
+      "eps_surprise",
+      "eps_surprise_pct",
+      "positive_surprise_flag",
+      "negative_surprise_flag",
+      "surprise_magnitude_abs",
+      "trailing_4q_avg_surprise_pct",
+      "trailing_4q_positive_surprise_rate",
+      "trailing_8q_avg_surprise_pct",
+      "surprise_acceleration",
+      "days_since_last_earnings",
+      "earnings_event_recency_bucket",
+      "estimate_revision_proxy"
+    ],
+    "earnings_feature_family_of": {
+      "eps_surprise": "earnings_surprise",
+      "eps_surprise_pct": "earnings_surprise",
+      "positive_surprise_flag": "earnings_surprise",
+      "negative_surprise_flag": "earnings_surprise",
+      "surprise_magnitude_abs": "earnings_surprise",
+      "trailing_4q_avg_surprise_pct": "earnings_surprise_trend",
+      "trailing_4q_positive_surprise_rate": "earnings_surprise_trend",
+      "trailing_8q_avg_surprise_pct": "earnings_surprise_trend",
+      "surprise_acceleration": "earnings_surprise_trend",
+      "days_since_last_earnings": "earnings_recency",
+      "earnings_event_recency_bucket": "earnings_recency",
+      "estimate_revision_proxy": "estimate_revision"
+    },
+    "earnings_feature_ticker_count": 0,
+    "estimate_revision_proxy_available": false,
+    "estimate_revision_proxy_note": "not evaluated (blocked)",
+    "feature_rows": 0
+  },
+  "combined_panel_summary": {
+    "combined_panel_rows": 0,
+    "combined_panel_is_compact": true,
+    "compact_columns": [
+      "ticker",
+      "sector",
+      "scoring_date",
+      "active_earnings_reported_date",
+      "active_earnings_fiscal_date_ending",
+      "earnings_age_days",
+      "earnings_provider",
+      "eps_surprise",
+      "eps_surprise_pct",
+      "positive_surprise_flag",
+      "negative_surprise_flag",
+      "surprise_magnitude_abs",
+      "trailing_4q_avg_surprise_pct",
+      "trailing_4q_positive_surprise_rate",
+      "trailing_8q_avg_surprise_pct",
+      "surprise_acceleration",
+      "days_since_last_earnings",
+      "earnings_event_recency_bucket",
+      "estimate_revision_proxy",
+      "forward_excess_return_vs_spy_21d",
+      "forward_excess_return_vs_spy_63d",
+      "forward_excess_return_vs_spy_126d",
+      "forward_return_rank_by_date_21d",
+      "forward_return_rank_by_date_63d",
+      "forward_return_rank_by_date_126d"
+    ],
+    "compact_note": "not built (blocked)",
+    "sec_features_present_in_memory": false,
+    "earnings_staleness_cap_days": 180,
+    "rows_with_active_earnings_event": 0
+  },
+  "leakage_check_summary": {
+    "leakage_failure_count": 0,
+    "checks_evaluated": [
+      "active_earnings_availability_present",
+      "active_earnings_availability_before_scoring_date",
+      "availability_date_is_reported_date_not_fiscal_end",
+      "earnings_age_within_staleness_cap",
+      "label_reused_from_phase3l_not_recomputed"
+    ],
+    "all_checks_passed": true,
+    "by_check": []
+  },
+  "ic_methodology": {
+    "ic_type": "cross-sectional daily Spearman rank information coefficient",
+    "labels_reused_from_phase3l": [
+      "forward_excess_return_vs_spy_{h}d",
+      "forward_return_rank_by_date_{h}d"
+    ],
+    "min_cross_section_per_date_partial": 15,
+    "min_cross_section_per_date_full": 25,
+    "feature_groups": [
+      "earnings_only",
+      "sec_only",
+      "combined"
+    ],
+    "moderate_or_better_gate": {
+      "abs_mean_rank_ic_at_least": 0.03,
+      "date_count_at_least": 100,
+      "ic_hit_rate_at_least": 0.52,
+      "non_null_feature_fraction_at_least": 0.5
+    },
+    "strong_gate": {
+      "abs_mean_rank_ic_at_least": 0.05,
+      "date_count_at_least": 100,
+      "ic_hit_rate_at_least": 0.55,
+      "non_null_feature_fraction_at_least": 0.6,
+      "bucket_spread_sign_matches_ic": true,
+      "bucket_spread_hit_rate_at_least": 0.55
+    },
+    "temporal_breadth_gate": {
+      "dense_cross_section_min_names": 25,
+      "min_qualifying_dates_per_year": 20,
+      "full_min_distinct_years": 6,
+      "partial_min_distinct_years": 4
+    },
+    "no_model_fit": true,
+    "survivorship_caveat": "current-as-of universe; daily overlapping windows; ICs are diagnostic only and claim no edge."
+  },
+  "signal_gate_summary": {
+    "label_coverage_by_horizon": {
+      "21d": 0.0,
+      "63d": 0.0,
+      "126d": 0.0
+    },
+    "labels_for_validation_only": true,
+    "labels_reused_from_phase3l": false,
+    "by_horizon_label_summary": [],
+    "earnings_only_metrics": {
+      "moderate_feature_count": 0,
+      "moderate_features": [],
+      "strong_feature_count": 0,
+      "strong_features": [],
+      "any_horizon_ready": false,
+      "max_distinct_ic_years": 0,
+      "max_abs_ic": null
+    },
+    "combined_metrics": {
+      "moderate_feature_count": 0,
+      "moderate_features": [],
+      "strong_feature_count": 0,
+      "strong_features": [],
+      "any_horizon_ready": false,
+      "max_distinct_ic_years": 0,
+      "max_abs_ic": null
+    },
+    "stable_family_count": 0,
+    "best_earnings_features": [],
+    "feature_ic_summary": [],
+    "feature_family_summary": [],
+    "horizon_readiness_summary": [],
+    "yearly_stability_summary": {
+      "by_feature_horizon": [],
+      "by_year": []
+    },
+    "sector_sanity_summary": [],
+    "decision_table": [
+      {
+        "decision_item": "phase3l_confirmed",
+        "value": true,
+        "passed": true,
+        "note": "Phase 3-L confirmed as SEC_UNIVERSE_SIGNAL_GATE_WEAK_BUT_EXPAND_OR_ADD_REVISIONS, routed to 3-M"
+      },
+      {
+        "decision_item": "provider_selected",
+        "value": null,
+        "passed": false,
+        "note": "an earnings-estimates provider key must be present (priority: ALPHAVANTAGE_API_KEY, FMP_API_KEY, FINNHUB_API_KEY, INTRINIO_API_KEY)"
+      },
+      {
+        "decision_item": "provider_not_rate_limited",
+        "value": true,
+        "passed": true,
+        "note": "provider must not return a rate-limit / entitlement / premium error"
+      },
+      {
+        "decision_item": "processed_ticker_count",
+        "value": 0,
+        "passed": false,
+        "note": "PASS wants >= 90 processed tickers"
+      },
+      {
+        "decision_item": "earnings_feature_ticker_count",
+        "value": 0,
+        "passed": false,
+        "note": "PASS wants >= 75 tickers with earnings features"
+      },
+      {
+        "decision_item": "combined_panel_rows",
+        "value": 0,
+        "passed": false,
+        "note": "PASS wants >= 75000 combined rows"
+      },
+      {
+        "decision_item": "leakage_failure_count",
+        "value": 0,
+        "passed": true,
+        "note": "must be 0"
+      },
+      {
+        "decision_item": "label_coverage_21d",
+        "value": null,
+        "passed": false,
+        "note": "PASS wants >= 0.80 (reused Phase 3-L labels)"
+      },
+      {
+        "decision_item": "label_coverage_63d",
+        "value": null,
+        "passed": false,
+        "note": "PASS wants >= 0.70"
+      },
+      {
+        "decision_item": "label_coverage_126d",
+        "value": null,
+        "passed": false,
+        "note": "PASS wants >= 0.60"
+      },
+      {
+        "decision_item": "earnings_only_moderate_or_better",
+        "value": 0,
+        "passed": false,
+        "note": "earnings-only moderate-or-better features"
+      },
+      {
+        "decision_item": "earnings_only_strong",
+        "value": 0,
+        "passed": false,
+        "note": "earnings-only strong"
+      },
+      {
+        "decision_item": "combined_moderate_or_better",
+        "value": 0,
+        "passed": false,
+        "note": "combined moderate-or-better features"
+      },
+      {
+        "decision_item": "combined_strong",
+        "value": 0,
+        "passed": false,
+        "note": "combined strong"
+      },
+      {
+        "decision_item": "stable_family_count",
+        "value": 0,
+        "passed": false,
+        "note": "PASS wants >= 2 stable families"
+      },
+      {
+        "decision_item": "max_distinct_dense_ic_years",
+        "value": 0,
+        "passed": false,
+        "note": "PASS wants >= 6 distinct dense IC years"
+      },
+      {
+        "decision_item": "sec_baseline_moderate_or_better",
+        "value": 4,
+        "passed": "",
+        "note": "Phase 3-L SEC-only baseline moderate-or-better feature count (for comparison)"
+      },
+      {
+        "decision_item": "no_model_training",
+        "value": true,
+        "passed": true,
+        "note": "this phase trains no model"
+      },
+      {
+        "decision_item": "no_predictions_computed",
+        "value": true,
+        "passed": true,
+        "note": "this phase computes no predictions or scores"
+      },
+      {
+        "decision_item": "no_portfolio_weights",
+        "value": true,
+        "passed": true,
+        "note": "this phase computes no portfolio weights"
+      },
+      {
+        "decision_item": "labels_reused_not_recomputed",
+        "value": true,
+        "passed": true,
+        "note": "Phase 3-L labels reused; no new target"
+      },
+      {
+        "decision_item": "recommendation",
+        "value": "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
+        "passed": true,
+        "note": "allowed values only"
+      }
+    ]
+  },
+  "comparison_to_phase3l_sec_only": {
+    "sec_only_baseline": {
+      "available": true,
+      "moderate_or_better_count": 4,
+      "strong_count": 1,
+      "moderate_or_better_features": [
+        "accrual_proxy",
+        "filing_lag_days",
+        "log_total_assets",
+        "log_total_liabilities_abs"
+      ],
+      "strong_features": [
+        "log_total_assets"
+      ],
+      "max_absolute_mean_ic": 0.091227
+    },
+    "earnings_only_moderate_or_better_count": 0,
+    "earnings_only_strong_count": 0,
+    "combined_moderate_or_better_count": 0,
+    "combined_strong_count": 0,
+    "earnings_features_improve_signal_density": false,
+    "note": "comparison is diagnostic; no model is trained and no edge is claimed"
+  },
+  "source_limitations": [
+    "Earnings features come from a single configured provider's historical EPS estimate / actual / surprise records; free tiers may cut off deep history or omit some tickers, which is reported as coverage rather than patched.",
+    "Most free earnings endpoints expose reported actuals and the consensus AT report time but not a time series of prior estimate revisions; estimate_revision_proxy is therefore populated only when the provider supplies a prior estimate and is left blank (documented) otherwise.",
+    "The equity universe and reused price labels are current-as-of the Phase 3-L panel; membership is NOT point-in-time, so this gate and any downstream result remain survivorship-biased.",
+    "Forward-return labels are reused unchanged from Phase 3-L for VALIDATION ONLY; no new target is computed and no label is forward-filled in this phase.",
+    "Daily scoring with overlapping 21/63/126-day forward windows means per-date ICs are serially correlated; the temporal-breadth guard (distinct dense IC years) governs the gate, not single -year magnitude."
+  ],
+  "recommendation": {
+    "recommendation": "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
+    "allowed_values": [
+      "EARNINGS_ESTIMATES_SIGNAL_GATE_PASSES_RESEARCH_MODEL_ALLOWED",
+      "EARNINGS_ESTIMATES_SIGNAL_GATE_WEAK_BUT_USEFUL",
+      "EARNINGS_ESTIMATES_GATE_BLOCKED_NEEDS_API_KEY",
+      "EARNINGS_ESTIMATES_GATE_BLOCKED_PROVIDER_LIMIT",
+      "EARNINGS_ESTIMATES_SIGNAL_GATE_FAILS",
+      "EARNINGS_ESTIMATES_SIGNAL_GATE_INCONCLUSIVE_COVERAGE"
+    ],
+    "selected_provider": null,
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "research_model_allowed_next": false,
+    "add_richer_data_next": false,
+    "configure_provider_next": true,
+    "reason": "No supported earnings-estimates provider key is present in the environment (checked ALPHAVANTAGE_API_KEY, FMP_API_KEY, FINNHUB_API_KEY, INTRINIO_API_KEY). No data was fetched, faked, or modeled. Set one of those environment variables - Alpha Vantage (ALPHAVANTAGE_API_KEY) is the preferred first provider - and re-run. No data was purchased and no account was created."
+  },
+  "interpretation": {
+    "earnings_estimates_signal_gate_only": true,
+    "follows_phase3l_weak_sec_only": true,
+    "selected_provider": null,
+    "model_features_computed": false,
+    "price_join_performed": false,
+    "labels_computed": false,
+    "labels_reused_from_phase3l": false,
+    "labels_for_validation_only": true,
+    "ic_computed": false,
+    "predictions_computed": false,
+    "scores_computed": false,
+    "portfolio_weights_computed": false,
+    "model_trained": false,
+    "research_model_trained": false,
+    "production_model_trained": false,
+    "production_model_candidate_created": false,
+    "deployable_model_artifact_written": false,
+    "research_model_allowed_next": false,
+    "network_used": false,
+    "vendor_api_called": false,
+    "paid_vendor_api_called": false,
+    "user_configured_provider_key_used": false,
+    "data_purchased": false,
+    "read_from_d_drive": false,
+    "wrote_to_d_drive": false,
+    "results_context_remains_survivorship_biased": true,
+    "production_edge_claimed": false,
+    "narrative": "Phase 3-M is the research-only earnings-estimates / surprise data gate that follows the weak SEC-only Phase 3-L result. It confirmed Phase 3-L (WEAK_BUT_EXPAND_OR_ADD_REVISIONS, 128/128 tickers, leakage-free) and routed here, detected supported provider keys from the environment (values never read into any artifact), and - when a key was present - ingested historical EPS estimate / actual / surprise data cache-first under conservative rate limits, normalized point-in-time earnings events (availability = report date, never the fiscal quarter end), built trailing-only surprise features, joined them to the Phase 3-L panel reusing its validation-only labels, and measured cross-sectional rank ICs for earnings-only, SEC-only, and combined feature sets with the same temporal-breadth guard. It fitted NO model, computed NO predictions / scores / trading rankings / portfolio weights, created NO production model candidate, wrote NO deployable model artifact, touched no database, ran no migration, restarted no prediction service, enabled no serving flag, read nothing from the D: drive, called no paid vendor API, used no third-party market-data vendor package, purchased no data, placed no orders, and traded nothing. The universe is current-as-of, so every result remains survivorship-biased and claims no production edge."
+  },
+  "recommended_next_phase": {
+    "phase": "3-N",
+    "title": "Configure Earnings Estimates Provider",
+    "purpose": "Set ALPHAVANTAGE_API_KEY or another supported provider key before continuing."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_model_trained": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "network_used": false,
+  "vendor_api_called": false,
+  "paid_vendor_api_called": false,
+  "user_configured_provider_key_used": false,
+  "data_purchase_made": false,
+  "model_features_computed": false,
+  "price_join_performed": false,
+  "labels_computed": false,
+  "labels_reused_from_phase3l": false,
+  "labels_for_validation_only": true,
+  "model_trained": false,
+  "predictions_computed": false,
+  "portfolio_weights_computed": false,
+  "research_model_allowed_next": false
+}
