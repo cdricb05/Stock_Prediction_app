@@ -1,0 +1,21 @@
+ticker,sector,total_rows,rows_over_365,rows_over_400,rows_over_540,rows_over_730,max_feature_age_days,median_feature_age_days,distinct_feature_asof_dates,staleness_problem
+AAPL,Information Technology,1911,1191,1167,1072,939,2096.0,708.0,9,True
+AMZN,Consumer Discretionary,2609,1262,1237,1141,1011,2197.0,305.0,19,True
+BAC,Financials,471,0,0,0,0,119.0,43.0,8,False
+CAT,Industrials,2628,2163,2163,2163,2163,4660.0,2752.5,13,True
+CVX,Energy,465,0,0,0,0,110.0,43.0,8,False
+DIS,Communication Services,465,0,0,0,0,99.0,43.0,8,False
+GE,Industrials,2628,1462,1438,1387,1256,2553.0,646.5,23,True
+GOOGL,Communication Services,476,0,0,0,0,99.0,43.0,8,False
+HD,Consumer Discretionary,2628,2171,2171,2171,2171,5009.0,3101.5,14,True
+JNJ,Health Care,2628,2072,2048,1950,1821,3373.0,1466.5,16,True
+JPM,Financials,1836,0,0,0,0,364.0,108.0,14,False
+KO,Consumer Staples,472,0,0,0,0,120.0,43.0,8,False
+META,Communication Services,2353,1194,1170,1075,942,2101.0,391.0,16,True
+MSFT,Information Technology,2628,2157,2157,2157,2157,4933.0,3024.5,12,True
+NEE,Utilities,2628,2153,2153,2153,2153,3918.0,2010.5,13,True
+NVDA,Information Technology,2027,760,736,639,508,1470.0,124.0,16,True
+PFE,Health Care,467,0,0,0,0,115.0,43.0,8,False
+PG,Consumer Staples,467,0,0,0,0,102.0,43.0,8,False
+UNH,Health Care,2628,2021,1996,1901,1769,3299.0,1392.5,14,True
+XOM,Energy,467,0,0,0,0,107.0,42.0,8,False

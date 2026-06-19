@@ -1,0 +1,13 @@
+decision_item,value,passed,note
+phase3i_confirmed,True,True,"Phase 3-I result confirmed as FUNDAMENTAL_PRICE_ALIGNMENT_PARTIAL_SUCCESS, leakage-free, routed to 3-J"
+selected_cap_days,365,True,strictest cap satisfying the gates; null means no cap was sufficient
+repaired_aligned_ticker_count,20,True,success gate requires >= 15 tickers
+repaired_aligned_rows,14276,True,success gate requires >= 5000 aligned rows
+leakage_failure_count_after_repair,0,True,must be 0
+label_coverage_21d,0.9706,True,success gate requires >= 0.80
+label_coverage_63d,0.9117,True,success gate requires >= 0.70
+label_coverage_126d,0.8235,True,success gate requires >= 0.60
+max_feature_age_days_after_repair,365.0,True,every retained row's active feature must be no older than the selected cap
+no_model_training,True,True,this phase trains no model
+no_production_model_candidate,True,True,this phase creates no production candidate
+recommendation,FUNDAMENTAL_ALIGNMENT_REPAIR_SUCCESS,True,allowed values only

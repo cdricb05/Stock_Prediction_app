@@ -1,0 +1,5 @@
+cap_days,aligned_rows_after_cap,retained_row_fraction,aligned_ticker_count,aligned_sector_count,median_feature_age_days,p75_feature_age_days,p90_feature_age_days,max_feature_age_days,label_coverage_21d,label_coverage_63d,label_coverage_126d,min_rows_by_ticker,median_rows_by_ticker,max_rows_by_ticker,tickers_dropped,sectors_dropped,leakage_failure_count,recommendation_for_cap
+365,14276,0.4342,20,9,53.0,84.0,188.0,365.0,0.9706,0.9117,0.8235,457,474,1836,,,0,passes_success_gate
+400,14446,0.4393,20,9,54.0,84.0,208.0,400.0,0.9709,0.9128,0.8256,457,474,1836,,,0,passes_success_gate
+540,15073,0.4584,20,9,56.0,90.0,279.0,540.0,0.9721,0.9164,0.8328,457,474,1836,,,0,passes_success_gate
+730,15992,0.4863,20,9,60.0,106.0,390.0,730.0,0.9737,0.9212,0.8424,457,474,1836,,,0,passes_success_gate
