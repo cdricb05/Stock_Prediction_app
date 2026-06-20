@@ -1,0 +1,12 @@
+model_name,horizon,sector,rows,tickers,mean_daily_rank_ic,top_minus_bottom_decile_spread
+ridge_combined_regime_interactions,126d,Communication Services,10472,7,,
+ridge_combined_regime_interactions,126d,Consumer Discretionary,17952,12,,
+ridge_combined_regime_interactions,126d,Consumer Staples,13464,9,,
+ridge_combined_regime_interactions,126d,Energy,7480,5,,
+ridge_combined_regime_interactions,126d,Financials,28699,20,-0.116343,-0.190767
+ridge_combined_regime_interactions,126d,Health Care,32912,22,0.125169,0.058413
+ridge_combined_regime_interactions,126d,Industrials,29920,20,-0.088193,-0.04767
+ridge_combined_regime_interactions,126d,Information Technology,37400,25,0.089617,0.212056
+ridge_combined_regime_interactions,126d,Materials,4488,3,,
+ridge_combined_regime_interactions,126d,Real Estate,2992,2,,
+ridge_combined_regime_interactions,126d,Utilities,4488,3,,

@@ -1,0 +1,6 @@
+model_name,horizon,check,value,passed,note
+ridge_combined_regime_interactions,126d,embargo_days_equals_horizon,126,True,per-horizon embargo equals the label horizon in trading days
+ridge_combined_regime_interactions,126d,train_window_ends_before_test_window_starts,6/6,True,no training row is dated on or after the test window start
+ridge_combined_regime_interactions,126d,embargo_gap_ge_horizon_trading_days,131 min gap,True,label window of the last train row cannot overlap the test window
+ridge_combined_regime_interactions,126d,transforms_fit_on_train_rows_only,True,True,"median imputer, standardizer, lambda and ridge weights fit on train rows"
+ridge_combined_regime_interactions,126d,labels_used_for_validation_only,True,True,forward returns scored OOS for IC; never emitted as production predictions

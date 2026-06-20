@@ -1,0 +1,8 @@
+model_name,horizon,feature_family,feature_count,sum_mean_abs_weight,contribution_share
+ridge_combined_regime_interactions,126d,earnings_surprise,6,0.292512,0.132343
+ridge_combined_regime_interactions,126d,regime_interaction,5,0.205259,0.092867
+ridge_combined_regime_interactions,126d,seasonality_calendar,3,0.080426,0.036388
+ridge_combined_regime_interactions,126d,sec_fundamental,9,0.318022,0.143885
+ridge_combined_regime_interactions,126d,sector_relative,8,0.228332,0.103306
+ridge_combined_regime_interactions,126d,technical_price,12,1.038823,0.470001
+ridge_combined_regime_interactions,126d,time_series_arima_style,5,0.046882,0.021211

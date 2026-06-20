@@ -1,0 +1,7 @@
+model_name,horizon,year,rows,tickers,mean_daily_rank_ic,rank_ic_hit_rate,top_minus_bottom_decile_spread
+ridge_combined_regime_interactions,126d,2020,32131,127,0.004912,0.3913,0.039791
+ridge_combined_regime_interactions,126d,2021,32004,127,0.033415,0.5198,0.090068
+ridge_combined_regime_interactions,126d,2022,31877,127,0.066429,0.7092,0.013395
+ridge_combined_regime_interactions,126d,2023,31750,127,0.266596,0.928,0.198486
+ridge_combined_regime_interactions,126d,2024,32041,128,-0.098109,0.1944,-0.044197
+ridge_combined_regime_interactions,126d,2025,30464,128,-0.045233,0.4034,0.166612

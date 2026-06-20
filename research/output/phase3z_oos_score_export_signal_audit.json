@@ -1,0 +1,193 @@
+{
+  "phase": "3-Z",
+  "generated_at": "2026-06-20T17:10:34",
+  "inputs_read": {
+    "phase3o_result_json": "research/output/phase3o_multisignal_feature_factory.json",
+    "phase3p_result_json": "research/output/phase3p_multisignal_walkforward_model.json",
+    "phase3q_result_json": "research/output/phase3q_model_robustness_diagnostics.json",
+    "phase3r_result_json": "research/output/phase3r_macro_regime_walkforward.json",
+    "phase3p_feature_weight_summary_csv": "research/output/phase3p_multisignal_walkforward_model/feature_weight_summary.csv",
+    "price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "sector_map_csv": "research/input/phase2k_p_sector_map_current.csv",
+    "phase3l_aligned_panel_csv": "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv",
+    "phase3m_earnings_features_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_features_universe.csv"
+  },
+  "outputs_written": {
+    "panel": "research/output/phase3z_oos_score_export_signal_audit/oos_score_panel.csv",
+    "summary": "research/output/phase3z_oos_score_export_signal_audit/oos_score_summary.csv",
+    "decile": "research/output/phase3z_oos_score_export_signal_audit/decile_forward_return_summary.csv",
+    "yearly": "research/output/phase3z_oos_score_export_signal_audit/yearly_score_diagnostics.csv",
+    "regime": "research/output/phase3z_oos_score_export_signal_audit/regime_score_diagnostics.csv",
+    "sector": "research/output/phase3z_oos_score_export_signal_audit/sector_score_diagnostics.csv",
+    "family": "research/output/phase3z_oos_score_export_signal_audit/feature_family_contribution_summary.csv",
+    "leakage": "research/output/phase3z_oos_score_export_signal_audit/leakage_and_embargo_checks.csv",
+    "readiness": "research/output/phase3z_oos_score_export_signal_audit/readiness_decision_table.csv"
+  },
+  "input_confirmation": {
+    "phase3o_result_present": true,
+    "phase3p_result_present": true,
+    "phase3q_result_present": true,
+    "phase3r_result_present": true,
+    "price_panel_present": true,
+    "sector_map_present": true,
+    "phase3l_panel_present": true,
+    "phase3p_walkforward_present": true,
+    "phase3p_oos_scores_in_memory": true,
+    "phase3p_panel_written_to_disk": false,
+    "all_required_present": true
+  },
+  "oos_score_panel_exists_on_disk": false,
+  "oos_score_panel_reconstructed": true,
+  "reconstruction_method": "re-ran Phase 3-P expanding walk-forward (per-horizon embargo, NumPy closed-form ridge, transforms fit on train rows only) and captured per-row OOS test scores",
+  "oos_score_panel_rows": 190267,
+  "oos_score_panel_bytes": 34221495,
+  "distinct_tickers": 128,
+  "distinct_dates": 1496,
+  "horizons_exported": [
+    "126d"
+  ],
+  "exported_model_horizons": [
+    "ridge_combined_regime_interactions@126d"
+  ],
+  "omitted_model_horizons": [
+    {
+      "key": "ridge_technical_only@126d",
+      "reason": "size_budget",
+      "est_bytes": 36315881
+    },
+    {
+      "key": "ridge_combined_regime_interactions@63d",
+      "reason": "size_budget",
+      "est_bytes": 40176109
+    },
+    {
+      "key": "ridge_technical_only@63d",
+      "reason": "size_budget",
+      "est_bytes": 37430612
+    }
+  ],
+  "panel_columns": [
+    "date",
+    "ticker",
+    "horizon",
+    "model_name",
+    "oos_score",
+    "cross_sectional_rank",
+    "rank_percentile",
+    "decile",
+    "forward_return",
+    "label_available",
+    "train_window_start",
+    "train_window_end",
+    "test_window_start",
+    "test_window_end",
+    "embargo_days",
+    "feature_family_count",
+    "source_status"
+  ],
+  "leakage_checks_failed": 0,
+  "oos_score_summary": [
+    {
+      "model_name": "ridge_combined_regime_interactions",
+      "horizon": "126d",
+      "rows": 190267,
+      "tickers": 128,
+      "dates": 1496,
+      "ic_days": 1496,
+      "mean_daily_rank_ic": 0.038434,
+      "median_daily_rank_ic": 0.013241,
+      "rank_ic_hit_rate": 0.5247,
+      "top_minus_bottom_decile_spread": 0.07638,
+      "top_minus_bottom_quintile_spread": 0.04567,
+      "top_decile_hit_rate": 0.6959,
+      "worst_year_ic": -0.098109,
+      "best_year_ic": 0.266596,
+      "stability_score": 0.6667,
+      "positive_ic_and_spread": 1
+    }
+  ],
+  "best_model_horizon": {
+    "model_name": "ridge_combined_regime_interactions",
+    "horizon": "126d",
+    "mean_daily_rank_ic": 0.038434,
+    "top_minus_bottom_decile_spread": 0.07638,
+    "worst_year_ic": -0.098109,
+    "stability_score": 0.6667
+  },
+  "recommendation": {
+    "recommendation": "OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION",
+    "allowed_values": [
+      "OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION",
+      "OOS_SCORE_EXPORT_PARTIAL_NEEDS_REPAIR",
+      "OOS_SCORE_EXPORT_BLOCKED_NO_SCORE_SOURCE",
+      "OOS_SCORE_EXPORT_BLOCKED_INPUTS"
+    ],
+    "research_only": true,
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "compute_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "panel_rows": 190267,
+    "panel_tickers": 128,
+    "panel_dates": 1496,
+    "leakage_checks_failed": 0,
+    "best_model_horizon": {
+      "model_name": "ridge_combined_regime_interactions",
+      "horizon": "126d",
+      "mean_daily_rank_ic": 0.038434,
+      "top_minus_bottom_decile_spread": 0.07638,
+      "worst_year_ic": -0.098109,
+      "stability_score": 0.6667
+    },
+    "reason": "Reconstructed OOS score panel clears all readiness thresholds (>=100k rows, >=50 tickers, >=500 dates, no failed leakage check) and at least one model/horizon has positive mean daily rank IC and a positive top-minus-bottom decile spread (best: ridge_combined_regime_interactions 126d, IC 0.038434). Research-only; no production candidate, predictions, scores, weights, or edge claim."
+  },
+  "recommended_next_phase": {
+    "phase": "4-A",
+    "title": "Turnover-Aware Portfolio Simulation and Risk Budget",
+    "purpose": "Proceed to turnover-aware portfolio simulation on the exported OOS score panel."
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "oos_score_panel_reconstructed": true,
+    "reconstruction_source": "phase3p_walkforward_in_memory_rerun",
+    "scores_are_research_oos_not_production": true,
+    "labels_used_for_validation_only": true,
+    "results_remain_survivorship_biased": true,
+    "production_model_trained": false,
+    "production_predictions_computed": false,
+    "portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false,
+    "narrative": "Phase 3-Z exports a research-only out-of-sample date/ticker score panel and signal audit. No OOS score panel was persisted by Phase 3-P (it scored in memory and wrote only aggregate scoreboards), so Phase 3-Z reconstructs the panel by re-running the Phase 3-P expanding walk-forward with per-horizon embargo and the same NumPy closed-form ridge ranking model - every transform fit on training rows only - and captures the per-row OOS test scores. It then computes cross-sectional rank / decile, forward-return-by-decile, yearly, regime and sector diagnostics, a feature-family contribution summary, and explicit leakage / embargo checks. It needs no network and no ETF data; it only reads the local price panel read-only through the Phase 3-P loader. It performs no deployment, runs no migration, writes to no database, restarts no service, enables no model-v2 serving flag, trains no production model, creates no production model candidate, writes no deployable model artifact, computes no production predictions / scores / portfolio weights / order instructions, writes nothing to the D: drive, and calls no provider / Alpha Vantage / Yahoo / Stooq / FRED / yfinance / paid-vendor API. Forward labels are used for validation-only OOS IC and are never turned into production predictions. The universe is current-as-of, so all results remain survivorship-biased and claim no production edge."
+  },
+  "research_only": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "d_drive_read": true,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "stooq_called": false,
+  "yahoo_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "network_called": false,
+  "data_faked": false,
+  "labels_for_validation_only": true,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_oos_scores_reconstructed": true
+}

@@ -1,0 +1,5 @@
+model_name,horizon,regime,rows,ic_days,mean_daily_rank_ic,rank_ic_hit_rate,top_minus_bottom_decile_spread
+ridge_combined_regime_interactions,126d,risk_on,149458,1175,0.012077,0.4357,0.068704
+ridge_combined_regime_interactions,126d,risk_off,40809,321,0.134913,0.8505,0.104476
+ridge_combined_regime_interactions,126d,low_vol,142602,1121,0.033673,0.4862,0.086128
+ridge_combined_regime_interactions,126d,high_vol,47665,375,0.052666,0.64,0.047239

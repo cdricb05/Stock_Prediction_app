@@ -1,0 +1,2 @@
+model_name,horizon,rows,tickers,dates,ic_days,mean_daily_rank_ic,median_daily_rank_ic,rank_ic_hit_rate,top_minus_bottom_decile_spread,top_minus_bottom_quintile_spread,top_decile_hit_rate,worst_year_ic,best_year_ic,stability_score,positive_ic_and_spread
+ridge_combined_regime_interactions,126d,190267,128,1496,1496,0.038434,0.013241,0.5247,0.07638,0.04567,0.6959,-0.098109,0.266596,0.6667,1

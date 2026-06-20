@@ -1,0 +1,11 @@
+model_name,horizon,decile,rows,mean_forward_return,median_forward_return,mean_oos_score,mean_rank_percentile
+ridge_combined_regime_interactions,126d,0,17952,0.000892,-0.01427,-0.967839,0.051108
+ridge_combined_regime_interactions,126d,1,19448,0.00236,-0.012937,-0.298089,0.149391
+ridge_combined_regime_interactions,126d,2,19448,0.003951,-0.010435,-0.163329,0.251607
+ridge_combined_regime_interactions,126d,3,18227,-0.000236,-0.010964,-0.087981,0.350623
+ridge_combined_regime_interactions,126d,4,19173,-0.004399,-0.013067,-0.020459,0.448888
+ridge_combined_regime_interactions,126d,5,19448,-0.007065,-0.016444,0.048165,0.550389
+ridge_combined_regime_interactions,126d,6,18227,0.009604,0.001722,0.124721,0.649377
+ridge_combined_regime_interactions,126d,7,19448,0.015544,-0.000421,0.244685,0.748393
+ridge_combined_regime_interactions,126d,8,19448,0.019617,0.000768,0.483996,0.850609
+ridge_combined_regime_interactions,126d,9,19448,0.072805,0.012984,2.884717,0.952824

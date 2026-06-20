@@ -1,0 +1,8 @@
+decision_item,value,passed,note
+recommendation,OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION,True,READY only when every threshold passes
+oos_score_panel_rows,190267,True,READY needs >= 100000 rows
+distinct_tickers,128,True,READY needs >= 50 tickers
+distinct_dates,1496,True,READY needs >= 500 dates
+leakage_checks_failed,0,True,no failed embargo / leakage check allowed
+positive_model_horizon_exists,True,True,at least one model/horizon with positive mean IC and positive decile spread
+next_phase,4-A,,Turnover-Aware Portfolio Simulation and Risk Budget
