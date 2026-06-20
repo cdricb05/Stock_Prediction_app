@@ -1,0 +1,444 @@
+{
+  "phase": "3-R",
+  "generated_at": "2026-06-19T23:02:07",
+  "inputs_read": {
+    "phase3q_result_json": "research/output/phase3q_model_robustness_diagnostics.json",
+    "phase3p_result_json": "research/output/phase3p_multisignal_walkforward_model.json",
+    "phase3o_result_json": "research/output/phase3o_multisignal_feature_factory.json",
+    "price_history_csv": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+    "phase3l_aligned_panel_csv": "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3r_macro_regime_walkforward.json",
+    "inventory": "research/output/phase3r_macro_regime_walkforward/macro_data_inventory.csv",
+    "registry": "research/output/phase3r_macro_regime_walkforward/macro_feature_registry.csv",
+    "panel_sample": "research/output/phase3r_macro_regime_walkforward/macro_feature_panel_sample.csv",
+    "scoreboard": "research/output/phase3r_macro_regime_walkforward/macro_walkforward_scoreboard.csv",
+    "yearly": "research/output/phase3r_macro_regime_walkforward/macro_yearly_stability.csv",
+    "regime": "research/output/phase3r_macro_regime_walkforward/macro_regime_performance.csv",
+    "bad_year": "research/output/phase3r_macro_regime_walkforward/macro_bad_year_comparison.csv",
+    "decision": "research/output/phase3r_macro_regime_walkforward/macro_improvement_decision_table.csv"
+  },
+  "phase3q_confirmation": {
+    "phase3q_result_present": true,
+    "phase_is_3q": true,
+    "recommendation_ok": true,
+    "next_phase_is_3r": true,
+    "no_production_model_candidate": true,
+    "no_deployable_artifact": true,
+    "no_production_predictions": true,
+    "no_production_scores": true,
+    "no_portfolio_weights": true,
+    "provider_api_not_called": true,
+    "alpha_vantage_not_called": true,
+    "confirmed": true,
+    "phase3q_recommendation": "MODEL_ROBUSTNESS_WEAK_FIXABLE_WITH_REGIME_AND_DATA"
+  },
+  "baseline_phase3p_best_model": {
+    "model": "ridge_technical_only",
+    "horizon": "126d",
+    "mean_daily_ic": 0.08195,
+    "decile_spread": 0.109819,
+    "ic_hit_rate": 0.6618,
+    "worst_year_ic": -0.108464,
+    "stability_score": 0.6667,
+    "ic_2021": -0.108464,
+    "ic_other_years": 0.121708
+  },
+  "macro_data_inventory_summary": {
+    "search_roots": [
+      "research/input",
+      "research/output",
+      "data",
+      "."
+    ],
+    "candidate_files": 0,
+    "usable_macro_files": 0,
+    "usable_files": [],
+    "no_local_macro_data": true
+  },
+  "macro_features_implemented": [],
+  "macro_features_blocked": [
+    "cpi_yoy",
+    "cpi_mom",
+    "inflation_acceleration",
+    "inflation_regime_high_low",
+    "fed_funds_level",
+    "fed_funds_change_3m",
+    "fed_policy_tightening_flag",
+    "treasury_10y",
+    "treasury_2y",
+    "yield_curve_10y_2y",
+    "yield_curve_inversion_flag",
+    "real_rate_proxy",
+    "oil_return_63d",
+    "dollar_return_63d",
+    "macro_risk_off_flag",
+    "macro_inflation_shock_flag",
+    "macro_rate_shock_flag"
+  ],
+  "macro_feature_registry": [
+    {
+      "feature_name": "cpi_yoy",
+      "source_file": "",
+      "macro_family": "inflation",
+      "frequency": "monthly",
+      "availability_lag_rule": "lag to release date if present, else default 21-calendar-day availability lag",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local inflation data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "cpi_mom",
+      "source_file": "",
+      "macro_family": "inflation",
+      "frequency": "monthly",
+      "availability_lag_rule": "lag to release date if present, else default 21-calendar-day availability lag",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local inflation data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "inflation_acceleration",
+      "source_file": "",
+      "macro_family": "inflation",
+      "frequency": "monthly",
+      "availability_lag_rule": "derived from cpi_yoy change; inherits the monthly availability lag",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local inflation data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "inflation_regime_high_low",
+      "source_file": "",
+      "macro_family": "inflation",
+      "frequency": "monthly",
+      "availability_lag_rule": "derived high/low flag from cpi_yoy vs trailing median; inherits monthly lag",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local inflation data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "fed_funds_level",
+      "source_file": "",
+      "macro_family": "policy_rate",
+      "frequency": "daily",
+      "availability_lag_rule": "as-of by date (daily series available same day)",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local policy_rate data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "fed_funds_change_3m",
+      "source_file": "",
+      "macro_family": "policy_rate",
+      "frequency": "daily",
+      "availability_lag_rule": "derived 3-month change of fed_funds_level; as-of by date",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local policy_rate data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "fed_policy_tightening_flag",
+      "source_file": "",
+      "macro_family": "policy_rate",
+      "frequency": "daily",
+      "availability_lag_rule": "derived flag from fed_funds_change_3m > 0; as-of by date",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local policy_rate data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "treasury_10y",
+      "source_file": "",
+      "macro_family": "rates",
+      "frequency": "daily",
+      "availability_lag_rule": "as-of by date (daily series available same day)",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local rates data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "treasury_2y",
+      "source_file": "",
+      "macro_family": "rates",
+      "frequency": "daily",
+      "availability_lag_rule": "as-of by date (daily series available same day)",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local rates data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "yield_curve_10y_2y",
+      "source_file": "",
+      "macro_family": "rates",
+      "frequency": "daily",
+      "availability_lag_rule": "derived 10y minus 2y; as-of by date",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local rates data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "yield_curve_inversion_flag",
+      "source_file": "",
+      "macro_family": "rates",
+      "frequency": "daily",
+      "availability_lag_rule": "derived flag from yield_curve_10y_2y < 0; as-of by date",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local rates data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "real_rate_proxy",
+      "source_file": "",
+      "macro_family": "rates",
+      "frequency": "daily",
+      "availability_lag_rule": "derived treasury_10y minus cpi_yoy; inherits the slower (monthly cpi) availability lag",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local rates data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "oil_return_63d",
+      "source_file": "",
+      "macro_family": "commodity",
+      "frequency": "daily",
+      "availability_lag_rule": "as-of by date; implemented only if local oil price data exists",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "optional: no local commodity data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "dollar_return_63d",
+      "source_file": "",
+      "macro_family": "fx",
+      "frequency": "daily",
+      "availability_lag_rule": "as-of by date; implemented only if local dollar index data exists",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "optional: no local fx data file present",
+      "notes": "raw macro series aligned as-of by availability date"
+    },
+    {
+      "feature_name": "macro_risk_off_flag",
+      "source_file": "",
+      "macro_family": "derived_regime",
+      "frequency": "daily",
+      "availability_lag_rule": "derived from yield-curve inversion + tightening + inflation regime; as-of by date",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local derived_regime data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "macro_inflation_shock_flag",
+      "source_file": "",
+      "macro_family": "derived_regime",
+      "frequency": "monthly",
+      "availability_lag_rule": "derived from inflation_acceleration spike; inherits monthly availability lag",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local derived_regime data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    },
+    {
+      "feature_name": "macro_rate_shock_flag",
+      "source_file": "",
+      "macro_family": "derived_regime",
+      "frequency": "daily",
+      "availability_lag_rule": "derived from fed_funds_change_3m / yield spike; as-of by date",
+      "point_in_time_safe": true,
+      "implemented": false,
+      "blocker": "no local derived_regime data file present",
+      "notes": "derived feature - never uses future macro observations for past scoring dates"
+    }
+  ],
+  "point_in_time_assumptions": {
+    "monthly_release_default_lag_calendar_days": 21,
+    "monthly_release_uses_release_date_column_when_present": true,
+    "cpi_not_available_in_month_it_describes": true,
+    "treasury_and_fed_rate_daily_series_as_of_by_date": true,
+    "derived_features_inherit_slowest_input_lag": true,
+    "never_use_future_macro_observations_for_past_scoring_dates": true,
+    "as_of_merge_direction": "backward (merge_asof: last macro value available on/before the scoring date after applying the availability lag)",
+    "macro_values_forward_filled_between_releases": true,
+    "macro_faked": false
+  },
+  "macro_data_requirements": {
+    "summary": "No local macro/inflation/rates data exists in the repo. To run the Phase 3-R walk-forward re-test, place the following free, manually downloadable, non-paid local files under research/input/. No API is called by this phase; download the CSVs separately and drop them in.",
+    "required_files": [
+      {
+        "suggested_path": "research/input/macro_cpi_us.csv",
+        "macro_family": "inflation",
+        "needed_columns": [
+          "date (observation month, YYYY-MM-DD)",
+          "cpi_index_value or cpi_yoy",
+          "release_date (optional but preferred for true PIT)"
+        ],
+        "free_source_examples": [
+          "FRED CPIAUCSL (manual CSV export)",
+          "BLS CPI-U series CUUR0000SA0 (manual CSV export)"
+        ],
+        "frequency": "monthly"
+      },
+      {
+        "suggested_path": "research/input/macro_fed_funds.csv",
+        "macro_family": "policy_rate",
+        "needed_columns": [
+          "date (YYYY-MM-DD)",
+          "fed_funds_rate"
+        ],
+        "free_source_examples": [
+          "FRED DFF / FEDFUNDS (manual CSV export)"
+        ],
+        "frequency": "daily or monthly"
+      },
+      {
+        "suggested_path": "research/input/macro_treasury_yields.csv",
+        "macro_family": "rates",
+        "needed_columns": [
+          "date (YYYY-MM-DD)",
+          "treasury_10y",
+          "treasury_2y"
+        ],
+        "free_source_examples": [
+          "FRED DGS10 + DGS2 (manual CSV export)",
+          "US Treasury daily yield curve CSV"
+        ],
+        "frequency": "daily"
+      },
+      {
+        "suggested_path": "research/input/macro_oil_wti.csv (optional)",
+        "macro_family": "commodity",
+        "needed_columns": [
+          "date (YYYY-MM-DD)",
+          "wti_price"
+        ],
+        "free_source_examples": [
+          "FRED DCOILWTICO (manual CSV export)"
+        ],
+        "frequency": "daily"
+      },
+      {
+        "suggested_path": "research/input/macro_dollar_index.csv (optional)",
+        "macro_family": "fx",
+        "needed_columns": [
+          "date (YYYY-MM-DD)",
+          "broad_dollar_index"
+        ],
+        "free_source_examples": [
+          "FRED DTWEXBGS (manual CSV export)"
+        ],
+        "frequency": "daily"
+      }
+    ],
+    "coverage_requirement": "Daily/monthly history must span at least the Phase 3-P walk-forward window (roughly 2019-2025) so the as-of merge covers every scoring date.",
+    "non_negotiable": [
+      "data must be real (never faked or synthesized)",
+      "must be free / non-paid",
+      "must be obtained without an API key (manual download) or with a key the user explicitly provides"
+    ]
+  },
+  "model_comparison_summary": {},
+  "bad_year_comparison": [
+    {
+      "model": "ridge_technical_only_126d_baseline_phase3p",
+      "mean_daily_ic": 0.08195,
+      "ic_2021": -0.108464,
+      "worst_year_ic": -0.108464,
+      "stability_score": 0.6667,
+      "decile_spread": 0.109819,
+      "delta_ic_2021_vs_baseline": "",
+      "improves_bad_year": "",
+      "note": "Phase 3-P baseline carried forward from Phase 3-Q (no macro re-test run)."
+    },
+    {
+      "model": "ridge_combined_with_macro",
+      "mean_daily_ic": "",
+      "ic_2021": "",
+      "worst_year_ic": "",
+      "stability_score": "",
+      "decile_spread": "",
+      "delta_ic_2021_vs_baseline": "",
+      "improves_bad_year": "",
+      "note": "No local macro/inflation/rates data exists in the repo. To run the Phase 3-R walk-forward re-test, place the following free, manually downloadable, non-paid local files under research/input/. No API is called by this phase; download the CSVs separately and drop them in."
+    }
+  ],
+  "oos_rebuild_summary": {},
+  "recommendation": {
+    "recommendation": "MACRO_REGIME_WALKFORWARD_BLOCKED_NEEDS_LOCAL_MACRO_DATA",
+    "allowed_values": [
+      "MACRO_REGIME_WALKFORWARD_IMPROVES_ROBUSTNESS",
+      "MACRO_REGIME_WALKFORWARD_WEAK_NO_IMPROVEMENT",
+      "MACRO_REGIME_WALKFORWARD_BLOCKED_NEEDS_LOCAL_MACRO_DATA",
+      "MACRO_REGIME_WALKFORWARD_BLOCKED_INPUTS"
+    ],
+    "research_only": true,
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "compute_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "macro_faked": false,
+    "reason": "Blocked: no usable local macro/inflation/rates data file exists in the repo, so the macro feature layer cannot be built without fabricating data (which is forbidden). No model was trained and no macro data was faked. Acquire the local macro files listed in macro_data_requirements, then re-run. No provider / Alpha Vantage / FRED API was called."
+  },
+  "recommended_next_phase": {
+    "phase": "3-S",
+    "title": "Acquire Local Macro Data Files",
+    "purpose": "Obtain the free, non-paid local macro/inflation/rates CSV files listed in the Phase 3-R macro data requirements, then re-run the macro walk-forward re-test. No production candidate."
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "research_only": true,
+    "rebuilt_oos_scores_in_memory": false,
+    "full_prediction_panel_written_to_disk": false,
+    "production_predictions_computed": false,
+    "production_scores_computed": false,
+    "portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false,
+    "macro_family_faked": false,
+    "sentiment_family_faked": false,
+    "usable_local_macro_data_found": false,
+    "results_remain_survivorship_biased": true,
+    "narrative": "Phase 3-R attempts to fix the Phase 3-Q bad-year fragility by adding a local, free, non-faked macro/inflation/rates regime feature family, merging it point-in-time (as-of, with conservative availability lags) into a Phase 3-P panel rebuilt in memory, and re-running the research-only walk-forward model comparison. It fakes no macro or sentiment data: when no usable local macro file exists it STOPS with a blocked recommendation and writes the exact data requirements instead of inventing values. It trains no production model, computes no production predictions / scores / portfolio weights / order instructions, writes no deployable model artifact, writes nothing to the D: drive, runs no migration, restarts no prediction service, enables no model-v2 serving flag, executes no trade, and calls no provider / paid-vendor / Alpha Vantage / FRED API. The universe is current-as-of, so all results remain survivorship-biased and claim no production edge."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_only": true,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "d_drive_read": true,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "paid_vendor_api_called": false,
+  "macro_faked": false,
+  "sentiment_faked": false,
+  "labels_for_validation_only": true
+}

@@ -1,0 +1,3 @@
+model,mean_daily_ic,ic_2021,worst_year_ic,stability_score,decile_spread,delta_ic_2021_vs_baseline,improves_bad_year,note
+ridge_technical_only_126d_baseline_phase3p,0.08195,-0.108464,-0.108464,0.6667,0.109819,,,Phase 3-P baseline carried forward from Phase 3-Q (no macro re-test run).
+ridge_combined_with_macro,,,,,,,,"No local macro/inflation/rates data exists in the repo. To run the Phase 3-R walk-forward re-test, place the following free, manually downloadable, non-paid local files under research/input/. No API is called by this phase; download the CSVs separately and drop them in."

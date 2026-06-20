@@ -1,0 +1,2 @@
+file_path,detected_macro_family,columns,row_count,date_min,date_max,usable,blocker
+(none found),,,0,,,False,"No local macro/inflation/rates data file found under research/input, research/output, data/, or repo top-level CSVs. Scanned=True. See macro_data_requirements."

@@ -1,0 +1,15 @@
+decision_item,value,passed,note
+phase3q_confirmed,True,True,"Phase 3-Q present, weak-fixable/pass, next phase 3-R, no production artifacts"
+usable_local_macro_data_found,0,False,scanned local repo paths only; macro data must be real and non-faked
+macro_improves_worst_year,,,IMPROVES needs a macro model worst-year IC above the Phase 3-P baseline
+macro_improves_2021,,,IMPROVES needs the 2021 IC to beat the baseline -0.108464
+macro_mean_ic_within_25pct,,,mean IC must not fall by more than 25%
+macro_decile_spread_positive,,,decile spread must remain positive
+no_macro_data_faked,True,True,blocked instead of fabricating macro values
+no_production_model_trained,True,True,research-only walk-forward in memory
+no_production_predictions,True,True,no production predictions/scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized-estimator file written
+d_drive_written,False,True,wrote nothing to the D: drive
+provider_or_alpha_vantage_called,False,True,no provider / Alpha Vantage / FRED API call
+recommendation,MACRO_REGIME_WALKFORWARD_BLOCKED_NEEDS_LOCAL_MACRO_DATA,True,allowed values only
