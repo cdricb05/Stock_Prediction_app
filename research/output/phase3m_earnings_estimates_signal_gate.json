@@ -1,6 +1,6 @@
 {
   "phase": "3-M",
-  "generated_at": "2026-06-19T16:26:28",
+  "generated_at": "2026-06-20T10:49:32",
   "inputs_read": {
     "phase3l_result_json": "research/output/phase3l_sec_universe_signal_gate.json",
     "phase3l_aligned_panel_csv": "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv",
@@ -29,8 +29,8 @@
     "raw_cache_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw/"
   },
   "selected_provider": "alpha_vantage",
-  "cached_ticker_count_after_run": 25,
-  "missing_ticker_count_after_run": 103,
+  "cached_ticker_count_after_run": 45,
+  "missing_ticker_count_after_run": 83,
   "signal_gate_allowed_now": false,
   "phase3l_summary": {
     "phase3l_confirmed": {
@@ -87,8 +87,8 @@
     "selected_provider": "alpha_vantage",
     "endpoint_used": "https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=REDACTED",
     "entitlement_status": "ok",
-    "network_used": false,
-    "request_count": 0,
+    "network_used": true,
+    "request_count": 20,
     "cache_hit_count": 0,
     "rate_limit_or_premium_errors": 0,
     "key_values_never_stored": true,
@@ -96,11 +96,11 @@
   },
   "earnings_events_summary": {
     "provider": "alpha_vantage",
-    "event_rows": 2851,
-    "processed_ticker_count": 25,
+    "event_rows": 5112,
+    "processed_ticker_count": 45,
     "failed_ticker_count": 0,
     "failed_tickers": [],
-    "point_in_time_usable_event_rows": 2846,
+    "point_in_time_usable_event_rows": 5096,
     "availability_is_reported_date": true
   },
   "earnings_feature_summary": {
@@ -119,14 +119,14 @@
       "earnings_event_recency_bucket",
       "estimate_revision_proxy"
     ],
-    "earnings_feature_ticker_count": 25,
-    "feature_rows": 2846,
+    "earnings_feature_ticker_count": 45,
+    "feature_rows": 5096,
     "estimate_revision_proxy_available": false
   },
   "collection_progress": {
     "phase": "3-N",
-    "generated_at": "2026-06-19T16:26:28",
-    "generated_at_utc": "2026-06-19T20:26:28+00:00",
+    "generated_at": "2026-06-20T10:49:32",
+    "generated_at_utc": "2026-06-20T14:49:32+00:00",
     "selected_provider": "alpha_vantage",
     "supported_provider_keys_detected_as_booleans": {
       "ALPHAVANTAGE_API_KEY": true,
@@ -136,20 +136,20 @@
     },
     "universe_ticker_count": 128,
     "cached_ticker_count_before_run": 25,
-    "network_request_budget": 0,
-    "network_requests_this_run": 0,
-    "cached_ticker_count_after_run": 25,
-    "missing_ticker_count_after_run": 103,
+    "network_request_budget": 20,
+    "network_requests_this_run": 20,
+    "cached_ticker_count_after_run": 45,
+    "missing_ticker_count_after_run": 83,
     "provider_limit_hit": false,
     "provider_limit_message_sanitized": "",
     "provider_limit_last_hit_utc": null,
     "same_day_limit_guard_active": false,
-    "status_only": true,
-    "can_attempt_network_now": false,
-    "reason_network_not_attempted": "status_only mode (PHASE3M_STATUS_ONLY=1): no provider network attempted",
+    "status_only": false,
+    "can_attempt_network_now": true,
+    "reason_network_not_attempted": "",
     "signal_gate_min_tickers": 75,
     "signal_gate_allowed_now": false,
-    "estimated_additional_runs_needed_at_current_budget": null,
+    "estimated_additional_runs_needed_at_current_budget": 2,
     "next_action": "RUN_AGAIN_TO_COLLECT_MORE_TICKERS",
     "no_key_values_written": true
   },
@@ -183,10 +183,10 @@
     "research_model_allowed_next": false,
     "collection_in_progress": true,
     "signal_gate_allowed_now": false,
-    "cached_ticker_count_after_run": 25,
-    "missing_ticker_count_after_run": 103,
+    "cached_ticker_count_after_run": 45,
+    "missing_ticker_count_after_run": 83,
     "configure_provider_next": false,
-    "reason": "Resumable earnings-estimates collection is in progress: 25 of the 128-ticker universe are cached, below the 75-ticker minimum required to run the signal gate. Alpha Vantage free-tier limits cap how many tickers can be fetched per run, so collection is cache-first and network-budgeted across multiple runs (about an unknown number of more run(s) needed at the current budget). Partial progress is preserved; no model is trained, no predictions or portfolio weights are computed, and no production edge is claimed."
+    "reason": "Resumable earnings-estimates collection is in progress: 45 of the 128-ticker universe are cached, below the 75-ticker minimum required to run the signal gate. Alpha Vantage free-tier limits cap how many tickers can be fetched per run, so collection is cache-first and network-budgeted across multiple runs (about 2 more run(s) needed at the current budget). Partial progress is preserved; no model is trained, no predictions or portfolio weights are computed, and no production edge is claimed."
   },
   "interpretation": {
     "earnings_estimates_signal_gate_only": true,
@@ -207,8 +207,8 @@
     "production_model_candidate_created": false,
     "deployable_model_artifact_written": false,
     "research_model_allowed_next": false,
-    "network_used": false,
-    "vendor_api_called": false,
+    "network_used": true,
+    "vendor_api_called": true,
     "paid_vendor_api_called": false,
     "user_configured_provider_key_used": true,
     "data_purchased": false,
@@ -238,8 +238,8 @@
   "deployable_model_artifact_written": false,
   "d_drive_read": false,
   "d_drive_written": false,
-  "network_used": false,
-  "vendor_api_called": false,
+  "network_used": true,
+  "vendor_api_called": true,
   "paid_vendor_api_called": false,
   "user_configured_provider_key_used": true,
   "data_purchase_made": false,
