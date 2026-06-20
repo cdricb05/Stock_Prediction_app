@@ -57,8 +57,17 @@ _EXPECTED_OUTPUT_BASENAMES = (
 _REQUIRED_FUNCTIONS = (
     "confirm_phase3q", "build_macro_data_inventory", "macro_feature_registry",
     "point_in_time_assumptions", "macro_data_requirements", "run_macro_walkforward",
-    "build_macro_feature_panel", "decide",
+    "build_macro_feature_panel", "build_macro_interactions", "_load_canonical_macro_series",
+    "decide",
 )
+
+# Local FRED macro input files (Phase 3-S ingestion) + their FRED -> canonical column mapping.
+_INPUT_DIR = os.path.join(_REPO_ROOT, "research", "input")
+_MACRO_INPUT_BASENAMES = ("macro_cpi_us.csv", "macro_fed_funds.csv", "macro_treasury_yields.csv")
+_FRED_TO_CANONICAL = {
+    "cpiaucsl": "cpi_index_value", "fedfunds": "fed_funds_level", "dgs10": "treasury_10y",
+    "dgs2": "treasury_2y", "dcoilwtico": "wti_price", "dtwexbgs": "broad_dollar_index",
+}
 
 # Forbidden tokens (assembled from fragments so they never self-match this test's prose).
 _FORBIDDEN_NETWORK_TOKENS = [
@@ -341,6 +350,67 @@ def test_bad_year_comparison_exists():
     cols = set(rows[0].keys())
     for c in ("model", "ic_2021", "worst_year_ic", "improves_bad_year"):
         assert c in cols, "bad-year comparison missing column %r" % c
+
+
+def test_macro_input_files_present_and_usable():
+    missing = [b for b in _MACRO_INPUT_BASENAMES
+               if not os.path.isfile(os.path.join(_INPUT_DIR, b))]
+    if missing:
+        raise _Skip("local macro input files not present: %s" % missing)
+    rows = _rows("macro_data_inventory.csv")
+    usable = [r for r in rows if str(r.get("usable")).lower() == "true"]
+    assert usable, "macro input files present but none marked usable in the inventory"
+
+
+def test_fred_columns_recognized():
+    res = _load_result()
+    if _no_macro_data(res):
+        raise _Skip("no local macro data; FRED-column mapping not exercised")
+    mod = _import_runner()
+    for fred, canon in _FRED_TO_CANONICAL.items():
+        assert mod._FRED_COLUMN_MAP.get(fred) == canon, (
+            "FRED column %r must map to %r" % (fred, canon))
+
+
+def test_usable_macro_files_when_present():
+    res = _load_result()
+    if _no_macro_data(res):
+        raise _Skip("no local macro data present")
+    assert res["macro_data_inventory_summary"]["usable_macro_files"] > 0
+    assert (res["recommendation"]["recommendation"]
+            != "MACRO_REGIME_WALKFORWARD_BLOCKED_NEEDS_LOCAL_MACRO_DATA"), \
+        "must not be blocked-for-data when usable macro files exist"
+
+
+def test_core_macro_features_implemented_when_present():
+    res = _load_result()
+    if _no_macro_data(res):
+        raise _Skip("no local macro data present")
+    impl = set(res["macro_features_implemented"])
+    for feat in ("cpi_yoy", "fed_funds_level", "treasury_10y", "treasury_2y",
+                 "yield_curve_10y_2y"):
+        assert feat in impl, "expected %r implemented when macro data present" % feat
+
+
+def test_scoreboard_has_models_when_present():
+    res = _load_result()
+    if _no_macro_data(res):
+        raise _Skip("no local macro data present")
+    rows = _rows("macro_walkforward_scoreboard.csv")
+    models = {r["model"] for r in rows}
+    assert "ridge_technical_only" in models, "baseline must be in the scoreboard"
+    assert "ridge_combined_with_macro" in models, "macro model must be in the scoreboard"
+    assert len(rows) >= 4, "expected the full macro model line-up"
+
+
+def test_bad_year_has_baseline_and_macro_when_present():
+    res = _load_result()
+    if _no_macro_data(res):
+        raise _Skip("no local macro data present")
+    rows = _rows("macro_bad_year_comparison.csv")
+    models = {r["model"] for r in rows}
+    assert "ridge_technical_only" in models, "baseline row required"
+    assert "ridge_combined_with_macro" in models, "macro model row required"
 
 
 def test_decision_table_exists():

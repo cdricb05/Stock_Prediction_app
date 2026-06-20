@@ -1,2 +1,10 @@
 file_path,detected_macro_family,columns,row_count,date_min,date_max,usable,blocker
-(none found),,,0,,,False,"No local macro/inflation/rates data file found under research/input, research/output, data/, or repo top-level CSVs. Scanned=True. See macro_data_requirements."
+research/input/CPIAUCSL.csv,inflation,observation_date;CPIAUCSL,,1947-01-01,2026-05-01,True,
+research/input/DCOILWTICO.csv,commodity,observation_date;DCOILWTICO,,1986-01-02,2026-06-15,True,
+research/input/DTWEXBGS.csv,fx,observation_date;DTWEXBGS,,2006-01-02,2026-06-12,True,
+research/input/FEDFUNDS.csv,policy_rate,observation_date;FEDFUNDS,,1954-07-01,2026-05-01,True,
+research/input/macro_cpi_us.csv,inflation,observation_date;CPIAUCSL,,1947-01-01,2026-05-01,True,
+research/input/macro_dollar_index.csv,fx,observation_date;DTWEXBGS,,2006-01-02,2026-06-12,True,
+research/input/macro_fed_funds.csv,policy_rate,observation_date;FEDFUNDS,,1954-07-01,2026-05-01,True,
+research/input/macro_oil_wti.csv,commodity,observation_date;DCOILWTICO,,1986-01-02,2026-06-15,True,
+research/input/macro_treasury_yields.csv,rates,observation_date;DGS10;DGS2,,1962-01-02,2026-06-17,True,

@@ -1,1 +1,6 @@
 model,horizon,mean_daily_ic,decile_spread,ic_hit_rate,worst_year_ic,stability_score,fold_count,note
+ridge_technical_only,126d,0.08195,0.109819,0.6618,-0.108464,0.6667,0,
+ridge_combined_no_macro,126d,0.045219,0.082463,0.5167,-0.094708,0.6667,0,
+ridge_combined_with_macro,126d,0.047356,0.087737,0.5187,-0.09483,0.6667,0,
+ridge_macro_interactions,126d,0.042619,0.09076,0.5675,-0.088944,0.6667,0,
+regime_gated_macro_model,126d,0.037115,0.066838,0.5307,-0.11844,0.5,0,

@@ -98,12 +98,44 @@ deployable artifacts are produced; only summary CSVs are written.
 IMPROVES or WEAK; **Acquire Local Macro Data Files** on BLOCKED_NEEDS_LOCAL_MACRO_DATA; Repair
 Phase 3-R Inputs on BLOCKED_INPUTS.
 
-**This run:** `MACRO_REGIME_WALKFORWARD_BLOCKED_NEEDS_LOCAL_MACRO_DATA` → next phase **3-S —
-Acquire Local Macro Data Files**. No local macro/inflation/rates data file exists anywhere in the
-repo (or under the D: data root), so the macro feature layer cannot be built without fabricating
-data — which is forbidden. No model was trained, and **no macro data was faked**.
+**This run (Phase 3-S, macro data now local):** `MACRO_REGIME_WALKFORWARD_WEAK_NO_IMPROVEMENT`
+→ next phase **3-S — Sentiment and Earnings Coverage Expansion**. The five free FRED CSVs are now
+present under `research/input/` (`macro_cpi_us.csv`, `macro_fed_funds.csv`,
+`macro_treasury_yields.csv`, `macro_oil_wti.csv`, `macro_dollar_index.csv`), so the macro layer
+was ingested, mapped, lagged point-in-time, and the walk-forward re-test ran on **real** data
+(no value was faked). All 17 preferred macro features were implemented. The macro/regime models
+**do** repair the bad year — `ridge_combined_with_macro` lifts the **2021 IC from −0.108 to
++0.027** and the **worst-year IC from −0.108 to −0.095** with a positive decile spread — but the
+broader combined model's **mean IC falls from 0.082 to ~0.047 (> 25 %)**, so the strict IMPROVES
+gate (which also requires mean IC to stay within 25 % of baseline) is not met. The honest verdict
+is therefore **WEAK_NO_IMPROVEMENT**: macro features fix the regime-fragile bad year but at too
+large a cost to average IC to claim a robustness win.
 
-## Macro data requirements (to unblock Phase 3-R)
+### FRED ingestion + column mapping (Phase 3-S)
+
+The runner recognizes the FRED `observation_date` column and maps raw FRED series headers onto the
+canonical macro namespace, converting `.`/blank placeholders to NaN (never fabricated):
+
+| FRED header | Canonical | Family | Frequency | Availability rule |
+|---|---|---|---|---|
+| `CPIAUCSL` | `cpi_index_value` | inflation | monthly | observation date **+ 21-day** default lag |
+| `FEDFUNDS` | `fed_funds_level` | policy_rate | monthly | observation date **+ 21-day** default lag |
+| `DGS10` | `treasury_10y` | rates | daily | as-of by date |
+| `DGS2` | `treasury_2y` | rates | daily | as-of by date |
+| `DCOILWTICO` | `wti_price` | commodity | daily | as-of by date |
+| `DTWEXBGS` | `broad_dollar_index` | fx | daily | as-of by date |
+
+Monthly CPI / fed-funds derived features (`cpi_yoy`, `cpi_mom`, `inflation_acceleration`,
+`inflation_regime_high_low`, `fed_funds_change_3m`, `fed_policy_tightening_flag`,
+`macro_inflation_shock_flag`) are computed in observation order, then lagged to their availability
+date before the as-of merge. Daily features (`yield_curve_10y_2y`, `yield_curve_inversion_flag`,
+`real_rate_proxy`, `oil_return_63d`, `dollar_return_63d`, `macro_rate_shock_flag`,
+`macro_risk_off_flag`) are computed on the panel's daily scoring-date grid after the merge, so no
+future macro observation is ever used for a past scoring date. The macro × signal interactions
+(`momentum_x_inflation_shock`, `momentum_x_rate_shock`, `volatility_x_yield_curve_inversion`,
+`sector_relative_x_macro_risk_off`) are built per-row on the merged panel.
+
+## Macro data requirements (reference; now satisfied locally)
 
 Place the following **free, manually downloadable, non-paid** local files under
 `research/input/`. This phase calls **no API**; download the CSVs separately and drop them in.

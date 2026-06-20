@@ -90,10 +90,31 @@ _MACRO_FAMILIES = {
 }
 # Column-name fragments that CONFIRM a filename-matched file actually carries a macro series.
 _MACRO_COLUMN_HINTS = [
-    "cpi", "inflation", "ppi", "pce", "fed_funds", "fedfunds", "effr", "treasury", "yield",
-    "dgs10", "dgs2", "real_rate", "unrate", "unemploy", "payroll", "wti", "crude", "dxy",
-    "dollar_index", "broad_dollar", "fed_funds_rate", "policy_rate",
+    "cpi", "cpiaucsl", "inflation", "ppi", "pce", "fed_funds", "fedfunds", "effr", "dff",
+    "treasury", "yield", "dgs10", "dgs2", "real_rate", "unrate", "unemploy", "payroll", "wti",
+    "crude", "dcoilwtico", "dxy", "dollar_index", "broad_dollar", "dtwexb", "dtwexbgs",
+    "fed_funds_rate", "policy_rate",
 ]
+
+# Canonical FRED column mapping (Phase 3-S ingestion): map raw FRED series headers (and already
+# canonical headers) onto the Phase 3-R macro feature namespace. Used only to read REAL local
+# values - it never fabricates a series.
+_FRED_COLUMN_MAP = {
+    "cpiaucsl": "cpi_index_value",
+    "cpi_index_value": "cpi_index_value",
+    "fedfunds": "fed_funds_level",
+    "dff": "fed_funds_level",
+    "fed_funds_rate": "fed_funds_level",
+    "fed_funds_level": "fed_funds_level",
+    "dgs10": "treasury_10y",
+    "treasury_10y": "treasury_10y",
+    "dgs2": "treasury_2y",
+    "treasury_2y": "treasury_2y",
+    "dcoilwtico": "wti_price",
+    "wti_price": "wti_price",
+    "dtwexbgs": "broad_dollar_index",
+    "broad_dollar_index": "broad_dollar_index",
+}
 
 BAD_YEAR = 2021
 TRADING_DAYS_PER_MONTH = 21.0
@@ -373,24 +394,41 @@ def _family_available(usable_files, family):
     return any(f.get("detected_macro_family") == family for f in usable_files)
 
 
+# Source-data families each registry feature actually derives from. Derived-regime flags depend on
+# the underlying raw families (they have no data file of their own), so "implemented" reflects what
+# build_macro_feature_panel can really compute, not a literal "derived_regime" file.
+_FEATURE_FAMILY_DEPS = {
+    "cpi_yoy": ["inflation"], "cpi_mom": ["inflation"],
+    "inflation_acceleration": ["inflation"], "inflation_regime_high_low": ["inflation"],
+    "fed_funds_level": ["policy_rate"], "fed_funds_change_3m": ["policy_rate"],
+    "fed_policy_tightening_flag": ["policy_rate"],
+    "treasury_10y": ["rates"], "treasury_2y": ["rates"],
+    "yield_curve_10y_2y": ["rates"], "yield_curve_inversion_flag": ["rates"],
+    "real_rate_proxy": ["rates", "inflation"],
+    "oil_return_63d": ["commodity"], "dollar_return_63d": ["fx"],
+    "macro_risk_off_flag": ["rates", "policy_rate", "inflation"],
+    "macro_inflation_shock_flag": ["inflation"],
+    "macro_rate_shock_flag": ["policy_rate", "rates"],
+}
+# Derived flags need ANY one of their input families; everything else needs ALL listed families.
+_FEATURE_DEPS_ANY = {"macro_risk_off_flag", "macro_rate_shock_flag"}
+
+
 def macro_feature_registry(usable_files):
     rows = []
     for feat, family, freq, lag_rule in _PREFERRED_FEATURES:
-        have_family = _family_available(usable_files, family)
-        # real_rate_proxy / derived inflation flags need the inflation family too.
-        needs_inflation = feat in ("real_rate_proxy", "macro_inflation_shock_flag")
-        if needs_inflation:
-            have_family = have_family and _family_available(usable_files, "inflation")
+        deps = _FEATURE_FAMILY_DEPS.get(feat, [family])
+        present = [d for d in deps if _family_available(usable_files, d)]
+        implemented = bool(present) if feat in _FEATURE_DEPS_ANY else (len(present) == len(deps))
         optional = feat in _OPTIONAL_FAMILY_FEATURES
-        implemented = bool(have_family)
         if implemented:
             blocker = ""
-        elif optional:
-            blocker = ("optional: no local %s data file present" % family)
         else:
-            blocker = ("no local %s data file present" % family)
+            missing = [d for d in deps if d not in present]
+            prefix = "optional: " if optional else ""
+            blocker = "%sno local %s data file present" % (prefix, "/".join(missing) or family)
         src = next((f["file_path"] for f in usable_files
-                    if f.get("detected_macro_family") == family), "")
+                    if f.get("detected_macro_family") in present), "")
         rows.append({
             "feature_name": feat,
             "source_file": src,
@@ -490,9 +528,14 @@ def run_macro_walkforward(usable_files, price_csv, phase3l_panel_csv, baseline, 
 
     panel, info = p3p.build_full_panel(price_csv, phase3l_panel_csv,
                                        p3p.PHASE3M_EARNINGS_CSV, verbose)
-    macro_panel, macro_cols, interaction_cols = build_macro_feature_panel(
-        usable_files, panel, pd)
+    macro_panel, macro_cols = build_macro_feature_panel(usable_files, panel, pd)
     panel = panel.merge(macro_panel, on="scoring_date", how="left")
+    interaction_cols = build_macro_interactions(panel, pd)
+    info = dict(info or {})
+    info["macro_features_merged"] = macro_cols
+    info["macro_interaction_features"] = interaction_cols
+    info["macro_panel_scoring_date_min"] = str(macro_panel["scoring_date"].min())[:10]
+    info["macro_panel_scoring_date_max"] = str(macro_panel["scoring_date"].max())[:10]
 
     feature_sets = {
         "ridge_technical_only": list(p3p.FEATURE_SETS["technical_only"]),
@@ -532,45 +575,158 @@ def run_macro_walkforward(usable_files, price_csv, phase3l_panel_csv, baseline, 
 
     comparison_summary = _macro_comparison_summary(scoreboard_rows, preds_by_model, baseline, p3q)
     bad_year_rows = _macro_bad_year_rows(scoreboard_rows, preds_by_model, baseline, p3q)
-    sample_rows = _macro_panel_sample(macro_panel, macro_cols + interaction_cols)
+    sample_rows = _macro_panel_sample(macro_panel, macro_cols)
     return (scoreboard_rows, yearly_rows, regime_rows, bad_year_rows, comparison_summary,
             sample_rows, info)
 
 
-def build_macro_feature_panel(usable_files, panel, pd):
-    """As-of merge each usable macro file onto the panel's scoring dates with conservative
-    point-in-time availability lags, then derive the registry features. Real data only - this
-    function never fabricates a value; missing families are simply absent."""
-    dates = pd.Series(sorted(panel["scoring_date"].unique()), name="scoring_date")
-    out = pd.DataFrame({"scoring_date": dates})
-    macro_cols, interaction_cols = [], []
+def _load_canonical_macro_series(usable_files, pd, np):
+    """Read each usable macro file, map its FRED column(s) onto the canonical macro namespace,
+    and attach a conservative point-in-time availability date. Real values only - missing values
+    (FRED '.' or blank) become NaN and are never fabricated. Returns
+    canonical_name -> {"df": DataFrame[_obs,_avail,<canon>], "monthly": bool}."""
+    series = {}
     for f in usable_files:
-        raw = pd.read_csv(os.path.join(_REPO_ROOT, f["file_path"]))
+        path = os.path.join(_REPO_ROOT, f["file_path"])
+        try:
+            raw = pd.read_csv(path)
+        except (OSError, ValueError):
+            continue
         date_col = next((c for c in raw.columns
                          if any(k in c.lower() for k in ("date", "observation", "period"))), None)
         if date_col is None:
             continue
-        raw[date_col] = pd.to_datetime(raw[date_col], errors="coerce")
+        obs = pd.to_datetime(raw[date_col], errors="coerce")
         rel_col = next((c for c in raw.columns if "release" in c.lower()), None)
-        if rel_col is not None:
-            raw["_avail"] = pd.to_datetime(raw[rel_col], errors="coerce")
-        else:
-            raw["_avail"] = raw[date_col] + pd.Timedelta(days=DEFAULT_MONTHLY_RELEASE_LAG_DAYS)
-        raw = raw.dropna(subset=["_avail"]).sort_values("_avail")
-        value_cols = [c for c in raw.columns
-                      if c not in (date_col, rel_col, "_avail")
-                      and pd.api.types.is_numeric_dtype(raw[c])]
-        merged = pd.merge_asof(out.sort_values("scoring_date"),
-                               raw[["_avail"] + value_cols].rename(columns={"_avail": "scoring_date"})
-                               .sort_values("scoring_date"),
-                               on="scoring_date", direction="backward")
-        for c in value_cols:
-            col = "macro_%s" % c
-            out[col] = merged[c].to_numpy()
-            macro_cols.append(col)
-    # Interaction features (momentum x macro flags) require panel-level momentum; left to the
-    # full model run - here we expose the macro columns and any derived flags already present.
-    return out, macro_cols, interaction_cols
+        gaps = obs.dropna().sort_values().diff().dt.days.dropna()
+        is_monthly = bool(len(gaps)) and float(gaps.median()) >= 20.0
+        if rel_col is not None:                       # true release-date PIT when provided
+            avail = pd.to_datetime(raw[rel_col], errors="coerce")
+        elif is_monthly:                              # conservative default availability lag
+            avail = obs + pd.Timedelta(days=DEFAULT_MONTHLY_RELEASE_LAG_DAYS)
+        else:                                         # daily series: as-of by observation date
+            avail = obs
+        for c in raw.columns:
+            canon = _FRED_COLUMN_MAP.get(str(c).strip().lower())
+            if canon is None:
+                continue
+            vals = pd.to_numeric(
+                raw[c].astype(str).str.strip().replace({".": None, "": None}), errors="coerce")
+            sdf = (pd.DataFrame({"_obs": obs, "_avail": avail, canon: vals})
+                   .dropna(subset=[canon, "_avail"]).sort_values("_obs").reset_index(drop=True))
+            if len(sdf):
+                series[canon] = {"df": sdf, "monthly": is_monthly}
+    return series
+
+
+def build_macro_feature_panel(usable_files, panel, pd):
+    """Map the local FRED macro files into the Phase 3-R macro feature layer, derive every
+    registry feature, and as-of (point-in-time) merge them onto the panel's daily scoring dates.
+    Real data only - this function never fabricates a value; absent families are simply omitted
+    and absent rows stay NaN (the ridge prep median-imputes per training fold)."""
+    import numpy as np  # noqa: E402  (lazy: only when macro data actually exists)
+    series = _load_canonical_macro_series(usable_files, pd, np)
+
+    dates = pd.to_datetime(pd.Series(sorted(panel["scoring_date"].unique()), name="scoring_date"))
+    out = pd.DataFrame({"scoring_date": dates}).sort_values("scoring_date").reset_index(drop=True)
+
+    base_frames = []  # each: DataFrame[_avail, <cols...>] merged as-of (backward) onto scoring dates
+
+    # --- Inflation (CPI, monthly, computed in observation order then lagged to availability) ---
+    if "cpi_index_value" in series:
+        d = series["cpi_index_value"]["df"].copy()
+        cpi = d["cpi_index_value"]
+        d["cpi_yoy"] = cpi / cpi.shift(12) - 1.0
+        d["cpi_mom"] = cpi / cpi.shift(1) - 1.0
+        d["inflation_acceleration"] = d["cpi_yoy"] - d["cpi_yoy"].shift(1)
+        # High vs low inflation regime = current YoY above its trailing ~5y median (PIT-safe).
+        d["inflation_regime_high_low"] = (
+            d["cpi_yoy"] > d["cpi_yoy"].rolling(60, min_periods=24).median()).astype(float)
+        d["macro_inflation_shock_flag"] = (
+            (d["cpi_yoy"] - d["cpi_yoy"].shift(3)) > 0.01).astype(float)
+        base_frames.append(d[["_avail", "cpi_yoy", "cpi_mom", "inflation_acceleration",
+                              "inflation_regime_high_low", "macro_inflation_shock_flag"]])
+
+    # --- Policy rate (fed funds, monthly) ---
+    if "fed_funds_level" in series:
+        d = series["fed_funds_level"]["df"].copy()
+        lvl = d["fed_funds_level"]
+        d["fed_funds_change_3m"] = lvl - lvl.shift(3)
+        d["fed_policy_tightening_flag"] = (d["fed_funds_change_3m"] > 0).astype(float)
+        d["_ff_rate_shock"] = (d["fed_funds_change_3m"] > 0.5).astype(float)
+        base_frames.append(d[["_avail", "fed_funds_level", "fed_funds_change_3m",
+                              "fed_policy_tightening_flag", "_ff_rate_shock"]])
+
+    # --- Daily raw series (rates / commodity / fx) merged as-of by date ---
+    for canon in ("treasury_10y", "treasury_2y", "wti_price", "broad_dollar_index"):
+        if canon in series:
+            base_frames.append(series[canon]["df"][["_avail", canon]].copy())
+
+    out_sorted = out
+    for fr in base_frames:
+        fr2 = (fr.dropna(subset=["_avail"]).sort_values("_avail")
+               .drop_duplicates(subset=["_avail"], keep="last")
+               .rename(columns={"_avail": "scoring_date"}))
+        out_sorted = pd.merge_asof(out_sorted, fr2, on="scoring_date", direction="backward")
+    out = out_sorted.reset_index(drop=True)
+
+    # --- Derived cross-series features (point-in-time safe: only merged-as-of inputs) ---
+    if "treasury_10y" in out.columns and "treasury_2y" in out.columns:
+        out["yield_curve_10y_2y"] = out["treasury_10y"] - out["treasury_2y"]
+        out["yield_curve_inversion_flag"] = (out["yield_curve_10y_2y"] < 0).astype(float)
+    if "treasury_10y" in out.columns and "cpi_yoy" in out.columns:
+        # treasury is in percent; cpi_yoy is a fraction -> express both in percent.
+        out["real_rate_proxy"] = out["treasury_10y"] - out["cpi_yoy"] * 100.0
+    if "wti_price" in out.columns:
+        out["oil_return_63d"] = out["wti_price"].pct_change(63)
+    if "broad_dollar_index" in out.columns:
+        out["dollar_return_63d"] = out["broad_dollar_index"].pct_change(63)
+
+    # macro_rate_shock_flag: fed-funds 3m jump OR a >50bp 10y move over ~63 trading days.
+    ff_shock = (out["_ff_rate_shock"].fillna(0.0) > 0
+                if "_ff_rate_shock" in out.columns else pd.Series(False, index=out.index))
+    if "treasury_10y" in out.columns:
+        ts_shock = (out["treasury_10y"] - out["treasury_10y"].shift(63)) > 0.5
+        ts_shock = ts_shock.fillna(False)
+    else:
+        ts_shock = pd.Series(False, index=out.index)
+    out["macro_rate_shock_flag"] = (ff_shock | ts_shock).astype(float)
+
+    # macro_risk_off_flag: curve inversion OR (tightening AND high-inflation regime).
+    inv = (out["yield_curve_inversion_flag"].fillna(0.0) > 0
+           if "yield_curve_inversion_flag" in out.columns else pd.Series(False, index=out.index))
+    tight = (out["fed_policy_tightening_flag"].fillna(0.0) > 0
+             if "fed_policy_tightening_flag" in out.columns else pd.Series(False, index=out.index))
+    infl_hi = (out["inflation_regime_high_low"].fillna(0.0) > 0
+               if "inflation_regime_high_low" in out.columns else pd.Series(False, index=out.index))
+    out["macro_risk_off_flag"] = (inv | (tight & infl_hi)).astype(float)
+
+    registry_feats = [f[0] for f in _PREFERRED_FEATURES]
+    macro_cols = [c for c in registry_feats if c in out.columns]
+    out = out[["scoring_date"] + macro_cols].copy()
+    return out, macro_cols
+
+
+# Interaction features (Phase 3-R spec): momentum/volatility/sector-relative x macro regime flags.
+_MACRO_INTERACTION_SPEC = [
+    ("momentum_x_inflation_shock", "return_63d", "macro_inflation_shock_flag"),
+    ("momentum_x_rate_shock", "return_63d", "macro_rate_shock_flag"),
+    ("volatility_x_yield_curve_inversion", "volatility_21d", "yield_curve_inversion_flag"),
+    ("sector_relative_x_macro_risk_off",
+     "ticker_return_21d_minus_sector_return_21d", "macro_risk_off_flag"),
+]
+
+
+def build_macro_interactions(panel, pd):
+    """Build the macro x signal interaction columns ON the merged panel (per row). Returns the
+    list of interaction column names actually created (only when both inputs are present)."""
+    cols = []
+    for name, base, flag in _MACRO_INTERACTION_SPEC:
+        if base in panel.columns and flag in panel.columns:
+            panel[name] = (pd.to_numeric(panel[base], errors="coerce")
+                           * pd.to_numeric(panel[flag], errors="coerce"))
+            cols.append(name)
+    return cols
 
 
 def _panel_regime_medians(panel, pd):
@@ -829,10 +985,22 @@ def _write_csv(path, columns, rows):
             w.writerow(out)
 
 
+def _json_default(o):
+    """Serialize values that survive a pandas/numpy round trip (Timestamps, numpy scalars)."""
+    if hasattr(o, "isoformat"):
+        return o.isoformat()
+    if hasattr(o, "item"):
+        try:
+            return o.item()
+        except (ValueError, TypeError):
+            pass
+    return str(o)
+
+
 def _dump_json(path, obj):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(obj, f, indent=2)
+        json.dump(obj, f, indent=2, default=_json_default)
 
 
 _OUT_PATHS = {
