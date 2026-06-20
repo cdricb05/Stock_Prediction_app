@@ -1,0 +1,265 @@
+{
+  "phase": "3-W",
+  "generated_at": "2026-06-20T12:15:37",
+  "inputs_read": {
+    "phase3v_result_json": "research/output/phase3v_global_etf_price_data_pack.json",
+    "phase3u_universe_csv": "research/output/phase3u_global_asset_universe_readiness/target_global_asset_universe.csv",
+    "manual_input_dir": "research/input/global_assets/manual"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3w_manual_global_etf_data_import.json",
+    "inventory": "research/output/phase3w_manual_global_etf_data_import/manual_file_inventory.csv",
+    "panel": "research/output/phase3w_manual_global_etf_data_import/normalized_global_etf_price_panel.csv",
+    "coverage": "research/output/phase3w_manual_global_etf_data_import/global_etf_price_coverage.csv",
+    "quality": "research/output/phase3w_manual_global_etf_data_import/global_etf_price_quality.csv",
+    "missing": "research/output/phase3w_manual_global_etf_data_import/missing_or_bad_format_files.csv",
+    "instructions": "research/output/phase3w_manual_global_etf_data_import/manual_download_instructions.csv",
+    "feature_readiness": "research/output/phase3w_manual_global_etf_data_import/cross_asset_feature_readiness.csv",
+    "decision": "research/output/phase3w_manual_global_etf_data_import/readiness_decision_table.csv"
+  },
+  "phase3v_confirmation": {
+    "phase3v_present": true,
+    "phase3v_phase": "3-V",
+    "phase3v_is_3v": true,
+    "phase3v_recommendation": "GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE",
+    "phase3v_recommendation_accepted": true,
+    "note": "Phase 3-V's Stooq downloads were blocked / partial; Phase 3-W provides a local manual CSV intake path. Phase 3-V and Phase 3-U outputs are read-only here."
+  },
+  "target_count": 22,
+  "fallback_used": false,
+  "manual_file_count": 0,
+  "usable_ticker_count": 0,
+  "missing_ticker_count": 22,
+  "asset_classes_covered": 0,
+  "asset_classes_covered_list": [],
+  "usable_tickers": [],
+  "panel_row_count": 0,
+  "feature_families_ready": [],
+  "feature_readiness_summary": {
+    "ready": 0,
+    "blocked": 8,
+    "total": 8
+  },
+  "manual_input_instructions": {
+    "where_to_place_files": "research/input/global_assets/manual",
+    "per_ticker_filename": "<TICKER>.csv",
+    "combined_filename": "global_etf_prices.csv",
+    "accepted_sources": "browser-downloaded CSV from a legitimate historical price page; broker export; data-vendor export already available to you"
+  },
+  "readiness_decision_table": [
+    {
+      "decision_item": "phase3v_present",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-V result readable (read-only)"
+    },
+    {
+      "decision_item": "phase3v_is_3v",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-V result phase == 3-V"
+    },
+    {
+      "decision_item": "phase3v_recommendation_accepted",
+      "value": "GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE",
+      "passed": true,
+      "note": "Phase 3-V recommended a manual repair path (blocked / partial download)"
+    },
+    {
+      "decision_item": "target_universe_size",
+      "value": 22,
+      "passed": true,
+      "note": "at least 20 cross-asset proxies targeted"
+    },
+    {
+      "decision_item": "network_called",
+      "value": false,
+      "passed": true,
+      "note": "no network is contacted; manual local CSV intake only"
+    },
+    {
+      "decision_item": "manual_file_count",
+      "value": 0,
+      "passed": "",
+      "note": "non-template CSV files found in the folder"
+    },
+    {
+      "decision_item": "usable_count",
+      "value": 0,
+      "passed": "",
+      "note": "target proxies with >= 250 usable daily rows"
+    },
+    {
+      "decision_item": "asset_classes_covered",
+      "value": 0,
+      "passed": "",
+      "note": "distinct asset classes among usable proxies"
+    },
+    {
+      "decision_item": "ready_threshold_met",
+      "value": false,
+      "passed": false,
+      "note": "READY needs >= 12 usable proxies across >= 5 asset classes"
+    },
+    {
+      "decision_item": "no_price_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "invalid rows dropped; no rows fabricated"
+    },
+    {
+      "decision_item": "alpha_vantage_called",
+      "value": false,
+      "passed": true,
+      "note": "no Alpha Vantage call"
+    },
+    {
+      "decision_item": "fred_called",
+      "value": false,
+      "passed": true,
+      "note": "no FRED call"
+    },
+    {
+      "decision_item": "stooq_called",
+      "value": false,
+      "passed": true,
+      "note": "no Stooq call (manual intake only)"
+    },
+    {
+      "decision_item": "yfinance_called",
+      "value": false,
+      "passed": true,
+      "note": "no yfinance use"
+    },
+    {
+      "decision_item": "d_drive_read",
+      "value": false,
+      "passed": true,
+      "note": "nothing read from the data drive"
+    },
+    {
+      "decision_item": "d_drive_written",
+      "value": false,
+      "passed": true,
+      "note": "nothing written to the data drive"
+    },
+    {
+      "decision_item": "phase3m_outputs_modified",
+      "value": false,
+      "passed": true,
+      "note": "Phase 3-M outputs untouched"
+    },
+    {
+      "decision_item": "phase3u_outputs_modified",
+      "value": false,
+      "passed": true,
+      "note": "Phase 3-U outputs untouched"
+    },
+    {
+      "decision_item": "phase3v_outputs_modified",
+      "value": false,
+      "passed": true,
+      "note": "Phase 3-V outputs untouched"
+    },
+    {
+      "decision_item": "no_production_model_candidate",
+      "value": true,
+      "passed": true,
+      "note": "data preparation only"
+    },
+    {
+      "decision_item": "no_production_predictions_or_scores",
+      "value": true,
+      "passed": true,
+      "note": "no predictions / scores computed"
+    },
+    {
+      "decision_item": "no_portfolio_weights",
+      "value": true,
+      "passed": true,
+      "note": "no portfolio weights computed"
+    },
+    {
+      "decision_item": "no_deployable_artifact",
+      "value": true,
+      "passed": true,
+      "note": "no serialized model file written"
+    },
+    {
+      "decision_item": "recommendation",
+      "value": "MANUAL_GLOBAL_ETF_DATA_WAITING_FOR_FILES",
+      "passed": true,
+      "note": "allowed values only"
+    }
+  ],
+  "recommendation": {
+    "recommendation": "MANUAL_GLOBAL_ETF_DATA_WAITING_FOR_FILES",
+    "allowed_values": [
+      "MANUAL_GLOBAL_ETF_DATA_READY",
+      "MANUAL_GLOBAL_ETF_DATA_PARTIAL",
+      "MANUAL_GLOBAL_ETF_DATA_WAITING_FOR_FILES",
+      "MANUAL_GLOBAL_ETF_DATA_BAD_FORMAT"
+    ],
+    "research_only": true,
+    "build_feature_factory_now": false,
+    "train_production_model_now": false,
+    "create_production_model_candidate_now": false,
+    "compute_production_predictions_now": false,
+    "compute_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "price_data_faked": false,
+    "manual_file_count": 0,
+    "usable_count": 0,
+    "reason": "No manual CSV files found in the intake folder; add real price CSVs and re-run."
+  },
+  "recommended_next_phase": {
+    "phase": "3-X",
+    "title": "Add Manual Global ETF Price CSVs",
+    "purpose": "No manual CSV files were found; add real price CSVs to the manual folder, then re-run this phase."
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "research_only": true,
+    "local_data_preparation_only": true,
+    "manual_intake_only": true,
+    "price_data_faked": false,
+    "network_called": false,
+    "provider_paid_api_called": false,
+    "production_predictions_computed": false,
+    "production_scores_computed": false,
+    "portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false,
+    "results_remain_survivorship_biased": true,
+    "narrative": "Phase 3-W is the research-only, local, MANUAL data-intake path that replaces Phase 3-V's blocked network downloads. It calls no network: it only reads CSV files the user places in research/input/global_assets/manual/, normalizes accepted formats to a common OHLCV schema (adjusted_close uses adjusted_close/Adj Close if present, else close), drops invalid rows, and fabricates nothing. It found 0 manual file(s), yielding 0 of 22 target proxies usable across 0 asset classes. It trains no model, computes no predictions / scores / portfolio weights / order instructions, writes no deployable artifact, touches no database, runs no migration, restarts no service, enables no serving flag, and reads/writes nothing on the data drive. It does not call Stooq, yfinance, Alpha Vantage, FRED, or any paid API. Recommendation: MANUAL_GLOBAL_ETF_DATA_WAITING_FOR_FILES. The universe is current-as-of, so downstream results remain survivorship-biased and claim no production edge."
+  },
+  "research_only": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "stooq_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "network_called": false,
+  "data_faked": false,
+  "labels_for_validation_only": true
+}

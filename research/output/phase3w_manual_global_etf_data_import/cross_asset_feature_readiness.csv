@@ -1,0 +1,9 @@
+feature_family,required_tickers,available_tickers,missing_tickers,ready,blocker
+equity_risk_appetite,SPY;QQQ;IWM,,SPY;QQQ;IWM,False,"missing usable local price history for: SPY, QQQ, IWM"
+global_equity_breadth,SPY;EFA;EEM;VGK;EWJ;FXI,,SPY;EFA;EEM;VGK;EWJ;FXI,False,"missing usable local price history for: SPY, EFA, EEM, VGK, EWJ, FXI"
+rates_duration_regime,SHY;IEF;TLT;TIP,,SHY;IEF;TLT;TIP,False,"missing usable local price history for: SHY, IEF, TLT, TIP"
+credit_risk,HYG;LQD,,HYG;LQD,False,"missing usable local price history for: HYG, LQD"
+commodity_inflation,GLD;SLV;DBC;USO,,GLD;SLV;DBC;USO,False,"missing usable local price history for: GLD, SLV, DBC, USO"
+dollar_liquidity,UUP;FXE;FXY,,UUP;FXE;FXY,False,"missing usable local price history for: UUP, FXE, FXY"
+volatility_risk,VIXY,,VIXY,False,missing usable local price history for: VIXY
+cross_asset_regime,SPY;HYG;LQD;TLT;GLD;UUP;VIXY,,SPY;HYG;LQD;TLT;GLD;UUP;VIXY,False,"missing usable local price history for: SPY, HYG, LQD, TLT, GLD, UUP, VIXY"

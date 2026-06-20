@@ -1,0 +1,25 @@
+decision_item,value,passed,note
+phase3v_present,True,True,Phase 3-V result readable (read-only)
+phase3v_is_3v,True,True,Phase 3-V result phase == 3-V
+phase3v_recommendation_accepted,GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE,True,Phase 3-V recommended a manual repair path (blocked / partial download)
+target_universe_size,22,True,at least 20 cross-asset proxies targeted
+network_called,False,True,no network is contacted; manual local CSV intake only
+manual_file_count,0,,non-template CSV files found in the folder
+usable_count,0,,target proxies with >= 250 usable daily rows
+asset_classes_covered,0,,distinct asset classes among usable proxies
+ready_threshold_met,False,False,READY needs >= 12 usable proxies across >= 5 asset classes
+no_price_data_faked,True,True,invalid rows dropped; no rows fabricated
+alpha_vantage_called,False,True,no Alpha Vantage call
+fred_called,False,True,no FRED call
+stooq_called,False,True,no Stooq call (manual intake only)
+yfinance_called,False,True,no yfinance use
+d_drive_read,False,True,nothing read from the data drive
+d_drive_written,False,True,nothing written to the data drive
+phase3m_outputs_modified,False,True,Phase 3-M outputs untouched
+phase3u_outputs_modified,False,True,Phase 3-U outputs untouched
+phase3v_outputs_modified,False,True,Phase 3-V outputs untouched
+no_production_model_candidate,True,True,data preparation only
+no_production_predictions_or_scores,True,True,no predictions / scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized model file written
+recommendation,MANUAL_GLOBAL_ETF_DATA_WAITING_FOR_FILES,True,allowed values only

@@ -1,0 +1,23 @@
+ticker_or_file,issue_type,reason,next_action
+SPY,missing_file,no manual CSV supplied for SPY,place SPY.csv under research/input/global_assets/manual/
+QQQ,missing_file,no manual CSV supplied for QQQ,place QQQ.csv under research/input/global_assets/manual/
+IWM,missing_file,no manual CSV supplied for IWM,place IWM.csv under research/input/global_assets/manual/
+EFA,missing_file,no manual CSV supplied for EFA,place EFA.csv under research/input/global_assets/manual/
+EEM,missing_file,no manual CSV supplied for EEM,place EEM.csv under research/input/global_assets/manual/
+VGK,missing_file,no manual CSV supplied for VGK,place VGK.csv under research/input/global_assets/manual/
+EWJ,missing_file,no manual CSV supplied for EWJ,place EWJ.csv under research/input/global_assets/manual/
+FXI,missing_file,no manual CSV supplied for FXI,place FXI.csv under research/input/global_assets/manual/
+SHY,missing_file,no manual CSV supplied for SHY,place SHY.csv under research/input/global_assets/manual/
+IEF,missing_file,no manual CSV supplied for IEF,place IEF.csv under research/input/global_assets/manual/
+TLT,missing_file,no manual CSV supplied for TLT,place TLT.csv under research/input/global_assets/manual/
+TIP,missing_file,no manual CSV supplied for TIP,place TIP.csv under research/input/global_assets/manual/
+LQD,missing_file,no manual CSV supplied for LQD,place LQD.csv under research/input/global_assets/manual/
+HYG,missing_file,no manual CSV supplied for HYG,place HYG.csv under research/input/global_assets/manual/
+GLD,missing_file,no manual CSV supplied for GLD,place GLD.csv under research/input/global_assets/manual/
+SLV,missing_file,no manual CSV supplied for SLV,place SLV.csv under research/input/global_assets/manual/
+DBC,missing_file,no manual CSV supplied for DBC,place DBC.csv under research/input/global_assets/manual/
+USO,missing_file,no manual CSV supplied for USO,place USO.csv under research/input/global_assets/manual/
+UUP,missing_file,no manual CSV supplied for UUP,place UUP.csv under research/input/global_assets/manual/
+FXE,missing_file,no manual CSV supplied for FXE,place FXE.csv under research/input/global_assets/manual/
+FXY,missing_file,no manual CSV supplied for FXY,place FXY.csv under research/input/global_assets/manual/
+VIXY,missing_file,no manual CSV supplied for VIXY,place VIXY.csv under research/input/global_assets/manual/

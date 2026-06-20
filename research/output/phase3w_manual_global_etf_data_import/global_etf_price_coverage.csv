@@ -1,0 +1,23 @@
+ticker,asset_class,region,locally_available,row_count,date_min,date_max,has_2016_start,coverage_status,blocker
+SPY,us_equity,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+QQQ,us_equity,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+IWM,us_equity,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+EFA,intl_dev_equity,developed_ex_us,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+EEM,intl_em_equity,emerging_markets,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+VGK,intl_dev_equity,europe,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+EWJ,intl_dev_equity,japan,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+FXI,intl_em_equity,china,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+SHY,rates,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+IEF,rates,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+TLT,rates,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+TIP,rates,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+LQD,credit,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+HYG,credit,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+GLD,commodity,global,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+SLV,commodity,global,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+DBC,commodity,global,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+USO,commodity,global,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+UUP,currency,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+FXE,currency,europe,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+FXY,currency,japan,False,0,,,False,MISSING,no manual CSV supplied for this ticker
+VIXY,volatility,united_states,False,0,,,False,MISSING,no manual CSV supplied for this ticker
