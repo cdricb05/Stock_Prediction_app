@@ -1,8 +1,8 @@
 decision_item,value,passed,note
 collection_recommendation,EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS,,resumable collection state (not a signal decision)
-cached_ticker_count_after_run,45,False,signal gate needs >= 75 cached tickers
-missing_ticker_count_after_run,83,,tickers still to collect in later runs
-network_requests_this_run,20,,bounded by PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN=20
+cached_ticker_count_after_run,50,False,signal gate needs >= 75 cached tickers
+missing_ticker_count_after_run,78,,tickers still to collect in later runs
+network_requests_this_run,5,,bounded by PHASE3M_MAX_NETWORK_REQUESTS_PER_RUN=5
 provider_limit_hit,False,,
 signal_gate_allowed_now,False,False,IC gate not run below the minimum
 no_model_training,True,True,this phase trains no model

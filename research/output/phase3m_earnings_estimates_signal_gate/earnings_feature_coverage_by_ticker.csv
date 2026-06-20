@@ -539,3 +539,63 @@ FDX,Industrials,surprise_acceleration,119,120,0.9917,1996-07-01,2026-03-19
 FDX,Industrials,days_since_last_earnings,119,120,0.9917,1996-07-01,2026-03-19
 FDX,Industrials,earnings_event_recency_bucket,120,120,1.0,1996-07-01,2026-03-19
 FDX,Industrials,estimate_revision_proxy,0,120,0.0,1996-07-01,2026-03-19
+GD,Industrials,eps_surprise,121,121,1.0,1996-04-17,2026-04-29
+GD,Industrials,eps_surprise_pct,121,121,1.0,1996-04-17,2026-04-29
+GD,Industrials,positive_surprise_flag,121,121,1.0,1996-04-17,2026-04-29
+GD,Industrials,negative_surprise_flag,121,121,1.0,1996-04-17,2026-04-29
+GD,Industrials,surprise_magnitude_abs,121,121,1.0,1996-04-17,2026-04-29
+GD,Industrials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-29
+GD,Industrials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-17,2026-04-29
+GD,Industrials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-29
+GD,Industrials,surprise_acceleration,120,121,0.9917,1996-04-17,2026-04-29
+GD,Industrials,days_since_last_earnings,120,121,0.9917,1996-04-17,2026-04-29
+GD,Industrials,earnings_event_recency_bucket,121,121,1.0,1996-04-17,2026-04-29
+GD,Industrials,estimate_revision_proxy,0,121,0.0,1996-04-17,2026-04-29
+GE,Industrials,eps_surprise,121,121,1.0,1996-04-18,2026-04-21
+GE,Industrials,eps_surprise_pct,121,121,1.0,1996-04-18,2026-04-21
+GE,Industrials,positive_surprise_flag,121,121,1.0,1996-04-18,2026-04-21
+GE,Industrials,negative_surprise_flag,121,121,1.0,1996-04-18,2026-04-21
+GE,Industrials,surprise_magnitude_abs,121,121,1.0,1996-04-18,2026-04-21
+GE,Industrials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-18,2026-04-21
+GE,Industrials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-18,2026-04-21
+GE,Industrials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-18,2026-04-21
+GE,Industrials,surprise_acceleration,120,121,0.9917,1996-04-18,2026-04-21
+GE,Industrials,days_since_last_earnings,120,121,0.9917,1996-04-18,2026-04-21
+GE,Industrials,earnings_event_recency_bucket,121,121,1.0,1996-04-18,2026-04-21
+GE,Industrials,estimate_revision_proxy,0,121,0.0,1996-04-18,2026-04-21
+GILD,Health Care,eps_surprise,121,121,1.0,1996-04-26,2026-05-07
+GILD,Health Care,eps_surprise_pct,118,121,0.9752,1996-04-26,2026-05-07
+GILD,Health Care,positive_surprise_flag,121,121,1.0,1996-04-26,2026-05-07
+GILD,Health Care,negative_surprise_flag,121,121,1.0,1996-04-26,2026-05-07
+GILD,Health Care,surprise_magnitude_abs,121,121,1.0,1996-04-26,2026-05-07
+GILD,Health Care,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-26,2026-05-07
+GILD,Health Care,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-26,2026-05-07
+GILD,Health Care,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-26,2026-05-07
+GILD,Health Care,surprise_acceleration,117,121,0.9669,1996-04-26,2026-05-07
+GILD,Health Care,days_since_last_earnings,120,121,0.9917,1996-04-26,2026-05-07
+GILD,Health Care,earnings_event_recency_bucket,121,121,1.0,1996-04-26,2026-05-07
+GILD,Health Care,estimate_revision_proxy,0,121,0.0,1996-04-26,2026-05-07
+GOOG,Communication Services,eps_surprise,63,63,1.0,2010-07-15,2026-04-29
+GOOG,Communication Services,eps_surprise_pct,63,63,1.0,2010-07-15,2026-04-29
+GOOG,Communication Services,positive_surprise_flag,63,63,1.0,2010-07-15,2026-04-29
+GOOG,Communication Services,negative_surprise_flag,63,63,1.0,2010-07-15,2026-04-29
+GOOG,Communication Services,surprise_magnitude_abs,63,63,1.0,2010-07-15,2026-04-29
+GOOG,Communication Services,trailing_4q_avg_surprise_pct,62,63,0.9841,2010-07-15,2026-04-29
+GOOG,Communication Services,trailing_4q_positive_surprise_rate,62,63,0.9841,2010-07-15,2026-04-29
+GOOG,Communication Services,trailing_8q_avg_surprise_pct,62,63,0.9841,2010-07-15,2026-04-29
+GOOG,Communication Services,surprise_acceleration,62,63,0.9841,2010-07-15,2026-04-29
+GOOG,Communication Services,days_since_last_earnings,62,63,0.9841,2010-07-15,2026-04-29
+GOOG,Communication Services,earnings_event_recency_bucket,63,63,1.0,2010-07-15,2026-04-29
+GOOG,Communication Services,estimate_revision_proxy,0,63,0.0,2010-07-15,2026-04-29
+GOOGL,Communication Services,eps_surprise,87,87,1.0,2004-10-21,2026-04-29
+GOOGL,Communication Services,eps_surprise_pct,87,87,1.0,2004-10-21,2026-04-29
+GOOGL,Communication Services,positive_surprise_flag,87,87,1.0,2004-10-21,2026-04-29
+GOOGL,Communication Services,negative_surprise_flag,87,87,1.0,2004-10-21,2026-04-29
+GOOGL,Communication Services,surprise_magnitude_abs,87,87,1.0,2004-10-21,2026-04-29
+GOOGL,Communication Services,trailing_4q_avg_surprise_pct,86,87,0.9885,2004-10-21,2026-04-29
+GOOGL,Communication Services,trailing_4q_positive_surprise_rate,86,87,0.9885,2004-10-21,2026-04-29
+GOOGL,Communication Services,trailing_8q_avg_surprise_pct,86,87,0.9885,2004-10-21,2026-04-29
+GOOGL,Communication Services,surprise_acceleration,86,87,0.9885,2004-10-21,2026-04-29
+GOOGL,Communication Services,days_since_last_earnings,86,87,0.9885,2004-10-21,2026-04-29
+GOOGL,Communication Services,earnings_event_recency_bucket,87,87,1.0,2004-10-21,2026-04-29
+GOOGL,Communication Services,estimate_revision_proxy,0,87,0.0,2004-10-21,2026-04-29

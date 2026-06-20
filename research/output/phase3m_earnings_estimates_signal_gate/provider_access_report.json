@@ -21,7 +21,7 @@
   "endpoint_used": "https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=REDACTED",
   "entitlement_status": "ok",
   "network_used": true,
-  "request_count": 20,
+  "request_count": 5,
   "cache_hit_count": 0,
   "rate_limit_or_premium_errors": 0,
   "key_values_never_stored": true,
