@@ -1,0 +1,342 @@
+{
+  "phase": "4-C",
+  "generated_at": "2026-06-20T00:00:00",
+  "inputs_read": {
+    "phase4b_result_json": "research/output/phase4b_nonproduction_candidate_package.json",
+    "phase4b_candidate_summary_card_csv": "research/output/phase4b_nonproduction_candidate_package/candidate_summary_card.csv",
+    "phase4b_model_candidate_spec_csv": "research/output/phase4b_nonproduction_candidate_package/model_candidate_spec.csv",
+    "phase4b_selected_strategy_spec_csv": "research/output/phase4b_nonproduction_candidate_package/selected_strategy_spec.csv",
+    "phase4b_evidence_scorecard_csv": "research/output/phase4b_nonproduction_candidate_package/evidence_scorecard.csv",
+    "phase4b_risk_guardrails_csv": "research/output/phase4b_nonproduction_candidate_package/risk_guardrails.csv",
+    "phase4b_known_failure_modes_csv": "research/output/phase4b_nonproduction_candidate_package/known_failure_modes.csv",
+    "phase4b_preview_integration_contract_csv": "research/output/phase4b_nonproduction_candidate_package/preview_integration_contract.csv",
+    "phase4b_no_go_items_csv": "research/output/phase4b_nonproduction_candidate_package/no_go_items.csv",
+    "phase4b_readiness_decision_table_csv": "research/output/phase4b_nonproduction_candidate_package/readiness_decision_table.csv"
+  },
+  "input_confirmation": {
+    "phase4b_result_json_present": true,
+    "phase4b_candidate_summary_card_present": true,
+    "phase4b_model_candidate_spec_present": true,
+    "phase4b_selected_strategy_spec_present": true,
+    "phase4b_evidence_scorecard_present": true,
+    "phase4b_risk_guardrails_present": true,
+    "phase4b_known_failure_modes_present": true,
+    "phase4b_preview_integration_contract_present": true,
+    "phase4b_no_go_items_present": true,
+    "phase4b_readiness_decision_table_present": true,
+    "all_required_present": true
+  },
+  "candidate_id": "NPC-RIDGE-CRI-126D-TOP10EW-25BPS",
+  "candidate_name": "Ridge Combined Regime-Interactions (126d) / Top-10 Equal-Weight - research non-production candidate",
+  "preview_api_contract": {
+    "endpoint": "GET /v1/research/candidate-preview",
+    "method": "GET",
+    "read_only": true,
+    "database_write": false,
+    "creates_signals": false,
+    "creates_trade_decisions": false,
+    "creates_orders": false,
+    "required_response_fields": [
+      "candidate_id",
+      "candidate_name",
+      "model_name",
+      "horizon",
+      "strategy_name",
+      "status",
+      "recommendation",
+      "evidence_summary",
+      "selected_strategy_summary",
+      "risk_guardrails",
+      "known_failure_modes",
+      "no_go_items",
+      "safety_badges",
+      "generated_at",
+      "source_files"
+    ]
+  },
+  "preview_ui_contract": {
+    "sections": [
+      "Candidate Summary card",
+      "Evidence card",
+      "Strategy card",
+      "Risk Guardrails card",
+      "Known Failure Modes card",
+      "No-Go Items card",
+      "Preview-only safety banner"
+    ],
+    "banner_badges": [
+      "PREVIEW ONLY",
+      "NO ORDERS",
+      "NO AUTOMATION",
+      "NO LIVE WEIGHTS",
+      "NON-PRODUCTION CANDIDATE",
+      "MANUAL REVIEW REQUIRED"
+    ]
+  },
+  "safety_badges": [
+    "PREVIEW ONLY",
+    "NON-PRODUCTION CANDIDATE",
+    "RESEARCH ONLY",
+    "NO ORDERS",
+    "NO BROKER EXECUTION",
+    "NO AUTOMATION",
+    "NO LIVE PORTFOLIO WEIGHTS",
+    "MANUAL REVIEW REQUIRED",
+    "OVERLAPPING LABEL WARNING",
+    "SURVIVORSHIP BIAS WARNING",
+    "2024 DRAWDOWN WARNING"
+  ],
+  "data_dependency_contract": {
+    "may_read": [
+      "phase4b_result_json",
+      "phase4b_csv_outputs"
+    ],
+    "must_not": [
+      "raw_alpha_vantage_outputs",
+      "call_providers",
+      "train_models",
+      "d_drive_data",
+      "recompute_research_scores"
+    ]
+  },
+  "implementation_sequence": [
+    {
+      "phase": "4-D",
+      "title": "Paper Trader Read-Only Candidate Preview Service",
+      "gated_by": "Phase 4-C READY"
+    },
+    {
+      "phase": "4-E",
+      "title": "Preview-Only API Endpoint",
+      "gated_by": "4-D complete"
+    },
+    {
+      "phase": "4-F",
+      "title": "Preview UI Panel + Safety Badges",
+      "gated_by": "4-E complete"
+    },
+    {
+      "phase": "4-G",
+      "title": "Tests + Smoke Checks",
+      "gated_by": "4-F complete"
+    },
+    {
+      "phase": "LATER",
+      "title": "Deferred - Refresh / Shadow / Production",
+      "gated_by": "explicit future approval"
+    }
+  ],
+  "validation_test_plan": [
+    "endpoint_returns_candidate_package",
+    "endpoint_is_read_only",
+    "endpoint_no_database_write",
+    "endpoint_no_orders",
+    "endpoint_no_trade_decisions",
+    "ui_shows_all_safety_badges",
+    "ui_shows_risk_warnings",
+    "auth_api_key_rules_preserved",
+    "existing_workflows_still_pass"
+  ],
+  "no_go_items": [
+    "create_orders",
+    "enable_automation",
+    "enable_production_model_v2",
+    "create_live_portfolio_weights",
+    "write_trade_decisions",
+    "write_orders",
+    "write_broker_execution_tables",
+    "call_network_providers",
+    "modify_prediction_service",
+    "modify_gcp_service",
+    "deploy_anything"
+  ],
+  "candidate_summary": {
+    "model_name": "ridge_combined_regime_interactions",
+    "horizon": "126d",
+    "strategy_name": "top_10_equal_weight",
+    "phase4b_recommendation": "NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION",
+    "status": "RESEARCH_NONPRODUCTION_CANDIDATE_PREVIEW"
+  },
+  "evidence_summary": {
+    "phase3z_recommendation": "OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION",
+    "phase4a_recommendation": "PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE",
+    "oos_row_count": 190267,
+    "ticker_count": 128,
+    "date_count": 1496,
+    "mean_rank_ic": 0.038434,
+    "top_minus_bottom_decile_spread": 0.07638,
+    "leakage_failures": 0,
+    "annualized_return_at_25bps": 0.18426994,
+    "annualized_volatility_at_25bps": 0.2211674,
+    "sharpe_at_25bps": 0.83317,
+    "max_drawdown_at_25bps": -0.33770963,
+    "average_turnover": 0.84444444,
+    "average_holdings": 10.0,
+    "cost_survival_status": "survives through 25 bps; fails at 50 bps",
+    "passing_strategies_at_25bps": [
+      "top_10_equal_weight",
+      "top_20_equal_weight",
+      "top_decile_score_weighted_capped"
+    ],
+    "num_passing_strategies_at_25bps": 3
+  },
+  "selected_strategy_summary": {
+    "model_name": "ridge_combined_regime_interactions",
+    "horizon": "126d",
+    "strategy_name": "top_10_equal_weight",
+    "transaction_cost_gate_bps": 25,
+    "rebalance_frequency": "monthly",
+    "holdings_target": 10,
+    "max_single_name_weight": 0.1,
+    "long_only": true,
+    "leverage_allowed": false,
+    "orders_allowed": false,
+    "automation_allowed": false,
+    "paper_trader_preview_only": true
+  },
+  "mandatory_guardrails": [
+    "preview_only",
+    "no_orders",
+    "no_automation",
+    "manual_review_required",
+    "no_production_deployment",
+    "no_live_model_enablement",
+    "max_10_holdings_for_selected_strategy",
+    "max_single_name_weight_10pct",
+    "drawdown_warning_2024_severe",
+    "overlapping_label_caveat",
+    "survivorship_bias_caveat",
+    "fresh_validation_before_production"
+  ],
+  "known_failure_modes": [
+    "weak_2024_year_drawdown",
+    "cost_stress_failure_at_50bps",
+    "overlapping_126d_labels_optimistic_sharpe",
+    "survivorship_biased_universe",
+    "incomplete_global_etf_cross_asset_data",
+    "incomplete_earnings_coverage",
+    "no_live_shadow_trading_proof",
+    "no_production_model_artifact"
+  ],
+  "sharpe_caveat": "Phase 4-A uses 126-day forward excess returns sampled monthly, so windows overlap. Sharpe/Sortino are useful for relative strategy comparison but optimistic as tradable ratios. This must be honored in any preview integration.",
+  "decision_gates": [
+    {
+      "decision_item": "phase4b_package_present",
+      "value": true,
+      "passed": true
+    },
+    {
+      "decision_item": "phase4b_recommendation_ready",
+      "value": "NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION",
+      "passed": true
+    },
+    {
+      "decision_item": "all_required_api_fields_present",
+      "value": 15,
+      "passed": true
+    },
+    {
+      "decision_item": "all_required_ui_sections_present",
+      "value": 7,
+      "passed": true
+    },
+    {
+      "decision_item": "implementation_sequence_present",
+      "value": 5,
+      "passed": true
+    },
+    {
+      "decision_item": "validation_test_plan_present",
+      "value": 9,
+      "passed": true
+    },
+    {
+      "decision_item": "all_required_safety_badges_present",
+      "value": 11,
+      "passed": true
+    },
+    {
+      "decision_item": "all_no_go_items_present",
+      "value": 11,
+      "passed": true
+    },
+    {
+      "decision_item": "paper_trader_files_unmodified",
+      "value": false,
+      "passed": true
+    }
+  ],
+  "recommended_next_phase": {
+    "phase": "4-D",
+    "title": "4-D - Paper Trader Read-Only Candidate Preview Service",
+    "purpose": "Proceed to the Paper Trader read-only candidate preview service."
+  },
+  "outputs_written": {
+    "preview_api_contract": "research/output/phase4c_paper_trader_preview_integration_plan/preview_api_contract.csv",
+    "preview_ui_contract": "research/output/phase4c_paper_trader_preview_integration_plan/preview_ui_contract.csv",
+    "safety_badge_matrix": "research/output/phase4c_paper_trader_preview_integration_plan/safety_badge_matrix.csv",
+    "data_dependency_contract": "research/output/phase4c_paper_trader_preview_integration_plan/data_dependency_contract.csv",
+    "implementation_sequence": "research/output/phase4c_paper_trader_preview_integration_plan/implementation_sequence.csv",
+    "validation_test_plan": "research/output/phase4c_paper_trader_preview_integration_plan/validation_test_plan.csv",
+    "no_go_enforcement": "research/output/phase4c_paper_trader_preview_integration_plan/no_go_enforcement.csv",
+    "readiness_decision_table": "research/output/phase4c_paper_trader_preview_integration_plan/readiness_decision_table.csv"
+  },
+  "interpretation": {
+    "phase_is_planning_only": true,
+    "paper_trader_code_implemented": false,
+    "preview_endpoint_implemented": false,
+    "scores_are_research_oos_not_production": true,
+    "labels_used_for_validation_only": true,
+    "production_edge_claimed": false
+  },
+  "recommendation": {
+    "recommendation": "PREVIEW_INTEGRATION_PLAN_READY",
+    "allowed_values": [
+      "PREVIEW_INTEGRATION_PLAN_READY",
+      "PREVIEW_INTEGRATION_PLAN_PARTIAL",
+      "PREVIEW_INTEGRATION_PLAN_BLOCKED_INPUTS",
+      "PREVIEW_INTEGRATION_PLAN_BLOCKED_SAFETY"
+    ],
+    "research_only": true,
+    "planning_only": true,
+    "implement_paper_trader_now": false,
+    "create_production_model_candidate_now": false,
+    "compute_live_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "reason": "Phase 4-B is NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION for candidate NPC-RIDGE-CRI-126D-TOP10EW-25BPS; all 15 preview API fields, 7 UI sections, 11 safety badges, 11 no-go items, the 4-D..4-G implementation sequence, and the 9 validation tests are defined, and no Paper Trader file is modified. The preview integration plan is implementation-ready (planning only; nothing built)."
+  },
+  "research_only": true,
+  "planning_only": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "paper_trader_files_modified": false,
+  "paper_trader_code_implemented": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "nonproduction_model_candidate_packaged": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "live_portfolio_weights_computed": false,
+  "research_portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "orders_created": false,
+  "trades_created": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "stooq_called": false,
+  "yahoo_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "network_called": false,
+  "data_faked": false,
+  "metrics_faked": false,
+  "labels_for_validation_only": true
+}

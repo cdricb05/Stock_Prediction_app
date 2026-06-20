@@ -1,0 +1,12 @@
+no_go_item,enforced,note
+create_orders,True,future preview integration must not create orders
+enable_automation,True,must not enable automation
+enable_production_model_v2,True,must not enable production model v2 (PREDICTOR_USE_MODEL_V2 stays disabled)
+create_live_portfolio_weights,True,must not create live portfolio weights
+write_trade_decisions,True,must not write to trade_decisions
+write_orders,True,must not write to orders
+write_broker_execution_tables,True,must not write to broker/execution tables
+call_network_providers,True,must not call network providers
+modify_prediction_service,True,must not modify the prediction service
+modify_gcp_service,True,must not modify the GCP service
+deploy_anything,True,must not deploy anything

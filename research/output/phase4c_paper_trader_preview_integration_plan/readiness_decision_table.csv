@@ -1,0 +1,11 @@
+decision_item,value,passed,note
+phase4b_package_present,True,True,Phase 4-B package and CSV outputs must all be present
+phase4b_recommendation_ready,NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION,True,Phase 4-B must be NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION
+all_required_api_fields_present,15,True,all 15 required preview API response fields must be defined
+all_required_ui_sections_present,7,True,all 7 required preview UI sections must be defined
+implementation_sequence_present,5,True,implementation sequence 4-D..4-G (+ deferred) must be defined
+validation_test_plan_present,9,True,all 9 required validation tests must be defined
+all_required_safety_badges_present,11,True,all 11 required safety badges must be present
+all_no_go_items_present,11,True,all 11 no-go enforcement items must be present
+paper_trader_files_unmodified,False,True,no Paper Trader file is modified by this planning phase
+final_recommendation,PREVIEW_INTEGRATION_PLAN_READY,True,planning-only; no Paper Trader code implemented in this phase

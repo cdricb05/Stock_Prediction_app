@@ -1,0 +1,23 @@
+api_item,value,category,note
+endpoint,GET /v1/research/candidate-preview,endpoint,future preview-only endpoint (NOT implemented in this phase)
+method,GET,method,read-only HTTP GET
+read_only,True,constraint,the endpoint must be read-only (GET)
+database_write,False,constraint,must not write to the database
+creates_signals,False,constraint,must not create signals
+creates_trade_decisions,False,constraint,must not create trade decisions
+creates_orders,False,constraint,must not create orders
+candidate_id,required,response_field,Phase 4-B candidate_id
+candidate_name,required,response_field,Phase 4-B candidate_name
+model_name,required,response_field,selected research model name
+horizon,required,response_field,forward research horizon
+strategy_name,required,response_field,selected portfolio strategy
+status,required,response_field,RESEARCH_NONPRODUCTION_CANDIDATE_PREVIEW
+recommendation,required,response_field,Phase 4-B recommendation string
+evidence_summary,required,response_field,OOS evidence copied verbatim from Phase 4-B
+selected_strategy_summary,required,response_field,selected strategy spec copied from Phase 4-B
+risk_guardrails,required,response_field,mandatory guardrail list
+known_failure_modes,required,response_field,known failure mode list
+no_go_items,required,response_field,explicit forbidden actions
+safety_badges,required,response_field,safety badge list shown in the UI
+generated_at,required,response_field,package generation timestamp
+source_files,required,response_field,Phase 4-B source artifact paths

@@ -1,0 +1,6 @@
+phase,title,scope,gated_by
+4-D,Paper Trader Read-Only Candidate Preview Service,Add a read-only candidate preview service layer in Paper Trader that reads only the Phase 4-B package.,Phase 4-C READY
+4-E,Preview-Only API Endpoint,Add the preview-only GET /v1/research/candidate-preview endpoint (read-only).,4-D complete
+4-F,Preview UI Panel + Safety Badges,Add the UI panel (7 cards) and all safety badges.,4-E complete
+4-G,Tests + Smoke Checks,Add Paper Trader tests and smoke checks for the preview endpoint and UI.,4-F complete
+LATER,Deferred - Refresh / Shadow / Production,Later only: candidate refresh / shadow trading / production model candidate - each requires its own explicitly gated phase.,explicit future approval

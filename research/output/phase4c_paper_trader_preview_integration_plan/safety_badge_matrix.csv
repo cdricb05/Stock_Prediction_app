@@ -1,0 +1,12 @@
+badge,required,surface,note
+PREVIEW ONLY,True,banner,nothing is executed; preview only
+NON-PRODUCTION CANDIDATE,True,banner,"research candidate, not a production model"
+RESEARCH ONLY,True,banner,research evidence only; no production edge claimed
+NO ORDERS,True,banner,no order instructions or orders are ever created
+NO BROKER EXECUTION,True,banner,nothing is routed to a broker
+NO AUTOMATION,True,banner,no automated action; every step is manual
+NO LIVE PORTFOLIO WEIGHTS,True,banner,no live portfolio weights are computed
+MANUAL REVIEW REQUIRED,True,banner,a human must review before any action
+OVERLAPPING LABEL WARNING,True,risk_card,"126d labels overlap; Sharpe/Sortino optimistic, not tradable"
+SURVIVORSHIP BIAS WARNING,True,risk_card,current-as-of universe; results inflated
+2024 DRAWDOWN WARNING,True,risk_card,severe 2024 drawdown (-33.8% at 25 bps)

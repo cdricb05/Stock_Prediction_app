@@ -1,0 +1,10 @@
+test_id,requirement,category,note
+endpoint_returns_candidate_package,endpoint returns the candidate package,future_paper_trader_test,required before the preview integration is accepted
+endpoint_is_read_only,endpoint is read-only,future_paper_trader_test,required before the preview integration is accepted
+endpoint_no_database_write,endpoint does not write database rows,future_paper_trader_test,required before the preview integration is accepted
+endpoint_no_orders,endpoint does not create orders,future_paper_trader_test,required before the preview integration is accepted
+endpoint_no_trade_decisions,endpoint does not create trade decisions,future_paper_trader_test,required before the preview integration is accepted
+ui_shows_all_safety_badges,UI shows all safety badges,future_paper_trader_test,required before the preview integration is accepted
+ui_shows_risk_warnings,UI shows risk warnings,future_paper_trader_test,required before the preview integration is accepted
+auth_api_key_rules_preserved,auth / API-key rules are preserved,future_paper_trader_test,required before the preview integration is accepted
+existing_workflows_still_pass,existing Paper Trader workflows still pass,future_paper_trader_test,required before the preview integration is accepted

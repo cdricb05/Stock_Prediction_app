@@ -1,0 +1,8 @@
+dependency_item,allowed,category,note
+phase4b_result_json,True,may_read,research/output/phase4b_nonproduction_candidate_package.json
+phase4b_csv_outputs,True,may_read,research/output/phase4b_nonproduction_candidate_package/*.csv
+raw_alpha_vantage_outputs,False,must_not,must not read raw Alpha Vantage / provider price outputs
+call_providers,False,must_not,must not call data providers
+train_models,False,must_not,must not train models in the app
+d_drive_data,False,must_not,must not use D: data drive files
+recompute_research_scores,False,must_not,must not recompute research scores inside the app

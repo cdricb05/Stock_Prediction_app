@@ -1,0 +1,14 @@
+ui_item,kind,required,note
+Candidate Summary card,card,True,"id, name, model, horizon, strategy, status, recommendation"
+Evidence card,card,True,"OOS rows/tickers/dates, rank IC, decile spread, 25 bps return/Sharpe/maxDD"
+Strategy card,card,True,"top_10_equal_weight, monthly rebalance, 10 holdings, 10% cap, orders disabled"
+Risk Guardrails card,card,True,the 12 mandatory guardrails
+Known Failure Modes card,card,True,"2024 drawdown, 50 bps cost failure, overlapping labels, survivorship bias"
+No-Go Items card,card,True,explicit forbidden actions
+Preview-only safety banner,banner,True,always-visible preview-only safety banner across the panel
+PREVIEW ONLY,banner_badge,True,always-visible preview safety badge
+NO ORDERS,banner_badge,True,always-visible preview safety badge
+NO AUTOMATION,banner_badge,True,always-visible preview safety badge
+NO LIVE WEIGHTS,banner_badge,True,always-visible preview safety badge
+NON-PRODUCTION CANDIDATE,banner_badge,True,always-visible preview safety badge
+MANUAL REVIEW REQUIRED,banner_badge,True,always-visible preview safety badge
