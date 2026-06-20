@@ -1,0 +1,17 @@
+strategy_name,transaction_cost_bps,annualized_return,sharpe,max_drawdown,total_cost_drag,survives_costs
+top_10_equal_weight,0,0.18849216,0.853195,-0.32269858,0.0,True
+top_10_equal_weight,10,0.18680327,0.845185,-0.32873949,0.0608,True
+top_10_equal_weight,25,0.18426994,0.83317,-0.33770963,0.152,True
+top_10_equal_weight,50,0.18004772,0.813145,-0.35241957,0.304,False
+top_20_equal_weight,0,0.1155314,0.849605,-0.31566144,0.0,True
+top_20_equal_weight,10,0.11420362,0.839895,-0.31981285,0.0478,True
+top_20_equal_weight,25,0.11221196,0.825309,-0.32599731,0.1195,True
+top_20_equal_weight,50,0.10889251,0.800947,-0.33619189,0.239,True
+top_decile_equal_weight,0,0.14391158,0.784783,-0.37758008,0.0,False
+top_decile_equal_weight,10,0.14238808,0.776446,-0.38218664,0.05484612,False
+top_decile_equal_weight,25,0.14010282,0.763928,-0.38903927,0.13711545,False
+top_decile_equal_weight,50,0.13629406,0.743035,-0.40030925,0.27423067,False
+top_decile_score_weighted_capped,0,0.17571288,0.82851,-0.29491569,0.0,True
+top_decile_score_weighted_capped,10,0.17403637,0.820359,-0.30105486,0.06035447,True
+top_decile_score_weighted_capped,25,0.1715216,0.80813,-0.31017303,0.15088612,True
+top_decile_score_weighted_capped,50,0.16733032,0.787741,-0.32513114,0.30177231,True

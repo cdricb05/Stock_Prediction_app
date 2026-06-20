@@ -1,0 +1,7 @@
+risk_check,value,passed,note
+max_single_name_weight_le_10pct,0.1,True,single-name position cap enforced at 10%
+long_only_no_negative_weights,0.0,True,all research weights are non-negative
+no_leverage_gross_exposure_le_1,1.0,True,gross exposure never exceeds 100%
+cash_allowed_when_insufficient_names,True,True,"unfilled weight is held in cash (benchmark), never levered"
+best_strategy_avg_turnover_le_1p5_at_25bps,0.844444,True,turnover budget for the gating (25 bps) best strategy
+live_orders_or_automation,False,True,"no orders, no automation, no trading - research simulation only"

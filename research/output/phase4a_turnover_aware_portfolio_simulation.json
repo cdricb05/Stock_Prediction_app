@@ -1,0 +1,129 @@
+{
+  "phase": "4-A",
+  "generated_at": "2026-06-20T00:00:00",
+  "inputs_read": {
+    "phase3z_result_json": "research/output/phase3z_oos_score_export_signal_audit.json",
+    "oos_score_panel_csv": "research/output/phase3z_oos_score_export_signal_audit/oos_score_panel.csv",
+    "oos_score_summary_csv": "research/output/phase3z_oos_score_export_signal_audit/oos_score_summary.csv",
+    "decile_forward_return_summary_csv": "research/output/phase3z_oos_score_export_signal_audit/decile_forward_return_summary.csv",
+    "leakage_and_embargo_checks_csv": "research/output/phase3z_oos_score_export_signal_audit/leakage_and_embargo_checks.csv"
+  },
+  "input_confirmation": {
+    "phase3z_result_json_present": true,
+    "oos_score_panel_present": true,
+    "oos_score_summary_present": true,
+    "decile_forward_return_summary_present": true,
+    "leakage_and_embargo_checks_present": true,
+    "all_required_present": true
+  },
+  "best_audited_model": "ridge_combined_regime_interactions",
+  "best_audited_horizon": "126d",
+  "panel_rows_used": 190267,
+  "distinct_tickers": 128,
+  "distinct_dates": 1496,
+  "rebalance_dates": 72,
+  "annualization_convention": "Per-rebalance returns are 126-trading-day forward excess returns vs SPY sampled at monthly cadence (overlapping). Compounding stats use monthly-equivalent step returns (1+r)**(21/126); volatility/downside annualized by sqrt(12). Raw per-rebalance numbers are stored verbatim in monthly_portfolio_returns.csv.",
+  "strategies_simulated": [
+    "top_10_equal_weight",
+    "top_20_equal_weight",
+    "top_decile_equal_weight",
+    "top_decile_score_weighted_capped"
+  ],
+  "transaction_cost_bps_grid": [
+    0,
+    10,
+    25,
+    50
+  ],
+  "gating_transaction_cost_bps": 25,
+  "strategy_passes_at_25bps": {
+    "top_10_equal_weight": true,
+    "top_20_equal_weight": true,
+    "top_decile_equal_weight": false,
+    "top_decile_score_weighted_capped": true
+  },
+  "best_strategy": "top_10_equal_weight",
+  "best_strategy_metrics_at_25bps": {
+    "annualized_return": 0.18426994,
+    "annualized_volatility": 0.2211674,
+    "sharpe": 0.83317,
+    "sortino": 2.000353,
+    "max_drawdown": -0.33770963,
+    "monthly_hit_rate": 0.680556,
+    "average_turnover": 0.84444444,
+    "average_holdings": 10.0,
+    "worst_year_return": -0.03051193,
+    "best_year_return": 0.55589085,
+    "periods": 72
+  },
+  "recommendation": {
+    "recommendation": "PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE",
+    "allowed_values": [
+      "PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE",
+      "PORTFOLIO_SIMULATION_PARTIAL_NEEDS_RISK_REPAIR",
+      "PORTFOLIO_SIMULATION_BLOCKED_NO_VALID_STRATEGY",
+      "PORTFOLIO_SIMULATION_BLOCKED_INPUTS"
+    ],
+    "research_only": true,
+    "create_production_model_candidate_now": false,
+    "compute_live_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "reason": "At 25 bps, strategy 'top_10_equal_weight' clears every readiness threshold (ann.return 0.1843, Sharpe 0.833, maxDD -0.3377, holdings 10.0, turnover 0.844, 72 periods); the score signal survives turnover, costs, and position limits."
+  },
+  "recommended_next_phase": {
+    "phase": "4-B",
+    "title": "4-B - Non-Production Model Candidate Package",
+    "purpose": "Proceed to the non-production model candidate package."
+  },
+  "outputs_written": {
+    "scoreboard": "research/output/phase4a_turnover_aware_portfolio_simulation/strategy_scoreboard.csv",
+    "monthly": "research/output/phase4a_turnover_aware_portfolio_simulation/monthly_portfolio_returns.csv",
+    "annual": "research/output/phase4a_turnover_aware_portfolio_simulation/annual_performance.csv",
+    "sensitivity": "research/output/phase4a_turnover_aware_portfolio_simulation/turnover_cost_sensitivity.csv",
+    "drawdown": "research/output/phase4a_turnover_aware_portfolio_simulation/drawdown_summary.csv",
+    "concentration": "research/output/phase4a_turnover_aware_portfolio_simulation/position_concentration_summary.csv",
+    "risk_budget": "research/output/phase4a_turnover_aware_portfolio_simulation/risk_budget_summary.csv",
+    "readiness": "research/output/phase4a_turnover_aware_portfolio_simulation/readiness_decision_table.csv"
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "scores_are_research_oos_not_production": true,
+    "portfolio_weights_are_research_not_live": true,
+    "labels_used_for_validation_only": true,
+    "results_remain_survivorship_biased": true,
+    "production_model_trained": false,
+    "production_predictions_computed": false,
+    "live_portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false
+  },
+  "research_only": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "live_portfolio_weights_computed": false,
+  "research_portfolio_weights_computed": true,
+  "order_instructions_created": false,
+  "orders_created": false,
+  "trades_created": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "stooq_called": false,
+  "yahoo_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "network_called": false,
+  "data_faked": false,
+  "labels_for_validation_only": true
+}

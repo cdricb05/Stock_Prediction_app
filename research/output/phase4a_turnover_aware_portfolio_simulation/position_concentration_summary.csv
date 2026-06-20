@@ -1,0 +1,5 @@
+strategy_name,average_holdings,min_holdings,max_single_name_weight,average_top_5_weight,concentration_status
+top_10_equal_weight,10.0,10,0.1,0.5,OK
+top_20_equal_weight,20.0,20,0.05,0.25,OK
+top_decile_equal_weight,13.0,13,0.076923,0.384615,OK
+top_decile_score_weighted_capped,13.0,13,0.1,0.5,OK

@@ -1,0 +1,11 @@
+decision_item,value,passed,note
+best_strategy,top_10_equal_weight,True,highest Sharpe at the 25 bps gating cost
+gating_transaction_cost_bps,25,True,readiness is evaluated net of 25 bps transaction cost
+annualized_return_positive,0.18426994,True,must be > 0
+sharpe_positive,0.83317,True,must be > 0
+max_drawdown_better_than_-35pct,-0.33770963,True,must be > -0.35
+average_holdings_ge_10,10.0,True,must be >= 10
+average_turnover_le_1p5,0.84444444,True,must be <= 1.5 per rebalance
+periods_ge_36,72,True,must be >= 36 monthly periods
+at_least_one_strategy_passes_at_25bps,True,True,READY requires >=1 strategy clearing all thresholds
+final_recommendation,PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE,True,research-only; no production candidate created in this phase
