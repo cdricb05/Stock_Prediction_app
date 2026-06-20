@@ -1,0 +1,6 @@
+blend,weights,mean_daily_ic,decile_spread,ic_hit_rate,worst_year_ic,stability_score,improves_worst_year,improves_stability,improves_decile_spread,improves_hit_rate
+100pct_ridge_technical_only,rto=1.00,0.08195,0.109819,0.6618,-0.108464,0.6667,False,False,False,False
+75_rto_25_regime_ensemble,rto=0.75;ens=0.25,0.079405,0.110252,0.6317,-0.10089,0.6667,True,False,True,False
+50_rto_50_regime_ensemble,rto=0.50;ens=0.50,0.071253,0.105055,0.6023,-0.069328,0.6667,True,False,False,False
+75_rto_25_sec_fundamental,rto=0.75;sec=0.25,0.073794,0.102744,0.637,-0.090795,0.6667,True,False,False,False
+50_rto_25_ensemble_25_sec_fundamental,rto=0.50;ens=0.25;sec=0.25,0.068792,0.09518,0.5689,-0.070231,0.6667,True,False,False,False

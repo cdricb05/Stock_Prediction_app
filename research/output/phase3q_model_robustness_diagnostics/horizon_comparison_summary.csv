@@ -1,0 +1,4 @@
+horizon,mean_daily_ic,decile_spread,ic_hit_rate,worst_year_ic,stability_score,fold_count,est_monthly_turnover_top_decile,preferred
+21d,0.026179,0.016921,0.5609,-0.012601,0.7143,7,0.5061,False
+63d,0.057373,0.055324,0.603,-0.058966,0.7143,7,0.421,False
+126d,0.08195,0.109819,0.6618,-0.108464,0.6667,6,0.3954,True

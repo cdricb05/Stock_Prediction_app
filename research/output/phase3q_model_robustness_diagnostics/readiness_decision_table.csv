@@ -1,0 +1,16 @@
+decision_item,value,passed,note
+phase3p_confirmed,True,True,"Phase 3-P present, weak/pass, next phase 3-Q, no production artifacts"
+oos_scores_rebuilt_rows,190267,True,research-only OOS rows regenerated in memory
+focus_gross_decile_spread_positive,0.109819,True,best model gross top-minus-bottom decile spread
+focus_worst_year_ic,-0.108464,False,PASS needs worst-year IC > -0.05 (base model fails this)
+net_positive_top_decile_10bps,True,True,net monthly top-decile spread positive at 10 bps
+net_positive_top_decile_25bps,True,True,PASS needs net positive at 25 bps
+best_blend_worst_year_ic,-0.069328,False,PASS needs a blend/regime rule worst-year IC > -0.05
+bad_year_explainable,True,True,2021 failure attributable to adverse regime
+no_production_model_trained,True,True,research-only diagnostics in memory
+no_production_predictions,True,True,no production predictions/scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized-estimator file written
+d_drive_written,False,True,wrote nothing to the D: drive
+alpha_vantage_called,False,True,no provider / Alpha Vantage call
+recommendation,MODEL_ROBUSTNESS_WEAK_FIXABLE_WITH_REGIME_AND_DATA,True,allowed values only

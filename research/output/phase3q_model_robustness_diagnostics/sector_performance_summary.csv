@@ -1,0 +1,12 @@
+sector,top_decile_share,bottom_decile_share,top_decile_share_2021,top_minus_bottom_label_spread,top_minus_bottom_label_spread_2021,top_decile_members
+Information Technology,0.3731,0.0594,0.3333,0.093915,-0.192426,7256
+Industrials,0.1458,0.1509,0.1078,0.047422,-0.054101,2835
+Consumer Discretionary,0.135,0.0827,0.094,0.110157,-0.150013,2626
+Health Care,0.1103,0.1961,0.1392,0.058533,-0.005352,2145
+Financials,0.0753,0.104,0.1358,-0.014491,-0.06423,1465
+Communication Services,0.0679,0.0579,0.0205,0.225622,-0.162781,1320
+Energy,0.0672,0.025,0.1606,0.116667,-0.560386,1306
+Consumer Staples,0.0133,0.2328,0.0082,0.094906,-0.018254,258
+Materials,0.0078,0.0223,0.0,0.01958,,151
+Utilities,0.0037,0.0606,0.0,-0.113568,,72
+Real Estate,0.0007,0.0083,0.0006,-0.075769,-0.114813,14

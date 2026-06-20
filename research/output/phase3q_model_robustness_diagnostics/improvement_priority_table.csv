@@ -1,0 +1,8 @@
+rank,workstream,expected_impact,urgency,blocker,cost_effort,recommended_next_phase,rationale
+1,add_macro_inflation_data,high,high,"no local macro/inflation panel; needs a free, non-paid local source",medium,3-R,bad-year (2021) failure is regime-driven; macro/inflation features directly encode the rate/rotation regime the model misses
+2,regime_gating_or_ensemble_blending,medium,high,none - uses existing regime features,low,3-R,cheap bad-year mitigation already testable in-memory; blends/regime routing can damp the worst-year drawdown
+3,finish_earnings_coverage_to_75_plus_tickers,medium,medium,earnings coverage only ~25 tickers; partial-earnings features are noisy,medium,3-R,thin earnings coverage dilutes the combined models; completing it lets the fundamental family contribute instead of adding noise
+4,add_sentiment_news_analyst_data,medium,medium,no local sentiment panel; must stay non-paid / non-faked,high,3-R,sentiment can add orthogonal short-horizon signal but is lower priority than the regime/macro gap behind the bad year
+5,cost_aware_turnover_reduction,medium,medium,none - score smoothing / rebalance banding,low,3-R,protect the net spread under realistic costs by damping turnover at the rebalance
+6,target_engineering_63d_vs_126d,low,low,none,low,3-R,63d is more stable but lower IC; a blended-horizon target may trade a little signal for robustness
+7,improve_sector_map_point_in_time_quality,low,low,"current sector map is as-of, not point-in-time",medium,3-R,removes a survivorship/look-ahead caveat but is not the driver of the bad-year fragility
