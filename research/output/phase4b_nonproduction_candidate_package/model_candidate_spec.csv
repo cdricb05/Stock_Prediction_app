@@ -1,0 +1,12 @@
+spec_item,value,note
+model_name,ridge_combined_regime_interactions,best audited Phase 3-Z model
+horizon,126d,126 trading-day forward excess vs SPY
+model_family,ridge_closed_form_cross_sectional_rank,NumPy closed-form ridge; transforms fit on train rows only
+training_convention,expanding_walk_forward_per_horizon_embargo,Phase 3-P/3-Z walk-forward with 126d embargo; no leakage
+mean_daily_rank_ic,0.038434,"out-of-sample, validation-only"
+top_minus_bottom_decile_spread,0.07638,decile-monotone forward return spread
+stability_score,0.6667,fraction of years with positive IC
+labels_for_validation_only,True,forward returns used for OOS IC only; never emitted as production predictions
+production_model_trained,False,research-only
+deployable_model_artifact_written,False,no artifact written
+results_survivorship_biased,True,current-as-of universe

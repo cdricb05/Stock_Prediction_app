@@ -1,0 +1,13 @@
+no_go_item,enforced,note
+create_orders,True,No order instructions or orders may be created.
+broker_execution,True,No broker execution of any kind.
+automation,True,No automation of scan / predict / trade steps.
+production_prediction_claim,True,Research OOS scores must not be claimed as production predictions.
+live_portfolio_weights,True,No live portfolio weights may be computed.
+deploy,True,No deployment of model or strategy.
+enable_model_v2,True,PREDICTOR_USE_MODEL_V2 must not be enabled.
+train_production_model,True,No production model training.
+write_deployable_artifact,True,No deployable model artifact may be written.
+database_write,True,No database write from this phase.
+touch_paper_trader,True,No Paper Trader file may be modified by this phase.
+write_to_d_drive,True,Nothing may be written to the D: data drive.

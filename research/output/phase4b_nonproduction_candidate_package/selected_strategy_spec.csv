@@ -1,0 +1,11 @@
+spec_item,value,note
+strategy_name,top_10_equal_weight,highest Sharpe at 25 bps gate
+rebalance_frequency,monthly,first trading day of month
+holdings_target,10,top 10 by OOS score
+max_single_name_weight,0.1,10% position cap
+transaction_cost_gate_bps,25,readiness evaluated net of 25 bps
+long_only,True,weights >= 0
+leverage_allowed,False,gross <= 100%
+orders_allowed,False,"no orders, ever"
+automation_allowed,False,no automation
+paper_trader_preview_only,True,preview integration only; nothing executed

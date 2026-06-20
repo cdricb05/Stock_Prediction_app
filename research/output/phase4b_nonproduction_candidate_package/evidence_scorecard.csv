@@ -1,0 +1,14 @@
+metric,value,source,note
+oos_row_count,190267,phase3z,rows in the OOS score panel
+ticker_count,128,phase3z,distinct tickers
+date_count,1496,phase3z,distinct dates
+mean_rank_ic,0.038434,phase3z,mean daily cross-sectional rank IC
+top_minus_bottom_decile_spread,0.07638,phase3z,forward-return decile spread
+leakage_failures,0,phase3z,failed leakage/embargo checks
+annualized_return_at_25bps,0.18426994,phase4a,"selected strategy, net of 25 bps"
+sharpe_at_25bps,0.83317,phase4a,OPTIMISTIC - overlapping 126d labels
+max_drawdown_at_25bps,-0.33770963,phase4a,literal compounded monthly path
+average_turnover,0.84444444,phase4a,two-sided turnover per rebalance
+average_holdings,10.0,phase4a,names held per rebalance
+cost_survival_status,survives through 25 bps; fails at 50 bps,phase4a,selected strategy across the cost grid
+passing_strategies_at_25bps,3,phase4a,"strategies clearing the 25 bps gate (top_10_equal_weight, top_20_equal_weight, top_decile_score_weighted_capped)"

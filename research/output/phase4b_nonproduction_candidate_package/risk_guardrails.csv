@@ -1,0 +1,13 @@
+guardrail,required,status,note
+preview_only,True,ENFORCED,Paper Trader may only PREVIEW this candidate; nothing is executed.
+no_orders,True,ENFORCED,"No order instructions, no order creation - ever."
+no_automation,True,ENFORCED,No automation; every step is manual.
+manual_review_required,True,ENFORCED,A human must review before any action is taken.
+no_production_deployment,True,ENFORCED,Not deployed; no production serving of this candidate.
+no_live_model_enablement,True,ENFORCED,PREDICTOR_USE_MODEL_V2 stays disabled; no live model enablement.
+max_10_holdings_for_selected_strategy,True,ENFORCED,Selected strategy holds at most 10 names (top_10_equal_weight).
+max_single_name_weight_10pct,True,ENFORCED,No single name exceeds a 10% weight.
+drawdown_warning_2024_severe,True,ENFORCED,Must show a drawdown warning: the 2024 drawdown was severe (-33.8% at 25 bps).
+overlapping_label_caveat,True,ENFORCED,"Must show the overlapping 126d label caveat: Sharpe/Sortino are optimistic, not tradable."
+survivorship_bias_caveat,True,ENFORCED,Must show the survivorship-bias caveat: universe is current-as-of.
+fresh_validation_before_production,True,ENFORCED,Must require fresh validation before any production candidate is created.

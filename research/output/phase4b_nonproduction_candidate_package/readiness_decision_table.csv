@@ -1,0 +1,10 @@
+decision_item,value,passed,note
+phase3z_recommendation_ready,OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION,True,Phase 3-Z must be OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION
+phase4a_recommendation_ready,PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE,True,Phase 4-A must be PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE
+selected_strategy_passes_at_25bps,GATE_PASS,True,selected strategy (top_10_equal_weight) must clear the 25 bps gate
+no_leakage_failures,0,True,Phase 3-Z leakage/embargo checks must all pass
+max_drawdown_better_than_-35pct,-0.33770963,True,selected strategy max drawdown must be > -0.35
+average_holdings_ge_10,10.0,True,selected strategy average holdings must be >= 10
+average_turnover_le_1p5,0.84444444,True,selected strategy average turnover must be <= 1.5
+all_required_guardrails_present,12,True,all 12 mandatory guardrails must be present in the package
+final_recommendation,NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION,True,research-only; no production candidate created in this phase

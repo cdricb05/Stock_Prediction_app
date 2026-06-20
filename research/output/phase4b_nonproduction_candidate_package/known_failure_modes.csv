@@ -1,0 +1,9 @@
+failure_mode,severity,note
+weak_2024_year_drawdown,HIGH,2024 was the model's weakest year (worst-year IC ~ -0.098) and the selected strategy's drawdown concentrates there (peak 2024-01 to trough 2024-12).
+cost_stress_failure_at_50bps,MEDIUM,top_10_equal_weight stops surviving at 50 bps - drawdown breaches the -35% floor.
+overlapping_126d_labels_optimistic_sharpe,MEDIUM,"126d forward returns sampled monthly overlap; Sharpe/Sortino are optimistic, useful only for relative comparison, not as tradable ratios."
+survivorship_biased_universe,MEDIUM,"Current-as-of universe; delisted/failed names are absent, inflating results."
+incomplete_global_etf_cross_asset_data,MEDIUM,Global ETF / cross-asset data (Phase 3-U/3-V/3-W/3-X/3-Y) is incomplete; the universe is US single-name equities only.
+incomplete_earnings_coverage,LOW,Earnings-estimate coverage (Phase 3-M) did not meet the full signal-gate threshold.
+no_live_shadow_trading_proof,HIGH,No live or paper shadow-trading track record exists yet for this candidate.
+no_production_model_artifact,INFO,No production model artifact has been trained or written; this is research-only.

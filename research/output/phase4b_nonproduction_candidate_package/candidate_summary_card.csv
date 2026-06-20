@@ -1,0 +1,12 @@
+field,value
+candidate_id,NPC-RIDGE-CRI-126D-TOP10EW-25BPS
+candidate_name,Ridge Combined Regime-Interactions (126d) / Top-10 Equal-Weight - research non-production candidate
+model_name,ridge_combined_regime_interactions
+horizon,126d
+strategy_name,top_10_equal_weight
+status,RESEARCH_NONPRODUCTION_CANDIDATE
+recommendation,NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION
+next_phase,4-C - Paper Trader Preview Integration Plan
+top_reasons_to_proceed,"OOS rank IC positive and decile-monotone (mean IC 0.0384, decile spread 0.0764) with 0 leakage failures over 190267 rows / 128 tickers / 1496 dates; Signal survives realistic portfolio construction: top_10_equal_weight nets 18.4% annualized at 25 bps (Sharpe 0.83); 3 of 4 strategies clear the 25 bps readiness gate; risk budget respected (<=10 names, 10% cap, no leverage, turnover 0.84)"
+top_risks,"Severe 2024 drawdown (-33.8% at 25 bps; model worst-year IC -0.098); Overlapping 126d labels make Sharpe/Sortino optimistic, not tradable ratios; Survivorship-biased current-as-of universe; no live shadow-trading proof; no production model artifact yet"
+mandatory_guardrails,preview-only; no orders; no automation; manual review; no production deployment; no live model enablement; <=10 holdings; <=10% single name; drawdown + overlapping-label + survivorship caveats shown; fresh validation required before any production candidate

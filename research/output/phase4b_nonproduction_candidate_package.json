@@ -1,0 +1,225 @@
+{
+  "phase": "4-B",
+  "generated_at": "2026-06-20T00:00:00",
+  "inputs_read": {
+    "phase3z_result_json": "research/output/phase3z_oos_score_export_signal_audit.json",
+    "phase3z_oos_score_summary_csv": "research/output/phase3z_oos_score_export_signal_audit/oos_score_summary.csv",
+    "phase3z_yearly_score_diagnostics_csv": "research/output/phase3z_oos_score_export_signal_audit/yearly_score_diagnostics.csv",
+    "phase3z_regime_score_diagnostics_csv": "research/output/phase3z_oos_score_export_signal_audit/regime_score_diagnostics.csv",
+    "phase3z_leakage_and_embargo_checks_csv": "research/output/phase3z_oos_score_export_signal_audit/leakage_and_embargo_checks.csv",
+    "phase4a_result_json": "research/output/phase4a_turnover_aware_portfolio_simulation.json",
+    "phase4a_strategy_scoreboard_csv": "research/output/phase4a_turnover_aware_portfolio_simulation/strategy_scoreboard.csv",
+    "phase4a_turnover_cost_sensitivity_csv": "research/output/phase4a_turnover_aware_portfolio_simulation/turnover_cost_sensitivity.csv",
+    "phase4a_drawdown_summary_csv": "research/output/phase4a_turnover_aware_portfolio_simulation/drawdown_summary.csv",
+    "phase4a_risk_budget_summary_csv": "research/output/phase4a_turnover_aware_portfolio_simulation/risk_budget_summary.csv",
+    "phase4a_readiness_decision_table_csv": "research/output/phase4a_turnover_aware_portfolio_simulation/readiness_decision_table.csv"
+  },
+  "input_confirmation": {
+    "phase3z_result_json_present": true,
+    "phase3z_oos_score_summary_present": true,
+    "phase3z_yearly_diagnostics_present": true,
+    "phase3z_regime_diagnostics_present": true,
+    "phase3z_leakage_checks_present": true,
+    "phase4a_result_json_present": true,
+    "phase4a_scoreboard_present": true,
+    "phase4a_turnover_cost_sensitivity_present": true,
+    "phase4a_drawdown_summary_present": true,
+    "phase4a_risk_budget_present": true,
+    "phase4a_readiness_present": true,
+    "all_required_present": true
+  },
+  "candidate_id": "NPC-RIDGE-CRI-126D-TOP10EW-25BPS",
+  "candidate_name": "Ridge Combined Regime-Interactions (126d) / Top-10 Equal-Weight - research non-production candidate",
+  "selected_candidate": {
+    "model_name": "ridge_combined_regime_interactions",
+    "horizon": "126d",
+    "strategy_name": "top_10_equal_weight",
+    "transaction_cost_gate_bps": 25,
+    "rebalance_frequency": "monthly",
+    "holdings_target": 10,
+    "max_single_name_weight": 0.1,
+    "long_only": true,
+    "leverage_allowed": false,
+    "orders_allowed": false,
+    "automation_allowed": false,
+    "paper_trader_preview_only": true
+  },
+  "evidence_summary": {
+    "phase3z_recommendation": "OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION",
+    "phase4a_recommendation": "PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE",
+    "oos_row_count": 190267,
+    "ticker_count": 128,
+    "date_count": 1496,
+    "mean_rank_ic": 0.038434,
+    "top_minus_bottom_decile_spread": 0.07638,
+    "leakage_failures": 0,
+    "annualized_return_at_25bps": 0.18426994,
+    "annualized_volatility_at_25bps": 0.2211674,
+    "sharpe_at_25bps": 0.83317,
+    "max_drawdown_at_25bps": -0.33770963,
+    "average_turnover": 0.84444444,
+    "average_holdings": 10.0,
+    "cost_survival_status": "survives through 25 bps; fails at 50 bps",
+    "passing_strategies_at_25bps": [
+      "top_10_equal_weight",
+      "top_20_equal_weight",
+      "top_decile_score_weighted_capped"
+    ],
+    "num_passing_strategies_at_25bps": 3
+  },
+  "mandatory_guardrails": [
+    "preview_only",
+    "no_orders",
+    "no_automation",
+    "manual_review_required",
+    "no_production_deployment",
+    "no_live_model_enablement",
+    "max_10_holdings_for_selected_strategy",
+    "max_single_name_weight_10pct",
+    "drawdown_warning_2024_severe",
+    "overlapping_label_caveat",
+    "survivorship_bias_caveat",
+    "fresh_validation_before_production"
+  ],
+  "known_failure_modes": [
+    "weak_2024_year_drawdown",
+    "cost_stress_failure_at_50bps",
+    "overlapping_126d_labels_optimistic_sharpe",
+    "survivorship_biased_universe",
+    "incomplete_global_etf_cross_asset_data",
+    "incomplete_earnings_coverage",
+    "no_live_shadow_trading_proof",
+    "no_production_model_artifact"
+  ],
+  "no_go_items": [
+    "create_orders",
+    "broker_execution",
+    "automation",
+    "production_prediction_claim",
+    "live_portfolio_weights",
+    "deploy",
+    "enable_model_v2",
+    "train_production_model",
+    "write_deployable_artifact",
+    "database_write",
+    "touch_paper_trader",
+    "write_to_d_drive"
+  ],
+  "decision_gates": [
+    {
+      "decision_item": "phase3z_recommendation_ready",
+      "value": "OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION",
+      "passed": true
+    },
+    {
+      "decision_item": "phase4a_recommendation_ready",
+      "value": "PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE",
+      "passed": true
+    },
+    {
+      "decision_item": "selected_strategy_passes_at_25bps",
+      "value": "GATE_PASS",
+      "passed": true
+    },
+    {
+      "decision_item": "no_leakage_failures",
+      "value": 0,
+      "passed": true
+    },
+    {
+      "decision_item": "max_drawdown_better_than_-35pct",
+      "value": -0.33770963,
+      "passed": true
+    },
+    {
+      "decision_item": "average_holdings_ge_10",
+      "value": 10.0,
+      "passed": true
+    },
+    {
+      "decision_item": "average_turnover_le_1p5",
+      "value": 0.84444444,
+      "passed": true
+    },
+    {
+      "decision_item": "all_required_guardrails_present",
+      "value": 12,
+      "passed": true
+    }
+  ],
+  "sharpe_caveat": "Phase 4-A uses 126-day forward excess returns sampled monthly, so windows overlap. Sharpe/Sortino are useful for relative strategy comparison but optimistic as tradable ratios. This must be honored in any preview integration.",
+  "recommendation": {
+    "recommendation": "NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION",
+    "allowed_values": [
+      "NONPROD_CANDIDATE_READY_FOR_PREVIEW_INTEGRATION",
+      "NONPROD_CANDIDATE_PARTIAL_NEEDS_RISK_REPAIR",
+      "NONPROD_CANDIDATE_BLOCKED_INPUTS",
+      "NONPROD_CANDIDATE_BLOCKED_RISK"
+    ],
+    "research_only": true,
+    "create_production_model_candidate_now": false,
+    "compute_live_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "reason": "Phase 3-Z (OOS_SCORE_EXPORT_READY_FOR_PORTFOLIO_SIMULATION) and Phase 4-A (PORTFOLIO_SIMULATION_READY_FOR_NONPRODUCTION_CANDIDATE) are both READY; selected strategy 'top_10_equal_weight' clears the 25 bps gate (ann.return 0.18426994, Sharpe 0.83317, maxDD -0.33770963, holdings 10.0, turnover 0.84444444) with 0 leakage failures and all 12 guardrails present. Packaged as a research non-production candidate; no production model, predictions, weights, or deployment."
+  },
+  "recommended_next_phase": {
+    "phase": "4-C",
+    "title": "4-C - Paper Trader Preview Integration Plan",
+    "purpose": "Proceed to the Paper Trader preview integration plan."
+  },
+  "outputs_written": {
+    "candidate_summary_card": "research/output/phase4b_nonproduction_candidate_package/candidate_summary_card.csv",
+    "model_candidate_spec": "research/output/phase4b_nonproduction_candidate_package/model_candidate_spec.csv",
+    "selected_strategy_spec": "research/output/phase4b_nonproduction_candidate_package/selected_strategy_spec.csv",
+    "evidence_scorecard": "research/output/phase4b_nonproduction_candidate_package/evidence_scorecard.csv",
+    "risk_guardrails": "research/output/phase4b_nonproduction_candidate_package/risk_guardrails.csv",
+    "known_failure_modes": "research/output/phase4b_nonproduction_candidate_package/known_failure_modes.csv",
+    "preview_integration_contract": "research/output/phase4b_nonproduction_candidate_package/preview_integration_contract.csv",
+    "no_go_items": "research/output/phase4b_nonproduction_candidate_package/no_go_items.csv",
+    "readiness_decision_table": "research/output/phase4b_nonproduction_candidate_package/readiness_decision_table.csv"
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "nonproduction_candidate_packaged": true,
+    "scores_are_research_oos_not_production": true,
+    "labels_used_for_validation_only": true,
+    "results_remain_survivorship_biased": true,
+    "production_model_trained": false,
+    "production_predictions_computed": false,
+    "live_portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false
+  },
+  "research_only": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "nonproduction_model_candidate_packaged": true,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "live_portfolio_weights_computed": false,
+  "research_portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "orders_created": false,
+  "trades_created": false,
+  "paper_trader_files_modified": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "stooq_called": false,
+  "yahoo_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "network_called": false,
+  "data_faked": false,
+  "metrics_faked": false,
+  "labels_for_validation_only": true
+}

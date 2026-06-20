@@ -1,0 +1,13 @@
+contract_item,allowed,category,note
+model_score,True,may_show,Paper Trader may display the research OOS model score for a ticker.
+rank_percentile,True,may_show,Paper Trader may display the cross-sectional rank percentile.
+selected_strategy_membership,True,may_show,Paper Trader may flag whether a ticker is in the selected strategy's top set.
+safety_badges,True,may_show,Paper Trader must show safety badges (PREVIEW ONLY / NO ORDERS / AUTOMATION OFF / MANUAL REVIEW).
+risk_warnings,True,may_show,Paper Trader may show drawdown / overlapping-label / survivorship warnings.
+reason_summary,True,may_show,Paper Trader may show a plain-language reason summary for the score.
+no_orders,False,must_not,Paper Trader must not create orders from this candidate.
+no_broker_execution,False,must_not,Paper Trader must not route anything to a broker.
+no_automation,False,must_not,Paper Trader must not automate any action from this candidate.
+no_production_prediction_claim,False,must_not,Paper Trader must not present these research scores as production predictions.
+no_live_portfolio_weights,False,must_not,Paper Trader must not compute or display live portfolio weights from this candidate.
+no_database_write_unless_preview_endpoint,False,must_not,No database write unless a future preview-only endpoint is explicitly implemented.
