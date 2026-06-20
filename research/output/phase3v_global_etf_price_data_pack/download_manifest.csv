@@ -1,0 +1,23 @@
+ticker,stooq_symbol,url_domain,attempted,downloaded,local_file,row_count,date_min,date_max,error
+SPY,spy.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+QQQ,qqq.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+IWM,iwm.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+EFA,efa.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+EEM,eem.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+VGK,vgk.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+EWJ,ewj.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+FXI,fxi.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+SHY,shy.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+IEF,ief.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+TLT,tlt.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+TIP,tip.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+LQD,lqd.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+HYG,hyg.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+GLD,gld.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+SLV,slv.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+DBC,dbc.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+USO,uso.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+UUP,uup.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+FXE,fxe.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+FXY,fxy.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV
+VIXY,vixy.us,stooq.com,True,False,,0,,,stooq returned a JavaScript browser-verification challenge instead of CSV

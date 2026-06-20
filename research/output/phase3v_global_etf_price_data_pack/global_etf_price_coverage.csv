@@ -1,0 +1,23 @@
+ticker,asset_class,region,downloaded,row_count,date_min,date_max,has_2016_start,coverage_status,blocker
+SPY,us_equity,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+QQQ,us_equity,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+IWM,us_equity,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+EFA,intl_dev_equity,developed_ex_us,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+EEM,intl_em_equity,emerging_markets,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+VGK,intl_dev_equity,europe,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+EWJ,intl_dev_equity,japan,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+FXI,intl_em_equity,china,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+SHY,rates,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+IEF,rates,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+TLT,rates,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+TIP,rates,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+LQD,credit,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+HYG,credit,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+GLD,commodity,global,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+SLV,commodity,global,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+DBC,commodity,global,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+USO,commodity,global,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+UUP,currency,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+FXE,currency,europe,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+FXY,currency,japan,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV
+VIXY,volatility,united_states,False,0,,,False,MISSING,stooq returned a JavaScript browser-verification challenge instead of CSV

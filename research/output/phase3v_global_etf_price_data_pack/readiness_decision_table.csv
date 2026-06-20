@@ -1,0 +1,23 @@
+decision_item,value,passed,note
+phase3u_present,True,True,Phase 3-U result readable (read-only)
+phase3u_is_3u,True,True,Phase 3-U result phase == 3-U
+phase3u_recommendation_accepted,GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA,True,Phase 3-U recommended acquiring local price data
+target_universe_size,22,True,at least 20 cross-asset proxies targeted
+stooq_only_network,stooq.com,True,downloads use the Stooq domain only
+downloaded_count,0,,proxies with a saved Stooq CSV
+usable_count,0,,proxies with >= 250 usable daily rows
+asset_classes_covered,0,,distinct asset classes among usable proxies
+ready_threshold_met,False,False,READY needs >= 12 usable proxies across >= 5 asset classes
+no_price_data_faked,True,True,invalid rows dropped; no rows fabricated
+non_stooq_network_called,False,True,no non-Stooq network source contacted
+alpha_vantage_called,False,True,no Alpha Vantage call
+fred_called,False,True,no FRED call
+yfinance_called,False,True,no yfinance use
+d_drive_written,False,True,nothing written to the data drive
+phase3m_outputs_modified,False,True,Phase 3-M outputs untouched
+phase3u_outputs_modified,False,True,Phase 3-U outputs untouched
+no_production_model_candidate,True,True,data preparation only
+no_production_predictions_or_scores,True,True,no predictions / scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized model file written
+recommendation,GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE,True,allowed values only

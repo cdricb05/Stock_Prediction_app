@@ -1,0 +1,242 @@
+{
+  "phase": "3-V",
+  "generated_at": "2026-06-20T11:54:49",
+  "inputs_read": {
+    "phase3u_result_json": "research/output/phase3u_global_asset_universe_readiness.json",
+    "phase3u_universe_csv": "research/output/phase3u_global_asset_universe_readiness/target_global_asset_universe.csv"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3v_global_etf_price_data_pack.json",
+    "manifest": "research/output/phase3v_global_etf_price_data_pack/download_manifest.csv",
+    "panel": "research/output/phase3v_global_etf_price_data_pack/global_etf_price_panel.csv",
+    "coverage": "research/output/phase3v_global_etf_price_data_pack/global_etf_price_coverage.csv",
+    "quality": "research/output/phase3v_global_etf_price_data_pack/global_etf_price_quality.csv",
+    "missing": "research/output/phase3v_global_etf_price_data_pack/missing_or_failed_downloads.csv",
+    "feature_readiness": "research/output/phase3v_global_etf_price_data_pack/cross_asset_feature_readiness.csv",
+    "decision": "research/output/phase3v_global_etf_price_data_pack/readiness_decision_table.csv",
+    "stooq_input_dir": "research/input/global_assets/stooq"
+  },
+  "phase3u_confirmation": {
+    "phase3u_present": true,
+    "phase3u_phase": "3-U",
+    "phase3u_is_3u": true,
+    "phase3u_recommendation": "GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA",
+    "phase3u_recommendation_accepted": true,
+    "note": "Phase 3-U recommended acquiring local global ETF price data; Phase 3-V performs that acquisition from Stooq only. Phase 3-U outputs are read-only here."
+  },
+  "target_count": 22,
+  "downloaded_count": 0,
+  "usable_count": 0,
+  "missing_count": 22,
+  "asset_classes_covered": 0,
+  "asset_classes_covered_list": [],
+  "usable_tickers": [],
+  "panel_row_count": 0,
+  "feature_families_ready": [],
+  "feature_readiness_summary": {
+    "ready": 0,
+    "blocked": 8,
+    "total": 8
+  },
+  "readiness_decision_table": [
+    {
+      "decision_item": "phase3u_present",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-U result readable (read-only)"
+    },
+    {
+      "decision_item": "phase3u_is_3u",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-U result phase == 3-U"
+    },
+    {
+      "decision_item": "phase3u_recommendation_accepted",
+      "value": "GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA",
+      "passed": true,
+      "note": "Phase 3-U recommended acquiring local price data"
+    },
+    {
+      "decision_item": "target_universe_size",
+      "value": 22,
+      "passed": true,
+      "note": "at least 20 cross-asset proxies targeted"
+    },
+    {
+      "decision_item": "stooq_only_network",
+      "value": "stooq.com",
+      "passed": true,
+      "note": "downloads use the Stooq domain only"
+    },
+    {
+      "decision_item": "downloaded_count",
+      "value": 0,
+      "passed": "",
+      "note": "proxies with a saved Stooq CSV"
+    },
+    {
+      "decision_item": "usable_count",
+      "value": 0,
+      "passed": "",
+      "note": "proxies with >= 250 usable daily rows"
+    },
+    {
+      "decision_item": "asset_classes_covered",
+      "value": 0,
+      "passed": "",
+      "note": "distinct asset classes among usable proxies"
+    },
+    {
+      "decision_item": "ready_threshold_met",
+      "value": false,
+      "passed": false,
+      "note": "READY needs >= 12 usable proxies across >= 5 asset classes"
+    },
+    {
+      "decision_item": "no_price_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "invalid rows dropped; no rows fabricated"
+    },
+    {
+      "decision_item": "non_stooq_network_called",
+      "value": false,
+      "passed": true,
+      "note": "no non-Stooq network source contacted"
+    },
+    {
+      "decision_item": "alpha_vantage_called",
+      "value": false,
+      "passed": true,
+      "note": "no Alpha Vantage call"
+    },
+    {
+      "decision_item": "fred_called",
+      "value": false,
+      "passed": true,
+      "note": "no FRED call"
+    },
+    {
+      "decision_item": "yfinance_called",
+      "value": false,
+      "passed": true,
+      "note": "no yfinance use"
+    },
+    {
+      "decision_item": "d_drive_written",
+      "value": false,
+      "passed": true,
+      "note": "nothing written to the data drive"
+    },
+    {
+      "decision_item": "phase3m_outputs_modified",
+      "value": false,
+      "passed": true,
+      "note": "Phase 3-M outputs untouched"
+    },
+    {
+      "decision_item": "phase3u_outputs_modified",
+      "value": false,
+      "passed": true,
+      "note": "Phase 3-U outputs untouched"
+    },
+    {
+      "decision_item": "no_production_model_candidate",
+      "value": true,
+      "passed": true,
+      "note": "data preparation only"
+    },
+    {
+      "decision_item": "no_production_predictions_or_scores",
+      "value": true,
+      "passed": true,
+      "note": "no predictions / scores computed"
+    },
+    {
+      "decision_item": "no_portfolio_weights",
+      "value": true,
+      "passed": true,
+      "note": "no portfolio weights computed"
+    },
+    {
+      "decision_item": "no_deployable_artifact",
+      "value": true,
+      "passed": true,
+      "note": "no serialized model file written"
+    },
+    {
+      "decision_item": "recommendation",
+      "value": "GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE",
+      "passed": true,
+      "note": "allowed values only"
+    }
+  ],
+  "recommendation": {
+    "recommendation": "GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE",
+    "allowed_values": [
+      "GLOBAL_ETF_PRICE_DATA_READY",
+      "GLOBAL_ETF_PRICE_DATA_PARTIAL_DOWNLOAD",
+      "GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE"
+    ],
+    "research_only": true,
+    "build_feature_factory_now": false,
+    "train_production_model_now": false,
+    "create_production_model_candidate_now": false,
+    "compute_production_predictions_now": false,
+    "compute_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "price_data_faked": false,
+    "downloaded_count": 0,
+    "usable_count": 0,
+    "reason": "Only 0 of 22 target proxies downloaded usably (< 5); repair the Stooq downloads (Stooq only) before proceeding."
+  },
+  "recommended_next_phase": {
+    "phase": "3-W",
+    "title": "Repair Phase 3-V Downloads",
+    "purpose": "Too few proxies downloaded usably; repair the Stooq downloads (Stooq only) before building the feature factory."
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "research_only": true,
+    "local_data_preparation_only": true,
+    "price_data_faked": false,
+    "non_stooq_network_called": false,
+    "provider_paid_api_called": false,
+    "production_predictions_computed": false,
+    "production_scores_computed": false,
+    "portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false,
+    "results_remain_survivorship_biased": true,
+    "narrative": "Phase 3-V is the research-only, local data-preparation pack that acquires and normalizes real daily price history for the Phase 3-U global cross-asset ETF proxy universe using free public Stooq CSV downloads only (no yfinance, no Alpha Vantage, no FRED, no paid vendor API, no non-Stooq network). It downloaded 0 of 22 target proxies, 0 of which are usable across 0 asset classes, normalizes them to a common OHLCV schema (adjusted_close uses close because Stooq daily CSV has no adjusted column), drops invalid rows, and fabricates nothing. It trains no model, computes no predictions / scores / portfolio weights / order instructions, writes no deployable artifact, touches no database, runs no migration, restarts no service, enables no serving flag, and writes nothing to the data drive. Recommendation: GLOBAL_ETF_PRICE_DATA_BLOCKED_DOWNLOAD_FAILURE. The universe is current-as-of, so downstream results remain survivorship-biased and claim no production edge."
+  },
+  "research_only": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "stooq_called": true,
+  "non_stooq_network_called": false,
+  "data_faked": false,
+  "labels_for_validation_only": true
+}
