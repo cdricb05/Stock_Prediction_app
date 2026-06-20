@@ -1,0 +1,7 @@
+phase,title,description,depends_on,status
+3-V,Acquire or assemble local global ETF price panel,"Obtain real, local daily price history for the missing global ETF proxies (same schema as the existing price panel); never faked.",local global ETF price CSVs,NEXT
+3-W,Build cross-asset feature factory,Engineer the point-in-time cross-asset regime features from the assembled global ETF panel.,3-V local global ETF price panel,PLANNED
+3-X,Re-run walk-forward model with earnings + macro + cross-asset,"Re-run the research walk-forward with earnings, macro/regime, and the new cross-asset feature families; measure robustness. No production model.",3-W cross-asset features + Phase 3-T earnings coverage,PLANNED
+3-Y,Turnover-aware portfolio simulation and risk budget,"Research-only turnover-aware risk simulation and risk budgeting; no portfolio weights deployed, no orders.",3-X robustness-passing research signal,PLANNED
+3-Z,Non-production candidate packaging,"Package a research candidate (no deployable artifact, no production edge).",3-Y risk simulation,PLANNED
+4-A,Paper Trader preview integration only,"Preview-only integration; no orders, no automation, manual review only.",a reviewed non-production candidate,PLANNED

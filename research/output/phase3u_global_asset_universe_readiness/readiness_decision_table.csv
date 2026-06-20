@@ -1,0 +1,18 @@
+decision_item,value,passed,note
+phase3t_inputs_present,True,True,Phase 3-T / 3-M collection progress readable (read-only)
+earnings_cached_at_least_50,True,True,Phase 3-T cached earnings tickers >= 50
+earnings_signal_gate_allowed_now,False,,informational; earnings coverage still below the 75-ticker gate when False
+earnings_collection_state,EARNINGS_PROVIDER_LIMITED_WAITING,,provider-limited / waiting when the daily quota has been hit
+target_universe_size,22,True,at least 20 cross-asset proxies defined
+locally_available_proxies,1,,target proxies with a local daily price history
+asset_classes_covered_locally,1,,distinct asset classes with at least one locally available proxy
+ready_threshold_met,False,False,READY needs >= 12 proxies across >= 5 asset classes
+no_price_data_faked,True,True,"missing proxies recorded as requirements, not invented"
+provider_or_alpha_vantage_called,False,True,no provider / Alpha Vantage / FRED API / yfinance call by this gate
+d_drive_written,False,True,the data-drive price panel is read-only; nothing written
+phase3m_outputs_modified,False,True,"Phase 3-M outputs are only read, never written"
+no_production_model_candidate,True,True,readiness / data-planning gate only
+no_production_predictions_or_scores,True,True,no predictions / scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized model file written
+recommendation,GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA,True,allowed values only

@@ -1,0 +1,558 @@
+{
+  "phase": "3-U",
+  "generated_at": "2026-06-20T11:29:33",
+  "inputs_read": {
+    "phase3m_collection_progress_json": "research/output/phase3m_earnings_estimates_signal_gate/collection_progress.json",
+    "phase3m_raw_cache_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw",
+    "phase3s_result_json": "research/output/phase3s_event_signal_readiness_gate.json",
+    "phase3r_result_json": "research/output/phase3r_macro_regime_walkforward.json",
+    "phase3p_result_json": "research/output/phase3p_multisignal_walkforward_model.json",
+    "phase3o_result_json": "research/output/phase3o_multisignal_feature_factory.json",
+    "data_drive_price_panel_read_only": "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3u_global_asset_universe_readiness.json",
+    "universe": "research/output/phase3u_global_asset_universe_readiness/target_global_asset_universe.csv",
+    "coverage": "research/output/phase3u_global_asset_universe_readiness/local_price_coverage.csv",
+    "requirements": "research/output/phase3u_global_asset_universe_readiness/global_asset_data_requirements.csv",
+    "blueprint": "research/output/phase3u_global_asset_universe_readiness/cross_asset_feature_blueprint.csv",
+    "roadmap": "research/output/phase3u_global_asset_universe_readiness/global_model_roadmap.csv",
+    "decision": "research/output/phase3u_global_asset_universe_readiness/readiness_decision_table.csv"
+  },
+  "phase3t_status_summary": {
+    "progress_present": true,
+    "universe_ticker_count": 128,
+    "cached_ticker_count": 50,
+    "missing_ticker_count": 78,
+    "cached_at_least_50": true,
+    "signal_gate_min_tickers": 75,
+    "signal_gate_allowed_now": false,
+    "provider_limit_hit": true,
+    "same_day_limit_guard_active": false,
+    "earnings_collection_state": "EARNINGS_PROVIDER_LIMITED_WAITING",
+    "note": "Read-only Phase 3-T / 3-M state. Phase 3-U does not modify Phase 3-M outputs and makes no provider call; earnings collection is provider-limited / waiting when the daily quota has been hit."
+  },
+  "target_universe_summary": {
+    "ticker_count": 22,
+    "asset_classes": [
+      "commodity",
+      "credit",
+      "currency",
+      "intl_dev_equity",
+      "intl_em_equity",
+      "rates",
+      "us_equity",
+      "volatility"
+    ],
+    "asset_class_count": 8,
+    "regions": [
+      "china",
+      "developed_ex_us",
+      "emerging_markets",
+      "europe",
+      "global",
+      "japan",
+      "united_states"
+    ]
+  },
+  "target_global_asset_universe": [
+    {
+      "ticker": "SPY",
+      "asset_class": "us_equity",
+      "region": "united_states",
+      "exposure": "us_large_cap",
+      "role_in_model": "equity_risk_appetite_core",
+      "priority": 1,
+      "notes": "S&P 500 broad-market risk-on/off anchor"
+    },
+    {
+      "ticker": "QQQ",
+      "asset_class": "us_equity",
+      "region": "united_states",
+      "exposure": "us_large_cap_growth",
+      "role_in_model": "equity_risk_appetite_growth",
+      "priority": 1,
+      "notes": "Nasdaq-100 growth/tech beta"
+    },
+    {
+      "ticker": "IWM",
+      "asset_class": "us_equity",
+      "region": "united_states",
+      "exposure": "us_small_cap",
+      "role_in_model": "equity_risk_appetite_breadth",
+      "priority": 1,
+      "notes": "Russell 2000 small-cap breadth"
+    },
+    {
+      "ticker": "EFA",
+      "asset_class": "intl_dev_equity",
+      "region": "developed_ex_us",
+      "exposure": "developed_intl_equity",
+      "role_in_model": "global_equity_breadth",
+      "priority": 2,
+      "notes": "Developed ex-US equity (EAFE)"
+    },
+    {
+      "ticker": "EEM",
+      "asset_class": "intl_em_equity",
+      "region": "emerging_markets",
+      "exposure": "emerging_market_equity",
+      "role_in_model": "global_equity_breadth",
+      "priority": 2,
+      "notes": "Emerging-market equity risk appetite"
+    },
+    {
+      "ticker": "VGK",
+      "asset_class": "intl_dev_equity",
+      "region": "europe",
+      "exposure": "european_equity",
+      "role_in_model": "global_equity_breadth",
+      "priority": 2,
+      "notes": "European developed equity"
+    },
+    {
+      "ticker": "EWJ",
+      "asset_class": "intl_dev_equity",
+      "region": "japan",
+      "exposure": "japanese_equity",
+      "role_in_model": "global_equity_breadth",
+      "priority": 2,
+      "notes": "Japanese equity"
+    },
+    {
+      "ticker": "FXI",
+      "asset_class": "intl_em_equity",
+      "region": "china",
+      "exposure": "china_large_cap_equity",
+      "role_in_model": "global_equity_breadth",
+      "priority": 2,
+      "notes": "China large-cap equity"
+    },
+    {
+      "ticker": "SHY",
+      "asset_class": "rates",
+      "region": "united_states",
+      "exposure": "ust_1_3y",
+      "role_in_model": "rates_duration_regime_short",
+      "priority": 1,
+      "notes": "1-3y US Treasury (front-end / cash proxy)"
+    },
+    {
+      "ticker": "IEF",
+      "asset_class": "rates",
+      "region": "united_states",
+      "exposure": "ust_7_10y",
+      "role_in_model": "rates_duration_regime_intermediate",
+      "priority": 1,
+      "notes": "7-10y US Treasury (intermediate duration)"
+    },
+    {
+      "ticker": "TLT",
+      "asset_class": "rates",
+      "region": "united_states",
+      "exposure": "ust_20y_plus",
+      "role_in_model": "rates_duration_regime_long",
+      "priority": 1,
+      "notes": "20y+ US Treasury (long duration)"
+    },
+    {
+      "ticker": "TIP",
+      "asset_class": "rates",
+      "region": "united_states",
+      "exposure": "us_tips",
+      "role_in_model": "rates_inflation_breakeven",
+      "priority": 2,
+      "notes": "Inflation-protected Treasury (breakeven proxy)"
+    },
+    {
+      "ticker": "LQD",
+      "asset_class": "credit",
+      "region": "united_states",
+      "exposure": "investment_grade_credit",
+      "role_in_model": "credit_risk_ig",
+      "priority": 1,
+      "notes": "Investment-grade corporate credit"
+    },
+    {
+      "ticker": "HYG",
+      "asset_class": "credit",
+      "region": "united_states",
+      "exposure": "high_yield_credit",
+      "role_in_model": "credit_risk_hy",
+      "priority": 1,
+      "notes": "High-yield corporate credit (risk appetite)"
+    },
+    {
+      "ticker": "GLD",
+      "asset_class": "commodity",
+      "region": "global",
+      "exposure": "gold",
+      "role_in_model": "commodity_inflation_gold",
+      "priority": 1,
+      "notes": "Gold (inflation / safe-haven)"
+    },
+    {
+      "ticker": "SLV",
+      "asset_class": "commodity",
+      "region": "global",
+      "exposure": "silver",
+      "role_in_model": "commodity_inflation_silver",
+      "priority": 2,
+      "notes": "Silver (inflation / industrial)"
+    },
+    {
+      "ticker": "DBC",
+      "asset_class": "commodity",
+      "region": "global",
+      "exposure": "broad_commodity",
+      "role_in_model": "commodity_inflation_broad",
+      "priority": 2,
+      "notes": "Broad commodity basket"
+    },
+    {
+      "ticker": "USO",
+      "asset_class": "commodity",
+      "region": "global",
+      "exposure": "crude_oil",
+      "role_in_model": "commodity_inflation_energy",
+      "priority": 2,
+      "notes": "WTI crude oil (energy / inflation)"
+    },
+    {
+      "ticker": "UUP",
+      "asset_class": "currency",
+      "region": "united_states",
+      "exposure": "us_dollar_index",
+      "role_in_model": "dollar_liquidity_usd",
+      "priority": 1,
+      "notes": "US dollar index (global liquidity)"
+    },
+    {
+      "ticker": "FXE",
+      "asset_class": "currency",
+      "region": "europe",
+      "exposure": "euro",
+      "role_in_model": "dollar_liquidity_eur",
+      "priority": 2,
+      "notes": "Euro currency"
+    },
+    {
+      "ticker": "FXY",
+      "asset_class": "currency",
+      "region": "japan",
+      "exposure": "japanese_yen",
+      "role_in_model": "dollar_liquidity_jpy",
+      "priority": 2,
+      "notes": "Japanese yen (funding currency / risk-off)"
+    },
+    {
+      "ticker": "VIXY",
+      "asset_class": "volatility",
+      "region": "united_states",
+      "exposure": "vix_short_term_futures",
+      "role_in_model": "volatility_risk",
+      "priority": 1,
+      "notes": "Short-term VIX futures (volatility regime / shock)"
+    }
+  ],
+  "local_price_coverage_summary": {
+    "target_ticker_count": 22,
+    "locally_available_count": 1,
+    "missing_count": 21,
+    "asset_classes_total": 8,
+    "asset_classes_covered_locally": [
+      "us_equity"
+    ],
+    "asset_classes_covered_locally_count": 1,
+    "available_tickers": [
+      "SPY"
+    ],
+    "missing_tickers": [
+      "QQQ",
+      "IWM",
+      "EFA",
+      "EEM",
+      "VGK",
+      "EWJ",
+      "FXI",
+      "SHY",
+      "IEF",
+      "TLT",
+      "TIP",
+      "LQD",
+      "HYG",
+      "GLD",
+      "SLV",
+      "DBC",
+      "USO",
+      "UUP",
+      "FXE",
+      "FXY",
+      "VIXY"
+    ],
+    "price_panels_scanned": [
+      "D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+      "research/output/phase2g_price_history_real.csv",
+      "research/output/phase2g_shadow_validation_sample.csv"
+    ],
+    "data_drive_price_panel_read": true
+  },
+  "missing_data_summary": {
+    "missing_count": 21,
+    "missing_tickers": [
+      "QQQ",
+      "IWM",
+      "EFA",
+      "EEM",
+      "VGK",
+      "EWJ",
+      "FXI",
+      "SHY",
+      "IEF",
+      "TLT",
+      "TIP",
+      "LQD",
+      "HYG",
+      "GLD",
+      "SLV",
+      "DBC",
+      "USO",
+      "UUP",
+      "FXE",
+      "FXY",
+      "VIXY"
+    ],
+    "required_fields": "ticker;date;adjusted_open;adjusted_high;adjusted_low;adjusted_close;volume",
+    "required_frequency": "daily",
+    "point_in_time_rule": "adjusted close as-of the trade date; no lookahead"
+  },
+  "feature_blueprint_summary": {
+    "feature_count": 12,
+    "feature_families": [
+      "commodity_inflation",
+      "credit_risk",
+      "cross_asset_regime",
+      "dollar_liquidity",
+      "equity_risk_appetite",
+      "global_equity_breadth",
+      "rates_duration_regime",
+      "volatility_risk"
+    ],
+    "ready_to_build": 0,
+    "partial": 4,
+    "blocked": 8
+  },
+  "global_model_roadmap": [
+    {
+      "phase": "3-V",
+      "title": "Acquire or assemble local global ETF price panel",
+      "description": "Obtain real, local daily price history for the missing global ETF proxies (same schema as the existing price panel); never faked.",
+      "depends_on": "local global ETF price CSVs",
+      "status": "NEXT"
+    },
+    {
+      "phase": "3-W",
+      "title": "Build cross-asset feature factory",
+      "description": "Engineer the point-in-time cross-asset regime features from the assembled global ETF panel.",
+      "depends_on": "3-V local global ETF price panel",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-X",
+      "title": "Re-run walk-forward model with earnings + macro + cross-asset",
+      "description": "Re-run the research walk-forward with earnings, macro/regime, and the new cross-asset feature families; measure robustness. No production model.",
+      "depends_on": "3-W cross-asset features + Phase 3-T earnings coverage",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-Y",
+      "title": "Turnover-aware portfolio simulation and risk budget",
+      "description": "Research-only turnover-aware risk simulation and risk budgeting; no portfolio weights deployed, no orders.",
+      "depends_on": "3-X robustness-passing research signal",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-Z",
+      "title": "Non-production candidate packaging",
+      "description": "Package a research candidate (no deployable artifact, no production edge).",
+      "depends_on": "3-Y risk simulation",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "4-A",
+      "title": "Paper Trader preview integration only",
+      "description": "Preview-only integration; no orders, no automation, manual review only.",
+      "depends_on": "a reviewed non-production candidate",
+      "status": "PLANNED"
+    }
+  ],
+  "readiness_decision_table": [
+    {
+      "decision_item": "phase3t_inputs_present",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-T / 3-M collection progress readable (read-only)"
+    },
+    {
+      "decision_item": "earnings_cached_at_least_50",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-T cached earnings tickers >= 50"
+    },
+    {
+      "decision_item": "earnings_signal_gate_allowed_now",
+      "value": false,
+      "passed": "",
+      "note": "informational; earnings coverage still below the 75-ticker gate when False"
+    },
+    {
+      "decision_item": "earnings_collection_state",
+      "value": "EARNINGS_PROVIDER_LIMITED_WAITING",
+      "passed": "",
+      "note": "provider-limited / waiting when the daily quota has been hit"
+    },
+    {
+      "decision_item": "target_universe_size",
+      "value": 22,
+      "passed": true,
+      "note": "at least 20 cross-asset proxies defined"
+    },
+    {
+      "decision_item": "locally_available_proxies",
+      "value": 1,
+      "passed": "",
+      "note": "target proxies with a local daily price history"
+    },
+    {
+      "decision_item": "asset_classes_covered_locally",
+      "value": 1,
+      "passed": "",
+      "note": "distinct asset classes with at least one locally available proxy"
+    },
+    {
+      "decision_item": "ready_threshold_met",
+      "value": false,
+      "passed": false,
+      "note": "READY needs >= 12 proxies across >= 5 asset classes"
+    },
+    {
+      "decision_item": "no_price_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "missing proxies recorded as requirements, not invented"
+    },
+    {
+      "decision_item": "provider_or_alpha_vantage_called",
+      "value": false,
+      "passed": true,
+      "note": "no provider / Alpha Vantage / FRED API / yfinance call by this gate"
+    },
+    {
+      "decision_item": "d_drive_written",
+      "value": false,
+      "passed": true,
+      "note": "the data-drive price panel is read-only; nothing written"
+    },
+    {
+      "decision_item": "phase3m_outputs_modified",
+      "value": false,
+      "passed": true,
+      "note": "Phase 3-M outputs are only read, never written"
+    },
+    {
+      "decision_item": "no_production_model_candidate",
+      "value": true,
+      "passed": true,
+      "note": "readiness / data-planning gate only"
+    },
+    {
+      "decision_item": "no_production_predictions_or_scores",
+      "value": true,
+      "passed": true,
+      "note": "no predictions / scores computed"
+    },
+    {
+      "decision_item": "no_portfolio_weights",
+      "value": true,
+      "passed": true,
+      "note": "no portfolio weights computed"
+    },
+    {
+      "decision_item": "no_deployable_artifact",
+      "value": true,
+      "passed": true,
+      "note": "no serialized model file written"
+    },
+    {
+      "decision_item": "recommendation",
+      "value": "GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA",
+      "passed": true,
+      "note": "allowed values only"
+    }
+  ],
+  "recommendation": {
+    "recommendation": "GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA",
+    "allowed_values": [
+      "GLOBAL_ASSET_UNIVERSE_READY_FOR_FEATURE_FACTORY",
+      "GLOBAL_ASSET_UNIVERSE_PARTIAL_LOCAL_COVERAGE",
+      "GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA",
+      "GLOBAL_ASSET_UNIVERSE_BLOCKED_INPUTS"
+    ],
+    "research_only": true,
+    "build_feature_factory_now": false,
+    "train_production_model_now": false,
+    "create_production_model_candidate_now": false,
+    "compute_production_predictions_now": false,
+    "compute_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "price_data_faked": false,
+    "reason": "Only 1 of 22 target proxies are locally available (< 5), so the next step is to acquire real local daily price history for the global ETF proxy universe (never faked)."
+  },
+  "recommended_next_phase": {
+    "phase": "3-V",
+    "title": "Acquire Local Global ETF Price Data",
+    "purpose": "Too few proxies are locally available; acquire real local daily price history for the global ETF proxy universe (never faked)."
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "research_only": true,
+    "readiness_and_data_planning_gate_only": true,
+    "price_data_collected": false,
+    "provider_api_called": false,
+    "price_data_faked": false,
+    "production_predictions_computed": false,
+    "production_scores_computed": false,
+    "portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false,
+    "results_remain_survivorship_biased": true,
+    "narrative": "Phase 3-U is the research-only readiness and data-planning gate for expanding the model from a US-equity universe toward a global cross-asset view while Phase 3-T earnings collection waits on the provider's daily quota. It defines a practical global cross-asset ETF proxy universe, inspects local price availability (repo CSVs plus the one allowed read-only price panel), classifies the missing proxies with exact (non-faked) data requirements, blueprints the cross-asset features, and recommends GLOBAL_ASSET_UNIVERSE_BLOCKED_NEEDS_LOCAL_PRICE_DATA. It trains no model, computes no predictions / scores / portfolio weights / order instructions, writes no deployable artifact, touches no database, runs no migration, restarts no service, enables no serving flag, writes nothing to the data drive, calls no provider / paid-vendor / Alpha Vantage / FRED API, and uses no yfinance library. The equity universe is current-as-of, so results remain survivorship-biased and claim no production edge."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_only": true,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "d_drive_read": true,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "fred_called": false,
+  "paid_vendor_api_called": false,
+  "yfinance_called": false,
+  "data_faked": false,
+  "labels_for_validation_only": true
+}

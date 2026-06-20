@@ -1,0 +1,23 @@
+ticker,asset_class,locally_available,source_file,date_min,date_max,row_count,coverage_status,blocker
+SPY,us_equity,True,D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv,2016-01-04,2026-06-16,2628,AVAILABLE,
+QQQ,us_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+IWM,us_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+EFA,intl_dev_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+EEM,intl_em_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+VGK,intl_dev_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+EWJ,intl_dev_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+FXI,intl_em_equity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+SHY,rates,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+IEF,rates,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+TLT,rates,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+TIP,rates,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+LQD,credit,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+HYG,credit,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+GLD,commodity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+SLV,commodity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+DBC,commodity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+USO,commodity,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+UUP,currency,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+FXE,currency,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+FXY,currency,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel
+VIXY,volatility,False,,,,0,MISSING,no local daily price history in the repo or the allowed read-only price panel

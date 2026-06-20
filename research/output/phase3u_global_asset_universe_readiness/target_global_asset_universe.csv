@@ -1,0 +1,23 @@
+ticker,asset_class,region,exposure,role_in_model,priority,notes
+SPY,us_equity,united_states,us_large_cap,equity_risk_appetite_core,1,S&P 500 broad-market risk-on/off anchor
+QQQ,us_equity,united_states,us_large_cap_growth,equity_risk_appetite_growth,1,Nasdaq-100 growth/tech beta
+IWM,us_equity,united_states,us_small_cap,equity_risk_appetite_breadth,1,Russell 2000 small-cap breadth
+EFA,intl_dev_equity,developed_ex_us,developed_intl_equity,global_equity_breadth,2,Developed ex-US equity (EAFE)
+EEM,intl_em_equity,emerging_markets,emerging_market_equity,global_equity_breadth,2,Emerging-market equity risk appetite
+VGK,intl_dev_equity,europe,european_equity,global_equity_breadth,2,European developed equity
+EWJ,intl_dev_equity,japan,japanese_equity,global_equity_breadth,2,Japanese equity
+FXI,intl_em_equity,china,china_large_cap_equity,global_equity_breadth,2,China large-cap equity
+SHY,rates,united_states,ust_1_3y,rates_duration_regime_short,1,1-3y US Treasury (front-end / cash proxy)
+IEF,rates,united_states,ust_7_10y,rates_duration_regime_intermediate,1,7-10y US Treasury (intermediate duration)
+TLT,rates,united_states,ust_20y_plus,rates_duration_regime_long,1,20y+ US Treasury (long duration)
+TIP,rates,united_states,us_tips,rates_inflation_breakeven,2,Inflation-protected Treasury (breakeven proxy)
+LQD,credit,united_states,investment_grade_credit,credit_risk_ig,1,Investment-grade corporate credit
+HYG,credit,united_states,high_yield_credit,credit_risk_hy,1,High-yield corporate credit (risk appetite)
+GLD,commodity,global,gold,commodity_inflation_gold,1,Gold (inflation / safe-haven)
+SLV,commodity,global,silver,commodity_inflation_silver,2,Silver (inflation / industrial)
+DBC,commodity,global,broad_commodity,commodity_inflation_broad,2,Broad commodity basket
+USO,commodity,global,crude_oil,commodity_inflation_energy,2,WTI crude oil (energy / inflation)
+UUP,currency,united_states,us_dollar_index,dollar_liquidity_usd,1,US dollar index (global liquidity)
+FXE,currency,europe,euro,dollar_liquidity_eur,2,Euro currency
+FXY,currency,japan,japanese_yen,dollar_liquidity_jpy,2,Japanese yen (funding currency / risk-off)
+VIXY,volatility,united_states,vix_short_term_futures,volatility_risk,1,Short-term VIX futures (volatility regime / shock)
