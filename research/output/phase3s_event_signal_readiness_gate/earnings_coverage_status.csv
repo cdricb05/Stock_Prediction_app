@@ -1,0 +1,2 @@
+universe_ticker_count,cached_ticker_count,missing_ticker_count,signal_gate_min_tickers,signal_gate_allowed_now,estimated_runs_to_75_at_20_per_day,estimated_runs_to_128_at_20_per_day,provider_limit_last_hit_utc,next_safe_collection_action,notes
+128,25,103,75,False,3,6,,RUN_RESUMABLE_COLLECTOR_IN_SEPARATE_CONTROLLED_STEP,"cached counted from local raw cache listing (25 files); progress JSON reports 25. Provider=alpha_vantage; same-day limit guard active=False; api key detected=True (boolean only, value never read). Free-tier budget assumed ~20 tickers/run."

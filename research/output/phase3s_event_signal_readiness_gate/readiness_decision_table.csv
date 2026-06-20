@@ -1,0 +1,17 @@
+decision_item,value,passed,note
+phase3r_confirmed,True,True,"Phase 3-R present, WEAK/IMPROVES recommendation, next phase 3-S, no production artifacts"
+earnings_cached_tickers,25,,from local Phase 3-M raw cache listing
+earnings_coverage_meets_min,False,False,needs >= 75 cached tickers to run the earnings signal gate
+usable_local_sentiment_data,False,False,real local news/social sentiment CSV with PIT dates
+usable_local_analyst_revision_data,False,False,real local analyst-revision CSV with PIT dates
+no_sentiment_data_faked,True,True,blocked families instead of fabricating values
+no_analyst_revision_data_faked,True,True,blocked families instead of fabricating
+no_earnings_data_faked,True,True,only inspected the existing local cache
+provider_or_alpha_vantage_called,False,True,no provider / Alpha Vantage / FRED API call by this gate
+provider_api_key_value_read,False,True,"only detected booleans read, never the value"
+d_drive_read_or_written,False,True,nothing on the D: drive touched
+no_production_model_candidate,True,True,readiness/prioritization gate only
+no_production_predictions_or_scores,True,True,no predictions/scores computed
+no_portfolio_weights,True,True,no portfolio weights computed
+no_deployable_artifact,True,True,no serialized-estimator file written
+recommendation,EVENT_SIGNAL_READINESS_CONTINUE_EARNINGS_COLLECTION,True,allowed values only

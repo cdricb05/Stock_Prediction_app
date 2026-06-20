@@ -1,0 +1,7 @@
+phase,title,description,depends_on,status
+3-T,Continue Earnings Coverage to 75+ Tickers,"Run the resumable, cache-first, network-budgeted earnings collector across days until cached >= 75, then re-run the earnings/macro/technical model.",provider api key + free-tier daily budget,NEXT
+3-U,Add Local Sentiment / Analyst Revision Data (if acquired),Ingest a real local news-sentiment or analyst-revision CSV with point-in-time dates and re-run the combined model. Never faked.,local sentiment/analyst CSV with availability dates,PLANNED
+3-V,Global Cross-Asset ETF Proxy Universe + Cross-Asset Regime Features,Add free local ETF / global asset proxies and cross-asset regime features.,local ETF/global asset price CSVs,PLANNED
+3-W,Turnover-Aware Risk Simulation and Portfolio Construction,Simulate turnover-aware risk and (research-only) portfolio construction once an orthogonal signal clears the robustness bar.,a robustness-passing research signal,PLANNED
+3-X,Non-Production Candidate Packaging,"Package a research candidate (no deployable artifact, no production edge).",passing 3-W risk simulation,PLANNED
+3-Y,Paper Trader Preview Integration Only,"Preview-only integration; no orders, no automation, manual review only.",a reviewed non-production candidate,PLANNED

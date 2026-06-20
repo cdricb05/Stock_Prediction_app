@@ -1,0 +1,2 @@
+file_path,detected_family,columns,row_count,date_min,date_max,ticker_column_detected,sentiment_or_revision_column_detected,usable,blocker
+research/output/phase3s_event_signal_readiness_gate/analyst_revision_data_inventory.csv,analyst_revision,file_path;detected_family;columns;row_count;date_min;date_max;ticker_column_detected;sentiment_or_revision_column_detected;usable;blocker,1,,,True,True,False,"missing required columns/dates for a point-in-time analyst-revision series (need ticker, event/publication date, analyst_revision_value)"

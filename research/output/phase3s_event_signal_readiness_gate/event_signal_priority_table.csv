@@ -1,0 +1,8 @@
+priority_rank,workstream,expected_impact,urgency,dependency,estimated_effort,cost_risk,why_now,recommended_next_phase
+1,continue_earnings_coverage_to_75_tickers,HIGH,NOW,provider api key + daily free-tier budget,LOW_MEDIUM,"LOW (free tier; cache-first, network-budgeted)",cached 25 of 128; 50 short of the 75-ticker signal-gate minimum,3-T
+2,acquire_analyst_revision_data,HIGH,HIGH,local analyst-revision CSV with point-in-time dates,MEDIUM,MEDIUM (data acquisition / entitlement; no faking),orthogonal event signal; macro repaired the bad year but lowered mean IC,3-U
+3,acquire_news_sentiment_data,MEDIUM_HIGH,MEDIUM,local news/social sentiment CSV with publication dates,MEDIUM,MEDIUM (data acquisition / entitlement; no faking),second orthogonal event-driven family to lift average IC,3-U
+4,finish_earnings_coverage_to_128_tickers,MEDIUM,MEDIUM,provider api key + several more budgeted runs,MEDIUM,LOW (free tier across multiple days),full-universe coverage reduces survivorship/coverage noise after the gate,3-T
+5,add_global_cross_asset_etf_proxy_universe,MEDIUM,LATER,"local ETF / global asset price CSVs (free, manual)",MEDIUM,LOW (free local data),cross-asset regime context once event-signal families are in place,3-V
+6,build_risk_simulation_turnover_constraints,MEDIUM,LATER,a model whose signal has cleared the robustness bar,MEDIUM_HIGH,LOW (compute only),premature until an orthogonal signal lifts robust IC,3-W
+7,prepare_non_production_candidate,LOW,LAST,"a robustness-passing, risk-simulated research model",MEDIUM,LOW (research packaging only; never deployed),only after the signal and risk work pass; no production edge claimed,3-X

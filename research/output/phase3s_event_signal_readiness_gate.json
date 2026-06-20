@@ -1,0 +1,405 @@
+{
+  "phase": "3-S",
+  "generated_at": "2026-06-20T10:38:20",
+  "inputs_read": {
+    "phase3r_result_json": "research/output/phase3r_macro_regime_walkforward.json",
+    "phase3q_result_json": "research/output/phase3q_model_robustness_diagnostics.json",
+    "phase3p_result_json": "research/output/phase3p_multisignal_walkforward_model.json",
+    "phase3o_result_json": "research/output/phase3o_multisignal_feature_factory.json",
+    "phase3m_result_json": "research/output/phase3m_earnings_estimates_signal_gate.json",
+    "phase3m_collection_progress_json": "research/output/phase3m_earnings_estimates_signal_gate/collection_progress.json",
+    "phase3m_earnings_features_universe_csv": "research/output/phase3m_earnings_estimates_signal_gate/earnings_features_universe.csv",
+    "phase3m_raw_cache_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase3s_event_signal_readiness_gate.json",
+    "coverage": "research/output/phase3s_event_signal_readiness_gate/earnings_coverage_status.csv",
+    "plan": "research/output/phase3s_event_signal_readiness_gate/earnings_next_collection_plan.csv",
+    "sentiment": "research/output/phase3s_event_signal_readiness_gate/sentiment_data_inventory.csv",
+    "analyst": "research/output/phase3s_event_signal_readiness_gate/analyst_revision_data_inventory.csv",
+    "priority": "research/output/phase3s_event_signal_readiness_gate/event_signal_priority_table.csv",
+    "roadmap": "research/output/phase3s_event_signal_readiness_gate/model_improvement_roadmap.csv",
+    "decision": "research/output/phase3s_event_signal_readiness_gate/readiness_decision_table.csv"
+  },
+  "phase3r_confirmation": {
+    "phase3r_result_present": true,
+    "phase_is_3r": true,
+    "recommendation_ok": true,
+    "next_phase_is_3s": true,
+    "macro_not_faked": true,
+    "sentiment_not_faked": true,
+    "no_production_model_candidate": true,
+    "no_production_predictions": true,
+    "no_production_scores": true,
+    "no_portfolio_weights": true,
+    "no_deployable_artifact": true,
+    "provider_api_not_called": true,
+    "alpha_vantage_not_called": true,
+    "confirmed": true,
+    "phase3r_recommendation": "MACRO_REGIME_WALKFORWARD_WEAK_NO_IMPROVEMENT"
+  },
+  "earnings_coverage_summary": {
+    "universe_ticker_count": 128,
+    "cached_ticker_count": 25,
+    "missing_ticker_count": 103,
+    "signal_gate_min_tickers": 75,
+    "signal_gate_allowed_now": false,
+    "estimated_runs_to_75_at_20_per_day": 3,
+    "estimated_runs_to_128_at_20_per_day": 6,
+    "provider_limit_last_hit_utc": null,
+    "next_safe_collection_action": "RUN_RESUMABLE_COLLECTOR_IN_SEPARATE_CONTROLLED_STEP",
+    "notes": "cached counted from local raw cache listing (25 files); progress JSON reports 25. Provider=alpha_vantage; same-day limit guard active=False; api key detected=True (boolean only, value never read). Free-tier budget assumed ~20 tickers/run."
+  },
+  "earnings_next_collection_plan": [
+    {
+      "action_order": 1,
+      "action": "INSPECT_COLLECTION_PROGRESS",
+      "reason": "Read the local Phase 3-M collection progress + raw cache listing to measure coverage. This readiness gate only inspects; it makes no provider call.",
+      "requires_api_key": false,
+      "uses_provider_call": false,
+      "safe_to_run_today": true,
+      "expected_new_tickers": 0,
+      "commit_after_success": false,
+      "notes": "Already performed by this Phase 3-S gate."
+    },
+    {
+      "action_order": 2,
+      "action": "RUN_RESUMABLE_EARNINGS_COLLECTOR",
+      "reason": "Guard inactive and a provider api key is detected; run the resumable, cache-first, network-budgeted collector in a SEPARATE controlled step (not from this gate) to cache ~20 more tickers.",
+      "requires_api_key": true,
+      "uses_provider_call": true,
+      "safe_to_run_today": true,
+      "expected_new_tickers": 20,
+      "commit_after_success": true,
+      "notes": "Run as its own controlled step; this Phase 3-S gate never calls the provider."
+    },
+    {
+      "action_order": 3,
+      "action": "RECHECK_COVERAGE_STATUS_ONLY",
+      "reason": "After a collection run, re-run the status-only coverage check to update cached vs missing counts without further provider calls.",
+      "requires_api_key": false,
+      "uses_provider_call": false,
+      "safe_to_run_today": true,
+      "expected_new_tickers": 0,
+      "commit_after_success": false,
+      "notes": "Status-only; no network."
+    },
+    {
+      "action_order": 4,
+      "action": "REPEAT_UNTIL_75_THEN_RUN_SIGNAL_GATE",
+      "reason": "Repeat controlled collection runs across days until cached >= 75, then run the Phase 3-M earnings signal gate and re-run the combined model.",
+      "requires_api_key": true,
+      "uses_provider_call": true,
+      "safe_to_run_today": false,
+      "expected_new_tickers": 50,
+      "commit_after_success": true,
+      "notes": "Each run is cache-first and network-budgeted; partial progress is preserved."
+    }
+  ],
+  "sentiment_inventory_summary": {
+    "candidate_files": 1,
+    "usable_files": 0,
+    "usable_file_paths": [],
+    "families_searched": [
+      "news_sentiment",
+      "social_sentiment"
+    ],
+    "any_usable": false
+  },
+  "analyst_revision_inventory_summary": {
+    "candidate_files": 1,
+    "usable_files": 0,
+    "usable_file_paths": [],
+    "families_searched": [
+      "analyst_revision",
+      "analyst_rating",
+      "target_price_revision"
+    ],
+    "any_usable": false
+  },
+  "blocked_event_signal_families": [
+    "news_sentiment",
+    "analyst_revision",
+    "analyst_rating",
+    "target_price_revision"
+  ],
+  "event_signal_data_requirements": {
+    "blocked_families": [
+      "news_sentiment",
+      "analyst_revision",
+      "analyst_rating",
+      "target_price_revision"
+    ],
+    "required_columns": {
+      "ticker": "equity symbol matching the Phase 3-L / 3-M universe",
+      "event_date_or_publication_date": "the date the article / rating / revision was published (drives point-in-time availability)",
+      "sentiment_score_or_analyst_revision_value": "a real numeric sentiment score, rating change, or estimate-revision value (never fabricated)",
+      "source": "the data origin (vendor / outlet / provider export)",
+      "point_in_time_availability_date": "the timestamp the value first became known, so it can be merged as-of without lookahead"
+    },
+    "recommended_local_sources_described_only": [
+      "a local exported news-sentiment CSV (vendor export the user already has rights to)",
+      "a local analyst-revision CSV (estimate / rating / target-price changes with dates)",
+      "a local earnings-estimate-revision CSV (consensus estimate time series with dates)",
+      "a provider export the user later chooses (dropped into research/input as a local CSV)"
+    ],
+    "non_negotiable": [
+      "data must be real (never faked or synthesized)",
+      "must carry a point-in-time availability/publication date (no lookahead)",
+      "must be obtained locally / via a source the user is entitled to (no API call here)"
+    ],
+    "note": "Phase 3-S describes these requirements only; it never fetches, browses, or calls any API. Place satisfying local CSVs under research/input and re-run the gate."
+  },
+  "priority_decision": {
+    "ranked_workstreams": [
+      {
+        "priority_rank": 1,
+        "workstream": "continue_earnings_coverage_to_75_tickers",
+        "recommended_next_phase": "3-T"
+      },
+      {
+        "priority_rank": 2,
+        "workstream": "acquire_analyst_revision_data",
+        "recommended_next_phase": "3-U"
+      },
+      {
+        "priority_rank": 3,
+        "workstream": "acquire_news_sentiment_data",
+        "recommended_next_phase": "3-U"
+      },
+      {
+        "priority_rank": 4,
+        "workstream": "finish_earnings_coverage_to_128_tickers",
+        "recommended_next_phase": "3-T"
+      },
+      {
+        "priority_rank": 5,
+        "workstream": "add_global_cross_asset_etf_proxy_universe",
+        "recommended_next_phase": "3-V"
+      },
+      {
+        "priority_rank": 6,
+        "workstream": "build_risk_simulation_turnover_constraints",
+        "recommended_next_phase": "3-W"
+      },
+      {
+        "priority_rank": 7,
+        "workstream": "prepare_non_production_candidate",
+        "recommended_next_phase": "3-X"
+      }
+    ],
+    "top_priority": "continue_earnings_coverage_to_75_tickers"
+  },
+  "model_improvement_roadmap": [
+    {
+      "phase": "3-T",
+      "title": "Continue Earnings Coverage to 75+ Tickers",
+      "description": "Run the resumable, cache-first, network-budgeted earnings collector across days until cached >= 75, then re-run the earnings/macro/technical model.",
+      "depends_on": "provider api key + free-tier daily budget",
+      "status": "NEXT"
+    },
+    {
+      "phase": "3-U",
+      "title": "Add Local Sentiment / Analyst Revision Data (if acquired)",
+      "description": "Ingest a real local news-sentiment or analyst-revision CSV with point-in-time dates and re-run the combined model. Never faked.",
+      "depends_on": "local sentiment/analyst CSV with availability dates",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-V",
+      "title": "Global Cross-Asset ETF Proxy Universe + Cross-Asset Regime Features",
+      "description": "Add free local ETF / global asset proxies and cross-asset regime features.",
+      "depends_on": "local ETF/global asset price CSVs",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-W",
+      "title": "Turnover-Aware Risk Simulation and Portfolio Construction",
+      "description": "Simulate turnover-aware risk and (research-only) portfolio construction once an orthogonal signal clears the robustness bar.",
+      "depends_on": "a robustness-passing research signal",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-X",
+      "title": "Non-Production Candidate Packaging",
+      "description": "Package a research candidate (no deployable artifact, no production edge).",
+      "depends_on": "passing 3-W risk simulation",
+      "status": "PLANNED"
+    },
+    {
+      "phase": "3-Y",
+      "title": "Paper Trader Preview Integration Only",
+      "description": "Preview-only integration; no orders, no automation, manual review only.",
+      "depends_on": "a reviewed non-production candidate",
+      "status": "PLANNED"
+    }
+  ],
+  "readiness_decision_table": [
+    {
+      "decision_item": "phase3r_confirmed",
+      "value": true,
+      "passed": true,
+      "note": "Phase 3-R present, WEAK/IMPROVES recommendation, next phase 3-S, no production artifacts"
+    },
+    {
+      "decision_item": "earnings_cached_tickers",
+      "value": 25,
+      "passed": "",
+      "note": "from local Phase 3-M raw cache listing"
+    },
+    {
+      "decision_item": "earnings_coverage_meets_min",
+      "value": false,
+      "passed": false,
+      "note": "needs >= 75 cached tickers to run the earnings signal gate"
+    },
+    {
+      "decision_item": "usable_local_sentiment_data",
+      "value": false,
+      "passed": false,
+      "note": "real local news/social sentiment CSV with PIT dates"
+    },
+    {
+      "decision_item": "usable_local_analyst_revision_data",
+      "value": false,
+      "passed": false,
+      "note": "real local analyst-revision CSV with PIT dates"
+    },
+    {
+      "decision_item": "no_sentiment_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "blocked families instead of fabricating values"
+    },
+    {
+      "decision_item": "no_analyst_revision_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "blocked families instead of fabricating"
+    },
+    {
+      "decision_item": "no_earnings_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "only inspected the existing local cache"
+    },
+    {
+      "decision_item": "provider_or_alpha_vantage_called",
+      "value": false,
+      "passed": true,
+      "note": "no provider / Alpha Vantage / FRED API call by this gate"
+    },
+    {
+      "decision_item": "provider_api_key_value_read",
+      "value": false,
+      "passed": true,
+      "note": "only detected booleans read, never the value"
+    },
+    {
+      "decision_item": "d_drive_read_or_written",
+      "value": false,
+      "passed": true,
+      "note": "nothing on the D: drive touched"
+    },
+    {
+      "decision_item": "no_production_model_candidate",
+      "value": true,
+      "passed": true,
+      "note": "readiness/prioritization gate only"
+    },
+    {
+      "decision_item": "no_production_predictions_or_scores",
+      "value": true,
+      "passed": true,
+      "note": "no predictions/scores computed"
+    },
+    {
+      "decision_item": "no_portfolio_weights",
+      "value": true,
+      "passed": true,
+      "note": "no portfolio weights computed"
+    },
+    {
+      "decision_item": "no_deployable_artifact",
+      "value": true,
+      "passed": true,
+      "note": "no serialized-estimator file written"
+    },
+    {
+      "decision_item": "recommendation",
+      "value": "EVENT_SIGNAL_READINESS_CONTINUE_EARNINGS_COLLECTION",
+      "passed": true,
+      "note": "allowed values only"
+    }
+  ],
+  "recommendation": {
+    "recommendation": "EVENT_SIGNAL_READINESS_CONTINUE_EARNINGS_COLLECTION",
+    "allowed_values": [
+      "EVENT_SIGNAL_READINESS_CONTINUE_EARNINGS_COLLECTION",
+      "EVENT_SIGNAL_READINESS_ACQUIRE_SENTIMENT_OR_ANALYST_DATA",
+      "EVENT_SIGNAL_READINESS_READY_FOR_GLOBAL_ASSET_EXPANSION",
+      "EVENT_SIGNAL_READINESS_BLOCKED_INPUTS"
+    ],
+    "research_only": true,
+    "create_production_model_candidate_now": false,
+    "train_production_model_now": false,
+    "compute_portfolio_weights_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "earnings_faked": false,
+    "sentiment_faked": false,
+    "analyst_revision_faked": false,
+    "reason": "Cached earnings coverage is 25 of the 128-ticker universe, below the 75-ticker minimum needed to run the earnings signal gate, so the next best action is to continue the resumable earnings collection (cache-first, budgeted, no faking)."
+  },
+  "recommended_next_phase": {
+    "phase": "3-T",
+    "title": "Continue Earnings Coverage to 75+ Tickers",
+    "purpose": "Run the resumable earnings collector across days until cached >= 75, then re-run the earnings/macro/technical model. No model trained yet."
+  },
+  "interpretation": {
+    "phase_is_research_only": true,
+    "research_only": true,
+    "readiness_and_prioritization_gate_only": true,
+    "earnings_collection_performed": false,
+    "provider_api_called": false,
+    "provider_api_key_value_read": false,
+    "sentiment_family_faked": false,
+    "analyst_revision_family_faked": false,
+    "earnings_family_faked": false,
+    "production_predictions_computed": false,
+    "production_scores_computed": false,
+    "portfolio_weights_computed": false,
+    "deployable_model_artifact_written": false,
+    "production_edge_claimed": false,
+    "results_remain_survivorship_biased": true,
+    "narrative": "Phase 3-S is the research-only readiness and prioritization gate that follows the Phase 3-R macro walk-forward (WEAK_NO_IMPROVEMENT: macro repaired the bad year but lowered mean IC). It measures current earnings coverage from the local Phase 3-M cache, plans the next SAFE resumable collection step without calling the provider, scans the local repo for genuine sentiment / analyst-revision data, and - finding none usable - marks those families BLOCKED and writes their exact (non-faked) data requirements. It then ranks the next workstreams and recommends EVENT_SIGNAL_READINESS_CONTINUE_EARNINGS_COLLECTION. It trains no model, computes no predictions / scores / portfolio weights / order instructions, writes no deployable artifact, touches no database, runs no migration, restarts no service, enables no serving flag, reads nothing from the D: drive, reads no provider API key value, and calls no provider / paid-vendor / Alpha Vantage / FRED API. The universe is current-as-of, so all results remain survivorship-biased and claim no production edge."
+  },
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_edge_claimed": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "research_only": true,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "paid_vendor_api_called": false,
+  "fred_called": false,
+  "macro_faked": false,
+  "sentiment_faked": false,
+  "analyst_revision_faked": false,
+  "earnings_faked": false,
+  "labels_for_validation_only": true
+}

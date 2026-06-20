@@ -1,0 +1,2 @@
+file_path,detected_family,columns,row_count,date_min,date_max,ticker_column_detected,sentiment_or_revision_column_detected,usable,blocker
+research/output/phase3s_event_signal_readiness_gate/sentiment_data_inventory.csv,news_sentiment,file_path;detected_family;columns;row_count;date_min;date_max;ticker_column_detected;sentiment_or_revision_column_detected;usable;blocker,1,,,True,True,False,"missing required columns/dates for a point-in-time sentiment series (need ticker, publication/event date, sentiment_score)"
