@@ -1,0 +1,20 @@
+{
+  "feature_set_version": "model_v2_v1",
+  "anchor": "last available session (point-in-time; trailing window only)",
+  "missing_value_policy": "Any feature whose lookback window is unavailable degrades to null and is listed in missing_features; it never blocks scoring.",
+  "features": {
+    "return_21d": {"family": "momentum", "type": "float", "unit": "fraction", "description": "Trailing 21-session price return."},
+    "return_63d": {"family": "momentum", "type": "float", "unit": "fraction", "description": "Trailing 63-session price return."},
+    "return_126d": {"family": "momentum", "type": "float", "unit": "fraction", "description": "Trailing 126-session price return."},
+    "sma_50": {"family": "trend", "type": "float", "unit": "price", "description": "50-session simple moving average of close."},
+    "sma_200": {"family": "trend", "type": "float", "unit": "price", "description": "200-session simple moving average of close."},
+    "price_vs_sma_50": {"family": "trend", "type": "float", "unit": "fraction", "description": "Last close relative to its 50d SMA."},
+    "price_vs_sma_200": {"family": "trend", "type": "float", "unit": "fraction", "description": "Last close relative to its 200d SMA."},
+    "sma_50_vs_200": {"family": "trend", "type": "float", "unit": "fraction", "description": "50d SMA relative to 200d SMA (golden/death-cross proxy)."},
+    "realized_vol_21d": {"family": "volatility", "type": "float", "unit": "annualized", "description": "Annualized std of 21d daily returns."},
+    "realized_vol_63d": {"family": "volatility", "type": "float", "unit": "annualized", "description": "Annualized std of 63d daily returns."},
+    "drawdown_from_peak_252d": {"family": "drawdown", "type": "float", "unit": "fraction", "description": "Worst peak-to-trough decline over trailing 252 sessions (<= 0)."},
+    "return_zscore_21d": {"family": "meanrev", "type": "float", "unit": "zscore", "description": "Latest 21d return standardized vs its trailing distribution."},
+    "volume_zscore_21d": {"family": "volume", "type": "float", "unit": "zscore", "description": "Today's volume vs the trailing 21d window (null when no real volume)."}
+  }
+}

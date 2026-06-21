@@ -1,0 +1,40 @@
+{
+  "model_name": "model_v2_preview_market_direction",
+  "model_version": "model_v2_preview-2026.06-v1",
+  "phase": "5-A",
+  "kind": "preview_pricing_engine",
+  "primary_target": "SPY",
+  "target_description": "Near-term direction of the S&P 500, scored via the SPY proxy.",
+  "horizon": "21d",
+  "feature_set_version": "model_v2_v1",
+  "methodology": "Transparent deterministic directional score over price-only features (moving-average trend, damped momentum, mean-reversion z-score, volatility/drawdown regime). Fixed judgement-set weights; no walk-forward-fit coefficients.",
+  "prediction_values": ["UP", "DOWN", "NEUTRAL", "INSUFFICIENT_DATA"],
+  "risk_regime_values": ["risk_on", "risk_off", "neutral", "unknown"],
+  "calibration_status": "limited",
+  "calibration_limitations": "Confidence is a heuristic strength/coverage gauge (capped at 0.60), not an out-of-sample-calibrated probability. Expected return is damped trailing-horizon momentum, not a calibrated forecast. Price-only inputs; no fundamentals/macro/earnings/sentiment.",
+  "confidence_cap": 0.6,
+  "data_inputs": {
+    "type": "local_csv_price_history",
+    "primary_source": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+    "fallback_sources": ["research/output/phase2g_price_history_real.csv"],
+    "env_override": "MODEL_V2_PRICE_HISTORY_CSV",
+    "network_required": false,
+    "paid_apis_required": false
+  },
+  "public_api": {
+    "score_market_v2": "score_market_v2(ticker='SPY') -> dict",
+    "score_ticker_v2": "score_ticker_v2(ticker) -> dict"
+  },
+  "deployment": {
+    "target_service": "GCP stock-api.service (Phase 5-B)",
+    "planned_endpoints": ["/predict_v2/{ticker}", "/predict_market_v2"],
+    "deployed": false
+  },
+  "safety": {
+    "preview_only": true,
+    "orders_enabled": false,
+    "automation_enabled": false,
+    "broker_execution_enabled": false,
+    "production_replacement": false
+  }
+}
