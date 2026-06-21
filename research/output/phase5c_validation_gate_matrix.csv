@@ -1,0 +1,17 @@
+gate_name,status,metric,value,threshold,note
+no_leakage_gate,PASS,leakage_checks_clean,true,structural clean + embargo>=20 + |placebo IC|<=0.02,"min embargo gap=20, placebo_mean_ic=-0.00934 (real signal must NOT survive label shuffle)"
+mean_rank_ic_gate,WARNING,mean_rank_ic,0.00206,>=0.03,t-stat=0.10444944609621606
+positive_decile_spread_gate,PASS,mean_decile_spread,0.0024,>0,
+worst_year_gate,FAIL,worst_year_ic,-0.05963,>-0.02,worst year = 2018
+turnover_gate,WARNING,avg_turnover_top20,0.6,<0.50 monthly,
+transaction_cost_survival_gate,PASS,top20_net_50bps_total_return,2.00765,>0,"long-only top-20, monthly, round-trip cost"
+drawdown_gate,PASS,top20_gross_max_drawdown,-0.1783,>-0.35,
+regime_robustness_gate,PASS,regimes_with_positive_ic,2,>=2,regimes evaluated=3
+liquidity_gate,PASS,liquidity_filter_applied,true,avg_dollar_vol>=5000000,large-cap local universe; liquidity feature computed per name
+sufficient_observations_gate,PASS,scored_dates_and_universe,"{""scored_dates"": 112, ""universe"": 128}",>=24 dates & >=30 names,
+no_fake_data_gate,PASS,real_local_data_only,true,no synthetic data,all features/labels derived from local adjusted-close history
+survivorship_bias_gate,WARNING,universe_is_full_history_survivors,true,survivorship-free universe required before trusting absolute returns,"rank IC is less affected than absolute returns, but the surviving-name set still excludes delisted/collapsed tickers"
+preview_only_gate,PASS,preview_only,true,true,research harness only
+no_orders_gate,PASS,orders_enabled,false,false,no order code present
+no_broker_execution_gate,PASS,broker_execution_enabled,false,false,
+no_automation_gate,PASS,automation_enabled,false,false,

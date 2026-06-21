@@ -1,0 +1,4 @@
+model,mean_decile_spread,mean_top_decile_fwd_excess,mean_bottom_decile_fwd_excess
+cross_sectional_composite_zscore,0.002404,0.0065,0.004096
+ridge_cross_sectional_return_model,0.017196,0.012702,-0.004494
+top_quintile_score_model,0.019408,0.016313,-0.003094

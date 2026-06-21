@@ -1,0 +1,10 @@
+model,regime,mean_rank_ic,n_dates
+cross_sectional_composite_zscore,risk_on,0.031688,44
+cross_sectional_composite_zscore,neutral,0.022947,49
+cross_sectional_composite_zscore,risk_off,-0.120426,19
+ridge_cross_sectional_return_model,risk_on,0.002475,44
+ridge_cross_sectional_return_model,neutral,0.047704,49
+ridge_cross_sectional_return_model,risk_off,0.077839,19
+top_quintile_score_model,risk_on,0.003669,44
+top_quintile_score_model,neutral,0.045633,49
+top_quintile_score_model,risk_off,0.140428,19

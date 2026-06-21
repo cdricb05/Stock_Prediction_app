@@ -1,0 +1,4 @@
+model,evaluable,n_scored_dates,n_predictions,mean_rank_ic,median_rank_ic,ic_t_stat,positive_ic_hit_rate,worst_year,worst_year_ic,mean_decile_spread,top_quintile_hit_rate,top20_avg_turnover,top20_gross_total_return,top20_gross_max_drawdown,top20_net_50bps_total_return
+cross_sectional_composite_zscore,True,112,14305,0.002059,0.009372,0.104449,0.5625,2018,-0.059632,0.002404,0.502143,0.6,4.83902,-0.178267,2.007654
+ridge_cross_sectional_return_model,True,112,14305,0.035047,0.026646,1.722174,0.553571,2022,-0.03642,0.017196,0.506786,0.503125,8.822239,-0.272251,4.649482
+top_quintile_score_model,True,112,14305,0.045229,0.014472,1.880473,0.544643,2022,-0.042161,0.019408,0.5025,0.337054,10.006573,-0.315017,6.600601

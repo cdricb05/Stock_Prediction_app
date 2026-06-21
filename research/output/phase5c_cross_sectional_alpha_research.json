@@ -1,0 +1,444 @@
+{
+  "phase": "5-C",
+  "objective": "Out-of-sample cross-sectional alpha validation for S&P 500 ticker selection (price-only features; SPY = regime/benchmark proxy).",
+  "track": "A (quantitative model evidence) \u2014 not Track B operational packaging.",
+  "data_source": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+  "universe_size": 128,
+  "benchmark_regime_proxy": "SPY",
+  "date_range": {
+    "start": "2016-01-04",
+    "end": "2026-06-16"
+  },
+  "rebalance_frequency": "monthly (last trading day of each calendar month)",
+  "panel_rows": 15704,
+  "rebalance_dates": 123,
+  "feature_count": 15,
+  "model_feature_names": [
+    "return_20d",
+    "return_63d",
+    "return_126d",
+    "mom_acceleration",
+    "price_vs_sma50",
+    "price_vs_sma200",
+    "sma50_vs_200",
+    "return_zscore_5d",
+    "dist_sma20",
+    "rs_20d_vs_spy",
+    "rs_63d_vs_spy",
+    "residual_alpha_20d",
+    "realized_vol_63d",
+    "downside_vol_63d",
+    "vol_adj_momentum"
+  ],
+  "label_count": 7,
+  "label_names": [
+    "forward_return_5d",
+    "forward_return_20d",
+    "forward_return_63d",
+    "forward_excess_return_20d_vs_spy",
+    "top_quintile_forward_excess_return",
+    "bottom_quintile_forward_excess_return",
+    "downside_risk_label"
+  ],
+  "primary_label": "forward_excess_return_20d_vs_spy",
+  "models_evaluated": [
+    "cross_sectional_composite_zscore",
+    "ridge_cross_sectional_return_model",
+    "top_quintile_score_model"
+  ],
+  "walk_forward": {
+    "scheme": "yearly folds, train-on-past / test-on-future",
+    "embargo_days": 20,
+    "folds": [
+      {
+        "test_year": 2017,
+        "train_rows": 1016,
+        "test_rows": 1524,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2018,
+        "train_rows": 2540,
+        "test_rows": 1524,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2019,
+        "train_rows": 4064,
+        "test_rows": 1529,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2020,
+        "train_rows": 5592,
+        "test_rows": 1536,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2021,
+        "train_rows": 7128,
+        "test_rows": 1536,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2022,
+        "train_rows": 8664,
+        "test_rows": 1536,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2023,
+        "train_rows": 10200,
+        "test_rows": 1536,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2024,
+        "train_rows": 11736,
+        "test_rows": 1536,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2025,
+        "train_rows": 13272,
+        "test_rows": 1536,
+        "embargo_ok": true
+      },
+      {
+        "test_year": 2026,
+        "train_rows": 14808,
+        "test_rows": 512,
+        "embargo_ok": true
+      }
+    ],
+    "min_embargo_gap_observed": 20,
+    "embargo_respected": true
+  },
+  "leakage_checks": {
+    "features_use_future_data": false,
+    "labels_use_past_data": false,
+    "same_date_label_in_features": false,
+    "embargo_respected": true,
+    "placebo_mean_ic_baseline": -0.009343,
+    "placebo_interpretation": "Mean rank IC of the baseline after a deterministic within-date label shuffle. Should be ~0; a positive real IC that collapses under shuffle is evidence against look-ahead leakage."
+  },
+  "model_scoreboard": {
+    "cross_sectional_composite_zscore": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "n_predictions": 14305,
+      "mean_rank_ic": 0.002059,
+      "median_rank_ic": 0.009372,
+      "ic_t_stat": 0.104449,
+      "positive_ic_hit_rate": 0.5625,
+      "worst_year": 2018,
+      "worst_year_ic": -0.059632,
+      "mean_decile_spread": 0.002404,
+      "top_quintile_hit_rate": 0.502143,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.031688,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.022947,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": -0.120426,
+          "n_dates": 19
+        }
+      },
+      "top20_avg_turnover": 0.6,
+      "top20_gross_total_return": 4.83902,
+      "top20_gross_max_drawdown": -0.178267,
+      "top20_net_50bps_total_return": 2.007654
+    },
+    "ridge_cross_sectional_return_model": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "n_predictions": 14305,
+      "mean_rank_ic": 0.035047,
+      "median_rank_ic": 0.026646,
+      "ic_t_stat": 1.722174,
+      "positive_ic_hit_rate": 0.553571,
+      "worst_year": 2022,
+      "worst_year_ic": -0.03642,
+      "mean_decile_spread": 0.017196,
+      "top_quintile_hit_rate": 0.506786,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.002475,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.047704,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.077839,
+          "n_dates": 19
+        }
+      },
+      "top20_avg_turnover": 0.503125,
+      "top20_gross_total_return": 8.822239,
+      "top20_gross_max_drawdown": -0.272251,
+      "top20_net_50bps_total_return": 4.649482
+    },
+    "top_quintile_score_model": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "n_predictions": 14305,
+      "mean_rank_ic": 0.045229,
+      "median_rank_ic": 0.014472,
+      "ic_t_stat": 1.880473,
+      "positive_ic_hit_rate": 0.544643,
+      "worst_year": 2022,
+      "worst_year_ic": -0.042161,
+      "mean_decile_spread": 0.019408,
+      "top_quintile_hit_rate": 0.5025,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.003669,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.045633,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.140428,
+          "n_dates": 19
+        }
+      },
+      "top20_avg_turnover": 0.337054,
+      "top20_gross_total_return": 10.006573,
+      "top20_gross_max_drawdown": -0.315017,
+      "top20_net_50bps_total_return": 6.600601
+    }
+  },
+  "deployable_baseline_model": "cross_sectional_composite_zscore",
+  "gates_judged_on": "cross_sectional_composite_zscore",
+  "best_model": "top_quintile_score_model",
+  "best_model_metrics": {
+    "evaluable": true,
+    "n_scored_dates": 112,
+    "n_predictions": 14305,
+    "mean_rank_ic": 0.045229,
+    "median_rank_ic": 0.014472,
+    "ic_t_stat": 1.880473,
+    "positive_ic_hit_rate": 0.544643,
+    "worst_year": 2022,
+    "worst_year_ic": -0.042161,
+    "mean_decile_spread": 0.019408,
+    "top_quintile_hit_rate": 0.5025,
+    "ic_by_regime": {
+      "risk_on": {
+        "mean_ic": 0.003669,
+        "n_dates": 44
+      },
+      "neutral": {
+        "mean_ic": 0.045633,
+        "n_dates": 49
+      },
+      "risk_off": {
+        "mean_ic": 0.140428,
+        "n_dates": 19
+      }
+    },
+    "top20_avg_turnover": 0.337054,
+    "top20_gross_total_return": 10.006573,
+    "top20_gross_max_drawdown": -0.315017,
+    "top20_net_50bps_total_return": 6.600601
+  },
+  "baseline_model_metrics": {
+    "evaluable": true,
+    "n_scored_dates": 112,
+    "n_predictions": 14305,
+    "mean_rank_ic": 0.002059,
+    "median_rank_ic": 0.009372,
+    "ic_t_stat": 0.104449,
+    "positive_ic_hit_rate": 0.5625,
+    "worst_year": 2018,
+    "worst_year_ic": -0.059632,
+    "mean_decile_spread": 0.002404,
+    "top_quintile_hit_rate": 0.502143,
+    "ic_by_regime": {
+      "risk_on": {
+        "mean_ic": 0.031688,
+        "n_dates": 44
+      },
+      "neutral": {
+        "mean_ic": 0.022947,
+        "n_dates": 49
+      },
+      "risk_off": {
+        "mean_ic": -0.120426,
+        "n_dates": 19
+      }
+    },
+    "top20_avg_turnover": 0.6,
+    "top20_gross_total_return": 4.83902,
+    "top20_gross_max_drawdown": -0.178267,
+    "top20_net_50bps_total_return": 2.007654
+  },
+  "validation_gate_summary": {
+    "PASS": 12,
+    "WARNING": 3,
+    "FAIL": 1
+  },
+  "validation_gates": [
+    {
+      "gate_name": "no_leakage_gate",
+      "status": "PASS",
+      "metric": "leakage_checks_clean",
+      "value": true,
+      "threshold": "structural clean + embargo>=20 + |placebo IC|<=0.02",
+      "note": "min embargo gap=20, placebo_mean_ic=-0.00934 (real signal must NOT survive label shuffle)"
+    },
+    {
+      "gate_name": "mean_rank_ic_gate",
+      "status": "WARNING",
+      "metric": "mean_rank_ic",
+      "value": 0.00206,
+      "threshold": ">=0.03",
+      "note": "t-stat=0.10444944609621606"
+    },
+    {
+      "gate_name": "positive_decile_spread_gate",
+      "status": "PASS",
+      "metric": "mean_decile_spread",
+      "value": 0.0024,
+      "threshold": ">0",
+      "note": ""
+    },
+    {
+      "gate_name": "worst_year_gate",
+      "status": "FAIL",
+      "metric": "worst_year_ic",
+      "value": -0.05963,
+      "threshold": ">-0.02",
+      "note": "worst year = 2018"
+    },
+    {
+      "gate_name": "turnover_gate",
+      "status": "WARNING",
+      "metric": "avg_turnover_top20",
+      "value": 0.6,
+      "threshold": "<0.50 monthly",
+      "note": ""
+    },
+    {
+      "gate_name": "transaction_cost_survival_gate",
+      "status": "PASS",
+      "metric": "top20_net_50bps_total_return",
+      "value": 2.00765,
+      "threshold": ">0",
+      "note": "long-only top-20, monthly, round-trip cost"
+    },
+    {
+      "gate_name": "drawdown_gate",
+      "status": "PASS",
+      "metric": "top20_gross_max_drawdown",
+      "value": -0.1783,
+      "threshold": ">-0.35",
+      "note": ""
+    },
+    {
+      "gate_name": "regime_robustness_gate",
+      "status": "PASS",
+      "metric": "regimes_with_positive_ic",
+      "value": 2,
+      "threshold": ">=2",
+      "note": "regimes evaluated=3"
+    },
+    {
+      "gate_name": "liquidity_gate",
+      "status": "PASS",
+      "metric": "liquidity_filter_applied",
+      "value": true,
+      "threshold": "avg_dollar_vol>=5000000",
+      "note": "large-cap local universe; liquidity feature computed per name"
+    },
+    {
+      "gate_name": "sufficient_observations_gate",
+      "status": "PASS",
+      "metric": "scored_dates_and_universe",
+      "value": {
+        "scored_dates": 112,
+        "universe": 128
+      },
+      "threshold": ">=24 dates & >=30 names",
+      "note": ""
+    },
+    {
+      "gate_name": "no_fake_data_gate",
+      "status": "PASS",
+      "metric": "real_local_data_only",
+      "value": true,
+      "threshold": "no synthetic data",
+      "note": "all features/labels derived from local adjusted-close history"
+    },
+    {
+      "gate_name": "survivorship_bias_gate",
+      "status": "WARNING",
+      "metric": "universe_is_full_history_survivors",
+      "value": true,
+      "threshold": "survivorship-free universe required before trusting absolute returns",
+      "note": "rank IC is less affected than absolute returns, but the surviving-name set still excludes delisted/collapsed tickers"
+    },
+    {
+      "gate_name": "preview_only_gate",
+      "status": "PASS",
+      "metric": "preview_only",
+      "value": true,
+      "threshold": "true",
+      "note": "research harness only"
+    },
+    {
+      "gate_name": "no_orders_gate",
+      "status": "PASS",
+      "metric": "orders_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": "no order code present"
+    },
+    {
+      "gate_name": "no_broker_execution_gate",
+      "status": "PASS",
+      "metric": "broker_execution_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_automation_gate",
+      "status": "PASS",
+      "metric": "automation_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    }
+  ],
+  "recommendation": "PROCEED_TO_EXTERNAL_DATA_ALPHA_ENRICHMENT",
+  "recommended_next_phase": "Phase 5-D: External Data Alpha Enrichment, starting with fundamentals + earnings + analyst revisions",
+  "missing_features_for_future_edge": [
+    "fundamentals",
+    "earnings events",
+    "analyst estimate revisions",
+    "news sentiment",
+    "options / implied volatility",
+    "macro / rates / commodities"
+  ],
+  "honesty_note": "Price-only features over a ~128-name large-cap local universe that consists of FULL-HISTORY SURVIVORS, so absolute portfolio returns are upward-biased by survivorship. The Stage-1 deployable model (cross_sectional_composite_zscore) shows essentially NO rank-IC edge; only the fitted Stage-2 models (ridge / logistic) show modest out-of-sample IC. Gates are judged on the shippable baseline, so deployment is NOT recommended on price-only data alone. No PASS is forced; weak gates are WARNING/FAIL and survivorship is flagged.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "paid_apis_used": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "committed": false
+}

@@ -1,0 +1,7 @@
+model,basket_size,avg_turnover,gross_total_return,net_25bps_total_return,net_50bps_total_return,gross_approx_cagr,gross_max_drawdown
+cross_sectional_composite_zscore,10,0.675,7.831026,5.089254,3.193217,0.262869,-0.163569
+cross_sectional_composite_zscore,20,0.6,4.83902,3.192822,2.007654,0.208114,-0.178267
+ridge_cross_sectional_return_model,10,0.536607,15.999592,11.654238,8.411206,0.354667,-0.262071
+ridge_cross_sectional_return_model,20,0.503125,8.822239,6.452031,4.649482,0.277345,-0.272251
+top_quintile_score_model,10,0.363393,19.461285,15.76345,12.72818,0.381838,-0.367156
+top_quintile_score_model,20,0.337054,10.006573,8.147991,6.600601,0.293021,-0.315017
