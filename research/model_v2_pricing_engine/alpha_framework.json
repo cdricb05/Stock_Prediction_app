@@ -1,0 +1,323 @@
+{
+  "framework_name": "model_v2_quant_alpha_framework",
+  "framework_version": "phase5b_v1",
+  "phase": "5-B",
+  "kind": "quant_alpha_framework_specification",
+  "purpose": "Define the senior-quant alpha framework that will drive S&P 500 ticker selection. SPY is the benchmark and market-regime proxy, NOT the trading universe. The real universe is S&P 500 equities; the model must ultimately rank tickers and propose BUY / SELL / HOLD / AVOID candidates. This document is the contract that Phase 5-C will implement. Nothing here is trained, deployed, or executed.",
+  "spy_role": "benchmark_and_market_regime_proxy",
+  "trading_universe": "S&P 500 equities (constituents resolved from local universe artifacts; SPY itself is excluded from ranking)",
+  "is_specification_only": true,
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "production_replacement": false,
+  "no_network_required": true,
+  "no_paid_apis_required": true,
+  "no_binary_artifacts": true,
+
+  "market_regime_layer": {
+    "description": "How SPY / S&P 500 regime conditions the cross-sectional ticker selection. The regime is computed ONCE per scoring date from the SPY proxy and then modulates exposure, ranking aggressiveness, and action thresholds for every ticker.",
+    "regime_dimensions": [
+      "trend_regime",
+      "volatility_regime",
+      "drawdown_regime",
+      "market_risk_state",
+      "breadth_regime_placeholder",
+      "macro_regime_placeholder"
+    ],
+    "features": [
+      {"name": "spy_momentum_20d", "definition": "SPY trailing 20-session return.", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_momentum_63d", "definition": "SPY trailing 63-session return.", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_momentum_126d", "definition": "SPY trailing 126-session return.", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_sma_50", "definition": "SPY 50-session simple moving average.", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_sma_200", "definition": "SPY 200-session simple moving average.", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_price_vs_sma_200", "definition": "SPY close relative to its 200d SMA (primary trend gate).", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_sma_50_vs_200", "definition": "SPY 50d vs 200d SMA (golden/death-cross proxy).", "availability": "available", "data_source": "price_history", "regime_dimension": "trend_regime"},
+      {"name": "spy_realized_vol_21d", "definition": "Annualized std of SPY 21d daily returns.", "availability": "available", "data_source": "price_history", "regime_dimension": "volatility_regime"},
+      {"name": "spy_realized_vol_percentile", "definition": "Percentile rank of current SPY realized vol vs its trailing 252d history (vol regime gauge).", "availability": "available", "data_source": "price_history", "regime_dimension": "volatility_regime"},
+      {"name": "spy_drawdown_from_peak_252d", "definition": "SPY worst peak-to-trough decline over trailing 252 sessions (<= 0).", "availability": "available", "data_source": "price_history", "regime_dimension": "drawdown_regime"},
+      {"name": "market_regime_score", "definition": "Composite [-1,1] score blending SPY trend, vol percentile, and drawdown into a single risk-on/off gauge.", "availability": "available", "data_source": "derived", "regime_dimension": "market_risk_state"},
+      {"name": "market_breadth_advance_decline", "definition": "Share of S&P 500 names above their own 50d/200d SMA (breadth confirmation of the index trend).", "availability": "future", "data_source": "cross_sectional_price_history_breadth", "regime_dimension": "breadth_regime_placeholder"},
+      {"name": "macro_rates_credit_proxy", "definition": "Rates / credit-spread / risk-appetite macro inputs.", "availability": "future", "data_source": "macro_provider_not_local", "regime_dimension": "macro_regime_placeholder"}
+    ],
+    "market_risk_states": ["risk_on", "risk_off", "neutral", "unknown"],
+    "how_regime_affects_selection": [
+      "risk_off (SPY below 200d SMA AND high vol percentile OR deep drawdown) -> reduce long exposure: fewer BUYs, raise BUY threshold, prefer low-beta / defensive ranks, expand AVOID.",
+      "risk_on (SPY above 200d SMA AND calm vol AND shallow drawdown) -> normal long exposure: full BUY budget, momentum tilt permitted.",
+      "neutral -> reduced conviction: cap position count, widen HOLD band, demand stronger relative strength for BUY.",
+      "unknown (insufficient SPY history) -> degrade all actions toward HOLD/INSUFFICIENT_DATA and cap confidence."
+    ]
+  },
+
+  "cross_sectional_alpha_layer": {
+    "description": "Per-ticker feature families scored cross-sectionally across the S&P 500 universe on each date. Every feature is point-in-time (trailing window only, no look-ahead). Features unavailable from local price history are catalogued as future/missing and degrade safely.",
+    "feature_families": [
+      {
+        "family": "trend_momentum",
+        "rank": 1,
+        "description": "Directional persistence and trend strength.",
+        "features": [
+          {"name": "return_5d", "definition": "Trailing 5-session return.", "availability": "available", "data_source": "price_history"},
+          {"name": "return_20d", "definition": "Trailing 20-session return.", "availability": "available", "data_source": "price_history"},
+          {"name": "return_63d", "definition": "Trailing 63-session return.", "availability": "available", "data_source": "price_history"},
+          {"name": "return_126d", "definition": "Trailing 126-session return.", "availability": "available", "data_source": "price_history"},
+          {"name": "momentum_acceleration", "definition": "Change in momentum (e.g. 20d return minus prior-20d return) to capture acceleration vs fading trend.", "availability": "available", "data_source": "price_history"},
+          {"name": "price_vs_sma_50", "definition": "Close relative to its 50d SMA.", "availability": "available", "data_source": "price_history"},
+          {"name": "price_vs_sma_200", "definition": "Close relative to its 200d SMA.", "availability": "available", "data_source": "price_history"},
+          {"name": "sma_50_vs_200", "definition": "50d SMA relative to 200d SMA (golden/death-cross proxy).", "availability": "available", "data_source": "price_history"},
+          {"name": "moving_average_slope", "definition": "Slope of the 50d (and 200d) SMA over a trailing window (trend direction/strength).", "availability": "available", "data_source": "price_history"}
+        ]
+      },
+      {
+        "family": "mean_reversion_overextension",
+        "rank": 2,
+        "description": "Short-term stretch and snap-back tendency.",
+        "features": [
+          {"name": "return_zscore_21d", "definition": "Latest 21d return standardized vs its trailing distribution.", "availability": "available", "data_source": "price_history"},
+          {"name": "distance_from_sma_20", "definition": "Close relative to 20d SMA (short-term overextension).", "availability": "available", "data_source": "price_history"},
+          {"name": "rsi_14_proxy", "definition": "RSI-style overbought/oversold proxy computed from price returns (Wilder smoothing of up/down moves).", "availability": "available", "data_source": "price_history"}
+        ]
+      },
+      {
+        "family": "relative_strength",
+        "rank": 3,
+        "description": "Strength of the ticker relative to the market and its peers.",
+        "features": [
+          {"name": "excess_return_20d_vs_spy", "definition": "Ticker 20d return minus SPY 20d return.", "availability": "available", "data_source": "price_history"},
+          {"name": "excess_return_63d_vs_spy", "definition": "Ticker 63d return minus SPY 63d return.", "availability": "available", "data_source": "price_history"},
+          {"name": "beta_adjusted_residual_return", "definition": "Return left after removing beta*SPY return (CAPM-style residual / alpha proxy).", "availability": "available", "data_source": "derived"},
+          {"name": "sector_relative_return", "definition": "Ticker return minus its sector mean return.", "availability": "future", "data_source": "sector_mapping_not_local"},
+          {"name": "cross_sectional_percentile_rank", "definition": "Percentile rank of the composite alpha across the universe on the date.", "availability": "available", "data_source": "derived"}
+        ]
+      },
+      {
+        "family": "risk_volatility",
+        "rank": 4,
+        "description": "Risk profile used both as features and as guardrails.",
+        "features": [
+          {"name": "realized_vol_21d", "definition": "Annualized std of 21d daily returns.", "availability": "available", "data_source": "price_history"},
+          {"name": "realized_vol_63d", "definition": "Annualized std of 63d daily returns.", "availability": "available", "data_source": "price_history"},
+          {"name": "downside_vol_63d", "definition": "Annualized std of negative daily returns only (semi-deviation).", "availability": "available", "data_source": "price_history"},
+          {"name": "max_drawdown_252d", "definition": "Worst peak-to-trough decline over trailing 252 sessions.", "availability": "available", "data_source": "price_history"},
+          {"name": "beta_to_spy_63d", "definition": "Rolling beta of ticker returns to SPY returns.", "availability": "available", "data_source": "derived"},
+          {"name": "idiosyncratic_vol_63d", "definition": "Std of beta-adjusted residual returns (stock-specific risk).", "availability": "available", "data_source": "derived"},
+          {"name": "volatility_adjusted_momentum", "definition": "Momentum divided by realized vol (risk-normalized trend / Sharpe-like signal).", "availability": "available", "data_source": "derived"}
+        ]
+      },
+      {
+        "family": "liquidity",
+        "rank": 5,
+        "description": "Tradability and capacity gates.",
+        "features": [
+          {"name": "avg_dollar_volume_21d", "definition": "Mean of close*volume over trailing 21 sessions.", "availability": "available", "data_source": "price_history", "note": "Requires a real volume column; degrades to missing when volume is absent."},
+          {"name": "volume_trend_21d", "definition": "Trend in volume over trailing 21 sessions.", "availability": "available", "data_source": "price_history"},
+          {"name": "volume_shock_zscore_21d", "definition": "Today's volume vs trailing 21d window, standardized.", "availability": "available", "data_source": "price_history"},
+          {"name": "min_liquidity_gate", "definition": "Hard gate: minimum average dollar volume below which a ticker is forced to AVOID/INSUFFICIENT_DATA regardless of alpha.", "availability": "available", "data_source": "derived"}
+        ]
+      },
+      {
+        "family": "event_fundamental_sentiment_placeholders",
+        "rank": 6,
+        "description": "Not available from local price history. Catalogued as future features so the framework degrades safely and so Phase 5-C wires explicit missing_features rather than fabricating values.",
+        "features": [
+          {"name": "earnings_surprise", "definition": "Actual vs expected EPS surprise around earnings.", "availability": "future", "data_source": "fundamentals_provider_not_local"},
+          {"name": "analyst_revision", "definition": "Direction/magnitude of analyst estimate revisions.", "availability": "future", "data_source": "estimates_provider_not_local"},
+          {"name": "news_sentiment", "definition": "Aggregated news sentiment for the ticker.", "availability": "future", "data_source": "news_sentiment_provider_not_local"},
+          {"name": "market_narrative", "definition": "Thematic/narrative tilt the ticker is exposed to.", "availability": "future", "data_source": "narrative_provider_not_local"},
+          {"name": "sector_news", "definition": "Sector-level news flow / sentiment.", "availability": "future", "data_source": "news_sentiment_provider_not_local"},
+          {"name": "fundamental_quality", "definition": "Profitability/quality composite (ROE, margins, accruals).", "availability": "future", "data_source": "fundamentals_provider_not_local"},
+          {"name": "valuation", "definition": "Valuation composite (e.g. earnings/sales/cashflow yield).", "availability": "future", "data_source": "fundamentals_provider_not_local"}
+        ]
+      }
+    ]
+  },
+
+  "labels": {
+    "description": "Prediction targets the cross-sectional model will optimize and be validated against. All labels are forward-looking and computed only for backtest/validation (never available at scoring time).",
+    "recommended_primary_label": "forward_excess_return_20d_vs_spy",
+    "recommended_secondary_labels": ["top_quintile_forward_excess_return_probability", "downside_risk_probability"],
+    "catalog": [
+      {"name": "forward_return_5d", "horizon": "5d", "type": "regression", "role": "auxiliary", "definition": "5-session forward total return.", "feasibility": "available"},
+      {"name": "forward_return_20d", "horizon": "20d", "type": "regression", "role": "auxiliary", "definition": "20-session forward total return.", "feasibility": "available"},
+      {"name": "forward_return_63d", "horizon": "63d", "type": "regression", "role": "auxiliary", "definition": "63-session forward total return.", "feasibility": "available"},
+      {"name": "forward_excess_return_20d_vs_spy", "horizon": "20d", "type": "regression", "role": "primary", "definition": "20-session forward return minus SPY 20-session forward return (cross-sectional alpha target).", "feasibility": "available"},
+      {"name": "top_quintile_forward_excess_return_probability", "horizon": "20d", "type": "classification", "role": "secondary", "definition": "Binary label: ticker in the top quintile of forward 20d excess return on the date.", "feasibility": "available"},
+      {"name": "bottom_quintile_downside_classification", "horizon": "20d", "type": "classification", "role": "secondary", "definition": "Binary label: ticker in the bottom quintile of forward 20d excess return (downside / avoid candidates).", "feasibility": "available"},
+      {"name": "downside_risk_probability", "horizon": "20d", "type": "classification", "role": "secondary", "definition": "Binary label: forward drawdown / loss beyond a threshold (e.g. <= -8% peak-to-trough over the horizon).", "feasibility": "available"}
+    ]
+  },
+
+  "model_families": {
+    "description": "Staged model families with explicit promotion evidence. Stage 1 is the only deployable model in Phase 5-C; later stages require the validation gates to pass before being used.",
+    "stage_1_baseline_deployable": {
+      "name": "cross_sectional_composite_zscore",
+      "models": ["cross_sectional_composite_z_score", "transparent_fixed_weights", "regime_adjustment_overlay"],
+      "appropriate_when": "First operational version: transparent, auditable, no fitted coefficients, fully reproducible offline.",
+      "evidence_required": "Positive rank IC on walk-forward holdout and a positive top-minus-bottom decile spread before it informs any preview ranking.",
+      "deployable_in_phase_5c": true
+    },
+    "stage_2_statistical": {
+      "name": "regularized_linear_models",
+      "models": ["ridge_regression", "elastic_net", "logistic_regression_top_quintile_probability"],
+      "appropriate_when": "After the baseline shows edge and a clean walk-forward harness exists; used to fit feature weights with shrinkage and to produce a calibrated top-quintile probability.",
+      "evidence_required": "Out-of-sample rank IC >= baseline, stable coefficients across folds, calibrated probabilities (Brier/log-loss improvement vs baseline).",
+      "deployable_in_phase_5c": false
+    },
+    "stage_3_later_candidates": {
+      "name": "advanced_models",
+      "models": ["gradient_boosted_trees", "regime_specific_models", "sector_neutral_model", "ensemble_model", "bayesian_shrinkage", "drift_aware_online_monitoring"],
+      "appropriate_when": "Only after Stage 2 demonstrates durable, cost-surviving edge and there is enough data to avoid overfitting; each adds capacity but also overfit/operational risk.",
+      "evidence_required": "Material, statistically credible out-of-sample improvement over Stage 2 that survives transaction costs, turnover limits, and regime robustness; documented feature-importance stability and drift monitoring.",
+      "deployable_in_phase_5c": false
+    }
+  },
+
+  "scoring_design": {
+    "description": "How a ticker receives its score, rank, expected return, confidence, action, reason codes, and risk flags.",
+    "per_ticker_outputs": [
+      {"field": "signal_score", "definition": "Cross-sectional composite alpha in [-1, 1] (regime-adjusted) before ranking."},
+      {"field": "rank_score", "definition": "Universe percentile rank (0..1) of signal_score on the date; drives candidate selection."},
+      {"field": "expected_return", "definition": "Horizon expected return proxy; conservative and clearly labelled as uncalibrated until Stage 2."},
+      {"field": "confidence", "definition": "Heuristic strength/coverage gauge in [0,1], capped (0.60) while calibration is limited."},
+      {"field": "action", "definition": "One of BUY, SELL, HOLD, AVOID, INSUFFICIENT_DATA."},
+      {"field": "reason_codes", "definition": "List of machine-readable codes explaining the action (e.g. TREND_UP, RS_TOP_DECILE, REGIME_RISK_OFF, LIQUIDITY_FAIL)."},
+      {"field": "risk_flags", "definition": "List of risk warnings (e.g. HIGH_VOL, DEEP_DRAWDOWN, LOW_LIQUIDITY, HIGH_BETA_IN_RISK_OFF)."}
+    ],
+    "action_values": ["BUY", "SELL", "HOLD", "AVOID", "INSUFFICIENT_DATA"],
+    "action_rules": {
+      "BUY": "High rank_score (e.g. top decile/quintile) AND positive regime-adjusted signal_score AND passes liquidity gate AND not blocked by risk flags; in risk_off the BUY threshold is raised and the BUY budget shrinks.",
+      "SELL": "Applies to an existing (paper) long: signal_score has turned negative / rank has collapsed / a hard risk flag fired -> preview recommendation to exit or trim the position. No short selling is implied; SELL never opens a new short.",
+      "HOLD": "Mid-rank or already-held names with no decisive signal: neither strong enough to BUY nor weak enough to SELL/AVOID; default in neutral regime and for marginal scores.",
+      "AVOID": "Do NOT initiate: low/negative rank_score, failed liquidity gate, or severe risk flags; the do-not-touch bucket for new exposure.",
+      "INSUFFICIENT_DATA": "Not enough point-in-time history/features to score the ticker (or universe/regime unknown); never guessed."
+    },
+    "regime_exposure_rules": "risk_off reduces long exposure (raises BUY threshold, caps number of BUYs, tilts toward low-beta, widens AVOID). risk_on permits the full BUY budget and a momentum tilt. neutral caps conviction and widens HOLD.",
+    "confidence_capping_rule": "Confidence is capped at 0.60 while calibration_status is limited (no out-of-sample probability calibration). Missing features, unknown regime, or thin liquidity further reduce confidence. Confidence never advertises probabilistic precision the model has not earned.",
+    "calibration_status": "limited"
+  },
+
+  "validation_methodology": {
+    "description": "Senior-quant validation that must be run before the model is trusted for preview ranking, and again before any later promotion. Designed to detect leakage, regime fragility, and cost-fragility — the usual ways a backtest lies.",
+    "methods": [
+      {"name": "walk_forward_validation", "definition": "Expanding/rolling out-of-sample windows; never fit and evaluate on the same period."},
+      {"name": "purged_embargoed_splits", "definition": "Purge label-overlap windows and embargo around test folds to prevent horizon leakage."},
+      {"name": "rank_ic", "definition": "Spearman rank correlation between predicted score and realized forward excess return, cross-sectionally per date."},
+      {"name": "ic_by_year", "definition": "Rank IC broken out per calendar year (stability over time)."},
+      {"name": "ic_by_regime", "definition": "Rank IC broken out by SPY risk_on / risk_off / neutral regime (does edge survive risk_off?)."},
+      {"name": "top_minus_bottom_decile_spread", "definition": "Forward-return spread between top and bottom decile of the score (long/short readability of the signal)."},
+      {"name": "top_quintile_hit_rate", "definition": "Fraction of top-quintile picks that beat SPY over the horizon."},
+      {"name": "turnover", "definition": "Average fraction of the book that changes per rebalance (cost/operational load)."},
+      {"name": "transaction_cost_survival", "definition": "Does the decile spread / IC edge survive realistic per-trade costs and slippage?"},
+      {"name": "max_drawdown", "definition": "Worst peak-to-trough of the simulated long(/short) portfolio."},
+      {"name": "volatility_sharpe_caveat", "definition": "Report Sharpe with explicit caveats (non-normal returns, limited sample, no compounding guarantees)."},
+      {"name": "sector_concentration", "definition": "Exposure concentration by sector to avoid an unintended single-bet."},
+      {"name": "beta_exposure", "definition": "Net beta to SPY of the selected book (especially in risk_off)."},
+      {"name": "liquidity_capacity_check", "definition": "Are picks tradable at assumed size given dollar volume?"},
+      {"name": "feature_stability", "definition": "Stability of feature importance / weights across folds (overfit detector)."},
+      {"name": "confidence_calibration", "definition": "Reliability of confidence vs realized hit rate (Brier/log-loss, reliability curve)."},
+      {"name": "shadow_trading_capture", "definition": "Capture preview picks live (no orders) and compare to realized outcomes before any execution is ever considered."}
+    ]
+  },
+
+  "acceptance_gates": {
+    "description": "Go/No-Go gates. Implementation gates must pass before Phase 5-C wires the model into any preview ranking; deployment gates must pass before GCP serving; execution gates must pass before any (paper, then live) execution is even discussed. A gate that cannot be evaluated yet is recorded as NOT_YET_EVALUATED and blocks promotion (never silently passed).",
+    "gates": [
+      {"gate_id": "G1", "category": "edge", "gate_name": "minimum_rank_ic", "metric": "mean_walk_forward_rank_ic", "threshold": ">= 0.02 and statistically credible", "blocking": true, "applies_before": "phase_5c_preview_ranking"},
+      {"gate_id": "G2", "category": "edge", "gate_name": "positive_decile_spread", "metric": "top_minus_bottom_decile_forward_excess_return", "threshold": "> 0 net of costs", "blocking": true, "applies_before": "phase_5c_preview_ranking"},
+      {"gate_id": "G3", "category": "cost", "gate_name": "transaction_cost_survival", "metric": "post_cost_edge", "threshold": "edge remains > 0 after realistic costs/slippage", "blocking": true, "applies_before": "phase_5c_preview_ranking"},
+      {"gate_id": "G4", "category": "cost", "gate_name": "turnover_gate", "metric": "avg_rebalance_turnover", "threshold": "<= documented turnover budget", "blocking": true, "applies_before": "phase_5c_preview_ranking"},
+      {"gate_id": "G5", "category": "risk", "gate_name": "drawdown_gate", "metric": "simulated_max_drawdown", "threshold": "<= documented drawdown limit", "blocking": true, "applies_before": "gcp_deployment"},
+      {"gate_id": "G6", "category": "robustness", "gate_name": "regime_robustness_gate", "metric": "rank_ic_by_regime", "threshold": "not strongly negative in risk_off; edge not concentrated in one regime", "blocking": true, "applies_before": "gcp_deployment"},
+      {"gate_id": "G7", "category": "integrity", "gate_name": "no_leakage_gate", "metric": "purged_embargoed_point_in_time_audit", "threshold": "no look-ahead / no label leakage confirmed", "blocking": true, "applies_before": "phase_5c_preview_ranking"},
+      {"gate_id": "G8", "category": "integrity", "gate_name": "no_fake_data_gate", "metric": "data_provenance_audit", "threshold": "every feature traces to real local data or is marked missing; nothing fabricated", "blocking": true, "applies_before": "phase_5c_preview_ranking"},
+      {"gate_id": "G9", "category": "safety", "gate_name": "preview_only_gate", "metric": "payload_safety_flags", "threshold": "preview_only=true on every payload", "blocking": true, "applies_before": "always"},
+      {"gate_id": "G10", "category": "safety", "gate_name": "no_orders_gate", "metric": "orders_enabled", "threshold": "false everywhere", "blocking": true, "applies_before": "always"},
+      {"gate_id": "G11", "category": "safety", "gate_name": "no_broker_execution_gate", "metric": "broker_execution_enabled", "threshold": "false everywhere", "blocking": true, "applies_before": "always"},
+      {"gate_id": "G12", "category": "safety", "gate_name": "no_automation_gate", "metric": "automation_enabled", "threshold": "false everywhere", "blocking": true, "applies_before": "always"},
+      {"gate_id": "G13", "category": "validation", "gate_name": "paper_shadow_validation_gate", "metric": "shadow_capture_vs_realized", "threshold": "documented shadow-trading capture period with acceptable hit rate before any live execution is considered", "blocking": true, "applies_before": "any_execution"}
+    ]
+  },
+
+  "implementation_contract": {
+    "description": "The exact public functions Phase 5-C must build in research/model_v2_pricing_engine, with their required response schemas. score_market_v2 and score_ticker_v2 already exist (Phase 5-A); 5-C adds the cross-sectional ranking and candidate generation on top of the same package.",
+    "functions": [
+      {
+        "name": "score_ticker_v2",
+        "signature": "score_ticker_v2(ticker: str) -> dict",
+        "status": "exists_phase_5a_extend_in_5c",
+        "purpose": "Score a single ticker's cross-sectional alpha and action (extends the Phase 5-A directional payload with signal_score/rank_score context, action, reason_codes, risk_flags).",
+        "response_schema": {
+          "ticker": "str",
+          "as_of_date": "str|null",
+          "signal_score": "float|null (-1..1)",
+          "rank_score": "float|null (0..1, may be null when scored in isolation)",
+          "expected_return": "float|null",
+          "confidence": "float (0..1, capped)",
+          "action": "BUY|SELL|HOLD|AVOID|INSUFFICIENT_DATA",
+          "reason_codes": "list[str]",
+          "risk_flags": "list[str]",
+          "market_regime": "risk_on|risk_off|neutral|unknown",
+          "features_used": "list[str]",
+          "missing_features": "list[str]",
+          "calibration_status": "limited",
+          "preview_only": "true",
+          "orders_enabled": "false",
+          "broker_execution_enabled": "false",
+          "automation_enabled": "false"
+        }
+      },
+      {
+        "name": "rank_universe_v2",
+        "signature": "rank_universe_v2(max_tickers: int | None = None) -> dict",
+        "status": "new_in_5c",
+        "purpose": "Score the full S&P 500 universe cross-sectionally on the latest date, apply the SPY regime overlay, and return tickers ranked by rank_score.",
+        "response_schema": {
+          "as_of_date": "str|null",
+          "market_regime": "risk_on|risk_off|neutral|unknown",
+          "market_regime_score": "float|null (-1..1)",
+          "universe_size": "int",
+          "scored_count": "int",
+          "insufficient_count": "int",
+          "rankings": "list[ {ticker, signal_score, rank_score, action, confidence, reason_codes, risk_flags} ] sorted by rank_score desc",
+          "calibration_status": "limited",
+          "preview_only": "true",
+          "orders_enabled": "false",
+          "broker_execution_enabled": "false",
+          "automation_enabled": "false"
+        }
+      },
+      {
+        "name": "generate_trade_candidates_v2",
+        "signature": "generate_trade_candidates_v2(top_n: int = 20) -> dict",
+        "status": "new_in_5c",
+        "purpose": "From the ranked universe, derive the preview BUY / SELL / HOLD / AVOID candidate lists under the current regime, honouring exposure and liquidity gates.",
+        "response_schema": {
+          "as_of_date": "str|null",
+          "market_regime": "risk_on|risk_off|neutral|unknown",
+          "top_n": "int",
+          "buy_candidates": "list[ {ticker, rank_score, signal_score, confidence, reason_codes, risk_flags} ]",
+          "sell_candidates": "list[ {ticker, reason_codes, risk_flags} ]",
+          "hold_candidates": "list[ {ticker, rank_score} ]",
+          "avoid_candidates": "list[ {ticker, reason_codes, risk_flags} ]",
+          "exposure_note": "str (how regime limited the BUY budget)",
+          "calibration_status": "limited",
+          "preview_only": "true",
+          "orders_enabled": "false",
+          "broker_execution_enabled": "false",
+          "automation_enabled": "false"
+        }
+      }
+    ]
+  },
+
+  "future_gcp_endpoints": {
+    "description": "Preview-only endpoints to be added in Phase 5-D / 5-E (NOT implemented now). All are GET, read-only, flag-gated, and return preview payloads with orders/broker/automation disabled.",
+    "endpoints": [
+      {"path": "/predict_market_v2", "maps_to": "score_market_v2('SPY')", "phase": "5-D", "implemented": false},
+      {"path": "/predict_v2/{ticker}", "maps_to": "score_ticker_v2(ticker)", "phase": "5-D", "implemented": false},
+      {"path": "/rank_universe_v2", "maps_to": "rank_universe_v2(max_tickers)", "phase": "5-E", "implemented": false},
+      {"path": "/trade_candidates_v2", "maps_to": "generate_trade_candidates_v2(top_n)", "phase": "5-E", "implemented": false}
+    ]
+  }
+}

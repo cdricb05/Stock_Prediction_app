@@ -1,0 +1,14 @@
+gate_id,category,gate_name,metric,threshold,blocking,applies_before
+G1,edge,minimum_rank_ic,mean_walk_forward_rank_ic,>= 0.02 and statistically credible,True,phase_5c_preview_ranking
+G2,edge,positive_decile_spread,top_minus_bottom_decile_forward_excess_return,> 0 net of costs,True,phase_5c_preview_ranking
+G3,cost,transaction_cost_survival,post_cost_edge,edge remains > 0 after realistic costs/slippage,True,phase_5c_preview_ranking
+G4,cost,turnover_gate,avg_rebalance_turnover,<= documented turnover budget,True,phase_5c_preview_ranking
+G5,risk,drawdown_gate,simulated_max_drawdown,<= documented drawdown limit,True,gcp_deployment
+G6,robustness,regime_robustness_gate,rank_ic_by_regime,not strongly negative in risk_off; edge not concentrated in one regime,True,gcp_deployment
+G7,integrity,no_leakage_gate,purged_embargoed_point_in_time_audit,no look-ahead / no label leakage confirmed,True,phase_5c_preview_ranking
+G8,integrity,no_fake_data_gate,data_provenance_audit,every feature traces to real local data or is marked missing; nothing fabricated,True,phase_5c_preview_ranking
+G9,safety,preview_only_gate,payload_safety_flags,preview_only=true on every payload,True,always
+G10,safety,no_orders_gate,orders_enabled,false everywhere,True,always
+G11,safety,no_broker_execution_gate,broker_execution_enabled,false everywhere,True,always
+G12,safety,no_automation_gate,automation_enabled,false everywhere,True,always
+G13,validation,paper_shadow_validation_gate,shadow_capture_vs_realized,documented shadow-trading capture period with acceptable hit rate before any live execution is considered,True,any_execution

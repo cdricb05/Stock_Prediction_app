@@ -1,0 +1,8 @@
+label_name,horizon,type,role,definition,feasibility
+forward_return_5d,5d,regression,auxiliary,5-session forward total return.,available
+forward_return_20d,20d,regression,auxiliary,20-session forward total return.,available
+forward_return_63d,63d,regression,auxiliary,63-session forward total return.,available
+forward_excess_return_20d_vs_spy,20d,regression,primary,20-session forward return minus SPY 20-session forward return (cross-sectional alpha target).,available
+top_quintile_forward_excess_return_probability,20d,classification,secondary,Binary label: ticker in the top quintile of forward 20d excess return on the date.,available
+bottom_quintile_downside_classification,20d,classification,secondary,Binary label: ticker in the bottom quintile of forward 20d excess return (downside / avoid candidates).,available
+downside_risk_probability,20d,classification,secondary,Binary label: forward drawdown / loss beyond a threshold (e.g. <= -8% peak-to-trough over the horizon).,available

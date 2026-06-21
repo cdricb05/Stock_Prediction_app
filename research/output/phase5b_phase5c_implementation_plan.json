@@ -1,0 +1,147 @@
+{
+  "phase": "5-C",
+  "framework_version": "phase5b_v1",
+  "package": "research/model_v2_pricing_engine",
+  "first_deployable_model": "cross_sectional_composite_zscore",
+  "recommended_primary_label": "forward_excess_return_20d_vs_spy",
+  "recommended_secondary_labels": [
+    "top_quintile_forward_excess_return_probability",
+    "downside_risk_probability"
+  ],
+  "functions_to_build": [
+    {
+      "name": "score_ticker_v2",
+      "signature": "score_ticker_v2(ticker: str) -> dict",
+      "status": "exists_phase_5a_extend_in_5c",
+      "purpose": "Score a single ticker's cross-sectional alpha and action (extends the Phase 5-A directional payload with signal_score/rank_score context, action, reason_codes, risk_flags).",
+      "response_schema": {
+        "ticker": "str",
+        "as_of_date": "str|null",
+        "signal_score": "float|null (-1..1)",
+        "rank_score": "float|null (0..1, may be null when scored in isolation)",
+        "expected_return": "float|null",
+        "confidence": "float (0..1, capped)",
+        "action": "BUY|SELL|HOLD|AVOID|INSUFFICIENT_DATA",
+        "reason_codes": "list[str]",
+        "risk_flags": "list[str]",
+        "market_regime": "risk_on|risk_off|neutral|unknown",
+        "features_used": "list[str]",
+        "missing_features": "list[str]",
+        "calibration_status": "limited",
+        "preview_only": "true",
+        "orders_enabled": "false",
+        "broker_execution_enabled": "false",
+        "automation_enabled": "false"
+      }
+    },
+    {
+      "name": "rank_universe_v2",
+      "signature": "rank_universe_v2(max_tickers: int | None = None) -> dict",
+      "status": "new_in_5c",
+      "purpose": "Score the full S&P 500 universe cross-sectionally on the latest date, apply the SPY regime overlay, and return tickers ranked by rank_score.",
+      "response_schema": {
+        "as_of_date": "str|null",
+        "market_regime": "risk_on|risk_off|neutral|unknown",
+        "market_regime_score": "float|null (-1..1)",
+        "universe_size": "int",
+        "scored_count": "int",
+        "insufficient_count": "int",
+        "rankings": "list[ {ticker, signal_score, rank_score, action, confidence, reason_codes, risk_flags} ] sorted by rank_score desc",
+        "calibration_status": "limited",
+        "preview_only": "true",
+        "orders_enabled": "false",
+        "broker_execution_enabled": "false",
+        "automation_enabled": "false"
+      }
+    },
+    {
+      "name": "generate_trade_candidates_v2",
+      "signature": "generate_trade_candidates_v2(top_n: int = 20) -> dict",
+      "status": "new_in_5c",
+      "purpose": "From the ranked universe, derive the preview BUY / SELL / HOLD / AVOID candidate lists under the current regime, honouring exposure and liquidity gates.",
+      "response_schema": {
+        "as_of_date": "str|null",
+        "market_regime": "risk_on|risk_off|neutral|unknown",
+        "top_n": "int",
+        "buy_candidates": "list[ {ticker, rank_score, signal_score, confidence, reason_codes, risk_flags} ]",
+        "sell_candidates": "list[ {ticker, reason_codes, risk_flags} ]",
+        "hold_candidates": "list[ {ticker, rank_score} ]",
+        "avoid_candidates": "list[ {ticker, reason_codes, risk_flags} ]",
+        "exposure_note": "str (how regime limited the BUY budget)",
+        "calibration_status": "limited",
+        "preview_only": "true",
+        "orders_enabled": "false",
+        "broker_execution_enabled": "false",
+        "automation_enabled": "false"
+      }
+    }
+  ],
+  "build_order": [
+    "1. Universe resolution (S&P 500 constituents from local artifacts; exclude SPY).",
+    "2. Cross-sectional feature computation per ticker (point-in-time, reuse features.py).",
+    "3. SPY regime overlay via score_market_v2 (market_regime + market_regime_score).",
+    "4. Composite z-score + regime adjustment -> signal_score; rank -> rank_score.",
+    "5. Action derivation (BUY/SELL/HOLD/AVOID/INSUFFICIENT_DATA) + reason_codes + risk_flags.",
+    "6. rank_universe_v2 and generate_trade_candidates_v2 wrappers.",
+    "7. Walk-forward validation harness + acceptance-gate evaluation (no deploy)."
+  ],
+  "gating": {
+    "must_pass_before_preview_ranking": [
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G7",
+      "G8",
+      "G9",
+      "G10",
+      "G11",
+      "G12"
+    ],
+    "must_pass_before_gcp_deployment": [
+      "G5",
+      "G6"
+    ],
+    "must_pass_before_any_execution": [
+      "G13"
+    ]
+  },
+  "future_gcp_endpoints": [
+    {
+      "path": "/predict_market_v2",
+      "maps_to": "score_market_v2('SPY')",
+      "phase": "5-D",
+      "implemented": false
+    },
+    {
+      "path": "/predict_v2/{ticker}",
+      "maps_to": "score_ticker_v2(ticker)",
+      "phase": "5-D",
+      "implemented": false
+    },
+    {
+      "path": "/rank_universe_v2",
+      "maps_to": "rank_universe_v2(max_tickers)",
+      "phase": "5-E",
+      "implemented": false
+    },
+    {
+      "path": "/trade_candidates_v2",
+      "maps_to": "generate_trade_candidates_v2(top_n)",
+      "phase": "5-E",
+      "implemented": false
+    }
+  ],
+  "safety": {
+    "preview_only": true,
+    "orders_enabled": false,
+    "broker_execution_enabled": false,
+    "automation_enabled": false
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "deploy_now": false,
+  "commit_now": false
+}

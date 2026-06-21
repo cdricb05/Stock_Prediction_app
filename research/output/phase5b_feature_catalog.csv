@@ -1,0 +1,49 @@
+layer,family,feature_name,definition,availability,data_source
+market_regime,trend_regime,spy_momentum_20d,SPY trailing 20-session return.,available,price_history
+market_regime,trend_regime,spy_momentum_63d,SPY trailing 63-session return.,available,price_history
+market_regime,trend_regime,spy_momentum_126d,SPY trailing 126-session return.,available,price_history
+market_regime,trend_regime,spy_sma_50,SPY 50-session simple moving average.,available,price_history
+market_regime,trend_regime,spy_sma_200,SPY 200-session simple moving average.,available,price_history
+market_regime,trend_regime,spy_price_vs_sma_200,SPY close relative to its 200d SMA (primary trend gate).,available,price_history
+market_regime,trend_regime,spy_sma_50_vs_200,SPY 50d vs 200d SMA (golden/death-cross proxy).,available,price_history
+market_regime,volatility_regime,spy_realized_vol_21d,Annualized std of SPY 21d daily returns.,available,price_history
+market_regime,volatility_regime,spy_realized_vol_percentile,Percentile rank of current SPY realized vol vs its trailing 252d history (vol regime gauge).,available,price_history
+market_regime,drawdown_regime,spy_drawdown_from_peak_252d,SPY worst peak-to-trough decline over trailing 252 sessions (<= 0).,available,price_history
+market_regime,market_risk_state,market_regime_score,"Composite [-1,1] score blending SPY trend, vol percentile, and drawdown into a single risk-on/off gauge.",available,derived
+market_regime,breadth_regime_placeholder,market_breadth_advance_decline,Share of S&P 500 names above their own 50d/200d SMA (breadth confirmation of the index trend).,future,cross_sectional_price_history_breadth
+market_regime,macro_regime_placeholder,macro_rates_credit_proxy,Rates / credit-spread / risk-appetite macro inputs.,future,macro_provider_not_local
+cross_sectional,trend_momentum,return_5d,Trailing 5-session return.,available,price_history
+cross_sectional,trend_momentum,return_20d,Trailing 20-session return.,available,price_history
+cross_sectional,trend_momentum,return_63d,Trailing 63-session return.,available,price_history
+cross_sectional,trend_momentum,return_126d,Trailing 126-session return.,available,price_history
+cross_sectional,trend_momentum,momentum_acceleration,Change in momentum (e.g. 20d return minus prior-20d return) to capture acceleration vs fading trend.,available,price_history
+cross_sectional,trend_momentum,price_vs_sma_50,Close relative to its 50d SMA.,available,price_history
+cross_sectional,trend_momentum,price_vs_sma_200,Close relative to its 200d SMA.,available,price_history
+cross_sectional,trend_momentum,sma_50_vs_200,50d SMA relative to 200d SMA (golden/death-cross proxy).,available,price_history
+cross_sectional,trend_momentum,moving_average_slope,Slope of the 50d (and 200d) SMA over a trailing window (trend direction/strength).,available,price_history
+cross_sectional,mean_reversion_overextension,return_zscore_21d,Latest 21d return standardized vs its trailing distribution.,available,price_history
+cross_sectional,mean_reversion_overextension,distance_from_sma_20,Close relative to 20d SMA (short-term overextension).,available,price_history
+cross_sectional,mean_reversion_overextension,rsi_14_proxy,RSI-style overbought/oversold proxy computed from price returns (Wilder smoothing of up/down moves).,available,price_history
+cross_sectional,relative_strength,excess_return_20d_vs_spy,Ticker 20d return minus SPY 20d return.,available,price_history
+cross_sectional,relative_strength,excess_return_63d_vs_spy,Ticker 63d return minus SPY 63d return.,available,price_history
+cross_sectional,relative_strength,beta_adjusted_residual_return,Return left after removing beta*SPY return (CAPM-style residual / alpha proxy).,available,derived
+cross_sectional,relative_strength,sector_relative_return,Ticker return minus its sector mean return.,future,sector_mapping_not_local
+cross_sectional,relative_strength,cross_sectional_percentile_rank,Percentile rank of the composite alpha across the universe on the date.,available,derived
+cross_sectional,risk_volatility,realized_vol_21d,Annualized std of 21d daily returns.,available,price_history
+cross_sectional,risk_volatility,realized_vol_63d,Annualized std of 63d daily returns.,available,price_history
+cross_sectional,risk_volatility,downside_vol_63d,Annualized std of negative daily returns only (semi-deviation).,available,price_history
+cross_sectional,risk_volatility,max_drawdown_252d,Worst peak-to-trough decline over trailing 252 sessions.,available,price_history
+cross_sectional,risk_volatility,beta_to_spy_63d,Rolling beta of ticker returns to SPY returns.,available,derived
+cross_sectional,risk_volatility,idiosyncratic_vol_63d,Std of beta-adjusted residual returns (stock-specific risk).,available,derived
+cross_sectional,risk_volatility,volatility_adjusted_momentum,Momentum divided by realized vol (risk-normalized trend / Sharpe-like signal).,available,derived
+cross_sectional,liquidity,avg_dollar_volume_21d,Mean of close*volume over trailing 21 sessions.,available,price_history
+cross_sectional,liquidity,volume_trend_21d,Trend in volume over trailing 21 sessions.,available,price_history
+cross_sectional,liquidity,volume_shock_zscore_21d,"Today's volume vs trailing 21d window, standardized.",available,price_history
+cross_sectional,liquidity,min_liquidity_gate,Hard gate: minimum average dollar volume below which a ticker is forced to AVOID/INSUFFICIENT_DATA regardless of alpha.,available,derived
+cross_sectional,event_fundamental_sentiment_placeholders,earnings_surprise,Actual vs expected EPS surprise around earnings.,future,fundamentals_provider_not_local
+cross_sectional,event_fundamental_sentiment_placeholders,analyst_revision,Direction/magnitude of analyst estimate revisions.,future,estimates_provider_not_local
+cross_sectional,event_fundamental_sentiment_placeholders,news_sentiment,Aggregated news sentiment for the ticker.,future,news_sentiment_provider_not_local
+cross_sectional,event_fundamental_sentiment_placeholders,market_narrative,Thematic/narrative tilt the ticker is exposed to.,future,narrative_provider_not_local
+cross_sectional,event_fundamental_sentiment_placeholders,sector_news,Sector-level news flow / sentiment.,future,news_sentiment_provider_not_local
+cross_sectional,event_fundamental_sentiment_placeholders,fundamental_quality,"Profitability/quality composite (ROE, margins, accruals).",future,fundamentals_provider_not_local
+cross_sectional,event_fundamental_sentiment_placeholders,valuation,Valuation composite (e.g. earnings/sales/cashflow yield).,future,fundamentals_provider_not_local
