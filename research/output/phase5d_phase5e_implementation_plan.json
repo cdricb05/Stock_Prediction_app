@@ -1,0 +1,119 @@
+{
+  "phase": "5-E",
+  "title": "Enriched Alpha Feature Panel and Model Rerun",
+  "objective": "Build a point-in-time ENRICHED feature panel (Phase 5-C price-only features + point-in-time external families) on the same survivor universe and rebalance schedule, re-run the same walk-forward models, and measure whether the external data produces a real, leakage-free INCREMENTAL edge over the Phase 5-C price-only baseline. This is an incremental-edge test, not a foregone win: the prior Phase 3-P multisignal attempt did NOT beat price-only at the headline model.",
+  "primary_label": "forward_excess_return_20d_vs_spy",
+  "feature_families_first": [
+    {
+      "feature_family": "sec_fundamental_quality_value_growth",
+      "priority": 1,
+      "source_files": "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv",
+      "join_method": "ticker + date as-of join (latest filing available on/before scoring date)",
+      "leakage_controls": "as-of merge on filing availability; staleness cap; per-date cross-sectional z-score; embargo>=20",
+      "readiness": "ready_now"
+    },
+    {
+      "feature_family": "macro_regime",
+      "priority": 2,
+      "source_files": "research/input/CPIAUCSL.csv; research/input/FEDFUNDS.csv; research/input/macro_treasury_yields.csv; research/input/DCOILWTICO.csv; research/input/DTWEXBGS.csv (registry: phase3r_macro_regime_walkforward/macro_feature_registry.csv)",
+      "join_method": "date-only as-of join (macro value is identical across tickers on a date; regime-conditioning, not cross-sectional)",
+      "leakage_controls": "availability lag applied before join; monthly series never back-dated; daily series same-day",
+      "readiness": "ready_now"
+    },
+    {
+      "feature_family": "sector_relative",
+      "priority": 3,
+      "source_files": "research/input/phase2k_p_sector_map_current.csv + the D: price history",
+      "join_method": "static sector-map join (ticker -> sector) + same-date sector aggregates of trailing returns",
+      "leakage_controls": "trailing returns only; flag survivorship + look-ahead-classification risk; report sector results as caveated",
+      "readiness": "caveated"
+    },
+    {
+      "feature_family": "earnings_surprise_event",
+      "priority": 4,
+      "source_files": "research/output/phase3m_earnings_estimates_signal_gate/earnings_features_universe.csv",
+      "join_method": "ticker + date as-of join",
+      "leakage_controls": "as-of on announcement availability; restatement caveat; coverage flag per ticker",
+      "readiness": "partial"
+    }
+  ],
+  "exact_files_to_read": [
+    "D: phase2k_g_expanded_price_history_free.csv (read-only) \u2014 base price panel + SPY benchmark/regime",
+    "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv \u2014 fundamentals (PIT)",
+    "research/input/CPIAUCSL.csv, research/input/FEDFUNDS.csv, research/input/macro_treasury_yields.csv, research/input/DCOILWTICO.csv, research/input/DTWEXBGS.csv \u2014 macro (PIT w/ release lag)",
+    "research/output/phase3r_macro_regime_walkforward/macro_feature_registry.csv \u2014 macro PIT rules to reuse",
+    "research/input/phase2k_p_sector_map_current.csv \u2014 sector map (CAVEATED, not PIT)",
+    "research/output/phase3m_earnings_estimates_signal_gate/earnings_features_universe.csv \u2014 earnings (partial)",
+    "research/output/phase5c_model_scoreboard.csv \u2014 Phase 5-C price-only baseline metrics to beat"
+  ],
+  "join_methods": {
+    "fundamentals": "ticker+date as-of merge on active_feature_asof_date (latest filing <= scoring date), staleness-capped",
+    "earnings": "ticker+date as-of merge on reported/availability date, with per-ticker coverage flag",
+    "macro": "date-only as-of merge on availability date (observation_date + release/default lag)",
+    "sector": "static ticker->sector map join, used only for caveated sector-relative features",
+    "global_etf_cross_asset": "date-only as-of merge (only if the manual panel is populated)"
+  },
+  "leakage_controls": [
+    "all external joins are as-of (value must be available strictly on/before the scoring date)",
+    "macro availability lag applied before joining (no back-dated macro observations)",
+    "fundamentals use filing acceptance date, never fiscal-period end; staleness cap on feature age",
+    "per-date cross-sectional standardization (contemporaneous features only; no labels)",
+    "walk-forward yearly folds, train-on-past/test-on-future, embargo >= 20 sessions",
+    "computed placebo: within-date label shuffle must collapse mean IC to ~0",
+    "survivorship: absolute-return claims gated until point-in-time constituents exist; rank IC reported as primary"
+  ],
+  "expected_outputs": [
+    "phase5e_enriched_feature_panel_sample.csv",
+    "phase5e_feature_family_ic.csv (per-family incremental rank IC)",
+    "phase5e_model_scoreboard.csv (price_only vs enriched, same folds)",
+    "phase5e_incremental_edge.csv (enriched minus baseline IC, by horizon and year)",
+    "phase5e_validation_gate_matrix.csv",
+    "phase5e_enriched_alpha.json (report + recommendation)"
+  ],
+  "baseline_comparison": {
+    "baseline_name": "Phase 5-C price-only (cross_sectional_composite_zscore + ridge_cross_sectional_return_model)",
+    "baseline_metrics_source": "research/output/phase5c_model_scoreboard.csv",
+    "method": "hold the universe, rebalance dates, walk-forward folds, embargo, and models IDENTICAL to Phase 5-C; the ONLY change is appending point-in-time external features. Re-run and compare.",
+    "comparison_metrics": [
+      "mean_rank_ic",
+      "ic_t_stat",
+      "decile_spread",
+      "worst_year_ic",
+      "top20_net_return_after_cost",
+      "turnover"
+    ],
+    "improvement_metric": "delta_mean_rank_ic = enriched_mean_rank_ic - price_only_mean_rank_ic"
+  },
+  "go_no_go_gates": [
+    {
+      "gate": "enriched_beats_baseline_ic",
+      "pass_condition": "delta_mean_rank_ic >= +0.01 on the primary horizon AND enriched worst_year_ic not worse than baseline"
+    },
+    {
+      "gate": "incremental_edge_is_leakage_clean",
+      "pass_condition": "placebo mean IC ~0, embargo >= 20, all external joins are as-of"
+    },
+    {
+      "gate": "coverage_sufficient",
+      "pass_condition": "fundamentals cover >= 80% of panel rows; earnings/etf families flagged if partial, not imputed"
+    },
+    {
+      "gate": "survivorship_addressed_or_flagged",
+      "pass_condition": "absolute-return claims withheld until PIT constituents exist; rank IC is the headline metric"
+    },
+    {
+      "gate": "no_fabricated_data",
+      "pass_condition": "no synthetic fundamentals/earnings/macro/sentiment values introduced"
+    },
+    {
+      "gate": "safety_contract",
+      "pass_condition": "preview_only true; orders/broker/automation false; no deploy; no D: writes; no binary artifacts"
+    }
+  ],
+  "decision_rule": "If enriched_beats_baseline_ic AND incremental_edge_is_leakage_clean PASS -> proceed toward a deployable enriched scorer (Phase 5-F). If external data does NOT beat price-only, report that honestly and prioritize collecting the MISSING families (analyst revisions, sentiment, options/IV, point-in-time constituents) before any deployment.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}
