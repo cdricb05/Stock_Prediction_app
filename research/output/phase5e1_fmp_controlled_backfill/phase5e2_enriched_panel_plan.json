@@ -1,0 +1,62 @@
+{
+  "phase": "5-E2",
+  "title": "Phase 5-E2 - Enriched FMP Alpha Panel and Model Rerun",
+  "objective": "Append point-in-time FMP fundamental / earnings / analyst features to the Phase 5-C survivor cross-sectional panel - same universe, rebalance schedule, walk-forward folds and embargo, changing ONLY the feature set - and measure whether the paid external data adds incremental cross-sectional edge over the price-only baseline. Framed as an incremental-edge test, not a foregone win.",
+  "input_normalized_fmp_dir": "research/data/fmp/normalized",
+  "input_raw_fmp_dir": "research/data/fmp/raw",
+  "input_price_only_baseline": {
+    "phase": "5-C",
+    "source": "research/output/phase5c_cross_sectional_alpha_research.* (price-only OOS baseline)",
+    "primary_label": "forward_excess_return_20d_vs_spy",
+    "note": "Phase 5-C baseline composite z-score had ~0 OOS edge; this is the bar to beat."
+  },
+  "feature_families_to_build": [
+    "fundamentals_quality_value_growth",
+    "profitability_and_margin_trend",
+    "balance_sheet_leverage",
+    "cash_flow_quality",
+    "valuation_ratios",
+    "earnings_surprise_event",
+    "analyst_revision_signal (only if analyst_estimates data is available)",
+    "analyst_recommendation_change (only if analyst_recommendations data is available)",
+    "price_target_revision (only if analyst_price_targets data is available)"
+  ],
+  "point_in_time_join_fields": [
+    "ticker (symbol) as-of join key",
+    "_pit_date / point_in_time_candidate_date (filing/announcement/publication availability date)",
+    "statements joined on fillingDate/acceptedDate, never the fiscal period date",
+    "key_metrics/ratios lagged to the matching statement filing availability",
+    "analyst consensus uses publication dates; never back-date a current consensus"
+  ],
+  "stale_data_limits": {
+    "fundamentals_max_staleness_days": 200,
+    "analyst_consensus_max_staleness_days": 120,
+    "earnings_event_lookback_days": 90,
+    "rule": "drop or flag a feature value older than its family's max staleness at the scoring date"
+  },
+  "coverage_thresholds": {
+    "min_ticker_coverage_pct_per_feature": 60,
+    "min_cross_sectional_names_per_rebalance": 50,
+    "rule": "a feature family below its coverage threshold is reported, not silently imputed"
+  },
+  "incremental_edge_gates_vs_phase5c": {
+    "primary": "delta_mean_rank_ic = enriched - price_only >= +0.01 on forward_excess_return_20d_vs_spy",
+    "stability": "worst-year rank IC not worse than the price-only baseline's worst year",
+    "leakage": "label-shuffle placebo IC ~ 0 (as-of joins only)",
+    "survivorship": "results flagged survivorship-inflated until PIT S&P 500 membership is used",
+    "decision": "ship enriched features ONLY if the edge + stability gates both pass; else report as not worth deploying"
+  },
+  "sample_universe_used_for_backfill": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "JPM"
+  ],
+  "next_phase": "Phase 5-E2 - Enriched FMP Alpha Panel and Model Rerun",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

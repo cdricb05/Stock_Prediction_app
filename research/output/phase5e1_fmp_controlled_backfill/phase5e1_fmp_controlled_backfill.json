@@ -1,0 +1,91 @@
+{
+  "phase": "5-E1",
+  "objective": "Build a controlled, resumable FMP backfill that collects paid external alpha data LOCALLY (outside Git) with audit / coverage / secret-safety controls, and normalizes it into the point-in-time inputs required for the Phase 5-E2 enriched alpha panel rerun. This phase collects/normalizes data only - it does NOT build the enriched model.",
+  "provider": "Financial Modeling Prep",
+  "provider_host": "financialmodelingprep.com",
+  "mode": "live_sample",
+  "live_requested": true,
+  "api_key_env_var": "FMP_API_KEY",
+  "api_key_present": true,
+  "api_key_logged": false,
+  "universe": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "JPM"
+  ],
+  "limits": {
+    "max_tickers": 5,
+    "max_endpoints": 6,
+    "max_requests": 40
+  },
+  "full_sp500_backfill_auto": false,
+  "live_request_count": 30,
+  "planned_request_count": 56,
+  "raw_files_written_count": 20,
+  "normalized_files_written_count": 4,
+  "endpoint_success_count": 20,
+  "endpoint_empty_count": 0,
+  "endpoint_error_count": 10,
+  "endpoint_families_planned": [
+    "universe_mapping",
+    "fundamentals",
+    "earnings",
+    "analyst_revisions"
+  ],
+  "endpoint_families_live_verified": [
+    "fundamentals",
+    "universe_mapping"
+  ],
+  "endpoint_families_blocked_or_unverified": [
+    "analyst_revisions",
+    "earnings"
+  ],
+  "endpoints_needs_live_verification": [
+    "earnings_calendar",
+    "earnings_surprises",
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets"
+  ],
+  "storage_raw_dir": "research/data/fmp/raw",
+  "storage_normalized_dir": "research/data/fmp/normalized",
+  "raw_overwrite_policy": "deterministic raw/{endpoint}/{ticker}.json filename; a re-run overwrites in place (resume via the progress template status)",
+  "paid_data_gitignored": true,
+  "live_budget_hit": false,
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 6,
+  "recommendation": "READY_FOR_PHASE5E2_ENRICHED_PANEL",
+  "recommendation_allowed_values": [
+    "READY_FOR_LIVE_CONTROLLED_SAMPLE",
+    "READY_FOR_PHASE5E2_ENRICHED_PANEL",
+    "NEEDS_ENDPOINT_ENTITLEMENT_REVIEW",
+    "BLOCKED_MISSING_FMP_KEY",
+    "ERROR"
+  ],
+  "recommended_next_phase": "Phase 5-E2 - Enriched FMP Alpha Panel and Model Rerun (see phase5e2_enriched_panel_plan.json).",
+  "outputs": {
+    "report": "research/output/phase5e1_fmp_controlled_backfill/phase5e1_fmp_controlled_backfill.json",
+    "request_plan": "research/output/phase5e1_fmp_controlled_backfill/fmp_backfill_request_plan.csv",
+    "endpoint_access_plan": "research/output/phase5e1_fmp_controlled_backfill/fmp_backfill_endpoint_access_plan.csv",
+    "storage_manifest": "research/output/phase5e1_fmp_controlled_backfill/fmp_backfill_storage_manifest.csv",
+    "progress_template": "research/output/phase5e1_fmp_controlled_backfill/fmp_backfill_progress_template.csv",
+    "quality_report": "research/output/phase5e1_fmp_controlled_backfill/fmp_backfill_quality_report.csv",
+    "secret_safety_audit": "research/output/phase5e1_fmp_controlled_backfill/fmp_backfill_secret_safety_audit.csv",
+    "phase5e2_enriched_panel_plan": "research/output/phase5e1_fmp_controlled_backfill/phase5e2_enriched_panel_plan.json"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": true,
+  "alphavantage_called": false,
+  "other_paid_apis_called": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "data_fabricated": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

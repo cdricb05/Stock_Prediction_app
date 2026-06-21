@@ -1,0 +1,18 @@
+# Phase 5-E1 - LOCAL paid Financial Modeling Prep (FMP) data. DO NOT COMMIT.
+#
+# research/run_phase5e1_fmp_controlled_backfill.py --live writes licensed FMP
+# payloads here:
+#   raw/        verbatim provider JSON responses (paid data)
+#   normalized/ flattened point-in-time CSVs derived from the paid data
+#
+# These are paid, license-restricted provider responses and must never enter
+# Git. Only summarized coverage/quality/manifest data (row counts, redacted
+# URLs, file paths - never the payloads or the API key) is written to the
+# committed artifacts under research/output/phase5e1_fmp_controlled_backfill/.
+raw/
+normalized/
+
+# Belt-and-braces: ignore everything in this directory EXCEPT this .gitignore,
+# so no paid payload can ever be staged from here by accident.
+*
+!.gitignore

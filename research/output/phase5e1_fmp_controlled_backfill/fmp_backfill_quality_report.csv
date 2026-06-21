@@ -1,0 +1,13 @@
+endpoint_name,alpha_family,tickers_planned,tickers_success,tickers_empty,tickers_error,coverage_pct,point_in_time_status,quality_note
+company_profile,universe_mapping,5,5,0,0,100.0,not_point_in_time_safe,attempted 5/5; status=success
+income_statement_quarterly,fundamentals,5,5,0,0,100.0,point_in_time_safe,attempted 5/5; status=success
+balance_sheet_statement_quarterly,fundamentals,5,5,0,0,100.0,point_in_time_safe,attempted 5/5; status=success
+cash_flow_statement_quarterly,fundamentals,5,5,0,0,100.0,point_in_time_safe,attempted 5/5; status=success
+key_metrics_quarterly,fundamentals,5,0,0,5,0.0,potentially_point_in_time,attempted 5/5; status=error
+ratios_quarterly,fundamentals,5,0,0,5,0.0,potentially_point_in_time,attempted 5/5; status=error
+earnings_calendar,earnings,0,0,0,0,0.0,point_in_time_safe,not attempted in this bounded sample
+earnings_surprises,earnings,0,0,0,0,0.0,point_in_time_safe,not attempted in this bounded sample
+analyst_estimates,analyst_revisions,0,0,0,0,0.0,potentially_point_in_time,not attempted in this bounded sample
+analyst_recommendations,analyst_revisions,0,0,0,0,0.0,point_in_time_safe,not attempted in this bounded sample
+analyst_price_targets,analyst_revisions,0,0,0,0,0.0,point_in_time_safe,not attempted in this bounded sample
+sp500_constituents,universe_mapping,0,0,0,0,0.0,not_point_in_time_safe,not attempted in this bounded sample
