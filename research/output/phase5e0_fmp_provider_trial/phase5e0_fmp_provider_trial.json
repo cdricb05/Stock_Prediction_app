@@ -1,0 +1,84 @@
+{
+  "phase": "5-E0",
+  "objective": "Stand up a safe FMP provider adapter + trial collector: catalog the missing alpha endpoints, plan a small sample collection, define the normalized point-in-time schema, audit secret safety, and (only on explicit --live with a key) collect a tiny sample - the reliable ingestion foundation for Phase 5-E1.",
+  "provider": "Financial Modeling Prep",
+  "provider_host": "financialmodelingprep.com",
+  "mode": "dry_run",
+  "live_requested": false,
+  "api_key_env_var": "FMP_API_KEY",
+  "api_key_present": false,
+  "api_key_logged": false,
+  "endpoints_cataloged_count": 12,
+  "endpoints_stable_confirmed_count": 7,
+  "endpoints_needs_live_verification": [
+    "earnings_calendar",
+    "earnings_surprises",
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets"
+  ],
+  "first_live_smoke_endpoints": [
+    "company_profile",
+    "income_statement_quarterly",
+    "ratios_quarterly"
+  ],
+  "planned_request_count": 56,
+  "live_request_count": 0,
+  "raw_files_written_count": 0,
+  "normalized_files_written_count": 0,
+  "sample_tickers": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "JPM"
+  ],
+  "endpoint_families": [
+    "universe_mapping",
+    "fundamentals",
+    "earnings",
+    "analyst_revisions"
+  ],
+  "live_errors": [],
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 6,
+  "recommendation": "READY_FOR_FMP_KEY",
+  "recommendation_allowed_values": [
+    "READY_FOR_FMP_KEY",
+    "READY_FOR_LIVE_SAMPLE",
+    "READY_FOR_PHASE5E1_BACKFILL",
+    "BLOCKED_MISSING_FMP_KEY",
+    "ERROR"
+  ],
+  "recommended_next_phase": "Set FMP_API_KEY, then re-run with --live for a small sample (Phase 5-E0 live).",
+  "missing_before_live_collection": [
+    "analyst_estimate_revisions (successive consensus snapshots for true revision PIT)",
+    "news_sentiment (not an FMP focus here; separate provider)",
+    "options_implied_volatility (not provided by FMP statements endpoints)",
+    "point_in_time_index_constituents (collect FMP historical S&P 500 constituents to fix survivorship)"
+  ],
+  "outputs": {
+    "report": "research/output/phase5e0_fmp_provider_trial/phase5e0_fmp_provider_trial.json",
+    "endpoint_catalog": "research/output/phase5e0_fmp_provider_trial/fmp_endpoint_catalog.csv",
+    "trial_collection_plan": "research/output/phase5e0_fmp_provider_trial/fmp_trial_collection_plan.csv",
+    "schema_contract": "research/output/phase5e0_fmp_provider_trial/fmp_schema_contract.csv",
+    "normalized_sample_manifest": "research/output/phase5e0_fmp_provider_trial/fmp_normalized_sample_manifest.csv",
+    "point_in_time_readiness": "research/output/phase5e0_fmp_provider_trial/fmp_point_in_time_readiness.csv",
+    "secret_safety_audit": "research/output/phase5e0_fmp_provider_trial/fmp_secret_safety_audit.csv",
+    "live_error_report": "research/output/phase5e0_fmp_provider_trial/fmp_live_error_report.csv",
+    "phase5e1_backfill_plan": "research/output/phase5e0_fmp_provider_trial/phase5e1_backfill_plan.json"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "alphavantage_called": false,
+  "other_paid_apis_called": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "data_fabricated": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

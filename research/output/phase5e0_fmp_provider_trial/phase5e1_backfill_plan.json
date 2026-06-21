@@ -1,0 +1,76 @@
+{
+  "phase": "5-E1",
+  "title": "FMP Full Sample/Universe Backfill",
+  "objective": "Using FMP_API_KEY, backfill point-in-time fundamentals, ratios/key-metrics, earnings calendar + surprises, analyst estimates/recommendations/price targets, and historical S&P 500 constituents for the modeling universe, stored as raw JSON + normalized point-in-time CSVs - the input to the Phase 5-E2 enriched alpha panel rerun.",
+  "required_env_var": "FMP_API_KEY",
+  "target_universe": "S&P 500 tickers (current + historical constituents for PIT membership)",
+  "starting_sample_tickers": [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "JPM"
+  ],
+  "full_backfill_families": [
+    "universe_mapping",
+    "fundamentals",
+    "earnings",
+    "analyst_revisions"
+  ],
+  "endpoints": [
+    "company_profile",
+    "income_statement_quarterly",
+    "balance_sheet_statement_quarterly",
+    "cash_flow_statement_quarterly",
+    "key_metrics_quarterly",
+    "ratios_quarterly",
+    "earnings_calendar",
+    "earnings_surprises",
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets",
+    "sp500_constituents"
+  ],
+  "request_budget_assumptions": {
+    "trial_tier": "small paid monthly trial",
+    "approx_requests_per_ticker": 11,
+    "universe_size_estimate": 503,
+    "estimated_ticker_requests": 5533,
+    "non_ticker_requests": 1,
+    "note": "respect the trial plan's per-minute and monthly caps; throttle, checkpoint, and resume; do NOT assume every plan supports every endpoint - skip unsupported endpoints gracefully."
+  },
+  "raw_storage_paths": {
+    "raw_dir": "research/output/phase5e0_fmp_provider_trial/raw",
+    "layout": "raw/{endpoint_name}/{ticker}.json (verbatim provider payload, no key in path)"
+  },
+  "normalized_storage_paths": {
+    "normalized_dir": "research/output/phase5e0_fmp_provider_trial/normalized",
+    "layout": "normalized/{endpoint_name}.csv (point-in-time columns appended to each record)"
+  },
+  "no_secret_policy": {
+    "api_key_source": "environment variable FMP_API_KEY only",
+    "api_key_logged": false,
+    "api_key_committed": false,
+    "urls_persisted": "key query parameter stripped; <API_KEY_REDACTED> placeholder only"
+  },
+  "point_in_time_fields_required": [
+    "_pit_date_field (filing/announcement/publication date per record)",
+    "_pit_date_value (the actual availability date)",
+    "_point_in_time_status (point_in_time_safe / potentially_point_in_time / not_point_in_time_safe / unknown)",
+    "_join_key + _join_key_value (ticker for as-of joins)",
+    "_collected_note (coverage / restatement caveats; never imputed)"
+  ],
+  "leakage_controls": [
+    "as-of joins only (value available strictly on/before the scoring date)",
+    "statements joined on fillingDate/acceptedDate, never the fiscal period date",
+    "key_metrics/ratios lagged to the matching statement filing availability",
+    "analyst consensus uses publication dates; never back-date a current consensus",
+    "build PIT S&P 500 membership from the historical constituents endpoint (kills survivorship)"
+  ],
+  "next_modeling_phase": "Phase 5-E2 - Enriched Alpha Panel Rerun with FMP Data",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}
