@@ -208,6 +208,7 @@ def _write_json(path: Path, obj) -> None:
 
 
 def _write_csv(path: Path, header: Sequence[str], rows: Sequence[Sequence]) -> None:
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(header)

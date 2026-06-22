@@ -1,0 +1,19 @@
+{
+  "phase": "6-C",
+  "title": "Cross-Asset Macro Context Harness Rerun (full pack)",
+  "proceed_to_phase6c": false,
+  "rerun_phase6a_now": false,
+  "run_strategy_or_shadow_test_now": false,
+  "readiness": {
+    "usable_proxy_count": 0,
+    "asset_classes_covered": 0,
+    "five_year_history_count": 0,
+    "ready_threshold": "12 usable / 5 classes / 12 with 5yr",
+    "ready_now": false
+  },
+  "future_commands_not_run": [
+    "$env:ALPHAVANTAGE_API_KEY = \"<your-free-alpha-vantage-key>\"; python -B research\\run_phase6b_controlled_cross_asset_proxy_collection.py --live",
+    "python -B research\\run_phase6a_cross_asset_macro_context_alpha.py   # only AFTER READY"
+  ],
+  "note": "Phase 6-C is gated on READY. Until then this plan is informational only; no strategy / shadow test is run and Phase 6-A is not rerun."
+}

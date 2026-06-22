@@ -1,0 +1,802 @@
+{
+  "phase": "6-B",
+  "generated_at": "2026-06-22T19:04:55",
+  "provider": "alpha_vantage",
+  "provider_host": "www.alphavantage.co",
+  "endpoint_template": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={symbol}&outputsize=full&datatype=csv&apikey=REDACTED",
+  "reuses_collector": "research/run_phase3y_alphavantage_global_etf_price_collector.py",
+  "mode": "dry_run",
+  "live_requested": false,
+  "live_collection_run": false,
+  "stopped_no_key": false,
+  "set_key_powershell_command": "$env:ALPHAVANTAGE_API_KEY = \"<your-free-alpha-vantage-key>\"; python -B research\\run_phase6b_controlled_cross_asset_proxy_collection.py --live",
+  "api_key_present": false,
+  "api_key_source": "environment:ALPHAVANTAGE_API_KEY",
+  "max_requests_per_run": 46,
+  "requests_attempted": 0,
+  "tickers_downloaded_this_run": 0,
+  "provider_limit_hit": false,
+  "unexpected_error": null,
+  "network_called": false,
+  "inputs_read": {
+    "manual_intake_dir": "research/input/global_assets/manual"
+  },
+  "outputs_written": {
+    "result_json": "research/output/phase6b_controlled_cross_asset_proxy_collection.json",
+    "plan": "research/output/phase6b_controlled_cross_asset_proxy_collection/cross_asset_proxy_collection_plan.csv",
+    "status": "research/output/phase6b_controlled_cross_asset_proxy_collection/cross_asset_proxy_collection_status.csv",
+    "quality": "research/output/phase6b_controlled_cross_asset_proxy_collection/cross_asset_proxy_quality_report.csv",
+    "phase6c_plan_json": "research/output/phase6b_controlled_cross_asset_proxy_collection/phase6c_macro_context_rerun_plan.json",
+    "raw_cache_dir_gitignored": "research/output/phase6b_controlled_cross_asset_proxy_collection/raw",
+    "normalized_csv_dir": "research/input/global_assets/manual"
+  },
+  "target_count": 46,
+  "usable_proxy_count": 0,
+  "usable_tickers": [],
+  "asset_classes_covered": 0,
+  "asset_classes_covered_list": [],
+  "five_year_history_count": 0,
+  "missing_count": 46,
+  "missing_tickers": [
+    "ACWI",
+    "BNO",
+    "CPER",
+    "DBC",
+    "DIA",
+    "EEM",
+    "EFA",
+    "EWJ",
+    "EWU",
+    "EWZ",
+    "FXA",
+    "FXB",
+    "FXC",
+    "FXE",
+    "FXI",
+    "FXY",
+    "GLD",
+    "GSG",
+    "HYG",
+    "IEF",
+    "INDA",
+    "IWM",
+    "KRE",
+    "LQD",
+    "QQQ",
+    "SHY",
+    "SLV",
+    "SMH",
+    "TIP",
+    "TLT",
+    "UNG",
+    "USO",
+    "UUP",
+    "VIXY",
+    "VT",
+    "XLB",
+    "XLC",
+    "XLE",
+    "XLF",
+    "XLI",
+    "XLK",
+    "XLP",
+    "XLRE",
+    "XLU",
+    "XLV",
+    "XLY"
+  ],
+  "failed_count": 0,
+  "failed_tickers": [],
+  "quality_blocked_count": 0,
+  "ready_threshold": {
+    "min_usable_proxies": 12,
+    "min_asset_classes": 5,
+    "min_five_year_history": 12,
+    "min_usable_rows_per_proxy": 250,
+    "five_year_rows": 1259
+  },
+  "ready_threshold_met": false,
+  "collection_plan": [
+    {
+      "ticker": "QQQ",
+      "asset_class": "equity_structure",
+      "target_filename": "QQQ.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=QQQ&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "IWM",
+      "asset_class": "equity_structure",
+      "target_filename": "IWM.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IWM&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "DIA",
+      "asset_class": "equity_structure",
+      "target_filename": "DIA.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=DIA&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "EFA",
+      "asset_class": "global_regional",
+      "target_filename": "EFA.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=EFA&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "EEM",
+      "asset_class": "global_regional",
+      "target_filename": "EEM.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=EEM&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "ACWI",
+      "asset_class": "global_regional",
+      "target_filename": "ACWI.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=ACWI&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "VT",
+      "asset_class": "global_regional",
+      "target_filename": "VT.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=VT&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "EWJ",
+      "asset_class": "global_regional",
+      "target_filename": "EWJ.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=EWJ&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "EWU",
+      "asset_class": "global_regional",
+      "target_filename": "EWU.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=EWU&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "FXI",
+      "asset_class": "global_regional",
+      "target_filename": "FXI.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=FXI&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "EWZ",
+      "asset_class": "global_regional",
+      "target_filename": "EWZ.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=EWZ&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "INDA",
+      "asset_class": "global_regional",
+      "target_filename": "INDA.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=INDA&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "TLT",
+      "asset_class": "rates_duration",
+      "target_filename": "TLT.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=TLT&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "IEF",
+      "asset_class": "rates_duration",
+      "target_filename": "IEF.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IEF&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "SHY",
+      "asset_class": "rates_duration",
+      "target_filename": "SHY.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=SHY&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "TIP",
+      "asset_class": "rates_duration",
+      "target_filename": "TIP.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=TIP&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "HYG",
+      "asset_class": "credit",
+      "target_filename": "HYG.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=HYG&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "LQD",
+      "asset_class": "credit",
+      "target_filename": "LQD.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=LQD&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "UUP",
+      "asset_class": "dollar_fx",
+      "target_filename": "UUP.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=UUP&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "FXE",
+      "asset_class": "dollar_fx",
+      "target_filename": "FXE.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=FXE&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "FXY",
+      "asset_class": "dollar_fx",
+      "target_filename": "FXY.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=FXY&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "FXB",
+      "asset_class": "dollar_fx",
+      "target_filename": "FXB.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=FXB&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "FXA",
+      "asset_class": "dollar_fx",
+      "target_filename": "FXA.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=FXA&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "FXC",
+      "asset_class": "dollar_fx",
+      "target_filename": "FXC.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=FXC&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "GLD",
+      "asset_class": "commodity",
+      "target_filename": "GLD.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=GLD&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "SLV",
+      "asset_class": "commodity",
+      "target_filename": "SLV.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=SLV&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "DBC",
+      "asset_class": "commodity",
+      "target_filename": "DBC.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=DBC&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "GSG",
+      "asset_class": "commodity",
+      "target_filename": "GSG.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=GSG&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "USO",
+      "asset_class": "commodity",
+      "target_filename": "USO.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=USO&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "BNO",
+      "asset_class": "commodity",
+      "target_filename": "BNO.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=BNO&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "UNG",
+      "asset_class": "commodity",
+      "target_filename": "UNG.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=UNG&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "CPER",
+      "asset_class": "commodity",
+      "target_filename": "CPER.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=CPER&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "VIXY",
+      "asset_class": "volatility",
+      "target_filename": "VIXY.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=VIXY&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLE",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLE.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLE&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLK",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLK.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLK&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLF",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLF.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLF&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLI",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLI.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLI&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLV",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLV.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLV&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLY",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLY.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLY&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLP",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLP.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLP&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLU",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLU.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLU&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLRE",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLRE.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLRE&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLB",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLB.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLB&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "XLC",
+      "asset_class": "sector_rotation",
+      "target_filename": "XLC.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=XLC&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "SMH",
+      "asset_class": "sector_rotation",
+      "target_filename": "SMH.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=SMH&outputsize=full&datatype=csv&apikey=REDACTED"
+    },
+    {
+      "ticker": "KRE",
+      "asset_class": "sector_rotation",
+      "target_filename": "KRE.csv",
+      "already_present": false,
+      "present_rows": 0,
+      "planned_action": "would_download",
+      "provider": "alpha_vantage",
+      "endpoint_template_redacted": "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=KRE&outputsize=full&datatype=csv&apikey=REDACTED"
+    }
+  ],
+  "gate_table": [
+    {
+      "gate": "dry_run_default",
+      "value": true,
+      "passed": "",
+      "note": "no network unless --live is passed explicitly; this run live=False"
+    },
+    {
+      "gate": "alphavantage_api_key_present",
+      "value": false,
+      "passed": "",
+      "note": "ALPHAVANTAGE_API_KEY read from environment only (never printed/persisted)"
+    },
+    {
+      "gate": "network_called",
+      "value": false,
+      "passed": "",
+      "note": "True only if >= 1 Alpha Vantage request was attempted under --live with a key"
+    },
+    {
+      "gate": "provider_restricted_to_alphavantage",
+      "value": "www.alphavantage.co",
+      "passed": true,
+      "note": "the only network host is www.alphavantage.co (reuses the audited Phase 3-Y collector)"
+    },
+    {
+      "gate": "yahoo_called",
+      "value": false,
+      "passed": true,
+      "note": "Yahoo Finance is never called"
+    },
+    {
+      "gate": "stooq_called",
+      "value": false,
+      "passed": true,
+      "note": "Stooq is never called"
+    },
+    {
+      "gate": "fred_called",
+      "value": false,
+      "passed": true,
+      "note": "FRED is never called"
+    },
+    {
+      "gate": "fmp_called",
+      "value": false,
+      "passed": true,
+      "note": "FMP is never called"
+    },
+    {
+      "gate": "simfin_called",
+      "value": false,
+      "passed": true,
+      "note": "SimFin is never called"
+    },
+    {
+      "gate": "paid_vendor_api_called",
+      "value": false,
+      "passed": true,
+      "note": "no paid vendor API is called"
+    },
+    {
+      "gate": "raw_payloads_gitignored",
+      "value": true,
+      "passed": true,
+      "note": "raw bodies go only to research/output/*/raw/ (ignored by the repo .gitignore)"
+    },
+    {
+      "gate": "existing_valid_files_preserved",
+      "value": true,
+      "passed": true,
+      "note": "valid <TICKER>.csv files are skipped; invalid ones are backed up before any rewrite"
+    },
+    {
+      "gate": "usable_proxy_count",
+      "value": 0,
+      "passed": "",
+      "note": "proxies with >= 250 usable daily rows and an adjusted close"
+    },
+    {
+      "gate": "asset_classes_covered",
+      "value": 0,
+      "passed": "",
+      "note": "distinct asset classes among usable proxies"
+    },
+    {
+      "gate": "five_year_history_count",
+      "value": 0,
+      "passed": "",
+      "note": "usable proxies with >= 1259 rows (~5 years)"
+    },
+    {
+      "gate": "provider_limit_hit",
+      "value": false,
+      "passed": "",
+      "note": "True if Alpha Vantage returned a rate-limit / premium response"
+    },
+    {
+      "gate": "ready_threshold_met",
+      "value": false,
+      "passed": false,
+      "note": "READY needs >= 12 usable proxies across >= 5 classes with >= 12 carrying 5 years"
+    },
+    {
+      "gate": "decision_rule_consistent",
+      "value": "NEEDS_ADDITIONAL_PROXY_COLLECTION",
+      "passed": true,
+      "note": "READY iff the readiness gate is met; recommendation is always an allowed value"
+    },
+    {
+      "gate": "no_price_data_faked",
+      "value": true,
+      "passed": true,
+      "note": "invalid rows dropped; no rows fabricated"
+    },
+    {
+      "gate": "no_strategy_or_shadow_test",
+      "value": true,
+      "passed": true,
+      "note": "collection only; no strategy / shadow test run"
+    },
+    {
+      "gate": "phase6a_not_rerun",
+      "value": true,
+      "passed": true,
+      "note": "Phase 6-A is not rerun by this phase"
+    },
+    {
+      "gate": "no_database_write",
+      "value": true,
+      "passed": true,
+      "note": "no database write"
+    },
+    {
+      "gate": "no_deployment",
+      "value": true,
+      "passed": true,
+      "note": "no deployment"
+    },
+    {
+      "gate": "no_orders_or_automation",
+      "value": true,
+      "passed": true,
+      "note": "no orders / automation"
+    },
+    {
+      "gate": "d_drive_written",
+      "value": false,
+      "passed": true,
+      "note": "nothing written to the data drive"
+    },
+    {
+      "gate": "recommendation",
+      "value": "NEEDS_ADDITIONAL_PROXY_COLLECTION",
+      "passed": true,
+      "note": "allowed values only"
+    }
+  ],
+  "recommendation": {
+    "recommendation": "NEEDS_ADDITIONAL_PROXY_COLLECTION",
+    "allowed_values": [
+      "READY_FOR_PHASE6C_MACRO_CONTEXT_RERUN",
+      "NEEDS_ADDITIONAL_PROXY_COLLECTION",
+      "PROVIDER_LIMIT_BLOCKED",
+      "DATA_QUALITY_BLOCKED",
+      "ERROR"
+    ],
+    "research_only": true,
+    "pack_ready_for_phase6c": false,
+    "rerun_phase6a_now": false,
+    "proceed_to_phase6c_now": false,
+    "run_strategy_or_shadow_test_now": false,
+    "train_production_model_now": false,
+    "deploy_now": false,
+    "production_edge_claimed": false,
+    "price_data_faked": false,
+    "provider": "alpha_vantage",
+    "api_key_present": false,
+    "live_collection_run": false,
+    "usable_proxy_count": 0,
+    "asset_classes_covered": 0,
+    "five_year_history_count": 0,
+    "reason": "Dry-run / no live collection: 0 usable proxies on disk (need >= 12 across >= 5 classes with >= 12 carrying 5 years). Set the key and run --live to collect."
+  },
+  "recommended_next_phase": {
+    "phase": "6-B",
+    "title": "Continue Controlled Cross-Asset Proxy Collection",
+    "proceed_to_phase6c": false,
+    "purpose": "Set ALPHAVANTAGE_API_KEY in the shell and run this collector with --live, then re-validate. No network was contacted on this dry run."
+  },
+  "phase6c_macro_context_rerun_plan": {
+    "phase": "6-C",
+    "title": "Cross-Asset Macro Context Harness Rerun (full pack)",
+    "proceed_to_phase6c": false,
+    "rerun_phase6a_now": false,
+    "run_strategy_or_shadow_test_now": false,
+    "readiness": {
+      "usable_proxy_count": 0,
+      "asset_classes_covered": 0,
+      "five_year_history_count": 0,
+      "ready_threshold": "12 usable / 5 classes / 12 with 5yr",
+      "ready_now": false
+    },
+    "future_commands_not_run": [
+      "$env:ALPHAVANTAGE_API_KEY = \"<your-free-alpha-vantage-key>\"; python -B research\\run_phase6b_controlled_cross_asset_proxy_collection.py --live",
+      "python -B research\\run_phase6a_cross_asset_macro_context_alpha.py   # only AFTER READY"
+    ],
+    "note": "Phase 6-C is gated on READY. Until then this plan is informational only; no strategy / shadow test is run and Phase 6-A is not rerun."
+  },
+  "research_only": true,
+  "dry_run_default": true,
+  "database_touched": false,
+  "database_write_executed": false,
+  "migration_executed": false,
+  "deployment_executed": false,
+  "model_v2_enabled": false,
+  "production_model_trained": false,
+  "production_model_candidate_created": false,
+  "deployable_model_artifact_written": false,
+  "production_predictions_computed": false,
+  "production_scores_computed": false,
+  "portfolio_weights_computed": false,
+  "order_instructions_created": false,
+  "production_edge_claimed": false,
+  "strategy_or_shadow_test_run": false,
+  "phase6a_rerun": false,
+  "no_trading": true,
+  "no_orders": true,
+  "no_automation": true,
+  "d_drive_read": false,
+  "d_drive_written": false,
+  "provider_api_called": false,
+  "alpha_vantage_called": false,
+  "yahoo_called": false,
+  "stooq_called": false,
+  "fred_called": false,
+  "fmp_called": false,
+  "simfin_called": false,
+  "yfinance_called": false,
+  "paid_vendor_api_called": false,
+  "data_faked": false
+}
