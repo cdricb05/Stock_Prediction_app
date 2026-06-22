@@ -1,0 +1,18 @@
+# Phase 5-E1D - LOCAL SimFin data. DO NOT COMMIT.
+#
+# research/run_phase5e1d_simfin_free_smoke_test.py --live writes SimFin payloads
+# here:
+#   raw/        verbatim provider JSON responses
+#   normalized/ flattened probe CSVs derived from those responses
+#
+# Even free-tier SimFin data is kept out of git for data hygiene and to match the
+# FMP convention. Only summarized coverage/schema/safety reports (counts, redacted
+# URLs, file paths - never payloads or the API key) go to the committed artifacts
+# under research/output/phase5e1d_simfin_free_smoke_test/.
+raw/
+normalized/
+
+# Belt-and-braces: ignore everything in this directory EXCEPT this .gitignore,
+# so no payload can ever be staged from here by accident.
+*
+!.gitignore

@@ -1,0 +1,10 @@
+dataset_name,company_template,statement_code,required,load_status,full_rows_loaded,columns_detected,test_tickers_found,test_tickers,quarterly_dates_found,variant,market,error_type
+Companies,shared,general,required,loaded,6587,11,10,AAPL;ABT;ACN;AMZN;APH;BAC;C;JPM;MSFT;NVDA,0,n/a,us,
+Income Statement,standard,pl,required,loaded,47630,28,7,AAPL;ABT;ACN;AMZN;APH;MSFT;NVDA,22,quarterly,us,
+Balance Sheet,standard,bs,required,loaded,47634,30,7,AAPL;ABT;ACN;AMZN;APH;MSFT;NVDA,22,quarterly,us,
+Cash Flow,standard,cf,required,loaded,47632,28,7,AAPL;ABT;ACN;AMZN;APH;MSFT;NVDA,22,quarterly,us,
+Derived Figures & Ratios,standard,derived,optional,error,0,0,0,,0,quarterly,us,HTTPError
+Income Statement (Banks),banks,pl,required,loaded,1783,22,2,BAC;JPM,19,quarterly,us,
+Balance Sheet (Banks),banks,bs,required,loaded,1783,27,2,BAC;JPM,19,quarterly,us,
+Cash Flow (Banks),banks,cf,required,loaded,1783,26,2,BAC;JPM,19,quarterly,us,
+Derived Figures & Ratios (Banks),banks,derived,optional,error,0,0,0,,0,quarterly,us,HTTPError

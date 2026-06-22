@@ -1,0 +1,11 @@
+ticker,company_template,required_statement_codes,verified_statement_codes,verified_codes,coverage_status
+AAPL,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+MSFT,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+AMZN,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+NVDA,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+APH,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+ABT,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+ACN,standard,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+JPM,banks,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+BAC,banks,3,3,"pl,bs,cf",quarterly_fundamentals_verified
+C,banks,3,0,,no_access

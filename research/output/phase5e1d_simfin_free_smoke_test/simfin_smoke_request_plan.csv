@@ -1,0 +1,10 @@
+dataset_name,company_template,loader_function,statement_code,data_family,market,variant,tickers_filtered_locally,load_strategy
+Companies,shared,sf.load_companies,general,company_info,us,n/a,AAPL;ABT;ACN;AMZN;APH;BAC;C;JPM;MSFT;NVDA,load_once_then_filter_locally
+Income Statement,standard,sf.load_income,pl,quarterly_income_statement,us,quarterly,AAPL;MSFT;AMZN;NVDA;APH;ABT;ACN,load_once_then_filter_locally
+Balance Sheet,standard,sf.load_balance,bs,quarterly_balance_sheet,us,quarterly,AAPL;MSFT;AMZN;NVDA;APH;ABT;ACN,load_once_then_filter_locally
+Cash Flow,standard,sf.load_cashflow,cf,quarterly_cash_flow,us,quarterly,AAPL;MSFT;AMZN;NVDA;APH;ABT;ACN,load_once_then_filter_locally
+Derived Figures & Ratios,standard,sf.load_derived,derived,derived_figures_ratios,us,quarterly,AAPL;MSFT;AMZN;NVDA;APH;ABT;ACN,load_once_then_filter_locally
+Income Statement (Banks),banks,sf.load_income_banks,pl,quarterly_income_statement_banks,us,quarterly,JPM;BAC;C,load_once_then_filter_locally
+Balance Sheet (Banks),banks,sf.load_balance_banks,bs,quarterly_balance_sheet_banks,us,quarterly,JPM;BAC;C,load_once_then_filter_locally
+Cash Flow (Banks),banks,sf.load_cashflow_banks,cf,quarterly_cash_flow_banks,us,quarterly,JPM;BAC;C,load_once_then_filter_locally
+Derived Figures & Ratios (Banks),banks,sf.load_derived_banks,derived,derived_figures_ratios_banks,us,quarterly,JPM;BAC;C,load_once_then_filter_locally

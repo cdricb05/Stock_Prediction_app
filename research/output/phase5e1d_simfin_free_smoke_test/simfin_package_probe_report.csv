@@ -1,0 +1,2 @@
+package_present,package_version,access_method,datasets_attempted,datasets_loaded,rows_loaded,columns_detected,test_tickers_found,quarterly_dates_found,recommendation
+True,1.0.2,official_simfin_package_or_bulk,9,7,154832,30,10,22,READY_FOR_PHASE5E1E_SIMFIN_COLLECTOR

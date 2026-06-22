@@ -1,0 +1,62 @@
+{
+  "phase": "5-E1E",
+  "title": "SimFin Free fundamentals collector (planned, not yet built)",
+  "provider": "SimFin",
+  "gated_on": "Phase 5-E1D live smoke returning READY_FOR_PHASE5E1E_SIMFIN_COLLECTOR.",
+  "access_method": "official_simfin_package_or_bulk",
+  "package_required": true,
+  "package_install_command": "C:\\Users\\binis\\paper_trader\\.venv-win\\Scripts\\python.exe -m pip install simfin",
+  "market": "us",
+  "variant": "quarterly",
+  "auth": "simfin.set_api_key(); SIMFIN_API_KEY env var only",
+  "free_tier": true,
+  "free_data_delay_months": 12,
+  "free_history_years": 5,
+  "datasets_standard": [
+    "Companies",
+    "Income Statement",
+    "Balance Sheet",
+    "Cash Flow",
+    "Derived Figures & Ratios"
+  ],
+  "datasets_banks": [
+    "Income Statement (Banks)",
+    "Balance Sheet (Banks)",
+    "Cash Flow (Banks)",
+    "Derived Figures & Ratios (Banks)"
+  ],
+  "tickers_standard": [
+    "AAPL",
+    "MSFT",
+    "AMZN",
+    "NVDA",
+    "APH",
+    "ABT",
+    "ACN"
+  ],
+  "tickers_banks": [
+    "JPM",
+    "BAC",
+    "C"
+  ],
+  "load_strategy": "Download each bulk dataset ONCE (market+variant), then filter the universe locally - never one request per ticker.",
+  "storage": {
+    "data_dir": "research/data/simfin",
+    "raw_dir": "research/data/simfin/raw",
+    "normalized_dir": "research/data/simfin/normalized",
+    "gitignored": true,
+    "committed_summaries_dir": "research/output/phase5e1d_simfin_free_smoke_test"
+  },
+  "point_in_time_rule": "Align each fundamental to its data-availability date (publish + free-tier lag), never to the fiscal period end.",
+  "usable_for_live_trading_today": false,
+  "open_questions": [
+    "Confirm SimFin free-tier dataset coverage breadth and refresh cadence.",
+    "Confirm whether banks ship as dedicated *_banks datasets or within the standard datasets (the smoke records the actual discovered schema).",
+    "Decide refresh cadence (quarterly) given the 12-month free-tier delay."
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

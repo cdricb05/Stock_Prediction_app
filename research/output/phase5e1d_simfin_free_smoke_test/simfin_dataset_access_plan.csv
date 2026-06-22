@@ -1,0 +1,10 @@
+dataset_name,company_template,statement_code,data_family,required,loader_function,market,variant,free_tier_expectation
+Companies,shared,general,company_info,required,sf.load_companies,us,n/a,free_tier_expected
+Income Statement,standard,pl,quarterly_income_statement,required,sf.load_income,us,quarterly,free_tier_expected
+Balance Sheet,standard,bs,quarterly_balance_sheet,required,sf.load_balance,us,quarterly,free_tier_expected
+Cash Flow,standard,cf,quarterly_cash_flow,required,sf.load_cashflow,us,quarterly,free_tier_expected
+Derived Figures & Ratios,standard,derived,derived_figures_ratios,optional,sf.load_derived,us,quarterly,free_tier_expected
+Income Statement (Banks),banks,pl,quarterly_income_statement_banks,required,sf.load_income_banks,us,quarterly,free_tier_expected
+Balance Sheet (Banks),banks,bs,quarterly_balance_sheet_banks,required,sf.load_balance_banks,us,quarterly,free_tier_expected
+Cash Flow (Banks),banks,cf,quarterly_cash_flow_banks,required,sf.load_cashflow_banks,us,quarterly,free_tier_expected
+Derived Figures & Ratios (Banks),banks,derived,derived_figures_ratios_banks,optional,sf.load_derived_banks,us,quarterly,free_tier_expected
