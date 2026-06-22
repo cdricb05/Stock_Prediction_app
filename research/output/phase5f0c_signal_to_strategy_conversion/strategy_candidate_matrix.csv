@@ -1,0 +1,10 @@
+strategy,cadence,evaluable,basket_size,signal_mean_rank_ic,ic_t_stat,topn_avg_fwd_excess_return,topn_hit_rate,net_25bps_ann_mean_return,net_50bps_ann_mean_return,avg_turnover,max_drawdown,exposure_utilization,no_trade_periods,net_50bps_total_return_survivorship_inflated
+high_confidence_top5_monthly,monthly,True,5,0.052821,2.257374,0.029223,0.569643,0.309805,0.26893,0.68125,-0.373408,1.0,0,7.153082
+high_confidence_top10_monthly,monthly,True,10,0.052821,2.257374,0.026251,0.584821,0.278533,0.242051,0.608036,-0.292352,1.0,0,6.138481
+high_confidence_top10_entry_exit_band,monthly,True,10,0.052821,2.257374,0.027547,0.580325,0.305029,0.279499,0.425496,-0.246583,1.0,0,8.902269
+high_confidence_top5_entry_exit_band,monthly,True,5,0.052821,2.257374,0.029351,0.576786,0.329333,0.306458,0.38125,-0.369619,1.0,0,10.544596
+high_confidence_top10_industry_capped,monthly,True,10,0.052821,2.257374,0.020874,0.585959,0.211221,0.171953,0.654464,-0.261724,1.0,0,3.067683
+high_confidence_top10_regime_scaled,monthly,True,10,0.052821,2.257374,0.026251,0.584821,0.176651,0.150122,0.442143,-0.198931,0.70625,0,2.593409
+high_confidence_top10_entry_exit_industry_capped,monthly,True,10,0.052821,2.257374,0.025445,0.574443,0.277022,0.248698,0.472063,-0.246388,1.0,0,6.619536
+high_confidence_top10_entry_exit_regime_scaled,monthly,True,10,0.052821,2.257374,0.027547,0.580325,0.18949,0.170626,0.314405,-0.186017,0.70625,0,3.300384
+best_strategy_candidate (= high_confidence_top5_entry_exit_band),monthly,True,5,0.052821,2.257374,0.029351,0.576786,0.329333,0.306458,0.38125,-0.369619,1.0,0,10.544596

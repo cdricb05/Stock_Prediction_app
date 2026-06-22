@@ -1,0 +1,3 @@
+control,available,basket_size,avg_turnover,net_50bps_ann_mean_return,note
+high_confidence_top10 (uncapped),True,10,0.608036,0.242051,no industry control
+high_confidence_top10_industry_capped,True,10,0.654464,0.171953,max 2/sector; coverage=0.99

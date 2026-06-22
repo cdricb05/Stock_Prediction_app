@@ -1,0 +1,782 @@
+{
+  "phase": "5-F0C",
+  "objective": "Can the Phase 5-F0B high-confidence ranking improvement be CONVERTED into a more tradable strategy \u2014 combining high-confidence model-agreement entry, entry/exit-band turnover control, top-N concentration, optional industry cap, and regime exposure scaling \u2014 with acceptable turnover and better net-of-cost portfolio metrics than the Phase 5-C reference, without new providers and without deployment?",
+  "track": "A (quantitative signal-to-strategy evidence) \u2014 not Track B operational packaging.",
+  "data_source": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+  "benchmark_regime_proxy": "SPY",
+  "primary_label": "forward_excess_return_20d_vs_spy",
+  "strategy_set": [
+    "high_confidence_top5_monthly",
+    "high_confidence_top10_monthly",
+    "high_confidence_top10_entry_exit_band",
+    "high_confidence_top5_entry_exit_band",
+    "high_confidence_top10_industry_capped",
+    "high_confidence_top10_regime_scaled",
+    "high_confidence_top10_entry_exit_industry_capped",
+    "high_confidence_top10_entry_exit_regime_scaled",
+    "best_strategy_candidate"
+  ],
+  "recommended_next_phase": "5-F1 (shadow candidate)",
+  "allowed_recommendations": [
+    "READY_FOR_PHASE5F1_SHADOW_CANDIDATE",
+    "EDGE_PRESENT_BUT_STILL_NOT_TRADABLE",
+    "NO_STRATEGY_IMPROVEMENT",
+    "DATA_BLOCKER",
+    "ERROR"
+  ],
+  "regime_exposure_scaling": {
+    "risk_on": 1.0,
+    "neutral": 0.6,
+    "risk_off": 0.3
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "paid_apis_used": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "committed": false,
+  "writes_to_d_drive": false,
+  "modifies_paper_trader": false,
+  "modifies_gcp": false,
+  "uses_simfin_fundamentals_as_alpha": false,
+  "provider_work": false,
+  "packages_installed": false,
+  "live_trading": false,
+  "shadow_only": true,
+  "universe_size": 128,
+  "date_range": {
+    "start": "2016-01-04",
+    "end": "2026-06-16"
+  },
+  "rebalance_cadence": "monthly (all strategies; cadence-comparable)",
+  "sector_control_available": true,
+  "sector_control_coverage": 0.992188,
+  "sector_control_source": "research\\data\\simfin\\normalized\\phase5e1e\\shared\\general.csv",
+  "sector_control_note": "uses ONLY Ticker + IndustryId from the local industry map; no SimFin fundamentals are read or used as alpha",
+  "high_confidence_signal": {
+    "definition": "Phase 5-F0B high-confidence signal: component-rank dispersion <= 0.25 and ensemble rank >= 0.7 or <= 0.3 (no-trade middle). Long entry uses the top bucket (rank >= 0.7) only.",
+    "signal_coverage": 0.431947,
+    "long_entry_coverage": 0.210626,
+    "signal_mean_rank_ic": 0.052821,
+    "signal_ic_t_stat": 2.257374,
+    "signal_worst_year_ic": -0.059966
+  },
+  "confidence_controls": {
+    "dispersion_max": 0.25,
+    "hi_rank": 0.7,
+    "lo_rank": 0.3,
+    "definition": "model agreement = low stdev of component within-date ranks; the no-trade zone removes the middle of the cross-section; long entry requires the high-confidence top bucket"
+  },
+  "strategies_evaluated": [
+    "high_confidence_top5_monthly",
+    "high_confidence_top10_monthly",
+    "high_confidence_top10_entry_exit_band",
+    "high_confidence_top5_entry_exit_band",
+    "high_confidence_top10_industry_capped",
+    "high_confidence_top10_regime_scaled",
+    "high_confidence_top10_entry_exit_industry_capped",
+    "high_confidence_top10_entry_exit_regime_scaled"
+  ],
+  "strategies_unavailable": [],
+  "strategy_metrics": {
+    "high_confidence_top5_monthly": {
+      "evaluable": true,
+      "strategy": "high_confidence_top5_monthly",
+      "cadence": "monthly",
+      "basket_size": 5,
+      "config": {
+        "n": 5,
+        "band": false,
+        "cap": false,
+        "regime": false
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.029223,
+      "topn_hit_rate": 0.569643,
+      "net_25bps_ann_mean_return": 0.309805,
+      "net_50bps_ann_mean_return": 0.26893,
+      "net_50bps_total_return_survivorship_inflated": 7.153082,
+      "gross_ann_mean_return": 0.35068,
+      "avg_turnover": 0.68125,
+      "max_drawdown": -0.373408,
+      "exposure_utilization": 1.0,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 1.0,
+        "risk_off": 1.0
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.230672,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-5"
+    },
+    "high_confidence_top10_monthly": {
+      "evaluable": true,
+      "strategy": "high_confidence_top10_monthly",
+      "cadence": "monthly",
+      "basket_size": 10,
+      "config": {
+        "n": 10,
+        "band": false,
+        "cap": false,
+        "regime": false
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.026251,
+      "topn_hit_rate": 0.584821,
+      "net_25bps_ann_mean_return": 0.278533,
+      "net_50bps_ann_mean_return": 0.242051,
+      "net_50bps_total_return_survivorship_inflated": 6.138481,
+      "gross_ann_mean_return": 0.315015,
+      "avg_turnover": 0.608036,
+      "max_drawdown": -0.292352,
+      "exposure_utilization": 1.0,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 1.0,
+        "risk_off": 1.0
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.210588,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-10"
+    },
+    "high_confidence_top10_entry_exit_band": {
+      "evaluable": true,
+      "strategy": "high_confidence_top10_entry_exit_band",
+      "cadence": "monthly",
+      "basket_size": 10,
+      "config": {
+        "n": 10,
+        "band": true,
+        "cap": false,
+        "regime": false
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.027547,
+      "topn_hit_rate": 0.580325,
+      "net_25bps_ann_mean_return": 0.305029,
+      "net_50bps_ann_mean_return": 0.279499,
+      "net_50bps_total_return_survivorship_inflated": 8.902269,
+      "gross_ann_mean_return": 0.330558,
+      "avg_turnover": 0.425496,
+      "max_drawdown": -0.246583,
+      "exposure_utilization": 1.0,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 1.0,
+        "risk_off": 1.0
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.239652,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-10; entry/exit band (enter rank<10, hold until rank>=20)"
+    },
+    "high_confidence_top5_entry_exit_band": {
+      "evaluable": true,
+      "strategy": "high_confidence_top5_entry_exit_band",
+      "cadence": "monthly",
+      "basket_size": 5,
+      "config": {
+        "n": 5,
+        "band": true,
+        "cap": false,
+        "regime": false
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.029351,
+      "topn_hit_rate": 0.576786,
+      "net_25bps_ann_mean_return": 0.329333,
+      "net_50bps_ann_mean_return": 0.306458,
+      "net_50bps_total_return_survivorship_inflated": 10.544596,
+      "gross_ann_mean_return": 0.352208,
+      "avg_turnover": 0.38125,
+      "max_drawdown": -0.369619,
+      "exposure_utilization": 1.0,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 1.0,
+        "risk_off": 1.0
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.256804,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-5; entry/exit band (enter rank<10, hold until rank>=20)"
+    },
+    "high_confidence_top10_industry_capped": {
+      "evaluable": true,
+      "strategy": "high_confidence_top10_industry_capped",
+      "cadence": "monthly",
+      "basket_size": 10,
+      "config": {
+        "n": 10,
+        "band": false,
+        "cap": true,
+        "regime": false
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": 0.992188,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.020874,
+      "topn_hit_rate": 0.585959,
+      "net_25bps_ann_mean_return": 0.211221,
+      "net_50bps_ann_mean_return": 0.171953,
+      "net_50bps_total_return_survivorship_inflated": 3.067683,
+      "gross_ann_mean_return": 0.250489,
+      "avg_turnover": 0.654464,
+      "max_drawdown": -0.261724,
+      "exposure_utilization": 1.0,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 1.0,
+        "risk_off": 1.0
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.146455,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-10; industry cap (max 2/sector)"
+    },
+    "high_confidence_top10_regime_scaled": {
+      "evaluable": true,
+      "strategy": "high_confidence_top10_regime_scaled",
+      "cadence": "monthly",
+      "basket_size": 10,
+      "config": {
+        "n": 10,
+        "band": false,
+        "cap": false,
+        "regime": true
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.026251,
+      "topn_hit_rate": 0.584821,
+      "net_25bps_ann_mean_return": 0.176651,
+      "net_50bps_ann_mean_return": 0.150122,
+      "net_50bps_total_return_survivorship_inflated": 2.593409,
+      "gross_ann_mean_return": 0.203179,
+      "avg_turnover": 0.442143,
+      "max_drawdown": -0.198931,
+      "exposure_utilization": 0.70625,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 0.6,
+        "risk_off": 0.3
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.12917,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-10; regime exposure scaling {\"risk_on\": 1.0, \"neutral\": 0.6, \"risk_off\": 0.3}"
+    },
+    "high_confidence_top10_entry_exit_industry_capped": {
+      "evaluable": true,
+      "strategy": "high_confidence_top10_entry_exit_industry_capped",
+      "cadence": "monthly",
+      "basket_size": 10,
+      "config": {
+        "n": 10,
+        "band": true,
+        "cap": true,
+        "regime": false
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": 0.992188,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.025445,
+      "topn_hit_rate": 0.574443,
+      "net_25bps_ann_mean_return": 0.277022,
+      "net_50bps_ann_mean_return": 0.248698,
+      "net_50bps_total_return_survivorship_inflated": 6.619536,
+      "gross_ann_mean_return": 0.305346,
+      "avg_turnover": 0.472063,
+      "max_drawdown": -0.246388,
+      "exposure_utilization": 1.0,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 1.0,
+        "risk_off": 1.0
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.215465,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-10; entry/exit band (enter rank<10, hold until rank>=20); industry cap (max 2/sector)"
+    },
+    "high_confidence_top10_entry_exit_regime_scaled": {
+      "evaluable": true,
+      "strategy": "high_confidence_top10_entry_exit_regime_scaled",
+      "cadence": "monthly",
+      "basket_size": 10,
+      "config": {
+        "n": 10,
+        "band": true,
+        "cap": false,
+        "regime": true
+      },
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "signal_mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "topn_avg_fwd_excess_return": 0.027547,
+      "topn_hit_rate": 0.580325,
+      "net_25bps_ann_mean_return": 0.18949,
+      "net_50bps_ann_mean_return": 0.170626,
+      "net_50bps_total_return_survivorship_inflated": 3.300384,
+      "gross_ann_mean_return": 0.208354,
+      "avg_turnover": 0.314405,
+      "max_drawdown": -0.186017,
+      "exposure_utilization": 0.70625,
+      "no_trade_periods": 0,
+      "regime_exposure": {
+        "risk_on": 1.0,
+        "neutral": 0.6,
+        "risk_off": 0.3
+      },
+      "vol_adj_net_50bps_ann_mean_return": 0.142158,
+      "has_explicit_no_trade_logic": true,
+      "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-10; entry/exit band (enter rank<10, hold until rank>=20); regime exposure scaling {\"risk_on\": 1.0, \"neutral\": 0.6, \"risk_off\": 0.3}"
+    }
+  },
+  "best_strategy": "high_confidence_top5_entry_exit_band",
+  "best_strategy_metrics": {
+    "evaluable": true,
+    "strategy": "high_confidence_top5_entry_exit_band",
+    "cadence": "monthly",
+    "basket_size": 5,
+    "config": {
+      "n": 5,
+      "band": true,
+      "cap": false,
+      "regime": false
+    },
+    "n_scored_dates": 112,
+    "rebalance_coverage": null,
+    "signal_mean_rank_ic": 0.052821,
+    "ic_t_stat": 2.257374,
+    "worst_year_ic": -0.059966,
+    "mean_decile_spread": 0.014995,
+    "ic_by_regime": {
+      "risk_on": {
+        "mean_ic": 0.057188,
+        "n_dates": 44
+      },
+      "neutral": {
+        "mean_ic": 0.049017,
+        "n_dates": 49
+      },
+      "risk_off": {
+        "mean_ic": 0.052518,
+        "n_dates": 19
+      }
+    },
+    "topn_avg_fwd_excess_return": 0.029351,
+    "topn_hit_rate": 0.576786,
+    "net_25bps_ann_mean_return": 0.329333,
+    "net_50bps_ann_mean_return": 0.306458,
+    "net_50bps_total_return_survivorship_inflated": 10.544596,
+    "gross_ann_mean_return": 0.352208,
+    "avg_turnover": 0.38125,
+    "max_drawdown": -0.369619,
+    "exposure_utilization": 1.0,
+    "no_trade_periods": 0,
+    "regime_exposure": {
+      "risk_on": 1.0,
+      "neutral": 1.0,
+      "risk_off": 1.0
+    },
+    "vol_adj_net_50bps_ann_mean_return": 0.256804,
+    "has_explicit_no_trade_logic": true,
+    "notes": "high-confidence entry (dispersion<=0.25, rank>=0.7); top-5; entry/exit band (enter rank<10, hold until rank>=20)"
+  },
+  "phase5c_reference_metrics": {
+    "evaluable": true,
+    "candidate": "baseline_phase5c_reference",
+    "cadence": "monthly",
+    "n_scored_dates": 112,
+    "rebalance_coverage": null,
+    "mean_rank_ic": 0.045229,
+    "ic_t_stat": 1.880473,
+    "worst_year_ic": -0.042161,
+    "mean_decile_spread": 0.019408,
+    "top10_equal_avg_turnover": 0.358929,
+    "top10_equal_gross_max_drawdown": -0.367156,
+    "top10_equal_net_25bps_ann_mean_return": 0.353451,
+    "top10_equal_net_50bps_ann_mean_return": 0.331915,
+    "top10_equal_net_50bps_total_return_survivorship_inflated": 12.79128
+  },
+  "alpha_v3_reference_metrics": {
+    "evaluable": true,
+    "candidate": "alpha_v3_ensemble",
+    "cadence": "monthly",
+    "n_scored_dates": 112,
+    "rebalance_coverage": null,
+    "mean_rank_ic": 0.042478,
+    "ic_t_stat": 2.262358,
+    "worst_year_ic": -0.028909,
+    "mean_decile_spread": 0.015167,
+    "top10_equal_avg_turnover": 0.590179,
+    "top10_equal_gross_max_drawdown": -0.292352,
+    "top10_equal_net_25bps_ann_mean_return": 0.274566,
+    "top10_equal_net_50bps_ann_mean_return": 0.239155,
+    "top10_equal_net_50bps_total_return_survivorship_inflated": 5.942958
+  },
+  "phase5f0b_reference_metrics": {
+    "evaluable": true,
+    "candidate": "ensemble_high_confidence_only",
+    "cadence": "monthly",
+    "n_scored_dates": 112,
+    "rebalance_coverage": 0.431947,
+    "mean_rank_ic": 0.052821,
+    "ic_t_stat": 2.257374,
+    "worst_year_ic": -0.059966,
+    "mean_decile_spread": 0.014995,
+    "top10_equal_avg_turnover": 0.608036,
+    "top10_equal_gross_max_drawdown": -0.292352,
+    "top10_equal_net_25bps_ann_mean_return": 0.278533,
+    "top10_equal_net_50bps_ann_mean_return": 0.242051,
+    "top10_equal_net_50bps_total_return_survivorship_inflated": 6.138481
+  },
+  "strategy_improvement_vs_phase5c": {
+    "baseline_5c_model": "top_quintile_score_model",
+    "baseline_mean_rank_ic": 0.045229,
+    "best_strategy": "high_confidence_top5_entry_exit_band",
+    "best_signal_mean_rank_ic": 0.052821,
+    "delta_ic_best_minus_baseline": 0.007592,
+    "best_keeps_ic_improvement_over_5c": true,
+    "decision_metric": "top-N equal-weight net-of-50bps ANNUALIZED MEAN return (cadence-comparable)",
+    "baseline_top10_net50_ann_mean": 0.331915,
+    "best_net50_ann_mean": 0.306458,
+    "delta_net50_ann_mean_best_minus_baseline": -0.025457,
+    "best_beats_5c_on_net_return": false,
+    "best_turnover": 0.38125,
+    "note": "absolute (compounded total) returns are survivorship-inflated and NOT comparable across cadences; signal rank IC, turnover, drawdown, and the annualized-mean net return are the trustworthy metrics"
+  },
+  "strategy_improvement_vs_f0b": {
+    "f0b_best_candidate": "ensemble_high_confidence_only",
+    "f0b_mean_rank_ic": 0.052821,
+    "f0b_top10_net50_ann_mean": 0.242051,
+    "f0b_top10_avg_turnover": 0.608036,
+    "best_signal_mean_rank_ic": 0.052821,
+    "best_net50_ann_mean": 0.306458,
+    "best_turnover": 0.38125,
+    "delta_net50_ann_mean_best_minus_f0b": 0.064407,
+    "delta_turnover_best_minus_f0b": -0.226786,
+    "best_improves_turnover_vs_f0b": true,
+    "best_improves_net_return_vs_f0b": true,
+    "note": "Phase 5-F0B never combined high-confidence entry with the entry/exit band; this phase tests whether that combination converts the IC edge into better net tradability"
+  },
+  "portfolio_simulation": {
+    "basket_sizes": [
+      5,
+      10
+    ],
+    "weightings": [
+      "equal",
+      "vol_adj"
+    ],
+    "cost_bps": [
+      25,
+      50
+    ],
+    "cost_model": "round-trip turnover * 2 * bps on the changed (post-scale) weight fraction",
+    "composed_controls": [
+      "high_confidence_entry",
+      "entry_exit_band",
+      "top_n_concentration",
+      "industry_cap",
+      "regime_exposure_scaling"
+    ],
+    "regime_exposure_scaling": {
+      "risk_on": 1.0,
+      "neutral": 0.6,
+      "risk_off": 0.3
+    }
+  },
+  "leakage_checks": {
+    "labels_forward_only": true,
+    "features_use_past_only": true,
+    "embargo_respected": true,
+    "placebo_mean_ic": 0.005674,
+    "placebo_interpretation": "ridge mean rank IC after a within-date label shuffle; should be ~0 \u2014 a real edge must not survive the shuffle"
+  },
+  "validation_gate_matrix": [
+    {
+      "gate_name": "no_leakage_placebo_gate",
+      "status": "PASS",
+      "metric": "placebo_mean_ic",
+      "value": 0.005674,
+      "threshold": "|placebo IC|<=0.02",
+      "note": "ridge mean rank IC after within-date label shuffle must collapse to ~0"
+    },
+    {
+      "gate_name": "keeps_high_confidence_ic_improvement_gate",
+      "status": "PASS",
+      "metric": "best_signal_ic_minus_baseline_ic",
+      "value": 0.007592,
+      "threshold": ">0",
+      "note": "best high-confidence signal IC=0.052821 vs Phase 5-C reference IC=0.045229"
+    },
+    {
+      "gate_name": "net_return_beats_phase5c_gate",
+      "status": "FAIL",
+      "metric": "best_minus_baseline_net50_ann_mean",
+      "value": -0.025457,
+      "threshold": ">0",
+      "note": "best net50 ann-mean=0.306458 vs 5-C baseline=0.331915 (annualized mean, not compounded; absolute level still survivorship-inflated)"
+    },
+    {
+      "gate_name": "turnover_acceptable_or_improved_gate",
+      "status": "PASS",
+      "metric": "best_turnover",
+      "value": 0.38125,
+      "threshold": "< ensemble(0.590179) OR <0.55",
+      "note": "improved vs raw ensemble"
+    },
+    {
+      "gate_name": "drawdown_acceptable_gate",
+      "status": "PASS",
+      "metric": "top_n_gross_max_drawdown",
+      "value": -0.369619,
+      "threshold": ">-0.4",
+      "note": ""
+    },
+    {
+      "gate_name": "worst_year_ic_acceptable_gate",
+      "status": "WARNING",
+      "metric": "worst_year_ic",
+      "value": -0.059966,
+      "threshold": ">-0.05",
+      "note": ""
+    },
+    {
+      "gate_name": "explicit_no_trade_logic_gate",
+      "status": "PASS",
+      "metric": "best_has_no_trade_logic",
+      "value": true,
+      "threshold": "true",
+      "note": "best strategy = high_confidence_top5_entry_exit_band (high-confidence entry + no-trade zone)"
+    },
+    {
+      "gate_name": "shadow_only_not_live_gate",
+      "status": "PASS",
+      "metric": "deployment_mode",
+      "value": "shadow_only",
+      "threshold": "shadow_only",
+      "note": "this phase recommends at most a shadow candidate; never live"
+    },
+    {
+      "gate_name": "survivorship_bias_gate",
+      "status": "WARNING",
+      "metric": "universe_is_full_history_survivors",
+      "value": true,
+      "threshold": "survivorship-free universe required before trusting absolute returns",
+      "note": "rank IC / turnover are less affected than absolute portfolio returns"
+    },
+    {
+      "gate_name": "no_fundamentals_as_alpha_gate",
+      "status": "PASS",
+      "metric": "fundamentals_used_as_alpha",
+      "value": false,
+      "threshold": "false",
+      "note": "optional industry map uses Ticker/IndustryId only; no statement line items"
+    },
+    {
+      "gate_name": "preview_only_gate",
+      "status": "PASS",
+      "metric": "preview_only",
+      "value": true,
+      "threshold": "true",
+      "note": "research harness only"
+    },
+    {
+      "gate_name": "no_orders_gate",
+      "status": "PASS",
+      "metric": "orders_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_broker_execution_gate",
+      "status": "PASS",
+      "metric": "broker_execution_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_automation_gate",
+      "status": "PASS",
+      "metric": "automation_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_binary_model_artifact_gate",
+      "status": "PASS",
+      "metric": "binary_model_written",
+      "value": false,
+      "threshold": "false",
+      "note": "models fit in-memory for evaluation only; nothing persisted"
+    }
+  ],
+  "readiness_gate_summary": {
+    "PASS": 12,
+    "FAIL": 1,
+    "WARNING": 2,
+    "NOT_EVALUABLE": 0
+  },
+  "any_strategy_ready_for_shadow": false,
+  "recommendation": "EDGE_PRESENT_BUT_STILL_NOT_TRADABLE",
+  "recommendation_reason": "the high-confidence IC improvement is preserved and the composed turnover/exposure controls behave as designed, but the strategy does not clearly beat the Phase 5-C reference on net-of-cost portfolio metrics; keep it shadow-only and keep iterating before any deployment decision",
+  "survivorship_caveat": "the local universe is full-history survivors, so absolute portfolio returns are upward-biased; rank IC / turnover / exposure drive the readiness decision, and all strategies share the cadence so relative net-return comparisons are fair",
+  "honesty_note": "Carried-in result: Phase 5-F0B confidence gating lifted rank IC to ~0.0528 (beating the 5-C reference ~0.0452) but did NOT improve net portfolio quality. This phase reports honestly whether COMBINING the controls converts the edge into tradability, never forces a PASS, and never recommends live trading \u2014 the ceiling is a shadow candidate."
+}

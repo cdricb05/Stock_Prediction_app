@@ -1,0 +1,9 @@
+strategy,basket_size,topn_avg_fwd_excess_return,topn_hit_rate,gross_ann_mean_return,net_50bps_ann_mean_return,max_drawdown,exposure_utilization
+high_confidence_top5_monthly,5,0.029223,0.569643,0.35068,0.26893,-0.373408,1.0
+high_confidence_top10_monthly,10,0.026251,0.584821,0.315015,0.242051,-0.292352,1.0
+high_confidence_top10_entry_exit_band,10,0.027547,0.580325,0.330558,0.279499,-0.246583,1.0
+high_confidence_top5_entry_exit_band,5,0.029351,0.576786,0.352208,0.306458,-0.369619,1.0
+high_confidence_top10_industry_capped,10,0.020874,0.585959,0.250489,0.171953,-0.261724,1.0
+high_confidence_top10_regime_scaled,10,0.026251,0.584821,0.203179,0.150122,-0.198931,0.70625
+high_confidence_top10_entry_exit_industry_capped,10,0.025445,0.574443,0.305346,0.248698,-0.246388,1.0
+high_confidence_top10_entry_exit_regime_scaled,10,0.027547,0.580325,0.208354,0.170626,-0.186017,0.70625

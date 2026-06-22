@@ -1,0 +1,9 @@
+strategy,basket_size,entry_exit_band,entry_rank,exit_rank,avg_turnover,no_trade_periods,exposure_utilization
+high_confidence_top5_monthly,5,False,,,0.68125,0,1.0
+high_confidence_top10_monthly,10,False,,,0.608036,0,1.0
+high_confidence_top10_entry_exit_band,10,True,10,20,0.425496,0,1.0
+high_confidence_top5_entry_exit_band,5,True,10,20,0.38125,0,1.0
+high_confidence_top10_industry_capped,10,False,,,0.654464,0,1.0
+high_confidence_top10_regime_scaled,10,False,,,0.442143,0,0.70625
+high_confidence_top10_entry_exit_industry_capped,10,True,10,20,0.472063,0,1.0
+high_confidence_top10_entry_exit_regime_scaled,10,True,10,20,0.314405,0,0.70625

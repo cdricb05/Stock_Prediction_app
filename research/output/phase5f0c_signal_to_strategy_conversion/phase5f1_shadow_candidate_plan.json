@@ -1,0 +1,25 @@
+{
+  "phase": "5-F1 (shadow candidate)",
+  "title": "Shadow-only candidate observation plan (planned, not yet built)",
+  "gated_on": "Phase 5-F0C recommendation = READY_FOR_PHASE5F1_SHADOW_CANDIDATE.",
+  "phase5f0c_recommendation": "EDGE_PRESENT_BUT_STILL_NOT_TRADABLE",
+  "phase5f0c_best_strategy": "high_confidence_top5_entry_exit_band",
+  "proceed_to_shadow": false,
+  "scope_if_proceed": [
+    "Freeze the winning composed strategy (high-confidence entry + entry/exit band + top-N + optional industry cap + regime exposure scaling) from the walk-forward.",
+    "Observe it in SHADOW only: record paper signals and would-be positions without placing any orders.",
+    "Re-validate on a survivorship-free universe before trusting absolute returns.",
+    "Track live signal rank IC, turnover, drawdown, exposure utilization, and regime behavior vs backtest."
+  ],
+  "hard_constraints": [
+    "Shadow-only: no orders, no broker execution, no automation, no GCP deploy.",
+    "Survivorship bias must be resolved before trusting absolute returns.",
+    "Preview-only; manual review; paper trading only."
+  ],
+  "if_not_ready": "Keep the Phase 5-C price-only baseline; keep iterating on the combination of confidence / band / regime / industry controls before any shadow observation.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

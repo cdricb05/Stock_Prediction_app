@@ -1,0 +1,9 @@
+strategy,weighting,avg_turnover,net_25bps_ann_mean_return,net_50bps_ann_mean_return,net_50bps_total_return_survivorship_inflated
+high_confidence_top5_monthly,equal,0.68125,0.309805,0.26893,7.153082
+high_confidence_top10_monthly,equal,0.608036,0.278533,0.242051,6.138481
+high_confidence_top10_entry_exit_band,equal,0.425496,0.305029,0.279499,8.902269
+high_confidence_top5_entry_exit_band,equal,0.38125,0.329333,0.306458,10.544596
+high_confidence_top10_industry_capped,equal,0.654464,0.211221,0.171953,3.067683
+high_confidence_top10_regime_scaled,equal,0.442143,0.176651,0.150122,2.593409
+high_confidence_top10_entry_exit_industry_capped,equal,0.472063,0.277022,0.248698,6.619536
+high_confidence_top10_entry_exit_regime_scaled,equal,0.314405,0.18949,0.170626,3.300384
