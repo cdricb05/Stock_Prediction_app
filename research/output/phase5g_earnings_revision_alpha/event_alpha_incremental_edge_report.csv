@@ -1,0 +1,4 @@
+model,mean_rank_ic,reference_mean_rank_ic,incremental_ic,placebo_mean_ic,placebo_clean,fraction_positive_years,eligible_as_best
+event_alpha_only,0.028827,0.036471,-0.007644,0.007969,True,0.5,False
+price_plus_event_alpha,0.045538,0.036471,0.009067,0.007972,True,0.5,True
+event_gated_price_signal,0.023477,0.036471,-0.012993,0.014558,True,0.4,False

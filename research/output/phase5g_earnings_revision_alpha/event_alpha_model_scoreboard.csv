@@ -1,0 +1,5 @@
+model,evaluable,n_scored_dates,mean_rank_ic,ic_t_stat,worst_year_ic,mean_decile_spread,top_quintile_hit_rate,ic_5d,ic_10d,ic_20d,net_50bps_ann_mean_top10,placebo_mean_ic,is_best_event_candidate
+phase5c_reference,True,112,0.036471,1.433943,-0.070532,0.020555,0.503571,0.051879,0.052216,0.036471,0.223122,0.011643,False
+event_alpha_only,True,112,0.028827,1.586815,-0.062161,0.012729,0.50625,0.025765,0.01925,0.028827,0.160365,0.007969,False
+price_plus_event_alpha,True,112,0.045538,1.860259,-0.093613,0.020135,0.521429,0.052031,0.052131,0.045538,0.24133,0.007972,True
+event_gated_price_signal,True,112,0.023477,1.216015,-0.087539,0.014972,0.523214,0.013804,0.017282,0.023477,0.180369,0.014558,False

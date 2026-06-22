@@ -1,0 +1,491 @@
+{
+  "phase": "5-G",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "paid_apis_used": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "objective": "Test whether a point-in-time earnings / post-earnings-drift event signal adds incremental out-of-sample ranking IC over the Phase 5-C price-only champion, on the names it covers, without leakage.",
+  "generated_by": "research\\run_phase5g_earnings_revision_alpha.py",
+  "local_event_data_found": true,
+  "usable_event_data": true,
+  "event_data_sources": [
+    "research\\output\\phase3m_earnings_estimates_signal_gate\\earnings_events_universe.csv",
+    "research\\output\\phase3m_earnings_estimates_signal_gate\\earnings_features_universe.csv",
+    "research\\output\\phase3m_earnings_estimates_signal_gate\\earnings_feature_coverage_by_ticker.csv",
+    "research\\output\\phase3s_event_signal_readiness_gate\\analyst_revision_data_inventory.csv",
+    "research\\output\\phase3s_event_signal_readiness_gate\\earnings_coverage_status.csv"
+  ],
+  "coverage_summary": {
+    "universe_size": 128,
+    "covered_tickers": 50,
+    "coverage_fraction": 0.3906,
+    "covered_records": 5600,
+    "covered_dates": 112
+  },
+  "pit_safety_summary": {
+    "availability_is_report_date": true,
+    "uses_fiscal_end_as_timestamp": false,
+    "asof_join": "latest earnings event with availability_date <= rebalance_date",
+    "no_future_event_used": true
+  },
+  "features_built": {
+    "earnings_surprise_features_built": true,
+    "post_earnings_drift_features_built": true,
+    "estimate_revision_features_built": false,
+    "revision_omitted_reason": "missing required columns/dates for a point-in-time analyst-revision series (need ticker, event/publication date, analyst_revision_value)",
+    "feature_catalog": "research\\output\\phase5g_earnings_revision_alpha\\event_feature_catalog.csv"
+  },
+  "models_evaluated": [
+    "phase5c_reference",
+    "event_alpha_only",
+    "price_plus_event_alpha",
+    "event_gated_price_signal",
+    "best_event_candidate"
+  ],
+  "best_event_candidate": "price_plus_event_alpha",
+  "best_event_candidate_selection": {
+    "reference_mean_rank_ic": 0.036471,
+    "arm_detail": {
+      "event_alpha_only": {
+        "eligible": false,
+        "mean_rank_ic": 0.028827,
+        "incremental_ic": -0.007644,
+        "placebo_mean_ic": 0.007969,
+        "placebo_clean": true,
+        "fraction_positive_years": 0.5,
+        "oos_ok": true
+      },
+      "price_plus_event_alpha": {
+        "eligible": true,
+        "mean_rank_ic": 0.045538,
+        "incremental_ic": 0.009067,
+        "placebo_mean_ic": 0.007972,
+        "placebo_clean": true,
+        "fraction_positive_years": 0.5,
+        "oos_ok": true
+      },
+      "event_gated_price_signal": {
+        "eligible": false,
+        "mean_rank_ic": 0.023477,
+        "incremental_ic": -0.012993,
+        "placebo_mean_ic": 0.014558,
+        "placebo_clean": true,
+        "fraction_positive_years": 0.4,
+        "oos_ok": false
+      }
+    },
+    "contenders": [
+      "price_plus_event_alpha"
+    ]
+  },
+  "model_scoreboard": {
+    "phase5c_reference": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "mean_rank_ic": 0.036471,
+      "ic_t_stat": 1.433943,
+      "worst_year_ic": -0.070532,
+      "ic_by_year": {
+        "2017": 0.045146,
+        "2018": 0.057623,
+        "2019": 0.059904,
+        "2020": -0.041921,
+        "2021": 0.018335,
+        "2022": -0.070532,
+        "2023": 0.084818,
+        "2024": -0.044106,
+        "2025": 0.198007,
+        "2026": 0.099352
+      },
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": -0.019446,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.055347,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.117281,
+          "n_dates": 19
+        }
+      },
+      "mean_decile_spread": 0.020555,
+      "top_quintile_hit_rate": 0.503571,
+      "multi_horizon_ic": {
+        "forward_excess_return_5d_vs_spy": 0.051879,
+        "forward_excess_return_10d_vs_spy": 0.052216,
+        "forward_excess_return_20d_vs_spy": 0.036471
+      },
+      "placebo_mean_ic": 0.011643,
+      "ann_net": {
+        "5": {
+          "net_25bps_ann_mean": null,
+          "net_50bps_ann_mean": null
+        },
+        "10": {
+          "net_25bps_ann_mean": 0.244443,
+          "net_50bps_ann_mean": 0.223122
+        }
+      }
+    },
+    "event_alpha_only": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "mean_rank_ic": 0.028827,
+      "ic_t_stat": 1.586815,
+      "worst_year_ic": -0.062161,
+      "ic_by_year": {
+        "2017": 0.107875,
+        "2018": 0.00124,
+        "2019": 0.080304,
+        "2020": -0.003657,
+        "2021": -0.05487,
+        "2022": -0.047867,
+        "2023": 0.066387,
+        "2024": 0.126106,
+        "2025": 0.014254,
+        "2026": -0.062161
+      },
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.047033,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.017333,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.016309,
+          "n_dates": 19
+        }
+      },
+      "mean_decile_spread": 0.012729,
+      "top_quintile_hit_rate": 0.50625,
+      "multi_horizon_ic": {
+        "forward_excess_return_5d_vs_spy": 0.025765,
+        "forward_excess_return_10d_vs_spy": 0.01925,
+        "forward_excess_return_20d_vs_spy": 0.028827
+      },
+      "placebo_mean_ic": 0.007969,
+      "ann_net": {
+        "5": {
+          "net_25bps_ann_mean": null,
+          "net_50bps_ann_mean": null
+        },
+        "10": {
+          "net_25bps_ann_mean": 0.183508,
+          "net_50bps_ann_mean": 0.160365
+        }
+      }
+    },
+    "price_plus_event_alpha": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "mean_rank_ic": 0.045538,
+      "ic_t_stat": 1.860259,
+      "worst_year_ic": -0.093613,
+      "ic_by_year": {
+        "2017": 0.108179,
+        "2018": 0.05038,
+        "2019": 0.091188,
+        "2020": -0.027187,
+        "2021": 0.003065,
+        "2022": -0.093613,
+        "2023": 0.103641,
+        "2024": 0.006082,
+        "2025": 0.157967,
+        "2026": 0.075942
+      },
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.013413,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.053973,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.098179,
+          "n_dates": 19
+        }
+      },
+      "mean_decile_spread": 0.020135,
+      "top_quintile_hit_rate": 0.521429,
+      "multi_horizon_ic": {
+        "forward_excess_return_5d_vs_spy": 0.052031,
+        "forward_excess_return_10d_vs_spy": 0.052131,
+        "forward_excess_return_20d_vs_spy": 0.045538
+      },
+      "placebo_mean_ic": 0.007972,
+      "ann_net": {
+        "5": {
+          "net_25bps_ann_mean": null,
+          "net_50bps_ann_mean": null
+        },
+        "10": {
+          "net_25bps_ann_mean": 0.262812,
+          "net_50bps_ann_mean": 0.24133
+        }
+      }
+    },
+    "event_gated_price_signal": {
+      "evaluable": true,
+      "n_scored_dates": 112,
+      "mean_rank_ic": 0.023477,
+      "ic_t_stat": 1.216015,
+      "worst_year_ic": -0.087539,
+      "ic_by_year": {
+        "2017": 0.07046,
+        "2018": -0.019104,
+        "2019": 0.13587,
+        "2020": -0.027475,
+        "2021": -0.009948,
+        "2022": -0.087539,
+        "2023": 0.027659,
+        "2024": -0.01519,
+        "2025": 0.155734,
+        "2026": -0.034046
+      },
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": -0.003636,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.038015,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.048775,
+          "n_dates": 19
+        }
+      },
+      "mean_decile_spread": 0.014972,
+      "top_quintile_hit_rate": 0.523214,
+      "multi_horizon_ic": {
+        "forward_excess_return_5d_vs_spy": 0.013804,
+        "forward_excess_return_10d_vs_spy": 0.017282,
+        "forward_excess_return_20d_vs_spy": 0.023477
+      },
+      "placebo_mean_ic": 0.014558,
+      "ann_net": {
+        "5": {
+          "net_25bps_ann_mean": null,
+          "net_50bps_ann_mean": null
+        },
+        "10": {
+          "net_25bps_ann_mean": 0.214494,
+          "net_50bps_ann_mean": 0.180369
+        }
+      }
+    }
+  },
+  "incremental_edge_vs_phase5c": {
+    "reference_mean_rank_ic": 0.036471,
+    "best_event_mean_rank_ic": 0.045538,
+    "incremental_mean_rank_ic": 0.009067,
+    "threshold": 0.005
+  },
+  "phase5c_comparison": {
+    "champion_model": "top_quintile_score_model",
+    "reference_mean_rank_ic_covered": 0.036471,
+    "note": "phase5c_reference is the champion price score restricted to event-covered names"
+  },
+  "phase5f0c_comparison": {
+    "best_strategy": "high_confidence_top5_entry_exit_band",
+    "evaluable": true,
+    "net_50bps_ann_mean_return": 0.306458,
+    "signal_mean_rank_ic": 0.052821,
+    "recommendation": "EDGE_PRESENT_BUT_STILL_NOT_TRADABLE"
+  },
+  "phase5c_reference_meta": {
+    "champion_model": "top_quintile_score_model",
+    "champion_mean_rank_ic_full_universe": 0.045229,
+    "price_history_source": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+    "rebalance_dates": 126,
+    "embargo_respected": true,
+    "min_embargo_gap_observed": 20
+  },
+  "validation_gate_summary": {
+    "counts": {
+      "PASS": 13,
+      "WARNING": 2,
+      "FAIL": 0,
+      "NOT_EVALUABLE": 0
+    },
+    "gates": [
+      {
+        "gate_name": "event_data_present_gate",
+        "status": "PASS",
+        "metric": "earnings_data_present",
+        "value": true,
+        "threshold": "true",
+        "note": "earnings feature rows=5609, event rows=5625"
+      },
+      {
+        "gate_name": "pit_safety_gate",
+        "status": "PASS",
+        "metric": "availability_is_report_date",
+        "value": true,
+        "threshold": "true",
+        "note": "earnings availability_date = report date, never fiscal-quarter end"
+      },
+      {
+        "gate_name": "no_future_event_leakage_gate",
+        "status": "PASS",
+        "metric": "asof_join_and_placebo_clean",
+        "value": true,
+        "threshold": "strict as-of join + |placebo IC|<=0.02",
+        "note": "best-model placebo_mean_ic=0.007972"
+      },
+      {
+        "gate_name": "revisions_not_faked_gate",
+        "status": "PASS",
+        "metric": "estimate_revision_features_built",
+        "value": false,
+        "threshold": "only if a PIT revision series exists",
+        "note": "missing required columns/dates for a point-in-time analyst-revision series (need ticker, event/publication date, analyst_revision_value)"
+      },
+      {
+        "gate_name": "coverage_sufficient_gate",
+        "status": "WARNING",
+        "metric": "covered_tickers",
+        "value": 50,
+        "threshold": ">=75",
+        "note": "covered 50/128 (0.3906); below the project's own 75-ticker event gate"
+      },
+      {
+        "gate_name": "incremental_ic_gate",
+        "status": "PASS",
+        "metric": "incremental_mean_rank_ic",
+        "value": 0.009067,
+        "threshold": ">=0.005",
+        "note": "best event IC=0.045538 vs 5-C ref IC=0.036471"
+      },
+      {
+        "gate_name": "oos_fold_visibility_gate",
+        "status": "PASS",
+        "metric": "fraction_positive_incremental_years",
+        "value": 0.5,
+        "threshold": ">=0.5",
+        "note": "incremental edge must be visible across folds, not one-year luck"
+      },
+      {
+        "gate_name": "survivorship_bias_gate",
+        "status": "WARNING",
+        "metric": "universe_is_full_history_survivors",
+        "value": true,
+        "threshold": "survivorship-free universe required before trusting absolute returns",
+        "note": "rank IC less affected than absolute portfolio returns"
+      },
+      {
+        "gate_name": "no_fundamentals_as_alpha_gate",
+        "status": "PASS",
+        "metric": "fundamentals_used_as_alpha",
+        "value": false,
+        "threshold": "false",
+        "note": "only earnings surprise / drift events used; no statement line items as alpha"
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": "research harness only"
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": "pure offline; no provider call"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_binary_model_artifact_gate",
+        "status": "PASS",
+        "metric": "binary_model_written",
+        "value": false,
+        "threshold": "false",
+        "note": "models evaluated in-memory; nothing persisted"
+      }
+    ]
+  },
+  "recommendation": "EVENT_DATA_PARTIAL_BUT_USEFUL",
+  "recommendation_allowed_values": [
+    "READY_FOR_PHASE5H_EVENT_ALPHA_STRATEGY_TEST",
+    "EVENT_ALPHA_IMPROVES_SIGNAL",
+    "EVENT_DATA_PARTIAL_BUT_USEFUL",
+    "EVENT_DATA_BLOCKER",
+    "NO_INCREMENTAL_EVENT_EDGE",
+    "ERROR"
+  ],
+  "recommended_next_phase": {
+    "phase": "5-H",
+    "title": "Event-Alpha Strategy Test (research / shadow-only)",
+    "gated_on": "event coverage >= 75 universe tickers and a PIT revision series"
+  },
+  "artifacts": [
+    "research\\output\\phase5g_earnings_revision_alpha\\phase5g_earnings_revision_alpha.json",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_data_inventory.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_data_pit_safety_report.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_feature_catalog.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_alpha_panel_sample.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_alpha_model_scoreboard.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_alpha_incremental_edge_report.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\event_alpha_validation_gate_matrix.csv",
+    "research\\output\\phase5g_earnings_revision_alpha\\phase5h_next_alpha_plan.json",
+    "research\\output\\phase5g_earnings_revision_alpha\\phase5g_artifact_consistency_audit.csv"
+  ],
+  "data_blocker_minimum_required_fields": {
+    "earnings_surprise": [
+      "ticker",
+      "reported_date/availability_date (point-in-time)",
+      "reported_eps",
+      "estimated_eps",
+      "surprise or surprise_percentage"
+    ],
+    "estimate_revision": [
+      "ticker",
+      "revision publication date (point-in-time)",
+      "prior_estimate",
+      "new_estimate (or revision_value)"
+    ]
+  },
+  "survivorship_biased": true,
+  "production_edge_claimed": false
+}

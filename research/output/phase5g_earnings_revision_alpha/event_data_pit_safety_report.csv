@@ -1,0 +1,6 @@
+role,file_path,exists,has_availability_date,has_reported_date,has_fiscal_date_ending,availability_is_report_date,uses_fiscal_end_as_timestamp,point_in_time_safe,note
+earnings_events,research\output\phase3m_earnings_estimates_signal_gate\earnings_events_universe.csv,True,True,True,True,True,False,True,availability_date present and stamped = report date (PIT-safe join key)
+earnings_features,research\output\phase3m_earnings_estimates_signal_gate\earnings_features_universe.csv,True,True,True,True,True,False,True,availability_date present and stamped = report date (PIT-safe join key)
+earnings_coverage_by_ticker,research\output\phase3m_earnings_estimates_signal_gate\earnings_feature_coverage_by_ticker.csv,True,False,False,False,False,False,False,no point-in-time date column
+analyst_revision_inventory,research\output\phase3s_event_signal_readiness_gate\analyst_revision_data_inventory.csv,True,False,False,False,False,False,False,no point-in-time date column
+coverage_status,research\output\phase3s_event_signal_readiness_gate\earnings_coverage_status.csv,True,False,False,False,False,False,False,no point-in-time date column

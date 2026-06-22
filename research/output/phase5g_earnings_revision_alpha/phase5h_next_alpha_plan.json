@@ -1,0 +1,19 @@
+{
+  "phase": "5-H",
+  "title": "Event-Alpha Strategy Test (research / shadow-only)",
+  "proceed_to_event_alpha_strategy_test": false,
+  "blocked_reason": "insufficient event coverage (50/128 < 75); expand PIT earnings collection and add a PIT analyst-revision series before a strategy test",
+  "best_event_candidate": "price_plus_event_alpha",
+  "incremental_mean_rank_ic_vs_phase5c": 0.009067,
+  "required_before_strategy_test": [
+    "expand PIT earnings coverage to >= 75 universe tickers (resumable cache-first collection in a SEPARATE controlled step; not from this harness)",
+    "add a point-in-time analyst-estimate-revision series (ticker, revision publication date, prior_estimate, new_estimate)",
+    "re-confirm survivorship handling on a survivorship-free universe before trusting absolute portfolio returns"
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "deployed": false,
+  "network_used": false
+}
