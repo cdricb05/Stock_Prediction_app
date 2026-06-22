@@ -1,0 +1,46 @@
+{
+  "phase": "5-G1B",
+  "objective": "Ensure future raw provider payloads written by the Phase 3-M earnings collector are ignored by Git by default, without deleting, modifying, or untracking any existing raw file, before any controlled live collection.",
+  "root_gitignore_exists": true,
+  "root_gitignore_path": ".gitignore",
+  "raw_cache_ignore_rule_present": true,
+  "matching_gitignore_rules": [
+    "research/output/phase3m_earnings_estimates_signal_gate/raw/",
+    "research/output/*/raw/"
+  ],
+  "phase3m_raw_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw",
+  "hypothetical_new_raw_payload": "research/output/phase3m_earnings_estimates_signal_gate/raw/alpha_vantage_ZZZZ_HYPOTHETICAL_NEW_PAYLOAD.json",
+  "hypothetical_new_raw_payload_ignored": true,
+  "phase5g1_committed_safe_artifacts_not_ignored": true,
+  "phase5g1_artifact_ignore_status": {
+    "phase5g1_earnings_coverage_expansion.json": false,
+    "earnings_coverage_gap_report.csv": false,
+    "earnings_missing_ticker_plan.csv": false,
+    "earnings_collector_inventory.csv": false,
+    "earnings_collection_safety_audit.csv": false,
+    "phase5g2_event_alpha_rerun_plan.json": false
+  },
+  "existing_raw_files_present_count": 50,
+  "existing_raw_files_tracked_count": 50,
+  "existing_raw_files_deleted": false,
+  "existing_raw_files_untracked": false,
+  "phase3m_outputs_modified": false,
+  "live_collection_run": false,
+  "network_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "api_key_present_in_env": true,
+  "recommendation": "READY_FOR_CONTROLLED_LIVE_EARNINGS_COLLECTION",
+  "recommended_next_phase": {
+    "phase": "5-G1-LIVE",
+    "description": "Run the controlled live Phase 3-M earnings collection (Phase 5-G1 --live) to expand PIT-safe coverage from 50 toward >=75 tickers; newly written raw payloads are now gitignored. Then proceed to Phase 5-G2 (event-alpha rerun).",
+    "proposed_live_command_powershell": "Set-Location C:\\Users\\binis\\Stock_Prediction_app_push; $env:ALPHAVANTAGE_API_KEY = \"<your_key>\"; python research\\run_phase5g1_earnings_coverage_expansion.py --live --max-new-tickers 20"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "deployed": false,
+  "binary_artifacts_created": false
+}

@@ -1,0 +1,22 @@
+check,value,detail
+root_gitignore_exists,True,.gitignore
+raw_cache_ignore_rule_present,True,research/output/phase3m_earnings_estimates_signal_gate/raw/; research/output/*/raw/
+hypothetical_new_raw_payload_ignored,True,research/output/phase3m_earnings_estimates_signal_gate/raw/alpha_vantage_ZZZZ_HYPOTHETICAL_NEW_PAYLOAD.json
+phase5g1_committed_safe_artifacts_not_ignored,True,6 artifacts checked
+existing_raw_files_present_count,50,files still on disk under the Phase 3-M raw dir
+existing_raw_files_tracked_count,50,files still tracked in the git index
+existing_raw_files_deleted,False,must be False
+existing_raw_files_untracked,False,must be False
+phase3m_outputs_modified,False,must be False
+live_collection_run,False,must be False
+network_used,False,must be False
+paid_apis_used,False,must be False
+api_key_required,False,dry audit needs no key
+no_paper_trader_change,True,no Paper Trader files touched
+no_gcp_change,True,no GCP / deploy work
+no_deployment,True,no deployment
+no_orders,True,no order/broker work
+no_broker_execution,True,no broker execution
+no_automation,True,no automation
+no_binary_artifacts,True,text-only artifacts
+no_package_install,True,no packages installed

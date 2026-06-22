@@ -1,0 +1,34 @@
+# ============================================================================
+# Stock_Prediction_app_push — repository root .gitignore
+# ============================================================================
+# Phase 5-G1B — Raw provider-payload cache hygiene.
+#
+# PURPOSE
+#   Future raw provider response payloads written by the controlled collectors
+#   (most importantly the Phase 3-M Alpha Vantage earnings collector run with
+#   --live) must be ignored by Git by default, so a newly collected raw payload
+#   can NEVER be accidentally staged or committed.
+#
+# EXISTING HISTORY (important)
+#   Some historical raw payloads were committed BEFORE this rule existed and
+#   remain TRACKED — e.g. the 50 Alpha Vantage earnings JSON files already in
+#   research/output/phase3m_earnings_estimates_signal_gate/raw/. A .gitignore
+#   rule does NOT untrack files already in the index, and Phase 5-G1B does not
+#   untrack them: they are intentionally left in place. They are factual EPS
+#   estimate / actual / surprise numbers (committed-safe, no secrets, no keys).
+#   This rule only prevents NEW raw payloads from being staged going forward.
+#
+# WHAT STAYS ALLOWED (NOT ignored)
+#   Committed-safe summary artifacts — coverage / quality / manifest CSVs and
+#   JSON (row counts, redacted URLs, file paths; never payloads or API keys)
+#   under research/output/<phase>/ — remain tracked. Only the per-provider
+#   raw/ payload directories below are ignored.
+# ============================================================================
+
+# --- Phase 3-M earnings collector raw Alpha Vantage payloads (explicit target) ---
+research/output/phase3m_earnings_estimates_signal_gate/raw/
+
+# --- Belt-and-braces: any per-provider raw payload directory under research/output ---
+# Gitignore '*' does not cross '/', so this matches only research/output/<phase>/raw/
+# payload dirs. Committed-safe summary artifacts live one level up and are unaffected.
+research/output/*/raw/
