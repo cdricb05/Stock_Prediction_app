@@ -1,0 +1,13 @@
+comparison,metric,price_only,price_plus_fundamentals,delta
+mean_rank_ic,0.011299,0.004368,-0.006931
+median_rank_ic,-0.016635,-0.010252,0.006384
+ic_t_stat,0.34062,0.144735,-0.195885
+positive_ic_hit_rate,0.461538,0.461538,0.0
+mean_decile_spread,0.015559,0.009809,-0.005751
+top_quintile_hit_rate,0.48402,0.496337,0.012317
+ic_year_2022,-0.032801,-0.045502,-0.012701
+ic_year_2023,-0.008772,-0.013079,-0.004307
+ic_year_2024,-0.033841,-0.027354,0.006486
+ic_year_2025,0.101091,0.084354,-0.016737
+ic_year_2026,0.069853,0.061528,-0.008325
+years_improved_fraction,,,0.2

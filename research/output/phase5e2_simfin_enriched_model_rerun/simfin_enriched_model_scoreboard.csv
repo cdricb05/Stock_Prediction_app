@@ -1,0 +1,6 @@
+model,evaluable,n_scored_dates,n_predictions,mean_rank_ic,median_rank_ic,ic_t_stat,positive_ic_hit_rate,worst_year,worst_year_ic,mean_decile_spread,top20_net_50bps_total_return
+price_only_full_panel_reference,True,112,14305,0.035047,0.026646,1.722174,0.553571,2022,-0.03642,0.017196,4.649482
+price_only_baseline,True,52,5348,0.011299,-0.016635,0.34062,0.461538,2024,-0.033841,0.015559,0.514332
+fundamentals_only,True,52,5348,-0.023996,-0.014662,-1.088552,0.461538,2022,-0.080962,0.002678,0.548942
+price_plus_fundamentals,True,52,5348,0.004368,-0.010252,0.144735,0.461538,2022,-0.045502,0.009809,0.694256
+price_plus_fundamentals_quality,True,52,5348,0.005336,-0.016703,0.176571,0.442308,2022,-0.042267,0.0137,0.717914

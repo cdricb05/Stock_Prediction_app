@@ -1,0 +1,16 @@
+gate_name,status,metric,value,threshold,note
+point_in_time_lag_explicit,PASS,lag_rule,publish_date else report_date+90d,documented,free-tier 12-month delay blocks live trading; publish date is the as-of date for backtest
+no_lookahead_join,PASS,max_lookahead_violation_days,0,==0,only statements with availability date <= as-of date are joined
+placebo_leakage,PASS,placebo_mean_ic,-0.011839,|ic|<=0.02,label-shuffle must collapse IC -> no leakage
+missing_derived_ratios_not_blocking,PASS,ratios_computed_internally,True,true,all fundamental features computed from raw statements
+bank_standard_handled,PASS,bank_template_features_separate,True,true,5 bank-template names use bank-specific line items
+baseline_comparison_present,PASS,phase5c_price_only_baseline_evaluated,True,true,price-only baseline rerun on the common set
+coverage_sufficiency,PASS,common_names_and_dates,"{""names"": 105, ""dates"": 69}",>=30 names & >=24 dates,
+stale_data,PASS,stale_fraction,0.014835,<=0.25,fundamental older than 400d at as-of date
+incremental_edge_vs_price_only,FAIL,delta_mean_rank_ic,-0.006931,>=0.01,price+fundamentals minus price-only (common set)
+no_fake_data,PASS,real_local_data_only,True,true,labels from local price history; fundamentals from local SimFin statements
+preview_only,PASS,preview_only,True,true,research harness only
+no_orders,PASS,orders_enabled,False,false,
+no_broker_execution,PASS,broker_execution_enabled,False,false,
+no_automation,PASS,automation_enabled,False,false,
+no_binary_model_artifact,PASS,binary_model_written,False,false,ridge fit in-memory for evaluation only; nothing persisted

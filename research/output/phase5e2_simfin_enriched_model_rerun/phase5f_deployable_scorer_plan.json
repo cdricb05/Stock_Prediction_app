@@ -1,0 +1,22 @@
+{
+  "phase": "5-F",
+  "title": "Deployable cross-sectional scorer plan (planned, not yet built)",
+  "gated_on": "Phase 5-E2 recommendation = READY_FOR_PHASE5F_DEPLOYABLE_SCORER.",
+  "phase5e2_recommendation": "NO_INCREMENTAL_EDGE_USE_PRICE_ONLY",
+  "proceed_to_5f": false,
+  "scope_if_proceed": [
+    "Freeze the winning feature set + ridge coefficients from the walk-forward.",
+    "Wrap a stateless scorer that ingests local price features + PIT fundamentals.",
+    "Re-validate on a fully out-of-sample hold-out before any packaging."
+  ],
+  "hard_constraints": [
+    "Free SimFin data is delayed ~12 months -> NOT usable for live trading; a deployable scorer needs a non-delayed fundamentals source first.",
+    "No orders, no broker execution, no automation, no GCP deploy in 5-F research."
+  ],
+  "if_not_ready": "Keep the Phase 5-C price-only baseline; do not build a fundamentals scorer until incremental edge is demonstrated and a timely data source exists.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

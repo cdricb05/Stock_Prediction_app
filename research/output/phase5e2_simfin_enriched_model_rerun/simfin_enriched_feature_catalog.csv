@@ -1,0 +1,20 @@
+feature,family,scope,sign,direction,formula
+gross_margin,profitability,standard,1,higher_is_bullish,Gross Profit / Revenue
+operating_margin,profitability,shared,1,higher_is_bullish,Operating Income / Revenue
+net_margin,profitability,shared,1,higher_is_bullish,Net Income / Revenue
+roa_ttm,profitability,shared,1,higher_is_bullish,TTM Net Income / Total Assets
+revenue_growth_yoy,growth,shared,1,higher_is_bullish,(Rev_t - Rev_t-4q) / |Rev_t-4q|
+operating_income_growth_yoy,growth,shared,1,higher_is_bullish,(OI_t - OI_t-4q) / |OI_t-4q|
+net_income_growth_yoy,growth,shared,1,higher_is_bullish,(NI_t - NI_t-4q) / |NI_t-4q|
+debt_to_assets,leverage,standard,-1,lower_is_bullish,(Short + Long Term Debt) / Total Assets
+liabilities_to_assets,leverage,shared,-1,lower_is_bullish,Total Liabilities / Total Assets
+equity_to_assets,leverage,bank,1,higher_is_bullish,Total Equity / Total Assets (bank capital)
+current_ratio,liquidity_quality,standard,1,higher_is_bullish,Total Current Assets / Total Current Liabilities
+cash_to_assets,liquidity_quality,standard,1,higher_is_bullish,Cash & ST Investments / Total Assets
+ocf_to_assets,liquidity_quality,shared,1,higher_is_bullish,Operating Cash Flow / Total Assets
+fcf_to_assets,liquidity_quality,standard,1,higher_is_bullish,(OCF + Change in Fixed Assets) / Total Assets
+earnings_yield_ttm,valuation,shared,1,higher_is_bullish,TTM Net Income / (price x diluted shares)
+book_to_price,valuation,shared,1,higher_is_bullish,Total Equity / (price x diluted shares)
+deposits_to_assets,bank_specific,bank,1,higher_is_bullish,Total Deposits / Total Assets (bank)
+loans_to_assets,bank_specific,bank,1,higher_is_bullish,Net Loans / Total Assets (bank)
+quality_composite,quality_composite,shared,1,higher_is_bullish,mean of standardized net_margin+operating_margin+roa_ttm+ocf_to_assets+fcf_to_assets+liabilities_to_assets

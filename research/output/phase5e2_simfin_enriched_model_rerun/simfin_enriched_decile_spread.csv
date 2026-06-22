@@ -1,0 +1,6 @@
+model,mean_decile_spread,mean_top_decile_fwd_excess,mean_bottom_decile_fwd_excess
+price_only_full_panel_reference,0.017196,0.012702,-0.004494
+price_only_baseline,0.015559,0.01231,-0.00325
+fundamentals_only,0.002678,0.008624,0.005946
+price_plus_fundamentals,0.009809,0.013481,0.003672
+price_plus_fundamentals_quality,0.0137,0.016546,0.002846
