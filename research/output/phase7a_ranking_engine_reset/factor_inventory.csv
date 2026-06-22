@@ -1,0 +1,26 @@
+bucket,signal,definition,data_source,charter_section,scores_single_names,normalization,available_locally,first_used_phase,notes
+Value,P/E,Price / trailing earnings,SEC EDGAR / yfinance,Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,Sector-neutralize is essential (tech P/E vs utility P/E not comparable).
+Value,P/B,Price / book value,SEC EDGAR / yfinance,Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Value,EV/EBITDA,Enterprise value / EBITDA,SEC EDGAR / yfinance,Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Value,FCF yield,Free cash flow / market cap,SEC EDGAR / yfinance,Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Momentum,12-1 month return,Trailing 12-month return excluding the most recent month,Price data,Section 4,yes,"z-score, winsorize +/-3",yes (D: price history),7C,Skip-recent-month convention avoids short-term reversal.
+Momentum,RSI,Relative strength index,Price data,Section 4,yes,"z-score, winsorize +/-3",yes (D: price history),7C,
+Momentum,Distance from 200DMA,Price relative to 200-day moving average,Price data,Section 4,yes,"z-score, winsorize +/-3",yes (D: price history),7C,
+Quality,ROE,Return on equity,Fundamentals (SEC EDGAR),Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Quality,Debt/Equity,Total debt / shareholder equity,Fundamentals (SEC EDGAR),Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Quality,Earnings stability,Variability of earnings over trailing periods,Fundamentals (SEC EDGAR),Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Quality,Margins,Gross / operating / net margin,Fundamentals (SEC EDGAR),Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Volatility,Realized vol,Trailing realized volatility of returns,Price data,Section 4,yes,"z-score, winsorize +/-3",yes (D: price history),7C,Low-vol premium is a documented factor.
+Volatility,Beta,Rolling beta to market,Price data,Section 4,yes,"z-score, winsorize +/-3",yes (D: price history),7C,
+Volatility,Downside deviation,Semi-deviation of negative returns,Price data,Section 4,yes,"z-score, winsorize +/-3",yes (D: price history),7C,
+Growth,Revenue growth,Revenue growth trajectory,Fundamentals (SEC EDGAR),Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Growth,EPS growth,EPS growth trajectory,Fundamentals (SEC EDGAR),Section 4,yes,"z-score, winsorize +/-3, sector-neutralize",partial (SEC EDGAR fundamentals),7C,
+Sentiment/Flow,Analyst revisions,Direction/magnitude of estimate revisions,Mixed,Section 4,yes,"z-score, winsorize +/-3",no (not collected),7C,Sentiment sources thin under free-data-first constraint.
+Sentiment/Flow,Short interest,Short interest as percent of float,Mixed,Section 4,yes,"z-score, winsorize +/-3",no (not collected),7C,
+Sentiment/Flow,Options skew,Put/call implied-vol skew,Mixed,Section 4,yes,"z-score, winsorize +/-3",no (not collected),7C,
+Macro/Regime,VIX term structure,Front vs back VIX futures slope,CBOE,Section 4,no,regime classifier input,no (Phase 6-B pending),7E,Macro indicators drive System 2 only; they do NOT score individual tickers.
+Macro/Regime,Credit spreads (HY/IG OAS),High-yield and investment-grade option-adjusted spreads,FRED,Section 4,no,regime classifier input,no (Phase 6-B pending),7E,
+Macro/Regime,Yield curve,10Y-3M and 10Y-2Y term spreads,FRED,Section 4,no,regime classifier input,yes (FRED local: fredgraph DGS10/DGS2),7E,Partial local coverage already present from Phase 6-A inventory.
+Macro/Regime,Breadth,Market breadth (advance/decline, % above MA),Price data,Section 4,no,regime classifier input,partial (derivable from price),7E,
+Macro/Regime,MOVE,Treasury-market implied volatility,External,Section 4,no,regime classifier input,no (Phase 6-B pending),7E,
+Macro/Regime,Real yields,Inflation-adjusted Treasury yields,FRED,Section 4,no,regime classifier input,partial (FRED),7E,

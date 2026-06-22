@@ -1,0 +1,118 @@
+{
+  "phase": "7A",
+  "title": "Project Charter Integration and Multi-Factor Ranking Architecture Reset",
+  "generated": "2026-06-22",
+  "mode": "planning_and_charter_integration",
+  "track": "Track A (quant brain) — architecture reset. No model built. No live provider call. No commit. No push.",
+  "summary": "Adopts docs/project_charter_sp500_multifactor_ranking_v1.md as the governing architecture and resets the project away from single-signal prediction hunting toward a two-system institutional design: System 1 = multi-factor cross-sectional ranking engine, System 2 = regime/risk-throttle overlay, measured by a validation harness that is built FIRST. Produces the 7B-7E implementation roadmap.",
+  "charter": {
+    "path": "docs/project_charter_sp500_multifactor_ranking_v1.md",
+    "present": true,
+    "version": "v1",
+    "framing": "ranking_and_risk_monitoring_system_not_prediction_oracle",
+    "non_negotiable_rule": "Judgment calls (factor selection, weighting, backtest interpretation) are surfaced with options + visible reasoning for owner endorsement, never silently buried in code."
+  },
+  "claude_md": {
+    "path": "CLAUDE.md",
+    "present": true,
+    "references_charter": true,
+    "modified_this_phase": false
+  },
+  "architecture_reset": {
+    "from": "single-name directional prediction with confidence (5-20 day price-only champion + event/macro wrappers)",
+    "to": "two-layer system — System 1 ranking engine (WHICH names) under System 2 regime/risk throttle (HOW MUCH risk + WHICH factor buckets)",
+    "sequencing_principle": "Build the validation harness (the measuring instrument) FIRST; build and trust System 1 over months before adding System 2; never hedge a book whose net exposures are not yet measured.",
+    "scoring_discipline": "Cross-sectional z-score each factor, winsorize at +/-3, sector-neutralize, EQUAL WEIGHT first (no early weight optimization)."
+  },
+  "roadmap": [
+    {
+      "phase": "7B",
+      "title": "Validation Harness Foundation",
+      "charter_mapping": "Phase 0 (backtest harness, build FIRST) + Phase 1 (point-in-time data foundation)",
+      "status": "NEXT",
+      "objective": "Build the measuring instrument before any factor or model: a point-in-time data foundation plus a purged walk-forward backtest harness reporting the full metrics suite and the three anti-self-deception safeguards."
+    },
+    {
+      "phase": "7C",
+      "title": "Multi-Factor Ranking Engine",
+      "charter_mapping": "Phase 2 (single-factor compute) + Phase 3 (composite scoring, equal weight)",
+      "status": "PLANNED",
+      "objective": "Compute the six single-name factor buckets, normalize cross-sectionally, combine EQUAL WEIGHT into a composite rank of the S&P 500 (System 1). No weight optimization."
+    },
+    {
+      "phase": "7D",
+      "title": "Risk Decomposition",
+      "charter_mapping": "Phase 4.5 (consolidated risk view)",
+      "status": "PLANNED",
+      "objective": "Decompose every position into separable exposures (market beta, rate/duration, sector/factor, idiosyncratic) and aggregate to a whole-book consolidated risk view. Measurement only — no hedging."
+    },
+    {
+      "phase": "7E",
+      "title": "Regime Overlay",
+      "charter_mapping": "Phase 5 (System 2 regime overlay)",
+      "status": "PLANNED",
+      "objective": "Macro-indicator regime classifier (risk-on/neutral/risk-off) that throttles how much risk and which factor buckets — a posture overlay on System 1, never a standalone oracle. Gated on System 1 being trusted and on cross-asset data (Phase 6-B/6-C collection)."
+    }
+  ],
+  "factor_inventory_summary": {
+    "buckets": 6,
+    "single_name_signals_catalogued": 20,
+    "macro_regime_indicators": 6,
+    "note": "Macro indicators drive System 2 only; they do NOT score individual tickers."
+  },
+  "validation_requirements_summary": {
+    "total": 12,
+    "mandatory": 11,
+    "recommended": 1,
+    "three_safeguards": [
+      "multiple-testing discipline (deflated Sharpe, config count)",
+      "out-of-sample is a spent budget (single-touch holdout, purged CV with embargo)",
+      "stationarity not assumed (per-regime / per-subperiod decomposition)"
+    ]
+  },
+  "what_we_stop_doing": [
+    "single-signal prediction hunting",
+    "earnings-surprise-only research / Phase 5-G rescue attempts",
+    "strategy-filter loops",
+    "prediction-oracle framing (single-name directional prediction with confidence)",
+    "early factor-weight optimization (equal weight first)",
+    "Paper Trader / GCP / deploy / broker / order / automation work",
+    "live provider calls in this phase"
+  ],
+  "what_we_build_next": "Phase 7B — Validation Harness Foundation: a point-in-time data layer (yfinance, FRED, SEC EDGAR) plus a purged walk-forward harness (reusing the audited Phase 5-C machinery) that produces deflated-Sharpe / config-count / per-regime / cost-adjusted OOS metrics against an equal-weight benchmark, BEFORE any factor or ranking work begins.",
+  "gates": [
+    {"gate": "charter_present_gate", "status": "PASS", "note": "docs/project_charter_sp500_multifactor_ranking_v1.md present (v1)"},
+    {"gate": "claude_md_points_to_charter_gate", "status": "PASS", "note": "root CLAUDE.md references the charter as project constitution"},
+    {"gate": "roadmap_defines_7b_7c_7d_7e_gate", "status": "PASS", "note": "all four required phases defined with charter mappings and exit criteria"},
+    {"gate": "ranking_not_oracle_alignment_gate", "status": "PASS", "note": "reset reframes the system as ranking + risk monitoring, not a prediction oracle (charter Section 2)"},
+    {"gate": "harness_first_sequencing_gate", "status": "PASS", "note": "7B (validation harness) precedes 7C ranking engine (charter Section 6)"},
+    {"gate": "equal_weight_first_gate", "status": "PASS", "note": "no weight optimization scheduled before the validation framework is trusted and the owner endorses (charter Section 5)"},
+    {"gate": "surface_judgment_calls_gate", "status": "PASS", "note": "weighting / factor-selection / interpretation decisions are flagged as owner-endorsed judgment calls, not buried (charter Section 1)"},
+    {"gate": "no_model_built_gate", "status": "PASS", "note": "planning artifacts only; no model trained or built this phase"},
+    {"gate": "no_live_call_gate", "status": "PASS", "note": "zero network; no provider call; no Alpha Vantage"},
+    {"gate": "no_commit_no_push_gate", "status": "PASS", "note": "artifacts written to working tree only; not staged, committed, or pushed"}
+  ],
+  "recommendation": "READY_FOR_PHASE7B_VALIDATION_HARNESS",
+  "recommendation_rationale": "The charter is in-repo and adopted as the constitution, CLAUDE.md points to it, and the 7B-7E roadmap honors charter sequencing (harness first, equal weight first, System 1 before System 2). No charter contradiction was found, so no NEEDS_CHARTER_REVIEW. The honest next step is to build the validation harness foundation (Phase 7B), the measuring instrument every later phase is judged against.",
+  "recommendation_vocabulary": [
+    "READY_FOR_PHASE7B_VALIDATION_HARNESS",
+    "NEEDS_CHARTER_REVIEW",
+    "BLOCKED",
+    "ERROR"
+  ],
+  "commit_appropriate": false,
+  "commit_note": "The four Phase 7A artifacts plus the ADR are isolated, text-only, and commit-worthy on their own, but per task instruction nothing is committed or pushed. Any future commit should stage only docs/adr_phase7a_ranking_engine_reset.md and research/output/phase7a_ranking_engine_reset/*, and must NOT sweep in the pre-existing unrelated modified output files in the working tree.",
+  "safety": {
+    "network_called": false,
+    "provider_call": false,
+    "alpha_vantage_used": false,
+    "model_built_or_trained": false,
+    "model_deployed": false,
+    "database_touched": false,
+    "paper_trader_touched": false,
+    "gcp_touched": false,
+    "orders_broker_automation": false,
+    "committed": false,
+    "pushed": false
+  }
+}
