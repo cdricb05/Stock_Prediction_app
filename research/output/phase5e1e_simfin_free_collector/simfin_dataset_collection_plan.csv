@@ -1,0 +1,10 @@
+dataset_name,company_template,loader_function,statement_code,data_family,required,market,variant,tickers_filtered_locally,load_strategy
+Companies,shared,sf.load_companies,general,company_info,required,us,n/a,128,load_once_then_filter_locally
+Income Statement,standard,sf.load_income,pl,quarterly_income_statement,required,us,quarterly,122,load_once_then_filter_locally
+Balance Sheet,standard,sf.load_balance,bs,quarterly_balance_sheet,required,us,quarterly,122,load_once_then_filter_locally
+Cash Flow,standard,sf.load_cashflow,cf,quarterly_cash_flow,required,us,quarterly,122,load_once_then_filter_locally
+Derived Figures & Ratios,standard,sf.load_derived,derived,derived_figures_ratios,optional,us,quarterly,122,load_once_then_filter_locally
+Income Statement (Banks),banks,sf.load_income_banks,pl,quarterly_income_statement_banks,required,us,quarterly,6,load_once_then_filter_locally
+Balance Sheet (Banks),banks,sf.load_balance_banks,bs,quarterly_balance_sheet_banks,required,us,quarterly,6,load_once_then_filter_locally
+Cash Flow (Banks),banks,sf.load_cashflow_banks,cf,quarterly_cash_flow_banks,required,us,quarterly,6,load_once_then_filter_locally
+Derived Figures & Ratios (Banks),banks,sf.load_derived_banks,derived,derived_figures_ratios_banks,optional,us,quarterly,6,load_once_then_filter_locally

@@ -1,0 +1,41 @@
+{
+  "phase": "5-E2",
+  "title": "Enriched model rerun input plan (planned, not yet built)",
+  "provider": "SimFin",
+  "gated_on": "Phase 5-E1E live collection returning READY_FOR_PHASE5E2_ENRICHED_MODEL_RERUN.",
+  "base_panel": "Phase 5-C price/momentum cross-sectional feature panel (research/output/phase5c_feature_panel_sample.csv).",
+  "fundamentals_source": "SimFin Free quarterly statements collected in 5-E1E (git-ignored under research/data/simfin/).",
+  "access_method": "official_simfin_package_or_bulk",
+  "market": "us",
+  "variant": "quarterly",
+  "join_keys": [
+    "ticker",
+    "fiscal_period -> data_availability_date"
+  ],
+  "point_in_time_rule": "Join each fundamental to the price panel by its data-availability date (publish + free-tier lag), never the fiscal period end, to avoid lookahead bias.",
+  "derived_ratios_available": false,
+  "derived_ratios_required_for_next_phase": false,
+  "ratios_can_be_computed_internally": true,
+  "planned_feature_families": [
+    "valuation (P/E, P/B, EV/EBITDA - computed from statements if derived absent)",
+    "profitability (margins, ROE, ROA)",
+    "growth (YoY revenue / earnings growth)",
+    "leverage / solvency (debt-to-equity, interest coverage)",
+    "quality (accruals, cash-conversion)"
+  ],
+  "bank_handling": "Bank-template names use bank statement line items; ratios for banks are computed from the bank templates separately.",
+  "universe_size": 128,
+  "free_data_delay_months": 12,
+  "free_history_years": 5,
+  "usable_for_live_trading_today": false,
+  "open_questions": [
+    "Confirm the publish-lag model for free-tier point-in-time alignment.",
+    "Decide internal ratio formulas where SimFin derived figures are unavailable.",
+    "Confirm minimum coverage / history per name for inclusion in the rerun."
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

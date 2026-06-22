@@ -1,0 +1,10 @@
+dataset_name,company_template,statement_code,required,load_status,full_rows_loaded,rows_after_local_filter,columns_detected,error_type
+Companies,shared,general,required,loaded,6587,127,11,
+Income Statement,standard,pl,required,loaded,47630,1864,28,
+Balance Sheet,standard,bs,required,loaded,47634,1866,30,
+Cash Flow,standard,cf,required,loaded,47632,1866,28,
+Derived Figures & Ratios,standard,derived,optional,error,0,0,0,HTTPError
+Income Statement (Banks),banks,pl,required,loaded,1783,95,22,
+Balance Sheet (Banks),banks,bs,required,loaded,1783,95,27,
+Cash Flow (Banks),banks,cf,required,loaded,1783,95,26,
+Derived Figures & Ratios (Banks),banks,derived,optional,error,0,0,0,HTTPError

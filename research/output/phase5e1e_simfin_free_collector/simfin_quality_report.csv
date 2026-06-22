@@ -1,0 +1,10 @@
+dataset_name,company_template,statement_code,load_status,rows_after_local_filter,tickers_found,quarterly_dates_found,min_fiscal_year,max_fiscal_year,quality
+Companies,shared,general,loaded,127,127,0,,,ok
+Income Statement,standard,pl,loaded,1864,100,23,2020,2025,ok
+Balance Sheet,standard,bs,loaded,1866,100,23,2020,2025,ok
+Cash Flow,standard,cf,loaded,1866,100,23,2020,2025,ok
+Derived Figures & Ratios,standard,derived,error,0,0,0,,,optional_unavailable
+Income Statement (Banks),banks,pl,loaded,95,5,19,2020,2025,ok
+Balance Sheet (Banks),banks,bs,loaded,95,5,19,2020,2025,ok
+Cash Flow (Banks),banks,cf,loaded,95,5,19,2020,2025,ok
+Derived Figures & Ratios (Banks),banks,derived,error,0,0,0,,,optional_unavailable

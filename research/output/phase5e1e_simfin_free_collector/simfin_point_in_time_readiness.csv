@@ -1,0 +1,5 @@
+aspect,value,safe_for_research_backtest,safe_for_live_trading_today,note
+free_data_delay_months,12,yes,no,"Free data is delayed ~12 months: fine for historical research/backtest, NOT usable for today's live trading signal."
+free_history_years,5,yes,n/a,Free tier provides ~5 years of history - enough for a research panel.
+point_in_time_alignment,"align to data-availability date, not fiscal end",yes,no,"Each fundamental must be aligned to when it became available (publish + free lag), not the fiscal period end, to avoid lookahead bias in 5-E2."
+live_trading_today,blocked_by_12m_delay,no,no,The 12-month delay means free SimFin can never back a live signal for the current quarter; production would need a paid/lower-latency source.
