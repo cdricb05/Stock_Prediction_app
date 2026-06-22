@@ -1,0 +1,11 @@
+ticker,company,in_sp500,required_quarterly_income_statement,required_quarterly_balance_sheet,required_quarterly_cash_flow,required_min_years_history,coverage_expectation
+AAPL,Apple Inc.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+MSFT,Microsoft Corp.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+AMZN,Amazon.com Inc.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+NVDA,NVIDIA Corp.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+JPM,JPMorgan Chase & Co.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+BAC,Bank of America Corp.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+C,Citigroup Inc.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+APH,Amphenol Corp.,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+ABT,Abbott Laboratories,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
+ACN,Accenture plc,yes,required,required,required,5,expected_covered_large_cap_not_live_verified
