@@ -1,0 +1,17 @@
+model,basket_size,weighting,held_dates,gross_mean_period_return,gross_total_return,gross_approx_cagr,gross_max_drawdown,net_50bps_total_return
+robust_price_volume_composite,10,equal,121,0.021366,10.003286,0.268503,-0.161508,4.289313
+robust_price_volume_composite,10,vol_adj,121,0.018036,6.624125,0.223179,-0.140731,2.439255
+robust_price_volume_composite,20,equal,121,0.016819,5.718351,0.207932,-0.184626,2.545429
+robust_price_volume_composite,20,vol_adj,121,0.013987,3.878865,0.170208,-0.159249,1.436939
+regularized_linear_rank_model,10,equal,112,0.027292,14.005513,0.336678,-0.281261,6.710439
+regularized_linear_rank_model,10,vol_adj,112,0.024883,11.034719,0.305452,-0.261332,4.712201
+regularized_linear_rank_model,20,equal,112,0.022274,8.197026,0.268376,-0.276002,4.058968
+regularized_linear_rank_model,20,vol_adj,112,0.020142,6.503708,0.241022,-0.250341,2.81271
+nonlinear_tree_model,10,equal,112,0.023597,8.793369,0.276942,-0.359325,4.320344
+nonlinear_tree_model,10,vol_adj,112,0.020898,6.510768,0.241147,-0.345802,2.811546
+nonlinear_tree_model,20,equal,112,0.021881,7.805186,0.262473,-0.283009,4.219936
+nonlinear_tree_model,20,vol_adj,112,0.020367,6.645753,0.243518,-0.262481,3.187528
+ensemble_rank_model,10,equal,112,0.025831,12.32044,0.319727,-0.292352,5.942958
+ensemble_rank_model,10,vol_adj,112,0.023796,10.145776,0.294763,-0.241367,4.466251
+ensemble_rank_model,20,equal,112,0.023245,9.429041,0.285576,-0.247699,4.890372
+ensemble_rank_model,20,vol_adj,112,0.021732,8.119563,0.267227,-0.229642,3.802963

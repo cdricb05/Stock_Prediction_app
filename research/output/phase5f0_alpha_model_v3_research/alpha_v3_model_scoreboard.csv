@@ -1,0 +1,6 @@
+model,evaluable,n_scored_dates,n_predictions,mean_rank_ic,median_rank_ic,ic_t_stat,positive_ic_hit_rate,worst_year,worst_year_ic,mean_decile_spread,top_quintile_hit_rate,top20_equal_avg_turnover,top20_equal_gross_total_return,top20_equal_gross_max_drawdown,top20_equal_net_50bps_total_return,top20_vol_adj_net_50bps_total_return
+price_only_phase5c_reference,True,112,14305,0.045229,0.014472,1.880473,0.544643,2022,-0.042161,0.019408,0.5025,,,,,
+robust_price_volume_composite,True,121,15448,-0.00285,0.021699,-0.149841,0.545455,2016,-0.091153,0.001562,0.495868,0.535124,5.718351,-0.184626,2.545429,1.436939
+regularized_linear_rank_model,True,112,14305,0.038075,0.008578,1.951616,0.5625,2022,-0.042658,0.015316,0.519643,0.540179,8.197026,-0.276002,4.058968,2.81271
+nonlinear_tree_model,True,112,14305,0.039392,0.032303,2.064733,0.5625,2024,-0.000518,0.014411,0.51,0.471875,7.805186,-0.283009,4.219936,3.187528
+ensemble_rank_model,True,112,14305,0.042478,0.042012,2.262358,0.553571,2022,-0.028909,0.015167,0.533214,0.517857,9.429041,-0.247699,4.890372,3.802963

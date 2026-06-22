@@ -1,0 +1,25 @@
+{
+  "phase": "5-F1",
+  "title": "Deployable cross-sectional swing scorer plan (planned, not yet built)",
+  "gated_on": "Phase 5-F0 recommendation = READY_FOR_PHASE5F1_DEPLOYABLE_SCORER.",
+  "phase5f0_recommendation": "EDGE_PRESENT_BUT_NOT_DEPLOYABLE",
+  "phase5f0_best_model": "ensemble_rank_model",
+  "proceed_to_5f1": false,
+  "scope_if_proceed": [
+    "Freeze the winning Alpha V3 feature set + model from the walk-forward.",
+    "Wrap a stateless scorer that ingests local price/volume features only.",
+    "Add a survivorship-free universe and re-validate on a fully OOS hold-out.",
+    "Build a risk engine that converts rankings into controlled long-only / long-flat positions (no leverage, no options/futures/FX)."
+  ],
+  "hard_constraints": [
+    "Survivorship bias must be resolved before trusting absolute returns.",
+    "No orders, no broker execution, no automation, no GCP deploy in 5-F1 research.",
+    "Preview-only; manual review; paper trading only."
+  ],
+  "if_not_ready": "Keep the Phase 5-C price-only baseline; iterate on features / regime modeling before committing to a deployable scorer.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

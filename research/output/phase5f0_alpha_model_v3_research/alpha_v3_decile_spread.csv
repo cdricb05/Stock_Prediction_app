@@ -1,0 +1,6 @@
+model,mean_decile_spread,mean_top_decile_fwd_excess,mean_bottom_decile_fwd_excess
+price_only_phase5c_reference,0.019408,0.016313,-0.003094
+robust_price_volume_composite,0.001562,0.00715,0.005588
+regularized_linear_rank_model,0.015316,0.01339,-0.001926
+nonlinear_tree_model,0.014411,0.008877,-0.005535
+ensemble_rank_model,0.015167,0.013521,-0.001647

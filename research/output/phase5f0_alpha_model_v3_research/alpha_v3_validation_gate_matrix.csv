@@ -1,0 +1,21 @@
+gate_name,status,metric,value,threshold,note
+no_leakage_gate,PASS,structural_clean_and_placebo,True,embargo>=20 + |placebo IC|<=0.02,"min_embargo_gap=20, placebo_mean_ic=0.005674 (must collapse)"
+forward_label_no_lookahead_gate,PASS,labels_forward_only,True,true,labels use strictly future returns; features use only data at/<= as-of index
+mean_rank_ic_gate,PASS,mean_rank_ic,0.042478,>=0.03,best model = ensemble_rank_model
+ic_t_stat_gate,PASS,ic_t_stat,2.262358,>=2.0,
+positive_decile_spread_after_cost_gate,PASS,decile_spread_and_net50,"{""decile_spread"": 0.015167, ""top20_eq_net50_total"": 4.890372}",>0,decile spread > 0 AND top-20 equal-weight net-of-50bps total return > 0
+worst_year_gate,WARNING,worst_year_ic,-0.028909,>-0.02,worst year = 2022
+turnover_gate,WARNING,top20_equal_avg_turnover,0.517857,<0.5 monthly,
+drawdown_gate,PASS,top20_equal_gross_max_drawdown,-0.247699,>-0.35,
+regime_robustness_gate,PASS,regimes_with_positive_ic,3,>=2,regimes evaluated=3
+materially_beats_phase5c_gate,FAIL,best_ic_minus_5c_ref_ic,-0.002751,>=0.01,5-C reference IC = 0.045229
+liquidity_gate,PASS,liquidity_filter_available,True,avg_dollar_vol>=5000000,large-cap local universe; 20d avg dollar-volume computed per name
+sufficient_observations_gate,PASS,scored_dates_and_universe,"{""scored_dates"": 112, ""universe"": 128}",>=24 dates & >=30 names,
+survivorship_bias_gate,WARNING,universe_is_full_history_survivors,True,survivorship-free universe required before trusting absolute returns,local universe excludes delisted names; rank IC less affected than absolute returns
+no_fake_data_gate,PASS,real_local_data_only,True,no synthetic data,all features/labels derived from local adjusted-close + volume history
+sklearn_tree_backend_gate,WARNING,sklearn_available,False,sklearn present,"nonlinear model uses sklearn if present; else a documented numpy gradient-boosted-stumps fallback (model still evaluated, marked fallback)"
+preview_only_gate,PASS,preview_only,True,true,research harness only
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_binary_model_artifact_gate,PASS,binary_model_written,False,false,models fit in-memory for evaluation only; nothing persisted

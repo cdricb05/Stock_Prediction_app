@@ -1,0 +1,38 @@
+feature,family,direction,sign,composite_weight,in_composite,formula
+return_5d,momentum,higher_is_bullish,1,0.3,yes,close[i]/close[i-5]-1
+return_10d,momentum,higher_is_bullish,1,0.4,yes,close[i]/close[i-10]-1
+return_20d,momentum,higher_is_bullish,1,0.7,yes,close[i]/close[i-20]-1
+return_63d,momentum,higher_is_bullish,1,1.0,yes,close[i]/close[i-63]-1
+return_126d,momentum,higher_is_bullish,1,0.8,yes,close[i]/close[i-126]-1
+return_252d,momentum,higher_is_bullish,1,0.5,yes,close[i]/close[i-252]-1
+mom_acceleration,momentum,higher_is_bullish,1,0.4,yes,return_63d(i) - return_63d(i-63)
+trend_persistence,momentum,higher_is_bullish,1,0.4,yes,frac(up daily returns over 126d) - 0.5
+reversal_1d,reversal,lower_is_bullish,-1,0.3,yes,1-day return (faded: sign -1)
+reversal_5d,reversal,lower_is_bullish,-1,0.5,yes,5-day return (faded: sign -1)
+dist_sma20,reversal,lower_is_bullish,-1,0.4,yes,"close/SMA20 - 1 (overextension, faded)"
+dist_sma50,reversal,lower_is_bullish,-1,0.3,yes,"close/SMA50 - 1 (overextension, faded)"
+return_zscore_5d,reversal,lower_is_bullish,-1,0.5,yes,z-score of latest 5d return vs trailing distribution
+return_zscore_20d,reversal,lower_is_bullish,-1,0.4,yes,z-score of latest 20d return vs trailing distribution
+rs_5d_vs_spy,relative_strength,higher_is_bullish,1,0.4,yes,return_5d - SPY return_5d
+rs_20d_vs_spy,relative_strength,higher_is_bullish,1,0.9,yes,return_20d - SPY return_20d
+rs_63d_vs_spy,relative_strength,higher_is_bullish,1,0.9,yes,return_63d - SPY return_63d
+rs_126d_vs_spy,relative_strength,higher_is_bullish,1,0.6,yes,return_126d - SPY return_126d
+residual_alpha_20d,relative_strength,higher_is_bullish,1,0.7,yes,return_20d - beta63 * SPY return_20d
+residual_alpha_63d,relative_strength,higher_is_bullish,1,0.6,yes,return_63d - beta63 * SPY return_63d
+realized_vol_20d,volatility,lower_is_bullish,-1,0.4,yes,annualized stdev of 20d daily returns
+realized_vol_63d,volatility,lower_is_bullish,-1,0.5,yes,annualized stdev of 63d daily returns
+downside_vol_63d,volatility,lower_is_bullish,-1,0.5,yes,annualized downside semideviation over 63d
+vol_compression,volatility,lower_is_bullish,-1,0.3,yes,"realized_vol_20d / realized_vol_63d (compression, faded)"
+vol_adj_momentum,volatility,higher_is_bullish,1,0.8,yes,return_63d / realized_vol_63d
+beta_63d,volatility,lower_is_bullish,-1,0.0,no,OLS beta of ticker vs SPY over 63d
+log_dollar_volume_20d,volume,higher_is_bullish,1,0.0,no,log(20d avg close*volume) (liquidity)
+volume_shock,volume,higher_is_bullish,1,0.3,yes,avg dollar vol 5d / avg dollar vol 63d
+price_volume_breakout,volume,higher_is_bullish,1,0.3,yes,return_5d * volume_shock
+dist_from_63d_high,drawdown,higher_is_bullish,1,0.5,yes,"close / max(close,63d) - 1"
+dist_from_126d_high,drawdown,higher_is_bullish,1,0.4,yes,"close / max(close,126d) - 1"
+max_drawdown_126d,drawdown,higher_is_bullish,1,0.3,yes,min(close/cummax - 1) over 126d (less severe = bullish)
+recovery_from_low_63d,drawdown,higher_is_bullish,1,0.2,yes,"close / min(close,63d) - 1"
+breakout_after_consolidation,drawdown,higher_is_bullish,1,0.4,yes,"max(0,dist_from_63d_high) if vol_compression<0.9 else 0"
+mom_x_riskon,regime_interaction,higher_is_bullish,1,0.5,yes,return_63d * 1[regime==risk_on]
+rev_x_highvol,regime_interaction,higher_is_bullish,1,0.4,yes,(-return_5d) * 1[regime==risk_off]
+volshock_x_breakout,regime_interaction,higher_is_bullish,1,0.3,yes,"volume_shock * max(0, dist_from_63d_high)"

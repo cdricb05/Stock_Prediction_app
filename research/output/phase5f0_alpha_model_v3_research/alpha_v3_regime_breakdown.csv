@@ -1,0 +1,16 @@
+model,regime,mean_rank_ic,n_dates
+price_only_phase5c_reference,risk_on,0.003669,44
+price_only_phase5c_reference,neutral,0.045633,49
+price_only_phase5c_reference,risk_off,0.140428,19
+robust_price_volume_composite,neutral,0.010628,55
+robust_price_volume_composite,risk_on,0.02695,47
+robust_price_volume_composite,risk_off,-0.11558,19
+regularized_linear_rank_model,risk_on,0.00871,44
+regularized_linear_rank_model,neutral,0.032763,49
+regularized_linear_rank_model,risk_off,0.11978,19
+nonlinear_tree_model,risk_on,0.019781,44
+nonlinear_tree_model,neutral,0.025935,49
+nonlinear_tree_model,risk_off,0.119513,19
+ensemble_rank_model,risk_on,0.030874,44
+ensemble_rank_model,neutral,0.038466,49
+ensemble_rank_model,risk_off,0.079697,19
