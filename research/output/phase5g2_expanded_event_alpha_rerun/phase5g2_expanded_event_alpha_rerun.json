@@ -1,0 +1,320 @@
+{
+  "phase": "5-G2",
+  "objective": "Rerun the Phase 5-G earnings / post-earnings-drift event-alpha research on the expanded 75-ticker event coverage and determine whether the incremental event-alpha edge over the correct Phase 5-C price-only reference (on the same covered tickers) survives broader coverage.",
+  "generated_by": "research\\run_phase5g2_expanded_event_alpha_rerun.py",
+  "network_used": false,
+  "paid_apis_used": false,
+  "raw_files_modified": false,
+  "raw_files_staged": false,
+  "api_key_required": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "raw_cache_count": 75,
+  "coverage_count": 75,
+  "universe_count": 128,
+  "covered_ticker_count": 75,
+  "covered_date_count": 112,
+  "original_phase5g_coverage_count": 50,
+  "original_phase5g_best_event_model": "price_plus_event_alpha",
+  "original_phase5g_incremental_ic": 0.009067,
+  "phase5c_reference_model_used": "top_quintile_score_model",
+  "phase5c_reference_mean_rank_ic_covered": 0.048001,
+  "event_alpha_only_mean_rank_ic": 0.014419,
+  "price_plus_event_alpha_mean_rank_ic": 0.04603,
+  "event_gated_price_signal_mean_rank_ic": 0.03149,
+  "best_event_model": "price_plus_event_alpha",
+  "best_event_model_mean_rank_ic": 0.04603,
+  "best_event_model_is_eligible_incremental_edge": false,
+  "eligible_best_event_candidate": null,
+  "incremental_ic_vs_reference": -0.001971,
+  "placebo_ic": -0.002285,
+  "preconditions": {
+    "raw_cache_count": 75,
+    "raw_cache_count_ok": true,
+    "event_coverage_count": 75,
+    "event_coverage_ok": true,
+    "universe_count": 128,
+    "phase5c_universe_is_128": true,
+    "raw_files_staged": false,
+    "no_raw_files_staged_ok": true,
+    "raw_files_modified": false,
+    "no_raw_files_modified_ok": true,
+    "new_raw_payload_gitignored": true,
+    "api_key_required": false,
+    "network_used": false,
+    "git_evidence": {
+      "raw_files_staged": false,
+      "staged_raw_files": [],
+      "raw_files_modified": false,
+      "modified_raw_files": [],
+      "new_raw_payload_gitignored": true,
+      "new_raw_payload_probe": "alpha_vantage_GS.json",
+      "git_available": true
+    },
+    "all_preconditions_ok": true
+  },
+  "same_covered_universe": true,
+  "leakage_clean": true,
+  "ic_t_stat_by_model": {
+    "phase5c_reference": 1.999517,
+    "event_alpha_only": 0.965355,
+    "price_plus_event_alpha": 1.991544,
+    "event_gated_price_signal": 1.803222
+  },
+  "yearly_ic_by_model": {
+    "phase5c_reference": {
+      "2017": 0.043962,
+      "2018": 0.036842,
+      "2019": 0.055258,
+      "2020": 0.011823,
+      "2021": 0.040398,
+      "2022": -0.053281,
+      "2023": 0.105998,
+      "2024": -0.005448,
+      "2025": 0.175567,
+      "2026": 0.110683
+    },
+    "event_alpha_only": {
+      "2017": 0.090894,
+      "2018": -0.027473,
+      "2019": 0.060308,
+      "2020": -0.010633,
+      "2021": -0.048037,
+      "2022": -0.048502,
+      "2023": 0.052034,
+      "2024": 0.086745,
+      "2025": 0.002527,
+      "2026": -0.069851
+    },
+    "price_plus_event_alpha": {
+      "2017": 0.083589,
+      "2018": 0.020344,
+      "2019": 0.072653,
+      "2020": 0.022404,
+      "2021": 0.014222,
+      "2022": -0.071773,
+      "2023": 0.110531,
+      "2024": 0.025417,
+      "2025": 0.127397,
+      "2026": 0.074488
+    },
+    "event_gated_price_signal": {
+      "2017": 0.083293,
+      "2018": -0.034045,
+      "2019": 0.098518,
+      "2020": -0.003843,
+      "2021": 0.010488,
+      "2022": -0.040448,
+      "2023": 0.059369,
+      "2024": 0.019443,
+      "2025": 0.104004,
+      "2026": -0.008627
+    }
+  },
+  "horizon_comparison": {
+    "phase5c_reference": {
+      "forward_excess_return_5d_vs_spy": 0.065324,
+      "forward_excess_return_10d_vs_spy": 0.064402,
+      "forward_excess_return_20d_vs_spy": 0.048001
+    },
+    "event_alpha_only": {
+      "forward_excess_return_5d_vs_spy": 0.024313,
+      "forward_excess_return_10d_vs_spy": 0.008483,
+      "forward_excess_return_20d_vs_spy": 0.014419
+    },
+    "price_plus_event_alpha": {
+      "forward_excess_return_5d_vs_spy": 0.05949,
+      "forward_excess_return_10d_vs_spy": 0.054388,
+      "forward_excess_return_20d_vs_spy": 0.04603
+    },
+    "event_gated_price_signal": {
+      "forward_excess_return_5d_vs_spy": 0.028868,
+      "forward_excess_return_10d_vs_spy": 0.023707,
+      "forward_excess_return_20d_vs_spy": 0.03149
+    }
+  },
+  "placebo_ic_by_model": {
+    "phase5c_reference": -0.007198,
+    "event_alpha_only": 0.008621,
+    "price_plus_event_alpha": -0.002285,
+    "event_gated_price_signal": 0.004135
+  },
+  "original_vs_expanded": {
+    "original_coverage": 50,
+    "expanded_coverage": 75,
+    "original_best_event_model": "price_plus_event_alpha",
+    "expanded_best_event_model": "price_plus_event_alpha",
+    "original_reference_mean_rank_ic": 0.036471,
+    "expanded_reference_mean_rank_ic": 0.048001,
+    "original_incremental_ic": 0.009067,
+    "expanded_incremental_ic": -0.001971,
+    "incremental_edge_direction_vs_original": "weakened",
+    "event_alpha_survived_expanded_coverage": false
+  },
+  "event_alpha_survived_expanded_coverage": false,
+  "gate_summary": {
+    "counts": {
+      "PASS": 14,
+      "FAIL": 1
+    },
+    "gates": [
+      {
+        "gate_name": "coverage_at_least_75_gate",
+        "status": "PASS",
+        "metric": "event_coverage_count",
+        "value": 75,
+        "threshold": ">=75",
+        "note": "covered 75/128"
+      },
+      {
+        "gate_name": "no_network_used_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": "pure offline rerun; reused Phase 5-G harness makes no provider call"
+      },
+      {
+        "gate_name": "no_raw_files_modified_gate",
+        "status": "PASS",
+        "metric": "raw_files_modified",
+        "value": false,
+        "threshold": "false",
+        "note": "raw Alpha Vantage payload cache untouched"
+      },
+      {
+        "gate_name": "no_raw_files_staged_gate",
+        "status": "PASS",
+        "metric": "raw_files_staged",
+        "value": false,
+        "threshold": "false",
+        "note": "newly collected raw payloads remain gitignored and unstaged"
+      },
+      {
+        "gate_name": "pit_safety_gate",
+        "status": "PASS",
+        "metric": "availability_is_report_date_and_asof_join",
+        "value": true,
+        "threshold": "true",
+        "note": "availability_date = report date; strict as-of join; no future event used"
+      },
+      {
+        "gate_name": "incremental_ic_over_reference_gate",
+        "status": "FAIL",
+        "metric": "incremental_mean_rank_ic",
+        "value": -0.001971,
+        "threshold": ">0.005",
+        "note": "best event IC=0.04603 vs covered 5-C ref IC=0.048001"
+      },
+      {
+        "gate_name": "placebo_materially_lower_gate",
+        "status": "PASS",
+        "metric": "placebo_mean_ic",
+        "value": -0.002285,
+        "threshold": "|placebo| < 0.5x real IC and <= 0.02",
+        "note": "best real IC=0.04603; placebo collapses toward zero"
+      },
+      {
+        "gate_name": "same_covered_universe_gate",
+        "status": "PASS",
+        "metric": "all_models_share_covered_cross_section",
+        "value": true,
+        "threshold": "true",
+        "note": "phase5c_reference and every event arm scored on the identical covered (date,ticker) set"
+      },
+      {
+        "gate_name": "recommendation_metrics_agree_gate",
+        "status": "PASS",
+        "metric": "recommendation_supported_by_metrics",
+        "value": true,
+        "threshold": "true",
+        "note": "recommendation=NO_INCREMENTAL_EVENT_EDGE"
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": "research rerun only"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_binary_model_artifact_gate",
+        "status": "PASS",
+        "metric": "binary_artifacts_created",
+        "value": false,
+        "threshold": "false",
+        "note": "models evaluated in-memory; nothing persisted"
+      },
+      {
+        "gate_name": "no_strategy_filter_optimization_gate",
+        "status": "PASS",
+        "metric": "strategy_optimization_loop_run",
+        "value": false,
+        "threshold": "false",
+        "note": "no portfolio-filter tuning; pure IC comparison"
+      }
+    ]
+  },
+  "recommendation": "NO_INCREMENTAL_EVENT_EDGE",
+  "recommendation_allowed_values": [
+    "EVENT_ALPHA_CONFIRMED_ON_EXPANDED_COVERAGE",
+    "EVENT_ALPHA_WEAKENS_NEEDS_REVIEW",
+    "NO_INCREMENTAL_EVENT_EDGE",
+    "DATA_QUALITY_BLOCKED",
+    "ERROR"
+  ],
+  "recommended_next_phase": {
+    "phase": "5-G3",
+    "title": "Event-alpha edge diagnosis / re-specification (research-only)",
+    "gated_on": "a leakage-clean incremental edge over Phase 5-C and a PIT revision series"
+  },
+  "models_compared": [
+    "phase5c_reference",
+    "event_alpha_only",
+    "price_plus_event_alpha",
+    "event_gated_price_signal",
+    "best_event_candidate"
+  ],
+  "expanded_run_report": "research\\output\\phase5g2_expanded_event_alpha_rerun\\phase5g_expanded_coverage_run\\phase5g_earnings_revision_alpha.json",
+  "artifacts": [
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\phase5g2_expanded_event_alpha_rerun.json",
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\expanded_coverage_event_alpha_scoreboard.csv",
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\expanded_coverage_incremental_edge_report.csv",
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\expanded_coverage_gate_matrix.csv",
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\expanded_coverage_horizon_comparison.csv",
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\expanded_coverage_yearly_ic.csv",
+    "research\\output\\phase5g2_expanded_event_alpha_rerun\\phase5g3_next_plan.json"
+  ],
+  "survivorship_biased": true,
+  "production_edge_claimed": false
+}

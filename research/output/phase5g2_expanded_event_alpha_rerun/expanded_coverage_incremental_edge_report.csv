@@ -1,0 +1,5 @@
+coverage_regime,model,mean_rank_ic,reference_mean_rank_ic,incremental_ic,placebo_mean_ic,placebo_clean,eligible_as_best
+expanded_75,event_alpha_only,0.014419,0.048001,-0.033582,0.008621,True,False
+expanded_75,price_plus_event_alpha,0.04603,0.048001,-0.001971,-0.002285,True,False
+expanded_75,event_gated_price_signal,0.03149,0.048001,-0.016512,0.004135,True,False
+original_50,price_plus_event_alpha,0.045538,0.036471,0.009067,0.007972,True,True

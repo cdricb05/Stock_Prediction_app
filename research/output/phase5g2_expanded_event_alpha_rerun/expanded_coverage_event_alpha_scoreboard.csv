@@ -1,0 +1,5 @@
+model,evaluable,mean_rank_ic,ic_t_stat,ic_5d,ic_10d,ic_20d,placebo_mean_ic,incremental_ic_vs_reference,is_best_event_candidate
+phase5c_reference,True,0.048001,1.999517,0.065324,0.064402,0.048001,-0.007198,0.0,False
+event_alpha_only,True,0.014419,0.965355,0.024313,0.008483,0.014419,0.008621,-0.033582,False
+price_plus_event_alpha,True,0.04603,1.991544,0.05949,0.054388,0.04603,-0.002285,-0.001971,True
+event_gated_price_signal,True,0.03149,1.803222,0.028868,0.023707,0.03149,0.004135,-0.016511,False

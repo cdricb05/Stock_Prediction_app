@@ -1,0 +1,16 @@
+gate_name,status,metric,value,threshold,note
+coverage_at_least_75_gate,PASS,event_coverage_count,75,>=75,covered 75/128
+no_network_used_gate,PASS,network_used,False,false,pure offline rerun; reused Phase 5-G harness makes no provider call
+no_raw_files_modified_gate,PASS,raw_files_modified,False,false,raw Alpha Vantage payload cache untouched
+no_raw_files_staged_gate,PASS,raw_files_staged,False,false,newly collected raw payloads remain gitignored and unstaged
+pit_safety_gate,PASS,availability_is_report_date_and_asof_join,True,true,availability_date = report date; strict as-of join; no future event used
+incremental_ic_over_reference_gate,FAIL,incremental_mean_rank_ic,-0.001971,>0.005,best event IC=0.04603 vs covered 5-C ref IC=0.048001
+placebo_materially_lower_gate,PASS,placebo_mean_ic,-0.002285,|placebo| < 0.5x real IC and <= 0.02,best real IC=0.04603; placebo collapses toward zero
+same_covered_universe_gate,PASS,all_models_share_covered_cross_section,True,true,"phase5c_reference and every event arm scored on the identical covered (date,ticker) set"
+recommendation_metrics_agree_gate,PASS,recommendation_supported_by_metrics,True,true,recommendation=NO_INCREMENTAL_EVENT_EDGE
+preview_only_gate,PASS,preview_only,True,true,research rerun only
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_binary_model_artifact_gate,PASS,binary_artifacts_created,False,false,models evaluated in-memory; nothing persisted
+no_strategy_filter_optimization_gate,PASS,strategy_optimization_loop_run,False,false,no portfolio-filter tuning; pure IC comparison

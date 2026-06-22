@@ -1,0 +1,16 @@
+gate_name,status,metric,value,threshold,note
+event_data_present_gate,PASS,earnings_data_present,True,true,"earnings feature rows=8363, event rows=8390"
+pit_safety_gate,PASS,availability_is_report_date,True,true,"earnings availability_date = report date, never fiscal-quarter end"
+no_future_event_leakage_gate,PASS,asof_join_and_placebo_clean,True,strict as-of join + |placebo IC|<=0.02,best-model placebo_mean_ic=None
+revisions_not_faked_gate,PASS,estimate_revision_features_built,False,only if a PIT revision series exists,"missing required columns/dates for a point-in-time analyst-revision series (need ticker, event/publication date, analyst_revision_value)"
+coverage_sufficient_gate,PASS,covered_tickers,75,>=75,covered 75/128 (0.5859); below the project's own 75-ticker event gate
+incremental_ic_gate,NOT_EVALUABLE,incremental_mean_rank_ic,,>=0.005,best event arm or reference not evaluable
+oos_fold_visibility_gate,NOT_EVALUABLE,fraction_positive_incremental_years,,>=0.5,
+survivorship_bias_gate,WARNING,universe_is_full_history_survivors,True,survivorship-free universe required before trusting absolute returns,rank IC less affected than absolute portfolio returns
+no_fundamentals_as_alpha_gate,PASS,fundamentals_used_as_alpha,False,false,only earnings surprise / drift events used; no statement line items as alpha
+preview_only_gate,PASS,preview_only,True,true,research harness only
+no_network_gate,PASS,network_used,False,false,pure offline; no provider call
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_binary_model_artifact_gate,PASS,binary_model_written,False,false,models evaluated in-memory; nothing persisted

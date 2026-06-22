@@ -1,0 +1,15 @@
+feature,family,role,description,built,omitted_reason
+days_since_earnings,recency,context,calendar days since last earnings availability_date,True,
+surprise_direction,earnings_surprise,alpha,sign of last EPS surprise (+1/0/-1),True,
+eps_surprise_pct_w,earnings_surprise,alpha,winsorized last EPS surprise percent,True,
+surprise_magnitude_abs,earnings_surprise,context,absolute surprise magnitude,True,
+trailing_4q_avg_surprise_pct,earnings_surprise,alpha,trailing 4q average surprise percent,True,
+trailing_8q_avg_surprise_pct,earnings_surprise,alpha,trailing 8q average surprise percent,True,
+trailing_4q_positive_surprise_rate,earnings_surprise,alpha,trailing 4q positive-surprise rate,True,
+surprise_acceleration,earnings_surprise,alpha,change in surprise vs prior quarter,True,
+post_earnings_drift_window,drift,alpha,1 if within 63 days of earnings,True,
+fresh_positive_surprise,drift,alpha,surprise direction gated to the drift window (PEAD),True,
+announcement_reaction,drift,alpha,realized 2-day earnings-announcement price reaction (PIT/past),True,
+estimate_revision_direction,estimate_revision,alpha,sign of analyst estimate revision,False,no usable PIT analyst-revision series (not faked)
+estimate_revision_magnitude,estimate_revision,alpha,size of analyst estimate revision,False,no usable PIT analyst-revision series (not faked)
+revision_acceleration,estimate_revision,alpha,change in revision pace,False,no usable PIT analyst-revision series (not faked)

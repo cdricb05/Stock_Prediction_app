@@ -1,0 +1,5 @@
+model,ic_5d,ic_10d,ic_20d
+phase5c_reference,0.065324,0.064402,0.048001
+event_alpha_only,0.024313,0.008483,0.014419
+price_plus_event_alpha,0.05949,0.054388,0.04603
+event_gated_price_signal,0.028868,0.023707,0.03149

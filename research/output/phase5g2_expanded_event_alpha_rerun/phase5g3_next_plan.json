@@ -1,0 +1,24 @@
+{
+  "phase": "5-G3",
+  "title": "Phase 5-G3 Event-Signal Re-specification (research-only)",
+  "proceed_to_phase5h_strategy_test": false,
+  "phase5g2_recommendation": "NO_INCREMENTAL_EVENT_EDGE",
+  "what_phase5g3_should_be": "No leakage-clean incremental edge at expanded coverage. Phase 5-G3 should re-specify the event composite (e.g. add a PIT analyst-revision series, revisit the drift window) rather than proceed to a strategy test.",
+  "best_event_candidate": "price_plus_event_alpha",
+  "incremental_mean_rank_ic_vs_reference": -0.001971,
+  "coverage_count": 75,
+  "pit_analyst_revision_series_present": false,
+  "required_before_strategy_test": [
+    "add a point-in-time analyst-estimate-revision series (ticker, revision publication date, prior_estimate, new_estimate)",
+    "attribute the expanded-coverage IC change to the added tickers (cohort IC breakdown)",
+    "re-confirm survivorship handling on a survivorship-free universe before trusting absolute portfolio returns"
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "deployed": false,
+  "network_used": false,
+  "raw_files_modified": false,
+  "raw_files_staged": false
+}
