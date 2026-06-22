@@ -1,0 +1,79 @@
+priority_order,ticker,provider,needed_for_75,needed_for_128,in_next_collection_batch,currently_cached,requires_api_key,uses_provider_call_when_live,safe_in_dry_run,note
+1,GS,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+2,HCA,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+3,HD,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+4,HON,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+5,IBM,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+6,ICE,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+7,INTC,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+8,INTU,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+9,ISRG,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+10,ITW,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+11,JNJ,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+12,JPM,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+13,KLAC,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+14,KO,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+15,LIN,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+16,LLY,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+17,LMT,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+18,LOW,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+19,MA,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+20,MAR,alpha_vantage,True,True,True,False,True,True,True,first batch to reach the 75-ticker gate
+21,MCD,alpha_vantage,True,True,False,False,True,True,True,first batch to reach the 75-ticker gate
+22,MCO,alpha_vantage,True,True,False,False,True,True,True,first batch to reach the 75-ticker gate
+23,MDLZ,alpha_vantage,True,True,False,False,True,True,True,first batch to reach the 75-ticker gate
+24,MDT,alpha_vantage,True,True,False,False,True,True,True,first batch to reach the 75-ticker gate
+25,META,alpha_vantage,True,True,False,False,True,True,True,first batch to reach the 75-ticker gate
+26,MO,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+27,MRK,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+28,MS,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+29,MSFT,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+30,MU,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+31,NEE,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+32,NFLX,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+33,NKE,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+34,NOC,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+35,NOW,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+36,NVDA,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+37,ORCL,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+38,ORLY,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+39,PANW,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+40,PEP,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+41,PFE,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+42,PG,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+43,PH,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+44,PLD,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+45,PM,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+46,PNC,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+47,PYPL,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+48,QCOM,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+49,REGN,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+50,ROP,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+51,RTX,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+52,SBUX,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+53,SCHW,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+54,SHW,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+55,SLB,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+56,SNPS,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+57,SO,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+58,SPGI,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+59,SYK,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+60,T,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+61,TDG,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+62,TJX,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+63,TMO,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+64,TSLA,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+65,TXN,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+66,UBER,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+67,UNH,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+68,UNP,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+69,UPS,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+70,USB,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+71,V,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+72,VRTX,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+73,VZ,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+74,WFC,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+75,WM,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+76,WMT,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+77,XOM,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage
+78,ZTS,alpha_vantage,False,True,False,False,True,True,True,needed only for full 128-ticker coverage

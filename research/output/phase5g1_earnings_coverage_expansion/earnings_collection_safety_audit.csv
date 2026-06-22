@@ -1,0 +1,21 @@
+check,passed,detail
+dry_run_default,True,run() defaults to dry-run; live requires the explicit --live flag
+live_requires_explicit_flag,True,no provider call is attempted unless live=True (CLI --live)
+no_network_in_dry_run,True,dry-run performs zero provider/network calls
+no_api_key_required_for_dry_run,True,dry-run computes plan from local artifacts; no key is read or required
+existing_event_data_preserved,True,Phase 3-M earnings_events/features CSVs are never deleted or overwritten here
+existing_raw_cache_preserved,True,Phase 3-M raw cache is add-only (cache-first); existing files never deleted
+no_overwrite_of_existing_rows,True,live mode only adds NEW raw files for missing tickers; cached files are skipped
+writes_only_to_phase5g1_dir_in_dry_run,True,dry-run writes solely into the phase5g1 output directory
+collector_writes_committed_safe_only,True,reused Phase 3-M collector writes response bodies only; keys never persisted
+raw_cache_gitignored,False,git check-ignore on the Phase 3-M raw cache path (FINDING if false)
+respects_rate_limits,True,live mode reuses Phase 3-M throttle + per-run budget + same-day limit guard
+no_paper_trader_change,True,this phase touches no Paper Trader code or DB
+no_gcp_change,True,no GCP / remote prediction service interaction
+no_deployment,True,nothing deployed; research preview only
+no_orders,True,no order creation or execution
+no_broker_execution,True,no broker interaction
+no_automation,True,no automation enabled
+no_binary_artifacts,True,only text JSON/CSV artifacts written
+no_package_install,True,stdlib + reused Phase 3-M module only
+no_paid_apis_used,True,no paid API called
