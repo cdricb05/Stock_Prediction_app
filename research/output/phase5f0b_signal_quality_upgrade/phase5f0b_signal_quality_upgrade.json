@@ -1,0 +1,653 @@
+{
+  "phase": "5-F0B",
+  "objective": "Can confidence gating, horizon selection, model agreement, regime filters, sector/industry controls, and turnover controls turn the existing weak/modest price/volume/regime ranking edge into a higher-quality, more tradable (shadow-candidate) signal \u2014 without new providers and without deployment?",
+  "track": "A (quantitative signal-quality evidence) \u2014 not Track B operational packaging.",
+  "data_source": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+  "benchmark_regime_proxy": "SPY",
+  "primary_label": "forward_excess_return_20d_vs_spy",
+  "candidate_set": [
+    "baseline_phase5c_reference",
+    "alpha_v3_ensemble",
+    "ensemble_high_confidence_only",
+    "ensemble_risk_on_only",
+    "ensemble_top10_weekly_rebalance",
+    "ensemble_top10_entry_exit_band",
+    "ensemble_industry_capped_top10",
+    "blended_horizon_signal",
+    "best_quality_candidate"
+  ],
+  "recommended_next_phase": "5-F1 (shadow candidate)",
+  "allowed_recommendations": [
+    "READY_FOR_PHASE5F1_SHADOW_CANDIDATE",
+    "EDGE_PRESENT_BUT_NEEDS_SHADOW_ONLY",
+    "NO_QUALITY_IMPROVEMENT",
+    "DATA_BLOCKER",
+    "ERROR"
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "paid_apis_used": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "committed": false,
+  "writes_to_d_drive": false,
+  "modifies_paper_trader": false,
+  "modifies_gcp": false,
+  "uses_simfin_fundamentals_as_alpha": false,
+  "provider_work": false,
+  "packages_installed": false,
+  "live_trading": false,
+  "shadow_only": true,
+  "universe_size": 128,
+  "date_range": {
+    "start": "2016-01-04",
+    "end": "2026-06-16"
+  },
+  "rebalance_cadences": [
+    "monthly",
+    "weekly"
+  ],
+  "sector_control_available": true,
+  "sector_control_coverage": 0.992188,
+  "sector_control_source": "research\\data\\simfin\\normalized\\phase5e1e\\shared\\general.csv",
+  "sector_control_note": "uses ONLY Ticker + IndustryId from the local industry map; no SimFin fundamentals are read or used as alpha",
+  "candidates_evaluated": [
+    "baseline_phase5c_reference",
+    "alpha_v3_ensemble",
+    "ensemble_high_confidence_only",
+    "ensemble_risk_on_only",
+    "ensemble_top10_weekly_rebalance",
+    "ensemble_top10_entry_exit_band",
+    "ensemble_industry_capped_top10",
+    "blended_horizon_signal"
+  ],
+  "candidates_unavailable": [],
+  "candidate_metrics": {
+    "baseline_phase5c_reference": {
+      "evaluable": true,
+      "candidate": "baseline_phase5c_reference",
+      "cadence": "monthly",
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "mean_rank_ic": 0.045229,
+      "ic_t_stat": 1.880473,
+      "worst_year_ic": -0.042161,
+      "mean_decile_spread": 0.019408,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.003669,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.045633,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.140428,
+          "n_dates": 19
+        }
+      },
+      "top10_equal_avg_turnover": 0.358929,
+      "top10_equal_gross_max_drawdown": -0.367156,
+      "top10_equal_net_50bps_ann_mean_return": 0.331915,
+      "top10_equal_net_25bps_total_return": 15.801799,
+      "top10_equal_net_50bps_total_return": 12.79128,
+      "top10_vol_adj_net_50bps_total_return": 12.79128,
+      "has_explicit_gating": false,
+      "notes": "Phase 5-C price-only reference (best 5-C model = top_quintile_score_model); the baseline to beat"
+    },
+    "alpha_v3_ensemble": {
+      "evaluable": true,
+      "candidate": "alpha_v3_ensemble",
+      "cadence": "monthly",
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "mean_rank_ic": 0.042478,
+      "ic_t_stat": 2.262358,
+      "worst_year_ic": -0.028909,
+      "mean_decile_spread": 0.015167,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.030874,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.038466,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.079697,
+          "n_dates": 19
+        }
+      },
+      "top10_equal_avg_turnover": 0.590179,
+      "top10_equal_gross_max_drawdown": -0.292352,
+      "top10_equal_net_50bps_ann_mean_return": 0.239155,
+      "top10_equal_net_25bps_total_return": 8.621809,
+      "top10_equal_net_50bps_total_return": 5.942958,
+      "top10_vol_adj_net_50bps_total_return": 4.466251,
+      "has_explicit_gating": false,
+      "notes": "raw Phase 5-F0 ensemble; no quality control (reference point)"
+    },
+    "ensemble_high_confidence_only": {
+      "evaluable": true,
+      "candidate": "ensemble_high_confidence_only",
+      "cadence": "monthly",
+      "n_scored_dates": 112,
+      "rebalance_coverage": 0.431947,
+      "mean_rank_ic": 0.052821,
+      "ic_t_stat": 2.257374,
+      "worst_year_ic": -0.059966,
+      "mean_decile_spread": 0.014995,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.057188,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.049017,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.052518,
+          "n_dates": 19
+        }
+      },
+      "top10_equal_avg_turnover": 0.608036,
+      "top10_equal_gross_max_drawdown": -0.292352,
+      "top10_equal_net_50bps_ann_mean_return": 0.242051,
+      "top10_equal_net_25bps_total_return": 8.988517,
+      "top10_equal_net_50bps_total_return": 6.138481,
+      "top10_vol_adj_net_50bps_total_return": 4.582045,
+      "has_explicit_gating": true,
+      "notes": "keep names with component-rank dispersion<=0.25 and ensemble rank>=0.7 or <=0.3 (no-trade middle); coverage=0.43"
+    },
+    "ensemble_risk_on_only": {
+      "evaluable": true,
+      "candidate": "ensemble_risk_on_only",
+      "cadence": "monthly",
+      "n_scored_dates": 44,
+      "rebalance_coverage": 0.3928,
+      "mean_rank_ic": 0.030874,
+      "ic_t_stat": 1.180626,
+      "worst_year_ic": -0.157347,
+      "mean_decile_spread": 0.013412,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.030874,
+          "n_dates": 44
+        }
+      },
+      "top10_equal_avg_turnover": 0.618182,
+      "top10_equal_gross_max_drawdown": -0.167277,
+      "top10_equal_net_50bps_ann_mean_return": 0.191251,
+      "top10_equal_net_25bps_total_return": 1.15309,
+      "top10_equal_net_50bps_total_return": 0.883745,
+      "top10_vol_adj_net_50bps_total_return": 0.699691,
+      "has_explicit_gating": true,
+      "notes": "trade only in the SPY risk-on regime; flat otherwise; coverage=0.39"
+    },
+    "ensemble_top10_weekly_rebalance": {
+      "evaluable": true,
+      "candidate": "ensemble_top10_weekly_rebalance",
+      "cadence": "weekly",
+      "n_scored_dates": 489,
+      "rebalance_coverage": null,
+      "mean_rank_ic": 0.042859,
+      "ic_t_stat": 4.517037,
+      "worst_year_ic": -0.050103,
+      "mean_decile_spread": 0.012993,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.019951,
+          "n_dates": 197
+        },
+        "neutral": {
+          "mean_ic": 0.047665,
+          "n_dates": 210
+        },
+        "risk_off": {
+          "mean_ic": 0.085587,
+          "n_dates": 82
+        }
+      },
+      "top10_equal_avg_turnover": 0.287117,
+      "top10_equal_gross_max_drawdown": -0.841745,
+      "top10_equal_net_50bps_ann_mean_return": 1.117976,
+      "top10_equal_net_25bps_total_return": 17110.134988,
+      "top10_equal_net_50bps_total_return": 8557.954045,
+      "top10_vol_adj_net_50bps_total_return": 2329.451024,
+      "has_explicit_gating": false,
+      "notes": "weekly rebalance of the ensemble top-10 (turnover/cost sensitivity)"
+    },
+    "ensemble_top10_entry_exit_band": {
+      "evaluable": true,
+      "candidate": "ensemble_top10_entry_exit_band",
+      "cadence": "monthly",
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "mean_rank_ic": 0.042478,
+      "ic_t_stat": 2.262358,
+      "worst_year_ic": -0.028909,
+      "mean_decile_spread": 0.015167,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.030874,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.038466,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.079697,
+          "n_dates": 19
+        }
+      },
+      "top10_equal_avg_turnover": 0.419643,
+      "top10_equal_gross_max_drawdown": -0.246583,
+      "top10_equal_net_50bps_ann_mean_return": 0.26226,
+      "top10_equal_net_25bps_total_return": 9.662605,
+      "top10_equal_net_50bps_total_return": 7.45519,
+      "top10_vol_adj_net_50bps_total_return": 4.466251,
+      "has_explicit_gating": true,
+      "notes": "enter on ensemble rank in top 10; hold until rank position >= 20 (low-churn turnover control)"
+    },
+    "ensemble_industry_capped_top10": {
+      "evaluable": true,
+      "candidate": "ensemble_industry_capped_top10",
+      "cadence": "monthly",
+      "n_scored_dates": 112,
+      "rebalance_coverage": 0.992188,
+      "mean_rank_ic": 0.042478,
+      "ic_t_stat": 2.262358,
+      "worst_year_ic": -0.028909,
+      "mean_decile_spread": 0.015167,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.030874,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.038466,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.079697,
+          "n_dates": 19
+        }
+      },
+      "top10_equal_avg_turnover": 0.633929,
+      "top10_equal_gross_max_drawdown": -0.261724,
+      "top10_equal_net_50bps_ann_mean_return": 0.173578,
+      "top10_equal_net_25bps_total_return": 4.816517,
+      "top10_equal_net_50bps_total_return": 3.094587,
+      "top10_vol_adj_net_50bps_total_return": 4.466251,
+      "has_explicit_gating": true,
+      "notes": "max 2 names per industry/sector (local IndustryId map; coverage=0.99)"
+    },
+    "blended_horizon_signal": {
+      "evaluable": true,
+      "candidate": "blended_horizon_signal",
+      "cadence": "monthly",
+      "n_scored_dates": 112,
+      "rebalance_coverage": null,
+      "mean_rank_ic": 0.032979,
+      "ic_t_stat": 1.802377,
+      "worst_year_ic": -0.065976,
+      "mean_decile_spread": 0.011314,
+      "ic_by_regime": {
+        "risk_on": {
+          "mean_ic": 0.020427,
+          "n_dates": 44
+        },
+        "neutral": {
+          "mean_ic": 0.026438,
+          "n_dates": 49
+        },
+        "risk_off": {
+          "mean_ic": 0.078913,
+          "n_dates": 19
+        }
+      },
+      "top10_equal_avg_turnover": 0.664286,
+      "top10_equal_gross_max_drawdown": -0.2863,
+      "top10_equal_net_50bps_ann_mean_return": 0.185618,
+      "top10_equal_net_25bps_total_return": 5.027175,
+      "top10_equal_net_50bps_total_return": 3.168829,
+      "top10_vol_adj_net_50bps_total_return": 2.295965,
+      "has_explicit_gating": false,
+      "notes": "mean within-date normalized rank of ridge signals at 5/10/20-day horizons"
+    }
+  },
+  "best_candidate": "ensemble_high_confidence_only",
+  "best_candidate_metrics": {
+    "evaluable": true,
+    "candidate": "ensemble_high_confidence_only",
+    "cadence": "monthly",
+    "n_scored_dates": 112,
+    "rebalance_coverage": 0.431947,
+    "mean_rank_ic": 0.052821,
+    "ic_t_stat": 2.257374,
+    "worst_year_ic": -0.059966,
+    "mean_decile_spread": 0.014995,
+    "ic_by_regime": {
+      "risk_on": {
+        "mean_ic": 0.057188,
+        "n_dates": 44
+      },
+      "neutral": {
+        "mean_ic": 0.049017,
+        "n_dates": 49
+      },
+      "risk_off": {
+        "mean_ic": 0.052518,
+        "n_dates": 19
+      }
+    },
+    "top10_equal_avg_turnover": 0.608036,
+    "top10_equal_gross_max_drawdown": -0.292352,
+    "top10_equal_net_50bps_ann_mean_return": 0.242051,
+    "top10_equal_net_25bps_total_return": 8.988517,
+    "top10_equal_net_50bps_total_return": 6.138481,
+    "top10_vol_adj_net_50bps_total_return": 4.582045,
+    "has_explicit_gating": true,
+    "notes": "keep names with component-rank dispersion<=0.25 and ensemble rank>=0.7 or <=0.3 (no-trade middle); coverage=0.43"
+  },
+  "phase5c_reference_metrics": {
+    "evaluable": true,
+    "candidate": "baseline_phase5c_reference",
+    "cadence": "monthly",
+    "n_scored_dates": 112,
+    "rebalance_coverage": null,
+    "mean_rank_ic": 0.045229,
+    "ic_t_stat": 1.880473,
+    "worst_year_ic": -0.042161,
+    "mean_decile_spread": 0.019408,
+    "ic_by_regime": {
+      "risk_on": {
+        "mean_ic": 0.003669,
+        "n_dates": 44
+      },
+      "neutral": {
+        "mean_ic": 0.045633,
+        "n_dates": 49
+      },
+      "risk_off": {
+        "mean_ic": 0.140428,
+        "n_dates": 19
+      }
+    },
+    "top10_equal_avg_turnover": 0.358929,
+    "top10_equal_gross_max_drawdown": -0.367156,
+    "top10_equal_net_50bps_ann_mean_return": 0.331915,
+    "top10_equal_net_25bps_total_return": 15.801799,
+    "top10_equal_net_50bps_total_return": 12.79128,
+    "top10_vol_adj_net_50bps_total_return": 12.79128,
+    "has_explicit_gating": false,
+    "notes": "Phase 5-C price-only reference (best 5-C model = top_quintile_score_model); the baseline to beat"
+  },
+  "alpha_v3_reference_metrics": {
+    "evaluable": true,
+    "candidate": "alpha_v3_ensemble",
+    "cadence": "monthly",
+    "n_scored_dates": 112,
+    "rebalance_coverage": null,
+    "mean_rank_ic": 0.042478,
+    "ic_t_stat": 2.262358,
+    "worst_year_ic": -0.028909,
+    "mean_decile_spread": 0.015167,
+    "ic_by_regime": {
+      "risk_on": {
+        "mean_ic": 0.030874,
+        "n_dates": 44
+      },
+      "neutral": {
+        "mean_ic": 0.038466,
+        "n_dates": 49
+      },
+      "risk_off": {
+        "mean_ic": 0.079697,
+        "n_dates": 19
+      }
+    },
+    "top10_equal_avg_turnover": 0.590179,
+    "top10_equal_gross_max_drawdown": -0.292352,
+    "top10_equal_net_50bps_ann_mean_return": 0.239155,
+    "top10_equal_net_25bps_total_return": 8.621809,
+    "top10_equal_net_50bps_total_return": 5.942958,
+    "top10_vol_adj_net_50bps_total_return": 4.466251,
+    "has_explicit_gating": false,
+    "notes": "raw Phase 5-F0 ensemble; no quality control (reference point)"
+  },
+  "quality_improvement_vs_phase5c": {
+    "baseline_5c_model": "top_quintile_score_model",
+    "baseline_mean_rank_ic": 0.045229,
+    "raw_ensemble_mean_rank_ic": 0.042478,
+    "best_candidate": "ensemble_high_confidence_only",
+    "best_mean_rank_ic": 0.052821,
+    "delta_ic_best_minus_baseline": 0.007592,
+    "best_beats_baseline_on_ic": true,
+    "decision_metric": "top10_equal net-of-50bps ANNUALIZED MEAN return (cadence-comparable)",
+    "baseline_top10_net50_ann_mean": 0.331915,
+    "best_top10_net50_ann_mean": 0.242051,
+    "delta_net50_ann_mean_best_minus_baseline": -0.089864,
+    "baseline_top10_net50_total_return_informational": 12.79128,
+    "best_top10_net50_total_return_informational": 6.138481,
+    "best_top10_avg_turnover": 0.608036,
+    "raw_ensemble_top10_avg_turnover": 0.590179,
+    "note": "absolute (compounded total) portfolio returns are survivorship-inflated and NOT comparable across cadences; rank IC, decile spread, turnover, and the annualized-mean net return are the trustworthy quality signals"
+  },
+  "horizon_comparison": [
+    [
+      "ridge@5d",
+      "vs_20d_excess",
+      0.027754,
+      1.450049,
+      0.010479,
+      112
+    ],
+    [
+      "ridge@10d",
+      "vs_20d_excess",
+      0.022284,
+      1.242839,
+      0.008225,
+      112
+    ],
+    [
+      "ridge@20d",
+      "vs_20d_excess",
+      0.038075,
+      1.951616,
+      0.015316,
+      112
+    ],
+    [
+      "blended_5_10_20",
+      "vs_20d_excess",
+      0.032979,
+      1.802377,
+      0.011314,
+      112
+    ]
+  ],
+  "risk_filters": {
+    "liquidity_floor_usd": 5000000.0,
+    "volatility_cap_percentile": 0.95,
+    "overextension_cap_percentile": 0.98,
+    "names_kept_fraction": 0.923244,
+    "ensemble_ic_before": 0.042478,
+    "ensemble_ic_after": 0.039147,
+    "note": "liquidity floor + per-date volatility cap + per-date extreme-overextension cap; reported as a diagnostic, not a separate ranked candidate"
+  },
+  "leakage_checks": {
+    "labels_forward_only": true,
+    "features_use_past_only": true,
+    "embargo_respected": true,
+    "placebo_mean_ic": 0.005674,
+    "placebo_interpretation": "ridge mean rank IC after a within-date label shuffle; should be ~0 \u2014 a real edge must not survive the shuffle"
+  },
+  "portfolio_simulation": {
+    "baskets": [
+      10,
+      20
+    ],
+    "weightings": [
+      "equal",
+      "vol_adj"
+    ],
+    "cost_bps": [
+      25,
+      50
+    ],
+    "cost_model": "round-trip turnover * 2 * bps on the changed weight fraction",
+    "turnover_controls": [
+      "weekly_vs_monthly_rebalance",
+      "entry_exit_band_hold"
+    ]
+  },
+  "confidence_controls": {
+    "dispersion_max": 0.25,
+    "hi_rank": 0.7,
+    "lo_rank": 0.3,
+    "definition": "model agreement = low stdev of component within-date ranks; no-trade zone removes the middle of the cross-section"
+  },
+  "validation_gate_matrix": [
+    {
+      "gate_name": "no_leakage_placebo_gate",
+      "status": "PASS",
+      "metric": "placebo_mean_ic",
+      "value": 0.005674,
+      "threshold": "|placebo IC|<=0.02",
+      "note": "ridge mean rank IC after within-date label shuffle must collapse to ~0"
+    },
+    {
+      "gate_name": "improves_net_portfolio_over_5c_gate",
+      "status": "FAIL",
+      "metric": "best_minus_baseline_net50_ann_mean",
+      "value": -0.089864,
+      "threshold": ">0",
+      "note": "best top10 net50 ann-mean=0.242051 vs 5-C baseline=0.331915 (annualized mean, not compounded; absolute level still survivorship-inflated)"
+    },
+    {
+      "gate_name": "ic_positive_and_stable_gate",
+      "status": "WARNING",
+      "metric": "mean_ic_and_worst_year",
+      "value": "{\"mean_ic\": 0.052821, \"worst_year_ic\": -0.059966}",
+      "threshold": ">0 & worst-year IC>-0.05",
+      "note": ""
+    },
+    {
+      "gate_name": "decile_spread_after_cost_gate",
+      "status": "PASS",
+      "metric": "decile_and_net50",
+      "value": "{\"decile_spread\": 0.014995, \"top10_net50_total\": 0.242051}",
+      "threshold": ">0",
+      "note": ""
+    },
+    {
+      "gate_name": "turnover_improved_or_acceptable_gate",
+      "status": "WARNING",
+      "metric": "best_turnover",
+      "value": 0.608036,
+      "threshold": "< ensemble(0.590179) OR <0.55",
+      "note": ""
+    },
+    {
+      "gate_name": "drawdown_acceptable_gate",
+      "status": "PASS",
+      "metric": "top10_gross_max_drawdown",
+      "value": -0.292352,
+      "threshold": ">-0.4",
+      "note": ""
+    },
+    {
+      "gate_name": "explicit_no_trade_confidence_logic_gate",
+      "status": "PASS",
+      "metric": "best_candidate_has_gating",
+      "value": true,
+      "threshold": "true",
+      "note": "best candidate = ensemble_high_confidence_only"
+    },
+    {
+      "gate_name": "shadow_only_not_live_gate",
+      "status": "PASS",
+      "metric": "deployment_mode",
+      "value": "shadow_only",
+      "threshold": "shadow_only",
+      "note": "this phase recommends at most a shadow candidate; never live"
+    },
+    {
+      "gate_name": "survivorship_bias_gate",
+      "status": "WARNING",
+      "metric": "universe_is_full_history_survivors",
+      "value": true,
+      "threshold": "survivorship-free universe required before trusting absolute returns",
+      "note": "rank IC / turnover are less affected than absolute portfolio returns"
+    },
+    {
+      "gate_name": "no_fundamentals_as_alpha_gate",
+      "status": "PASS",
+      "metric": "fundamentals_used_as_alpha",
+      "value": false,
+      "threshold": "false",
+      "note": "optional industry map uses Ticker/IndustryId only; no statement line items"
+    },
+    {
+      "gate_name": "preview_only_gate",
+      "status": "PASS",
+      "metric": "preview_only",
+      "value": true,
+      "threshold": "true",
+      "note": "research harness only"
+    },
+    {
+      "gate_name": "no_orders_gate",
+      "status": "PASS",
+      "metric": "orders_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_broker_execution_gate",
+      "status": "PASS",
+      "metric": "broker_execution_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_automation_gate",
+      "status": "PASS",
+      "metric": "automation_enabled",
+      "value": false,
+      "threshold": "false",
+      "note": ""
+    },
+    {
+      "gate_name": "no_binary_model_artifact_gate",
+      "status": "PASS",
+      "metric": "binary_model_written",
+      "value": false,
+      "threshold": "false",
+      "note": "models fit in-memory for evaluation only; nothing persisted"
+    }
+  ],
+  "readiness_gate_summary": {
+    "PASS": 11,
+    "FAIL": 1,
+    "WARNING": 3,
+    "NOT_EVALUABLE": 0
+  },
+  "any_candidate_ready_for_shadow": false,
+  "recommendation": "EDGE_PRESENT_BUT_NEEDS_SHADOW_ONLY",
+  "recommendation_reason": "a leakage-clean edge with explicit quality controls is present and is at least as tradable as the raw signal, but it does not clearly beat the Phase 5-C reference on every readiness gate; observe it in shadow only before any deployment decision",
+  "survivorship_caveat": "the local universe is full-history survivors, so absolute portfolio returns are upward-biased; rank IC / turnover are less affected and drive the readiness decision",
+  "honesty_note": "Carried-in result: Phase 5-F0 ensemble IC ~0.0425 did NOT materially beat the Phase 5-C reference ~0.0452. This phase reports honestly whether quality controls change that, never forces a PASS, and never recommends live trading \u2014 the ceiling is a shadow candidate."
+}

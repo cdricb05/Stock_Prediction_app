@@ -1,0 +1,16 @@
+gate_name,status,metric,value,threshold,note
+no_leakage_placebo_gate,PASS,placebo_mean_ic,0.005674,|placebo IC|<=0.02,ridge mean rank IC after within-date label shuffle must collapse to ~0
+improves_net_portfolio_over_5c_gate,FAIL,best_minus_baseline_net50_ann_mean,-0.089864,>0,"best top10 net50 ann-mean=0.242051 vs 5-C baseline=0.331915 (annualized mean, not compounded; absolute level still survivorship-inflated)"
+ic_positive_and_stable_gate,WARNING,mean_ic_and_worst_year,"{""mean_ic"": 0.052821, ""worst_year_ic"": -0.059966}",>0 & worst-year IC>-0.05,
+decile_spread_after_cost_gate,PASS,decile_and_net50,"{""decile_spread"": 0.014995, ""top10_net50_total"": 0.242051}",>0,
+turnover_improved_or_acceptable_gate,WARNING,best_turnover,0.608036,< ensemble(0.590179) OR <0.55,
+drawdown_acceptable_gate,PASS,top10_gross_max_drawdown,-0.292352,>-0.4,
+explicit_no_trade_confidence_logic_gate,PASS,best_candidate_has_gating,True,true,best candidate = ensemble_high_confidence_only
+shadow_only_not_live_gate,PASS,deployment_mode,shadow_only,shadow_only,this phase recommends at most a shadow candidate; never live
+survivorship_bias_gate,WARNING,universe_is_full_history_survivors,True,survivorship-free universe required before trusting absolute returns,rank IC / turnover are less affected than absolute portfolio returns
+no_fundamentals_as_alpha_gate,PASS,fundamentals_used_as_alpha,False,false,optional industry map uses Ticker/IndustryId only; no statement line items
+preview_only_gate,PASS,preview_only,True,true,research harness only
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_binary_model_artifact_gate,PASS,binary_model_written,False,false,models fit in-memory for evaluation only; nothing persisted

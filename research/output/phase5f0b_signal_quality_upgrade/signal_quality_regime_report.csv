@@ -1,0 +1,26 @@
+candidate,regime,mean_rank_ic,n_dates
+baseline_phase5c_reference,risk_on,0.003669,44
+baseline_phase5c_reference,neutral,0.045633,49
+baseline_phase5c_reference,risk_off,0.140428,19
+alpha_v3_ensemble,risk_on,0.030874,44
+alpha_v3_ensemble,neutral,0.038466,49
+alpha_v3_ensemble,risk_off,0.079697,19
+ensemble_high_confidence_only,risk_on,0.057188,44
+ensemble_high_confidence_only,neutral,0.049017,49
+ensemble_high_confidence_only,risk_off,0.052518,19
+ensemble_risk_on_only,risk_on,0.030874,44
+ensemble_top10_weekly_rebalance,risk_on,0.019951,197
+ensemble_top10_weekly_rebalance,neutral,0.047665,210
+ensemble_top10_weekly_rebalance,risk_off,0.085587,82
+ensemble_top10_entry_exit_band,risk_on,0.030874,44
+ensemble_top10_entry_exit_band,neutral,0.038466,49
+ensemble_top10_entry_exit_band,risk_off,0.079697,19
+ensemble_industry_capped_top10,risk_on,0.030874,44
+ensemble_industry_capped_top10,neutral,0.038466,49
+ensemble_industry_capped_top10,risk_off,0.079697,19
+blended_horizon_signal,risk_on,0.020427,44
+blended_horizon_signal,neutral,0.026438,49
+blended_horizon_signal,risk_off,0.078913,19
+best_quality_candidate (= ensemble_high_confidence_only),risk_on,0.057188,44
+best_quality_candidate (= ensemble_high_confidence_only),neutral,0.049017,49
+best_quality_candidate (= ensemble_high_confidence_only),risk_off,0.052518,19

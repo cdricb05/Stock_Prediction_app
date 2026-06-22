@@ -1,0 +1,5 @@
+signal,label_horizon,mean_rank_ic,ic_t_stat,mean_decile_spread,n_scored_dates
+ridge@5d,vs_20d_excess,0.027754,1.450049,0.010479,112
+ridge@10d,vs_20d_excess,0.022284,1.242839,0.008225,112
+ridge@20d,vs_20d_excess,0.038075,1.951616,0.015316,112
+blended_5_10_20,vs_20d_excess,0.032979,1.802377,0.011314,112

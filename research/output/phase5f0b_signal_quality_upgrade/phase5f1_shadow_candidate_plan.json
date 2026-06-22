@@ -1,0 +1,25 @@
+{
+  "phase": "5-F1 (shadow candidate)",
+  "title": "Shadow-only candidate observation plan (planned, not yet built)",
+  "gated_on": "Phase 5-F0B recommendation = READY_FOR_PHASE5F1_SHADOW_CANDIDATE.",
+  "phase5f0b_recommendation": "EDGE_PRESENT_BUT_NEEDS_SHADOW_ONLY",
+  "phase5f0b_best_candidate": "ensemble_high_confidence_only",
+  "proceed_to_shadow": false,
+  "scope_if_proceed": [
+    "Freeze the winning quality-controlled candidate (signal + gating + rebalance + position rules) from the walk-forward.",
+    "Observe it in SHADOW only: record paper signals and would-be positions without placing any orders.",
+    "Re-validate on a survivorship-free universe before trusting absolute returns.",
+    "Track live rank IC, turnover, drawdown, and regime behavior vs backtest."
+  ],
+  "hard_constraints": [
+    "Shadow-only: no orders, no broker execution, no automation, no GCP deploy.",
+    "Survivorship bias must be resolved before trusting absolute returns.",
+    "Preview-only; manual review; paper trading only."
+  ],
+  "if_not_ready": "Keep the Phase 5-C price-only baseline; iterate on confidence / regime / turnover controls before any shadow observation.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false
+}

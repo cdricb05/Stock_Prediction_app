@@ -1,0 +1,10 @@
+candidate,cadence,evaluable,mean_rank_ic,ic_t_stat,mean_decile_spread,n_scored_dates,rebalance_coverage,top10_equal_avg_turnover,top10_equal_gross_max_drawdown,top10_equal_net_50bps_ann_mean_return,top10_equal_net_50bps_total_return_survivorship_inflated,notes
+baseline_phase5c_reference,monthly,True,0.045229,1.880473,0.019408,112,,0.358929,-0.367156,0.331915,12.79128,Phase 5-C price-only reference (best 5-C model = top_quintile_score_model); the baseline to beat
+alpha_v3_ensemble,monthly,True,0.042478,2.262358,0.015167,112,,0.590179,-0.292352,0.239155,5.942958,raw Phase 5-F0 ensemble; no quality control (reference point)
+ensemble_high_confidence_only,monthly,True,0.052821,2.257374,0.014995,112,0.431947,0.608036,-0.292352,0.242051,6.138481,keep names with component-rank dispersion<=0.25 and ensemble rank>=0.7 or <=0.3 (no-trade middle); coverage=0.43
+ensemble_risk_on_only,monthly,True,0.030874,1.180626,0.013412,44,0.3928,0.618182,-0.167277,0.191251,0.883745,trade only in the SPY risk-on regime; flat otherwise; coverage=0.39
+ensemble_top10_weekly_rebalance,weekly,True,0.042859,4.517037,0.012993,489,,0.287117,-0.841745,1.117976,8557.954045,weekly rebalance of the ensemble top-10 (turnover/cost sensitivity)
+ensemble_top10_entry_exit_band,monthly,True,0.042478,2.262358,0.015167,112,,0.419643,-0.246583,0.26226,7.45519,enter on ensemble rank in top 10; hold until rank position >= 20 (low-churn turnover control)
+ensemble_industry_capped_top10,monthly,True,0.042478,2.262358,0.015167,112,0.992188,0.633929,-0.261724,0.173578,3.094587,max 2 names per industry/sector (local IndustryId map; coverage=0.99)
+blended_horizon_signal,monthly,True,0.032979,1.802377,0.011314,112,,0.664286,-0.2863,0.185618,3.168829,mean within-date normalized rank of ridge signals at 5/10/20-day horizons
+best_quality_candidate (= ensemble_high_confidence_only),monthly,True,0.052821,2.257374,0.014995,112,0.431947,0.608036,-0.292352,0.242051,6.138481,keep names with component-rank dispersion<=0.25 and ensemble rank>=0.7 or <=0.3 (no-trade middle); coverage=0.43
