@@ -1,13 +1,25 @@
 {
   "phase": "5-G1D",
   "objective": "Integrate the newly collected raw Alpha Vantage earnings payloads into the committed-safe Phase 3-M earnings events/features artifacts using local cache only, with zero network calls and no API key, then audit coverage and git hygiene.",
-  "generated_at": "2026-06-22T14:33:23",
-  "raw_cache_count_before": 70,
-  "raw_cache_count_after": 70,
+  "generated_at": "2026-06-22T15:10:43",
+  "raw_cache_count_before": 75,
+  "raw_cache_count_after": 75,
   "coverage_count_before": 70,
-  "coverage_count_after": 70,
-  "new_cached_tickers_detected": [],
-  "new_tickers_integrated": [],
+  "coverage_count_after": 75,
+  "new_cached_tickers_detected": [
+    "MCD",
+    "MCO",
+    "MDLZ",
+    "MDT",
+    "META"
+  ],
+  "new_tickers_integrated": [
+    "MCD",
+    "MCO",
+    "MDLZ",
+    "MDT",
+    "META"
+  ],
   "failed_tickers": [],
   "network_used": false,
   "api_key_required": false,
@@ -17,13 +29,17 @@
   "raw_files_staged": false,
   "committed_safe_artifacts_modified": [
     "collection_progress.csv",
-    "collection_progress.json"
+    "collection_progress.json",
+    "decision_table.csv",
+    "earnings_events_universe.csv",
+    "earnings_feature_coverage_by_ticker.csv",
+    "earnings_features_universe.csv"
   ],
-  "recommendation": "CACHE_INTEGRATION_SUCCESS_NEEDS_BATCH2",
+  "recommendation": "CACHE_INTEGRATION_SUCCESS_READY_FOR_G2",
   "recommended_next_phase": {
-    "phase": "5-G1C-BATCH2",
-    "title": "Run Controlled Live Earnings Collection Batch 2",
-    "detail": "Coverage is 70 / 128; collect at least 5 more tickers via the Phase 5-G1 wrapper to reach the 75 minimum, then re-run Phase 5-G1D, then Phase 5-G2. (Not run here.)"
+    "phase": "5-G2",
+    "title": "Run Event-Alpha Rerun on Expanded Earnings Coverage",
+    "detail": "Coverage now clears the 75-ticker minimum; the event-alpha signal rerun is allowed. (Not run here.)"
   },
   "preview_only": true,
   "orders_enabled": false,
@@ -38,11 +54,11 @@
   "existing_phase3m_cache_only_rebuild_path_note": "run_phase3m_earnings_estimates_signal_gate.run() with no provider key takes the no-key branch (lines ~2054-2090): _detect_cached_provider + _load_cached_events + _finish_collecting rebuild events/features/coverage from cache with no ProviderClient and no network; this phase forces that branch by stripping provider keys from the env.",
   "provider_of_cache": "alpha_vantage",
   "universe_ticker_count": 128,
-  "api_key_present_in_env_was_ignored": false,
+  "api_key_present_in_env_was_ignored": true,
   "staged_raw_files": [],
   "new_raw_payload_gitignored": true,
   "phase3m_collection_recommendation": "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY",
   "target_min_coverage_for_g2": 75,
-  "batch2_needed": true,
-  "phase5g2_allowed": false
+  "batch2_needed": false,
+  "phase5g2_allowed": true
 }

@@ -135,8 +135,9 @@ def test_current_coverage_detected(mod, dry_report):
     # Coverage is read from the PIT feature file and must match the on-disk raw cache.
     assert r["current_coverage_count"] == len(covered)
     assert len(covered) == len(cached)
-    # Baseline at authoring time is 50/128 (spec: unless local data has already changed).
-    assert r["current_coverage_count"] == 50
+    # State-aware: coverage grows monotonically from the 50/128 authoring baseline toward the 128
+    # universe (Batch 2 moved it to 75). Never hardcode a fixed count -- assert the floor + ceiling.
+    assert 50 <= r["current_coverage_count"] <= mod.IDEAL_COVERAGE
 
 
 def test_target_minimum_is_75(mod, dry_report):
@@ -144,11 +145,12 @@ def test_target_minimum_is_75(mod, dry_report):
     assert dry_report["report"]["target_coverage_count"] == 75
 
 
-def test_min_new_tickers_at_least_25(dry_report):
+def test_min_new_tickers_tracks_gap_to_75(dry_report):
     r = dry_report["report"]
+    # The needed-count is purely a function of coverage vs the 75 gate -- this is the real invariant.
     assert r["minimum_new_tickers_needed"] == max(0, 75 - r["current_coverage_count"])
-    # At authoring time coverage is 50, so >= 25 are needed (spec hedge: unless changed).
-    assert r["minimum_new_tickers_needed"] >= 25
+    # State-aware bound: at the 50 baseline it was 25; after Batch 2 (coverage 75) it is 0.
+    assert 0 <= r["minimum_new_tickers_needed"] <= 25
 
 
 def test_missing_ticker_plan_exists(mod, dry_report):
@@ -209,10 +211,15 @@ def test_recommendation_in_allowed_values(mod, dry_report):
     assert dry_report["report"]["recommendation"] in mod.ALLOWED_RECOMMENDATIONS
 
 
-def test_recommendation_ready_when_reusable_and_below_target(dry_report):
-    # Current state: reusable collector, coverage 50 < 75 -> READY_FOR_CONTROLLED_EARNINGS_COLLECTION.
+def test_recommendation_matches_coverage_state(dry_report):
+    # State-aware: the recommendation flips at the 75 gate. Below it (50 baseline) the reusable
+    # collector is READY_FOR_CONTROLLED_EARNINGS_COLLECTION; at/above it (Batch 2 reached 75) coverage
+    # is EVENT_COVERAGE_ALREADY_SUFFICIENT. The collector stays reusable and next phase is 5-G2 in both.
     r = dry_report["report"]
-    assert r["recommendation"] == "READY_FOR_CONTROLLED_EARNINGS_COLLECTION"
+    if r["current_coverage_count"] >= r["target_coverage_count"]:
+        assert r["recommendation"] == "EVENT_COVERAGE_ALREADY_SUFFICIENT"
+    else:
+        assert r["recommendation"] == "READY_FOR_CONTROLLED_EARNINGS_COLLECTION"
     assert r["collector_reusable"] is True
     assert r["recommended_next_phase"]["phase"] == "5-G2"
 
@@ -270,6 +277,8 @@ def test_rerun_plan_gated_on_coverage(dry_report):
     plan = json.load(open(os.path.join(out, "phase5g2_event_alpha_rerun_plan.json"),
                           encoding="utf-8"))
     assert plan["phase"] == "5-G2"
-    # Below the 75 gate, the re-run must NOT be greenlit.
-    assert plan["proceed_to_event_alpha_rerun"] is False
     assert plan["target_coverage_count"] == 75
+    # State-aware: the re-run is greenlit iff coverage clears the 75 gate (50 baseline -> False;
+    # Batch 2 coverage 75 -> True).
+    cov = dry_report["report"]["current_coverage_count"]
+    assert plan["proceed_to_event_alpha_rerun"] is (cov >= 75)

@@ -1,14 +1,14 @@
 metric,value
 phase,3-N
-generated_at,2026-06-22T14:33:22
-generated_at_utc,2026-06-22T18:33:22+00:00
+generated_at,2026-06-22T15:10:42
+generated_at_utc,2026-06-22T19:10:42+00:00
 selected_provider,
 universe_ticker_count,128
-cached_ticker_count_before_run,70
+cached_ticker_count_before_run,75
 network_request_budget,20
 network_requests_this_run,0
-cached_ticker_count_after_run,70
-missing_ticker_count_after_run,58
+cached_ticker_count_after_run,75
+missing_ticker_count_after_run,53
 provider_limit_hit,False
 provider_limit_message_sanitized,
 provider_limit_last_hit_utc,
@@ -18,7 +18,7 @@ can_attempt_network_now,False
 reason_network_not_attempted,no supported provider API key present in the environment
 signal_gate_min_tickers,75
 signal_gate_allowed_now,False
-estimated_additional_runs_needed_at_current_budget,1
+estimated_additional_runs_needed_at_current_budget,
 next_action,SET_PROVIDER_KEY_TO_CONTINUE_COLLECTION
 no_key_values_written,True
 provider_key_present[ALPHAVANTAGE_API_KEY],False

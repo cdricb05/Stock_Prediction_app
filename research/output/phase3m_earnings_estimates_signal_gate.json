@@ -1,6 +1,6 @@
 {
   "phase": "3-M",
-  "generated_at": "2026-06-20T10:57:49",
+  "generated_at": "2026-06-22T15:10:42",
   "inputs_read": {
     "phase3l_result_json": "research/output/phase3l_sec_universe_signal_gate.json",
     "phase3l_aligned_panel_csv": "research/output/phase3l_sec_universe_signal_gate/aligned_feature_price_panel_universe.csv",
@@ -28,9 +28,9 @@
     "collection_progress_csv": "research/output/phase3m_earnings_estimates_signal_gate/collection_progress.csv",
     "raw_cache_dir": "research/output/phase3m_earnings_estimates_signal_gate/raw/"
   },
-  "selected_provider": "alpha_vantage",
-  "cached_ticker_count_after_run": 50,
-  "missing_ticker_count_after_run": 78,
+  "selected_provider": null,
+  "cached_ticker_count_after_run": 75,
+  "missing_ticker_count_after_run": 53,
   "signal_gate_allowed_now": false,
   "phase3l_summary": {
     "phase3l_confirmed": {
@@ -67,7 +67,7 @@
   },
   "provider_access_summary": {
     "detected_keys": {
-      "ALPHAVANTAGE_API_KEY": true,
+      "ALPHAVANTAGE_API_KEY": false,
       "FMP_API_KEY": false,
       "FINNHUB_API_KEY": false,
       "INTRINIO_API_KEY": false
@@ -84,23 +84,23 @@
       "finnhub",
       "intrinio"
     ],
-    "selected_provider": "alpha_vantage",
-    "endpoint_used": "https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey=REDACTED",
-    "entitlement_status": "ok",
-    "network_used": true,
-    "request_count": 5,
+    "selected_provider": null,
+    "endpoint_used": null,
+    "entitlement_status": "no_key",
+    "network_used": false,
+    "request_count": 0,
     "cache_hit_count": 0,
     "rate_limit_or_premium_errors": 0,
     "key_values_never_stored": true,
-    "recommendation": "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS"
+    "recommendation": "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY"
   },
   "earnings_events_summary": {
-    "provider": "alpha_vantage",
-    "event_rows": 5625,
-    "processed_ticker_count": 50,
+    "provider": null,
+    "event_rows": 8390,
+    "processed_ticker_count": 75,
     "failed_ticker_count": 0,
     "failed_tickers": [],
-    "point_in_time_usable_event_rows": 5609,
+    "point_in_time_usable_event_rows": 8363,
     "availability_is_reported_date": true
   },
   "earnings_feature_summary": {
@@ -119,38 +119,38 @@
       "earnings_event_recency_bucket",
       "estimate_revision_proxy"
     ],
-    "earnings_feature_ticker_count": 50,
-    "feature_rows": 5609,
+    "earnings_feature_ticker_count": 75,
+    "feature_rows": 8363,
     "estimate_revision_proxy_available": false
   },
   "collection_progress": {
     "phase": "3-N",
-    "generated_at": "2026-06-20T10:57:49",
-    "generated_at_utc": "2026-06-20T14:57:49+00:00",
-    "selected_provider": "alpha_vantage",
+    "generated_at": "2026-06-22T15:10:42",
+    "generated_at_utc": "2026-06-22T19:10:42+00:00",
+    "selected_provider": null,
     "supported_provider_keys_detected_as_booleans": {
-      "ALPHAVANTAGE_API_KEY": true,
+      "ALPHAVANTAGE_API_KEY": false,
       "FMP_API_KEY": false,
       "FINNHUB_API_KEY": false,
       "INTRINIO_API_KEY": false
     },
     "universe_ticker_count": 128,
-    "cached_ticker_count_before_run": 45,
-    "network_request_budget": 5,
-    "network_requests_this_run": 5,
-    "cached_ticker_count_after_run": 50,
-    "missing_ticker_count_after_run": 78,
+    "cached_ticker_count_before_run": 75,
+    "network_request_budget": 20,
+    "network_requests_this_run": 0,
+    "cached_ticker_count_after_run": 75,
+    "missing_ticker_count_after_run": 53,
     "provider_limit_hit": false,
     "provider_limit_message_sanitized": "",
     "provider_limit_last_hit_utc": null,
     "same_day_limit_guard_active": false,
     "status_only": false,
-    "can_attempt_network_now": true,
-    "reason_network_not_attempted": "",
+    "can_attempt_network_now": false,
+    "reason_network_not_attempted": "no supported provider API key present in the environment",
     "signal_gate_min_tickers": 75,
     "signal_gate_allowed_now": false,
-    "estimated_additional_runs_needed_at_current_budget": 5,
-    "next_action": "RUN_AGAIN_TO_COLLECT_MORE_TICKERS",
+    "estimated_additional_runs_needed_at_current_budget": null,
+    "next_action": "SET_PROVIDER_KEY_TO_CONTINUE_COLLECTION",
     "no_key_values_written": true
   },
   "source_limitations": [
@@ -161,7 +161,7 @@
     "Daily scoring with overlapping 21/63/126-day forward windows means per-date ICs are serially correlated; the temporal-breadth guard (distinct dense IC years) governs the gate, not single -year magnitude."
   ],
   "recommendation": {
-    "recommendation": "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS",
+    "recommendation": "EARNINGS_PROVIDER_COLLECTION_BLOCKED_NEEDS_API_KEY",
     "allowed_values": [
       "EARNINGS_PROVIDER_COLLECTION_IN_PROGRESS",
       "EARNINGS_PROVIDER_COLLECTION_READY_FOR_SIGNAL_GATE",
@@ -175,23 +175,23 @@
       "EARNINGS_ESTIMATES_SIGNAL_GATE_FAILS",
       "EARNINGS_ESTIMATES_SIGNAL_GATE_INCONCLUSIVE_COVERAGE"
     ],
-    "selected_provider": "alpha_vantage",
+    "selected_provider": null,
     "create_production_model_candidate_now": false,
     "train_production_model_now": false,
     "deploy_now": false,
     "production_edge_claimed": false,
     "research_model_allowed_next": false,
-    "collection_in_progress": true,
+    "collection_in_progress": false,
     "signal_gate_allowed_now": false,
-    "cached_ticker_count_after_run": 50,
-    "missing_ticker_count_after_run": 78,
-    "configure_provider_next": false,
-    "reason": "Resumable earnings-estimates collection is in progress: 50 of the 128-ticker universe are cached, below the 75-ticker minimum required to run the signal gate. Alpha Vantage free-tier limits cap how many tickers can be fetched per run, so collection is cache-first and network-budgeted across multiple runs (about 5 more run(s) needed at the current budget). Partial progress is preserved; no model is trained, no predictions or portfolio weights are computed, and no production edge is claimed."
+    "cached_ticker_count_after_run": 75,
+    "missing_ticker_count_after_run": 53,
+    "configure_provider_next": true,
+    "reason": "No supported earnings-estimates provider key is present in the environment (checked ALPHAVANTAGE_API_KEY, FMP_API_KEY, FINNHUB_API_KEY, INTRINIO_API_KEY). Set ALPHAVANTAGE_API_KEY (preferred) and re-run; nothing was fetched, faked, or modeled."
   },
   "interpretation": {
     "earnings_estimates_signal_gate_only": true,
     "follows_phase3l_weak_sec_only": true,
-    "selected_provider": "alpha_vantage",
+    "selected_provider": null,
     "model_features_computed": true,
     "price_join_performed": false,
     "labels_computed": false,
@@ -207,10 +207,10 @@
     "production_model_candidate_created": false,
     "deployable_model_artifact_written": false,
     "research_model_allowed_next": false,
-    "network_used": true,
-    "vendor_api_called": true,
+    "network_used": false,
+    "vendor_api_called": false,
     "paid_vendor_api_called": false,
-    "user_configured_provider_key_used": true,
+    "user_configured_provider_key_used": false,
     "data_purchased": false,
     "read_from_d_drive": false,
     "wrote_to_d_drive": false,
@@ -220,8 +220,8 @@
   },
   "recommended_next_phase": {
     "phase": "3-N",
-    "title": "Continue Resumable Earnings Collection",
-    "purpose": "Re-run the collector on later days to cache more tickers (cache-first, network-budgeted) until the minimum coverage for the signal gate is reached; no model is trained yet."
+    "title": "Configure Earnings Estimates Provider",
+    "purpose": "Set ALPHAVANTAGE_API_KEY or another supported provider key before collecting."
   },
   "database_touched": false,
   "database_write_executed": false,
@@ -238,10 +238,10 @@
   "deployable_model_artifact_written": false,
   "d_drive_read": false,
   "d_drive_written": false,
-  "network_used": true,
-  "vendor_api_called": true,
+  "network_used": false,
+  "vendor_api_called": false,
   "paid_vendor_api_called": false,
-  "user_configured_provider_key_used": true,
+  "user_configured_provider_key_used": false,
   "data_purchase_made": false,
   "model_features_computed": true,
   "price_join_performed": false,

@@ -1,12 +1,12 @@
 metric,value
 universe_count,128
-covered_count,50
-covered_fraction,0.390625
-missing_count,78
+covered_count,75
+covered_fraction,0.585938
+missing_count,53
 target_minimum_coverage,75
 ideal_coverage,128
-new_tickers_needed_to_minimum,25
-new_tickers_needed_to_ideal,78
+new_tickers_needed_to_minimum,0
+new_tickers_needed_to_ideal,53
 provider_source,alpha_vantage
 api_key_required,True
 api_key_present_in_env,False

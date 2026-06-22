@@ -129,15 +129,35 @@ def test_coverage_increases_when_all_files_parse(report):
         assert gained == len(r["new_cached_tickers_detected"])
 
 
-def test_coverage_reflects_full_cache_rebuild(report):
-    # State-robust: the projected coverage equals the full parseable raw cache (Batch 1 -> 70),
-    # the raw cache holds 70 payloads, and nothing failed to parse. coverage_before tracks the
-    # committed CSV (50 pre-integration, 70 after) so we assert the invariant, not a fixed before.
+def test_coverage_reflects_full_cache_rebuild(mod, report):
+    # State-aware: the projected coverage equals the distinct-ticker coverage produced from the
+    # currently parseable raw cache, NOT a hardcoded count. This holds for Batch 1 (coverage 70,
+    # NEEDS_BATCH2, gate closed) and Batch 2+ (coverage >= 75, READY_FOR_G2, gate open). The
+    # parse-status `integrated` column is exactly the set the rebuild produces from cache
+    # (run_phase5g1d_...py:259 -> `t in projected_cov_set`; apply=False coverage_after == that set).
+    import csv
     r = report["report"]
-    assert r["coverage_count_after"] == 70
-    assert r["raw_cache_count_before"] == 70
+    out = report["out_dir"]
+    with open(os.path.join(out, mod.PARSE_STATUS_CSV_NAME), encoding="utf-8") as f:
+        integrated_from_cache = {row["ticker"] for row in csv.DictReader(f)
+                                 if row["integrated"] == "True"}
+
+    # 1. coverage_after equals the distinct coverage produced from the parseable raw cache.
+    assert r["coverage_count_after"] == len(integrated_from_cache)
+    # 2. The raw cache holds at least as many payloads as the coverage it produced.
+    assert r["raw_cache_count_before"] >= r["coverage_count_after"]
+    assert r["raw_cache_count_after"] >= r["coverage_count_after"]
+    # 3. Healthy local state: no cached ticker failed to parse into usable PIT events.
     assert r["failed_tickers"] == []
+    # 4. Coverage never regresses against the committed CSV baseline.
     assert r["coverage_count_before"] <= r["coverage_count_after"]
+    # 5. Recommendation + gate are coverage-driven and consistent across Batch 1 / Batch 2.
+    if r["coverage_count_after"] >= 75:
+        assert r["recommendation"] == "CACHE_INTEGRATION_SUCCESS_READY_FOR_G2"
+        assert r["phase5g2_allowed"] is True
+    else:
+        assert r["recommendation"] == "CACHE_INTEGRATION_SUCCESS_NEEDS_BATCH2"
+        assert r["phase5g2_allowed"] is False
 
 
 def test_recommendation_is_correct(report):
