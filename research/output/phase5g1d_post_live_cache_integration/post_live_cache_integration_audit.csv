@@ -1,0 +1,26 @@
+check,value,detail
+cache_only_mode,True,provider keys stripped from env
+network_used,False,no provider network reachable in no-key branch
+api_key_required,False,rebuild reads only local raw cache
+api_key_used,False,selected_provider is None in cache-only rebuild
+raw_cache_count_before,70,*.json under raw/
+raw_cache_count_after,70,*.json under raw/
+raw_files_deleted,False,no raw file deleted
+raw_files_untracked,False,no git rm performed
+raw_files_staged,False,none staged
+new_raw_payload_gitignored,True,research/output/phase3m_earnings_estimates_signal_gate/raw/alpha_vantage_ZZZZ_HYPOTHETICAL.json
+coverage_count_before,70,distinct tickers in features csv
+coverage_count_after,70,distinct tickers in features csv
+new_cached_tickers_detected,0,
+new_tickers_integrated,0,
+failed_tickers,0,none
+committed_safe_artifacts_modified,2,"collection_progress.csv,collection_progress.json"
+no_paper_trader_change,True,research-only; no api/ touched
+no_gcp_change,True,no deployment surface touched
+no_deployment,True,no model/service deployed
+no_orders,True,orders disabled
+no_broker_execution,True,no broker execution
+no_automation,True,automation off
+no_binary_artifacts,True,text artifacts only
+preview_only,True,manual review
+recommendation,CACHE_INTEGRATION_SUCCESS_NEEDS_BATCH2,Run Controlled Live Earnings Collection Batch 2

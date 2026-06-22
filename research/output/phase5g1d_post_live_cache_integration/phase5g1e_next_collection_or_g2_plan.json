@@ -1,0 +1,18 @@
+{
+  "phase": "5-G1E",
+  "generated_at": "2026-06-22T14:33:23",
+  "coverage_count_after": 70,
+  "target_min_coverage_for_g2": 75,
+  "batch2_needed": true,
+  "additional_tickers_needed_for_g2": 5,
+  "phase5g2_allowed": false,
+  "recommendation": "CACHE_INTEGRATION_SUCCESS_NEEDS_BATCH2",
+  "recommended_next_phase": {
+    "phase": "5-G1C-BATCH2",
+    "title": "Run Controlled Live Earnings Collection Batch 2",
+    "detail": "Coverage is 70 / 128; collect at least 5 more tickers via the Phase 5-G1 wrapper to reach the 75 minimum, then re-run Phase 5-G1D, then Phase 5-G2. (Not run here.)"
+  },
+  "next_live_batch_command_if_needed": "$env:ALPHAVANTAGE_API_KEY = \"<your_key>\"; python research\\run_phase5g1_earnings_coverage_expansion.py --live --max-new-tickers 20",
+  "do_not_commit": true,
+  "do_not_push": true
+}

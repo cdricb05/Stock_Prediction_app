@@ -599,3 +599,243 @@ GOOGL,Communication Services,surprise_acceleration,86,87,0.9885,2004-10-21,2026-
 GOOGL,Communication Services,days_since_last_earnings,86,87,0.9885,2004-10-21,2026-04-29
 GOOGL,Communication Services,earnings_event_recency_bucket,87,87,1.0,2004-10-21,2026-04-29
 GOOGL,Communication Services,estimate_revision_proxy,0,87,0.0,2004-10-21,2026-04-29
+GS,Financials,eps_surprise,108,108,1.0,1999-06-23,2026-04-13
+GS,Financials,eps_surprise_pct,108,108,1.0,1999-06-23,2026-04-13
+GS,Financials,positive_surprise_flag,108,108,1.0,1999-06-23,2026-04-13
+GS,Financials,negative_surprise_flag,108,108,1.0,1999-06-23,2026-04-13
+GS,Financials,surprise_magnitude_abs,108,108,1.0,1999-06-23,2026-04-13
+GS,Financials,trailing_4q_avg_surprise_pct,107,108,0.9907,1999-06-23,2026-04-13
+GS,Financials,trailing_4q_positive_surprise_rate,107,108,0.9907,1999-06-23,2026-04-13
+GS,Financials,trailing_8q_avg_surprise_pct,107,108,0.9907,1999-06-23,2026-04-13
+GS,Financials,surprise_acceleration,107,108,0.9907,1999-06-23,2026-04-13
+GS,Financials,days_since_last_earnings,107,108,0.9907,1999-06-23,2026-04-13
+GS,Financials,earnings_event_recency_bucket,108,108,1.0,1999-06-23,2026-04-13
+GS,Financials,estimate_revision_proxy,0,108,0.0,1999-06-23,2026-04-13
+HCA,Health Care,eps_surprise,61,61,1.0,2011-05-04,2026-04-24
+HCA,Health Care,eps_surprise_pct,61,61,1.0,2011-05-04,2026-04-24
+HCA,Health Care,positive_surprise_flag,61,61,1.0,2011-05-04,2026-04-24
+HCA,Health Care,negative_surprise_flag,61,61,1.0,2011-05-04,2026-04-24
+HCA,Health Care,surprise_magnitude_abs,61,61,1.0,2011-05-04,2026-04-24
+HCA,Health Care,trailing_4q_avg_surprise_pct,60,61,0.9836,2011-05-04,2026-04-24
+HCA,Health Care,trailing_4q_positive_surprise_rate,60,61,0.9836,2011-05-04,2026-04-24
+HCA,Health Care,trailing_8q_avg_surprise_pct,60,61,0.9836,2011-05-04,2026-04-24
+HCA,Health Care,surprise_acceleration,60,61,0.9836,2011-05-04,2026-04-24
+HCA,Health Care,days_since_last_earnings,60,61,0.9836,2011-05-04,2026-04-24
+HCA,Health Care,earnings_event_recency_bucket,61,61,1.0,2011-05-04,2026-04-24
+HCA,Health Care,estimate_revision_proxy,0,61,0.0,2011-05-04,2026-04-24
+HD,Consumer Discretionary,eps_surprise,121,121,1.0,1996-05-14,2026-05-19
+HD,Consumer Discretionary,eps_surprise_pct,121,121,1.0,1996-05-14,2026-05-19
+HD,Consumer Discretionary,positive_surprise_flag,121,121,1.0,1996-05-14,2026-05-19
+HD,Consumer Discretionary,negative_surprise_flag,121,121,1.0,1996-05-14,2026-05-19
+HD,Consumer Discretionary,surprise_magnitude_abs,121,121,1.0,1996-05-14,2026-05-19
+HD,Consumer Discretionary,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-05-14,2026-05-19
+HD,Consumer Discretionary,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-05-14,2026-05-19
+HD,Consumer Discretionary,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-05-14,2026-05-19
+HD,Consumer Discretionary,surprise_acceleration,120,121,0.9917,1996-05-14,2026-05-19
+HD,Consumer Discretionary,days_since_last_earnings,120,121,0.9917,1996-05-14,2026-05-19
+HD,Consumer Discretionary,earnings_event_recency_bucket,121,121,1.0,1996-05-14,2026-05-19
+HD,Consumer Discretionary,estimate_revision_proxy,0,121,0.0,1996-05-14,2026-05-19
+HON,Industrials,eps_surprise,121,121,1.0,1996-04-25,2026-04-23
+HON,Industrials,eps_surprise_pct,121,121,1.0,1996-04-25,2026-04-23
+HON,Industrials,positive_surprise_flag,121,121,1.0,1996-04-25,2026-04-23
+HON,Industrials,negative_surprise_flag,121,121,1.0,1996-04-25,2026-04-23
+HON,Industrials,surprise_magnitude_abs,121,121,1.0,1996-04-25,2026-04-23
+HON,Industrials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-25,2026-04-23
+HON,Industrials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-25,2026-04-23
+HON,Industrials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-25,2026-04-23
+HON,Industrials,surprise_acceleration,120,121,0.9917,1996-04-25,2026-04-23
+HON,Industrials,days_since_last_earnings,120,121,0.9917,1996-04-25,2026-04-23
+HON,Industrials,earnings_event_recency_bucket,121,121,1.0,1996-04-25,2026-04-23
+HON,Industrials,estimate_revision_proxy,0,121,0.0,1996-04-25,2026-04-23
+IBM,Information Technology,eps_surprise,121,121,1.0,1996-04-17,2026-04-22
+IBM,Information Technology,eps_surprise_pct,121,121,1.0,1996-04-17,2026-04-22
+IBM,Information Technology,positive_surprise_flag,121,121,1.0,1996-04-17,2026-04-22
+IBM,Information Technology,negative_surprise_flag,121,121,1.0,1996-04-17,2026-04-22
+IBM,Information Technology,surprise_magnitude_abs,121,121,1.0,1996-04-17,2026-04-22
+IBM,Information Technology,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-22
+IBM,Information Technology,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-17,2026-04-22
+IBM,Information Technology,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-22
+IBM,Information Technology,surprise_acceleration,120,121,0.9917,1996-04-17,2026-04-22
+IBM,Information Technology,days_since_last_earnings,120,121,0.9917,1996-04-17,2026-04-22
+IBM,Information Technology,earnings_event_recency_bucket,121,121,1.0,1996-04-17,2026-04-22
+IBM,Information Technology,estimate_revision_proxy,0,121,0.0,1996-04-17,2026-04-22
+ICE,Financials,eps_surprise,83,83,1.0,2005-11-30,2026-04-30
+ICE,Financials,eps_surprise_pct,82,83,0.988,2005-11-30,2026-04-30
+ICE,Financials,positive_surprise_flag,83,83,1.0,2005-11-30,2026-04-30
+ICE,Financials,negative_surprise_flag,83,83,1.0,2005-11-30,2026-04-30
+ICE,Financials,surprise_magnitude_abs,83,83,1.0,2005-11-30,2026-04-30
+ICE,Financials,trailing_4q_avg_surprise_pct,81,83,0.9759,2005-11-30,2026-04-30
+ICE,Financials,trailing_4q_positive_surprise_rate,81,83,0.9759,2005-11-30,2026-04-30
+ICE,Financials,trailing_8q_avg_surprise_pct,81,83,0.9759,2005-11-30,2026-04-30
+ICE,Financials,surprise_acceleration,81,83,0.9759,2005-11-30,2026-04-30
+ICE,Financials,days_since_last_earnings,82,83,0.988,2005-11-30,2026-04-30
+ICE,Financials,earnings_event_recency_bucket,83,83,1.0,2005-11-30,2026-04-30
+ICE,Financials,estimate_revision_proxy,0,83,0.0,2005-11-30,2026-04-30
+INTC,Information Technology,eps_surprise,121,121,1.0,1996-04-15,2026-04-23
+INTC,Information Technology,eps_surprise_pct,121,121,1.0,1996-04-15,2026-04-23
+INTC,Information Technology,positive_surprise_flag,121,121,1.0,1996-04-15,2026-04-23
+INTC,Information Technology,negative_surprise_flag,121,121,1.0,1996-04-15,2026-04-23
+INTC,Information Technology,surprise_magnitude_abs,121,121,1.0,1996-04-15,2026-04-23
+INTC,Information Technology,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-15,2026-04-23
+INTC,Information Technology,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-15,2026-04-23
+INTC,Information Technology,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-15,2026-04-23
+INTC,Information Technology,surprise_acceleration,120,121,0.9917,1996-04-15,2026-04-23
+INTC,Information Technology,days_since_last_earnings,120,121,0.9917,1996-04-15,2026-04-23
+INTC,Information Technology,earnings_event_recency_bucket,121,121,1.0,1996-04-15,2026-04-23
+INTC,Information Technology,estimate_revision_proxy,0,121,0.0,1996-04-15,2026-04-23
+INTU,Information Technology,eps_surprise,122,122,1.0,1996-02-29,2026-05-20
+INTU,Information Technology,eps_surprise_pct,120,122,0.9836,1996-02-29,2026-05-20
+INTU,Information Technology,positive_surprise_flag,122,122,1.0,1996-02-29,2026-05-20
+INTU,Information Technology,negative_surprise_flag,122,122,1.0,1996-02-29,2026-05-20
+INTU,Information Technology,surprise_magnitude_abs,122,122,1.0,1996-02-29,2026-05-20
+INTU,Information Technology,trailing_4q_avg_surprise_pct,121,122,0.9918,1996-02-29,2026-05-20
+INTU,Information Technology,trailing_4q_positive_surprise_rate,121,122,0.9918,1996-02-29,2026-05-20
+INTU,Information Technology,trailing_8q_avg_surprise_pct,121,122,0.9918,1996-02-29,2026-05-20
+INTU,Information Technology,surprise_acceleration,119,122,0.9754,1996-02-29,2026-05-20
+INTU,Information Technology,days_since_last_earnings,121,122,0.9918,1996-02-29,2026-05-20
+INTU,Information Technology,earnings_event_recency_bucket,122,122,1.0,1996-02-29,2026-05-20
+INTU,Information Technology,estimate_revision_proxy,0,122,0.0,1996-02-29,2026-05-20
+ISRG,Health Care,eps_surprise,104,104,1.0,2000-07-27,2026-04-21
+ISRG,Health Care,eps_surprise_pct,102,104,0.9808,2000-07-27,2026-04-21
+ISRG,Health Care,positive_surprise_flag,104,104,1.0,2000-07-27,2026-04-21
+ISRG,Health Care,negative_surprise_flag,104,104,1.0,2000-07-27,2026-04-21
+ISRG,Health Care,surprise_magnitude_abs,104,104,1.0,2000-07-27,2026-04-21
+ISRG,Health Care,trailing_4q_avg_surprise_pct,103,104,0.9904,2000-07-27,2026-04-21
+ISRG,Health Care,trailing_4q_positive_surprise_rate,103,104,0.9904,2000-07-27,2026-04-21
+ISRG,Health Care,trailing_8q_avg_surprise_pct,103,104,0.9904,2000-07-27,2026-04-21
+ISRG,Health Care,surprise_acceleration,101,104,0.9712,2000-07-27,2026-04-21
+ISRG,Health Care,days_since_last_earnings,103,104,0.9904,2000-07-27,2026-04-21
+ISRG,Health Care,earnings_event_recency_bucket,104,104,1.0,2000-07-27,2026-04-21
+ISRG,Health Care,estimate_revision_proxy,0,104,0.0,2000-07-27,2026-04-21
+ITW,Industrials,eps_surprise,121,121,1.0,1996-04-17,2026-04-30
+ITW,Industrials,eps_surprise_pct,121,121,1.0,1996-04-17,2026-04-30
+ITW,Industrials,positive_surprise_flag,121,121,1.0,1996-04-17,2026-04-30
+ITW,Industrials,negative_surprise_flag,121,121,1.0,1996-04-17,2026-04-30
+ITW,Industrials,surprise_magnitude_abs,121,121,1.0,1996-04-17,2026-04-30
+ITW,Industrials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-30
+ITW,Industrials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-17,2026-04-30
+ITW,Industrials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-30
+ITW,Industrials,surprise_acceleration,120,121,0.9917,1996-04-17,2026-04-30
+ITW,Industrials,days_since_last_earnings,120,121,0.9917,1996-04-17,2026-04-30
+ITW,Industrials,earnings_event_recency_bucket,121,121,1.0,1996-04-17,2026-04-30
+ITW,Industrials,estimate_revision_proxy,0,121,0.0,1996-04-17,2026-04-30
+JNJ,Health Care,eps_surprise,121,121,1.0,1996-04-16,2026-04-14
+JNJ,Health Care,eps_surprise_pct,121,121,1.0,1996-04-16,2026-04-14
+JNJ,Health Care,positive_surprise_flag,121,121,1.0,1996-04-16,2026-04-14
+JNJ,Health Care,negative_surprise_flag,121,121,1.0,1996-04-16,2026-04-14
+JNJ,Health Care,surprise_magnitude_abs,121,121,1.0,1996-04-16,2026-04-14
+JNJ,Health Care,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-16,2026-04-14
+JNJ,Health Care,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-16,2026-04-14
+JNJ,Health Care,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-16,2026-04-14
+JNJ,Health Care,surprise_acceleration,120,121,0.9917,1996-04-16,2026-04-14
+JNJ,Health Care,days_since_last_earnings,120,121,0.9917,1996-04-16,2026-04-14
+JNJ,Health Care,earnings_event_recency_bucket,121,121,1.0,1996-04-16,2026-04-14
+JNJ,Health Care,estimate_revision_proxy,0,121,0.0,1996-04-16,2026-04-14
+JPM,Financials,eps_surprise,121,121,1.0,1996-04-16,2026-04-14
+JPM,Financials,eps_surprise_pct,121,121,1.0,1996-04-16,2026-04-14
+JPM,Financials,positive_surprise_flag,121,121,1.0,1996-04-16,2026-04-14
+JPM,Financials,negative_surprise_flag,121,121,1.0,1996-04-16,2026-04-14
+JPM,Financials,surprise_magnitude_abs,121,121,1.0,1996-04-16,2026-04-14
+JPM,Financials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-16,2026-04-14
+JPM,Financials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-16,2026-04-14
+JPM,Financials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-16,2026-04-14
+JPM,Financials,surprise_acceleration,120,121,0.9917,1996-04-16,2026-04-14
+JPM,Financials,days_since_last_earnings,120,121,0.9917,1996-04-16,2026-04-14
+JPM,Financials,earnings_event_recency_bucket,121,121,1.0,1996-04-16,2026-04-14
+JPM,Financials,estimate_revision_proxy,0,121,0.0,1996-04-16,2026-04-14
+KLAC,Information Technology,eps_surprise,121,121,1.0,1996-04-15,2026-04-29
+KLAC,Information Technology,eps_surprise_pct,119,121,0.9835,1996-04-15,2026-04-29
+KLAC,Information Technology,positive_surprise_flag,121,121,1.0,1996-04-15,2026-04-29
+KLAC,Information Technology,negative_surprise_flag,121,121,1.0,1996-04-15,2026-04-29
+KLAC,Information Technology,surprise_magnitude_abs,121,121,1.0,1996-04-15,2026-04-29
+KLAC,Information Technology,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-15,2026-04-29
+KLAC,Information Technology,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-15,2026-04-29
+KLAC,Information Technology,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-15,2026-04-29
+KLAC,Information Technology,surprise_acceleration,118,121,0.9752,1996-04-15,2026-04-29
+KLAC,Information Technology,days_since_last_earnings,120,121,0.9917,1996-04-15,2026-04-29
+KLAC,Information Technology,earnings_event_recency_bucket,121,121,1.0,1996-04-15,2026-04-29
+KLAC,Information Technology,estimate_revision_proxy,0,121,0.0,1996-04-15,2026-04-29
+KO,Consumer Staples,eps_surprise,121,121,1.0,1996-04-17,2026-04-28
+KO,Consumer Staples,eps_surprise_pct,121,121,1.0,1996-04-17,2026-04-28
+KO,Consumer Staples,positive_surprise_flag,121,121,1.0,1996-04-17,2026-04-28
+KO,Consumer Staples,negative_surprise_flag,121,121,1.0,1996-04-17,2026-04-28
+KO,Consumer Staples,surprise_magnitude_abs,121,121,1.0,1996-04-17,2026-04-28
+KO,Consumer Staples,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-28
+KO,Consumer Staples,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-17,2026-04-28
+KO,Consumer Staples,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-17,2026-04-28
+KO,Consumer Staples,surprise_acceleration,120,121,0.9917,1996-04-17,2026-04-28
+KO,Consumer Staples,days_since_last_earnings,120,121,0.9917,1996-04-17,2026-04-28
+KO,Consumer Staples,earnings_event_recency_bucket,121,121,1.0,1996-04-17,2026-04-28
+KO,Consumer Staples,estimate_revision_proxy,0,121,0.0,1996-04-17,2026-04-28
+LIN,Materials,eps_surprise,121,121,1.0,1996-04-24,2026-05-01
+LIN,Materials,eps_surprise_pct,121,121,1.0,1996-04-24,2026-05-01
+LIN,Materials,positive_surprise_flag,121,121,1.0,1996-04-24,2026-05-01
+LIN,Materials,negative_surprise_flag,121,121,1.0,1996-04-24,2026-05-01
+LIN,Materials,surprise_magnitude_abs,121,121,1.0,1996-04-24,2026-05-01
+LIN,Materials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-24,2026-05-01
+LIN,Materials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-24,2026-05-01
+LIN,Materials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-24,2026-05-01
+LIN,Materials,surprise_acceleration,120,121,0.9917,1996-04-24,2026-05-01
+LIN,Materials,days_since_last_earnings,120,121,0.9917,1996-04-24,2026-05-01
+LIN,Materials,earnings_event_recency_bucket,121,121,1.0,1996-04-24,2026-05-01
+LIN,Materials,estimate_revision_proxy,0,121,0.0,1996-04-24,2026-05-01
+LLY,Health Care,eps_surprise,121,121,1.0,1996-04-15,2026-04-30
+LLY,Health Care,eps_surprise_pct,121,121,1.0,1996-04-15,2026-04-30
+LLY,Health Care,positive_surprise_flag,121,121,1.0,1996-04-15,2026-04-30
+LLY,Health Care,negative_surprise_flag,121,121,1.0,1996-04-15,2026-04-30
+LLY,Health Care,surprise_magnitude_abs,121,121,1.0,1996-04-15,2026-04-30
+LLY,Health Care,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-15,2026-04-30
+LLY,Health Care,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-15,2026-04-30
+LLY,Health Care,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-15,2026-04-30
+LLY,Health Care,surprise_acceleration,120,121,0.9917,1996-04-15,2026-04-30
+LLY,Health Care,days_since_last_earnings,120,121,0.9917,1996-04-15,2026-04-30
+LLY,Health Care,earnings_event_recency_bucket,121,121,1.0,1996-04-15,2026-04-30
+LLY,Health Care,estimate_revision_proxy,0,121,0.0,1996-04-15,2026-04-30
+LMT,Industrials,eps_surprise,121,121,1.0,1996-04-24,2026-04-23
+LMT,Industrials,eps_surprise_pct,121,121,1.0,1996-04-24,2026-04-23
+LMT,Industrials,positive_surprise_flag,121,121,1.0,1996-04-24,2026-04-23
+LMT,Industrials,negative_surprise_flag,121,121,1.0,1996-04-24,2026-04-23
+LMT,Industrials,surprise_magnitude_abs,121,121,1.0,1996-04-24,2026-04-23
+LMT,Industrials,trailing_4q_avg_surprise_pct,120,121,0.9917,1996-04-24,2026-04-23
+LMT,Industrials,trailing_4q_positive_surprise_rate,120,121,0.9917,1996-04-24,2026-04-23
+LMT,Industrials,trailing_8q_avg_surprise_pct,120,121,0.9917,1996-04-24,2026-04-23
+LMT,Industrials,surprise_acceleration,120,121,0.9917,1996-04-24,2026-04-23
+LMT,Industrials,days_since_last_earnings,120,121,0.9917,1996-04-24,2026-04-23
+LMT,Industrials,earnings_event_recency_bucket,121,121,1.0,1996-04-24,2026-04-23
+LMT,Industrials,estimate_revision_proxy,0,121,0.0,1996-04-24,2026-04-23
+LOW,Consumer Discretionary,eps_surprise,122,122,1.0,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,eps_surprise_pct,122,122,1.0,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,positive_surprise_flag,122,122,1.0,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,negative_surprise_flag,122,122,1.0,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,surprise_magnitude_abs,122,122,1.0,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,trailing_4q_avg_surprise_pct,121,122,0.9918,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,trailing_4q_positive_surprise_rate,121,122,0.9918,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,trailing_8q_avg_surprise_pct,121,122,0.9918,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,surprise_acceleration,121,122,0.9918,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,days_since_last_earnings,121,122,0.9918,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,earnings_event_recency_bucket,122,122,1.0,1996-02-20,2026-05-20
+LOW,Consumer Discretionary,estimate_revision_proxy,0,122,0.0,1996-02-20,2026-05-20
+MA,Financials,eps_surprise,81,81,1.0,2006-05-31,2026-04-30
+MA,Financials,eps_surprise_pct,80,81,0.9877,2006-05-31,2026-04-30
+MA,Financials,positive_surprise_flag,81,81,1.0,2006-05-31,2026-04-30
+MA,Financials,negative_surprise_flag,81,81,1.0,2006-05-31,2026-04-30
+MA,Financials,surprise_magnitude_abs,81,81,1.0,2006-05-31,2026-04-30
+MA,Financials,trailing_4q_avg_surprise_pct,79,81,0.9753,2006-05-31,2026-04-30
+MA,Financials,trailing_4q_positive_surprise_rate,79,81,0.9753,2006-05-31,2026-04-30
+MA,Financials,trailing_8q_avg_surprise_pct,79,81,0.9753,2006-05-31,2026-04-30
+MA,Financials,surprise_acceleration,79,81,0.9753,2006-05-31,2026-04-30
+MA,Financials,days_since_last_earnings,80,81,0.9877,2006-05-31,2026-04-30
+MA,Financials,earnings_event_recency_bucket,81,81,1.0,2006-05-31,2026-04-30
+MA,Financials,estimate_revision_proxy,0,81,0.0,2006-05-31,2026-04-30
+MAR,Consumer Discretionary,eps_surprise,120,120,1.0,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,eps_surprise_pct,120,120,1.0,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,positive_surprise_flag,120,120,1.0,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,negative_surprise_flag,120,120,1.0,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,surprise_magnitude_abs,120,120,1.0,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,trailing_4q_avg_surprise_pct,119,120,0.9917,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,trailing_4q_positive_surprise_rate,119,120,0.9917,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,trailing_8q_avg_surprise_pct,119,120,0.9917,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,surprise_acceleration,119,120,0.9917,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,days_since_last_earnings,119,120,0.9917,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,earnings_event_recency_bucket,120,120,1.0,1996-04-11,2026-05-06
+MAR,Consumer Discretionary,estimate_revision_proxy,0,120,0.0,1996-04-11,2026-05-06
