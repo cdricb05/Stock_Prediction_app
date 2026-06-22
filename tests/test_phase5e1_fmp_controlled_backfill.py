@@ -18,7 +18,6 @@ import importlib
 import inspect
 import json
 import os
-import shutil
 import sys
 
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,6 +41,46 @@ def _client():
 def _read_csv(path):
     with open(path, "r", newline="", encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
+
+
+def _use_tmp_data_dirs(runner, tmp_path):
+    """Point the runner's PAID-DATA dirs (raw/normalized/.gitignore) at an isolated
+    temp tree and return a restore() callable.
+
+    SAFETY: live/cache tests must NEVER read, write, or delete the real
+    research/data/fmp tree (doing so wiped the user's collected batch-001 data and
+    broke --skip-existing). This redirects only the physical paid-data location; the
+    committed OUTPUT dir is untouched, so committed artifacts stay canonical once
+    real dirs are restored. Call restore() BEFORE regenerating canonical dry-run
+    artifacts so those artifacts reference the real research/data/fmp paths."""
+    saved = (runner._DATA_DIR, runner._RAW_DIR, runner._NORM_DIR, runner._GITIGNORE)
+    data = tmp_path / "fmp"
+    runner._DATA_DIR = data
+    runner._RAW_DIR = data / "raw"
+    runner._NORM_DIR = data / "normalized"
+    runner._GITIGNORE = data / ".gitignore"
+    runner._RAW_DIR.mkdir(parents=True, exist_ok=True)
+    runner._NORM_DIR.mkdir(parents=True, exist_ok=True)
+
+    def restore():
+        (runner._DATA_DIR, runner._RAW_DIR, runner._NORM_DIR, runner._GITIGNORE) = saved
+
+    return restore
+
+
+def _reset_core_artifacts(runner):
+    """Leave the committed working tree clean after a monkeypatched live core run.
+
+    Clears the shared known-blocked register so it does not leak 402/403 rows into
+    later tests, then regenerates the canonical dry-run core artifacts (header-only
+    register included). It does NOT touch research/data/fmp/{raw,normalized}: live
+    tests write paid data only into a temp dir (see _use_tmp_data_dirs), so the real
+    cache is never created here and must never be deleted. Call this only after the
+    real data dirs have been restored, so the regenerated artifacts are canonical."""
+    if runner._CORE_KNOWN_BLOCKED_OUT.is_file():
+        runner._CORE_KNOWN_BLOCKED_OUT.unlink()
+    runner.run_core_backfill(live=False, universe_source="phase5c", max_tickers=25,
+                             batch_id="core_batch_001", verbose=False)
 
 
 @pytest.fixture(scope="module")
@@ -68,18 +107,17 @@ def run_result(monkeypatch_session):
 
 @pytest.fixture(scope="module", autouse=True)
 def _commit_safe_paid_data_cleanup():
-    """Remove any local paid-data dirs the monkeypatched live tests create.
+    """Leave the committed OUTPUT artifacts canonical after the module runs.
 
-    research/data/fmp/{raw,normalized} are git-ignored, but the tests still tidy
-    them so the working tree is left clean, then re-emit the canonical dry-run
-    artifacts.
+    Live tests write paid data ONLY into per-test temp dirs (see _use_tmp_data_dirs),
+    so this fixture must NOT delete research/data/fmp/{raw,normalized} - doing so
+    previously wiped the user's real collected batch-001 cache and silently broke
+    --skip-existing. It only re-emits the canonical dry-run committed artifacts.
     """
     yield
     runner = _runner()
-    for d in (runner._RAW_DIR, runner._NORM_DIR):
-        if d.is_dir():
-            shutil.rmtree(d, ignore_errors=True)
     runner.run(live=False, universe=runner.DEFAULT_UNIVERSE, verbose=False)
+    _reset_core_artifacts(runner)
 
 
 # --------------------------------------------------------------------------- #
@@ -388,9 +426,10 @@ def test_live_without_key_is_blocked(monkeypatch):
 # Monkeypatched live SUCCESS path (no real key, no real network): raw + normalized
 # written LOCALLY (git-ignored), committed artifacts stay payload-free.
 # --------------------------------------------------------------------------- #
-def test_live_success_writes_local_data_only(monkeypatch):
+def test_live_success_writes_local_data_only(monkeypatch, tmp_path):
     runner = _runner()
     client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
     monkeypatch.setattr(client, "has_api_key", lambda: True)
 
     def _fake(endpoint, params=None, **kwargs):
@@ -424,18 +463,17 @@ def test_live_success_writes_local_data_only(monkeypatch):
             assert marker not in out.read_text(encoding="utf-8", errors="replace").lower()
     finally:
         monkeypatch.undo()
-        for d in (runner._RAW_DIR, runner._NORM_DIR):
-            if d.is_dir():
-                shutil.rmtree(d, ignore_errors=True)
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
         runner.run(live=False, universe=runner.DEFAULT_UNIVERSE, verbose=False)
 
 
 # --------------------------------------------------------------------------- #
 # Monkeypatched live ALL-BLOCKED path: every request 403 -> entitlement review.
 # --------------------------------------------------------------------------- #
-def test_live_all_blocked_recommends_entitlement_review(monkeypatch):
+def test_live_all_blocked_recommends_entitlement_review(monkeypatch, tmp_path):
     runner = _runner()
     client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
     monkeypatch.setattr(client, "has_api_key", lambda: True)
 
     def _boom(endpoint, params=None, **kwargs):
@@ -462,10 +500,755 @@ def test_live_all_blocked_recommends_entitlement_review(monkeypatch):
         assert any(r["live_access_result"] == "blocked_403" for r in access)
     finally:
         monkeypatch.undo()
-        for d in (runner._RAW_DIR, runner._NORM_DIR):
-            if d.is_dir():
-                shutil.rmtree(d, ignore_errors=True)
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
         runner.run(live=False, universe=runner.DEFAULT_UNIVERSE, verbose=False)
+
+
+# =========================================================================== #
+# Phase 5-E1B - expanded CORE fundamentals backfill (resumable, quota-safe)
+# =========================================================================== #
+@pytest.fixture(scope="module")
+def core_run_result(monkeypatch_session):
+    """Run the core backfill once in dry-run with NO key; return (runner, readiness)."""
+    runner = _runner()
+    readiness = runner.run_core_backfill(
+        live=False, universe_source="phase5c", max_tickers=25,
+        batch_id="core_batch_001", verbose=False)
+    with open(runner._E1B_READINESS_OUT, "r", encoding="utf-8") as fh:
+        on_disk = json.load(fh)
+    assert on_disk["phase"] == readiness["phase"]
+    return runner, readiness
+
+
+def test_core_dry_run_executes_without_key(core_run_result):
+    runner, readiness = core_run_result
+    assert readiness["phase"] == "5-E1B"
+    assert readiness["provider"] == "Financial Modeling Prep"
+    assert readiness["mode"] == "dry_run"
+    assert readiness["core_only"] is True
+    assert readiness["live_request_count"] == 0
+    assert readiness["network_used"] is False
+
+
+def test_core_dry_run_recommends_expanded_live_batch(core_run_result):
+    _, readiness = core_run_result
+    assert readiness["recommendation"] == "READY_FOR_EXPANDED_CORE_LIVE_BATCH"
+    assert readiness["recommendation"] in readiness["recommendation_allowed_values"]
+    assert readiness["enough_for_phase5e2"] is False
+
+
+def test_core_recommendation_vocabulary(core_run_result):
+    _, readiness = core_run_result
+    allowed = {"READY_FOR_EXPANDED_CORE_LIVE_BATCH", "READY_FOR_PHASE5E2_WITH_CORE_FUNDAMENTALS",
+               "NEEDS_MORE_CORE_BACKFILL_BATCHES", "BLOCKED_MISSING_FMP_KEY", "ERROR"}
+    assert set(readiness["recommendation_allowed_values"]) == allowed
+
+
+def test_core_required_artifacts_exist(core_run_result):
+    runner, _ = core_run_result
+    for out in (runner._CORE_BATCH_PLAN_OUT, runner._CORE_BATCH_SUMMARY_OUT,
+                runner._CORE_COVERAGE_OUT, runner._E1B_READINESS_OUT):
+        assert out.is_file(), f"missing required Phase 5-E1B artifact: {out}"
+
+
+def test_core_batch_plan_is_core_only(core_run_result):
+    runner, _ = core_run_result
+    rows = _read_csv(runner._CORE_BATCH_PLAN_OUT)
+    assert rows
+    names = {r["endpoint_name"] for r in rows}
+    assert names == {"company_profile", "income_statement_quarterly",
+                     "balance_sheet_statement_quarterly", "cash_flow_statement_quarterly"}
+    # No earnings / analyst endpoints leak into the core batch.
+    for forbidden in ("earnings_calendar", "earnings_surprises", "analyst_estimates",
+                      "analyst_recommendations", "analyst_price_targets"):
+        assert forbidden not in names
+    for r in rows:
+        assert "<API_KEY_REDACTED>" in r["request_url_redacted"]
+
+
+def test_core_readiness_required_fields(core_run_result):
+    _, readiness = core_run_result
+    required = {
+        "phase", "objective", "provider", "universe_source", "universe_size_available",
+        "mode", "core_only", "batch_id", "planned_request_count", "live_request_count",
+        "success_count", "empty_count", "error_count", "raw_files_written_count",
+        "normalized_files_written_count", "skip_existing", "paid_data_gitignored",
+        "coverage_by_endpoint", "coverage_by_ticker", "enough_for_phase5e2",
+        "recommendation", "recommended_next_phase", "preview_only", "orders_enabled",
+        "automation_enabled", "broker_execution_enabled", "production_replacement",
+    }
+    assert required <= set(readiness.keys()), f"missing fields: {required - set(readiness.keys())}"
+
+
+def test_core_readiness_safety_flags(core_run_result):
+    _, readiness = core_run_result
+    assert readiness["preview_only"] is True
+    assert readiness["orders_enabled"] is False
+    assert readiness["automation_enabled"] is False
+    assert readiness["broker_execution_enabled"] is False
+    assert readiness["production_replacement"] is False
+    assert readiness["api_key_logged"] is False
+    assert readiness["paid_data_gitignored"] is True
+    assert readiness["committed"] is False
+    assert readiness["wrote_to_d_drive"] is False
+    assert readiness["deployed"] is False
+
+
+def test_core_coverage_thresholds_present(core_run_result):
+    _, readiness = core_run_result
+    thr = readiness["coverage_thresholds"]
+    assert thr["min_core_ready_tickers"] >= 1
+    assert 0 < thr["min_endpoint_coverage_pct"] <= 100
+    assert 1 <= thr["min_core_endpoints_per_ticker"] <= 4
+
+
+def test_core_artifacts_have_no_apikey_marker(core_run_result):
+    runner, _ = core_run_result
+    marker = "api" + "key="
+    for out in (runner._CORE_BATCH_PLAN_OUT, runner._CORE_BATCH_SUMMARY_OUT,
+                runner._CORE_COVERAGE_OUT, runner._CORE_REQUEST_RESULTS_OUT,
+                runner._CORE_ERROR_REPORT_OUT, runner._CORE_KNOWN_BLOCKED_OUT,
+                runner._E1B_READINESS_OUT):
+        text = out.read_text(encoding="utf-8", errors="replace")
+        assert marker not in text.lower(), f"key marker found in {out}"
+
+
+def test_core_artifacts_have_no_key_looking_values(core_run_result):
+    import re
+    runner, _ = core_run_result
+    keyish = re.compile(r"\b[A-Za-z0-9]{28,}\b")
+    offenders = []
+    for out in (runner._CORE_BATCH_PLAN_OUT, runner._CORE_BATCH_SUMMARY_OUT,
+                runner._CORE_COVERAGE_OUT, runner._CORE_REQUEST_RESULTS_OUT,
+                runner._CORE_ERROR_REPORT_OUT, runner._CORE_KNOWN_BLOCKED_OUT,
+                runner._E1B_READINESS_OUT):
+        text = out.read_text(encoding="utf-8", errors="replace")
+        for m in keyish.findall(text):
+            if m in ("API_KEY_REDACTED",):
+                continue
+            offenders.append((str(out), m))
+    assert not offenders, f"suspicious key-looking tokens: {offenders}"
+
+
+def test_core_paid_data_still_gitignored(core_run_result):
+    runner, readiness = core_run_result
+    assert runner._paid_data_gitignored() is True
+    assert readiness["storage_raw_dir"] == "research/data/fmp/raw"
+    assert readiness["storage_normalized_dir"] == "research/data/fmp/normalized"
+
+
+# --------------------------------------------------------------------------- #
+# Phase 5-C universe loading is deterministic OR falls back safely
+# --------------------------------------------------------------------------- #
+def test_phase5c_universe_loading_is_deterministic(monkeypatch, tmp_path):
+    runner = _runner()
+    csv_path = tmp_path / "prices.csv"
+    csv_path.write_text(
+        "ticker,date,adjusted_close,volume\n"
+        "MSFT,2024-01-02,100,1000\n"
+        "AAPL,2024-01-02,50,2000\n"
+        "SPY,2024-01-02,400,5000\n"   # benchmark must be dropped
+        "AAPL,2024-01-03,51,2100\n",   # duplicate ticker must be de-duped
+        encoding="utf-8")
+    monkeypatch.setattr(runner, "_phase5c_data_path", lambda: str(csv_path))
+    tickers, source = runner.load_phase5c_universe()
+    assert tickers == ["AAPL", "MSFT"]          # sorted, de-duped, SPY removed
+    assert tickers == runner.load_phase5c_universe()[0]  # deterministic
+    assert "phase5c_price_history" in source
+
+
+def test_phase5c_universe_falls_back_safely(monkeypatch):
+    runner = _runner()
+    monkeypatch.setattr(runner, "_phase5c_data_path", lambda: None)
+    tickers, source = runner.load_phase5c_universe()
+    assert tickers == list(runner.DEFAULT_UNIVERSE)
+    assert "fallback_sample" in source
+
+
+def test_resolve_universe_explicit_wins(monkeypatch):
+    runner = _runner()
+    monkeypatch.setattr(runner, "_phase5c_data_path", lambda: None)
+    tickers, source = runner.resolve_universe("phase5c", ["tsla", "amd"])
+    assert tickers == ["TSLA", "AMD"]
+    assert source == "cli_explicit"
+
+
+# --------------------------------------------------------------------------- #
+# Live without key in core mode -> BLOCKED (no network)
+# --------------------------------------------------------------------------- #
+def test_core_live_without_key_is_blocked(monkeypatch):
+    runner = _runner()
+    client = _client()
+    monkeypatch.setattr(client, "has_api_key", lambda: False)
+    readiness = runner.run_core_backfill(
+        live=True, universe_source="default", max_tickers=3, max_requests=10,
+        batch_id="b1", verbose=False)
+    try:
+        assert readiness["mode"] == "dry_run"
+        assert readiness["recommendation"] == "BLOCKED_MISSING_FMP_KEY"
+        assert readiness["network_used"] is False
+    finally:
+        runner.run_core_backfill(live=False, universe_source="phase5c", max_tickers=25,
+                                 batch_id="core_batch_001", verbose=False)
+
+
+# --------------------------------------------------------------------------- #
+# Monkeypatched live partial-coverage path -> NEEDS_MORE_CORE_BACKFILL_BATCHES
+# --------------------------------------------------------------------------- #
+def test_core_live_partial_coverage_needs_more_batches(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _fake(endpoint, params=None, **kwargs):
+        return [{"symbol": "AAPL", "date": "2024-03-31", "fillingDate": "2024-04-25",
+                 "acceptedDate": "2024-04-25", "period": "Q1", "revenue": 100,
+                 "netIncome": 20, "companyName": "Apple", "sector": "Tech"}]
+
+    monkeypatch.setattr(client, "get_json", _fake)
+    readiness = runner.run_core_backfill(
+        live=True, universe_source="default", max_tickers=5, max_requests=50,
+        batch_id="b_small", verbose=False)
+    try:
+        assert readiness["mode"] == "live_sample"
+        assert readiness["live_request_count"] > 0
+        assert readiness["success_count"] > 0
+        assert readiness["raw_files_written_count"] > 0
+        # 5 tickers succeed but < the 30-ticker threshold -> needs more batches.
+        assert readiness["enough_for_phase5e2"] is False
+        assert readiness["recommendation"] == "NEEDS_MORE_CORE_BACKFILL_BATCHES"
+        # Raw + normalized live only under the git-ignored tree.
+        assert runner._RAW_DIR.exists()
+        assert not (runner._OUT_DIR / "raw").exists()
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+# --------------------------------------------------------------------------- #
+# --skip-existing resumes: already-collected raw files consume no request budget
+# --------------------------------------------------------------------------- #
+def test_core_skip_existing_resumes_without_redownload(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+    calls = {"n": 0}
+
+    def _fake(endpoint, params=None, **kwargs):
+        calls["n"] += 1
+        return [{"symbol": "AAPL", "date": "2024-03-31", "fillingDate": "2024-04-25",
+                 "acceptedDate": "2024-04-25", "period": "Q1", "revenue": 100,
+                 "netIncome": 20, "companyName": "Apple", "sector": "Tech"}]
+
+    monkeypatch.setattr(client, "get_json", _fake)
+    try:
+        # First batch: collect raw files for 3 tickers x 4 core endpoints.
+        first = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            batch_id="batch_a", verbose=False)
+        assert first["live_request_count"] > 0
+        first_calls = calls["n"]
+        assert first_calls > 0
+
+        # Second batch with --skip-existing: everything already collected -> NO
+        # new network calls, no request budget consumed.
+        second = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            skip_existing=True, batch_id="batch_b", verbose=False)
+        assert second["skip_existing"] is True
+        assert second["live_request_count"] == 0
+        assert calls["n"] == first_calls   # get_json was NOT called again
+        # Coverage still counts the cached files as covered.
+        assert second["success_count"] > 0
+        assert second["skipped_count"] > 0
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+# --------------------------------------------------------------------------- #
+# Phase 5-E1B hotfix - request-level results + retry diagnostics
+# --------------------------------------------------------------------------- #
+def test_core_request_results_and_error_report_exist(core_run_result):
+    runner, _ = core_run_result
+    assert runner._CORE_REQUEST_RESULTS_OUT.is_file()
+    assert runner._CORE_ERROR_REPORT_OUT.is_file()
+
+
+def test_core_request_results_columns_and_dry_run_is_planned(core_run_result):
+    runner, _ = core_run_result
+    rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+    assert rows, "request_results must have one row per planned request"
+    required_cols = {"batch_id", "ticker", "endpoint_name", "status", "http_status",
+                     "error_type", "error_message_sanitized", "likely_cause", "next_action",
+                     "row_count", "raw_file_path", "normalized_file_path",
+                     "request_url_redacted", "collected_at_utc"}
+    assert required_cols <= set(rows[0].keys())
+    # Dry-run: no network -> every request is 'planned', and the error report is empty.
+    for r in rows:
+        assert r["status"] == "planned"
+        assert r["http_status"] == ""
+        assert "<API_KEY_REDACTED>" in r["request_url_redacted"]
+    err = _read_csv(runner._CORE_ERROR_REPORT_OUT)
+    assert err == []  # header only, no error rows in dry-run
+
+
+def test_core_error_report_columns(core_run_result):
+    runner, _ = core_run_result
+    # Even with no error rows, the header carries the groupable diagnostic columns.
+    with open(runner._CORE_ERROR_REPORT_OUT, "r", newline="", encoding="utf-8") as fh:
+        header = next(csv.reader(fh))
+    assert set(header) == {"endpoint_name", "ticker", "http_status", "error_type",
+                           "error_message_sanitized", "likely_cause", "next_action"}
+
+
+def test_core_readiness_has_request_diagnostics_fields(core_run_result):
+    _, readiness = core_run_result
+    required = {"core_ready_ticker_count", "partial_ticker_count", "request_success_count",
+                "request_error_count", "request_skipped_existing_count",
+                "error_breakdown_by_http_status", "error_breakdown_by_endpoint",
+                "next_retry_command"}
+    assert required <= set(readiness.keys()), f"missing fields: {required - set(readiness.keys())}"
+    # Dry-run: no successes/errors yet, breakdowns empty, retry command is concrete.
+    assert readiness["request_error_count"] == 0
+    assert readiness["error_breakdown_by_http_status"] == {}
+    assert readiness["error_breakdown_by_endpoint"] == {}
+    assert "--skip-existing" in readiness["next_retry_command"]
+    assert "--core-only" in readiness["next_retry_command"]
+
+
+def test_core_live_error_produces_error_rows(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _boom(endpoint, params=None, **kwargs):
+        raise client.FmpError("provider returned HTTP 403", status_code=403,
+                              error_type="http_error")
+
+    monkeypatch.setattr(client, "get_json", _boom)
+    try:
+        readiness = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            batch_id="err_batch", verbose=False)
+        assert readiness["mode"] == "live_sample"
+        assert readiness["request_error_count"] > 0
+        # The error breakdown attributes failures to HTTP 403 and to core endpoints.
+        assert readiness["error_breakdown_by_http_status"].get("403", 0) > 0
+        assert readiness["error_breakdown_by_endpoint"]
+        # request_results carries diagnostic cause/action for each failed request.
+        rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+        err_rows = [r for r in rows if r["status"] == "error"]
+        assert err_rows
+        for r in err_rows:
+            assert r["http_status"] == "403"
+            assert r["likely_cause"]
+            assert r["next_action"]
+            assert "apikey=" not in r["request_url_redacted"].lower()
+        # error_report.csv mirrors only the error rows.
+        ereport = _read_csv(runner._CORE_ERROR_REPORT_OUT)
+        assert len(ereport) == len(err_rows)
+        for r in ereport:
+            assert r["http_status"] == "403"
+            assert r["likely_cause"]
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+def test_core_skip_existing_produces_skipped_existing_rows(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _fake(endpoint, params=None, **kwargs):
+        return [{"symbol": "AAPL", "date": "2024-03-31", "fillingDate": "2024-04-25",
+                 "acceptedDate": "2024-04-25", "period": "Q1", "revenue": 100,
+                 "netIncome": 20, "companyName": "Apple", "sector": "Tech"}]
+
+    monkeypatch.setattr(client, "get_json", _fake)
+    try:
+        runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            batch_id="seed_batch", verbose=False)
+        second = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            skip_existing=True, batch_id="resume_batch", verbose=False)
+        assert second["request_skipped_existing_count"] > 0
+        assert second["live_request_count"] == 0
+        rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+        skipped = [r for r in rows if r["status"] == "skipped_existing"]
+        assert skipped, "resume batch must report skipped_existing request rows"
+        for r in skipped:
+            assert "already collected" in r["likely_cause"].lower()
+        # No 'error' or 'planned' leakage: every resumed row is skipped_existing.
+        assert all(r["status"] == "skipped_existing" for r in rows)
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+# --------------------------------------------------------------------------- #
+# Phase 5-E1B reliability patch - hardened skip-existing + known-blocked handling
+# --------------------------------------------------------------------------- #
+def test_core_known_blocked_artifact_exists(core_run_result):
+    runner, _ = core_run_result
+    assert runner._CORE_KNOWN_BLOCKED_OUT.is_file()
+    with open(runner._CORE_KNOWN_BLOCKED_OUT, "r", newline="", encoding="utf-8") as fh:
+        header = next(csv.reader(fh))
+    assert set(header) == {"ticker", "endpoint_name", "http_status", "error_type",
+                           "error_message_sanitized", "likely_cause",
+                           "first_seen_batch_id", "last_seen_batch_id", "retry_policy"}
+    # Dry-run: no errors yet -> header only, no remembered blocks.
+    assert _read_csv(runner._CORE_KNOWN_BLOCKED_OUT) == []
+
+
+def test_core_readiness_has_reliability_patch_fields(core_run_result):
+    _, readiness = core_run_result
+    required = {"request_skipped_known_blocked_count", "known_blocked_count",
+                "known_blocked_by_http_status", "known_blocked_by_endpoint",
+                "live_budget_spent_on_new_requests_count",
+                "live_budget_spent_on_retries_count", "next_batch_command"}
+    assert required <= set(readiness.keys()), f"missing: {required - set(readiness.keys())}"
+    # Dry-run: nothing blocked or spent yet.
+    assert readiness["known_blocked_count"] == 0
+    assert readiness["known_blocked_by_http_status"] == {}
+    assert readiness["request_skipped_known_blocked_count"] == 0
+    assert readiness["live_budget_spent_on_new_requests_count"] == 0
+    assert readiness["live_budget_spent_on_retries_count"] == 0
+
+
+def test_core_next_batch_command_is_concrete(core_run_result):
+    _, readiness = core_run_result
+    cmd = readiness["next_batch_command"]
+    for token in ("--core-only", "--skip-existing", "--skip-known-blocked",
+                  "core_batch_002", "--max-tickers 50"):
+        assert token in cmd, f"next_batch_command missing {token}: {cmd}"
+
+
+def test_core_live_402_creates_known_blocked_register(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _boom(endpoint, params=None, **kwargs):
+        raise client.FmpError("provider returned HTTP 402", status_code=402,
+                              error_type="http_error")
+
+    monkeypatch.setattr(client, "get_json", _boom)
+    try:
+        readiness = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            batch_id="blocked_batch", verbose=False)
+        assert readiness["mode"] == "live_sample"
+        assert readiness["known_blocked_count"] > 0
+        assert readiness["known_blocked_by_http_status"].get("402", 0) > 0
+        rows = _read_csv(runner._CORE_KNOWN_BLOCKED_OUT)
+        assert rows, "402 errors must be persisted to the known-blocked register"
+        for r in rows:
+            assert r["http_status"] == "402"
+            assert r["retry_policy"] == "do_not_retry_without_override"
+            assert r["first_seen_batch_id"] == "blocked_batch"
+            assert r["last_seen_batch_id"] == "blocked_batch"
+        # Register is committed-safe: no key marker.
+        text = runner._CORE_KNOWN_BLOCKED_OUT.read_text(encoding="utf-8")
+        assert "apikey=" not in text.lower()
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+def test_core_skip_known_blocked_skips_402_without_live_call(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _boom(endpoint, params=None, **kwargs):
+        raise client.FmpError("provider returned HTTP 402", status_code=402,
+                              error_type="http_error")
+
+    def _ok(endpoint, params=None, **kwargs):
+        return [{"symbol": "AAPL", "date": "2024-03-31", "fillingDate": "2024-04-25",
+                 "acceptedDate": "2024-04-25", "period": "Q1", "revenue": 100,
+                 "netIncome": 20, "companyName": "Apple", "sector": "Tech"}]
+
+    try:
+        # Seed the register with a batch that gets 402 on every request.
+        monkeypatch.setattr(client, "get_json", _boom)
+        runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            batch_id="seed_402", verbose=False)
+        # Resume with --skip-known-blocked: even though the provider WOULD now answer,
+        # the known-blocked pairs must be skipped with no live call spent.
+        monkeypatch.setattr(client, "get_json", _ok)
+        second = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=3, max_requests=50,
+            skip_known_blocked=True, batch_id="resume_skip_blocked", verbose=False)
+        assert second["request_skipped_known_blocked_count"] > 0
+        assert second["live_request_count"] == 0, "known-blocked skips must spend no budget"
+        rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+        blocked = [r for r in rows if r["status"] == "skipped_known_blocked"]
+        assert blocked, "resume must report skipped_known_blocked rows"
+        assert all(r["status"] == "skipped_known_blocked" for r in rows)
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+def test_core_retry_known_blocked_overrides_skip(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _boom(endpoint, params=None, **kwargs):
+        raise client.FmpError("provider returned HTTP 402", status_code=402,
+                              error_type="http_error")
+
+    monkeypatch.setattr(client, "get_json", _boom)
+    try:
+        runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=2, max_requests=50,
+            batch_id="seed_402b", verbose=False)
+        # --retry-known-blocked overrides --skip-known-blocked: the pairs are
+        # re-attempted and accounted as retries, not new requests.
+        second = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=2, max_requests=50,
+            skip_known_blocked=True, retry_known_blocked=True,
+            batch_id="retry_402b", verbose=False)
+        assert second["live_request_count"] > 0
+        assert second["request_skipped_known_blocked_count"] == 0
+        assert second["live_budget_spent_on_retries_count"] > 0
+        assert second["live_budget_spent_on_new_requests_count"] == 0
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+def test_core_skip_existing_detects_timestamped_raw_file(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _ok(endpoint, params=None, **kwargs):
+        return [{"symbol": "AAPL", "date": "2024-03-31", "fillingDate": "2024-04-25",
+                 "acceptedDate": "2024-04-25", "period": "Q1", "revenue": 100,
+                 "netIncome": 20, "companyName": "Apple", "sector": "Tech"}]
+
+    monkeypatch.setattr(client, "get_json", _ok)
+    try:
+        # Pre-seed a NON-canonical (timestamped) raw file for company_profile/AAPL.
+        ep_dir = runner._RAW_DIR / "company_profile"
+        ep_dir.mkdir(parents=True, exist_ok=True)
+        with open(ep_dir / "AAPL.20240101T000000Z.json", "w", encoding="utf-8") as fh:
+            json.dump([{"symbol": "AAPL", "companyName": "Apple"}], fh)
+        readiness = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=1, max_requests=50,
+            skip_existing=True, batch_id="ts_batch", verbose=False)
+        rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+        prof = [r for r in rows if r["endpoint_name"] == "company_profile"
+                and r["ticker"] == "AAPL"]
+        assert prof and prof[0]["status"] == "skipped_existing", \
+            "timestamped raw file must be detected by skip-existing"
+        assert readiness["request_skipped_existing_count"] >= 1
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+def test_core_skip_existing_ignores_empty_raw_file(monkeypatch, tmp_path):
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _ok(endpoint, params=None, **kwargs):
+        return [{"symbol": "AAPL", "date": "2024-03-31", "fillingDate": "2024-04-25",
+                 "acceptedDate": "2024-04-25", "period": "Q1", "revenue": 100,
+                 "netIncome": 20, "companyName": "Apple", "sector": "Tech"}]
+
+    monkeypatch.setattr(client, "get_json", _ok)
+    try:
+        # A prior EMPTY raw file must NOT be trusted as a successful collection.
+        ep_dir = runner._RAW_DIR / "company_profile"
+        ep_dir.mkdir(parents=True, exist_ok=True)
+        with open(ep_dir / "AAPL.json", "w", encoding="utf-8") as fh:
+            json.dump([], fh)
+        readiness = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=1, max_requests=50,
+            skip_existing=True, batch_id="empty_batch", verbose=False)
+        rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+        prof = [r for r in rows if r["endpoint_name"] == "company_profile"
+                and r["ticker"] == "AAPL"]
+        assert prof and prof[0]["status"] == "success", \
+            "empty cached raw file must be re-fetched, not skipped"
+        assert readiness["request_skipped_existing_count"] == 0
+    finally:
+        monkeypatch.undo()
+        restore()  # real data dirs back BEFORE regenerating canonical artifacts
+        _reset_core_artifacts(runner)
+
+
+def test_core_no_paper_trader_gcp_order_automation_in_source():
+    runner = _runner()
+    src = (inspect.getsource(runner.run_core_backfill)
+           + inspect.getsource(runner.run_live_backfill)
+           + inspect.getsource(runner.run_core_preflight)
+           + inspect.getsource(runner._merge_known_blocked)
+           + inspect.getsource(runner._find_existing_raw)).lower()
+    for forbidden in ("paper_trader", "gcloud ", "create_order", "place_order",
+                      "submit_order", "broker_api", "schedule.every", "crontab"):
+        assert forbidden not in src, f"core backfill references forbidden token: {forbidden}"
+
+
+# --------------------------------------------------------------------------- #
+# Cache-safety regression guards (the bug: test cleanup rmtree'd the user's REAL
+# research/data/fmp paid data, which silently broke --skip-existing in batch 002)
+# --------------------------------------------------------------------------- #
+def test_core_skip_existing_in_tmp_dir_makes_no_live_call(monkeypatch, tmp_path):
+    """A real-looking paid-data file under a TEMP raw dir must be detected by
+    --skip-existing: NO FMP request is made, every planned row is skipped_existing,
+    and live_request_count stays 0 - all without touching the real data tree."""
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+    monkeypatch.setattr(client, "has_api_key", lambda: True)
+
+    def _must_not_call(endpoint, params=None, **kwargs):
+        raise AssertionError("get_json must not be called when skip-existing covers all requests")
+
+    monkeypatch.setattr(client, "get_json", _must_not_call)
+    try:
+        ticker = runner.DEFAULT_UNIVERSE[0]
+        for name in runner._CORE_ONLY_ENDPOINTS:
+            ep_dir = runner._RAW_DIR / name
+            ep_dir.mkdir(parents=True, exist_ok=True)
+            with open(ep_dir / ("%s.json" % ticker), "w", encoding="utf-8") as fh:
+                json.dump([{"symbol": ticker, "date": "2024-03-31"}], fh)
+        readiness = runner.run_core_backfill(
+            live=True, universe_source="default", max_tickers=1, max_requests=50,
+            skip_existing=True, batch_id="tmp_skip_batch", verbose=False)
+        assert readiness["mode"] == "live_sample"
+        assert readiness["live_request_count"] == 0, "skip-existing must spend no live budget"
+        assert readiness["request_skipped_existing_count"] == len(runner._CORE_ONLY_ENDPOINTS)
+        rows = _read_csv(runner._CORE_REQUEST_RESULTS_OUT)
+        assert rows and all(r["status"] == "skipped_existing" for r in rows)
+    finally:
+        monkeypatch.undo()
+        restore()
+        _reset_core_artifacts(runner)
+
+
+def test_real_paid_data_dirs_are_never_deleted_by_a_live_test(monkeypatch, tmp_path):
+    """Regression guard: a simulated live batch must NOT delete or mutate the REAL
+    research/data/fmp/{raw,normalized} tree. Drop a sentinel into the real tree, run
+    a redirected live batch exactly as the live tests do, and assert the sentinel
+    survives. (This is the bug that wiped batch-001 and broke skip-existing.)"""
+    runner = _runner()
+    client = _client()
+    real_raw = runner._RAW_DIR
+    real_norm = runner._NORM_DIR
+    raw_sentinel = real_raw / "__skip_existing_guard__" / "SENTINEL.json"
+    norm_sentinel = real_norm / "__skip_existing_guard__.csv"
+    raw_sentinel.parent.mkdir(parents=True, exist_ok=True)
+    real_norm.mkdir(parents=True, exist_ok=True)
+    raw_sentinel.write_text('[{"guard": true}]', encoding="utf-8")
+    norm_sentinel.write_text("guard\n1\n", encoding="utf-8")
+    try:
+        restore = _use_tmp_data_dirs(runner, tmp_path)
+        monkeypatch.setattr(client, "has_api_key", lambda: True)
+        monkeypatch.setattr(
+            client, "get_json",
+            lambda *a, **k: [{"symbol": "AAPL", "date": "2024-03-31"}])
+        try:
+            runner.run_core_backfill(
+                live=True, universe_source="default", max_tickers=2, max_requests=20,
+                batch_id="guard_batch", verbose=False)
+        finally:
+            monkeypatch.undo()
+            restore()
+            _reset_core_artifacts(runner)
+        assert runner._RAW_DIR is real_raw, "restore() must put the real raw dir back"
+        assert raw_sentinel.is_file(), "a live test must NOT delete real raw paid data"
+        assert norm_sentinel.is_file(), "a live test must NOT delete real normalized paid data"
+    finally:
+        # Remove ONLY the sentinels this test created; never touch the user's data.
+        if raw_sentinel.is_file():
+            raw_sentinel.unlink()
+        if raw_sentinel.parent.is_dir():
+            try:
+                raw_sentinel.parent.rmdir()
+            except OSError:
+                pass
+        if norm_sentinel.is_file():
+            norm_sentinel.unlink()
+
+
+def test_core_preflight_cache_only_reports_skips_without_network(monkeypatch, tmp_path):
+    """run_core_preflight / --preflight-cache-only reports how many planned requests
+    would be skipped vs. spent live, WITHOUT any network and WITHOUT a key. Seeded
+    raw files surface as existing_raw_files_detected and reduce the live-call count.
+    This is the safe pre-check to run before any live batch."""
+    runner = _runner()
+    client = _client()
+    restore = _use_tmp_data_dirs(runner, tmp_path)
+
+    def _must_not_call(endpoint, params=None, **kwargs):
+        raise AssertionError("preflight must never call the provider")
+
+    monkeypatch.setattr(client, "get_json", _must_not_call)
+    monkeypatch.setattr(client, "has_api_key", lambda: False)  # no key required
+    try:
+        ticker = runner.DEFAULT_UNIVERSE[0]
+        for name in runner._CORE_ONLY_ENDPOINTS[:2]:
+            ep_dir = runner._RAW_DIR / name
+            ep_dir.mkdir(parents=True, exist_ok=True)
+            with open(ep_dir / ("%s.json" % ticker), "w", encoding="utf-8") as fh:
+                json.dump([{"symbol": ticker, "date": "2024-03-31"}], fh)
+        pf = runner.run_core_preflight(
+            universe_source="default", max_tickers=2, max_requests=100,
+            skip_existing=True, skip_known_blocked=True, batch_id="core_batch_002",
+            verbose=False)
+        assert pf["network_used"] is False
+        assert pf["mode"] == "preflight_cache_only"
+        # 4 core endpoints x 2 tickers = 8 planned; 2 seeded files -> 2 skipped.
+        assert pf["planned_request_count"] == 8
+        assert pf["existing_raw_files_detected"] == 2
+        assert pf["planned_skipped_existing_count"] == 2
+        assert pf["planned_live_request_count_if_live"] == 6
+        assert runner._CORE_PREFLIGHT_OUT.is_file()
+        assert runner._E1B_PREFLIGHT_JSON_OUT.is_file()
+        assert "apikey=" not in runner._CORE_PREFLIGHT_OUT.read_text(encoding="utf-8").lower()
+        # CLI entrypoint works with no key and exits 0.
+        rc = runner.main(["--core-only", "--preflight-cache-only",
+                          "--universe-source", "default", "--max-tickers", "2",
+                          "--skip-existing", "--skip-known-blocked",
+                          "--batch-id", "core_batch_002"])
+        assert rc == 0
+    finally:
+        monkeypatch.undo()
+        restore()
+        # Leave a canonical (real-dir) preflight summary on disk, not tmp paths.
+        runner.run_core_preflight(
+            universe_source="phase5c", max_tickers=50, max_requests=100,
+            skip_existing=True, skip_known_blocked=True,
+            batch_id="core_batch_002", verbose=False)
+        _reset_core_artifacts(runner)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,5 @@
+batch_id,endpoint_name,alpha_family,tickers_in_batch,tickers_success,tickers_empty,tickers_error,tickers_covered,coverage_pct,live_access_result
+core_batch_001,company_profile,universe_mapping,25,0,0,0,0,0.0,planned
+core_batch_001,income_statement_quarterly,fundamentals,25,0,0,0,0,0.0,planned
+core_batch_001,balance_sheet_statement_quarterly,fundamentals,25,0,0,0,0,0.0,planned
+core_batch_001,cash_flow_statement_quarterly,fundamentals,25,0,0,0,0,0.0,planned

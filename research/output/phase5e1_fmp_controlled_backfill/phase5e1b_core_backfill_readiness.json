@@ -1,0 +1,236 @@
+{
+  "phase": "5-E1B",
+  "objective": "Expand the controlled FMP backfill from a 5-ticker smoke sample to a larger, quota-safe cross-sectional CORE fundamentals dataset (profile + quarterly income / balance-sheet / cash-flow statements) sufficient for the Phase 5-E2 enriched alpha panel. Collects/normalizes data only - does NOT build the model.",
+  "provider": "Financial Modeling Prep",
+  "universe_source": "phase5c_price_history:D:/Stock_Prediction_app_data/phase2k_g/output/phase2k_g_expanded_price_history_free.csv",
+  "universe_size_available": 128,
+  "mode": "dry_run",
+  "core_only": true,
+  "core_endpoints": [
+    "company_profile",
+    "income_statement_quarterly",
+    "balance_sheet_statement_quarterly",
+    "cash_flow_statement_quarterly"
+  ],
+  "batch_id": "core_batch_001",
+  "batch_size_tickers": 25,
+  "planned_request_count": 100,
+  "live_request_count": 0,
+  "success_count": 0,
+  "empty_count": 0,
+  "error_count": 0,
+  "skipped_count": 0,
+  "raw_files_written_count": 0,
+  "normalized_files_written_count": 0,
+  "skip_existing": false,
+  "resume": false,
+  "paid_data_gitignored": true,
+  "coverage_by_endpoint": {
+    "company_profile": {
+      "tickers_in_batch": 25,
+      "tickers_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "income_statement_quarterly": {
+      "tickers_in_batch": 25,
+      "tickers_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "balance_sheet_statement_quarterly": {
+      "tickers_in_batch": 25,
+      "tickers_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "cash_flow_statement_quarterly": {
+      "tickers_in_batch": 25,
+      "tickers_covered": 0,
+      "coverage_pct": 0.0
+    }
+  },
+  "coverage_by_ticker": {
+    "AAPL": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "ABBV": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "ABT": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "ACN": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "ADBE": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "ADI": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "ADP": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AMAT": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AMD": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AMGN": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AMZN": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AON": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "APD": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "APH": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AVGO": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "AXP": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "BA": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "BAC": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "BKNG": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "BLK": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "BMY": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "BSX": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "C": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "CAT": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    },
+    "CB": {
+      "endpoints_in_batch": 4,
+      "endpoints_covered": 0,
+      "coverage_pct": 0.0
+    }
+  },
+  "core_ready_ticker_count": 0,
+  "partial_ticker_count": 0,
+  "request_success_count": 0,
+  "request_empty_count": 0,
+  "request_error_count": 0,
+  "request_skipped_existing_count": 0,
+  "request_skipped_known_blocked_count": 0,
+  "error_breakdown_by_http_status": {},
+  "error_breakdown_by_endpoint": {},
+  "known_blocked_count": 0,
+  "known_blocked_by_http_status": {},
+  "known_blocked_by_endpoint": {},
+  "live_budget_spent_on_new_requests_count": 0,
+  "live_budget_spent_on_retries_count": 0,
+  "skip_known_blocked": false,
+  "retry_known_blocked": false,
+  "next_retry_command": "python research\\run_phase5e1_fmp_controlled_backfill.py --live --core-only --universe-source phase5c --max-tickers 25 --max-requests 100 --skip-existing --batch-id core_batch_001",
+  "next_batch_command": "python research\\run_phase5e1_fmp_controlled_backfill.py --live --core-only --universe-source phase5c --max-tickers 50 --max-requests 100 --skip-existing --skip-known-blocked --batch-id core_batch_002",
+  "coverage_thresholds": {
+    "min_core_ready_tickers": 30,
+    "min_endpoint_coverage_pct": 60.0,
+    "min_core_endpoints_per_ticker": 3
+  },
+  "enough_for_phase5e2": false,
+  "recommendation": "READY_FOR_EXPANDED_CORE_LIVE_BATCH",
+  "recommendation_allowed_values": [
+    "READY_FOR_EXPANDED_CORE_LIVE_BATCH",
+    "READY_FOR_PHASE5E2_WITH_CORE_FUNDAMENTALS",
+    "NEEDS_MORE_CORE_BACKFILL_BATCHES",
+    "BLOCKED_MISSING_FMP_KEY",
+    "ERROR"
+  ],
+  "recommended_next_phase": "Run the first bounded live core batch: --live --core-only --universe-source phase5c --max-tickers 25 --max-requests 100 --skip-existing --batch-id core_batch_001 (requires FMP_API_KEY).",
+  "storage_raw_dir": "research/data/fmp/raw",
+  "storage_normalized_dir": "research/data/fmp/normalized",
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 6,
+  "outputs": {
+    "batch_plan": "research/output/phase5e1_fmp_controlled_backfill/fmp_core_backfill_batch_plan.csv",
+    "batch_summary": "research/output/phase5e1_fmp_controlled_backfill/fmp_core_backfill_batch_summary.csv",
+    "coverage_report": "research/output/phase5e1_fmp_controlled_backfill/fmp_core_backfill_coverage_report.csv",
+    "request_results": "research/output/phase5e1_fmp_controlled_backfill/fmp_core_backfill_request_results.csv",
+    "error_report": "research/output/phase5e1_fmp_controlled_backfill/fmp_core_backfill_error_report.csv",
+    "known_blocked": "research/output/phase5e1_fmp_controlled_backfill/fmp_core_backfill_known_blocked.csv",
+    "readiness": "research/output/phase5e1_fmp_controlled_backfill/phase5e1b_core_backfill_readiness.json"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "api_key_logged": false,
+  "network_used": false,
+  "alphavantage_called": false,
+  "deployed": false,
+  "binary_artifacts_created": false,
+  "data_fabricated": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

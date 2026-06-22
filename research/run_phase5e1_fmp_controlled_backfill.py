@@ -73,6 +73,29 @@ _QUALITY_REPORT_OUT = _OUT_DIR / "fmp_backfill_quality_report.csv"
 _SECRET_AUDIT_OUT = _OUT_DIR / "fmp_backfill_secret_safety_audit.csv"
 _PANEL_PLAN_OUT = _OUT_DIR / "phase5e2_enriched_panel_plan.json"
 
+# Phase 5-E1B (expanded core fundamentals backfill) committed artifacts.
+_CORE_BATCH_PLAN_OUT = _OUT_DIR / "fmp_core_backfill_batch_plan.csv"
+_CORE_BATCH_SUMMARY_OUT = _OUT_DIR / "fmp_core_backfill_batch_summary.csv"
+_CORE_COVERAGE_OUT = _OUT_DIR / "fmp_core_backfill_coverage_report.csv"
+# Phase 5-E1B hotfix: request-level results + grouped error report.
+_CORE_REQUEST_RESULTS_OUT = _OUT_DIR / "fmp_core_backfill_request_results.csv"
+_CORE_ERROR_REPORT_OUT = _OUT_DIR / "fmp_core_backfill_error_report.csv"
+# Phase 5-E1B reliability patch: persistent register of structurally-blocked
+# (endpoint, ticker) requests (e.g. HTTP 402) so later batches never waste live
+# calls re-hitting them. Committed-safe summary (no payloads, no key).
+_CORE_KNOWN_BLOCKED_OUT = _OUT_DIR / "fmp_core_backfill_known_blocked.csv"
+_E1B_READINESS_OUT = _OUT_DIR / "phase5e1b_core_backfill_readiness.json"
+# Phase 5-E1B preflight artifacts: a network-free, key-free pre-check that reports
+# (read-only) exactly how many planned requests would be skipped vs. spent live,
+# so the user always knows the cost BEFORE launching a live batch.
+_CORE_PREFLIGHT_OUT = _OUT_DIR / "fmp_core_backfill_preflight.csv"
+_E1B_PREFLIGHT_JSON_OUT = _OUT_DIR / "phase5e1b_core_preflight.json"
+_PREFLIGHT_COLUMNS = [
+    "batch_id", "endpoint_name", "ticker", "planned_disposition",
+    "existing_raw_file_detected", "existing_raw_file_path", "existing_row_count",
+    "known_blocked_http_status",
+]
+
 # Default dry-run universe (small, explicit). Full S&P 500 is supported only with
 # explicit large --max-tickers and an explicit universe; it never runs by default.
 DEFAULT_UNIVERSE = ["AAPL", "MSFT", "NVDA", "AMZN", "JPM"]
@@ -103,6 +126,24 @@ _CORE_STABLE_ENDPOINTS = {
     "cash_flow_statement_quarterly", "key_metrics_quarterly", "ratios_quarterly",
 }
 
+# Phase 5-E1B core-only endpoint set (priority order). The four live-confirmed
+# stable fundamentals/profile endpoints - the minimum cross-sectional fundamentals
+# Phase 5-E2 needs. Earnings/analyst endpoints are intentionally NOT in this set;
+# they remain needs_live_verification and do not block expanded core collection.
+PHASE_E1B = "5-E1B"
+_CORE_ONLY_ENDPOINTS = [
+    "company_profile",
+    "income_statement_quarterly",
+    "balance_sheet_statement_quarterly",
+    "cash_flow_statement_quarterly",
+]
+_BENCHMARK = "SPY"  # Phase 5-C benchmark/regime proxy - never part of the universe.
+
+# Coverage thresholds that decide whether enough core fundamentals exist for 5-E2.
+_E1B_MIN_TICKERS_FOR_E2 = 30          # distinct names with most core statements
+_E1B_MIN_ENDPOINT_COVERAGE_PCT = 60.0  # per-endpoint coverage floor across the batch
+_E1B_MIN_CORE_ENDPOINTS_PER_TICKER = 3  # a "core-ready" ticker has >= 3 of 4 core endpoints
+
 # Normalized record metadata columns (per the Phase 5-E1 normalization contract).
 # Endpoint-specific data columns (reused from Phase 5-E0) are appended after these.
 _NORM_META_COLUMNS = [
@@ -119,6 +160,15 @@ REC_BLOCKED_NO_KEY = "BLOCKED_MISSING_FMP_KEY"
 REC_ERROR = "ERROR"
 ALLOWED_RECOMMENDATIONS = (
     REC_READY_FOR_SAMPLE, REC_READY_FOR_E2, REC_NEEDS_ENTITLEMENT,
+    REC_BLOCKED_NO_KEY, REC_ERROR,
+)
+
+# Phase 5-E1B recommendation vocabulary (shares BLOCKED_MISSING_FMP_KEY / ERROR).
+REC_E1B_READY_LIVE = "READY_FOR_EXPANDED_CORE_LIVE_BATCH"
+REC_E1B_READY_E2 = "READY_FOR_PHASE5E2_WITH_CORE_FUNDAMENTALS"
+REC_E1B_NEEDS_MORE = "NEEDS_MORE_CORE_BACKFILL_BATCHES"
+ALLOWED_E1B_RECOMMENDATIONS = (
+    REC_E1B_READY_LIVE, REC_E1B_READY_E2, REC_E1B_NEEDS_MORE,
     REC_BLOCKED_NO_KEY, REC_ERROR,
 )
 
@@ -404,16 +454,31 @@ def _access_result_for(statuses: List[str], successes: int, empties: int) -> str
 
 
 def run_live_backfill(universe: List[str], max_tickers: int, max_endpoints: int,
-                      max_requests: int, verbose: bool) -> Dict:
+                      max_requests: int, verbose: bool,
+                      endpoint_names: Optional[Sequence[str]] = None,
+                      skip_existing: bool = False,
+                      skip_known_blocked: bool = False,
+                      retry_known_blocked: bool = False,
+                      known_blocked_map: Optional[Dict[Tuple[str, str], Dict]] = None) -> Dict:
     """Collect a BOUNDED live sample. Writes raw JSON + normalized CSV locally
-    under research/data/fmp/ (git-ignored) and returns structured live results."""
+    under research/data/fmp/ (git-ignored) and returns structured live results.
+
+    ``endpoint_names`` restricts collection to a specific endpoint set (priority
+    order preserved) - used by the Phase 5-E1B core-only expanded backfill.
+    ``skip_existing`` resumes a multi-batch backfill: a (endpoint, ticker) whose
+    raw file already exists locally is recorded ``skipped`` and consumes NO request
+    budget, so later batches never re-download collected data."""
     tickers = universe[:max(0, max_tickers)] if max_tickers is not None else list(universe)
     endpoints = _priority_endpoints()
+    if endpoint_names is not None:
+        want = set(endpoint_names)
+        endpoints = [e for e in endpoints if e["endpoint_name"] in want]
     if max_endpoints is not None and max_endpoints >= 0:
         endpoints = endpoints[:max_endpoints]
     _RAW_DIR.mkdir(parents=True, exist_ok=True)
     _NORM_DIR.mkdir(parents=True, exist_ok=True)
 
+    known_blocked_map = known_blocked_map or {}
     progress: List[Dict] = []
     storage: List[Dict] = []
     access_results: Dict[str, str] = {}
@@ -439,14 +504,66 @@ def run_live_backfill(universe: List[str], max_tickers: int, max_endpoints: int,
             raw_rel = _rel(raw_path)
             norm_rel = _rel(_NORM_DIR / ("%s.csv" % name))
 
+            # Resume / skip-existing: if a *valid* raw file was already collected by
+            # ANY prior batch (canonical or timestamped name), count it as covered
+            # and DO NOT spend request budget. An empty/corrupt prior file is NOT a
+            # valid hit, so it is re-fetched instead of being silently skipped.
+            if skip_existing:
+                existing_path, existing_rows = _find_existing_raw(name, tk)
+                if existing_path is not None:
+                    found_rel = _rel(existing_path)
+                    succ += 1
+                    statuses.append("cached")
+                    progress.append({
+                        "endpoint_name": name, "ticker": tk, "request_url_redacted": redacted,
+                        "status": "skipped", "row_count": existing_rows, "raw_file_path": found_rel,
+                        "normalized_file_path": norm_rel, "http_status": "", "error_type": "",
+                        "error_message_sanitized": "already collected (skip-existing)",
+                        "skip_reason": "already_collected", "collected_at_utc": "",
+                    })
+                    storage.append({
+                        "endpoint_name": name, "ticker": tk, "raw_file_path": found_rel,
+                        "normalized_file_path": norm_rel, "raw_exists": True,
+                        "normalized_rows": existing_rows, "gitignored": True, "collected_at_utc": "",
+                    })
+                    if verbose:
+                        print("  skip %s/%s -> cached (%d row(s))" % (name, tk, existing_rows))
+                    continue
+
+            # Known-blocked: a prior batch saw a structural plan block (e.g. 402) for
+            # this (endpoint, ticker). Unless --retry-known-blocked overrides, do NOT
+            # spend a live call re-hitting it; record it as skipped_known_blocked.
+            blocked = known_blocked_map.get((name, tk))
+            if skip_known_blocked and not retry_known_blocked and blocked is not None:
+                statuses.append("known_blocked")
+                progress.append({
+                    "endpoint_name": name, "ticker": tk, "request_url_redacted": redacted,
+                    "status": "skipped", "row_count": 0, "raw_file_path": "",
+                    "normalized_file_path": "",
+                    "http_status": blocked.get("http_status", "") or "",
+                    "error_type": blocked.get("error_type", "") or "",
+                    "error_message_sanitized": "known-blocked (skip-known-blocked): %s"
+                                               % (blocked.get("likely_cause", "") or "plan block"),
+                    "skip_reason": "known_blocked", "collected_at_utc": "",
+                })
+                storage.append({
+                    "endpoint_name": name, "ticker": tk, "raw_file_path": "",
+                    "normalized_file_path": "", "raw_exists": False,
+                    "normalized_rows": 0, "gitignored": True, "collected_at_utc": "",
+                })
+                if verbose:
+                    print("  skip %s/%s -> known-blocked (%s)"
+                          % (name, tk, blocked.get("http_status", "") or "blocked"))
+                continue
+
             if max_requests is not None and request_count >= max_requests:
                 budget_hit = True
                 progress.append({
                     "endpoint_name": name, "ticker": tk, "request_url_redacted": redacted,
                     "status": "skipped", "row_count": 0, "raw_file_path": "",
-                    "normalized_file_path": "", "http_status": "",
+                    "normalized_file_path": "", "http_status": "", "error_type": "",
                     "error_message_sanitized": "request budget (--max-requests) reached",
-                    "collected_at_utc": "",
+                    "skip_reason": "budget", "collected_at_utc": "",
                 })
                 continue
 
@@ -463,8 +580,9 @@ def run_live_backfill(universe: List[str], max_tickers: int, max_endpoints: int,
                     "status": "error", "row_count": 0, "raw_file_path": "",
                     "normalized_file_path": "",
                     "http_status": "" if status_code is None else status_code,
+                    "error_type": error_type,
                     "error_message_sanitized": "%s (%s)" % (str(exc), error_type),
-                    "collected_at_utc": ts,
+                    "skip_reason": "", "collected_at_utc": ts,
                 })
                 storage.append({
                     "endpoint_name": name, "ticker": tk, "raw_file_path": "",
@@ -493,9 +611,9 @@ def run_live_backfill(universe: List[str], max_tickers: int, max_endpoints: int,
                 "status": row_status, "row_count": len(norm_rows),
                 "raw_file_path": raw_rel,
                 "normalized_file_path": norm_rel if norm_rows else "",
-                "http_status": 200,
+                "http_status": 200, "error_type": "",
                 "error_message_sanitized": "" if norm_rows else "empty_result",
-                "collected_at_utc": ts,
+                "skip_reason": "", "collected_at_utc": ts,
             })
             storage.append({
                 "endpoint_name": name, "ticker": tk, "raw_file_path": raw_rel,
@@ -898,13 +1016,815 @@ def run(live: bool = False, max_tickers: int = 5, max_endpoints: int = 6,
     return report
 
 
+# --------------------------------------------------------------------------- #
+# Phase 5-E1B - expanded CORE fundamentals backfill (resumable, batched)
+# --------------------------------------------------------------------------- #
+def _phase5c_data_path() -> Optional[str]:
+    """Resolve the Phase 5-C price-history CSV (read-only). Mirrors Phase 5-C's
+    candidate order WITHOUT importing it (keeps this runner numpy-free). D: is
+    INPUT ONLY - we never write there."""
+    env = os.environ.get("MODEL_V2_PRICE_HISTORY_CSV")
+    candidates = ([env] if env else []) + [
+        r"D:\Stock_Prediction_app_data\phase2k_g\output\phase2k_g_expanded_price_history_free.csv",
+        str(_REPO_ROOT / "research" / "output" / "phase2g_price_history_real.csv"),
+    ]
+    for p in candidates:
+        if p and os.path.isfile(p):
+            return p
+    return None
+
+
+def load_phase5c_universe() -> Tuple[List[str], str]:
+    """Return ``(tickers, source_label)`` from the Phase 5-C price-history universe.
+
+    Reads the distinct ``ticker`` column (read-only), drops the SPY benchmark, and
+    sorts for determinism. Falls back SAFELY to the default sample universe if the
+    CSV is unavailable, unreadable, or empty (never raises)."""
+    path = _phase5c_data_path()
+    if not path:
+        return list(DEFAULT_UNIVERSE), "fallback_sample (phase5c price history unavailable)"
+    try:
+        seen: List[str] = []
+        s: set = set()
+        with open(path, "r", newline="", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                t = (row.get("ticker") or "").strip().upper()
+                if not t or t == _BENCHMARK or t in s:
+                    continue
+                s.add(t)
+                seen.append(t)
+        if not seen:
+            return list(DEFAULT_UNIVERSE), "fallback_sample (phase5c price history empty)"
+        seen.sort()
+        return seen, "phase5c_price_history:%s" % _rel(Path(path))
+    except OSError:
+        return list(DEFAULT_UNIVERSE), "fallback_sample (phase5c price history read error)"
+
+
+def resolve_universe(universe_source: str, explicit: Optional[List[str]]) -> Tuple[List[str], str]:
+    """Resolve the backfill universe + a provenance label. Explicit tickers win;
+    otherwise ``phase5c`` loads from local price history (safe fallback); otherwise
+    the default sample universe."""
+    if explicit:
+        cleaned = [t.strip().upper() for t in explicit if str(t).strip()]
+        if cleaned:
+            return cleaned, "cli_explicit"
+    if (universe_source or "").lower() == "phase5c":
+        return load_phase5c_universe()
+    return list(DEFAULT_UNIVERSE), "default_sample"
+
+
+def _core_endpoints() -> List[Dict]:
+    """The four core fundamentals/profile endpoints, in backfill priority order."""
+    want = set(_CORE_ONLY_ENDPOINTS)
+    return [e for e in _priority_endpoints() if e["endpoint_name"] in want]
+
+
+def _compute_core_coverage(endpoint_names: List[str], tickers: List[str],
+                           progress: Sequence[Dict]) -> Tuple[Dict, Dict, int]:
+    """Build (coverage_by_endpoint, coverage_by_ticker, core_ready_ticker_count).
+
+    A (endpoint, ticker) counts as covered when its progress status is ``success``
+    or ``skipped`` (already collected). A ticker is "core-ready" when >= the
+    per-ticker core-endpoint threshold are covered."""
+    covered = set()
+    for r in progress:
+        status = r.get("status")
+        # 'skipped' counts as covered ONLY when it was an already-collected resume;
+        # known-blocked and budget skips have NO local data and are not covered.
+        if status == "success" or (
+                status == "skipped" and r.get("skip_reason") == "already_collected"):
+            covered.add((r.get("endpoint_name"), r.get("ticker")))
+    n_t = len(tickers)
+    n_e = len(endpoint_names)
+    by_endpoint: Dict[str, Dict] = {}
+    for e in endpoint_names:
+        c = sum(1 for tk in tickers if (e, tk) in covered)
+        by_endpoint[e] = {
+            "tickers_in_batch": n_t,
+            "tickers_covered": c,
+            "coverage_pct": round(100.0 * c / n_t, 2) if n_t else 0.0,
+        }
+    by_ticker: Dict[str, Dict] = {}
+    core_ready = 0
+    for tk in tickers:
+        c = sum(1 for e in endpoint_names if (e, tk) in covered)
+        if c >= _E1B_MIN_CORE_ENDPOINTS_PER_TICKER:
+            core_ready += 1
+        by_ticker[tk] = {
+            "endpoints_in_batch": n_e,
+            "endpoints_covered": c,
+            "coverage_pct": round(100.0 * c / n_e, 2) if n_e else 0.0,
+        }
+    return by_endpoint, by_ticker, core_ready
+
+
+def _raw_rows_in_file(path: Path) -> Optional[int]:
+    """Return the row count of a raw FMP JSON file, or None if it is missing,
+    unparseable, or empty. A list payload -> len; a non-empty dict -> 1; anything
+    empty/corrupt -> None so a prior *failed/empty* file never blocks a real fetch."""
+    if not path.is_file():
+        return None
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            payload = json.load(fh)
+    except (OSError, ValueError):
+        return None
+    if isinstance(payload, list):
+        return len(payload) if payload else None
+    if isinstance(payload, dict):
+        return 1 if payload else None
+    return None
+
+
+def _find_existing_raw(name: str, ticker: str) -> Tuple[Optional[Path], Optional[int]]:
+    """Detect a previously-collected *valid* raw file for (endpoint_name, ticker),
+    independent of batch_id / retry id. Checks the canonical
+    raw/{endpoint}/{ticker}.json first, then tolerates timestamped / suffixed
+    variants (raw/{endpoint}/{ticker}*.json) written by an older layout. Returns
+    (path, row_count) for the first valid match, else (None, None). Network-free."""
+    canonical = _RAW_DIR / name / ("%s.json" % ticker)
+    rows = _raw_rows_in_file(canonical)
+    if rows is not None:
+        return canonical, rows
+    endpoint_dir = _RAW_DIR / name
+    if endpoint_dir.is_dir():
+        # Deterministic order so the chosen fallback file is stable across runs.
+        for cand in sorted(endpoint_dir.glob("%s*.json" % ticker)):
+            if cand == canonical:
+                continue
+            rows = _raw_rows_in_file(cand)
+            if rows is not None:
+                return cand, rows
+    return None, None
+
+
+# HTTP statuses that represent a *structural* block (plan entitlement / payment),
+# not a transient failure. These are the ones worth remembering so later batches
+# do not waste live calls re-hitting them.
+_KNOWN_BLOCKING_HTTP = {"402", "403"}
+
+
+def _is_known_blocking(http_status) -> bool:
+    return str(http_status).strip() in _KNOWN_BLOCKING_HTTP
+
+
+def _retry_policy_for(http_status) -> str:
+    """Retry policy recorded in the known-blocked register. 402/403 are structural
+    plan blocks -> do not retry without an explicit override."""
+    return ("do_not_retry_without_override"
+            if _is_known_blocking(http_status) else "retry_later")
+
+
+_KNOWN_BLOCKED_COLUMNS = [
+    "ticker", "endpoint_name", "http_status", "error_type",
+    "error_message_sanitized", "likely_cause", "first_seen_batch_id",
+    "last_seen_batch_id", "retry_policy",
+]
+
+
+def _read_known_blocked() -> Dict[Tuple[str, str], Dict]:
+    """Load the persistent known-blocked register keyed by (endpoint_name, ticker).
+    Returns an empty map if the file is absent. Pure file read, no network."""
+    out: Dict[Tuple[str, str], Dict] = {}
+    if not _CORE_KNOWN_BLOCKED_OUT.is_file():
+        return out
+    try:
+        with open(_CORE_KNOWN_BLOCKED_OUT, "r", newline="", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                key = (row.get("endpoint_name", ""), row.get("ticker", ""))
+                if key[0] and key[1]:
+                    out[key] = {c: row.get(c, "") for c in _KNOWN_BLOCKED_COLUMNS}
+    except (OSError, ValueError):
+        return out
+    return out
+
+
+def _merge_known_blocked(prior: Dict[Tuple[str, str], Dict],
+                         error_rows: Sequence[Dict], batch_id: str) -> Dict[Tuple[str, str], Dict]:
+    """Fold this batch's structurally-blocked error rows into the prior register.
+    A first-time block records first_seen = last_seen = batch_id; a repeat block
+    keeps first_seen and advances last_seen. Transient errors (non-402/403) are not
+    remembered. Prior entries not re-attempted this batch are preserved as-is."""
+    merged: Dict[Tuple[str, str], Dict] = {k: dict(v) for k, v in prior.items()}
+    for r in error_rows:
+        if not _is_known_blocking(r.get("http_status")):
+            continue
+        key = (r.get("endpoint_name", ""), r.get("ticker", ""))
+        if not (key[0] and key[1]):
+            continue
+        code = str(r.get("http_status", "")).strip()
+        entry = {
+            "ticker": key[1],
+            "endpoint_name": key[0],
+            "http_status": code,
+            "error_type": r.get("error_type", "") or "",
+            "error_message_sanitized": r.get("error_message_sanitized", "") or "",
+            "likely_cause": r.get("likely_cause", "") or "",
+            "first_seen_batch_id": merged.get(key, {}).get("first_seen_batch_id") or batch_id,
+            "last_seen_batch_id": batch_id,
+            "retry_policy": _retry_policy_for(code),
+        }
+        merged[key] = entry
+    return merged
+
+
+def _next_batch_id(batch_id: str) -> str:
+    """Increment a trailing numeric batch counter (core_batch_001 -> core_batch_002),
+    preserving zero-padding width; append _002 when there is no numeric suffix."""
+    import re
+    m = re.search(r"^(.*?)(\d+)$", batch_id or "")
+    if not m:
+        return "%s_002" % (batch_id or "core_batch")
+    prefix, digits = m.group(1), m.group(2)
+    return "%s%0*d" % (prefix, len(digits), int(digits) + 1)
+
+
+def _classify_request(status: str, http_status, error_type: str) -> Tuple[str, str]:
+    """Map a request-level outcome to a (likely_cause, next_action) pair so the
+    request_results / error_report artifacts tell us WHY a request failed and what
+    to do, instead of just an opaque count. Pure / deterministic / network-free."""
+    s = (status or "").lower()
+    if s == "success":
+        return "", "none"
+    if s == "empty":
+        return ("provider returned no rows for this symbol/endpoint",
+                "verify the symbol trades and the endpoint covers it; may be legitimately empty")
+    if s == "skipped_existing":
+        return "already collected by a prior batch", "none (reuse the cached raw file)"
+    if s == "skipped_known_blocked":
+        return ("previously blocked by the FMP plan (known-blocked register)",
+                "left blocked; pass --retry-known-blocked only after the plan is upgraded")
+    if s == "planned":
+        return ("not executed yet (dry-run, or the --max-requests budget was reached)",
+                "run a live batch or raise --max-requests, then resume with --skip-existing")
+    # status == "error": classify by HTTP status first, then error_type.
+    code = str(http_status if http_status not in (None, "") else "").strip()
+    et = (error_type or "").lower()
+    if code == "401":
+        return ("invalid or unauthorized FMP_API_KEY",
+                "verify FMP_API_KEY is set and the plan is active, then retry with --skip-existing")
+    if code == "402":
+        return ("FMP plan does not include this data (payment required)",
+                "upgrade the FMP plan or drop this endpoint from the core set")
+    if code == "403":
+        return ("endpoint not entitled on the current FMP plan",
+                "confirm plan entitlement for this endpoint or drop it from the core set")
+    if code == "404":
+        return ("symbol or stable endpoint path not found",
+                "verify the ticker symbol and the /stable endpoint name")
+    if code == "429":
+        return ("rate limited / quota exceeded",
+                "wait for the quota window to reset, then resume with --skip-existing")
+    if code.startswith("5"):
+        return ("provider server error (5xx)",
+                "transient provider issue; retry later with --skip-existing")
+    if "timeout" in et:
+        return ("network timeout reaching the provider",
+                "check connectivity; retry later with --skip-existing")
+    if "json" in et or "decode" in et:
+        return ("provider returned a non-JSON / malformed body",
+                "inspect the sanitized error; retry with --skip-existing")
+    if "url" in et or "host" in et:
+        return ("request URL/host rejected before sending",
+                "inspect the sanitized error; this is a request-construction issue, not quota")
+    return ("unclassified request error",
+            "inspect the sanitized error; retry the single endpoint with --skip-existing")
+
+
+def _build_request_results(batch_id: str, plan_rows: Sequence[Dict],
+                           progress: Sequence[Dict]) -> List[Dict]:
+    """One row per planned request with request-level diagnostics. In dry-run (no
+    ``progress``) every row is ``planned``; in live mode each row reflects the
+    observed per-request outcome (success / empty / error / skipped_existing).
+
+    A live ``skipped`` row is reported as ``skipped_existing`` when it was skipped
+    because the raw file already existed (resume), and as ``planned`` when it was
+    skipped only because the --max-requests budget was reached (not yet collected).
+    """
+    rows: List[Dict] = []
+    if progress:
+        for r in progress:
+            raw_status = r.get("status", "")
+            if raw_status == "skipped":
+                skip_reason = r.get("skip_reason")
+                if skip_reason == "already_collected":
+                    rstatus = "skipped_existing"
+                elif skip_reason == "known_blocked":
+                    rstatus = "skipped_known_blocked"
+                else:
+                    rstatus = "planned"
+            else:
+                rstatus = raw_status
+            http_status = r.get("http_status", "")
+            error_type = r.get("error_type", "") or ""
+            cause, action = _classify_request(rstatus, http_status, error_type)
+            rows.append({
+                "batch_id": batch_id,
+                "ticker": r.get("ticker", ""),
+                "endpoint_name": r.get("endpoint_name", ""),
+                "status": rstatus,
+                "http_status": http_status,
+                "error_type": error_type,
+                "error_message_sanitized": r.get("error_message_sanitized", "") or "",
+                "likely_cause": cause,
+                "next_action": action,
+                "row_count": r.get("row_count", 0),
+                "raw_file_path": r.get("raw_file_path", "") or "",
+                "normalized_file_path": r.get("normalized_file_path", "") or "",
+                "request_url_redacted": r.get("request_url_redacted", "") or "",
+                "collected_at_utc": r.get("collected_at_utc", "") or "",
+            })
+        return rows
+    # Dry-run: one 'planned' row per planned request.
+    cause, action = _classify_request("planned", "", "")
+    for p in plan_rows:
+        rows.append({
+            "batch_id": batch_id,
+            "ticker": p.get("ticker", ""),
+            "endpoint_name": p.get("endpoint_name", ""),
+            "status": "planned",
+            "http_status": "",
+            "error_type": "",
+            "error_message_sanitized": "",
+            "likely_cause": cause,
+            "next_action": action,
+            "row_count": 0,
+            "raw_file_path": p.get("planned_raw_file_path", "") or "",
+            "normalized_file_path": "",
+            "request_url_redacted": p.get("request_url_redacted", "") or "",
+            "collected_at_utc": "",
+        })
+    return rows
+
+
+_REQUEST_RESULTS_COLUMNS = [
+    "batch_id", "ticker", "endpoint_name", "status", "http_status", "error_type",
+    "error_message_sanitized", "likely_cause", "next_action", "row_count",
+    "raw_file_path", "normalized_file_path", "request_url_redacted", "collected_at_utc",
+]
+_ERROR_REPORT_COLUMNS = [
+    "endpoint_name", "ticker", "http_status", "error_type",
+    "error_message_sanitized", "likely_cause", "next_action",
+]
+
+
+def derive_e1b_recommendation(live_requested: bool, live_mode: bool, live: Optional[Dict],
+                              by_endpoint: Dict, core_ready: int) -> Tuple[str, bool]:
+    """Return (recommendation, enough_for_phase5e2) for the core backfill."""
+    if live_requested and not live_mode:
+        return REC_BLOCKED_NO_KEY, False
+    if not live_mode or live is None:
+        return REC_E1B_READY_LIVE, False
+    total_success = sum(q.get("tickers_success", 0) for q in live.get("quality", {}).values())
+    request_count = live.get("request_count", 0)
+    if total_success == 0 and request_count > 0:
+        # Every attempted core request failed/empty - cannot proceed.
+        return REC_ERROR, False
+    endpoints_ok = bool(by_endpoint) and all(
+        v["coverage_pct"] >= _E1B_MIN_ENDPOINT_COVERAGE_PCT for v in by_endpoint.values())
+    enough = endpoints_ok and core_ready >= _E1B_MIN_TICKERS_FOR_E2
+    if enough:
+        return REC_E1B_READY_E2, True
+    return REC_E1B_NEEDS_MORE, False
+
+
+_E1B_NEXT_PHASE = {
+    REC_E1B_READY_LIVE: ("Run the first bounded live core batch: --live --core-only "
+                         "--universe-source phase5c --max-tickers 25 --max-requests 100 "
+                         "--skip-existing --batch-id core_batch_001 (requires FMP_API_KEY)."),
+    REC_E1B_READY_E2: "Phase 5-E2 - Enriched FMP Alpha Panel and Model Rerun (core fundamentals ready).",
+    REC_E1B_NEEDS_MORE: ("Run further --skip-existing batches (increment --batch-id, raise "
+                         "--max-tickers) until core coverage clears the Phase 5-E2 threshold."),
+    REC_BLOCKED_NO_KEY: "Set FMP_API_KEY in the environment, then re-run with --live and bounded limits.",
+    REC_ERROR: "Inspect the batch summary / progress sanitized errors, then re-run the bounded core batch.",
+}
+
+
+def run_core_backfill(live: bool = False, universe_source: str = "phase5c",
+                      max_tickers: int = 25, max_requests: int = 100,
+                      skip_existing: bool = False, resume: bool = False,
+                      batch_id: str = "core_batch_001",
+                      skip_known_blocked: bool = False, retry_known_blocked: bool = False,
+                      universe: Optional[List[str]] = None, verbose: bool = True) -> Dict:
+    """Phase 5-E1B: expanded CORE fundamentals backfill (resumable, quota-safe).
+
+    Collects only the four core fundamentals/profile endpoints for a larger
+    cross-sectional universe (default: the Phase 5-C price-history names), in
+    bounded batches that resume via ``--skip-existing`` so later batches never
+    re-download collected data. Still dry-run-first and secret-safe; paid raw +
+    normalized data stay under the git-ignored research/data/fmp/ tree."""
+    universe_all, resolved_source = resolve_universe(universe_source, universe)
+    if universe is not None and universe:
+        resolved_source = "cli_explicit"
+    paid_gitignored = _ensure_paid_data_gitignore()
+    api_key_present = fmp.has_api_key()
+    live_requested = bool(live)
+    live_mode = live_requested and api_key_present
+    skip = bool(skip_existing or resume)
+    # Snapshot the known-blocked register BEFORE this batch so "retry vs new" budget
+    # accounting and the skip decision both reflect what was blocked going in.
+    prior_known_blocked = _read_known_blocked()
+
+    core_eps = _core_endpoints()
+    core_names = [e["endpoint_name"] for e in core_eps]
+    batch_tickers = universe_all[:max(0, max_tickers)] if max_tickers is not None else list(universe_all)
+
+    # --- batch plan (always; one row per endpoint x ticker in this batch) ---
+    plan_rows: List[Dict] = []
+    for e in core_eps:
+        for tk in batch_tickers:
+            path = e["endpoint_path_template"].replace("{symbol}", tk)
+            plan_rows.append({
+                "batch_id": batch_id,
+                "endpoint_name": e["endpoint_name"],
+                "alpha_family": e["alpha_family"],
+                "ticker": tk,
+                "backfill_priority": _BACKFILL_PRIORITY.get(e["endpoint_name"], 99),
+                "endpoint_status": e.get("endpoint_status", "unknown"),
+                "request_url_redacted": fmp.redacted_request_url(path),
+                "planned_raw_file_path": _rel(_RAW_DIR / e["endpoint_name"] / ("%s.json" % tk)),
+            })
+    _write_csv(_CORE_BATCH_PLAN_OUT,
+               ["batch_id", "endpoint_name", "alpha_family", "ticker", "backfill_priority",
+                "endpoint_status", "request_url_redacted", "planned_raw_file_path"],
+               [[r["batch_id"], r["endpoint_name"], r["alpha_family"], r["ticker"],
+                 r["backfill_priority"], r["endpoint_status"], r["request_url_redacted"],
+                 r["planned_raw_file_path"]] for r in plan_rows])
+
+    # --- live core batch (only when --live AND key present) ---
+    live_results: Optional[Dict] = None
+    if live_mode:
+        live_results = run_live_backfill(
+            batch_tickers, max_tickers, len(core_names), max_requests, verbose,
+            endpoint_names=core_names, skip_existing=skip,
+            skip_known_blocked=skip_known_blocked, retry_known_blocked=retry_known_blocked,
+            known_blocked_map=prior_known_blocked)
+
+    progress = live_results["progress"] if live_results else []
+    by_endpoint, by_ticker, core_ready = _compute_core_coverage(core_names, batch_tickers, progress)
+
+    # --- per-endpoint batch summary ---
+    quality = (live_results or {}).get("quality", {})
+    access = (live_results or {}).get("access_results", {})
+    summary_rows: List[Dict] = []
+    for e in core_eps:
+        name = e["endpoint_name"]
+        q = quality.get(name, {})
+        cov = by_endpoint.get(name, {})
+        summary_rows.append({
+            "batch_id": batch_id,
+            "endpoint_name": name,
+            "alpha_family": e["alpha_family"],
+            "tickers_in_batch": len(batch_tickers),
+            "tickers_success": q.get("tickers_success", 0),
+            "tickers_empty": q.get("tickers_empty", 0),
+            "tickers_error": q.get("tickers_error", 0),
+            "tickers_covered": cov.get("tickers_covered", 0),
+            "coverage_pct": cov.get("coverage_pct", 0.0),
+            "live_access_result": access.get(name, "planned"),
+        })
+    _write_csv(_CORE_BATCH_SUMMARY_OUT,
+               ["batch_id", "endpoint_name", "alpha_family", "tickers_in_batch",
+                "tickers_success", "tickers_empty", "tickers_error", "tickers_covered",
+                "coverage_pct", "live_access_result"],
+               [[r["batch_id"], r["endpoint_name"], r["alpha_family"], r["tickers_in_batch"],
+                 r["tickers_success"], r["tickers_empty"], r["tickers_error"],
+                 r["tickers_covered"], r["coverage_pct"], r["live_access_result"]]
+                for r in summary_rows])
+
+    # --- per-ticker coverage report ---
+    _write_csv(_CORE_COVERAGE_OUT,
+               ["batch_id", "ticker", "endpoints_in_batch", "endpoints_covered",
+                "coverage_pct", "core_ready"],
+               [[batch_id, tk, v["endpoints_in_batch"], v["endpoints_covered"],
+                 v["coverage_pct"],
+                 v["endpoints_covered"] >= _E1B_MIN_CORE_ENDPOINTS_PER_TICKER]
+                for tk, v in by_ticker.items()])
+
+    # --- request-level results (one row per planned request) + grouped errors ---
+    request_results = _build_request_results(batch_id, plan_rows, progress)
+    _write_csv(_CORE_REQUEST_RESULTS_OUT, _REQUEST_RESULTS_COLUMNS,
+               [[r[c] for c in _REQUEST_RESULTS_COLUMNS] for r in request_results])
+    error_rows = [r for r in request_results if r["status"] == "error"]
+    _write_csv(_CORE_ERROR_REPORT_OUT, _ERROR_REPORT_COLUMNS,
+               [[r[c] for c in _ERROR_REPORT_COLUMNS] for r in error_rows])
+
+    # Request-level aggregates + error breakdowns for the readiness report.
+    request_success_count = sum(1 for r in request_results if r["status"] == "success")
+    request_empty_count = sum(1 for r in request_results if r["status"] == "empty")
+    request_error_count = len(error_rows)
+    request_skipped_existing_count = sum(
+        1 for r in request_results if r["status"] == "skipped_existing")
+    request_skipped_known_blocked_count = sum(
+        1 for r in request_results if r["status"] == "skipped_known_blocked")
+    error_breakdown_by_http_status: Dict[str, int] = {}
+    error_breakdown_by_endpoint: Dict[str, int] = {}
+    for r in error_rows:
+        code = str(r["http_status"]).strip() or "unknown"
+        error_breakdown_by_http_status[code] = error_breakdown_by_http_status.get(code, 0) + 1
+        ep = r["endpoint_name"]
+        error_breakdown_by_endpoint[ep] = error_breakdown_by_endpoint.get(ep, 0) + 1
+    partial_ticker_count = sum(
+        1 for v in by_ticker.values()
+        if 0 < v["endpoints_covered"] < _E1B_MIN_CORE_ENDPOINTS_PER_TICKER)
+
+    # --- known-blocked register (persist 402/403 structural blocks across batches) ---
+    known_blocked_map = _merge_known_blocked(prior_known_blocked, error_rows, batch_id)
+    _write_csv(_CORE_KNOWN_BLOCKED_OUT, _KNOWN_BLOCKED_COLUMNS,
+               [[entry[c] for c in _KNOWN_BLOCKED_COLUMNS]
+                for _, entry in sorted(known_blocked_map.items())])
+    known_blocked_by_http_status: Dict[str, int] = {}
+    known_blocked_by_endpoint: Dict[str, int] = {}
+    for (_ep, _tk), entry in known_blocked_map.items():
+        code = str(entry.get("http_status", "")).strip() or "unknown"
+        known_blocked_by_http_status[code] = known_blocked_by_http_status.get(code, 0) + 1
+        known_blocked_by_endpoint[_ep] = known_blocked_by_endpoint.get(_ep, 0) + 1
+
+    # --- live-budget accounting: a sent request is a "retry" if it re-hit a pair
+    #     that was already in the known-blocked register at the start of the batch. ---
+    live_sent = [r for r in request_results if r["status"] in ("success", "empty", "error")]
+    live_budget_spent_on_retries_count = sum(
+        1 for r in live_sent if (r["endpoint_name"], r["ticker"]) in prior_known_blocked)
+    live_budget_spent_on_new_requests_count = len(live_sent) - live_budget_spent_on_retries_count
+
+    next_retry_command = (
+        "python research\\run_phase5e1_fmp_controlled_backfill.py --live --core-only "
+        "--universe-source %s --max-tickers %d --max-requests %d --skip-existing "
+        "--batch-id %s" % (universe_source or "phase5c",
+                           max_tickers if max_tickers is not None else 25,
+                           max_requests if max_requests is not None else 100, batch_id))
+    # Next batch: widen the slice, reuse collected files, and skip known 402 blocks
+    # so live calls are spent mainly on new tickers.
+    next_batch_command = (
+        "python research\\run_phase5e1_fmp_controlled_backfill.py --live --core-only "
+        "--universe-source %s --max-tickers %d --max-requests %d --skip-existing "
+        "--skip-known-blocked --batch-id %s"
+        % (universe_source or "phase5c",
+           (max_tickers + 25) if max_tickers is not None else 50,
+           max_requests if max_requests is not None else 100, _next_batch_id(batch_id)))
+
+    # --- secret leak scan over the committed core artifacts ---
+    core_paths = [_CORE_BATCH_PLAN_OUT, _CORE_BATCH_SUMMARY_OUT, _CORE_COVERAGE_OUT,
+                  _CORE_REQUEST_RESULTS_OUT, _CORE_ERROR_REPORT_OUT, _CORE_KNOWN_BLOCKED_OUT]
+    leak_clean, scanned = _scan_for_leaks(core_paths, fmp.resolve_api_key())
+
+    recommendation, enough = derive_e1b_recommendation(
+        live_requested, live_mode, live_results, by_endpoint, core_ready)
+
+    success_count = sum(q.get("tickers_success", 0) for q in quality.values())
+    empty_count = sum(q.get("tickers_empty", 0) for q in quality.values())
+    error_count = sum(q.get("tickers_error", 0) for q in quality.values())
+    skipped_count = sum(1 for r in progress if r.get("status") == "skipped")
+
+    readiness = {
+        "phase": PHASE_E1B,
+        "objective": ("Expand the controlled FMP backfill from a 5-ticker smoke sample to a larger, "
+                      "quota-safe cross-sectional CORE fundamentals dataset (profile + quarterly "
+                      "income / balance-sheet / cash-flow statements) sufficient for the Phase 5-E2 "
+                      "enriched alpha panel. Collects/normalizes data only - does NOT build the model."),
+        "provider": fmp.PROVIDER_NAME,
+        "universe_source": resolved_source,
+        "universe_size_available": len(universe_all),
+        "mode": "live_sample" if live_mode else "dry_run",
+        "core_only": True,
+        "core_endpoints": list(core_names),
+        "batch_id": batch_id,
+        "batch_size_tickers": len(batch_tickers),
+        "planned_request_count": len(plan_rows),
+        "live_request_count": (live_results or {}).get("request_count", 0),
+        "success_count": success_count,
+        "empty_count": empty_count,
+        "error_count": error_count,
+        "skipped_count": skipped_count,
+        "raw_files_written_count": (live_results or {}).get("raw_written", 0),
+        "normalized_files_written_count": (live_results or {}).get("norm_written", 0),
+        "skip_existing": skip,
+        "resume": bool(resume),
+        "paid_data_gitignored": paid_gitignored,
+        "coverage_by_endpoint": by_endpoint,
+        "coverage_by_ticker": by_ticker,
+        "core_ready_ticker_count": core_ready,
+        "partial_ticker_count": partial_ticker_count,
+        "request_success_count": request_success_count,
+        "request_empty_count": request_empty_count,
+        "request_error_count": request_error_count,
+        "request_skipped_existing_count": request_skipped_existing_count,
+        "request_skipped_known_blocked_count": request_skipped_known_blocked_count,
+        "error_breakdown_by_http_status": error_breakdown_by_http_status,
+        "error_breakdown_by_endpoint": error_breakdown_by_endpoint,
+        "known_blocked_count": len(known_blocked_map),
+        "known_blocked_by_http_status": known_blocked_by_http_status,
+        "known_blocked_by_endpoint": known_blocked_by_endpoint,
+        "live_budget_spent_on_new_requests_count": live_budget_spent_on_new_requests_count,
+        "live_budget_spent_on_retries_count": live_budget_spent_on_retries_count,
+        "skip_known_blocked": bool(skip_known_blocked),
+        "retry_known_blocked": bool(retry_known_blocked),
+        "next_retry_command": next_retry_command,
+        "next_batch_command": next_batch_command,
+        "coverage_thresholds": {
+            "min_core_ready_tickers": _E1B_MIN_TICKERS_FOR_E2,
+            "min_endpoint_coverage_pct": _E1B_MIN_ENDPOINT_COVERAGE_PCT,
+            "min_core_endpoints_per_ticker": _E1B_MIN_CORE_ENDPOINTS_PER_TICKER,
+        },
+        "enough_for_phase5e2": enough,
+        "recommendation": recommendation,
+        "recommendation_allowed_values": list(ALLOWED_E1B_RECOMMENDATIONS),
+        "recommended_next_phase": _E1B_NEXT_PHASE[recommendation],
+        "storage_raw_dir": _rel(_RAW_DIR),
+        "storage_normalized_dir": _rel(_NORM_DIR),
+        "secret_safety_leak_scan_clean": leak_clean,
+        "secret_safety_files_scanned": scanned,
+        "outputs": {
+            "batch_plan": _rel(_CORE_BATCH_PLAN_OUT),
+            "batch_summary": _rel(_CORE_BATCH_SUMMARY_OUT),
+            "coverage_report": _rel(_CORE_COVERAGE_OUT),
+            "request_results": _rel(_CORE_REQUEST_RESULTS_OUT),
+            "error_report": _rel(_CORE_ERROR_REPORT_OUT),
+            "known_blocked": _rel(_CORE_KNOWN_BLOCKED_OUT),
+            "readiness": _rel(_E1B_READINESS_OUT),
+        },
+        # Safety / provenance contract (explicit, like Phase 5-A..5-E1).
+        "preview_only": True,
+        "orders_enabled": False,
+        "automation_enabled": False,
+        "broker_execution_enabled": False,
+        "production_replacement": False,
+        "api_key_logged": False,
+        "network_used": bool(live_mode and (live_results or {}).get("request_count", 0) > 0),
+        "alphavantage_called": False,
+        "deployed": False,
+        "binary_artifacts_created": False,
+        "data_fabricated": False,
+        "wrote_to_d_drive": False,
+        "committed": False,
+    }
+    _write_json(_E1B_READINESS_OUT, readiness)
+    return readiness
+
+
+def run_core_preflight(universe_source: str = "phase5c",
+                       max_tickers: int = 50, max_requests: int = 100,
+                       skip_existing: bool = True, skip_known_blocked: bool = True,
+                       retry_known_blocked: bool = False,
+                       batch_id: str = "core_batch_002",
+                       universe: Optional[List[str]] = None,
+                       verbose: bool = True) -> Dict:
+    """Network-free, key-free PRE-LIVE cache check.
+
+    Reports, WITHOUT calling FMP and WITHOUT requiring FMP_API_KEY, exactly how a
+    given core batch would behave if it were run live: how many planned
+    (endpoint, ticker) requests already have a valid local raw file (and would be
+    skipped by --skip-existing), how many are in the known-blocked register (and
+    would be skipped by --skip-known-blocked), and how many live FMP calls would
+    actually be spent. Strictly READ-ONLY: it never writes paid data, never deletes
+    anything, and never consumes request budget. Run this before any live batch to
+    know the cost up front."""
+    universe_all, resolved_source = resolve_universe(universe_source, universe)
+    if universe is not None and universe:
+        resolved_source = "cli_explicit"
+    core_eps = _core_endpoints()
+    core_names = [e["endpoint_name"] for e in core_eps]
+    batch_tickers = (universe_all[:max(0, max_tickers)]
+                     if max_tickers is not None else list(universe_all))
+    known_blocked = _read_known_blocked()
+
+    rows: List[Dict] = []
+    existing_detected = 0
+    planned_skipped_existing = 0
+    planned_skipped_known_blocked = 0
+    would_request = 0
+    for name in core_names:
+        for tk in batch_tickers:
+            existing_path, existing_rows = _find_existing_raw(name, tk)
+            has_existing = existing_path is not None
+            if has_existing:
+                existing_detected += 1
+            blocked = known_blocked.get((name, tk))
+            # Mirror the live-loop skip ordering exactly: skip-existing first, then
+            # known-blocked, otherwise it becomes a live request.
+            if skip_existing and has_existing:
+                disposition = "skip_existing"
+                planned_skipped_existing += 1
+            elif skip_known_blocked and not retry_known_blocked and blocked is not None:
+                disposition = "skip_known_blocked"
+                planned_skipped_known_blocked += 1
+            else:
+                disposition = "live_request"
+                would_request += 1
+            rows.append({
+                "batch_id": batch_id,
+                "endpoint_name": name,
+                "ticker": tk,
+                "planned_disposition": disposition,
+                "existing_raw_file_detected": has_existing,
+                "existing_raw_file_path": _rel(existing_path) if existing_path else "",
+                "existing_row_count": existing_rows if existing_rows is not None else "",
+                "known_blocked_http_status": (blocked or {}).get("http_status", "") if blocked else "",
+            })
+    planned_live_request_count_if_live = (
+        min(would_request, max_requests) if max_requests is not None else would_request)
+
+    _write_csv(_CORE_PREFLIGHT_OUT, _PREFLIGHT_COLUMNS,
+               [[r[c] for c in _PREFLIGHT_COLUMNS] for r in rows])
+
+    preflight = {
+        "phase": PHASE_E1B,
+        "mode": "preflight_cache_only",
+        "preflight_only": True,
+        "network_used": False,
+        "api_key_required": False,
+        "universe_source": resolved_source,
+        "universe_size_available": len(universe_all),
+        "batch_id": batch_id,
+        "batch_size_tickers": len(batch_tickers),
+        "core_endpoints": list(core_names),
+        "planned_request_count": len(rows),
+        "skip_existing": bool(skip_existing),
+        "skip_known_blocked": bool(skip_known_blocked),
+        "retry_known_blocked": bool(retry_known_blocked),
+        "max_requests": max_requests,
+        "existing_raw_files_detected": existing_detected,
+        "planned_skipped_existing_count": planned_skipped_existing,
+        "planned_skipped_known_blocked_count": planned_skipped_known_blocked,
+        "planned_live_request_count_if_live": planned_live_request_count_if_live,
+        "would_request_before_budget_cap": would_request,
+        "known_blocked_count": len(known_blocked),
+        "storage_raw_dir": _rel(_RAW_DIR),
+        "storage_normalized_dir": _rel(_NORM_DIR),
+        "live_command_preview": (
+            "python research\\run_phase5e1_fmp_controlled_backfill.py --live --core-only "
+            "--universe-source %s --max-tickers %d --max-requests %d%s%s --batch-id %s"
+            % (universe_source or "phase5c",
+               max_tickers if max_tickers is not None else 50,
+               max_requests if max_requests is not None else 100,
+               " --skip-existing" if skip_existing else "",
+               " --skip-known-blocked" if skip_known_blocked else "",
+               batch_id)),
+        "outputs": {
+            "preflight_rows": _rel(_CORE_PREFLIGHT_OUT),
+            "preflight_summary": _rel(_E1B_PREFLIGHT_JSON_OUT),
+        },
+        # Safety / provenance contract (identical posture to the rest of 5-E1B).
+        "preview_only": True,
+        "orders_enabled": False,
+        "automation_enabled": False,
+        "broker_execution_enabled": False,
+        "production_replacement": False,
+        "api_key_logged": False,
+        "alphavantage_called": False,
+        "deployed": False,
+        "data_fabricated": False,
+        "wrote_to_d_drive": False,
+        "committed": False,
+    }
+    _write_json(_E1B_PREFLIGHT_JSON_OUT, preflight)
+    if verbose:
+        print("phase:                         %s (preflight, no network)" % preflight["phase"])
+        print("universe source:               %s" % preflight["universe_source"])
+        print("batch id:                      %s" % preflight["batch_id"])
+        print("batch tickers:                 %s" % preflight["batch_size_tickers"])
+        print("planned requests:              %s" % preflight["planned_request_count"])
+        print("existing raw files detected:   %s" % preflight["existing_raw_files_detected"])
+        print("planned skipped existing:      %s" % preflight["planned_skipped_existing_count"])
+        print("planned skipped known-blocked: %s" % preflight["planned_skipped_known_blocked_count"])
+        print("LIVE CALLS IF RUN LIVE:        %s" % preflight["planned_live_request_count_if_live"])
+        print("storage raw dir:               %s" % preflight["storage_raw_dir"])
+        print("live command preview:          %s" % preflight["live_command_preview"])
+    return preflight
+
+
 def _parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(
         description="Phase 5-E1 controlled FMP backfill (dry-run by default).")
     ap.add_argument("--live", action="store_true",
                     help="Perform a bounded live controlled sample (requires FMP_API_KEY).")
+    ap.add_argument("--core-only", action="store_true",
+                    help="Phase 5-E1B: collect only the four core fundamentals/profile endpoints "
+                         "for an expanded cross-sectional universe (resumable batches).")
+    ap.add_argument("--universe-source", type=str, default="default",
+                    choices=("default", "phase5c"),
+                    help="Universe source: 'phase5c' loads the Phase 5-C price-history names "
+                         "(safe fallback to the sample); 'default' uses the sample universe.")
+    ap.add_argument("--resume", action="store_true",
+                    help="Resume a multi-batch backfill (implies --skip-existing).")
+    ap.add_argument("--skip-existing", action="store_true",
+                    help="Skip (endpoint, ticker) pairs whose raw file already exists locally; "
+                         "they consume no request budget so later batches never re-download.")
+    ap.add_argument("--skip-known-blocked", action="store_true",
+                    help="Skip (endpoint, ticker) pairs in the known-blocked register "
+                         "(e.g. prior HTTP 402); they consume no request budget.")
+    ap.add_argument("--retry-known-blocked", action="store_true",
+                    help="Override --skip-known-blocked and re-attempt known-blocked pairs "
+                         "(use only after the FMP plan entitlement changed).")
+    ap.add_argument("--preflight-cache-only", action="store_true",
+                    help="Core-only: report (read-only, no network, no key) how many planned "
+                         "requests would be skipped vs. spent live, then exit. Run before a "
+                         "live batch to know the cost up front.")
+    ap.add_argument("--batch-id", type=str, default="core_batch_001",
+                    help="Label for this collection batch (default core_batch_001).")
     ap.add_argument("--max-tickers", type=int, default=5,
-                    help="Max tickers to collect in live mode (default 5).")
+                    help="Max tickers to collect in live mode (default 5; core batches use more).")
     ap.add_argument("--max-endpoints", type=int, default=6,
                     help="Max priority endpoints to collect in live mode (default 6).")
     ap.add_argument("--max-requests", type=int, default=40,
@@ -917,7 +1837,72 @@ def _parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = _parse_args(argv)
-    universe = [t.strip().upper() for t in args.universe.split(",") if t.strip()] or DEFAULT_UNIVERSE
+    explicit = [t.strip().upper() for t in args.universe.split(",") if t.strip()]
+
+    # --- Phase 5-E1B pre-live cache check (read-only, no network, no key) ---
+    if args.core_only and args.preflight_cache_only:
+        run_core_preflight(
+            universe_source=args.universe_source, max_tickers=args.max_tickers,
+            max_requests=args.max_requests,
+            skip_existing=(args.skip_existing or args.resume),
+            skip_known_blocked=args.skip_known_blocked,
+            retry_known_blocked=args.retry_known_blocked,
+            batch_id=args.batch_id, universe=explicit or None, verbose=True)
+        return 0
+
+    # --- Phase 5-E1B expanded core fundamentals backfill ---
+    if args.core_only:
+        readiness = run_core_backfill(
+            live=args.live, universe_source=args.universe_source,
+            max_tickers=args.max_tickers, max_requests=args.max_requests,
+            skip_existing=args.skip_existing, resume=args.resume,
+            batch_id=args.batch_id, skip_known_blocked=args.skip_known_blocked,
+            retry_known_blocked=args.retry_known_blocked,
+            universe=explicit or None, verbose=True)
+        print("phase:                         %s" % readiness["phase"])
+        print("mode:                          %s" % readiness["mode"])
+        print("api key present:               %s" % fmp.has_api_key())
+        print("universe source:               %s" % readiness["universe_source"])
+        print("universe size available:       %s" % readiness["universe_size_available"])
+        print("batch id:                      %s" % readiness["batch_id"])
+        print("batch tickers:                 %s" % readiness["batch_size_tickers"])
+        print("core endpoints:                %s" % ", ".join(readiness["core_endpoints"]))
+        print("planned requests:              %s" % readiness["planned_request_count"])
+        print("live requests:                 %s" % readiness["live_request_count"])
+        print("success/empty/error:           %s / %s / %s" % (
+            readiness["success_count"], readiness["empty_count"], readiness["error_count"]))
+        print("raw files written:             %s" % readiness["raw_files_written_count"])
+        print("normalized files written:      %s" % readiness["normalized_files_written_count"])
+        print("skip existing:                 %s" % readiness["skip_existing"])
+        print("request success/err/skipped:   %s / %s / %s" % (
+            readiness["request_success_count"], readiness["request_error_count"],
+            readiness["request_skipped_existing_count"]))
+        print("skipped known-blocked:         %s" % readiness["request_skipped_known_blocked_count"])
+        print("error by http status:          %s" % (
+            readiness["error_breakdown_by_http_status"] or "(none)"))
+        print("error by endpoint:             %s" % (
+            readiness["error_breakdown_by_endpoint"] or "(none)"))
+        print("known-blocked total:           %s" % readiness["known_blocked_count"])
+        print("known-blocked by http status:  %s" % (
+            readiness["known_blocked_by_http_status"] or "(none)"))
+        print("live budget new / retries:     %s / %s" % (
+            readiness["live_budget_spent_on_new_requests_count"],
+            readiness["live_budget_spent_on_retries_count"]))
+        print("core-ready / partial tickers:  %s / %s" % (
+            readiness["core_ready_ticker_count"], readiness["partial_ticker_count"]))
+        print("enough for phase 5-E2:         %s" % readiness["enough_for_phase5e2"])
+        print("paid data gitignored:          %s" % readiness["paid_data_gitignored"])
+        print("recommendation:                %s" % readiness["recommendation"])
+        print("next phase:                    %s" % readiness["recommended_next_phase"])
+        print("next retry command:            %s" % readiness["next_retry_command"])
+        print("next batch command:            %s" % readiness["next_batch_command"])
+        return 0
+
+    # --- Phase 5-E1 controlled backfill (original behavior) ---
+    if args.universe_source == "phase5c" and not explicit:
+        universe, _ = load_phase5c_universe()
+    else:
+        universe = explicit or DEFAULT_UNIVERSE
     report = run(live=args.live, max_tickers=args.max_tickers, max_endpoints=args.max_endpoints,
                  max_requests=args.max_requests, universe=universe, verbose=True)
     print("phase:                         %s" % report["phase"])

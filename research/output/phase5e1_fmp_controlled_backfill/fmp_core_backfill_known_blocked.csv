@@ -1,0 +1,1 @@
+ticker,endpoint_name,http_status,error_type,error_message_sanitized,likely_cause,first_seen_batch_id,last_seen_batch_id,retry_policy
