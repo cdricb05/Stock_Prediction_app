@@ -1,0 +1,54 @@
+{
+  "phase": "6-B",
+  "title": "Controlled cross-asset ETF data collection + full multi-layer macro rerun",
+  "gated_on": "price_plus_macro incremental mean rank IC > 0.005 over the same-universe Phase 5-C reference, placebo-clean",
+  "macro_context_confirmed_on_local_pack": false,
+  "proceed_to_strategy_or_shadow_test": false,
+  "best_augmented_model": "price_plus_macro",
+  "best_augmented_incremental_ic": -0.050864,
+  "full_framework_cross_asset_ready": false,
+  "missing_layers_blocking_full_test": [
+    "credit_conditions (HYG/LQD spread)",
+    "volatility_complex (VIX/VIXY term structure)",
+    "equity_market_structure (QQQ/IWM/DIA breadth)",
+    "global_regional (EFA/EEM/EWJ/FXI divergence)",
+    "sector_rotation (XLE..XLC relative strength)",
+    "full_commodity_complex (HG/GC/SI/NG/DBC, only WTI oil available)",
+    "fx_complex (FXE/FXY/FXB, only broad USD index available)"
+  ],
+  "controlled_collection_plan": {
+    "note": "The full multi-layer framework (credit, volatility, equity-structure, global/regional, sector rotation, full commodity + FX complex) cannot be tested locally: 0 usable global ETF proxies are present. Collection is NOT run by this phase.",
+    "do_not_run_live_now": true,
+    "exact_future_commands": [
+      "$env:ALPHAVANTAGE_API_KEY = \"<key>\"; python -B research\\run_phase3y_alphavantage_global_etf_price_collector.py",
+      "python -B research\\run_phase3w_manual_global_etf_data_import.py",
+      "python -B research\\run_phase3x_manual_global_etf_pack_validation.py"
+    ],
+    "ready_threshold": ">= 12 usable ETF proxies across >= 5 asset classes (Phase 3-X READY rule)",
+    "target_universe": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "EFA",
+      "EEM",
+      "VGK",
+      "EWJ",
+      "FXI",
+      "SHY",
+      "IEF",
+      "TLT",
+      "TIP",
+      "LQD",
+      "HYG",
+      "GLD",
+      "SLV",
+      "DBC",
+      "USO",
+      "UUP",
+      "FXE",
+      "FXY",
+      "VIXY"
+    ]
+  },
+  "recommended_next_step": "Collect the global cross-asset ETF pack under the controlled offline collectors (commands above), then rerun Phase 6-A with the full multi-layer pack."
+}

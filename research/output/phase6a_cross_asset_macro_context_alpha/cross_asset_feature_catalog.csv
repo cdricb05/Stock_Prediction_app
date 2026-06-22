@@ -1,0 +1,49 @@
+feature_group,feature,definition,cross_sectional,leakage_safe
+factor_timeseries,spy_ret_5d,"5d pct change of SPY (equity market), as-of t-1",no,yes
+factor_timeseries,spy_ret_20d,"20d change of SPY (equity market), as-of t-1",no,yes
+factor_timeseries,spy_shock_20d,"20d change of SPY (equity market) / (60d daily-vol * sqrt(20)), as-of t-1",no,yes
+factor_timeseries,spy_vol_60d,"annualized 60d realized vol of SPY (equity market) daily change, as-of t-1",no,yes
+factor_timeseries,oil_ret_5d,"5d pct change of WTI crude (DCOILWTICO), as-of t-1",no,yes
+factor_timeseries,oil_ret_20d,"20d change of WTI crude (DCOILWTICO), as-of t-1",no,yes
+factor_timeseries,oil_shock_20d,"20d change of WTI crude (DCOILWTICO) / (60d daily-vol * sqrt(20)), as-of t-1",no,yes
+factor_timeseries,oil_vol_60d,"annualized 60d realized vol of WTI crude (DCOILWTICO) daily change, as-of t-1",no,yes
+factor_timeseries,usd_ret_5d,"5d pct change of Broad USD index (DTWEXBGS), as-of t-1",no,yes
+factor_timeseries,usd_ret_20d,"20d change of Broad USD index (DTWEXBGS), as-of t-1",no,yes
+factor_timeseries,usd_shock_20d,"20d change of Broad USD index (DTWEXBGS) / (60d daily-vol * sqrt(20)), as-of t-1",no,yes
+factor_timeseries,usd_vol_60d,"annualized 60d realized vol of Broad USD index (DTWEXBGS) daily change, as-of t-1",no,yes
+factor_timeseries,rate10_ret_5d,"5d level-diff change of 10Y Treasury yield (DGS10), as-of t-1",no,yes
+factor_timeseries,rate10_ret_20d,"20d change of 10Y Treasury yield (DGS10), as-of t-1",no,yes
+factor_timeseries,rate10_shock_20d,"20d change of 10Y Treasury yield (DGS10) / (60d daily-vol * sqrt(20)), as-of t-1",no,yes
+factor_timeseries,rate10_vol_60d,"annualized 60d realized vol of 10Y Treasury yield (DGS10) daily change, as-of t-1",no,yes
+factor_timeseries,rate2_ret_5d,"5d level-diff change of 2Y Treasury yield (DGS2), as-of t-1",no,yes
+factor_timeseries,rate2_ret_20d,"20d change of 2Y Treasury yield (DGS2), as-of t-1",no,yes
+factor_timeseries,rate2_shock_20d,"20d change of 2Y Treasury yield (DGS2) / (60d daily-vol * sqrt(20)), as-of t-1",no,yes
+factor_timeseries,rate2_vol_60d,"annualized 60d realized vol of 2Y Treasury yield (DGS2) daily change, as-of t-1",no,yes
+factor_timeseries,curve_ret_5d,"5d level-diff change of 10Y-2Y curve slope, as-of t-1",no,yes
+factor_timeseries,curve_ret_20d,"20d change of 10Y-2Y curve slope, as-of t-1",no,yes
+factor_timeseries,curve_shock_20d,"20d change of 10Y-2Y curve slope / (60d daily-vol * sqrt(20)), as-of t-1",no,yes
+factor_timeseries,curve_vol_60d,"annualized 60d realized vol of 10Y-2Y curve slope daily change, as-of t-1",no,yes
+sensitivity,beta_spy,"rolling 60d beta of stock daily return to SPY (equity market) change, as-of t-1",yes,yes
+sensitivity,beta_oil,"rolling 60d beta of stock daily return to WTI crude (DCOILWTICO) change, as-of t-1",yes,yes
+sensitivity,beta_usd,"rolling 60d beta of stock daily return to Broad USD index (DTWEXBGS) change, as-of t-1",yes,yes
+sensitivity,beta_rate10,"rolling 60d beta of stock daily return to 10Y Treasury yield (DGS10) change, as-of t-1",yes,yes
+sensitivity,beta_rate2,"rolling 60d beta of stock daily return to 2Y Treasury yield (DGS2) change, as-of t-1",yes,yes
+sensitivity,beta_curve,"rolling 60d beta of stock daily return to 10Y-2Y curve slope change, as-of t-1",yes,yes
+interaction,ix_shock_spy,beta_spy * spy_shock_20d (macro shock x stock sensitivity),yes,yes
+interaction,ix_ret20_spy,beta_spy * spy_ret_20d,yes,yes
+interaction,ix_shock_oil,beta_oil * oil_shock_20d (macro shock x stock sensitivity),yes,yes
+interaction,ix_ret20_oil,beta_oil * oil_ret_20d,yes,yes
+interaction,ix_shock_usd,beta_usd * usd_shock_20d (macro shock x stock sensitivity),yes,yes
+interaction,ix_ret20_usd,beta_usd * usd_ret_20d,yes,yes
+interaction,ix_shock_rate10,beta_rate10 * rate10_shock_20d (macro shock x stock sensitivity),yes,yes
+interaction,ix_ret20_rate10,beta_rate10 * rate10_ret_20d,yes,yes
+interaction,ix_shock_rate2,beta_rate2 * rate2_shock_20d (macro shock x stock sensitivity),yes,yes
+interaction,ix_ret20_rate2,beta_rate2 * rate2_ret_20d,yes,yes
+interaction,ix_shock_curve,beta_curve * curve_shock_20d (macro shock x stock sensitivity),yes,yes
+interaction,ix_ret20_curve,beta_curve * curve_ret_20d,yes,yes
+regime_interaction,rg_risk_x_betaspy,"SPY risk regime {risk_on:+1,neutral:0,risk_off:-1} * beta_spy",yes,yes
+regime_interaction,rg_rates_x_beta10,rates-up/down regime (sign of 10Y shock) * beta_rate10,yes,yes
+regime_interaction,rg_dollar_x_betausd,dollar-up/down regime (sign of USD shock) * beta_usd,yes,yes
+regime_interaction,rg_oil_x_betaoil,oil-shock sign * beta_oil,yes,yes
+regime_interaction,rg_infl_x_betaoil,inflation impulse (sign of 3m CPI change) * beta_oil,yes,yes
+regime_interaction,rg_policy_x_beta10,policy impulse (sign of 3m fed-funds change) * beta_rate10,yes,yes

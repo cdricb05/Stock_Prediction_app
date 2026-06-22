@@ -1,0 +1,10 @@
+layer,factor,label,source,present,usable_obs,supports_rolling_beta
+daily_factor,spy,SPY (equity market),equity_history(SPY),True,2628,True
+daily_factor,oil,WTI crude (DCOILWTICO),research\input\DCOILWTICO.csv,True,2628,True
+daily_factor,usd,Broad USD index (DTWEXBGS),research\input\DTWEXBGS.csv,True,2628,True
+daily_factor,rate10,10Y Treasury yield (DGS10),research\input\fredgraph.csv,True,2628,True
+daily_factor,rate2,2Y Treasury yield (DGS2),research\input\fredgraph.csv,True,2628,True
+daily_factor,curve,10Y-2Y curve slope,derived(rate10-rate2),True,2628,True
+monthly_regime,cpi,CPI level (CPIAUCSL),research\input\CPIAUCSL.csv,True,2628,False
+monthly_regime,fedfunds,Fed funds rate (FEDFUNDS),research\input\FEDFUNDS.csv,True,2628,False
+global_etf_pack,ALL_22,cross-asset ETF proxies (SPY..VIXY),phase3-X,False,0,False

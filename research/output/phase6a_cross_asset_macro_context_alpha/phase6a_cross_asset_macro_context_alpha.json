@@ -1,0 +1,430 @@
+{
+  "phase": "6-A",
+  "objective": "Build a leakage-safe cross-asset macro context feature pack and test whether broader market context improves 5-20 day cross-sectional equity selection (20d forward excess return vs SPY) beyond the Phase 5-C price-only champion, on the same walk-forward dates and universe.",
+  "generated_by": "research\\run_phase6a_cross_asset_macro_context_alpha.py",
+  "network_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "live_data_needed": true,
+  "live_data_used": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "deployed": false,
+  "strategy_test_run": false,
+  "binary_artifacts_created": false,
+  "production_replacement": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "raw_files_modified": false,
+  "d_drive_written": false,
+  "data_inventory": {
+    "rows": [
+      {
+        "layer": "daily_factor",
+        "factor": "spy",
+        "label": "SPY (equity market)",
+        "source": "equity_history(SPY)",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": true
+      },
+      {
+        "layer": "daily_factor",
+        "factor": "oil",
+        "label": "WTI crude (DCOILWTICO)",
+        "source": "research\\input\\DCOILWTICO.csv",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": true
+      },
+      {
+        "layer": "daily_factor",
+        "factor": "usd",
+        "label": "Broad USD index (DTWEXBGS)",
+        "source": "research\\input\\DTWEXBGS.csv",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": true
+      },
+      {
+        "layer": "daily_factor",
+        "factor": "rate10",
+        "label": "10Y Treasury yield (DGS10)",
+        "source": "research\\input\\fredgraph.csv",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": true
+      },
+      {
+        "layer": "daily_factor",
+        "factor": "rate2",
+        "label": "2Y Treasury yield (DGS2)",
+        "source": "research\\input\\fredgraph.csv",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": true
+      },
+      {
+        "layer": "daily_factor",
+        "factor": "curve",
+        "label": "10Y-2Y curve slope",
+        "source": "derived(rate10-rate2)",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": true
+      },
+      {
+        "layer": "monthly_regime",
+        "factor": "cpi",
+        "label": "CPI level (CPIAUCSL)",
+        "source": "research\\input\\CPIAUCSL.csv",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": false
+      },
+      {
+        "layer": "monthly_regime",
+        "factor": "fedfunds",
+        "label": "Fed funds rate (FEDFUNDS)",
+        "source": "research\\input\\FEDFUNDS.csv",
+        "present": true,
+        "usable_obs": 2628,
+        "supports_rolling_beta": false
+      }
+    ],
+    "daily_factors_available": 6,
+    "daily_factors_total": 6,
+    "monthly_regimes_available": 2,
+    "global_etf_readiness": {
+      "usable_ticker_count": 0,
+      "asset_classes_covered": 0,
+      "manual_file_count": 0,
+      "ready_threshold_met": false,
+      "source_phase": "3-X",
+      "recommendation": "MANUAL_GLOBAL_ETF_PACK_WAITING_FOR_FILES"
+    },
+    "full_framework_cross_asset_ready": false,
+    "missing_layers": [
+      "credit_conditions (HYG/LQD spread)",
+      "volatility_complex (VIX/VIXY term structure)",
+      "equity_market_structure (QQQ/IWM/DIA breadth)",
+      "global_regional (EFA/EEM/EWJ/FXI divergence)",
+      "sector_rotation (XLE..XLC relative strength)",
+      "full_commodity_complex (HG/GC/SI/NG/DBC, only WTI oil available)",
+      "fx_complex (FXE/FXY/FXB, only broad USD index available)"
+    ]
+  },
+  "data_sources_used": [
+    "research\\input\\DCOILWTICO.csv (WTI)",
+    "research\\input\\DTWEXBGS.csv (broad USD index)",
+    "research\\input\\fredgraph.csv (DGS10, DGS2)",
+    "research\\input\\CPIAUCSL.csv (CPI, monthly regime)",
+    "research\\input\\FEDFUNDS.csv (fed funds, monthly regime)",
+    "D:\\...\\phase2k_g_expanded_price_history_free.csv (equity + SPY, read-only)"
+  ],
+  "models_compared": [
+    "phase5c_reference",
+    "price_only",
+    "macro_only",
+    "price_plus_macro",
+    "price_plus_macro_regime_interaction"
+  ],
+  "phase5c_reference_model_used": "top_quintile_score_model",
+  "phase5c_reference_mean_rank_ic_full": 0.045229,
+  "phase5c_reference_mean_rank_ic_common": 0.045229,
+  "macro_records_usable": 15704,
+  "common_scored_dates": 112,
+  "same_dates_universe": true,
+  "ic_common_by_model": {
+    "phase5c_reference": 0.045229,
+    "price_only": 0.035047,
+    "macro_only": -0.019852,
+    "price_plus_macro": -0.005635,
+    "price_plus_macro_regime_interaction": -0.015938
+  },
+  "incremental_by_model_common": {
+    "phase5c_reference": 0.0,
+    "price_only": -0.010181,
+    "macro_only": -0.06508,
+    "price_plus_macro": -0.050864,
+    "price_plus_macro_regime_interaction": -0.061167
+  },
+  "placebo_by_model": {
+    "phase5c_reference": 0.004339,
+    "price_only": -0.009126,
+    "macro_only": -0.000776,
+    "price_plus_macro": -0.002813,
+    "price_plus_macro_regime_interaction": -0.003088
+  },
+  "best_augmented_model": "price_plus_macro",
+  "best_augmented_mean_rank_ic": -0.005635,
+  "best_augmented_incremental_ic": -0.050864,
+  "best_augmented_placebo_ic": -0.002813,
+  "price_only_ridge_mean_rank_ic_common": 0.035047,
+  "within_family_macro_increment_common": {
+    "price_plus_macro": -0.040683,
+    "price_plus_macro_regime_interaction": -0.050986
+  },
+  "leakage_clean": true,
+  "leakage_report": {
+    "embargo_days": 20,
+    "min_embargo_gap_observed": 20,
+    "embargo_respected": true,
+    "features_use_future_data": false,
+    "macro_features_lagged_t_minus_1": true
+  },
+  "ic_t_stat_by_model": {
+    "phase5c_reference": 1.880473,
+    "price_only": 1.722174,
+    "macro_only": -0.853968,
+    "price_plus_macro": -0.271822,
+    "price_plus_macro_regime_interaction": -0.756272
+  },
+  "yearly_ic_by_model": {
+    "phase5c_reference": {
+      "2017": 0.04824,
+      "2018": 0.022607,
+      "2019": 0.063301,
+      "2020": 0.043867,
+      "2021": 0.014497,
+      "2022": -0.042161,
+      "2023": 0.082386,
+      "2024": 0.011011,
+      "2025": 0.141976,
+      "2026": 0.109235
+    },
+    "price_only": {
+      "2017": 0.050359,
+      "2018": -0.017784,
+      "2019": 0.079427,
+      "2020": 0.054251,
+      "2021": 0.022018,
+      "2022": -0.03642,
+      "2023": 0.028838,
+      "2024": 0.011444,
+      "2025": 0.105654,
+      "2026": 0.087966
+    },
+    "macro_only": {
+      "2017": 0.03814,
+      "2018": -0.013976,
+      "2019": -0.016562,
+      "2020": -0.020586,
+      "2021": -0.094414,
+      "2022": -0.076938,
+      "2023": 0.014399,
+      "2024": 0.004117,
+      "2025": -0.059779,
+      "2026": 0.120947
+    },
+    "price_plus_macro": {
+      "2017": 0.026023,
+      "2018": -0.000556,
+      "2019": 0.001157,
+      "2020": 0.009896,
+      "2021": -0.032405,
+      "2022": -0.041177,
+      "2023": 0.010742,
+      "2024": -0.005401,
+      "2025": -0.065841,
+      "2026": 0.134898
+    },
+    "price_plus_macro_regime_interaction": {
+      "2017": 0.044207,
+      "2018": -0.028663,
+      "2019": -0.071092,
+      "2020": 0.012416,
+      "2021": -0.036475,
+      "2022": -0.050549,
+      "2023": 0.000535,
+      "2024": -0.004894,
+      "2025": -0.049999,
+      "2026": 0.107268
+    }
+  },
+  "decile_spread_by_model": {
+    "phase5c_reference": {
+      "mean_rank_ic_20d": 0.045229,
+      "mean_top_decile_fwd_excess": 0.016313,
+      "mean_bottom_decile_fwd_excess": -0.003094
+    },
+    "price_only": {
+      "mean_rank_ic_20d": 0.035047,
+      "mean_top_decile_fwd_excess": 0.012702,
+      "mean_bottom_decile_fwd_excess": -0.004494
+    },
+    "macro_only": {
+      "mean_rank_ic_20d": -0.019852,
+      "mean_top_decile_fwd_excess": 0.003222,
+      "mean_bottom_decile_fwd_excess": 0.006467
+    },
+    "price_plus_macro": {
+      "mean_rank_ic_20d": -0.005635,
+      "mean_top_decile_fwd_excess": 0.006136,
+      "mean_bottom_decile_fwd_excess": 0.000918
+    },
+    "price_plus_macro_regime_interaction": {
+      "mean_rank_ic_20d": -0.015938,
+      "mean_top_decile_fwd_excess": 0.004143,
+      "mean_bottom_decile_fwd_excess": 0.001338
+    }
+  },
+  "gate_summary": {
+    "counts": {
+      "PASS": 13,
+      "FAIL": 1,
+      "WARNING": 1,
+      "NOT_EVALUABLE": 0
+    },
+    "gates": [
+      {
+        "gate_name": "incremental_ic_over_reference_gate",
+        "status": "FAIL",
+        "metric": "incremental_mean_rank_ic",
+        "value": -0.050864,
+        "threshold": ">0.005",
+        "note": "best=price_plus_macro; ref common IC=0.045229"
+      },
+      {
+        "gate_name": "placebo_materially_lower_gate",
+        "status": "PASS",
+        "metric": "placebo_mean_ic",
+        "value": -0.002813,
+        "threshold": "|placebo|<0.02 and <0.5x real IC",
+        "note": "best real IC=-0.005635"
+      },
+      {
+        "gate_name": "leakage_clean_gate",
+        "status": "PASS",
+        "metric": "walk_forward_embargo_respected",
+        "value": true,
+        "threshold": "true",
+        "note": "yearly walk-forward with >=20-session embargo; macro features lagged t-1"
+      },
+      {
+        "gate_name": "same_universe_comparison_gate",
+        "status": "PASS",
+        "metric": "all_models_share_common_dates",
+        "value": true,
+        "threshold": "true",
+        "note": "common scored dates=112"
+      },
+      {
+        "gate_name": "macro_features_built_gate",
+        "status": "PASS",
+        "metric": "records_with_macro_block",
+        "value": 15704,
+        "threshold": ">0",
+        "note": "daily factors available=6/6"
+      },
+      {
+        "gate_name": "full_framework_cross_asset_ready_gate",
+        "status": "WARNING",
+        "metric": "usable_cross_asset_etf_proxies",
+        "value": 0,
+        "threshold": ">=12 across >=5 classes",
+        "note": "WARNING (not FAIL): the local FRED+SPY pack tests a PARTIAL framework; the full multi-layer pack needs the global ETF collection"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paid_api_gate",
+        "status": "PASS",
+        "metric": "paid_apis_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_deploy_gate",
+        "status": "PASS",
+        "metric": "deployed",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_strategy_test_gate",
+        "status": "PASS",
+        "metric": "strategy_test_run",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_binary_artifact_gate",
+        "status": "PASS",
+        "metric": "binary_artifacts_created",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      }
+    ]
+  },
+  "recommendation": "NEEDS_CONTROLLED_CROSS_ASSET_DATA_COLLECTION",
+  "recommendation_allowed_values": [
+    "MACRO_CONTEXT_ALPHA_CONFIRMED",
+    "MACRO_CONTEXT_ALPHA_WEAK",
+    "NEEDS_CONTROLLED_CROSS_ASSET_DATA_COLLECTION",
+    "DATA_QUALITY_BLOCKED",
+    "ERROR"
+  ],
+  "recommendation_supported_by_metrics": true,
+  "recommended_next_phase": {
+    "phase": "6-B",
+    "title": "Controlled cross-asset ETF collection + full multi-layer macro rerun"
+  },
+  "macro_context_improved_signal": false,
+  "survivorship_biased": true,
+  "production_edge_claimed": false,
+  "artifacts": [
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\phase6a_cross_asset_macro_context_alpha.json",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\cross_asset_data_inventory.csv",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\cross_asset_feature_catalog.csv",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\cross_asset_model_scoreboard.csv",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\cross_asset_incremental_edge_report.csv",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\cross_asset_gate_matrix.csv",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\cross_asset_yearly_ic.csv",
+    "research\\output\\phase6a_cross_asset_macro_context_alpha\\phase6b_next_plan.json"
+  ]
+}

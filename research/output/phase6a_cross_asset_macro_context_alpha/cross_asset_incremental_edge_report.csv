@@ -1,0 +1,5 @@
+model,mean_rank_ic_common,reference_ic_common,incremental_ic_vs_reference,clears_gate
+macro_only,-0.019852,0.045229,-0.06508,False
+price_plus_macro,-0.005635,0.045229,-0.050864,False
+price_plus_macro_regime_interaction,-0.015938,0.045229,-0.061167,False
+price_only,0.035047,0.045229,-0.010181,False

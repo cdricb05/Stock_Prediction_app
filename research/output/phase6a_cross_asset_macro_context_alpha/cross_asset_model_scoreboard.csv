@@ -1,0 +1,6 @@
+model,evaluable,n_scored_dates,mean_rank_ic,ic_t_stat,median_rank_ic,mean_decile_spread,top_quintile_hit_rate,placebo_mean_ic,incremental_ic_vs_reference_common
+phase5c_reference,True,112,0.045229,1.880473,0.014472,0.019408,0.5025,0.004339,0.0
+price_only,True,112,0.035047,1.722174,0.026646,0.017196,0.506786,-0.009126,-0.010181
+macro_only,True,112,-0.019852,-0.853968,-0.026232,-0.003245,0.485357,-0.000776,-0.06508
+price_plus_macro,True,112,-0.005635,-0.271822,-0.02325,0.005218,0.478214,-0.002813,-0.050864
+price_plus_macro_regime_interaction,True,112,-0.015938,-0.756272,-0.011929,0.002806,0.471429,-0.003088,-0.061167

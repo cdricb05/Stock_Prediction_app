@@ -1,0 +1,16 @@
+gate_name,status,metric,value,threshold,note
+incremental_ic_over_reference_gate,FAIL,incremental_mean_rank_ic,-0.050864,>0.005,best=price_plus_macro; ref common IC=0.045229
+placebo_materially_lower_gate,PASS,placebo_mean_ic,-0.002813,|placebo|<0.02 and <0.5x real IC,best real IC=-0.005635
+leakage_clean_gate,PASS,walk_forward_embargo_respected,True,true,yearly walk-forward with >=20-session embargo; macro features lagged t-1
+same_universe_comparison_gate,PASS,all_models_share_common_dates,True,true,common scored dates=112
+macro_features_built_gate,PASS,records_with_macro_block,15704,>0,daily factors available=6/6
+full_framework_cross_asset_ready_gate,WARNING,usable_cross_asset_etf_proxies,0,>=12 across >=5 classes,WARNING (not FAIL): the local FRED+SPY pack tests a PARTIAL framework; the full multi-layer pack needs the global ETF collection
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_network_gate,PASS,network_used,False,false,
+no_paid_api_gate,PASS,paid_apis_used,False,false,
+no_deploy_gate,PASS,deployed,False,false,
+no_strategy_test_gate,PASS,strategy_test_run,False,false,
+no_binary_artifact_gate,PASS,binary_artifacts_created,False,false,
+preview_only_gate,PASS,preview_only,True,true,
