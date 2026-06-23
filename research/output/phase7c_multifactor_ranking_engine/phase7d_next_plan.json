@@ -1,0 +1,44 @@
+{
+  "phase": "7-D",
+  "title": "Risk Decomposition (consolidated book-level risk view)",
+  "charter_mapping": "Charter Phase 4.5 \u2014 measure net beta / duration / sector & factor tilts before any hedging",
+  "gated_on": "Phase 7-C ranking engine accepted; this run recommendation = MULTIFACTOR_RANKING_ENGINE_WEAK",
+  "approved_buckets": [
+    "momentum",
+    "low_volatility",
+    "value",
+    "quality",
+    "growth"
+  ],
+  "approved_fundamental_buckets": [
+    "value",
+    "quality",
+    "growth"
+  ],
+  "build_next": [
+    "From the equal-weight composite ranking, form a measurement-only long/short or top-quantile book.",
+    "Decompose book-level exposures: market beta, sector concentration, factor tilts, idiosyncratic share.",
+    "Report a CFO-readable consolidated risk view (measurement only; zero hedging, zero orders)."
+  ],
+  "explicitly_not_in_7d": [
+    "factor-weight optimization (still forbidden until the owner endorses a weighting philosophy)",
+    "regime overlay / System 2 (Phase 7-E, gated on a trusted System 1 + cross-asset data)",
+    "any order / broker / automation / Paper Trader / GCP / deploy work",
+    "live provider calls"
+  ],
+  "harness_entry_points_reused": [
+    "period_rank_ics",
+    "ic_summary",
+    "yearly_ic",
+    "period_quantile_spread",
+    "apply_transaction_costs",
+    "sharpe",
+    "max_drawdown",
+    "walk_forward_splits",
+    "purged_kfold_splits",
+    "HoldoutLedger",
+    "MultipleTestingTracker",
+    "deflated_sharpe_ratio",
+    "equal_weight_composite"
+  ]
+}

@@ -1,0 +1,22 @@
+gate_name,status,metric,value,threshold,note
+no_lookahead_gate,PASS,forward_label_violations,0,0,every label resolves strictly after its scoring month
+placebo_collapses_gate,PASS,within_period_label_shuffle_ic_collapses,True,true,shuffled-label composite IC must collapse toward zero
+composite_built_gate,PASS,composite_mean_rank_ic_computed,True,true,5 approved buckets equal-weighted
+min_buckets_gate,PASS,approved_bucket_count,5,>=2,need at least two approved factor buckets for a multi-factor composite
+incremental_ic_gate,FAIL,composite_minus_baseline_mean_rank_ic,0.004952,>= 0.005,composite must beat the equal-weight price-only baseline (the success gate)
+ic_significance_gate,WARNING,composite_ic_t_stat,-0.500067,|t| >= 2,informational: cross-sectional IC significance
+sector_neutralization_caveat_gate,WARNING,sector_map_point_in_time,False,true (ideal),static current-as-of sector map used for neutralization (membership is stable; flagged)
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_network_gate,PASS,network_used,False,false,
+no_live_data_gate,PASS,live_data_used,False,false,
+no_paid_api_gate,PASS,paid_apis_used,False,false,
+no_deploy_gate,PASS,deployed,False,false,
+no_production_model_gate,PASS,production_model_built,False,false,
+no_weight_optimization_gate,PASS,factor_weights_optimized,False,false,
+no_future_fundamentals_gate,PASS,future_fundamentals_used,False,false,
+no_paper_trader_gate,PASS,paper_trader_touched,False,false,
+no_gcp_gate,PASS,gcp_touched,False,false,
+no_d_drive_write_gate,PASS,d_drive_written,False,false,
+preview_only_gate,PASS,preview_only,True,true,

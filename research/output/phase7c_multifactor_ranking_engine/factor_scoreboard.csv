@@ -1,0 +1,6 @@
+factor_key,bucket,source,mean_rank_ic,ic_t_stat,n_periods,quintile_spread,decile_spread,coverage_fraction,approved
+momentum,momentum,price,0.007256,0.432394,112,0.002987,0.006576,0.895739,true
+low_volatility,low_volatility,price,-0.033783,-2.146275,121,-0.011982,-0.016235,0.967857,true
+value,value,fundamentals,0.021044,1.125967,66,0.000712,0.008014,0.457018,true
+quality,quality,fundamentals,-0.010118,-0.755718,64,-0.004841,-0.007785,0.332895,true
+growth,growth,fundamentals,0.010227,0.705008,94,-0.00082,0.000145,0.409273,true

@@ -1,0 +1,11 @@
+series,mean_rank_ic,ic_t_stat,n_periods,quintile_spread,decile_spread
+price_only_baseline,-0.012348,-0.723813,121,-0.004047,-0.008658
+equal_weight_composite,-0.007396,-0.500067,121,-0.002805,-0.006381
+incremental (composite - baseline),0.004952,,,,
+composite_net_of_cost,,,,,
+  gross_mean_spread,-0.003352,,,,
+  net_mean_spread,-0.003522,,,,
+  mean_turnover,0.170667,,,,
+  composite_sharpe,-0.270582,,,,
+  composite_max_drawdown,-0.449175,,,,
+holdout_incremental_ic,0.026175,,,,

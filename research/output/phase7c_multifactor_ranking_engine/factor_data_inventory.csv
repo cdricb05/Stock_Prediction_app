@@ -1,0 +1,6 @@
+data_source,path,rows,tickers,date_range,point_in_time,used_for
+price_history,D:\Stock_Prediction_app_data\phase2k_g\output\phase2k_g_expanded_price_history_free.csv,335541,128,2016-01-04..2026-06-16,true,"momentum, low_volatility, value(price leg), forward labels"
+sec_fundamentals_annual_10K,research\output\phase3l_sec_universe_signal_gate\fundamentals_universe.csv,9155,128,2013-04-02..2026-06-18,true (availability_datetime gated),"value (E/P), quality (ROE), growth (revenue YoY)"
+sector_map,research\input\phase2k_p_sector_map_current.csv,128,128,current-as-of,false,sector-neutralization (caveated; not point-in-time)
+earnings_estimates_panel,research\output\phase3m_earnings_estimates_signal_gate\combined_fundamental_earnings_panel.csv,0,0,n/a,n/a (empty),revisions/sentiment — UNAVAILABLE (header-only)
+ranked_universe,(intersection),128,128,n/a,true,tickers with price + annual fundamentals + sector

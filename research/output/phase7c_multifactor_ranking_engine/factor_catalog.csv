@@ -1,0 +1,7 @@
+bucket,factor_key,source,definition,orientation,available,approved,coverage_fraction,note
+momentum,momentum,price,12-1 price momentum: close[m-1]/close[m-13]-1 (skips the most recent month),higher,true,true,0.895739,classic cross-sectional momentum; fully point-in-time from adjusted prices
+low_volatility,low_volatility,price,negative trailing 126-trading-day realized daily-return volatility (lower vol = better),higher,true,true,0.967857,low-volatility anomaly; sign inverted so higher score = lower risk
+value,value,fundamentals,earnings yield = latest annual diluted EPS / price (higher E/P = cheaper = better),higher,true,true,0.457018,share-free value proxy; adjusted price vs reported EPS split-basis is a caveated first pass
+quality,quality,fundamentals,return on equity = latest annual net income / shareholder equity (higher = better),higher,true,true,0.332895,profitability/quality proxy from annual 10-K levels
+growth,growth,fundamentals,revenue YoY growth = latest annual revenue / prior annual revenue - 1 (higher = better),higher,true,true,0.409273,fundamental growth from two consecutive annual 10-K revenues
+revisions_sentiment,,earnings_estimates_panel,,,false,false,0.0,"the local combined_fundamental_earnings_panel.csv is header-only (0 data rows); no estimate-revision / sentiment signal exists to build — marked unavailable, not faked."

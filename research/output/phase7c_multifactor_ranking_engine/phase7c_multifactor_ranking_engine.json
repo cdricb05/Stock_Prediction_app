@@ -1,0 +1,486 @@
+{
+  "phase": "7-C",
+  "objective": "Build the first System 1 cross-sectional multi-factor ranking engine from existing local data only (price-derived momentum + low-volatility; annual, point-in-time fundamentals value/quality/growth), normalize cross-sectionally, combine EQUAL WEIGHT, and grade every factor and the composite through the Phase 7-B harness against an equal-weight price-only baseline. No weight optimization, no live data, no production claim.",
+  "generated_by": "research\\run_phase7c_multifactor_ranking_engine.py",
+  "charter": {
+    "path": "docs/project_charter_sp500_multifactor_ranking_v1.md",
+    "mapping": "Charter Phase 2 (single-factor) + Phase 3 (equal-weight composite); System 1 only.",
+    "principle": "Cross-sectional ranking, not single-name prediction. Equal weight first."
+  },
+  "measured_by": "research/run_phase7b_validation_harness_foundation.py (Phase 7-B harness)",
+  "network_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "live_data_used": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "deployed": false,
+  "production_model_built": false,
+  "factor_weights_optimized": false,
+  "future_fundamentals_used": false,
+  "binary_artifacts_created": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "raw_files_modified": false,
+  "d_drive_written": false,
+  "universe": {
+    "n_tickers": 128,
+    "date_range": "2016-01-04..2026-06-16",
+    "cadence": "monthly (month-end scoring, next-month forward label)",
+    "tickers_sample": [
+      "AAPL",
+      "ABBV",
+      "ABT",
+      "ACN",
+      "ADBE",
+      "ADI",
+      "ADP",
+      "AMAT",
+      "AMD",
+      "AMGN"
+    ]
+  },
+  "sector_neutralization": {
+    "applied": true,
+    "map_point_in_time": false,
+    "caveat": "static current-as-of sector map; membership is stable, but not strictly PIT"
+  },
+  "factor_buckets": {
+    "momentum": {
+      "bucket": "momentum",
+      "source": "price",
+      "available": true,
+      "approved": true,
+      "coverage": 0.895739,
+      "mean_rank_ic": 0.007256,
+      "ic_t_stat": 0.432394,
+      "n_periods": 112,
+      "quintile_spread": 0.002987,
+      "yearly_ic": {
+        "2017": 0.071851,
+        "2018": 0.008752,
+        "2019": -0.027502,
+        "2020": 0.024489,
+        "2021": -0.056393,
+        "2022": -0.021496,
+        "2023": 0.014336,
+        "2024": 0.022261,
+        "2025": -0.021483,
+        "2026": 0.141352
+      }
+    },
+    "low_volatility": {
+      "bucket": "low_volatility",
+      "source": "price",
+      "available": true,
+      "approved": true,
+      "coverage": 0.967857,
+      "mean_rank_ic": -0.033783,
+      "ic_t_stat": -2.146275,
+      "n_periods": 121,
+      "quintile_spread": -0.011982,
+      "yearly_ic": {
+        "2016": -0.078514,
+        "2017": -0.008802,
+        "2018": 0.016865,
+        "2019": -0.020493,
+        "2020": -0.077124,
+        "2021": 0.033457,
+        "2022": 0.008508,
+        "2023": -0.077163,
+        "2024": -0.024568,
+        "2025": -0.113957,
+        "2026": -0.060057
+      }
+    },
+    "value": {
+      "bucket": "value",
+      "source": "fundamentals",
+      "available": true,
+      "approved": true,
+      "coverage": 0.457018,
+      "mean_rank_ic": 0.021044,
+      "ic_t_stat": 1.125967,
+      "n_periods": 66,
+      "quintile_spread": 0.000712,
+      "yearly_ic": {
+        "2020": -0.035608,
+        "2021": 0.046474,
+        "2022": 0.053718,
+        "2023": -0.08129,
+        "2024": 0.046127,
+        "2025": 0.029196,
+        "2026": 0.058761
+      }
+    },
+    "quality": {
+      "bucket": "quality",
+      "source": "fundamentals",
+      "available": true,
+      "approved": true,
+      "coverage": 0.332895,
+      "mean_rank_ic": -0.010118,
+      "ic_t_stat": -0.755718,
+      "n_periods": 64,
+      "quintile_spread": -0.004841,
+      "yearly_ic": {
+        "2021": -0.020753,
+        "2022": 0.032357,
+        "2023": -0.097787,
+        "2024": 0.029876,
+        "2025": 0.004866,
+        "2026": -0.010205
+      }
+    },
+    "growth": {
+      "bucket": "growth",
+      "source": "fundamentals",
+      "available": true,
+      "approved": true,
+      "coverage": 0.409273,
+      "mean_rank_ic": 0.010227,
+      "ic_t_stat": 0.705008,
+      "n_periods": 94,
+      "quintile_spread": -0.00082,
+      "yearly_ic": {
+        "2018": -0.00501,
+        "2019": 0.095547,
+        "2020": -0.037751,
+        "2021": -0.031704,
+        "2022": -0.005503,
+        "2023": -0.004998,
+        "2024": 0.033289,
+        "2025": 0.022147,
+        "2026": 0.026819
+      }
+    }
+  },
+  "unavailable_buckets": [
+    {
+      "bucket": "revisions_sentiment",
+      "source": "earnings_estimates_panel",
+      "reason": "the local combined_fundamental_earnings_panel.csv is header-only (0 data rows); no estimate-revision / sentiment signal exists to build \u2014 marked unavailable, not faked."
+    }
+  ],
+  "approved_buckets": {
+    "price_only": [
+      "momentum",
+      "low_volatility"
+    ],
+    "fundamentals": [
+      "value",
+      "quality",
+      "growth"
+    ],
+    "all": [
+      "momentum",
+      "low_volatility",
+      "value",
+      "quality",
+      "growth"
+    ]
+  },
+  "baseline_price_only": {
+    "mean_rank_ic": -0.012348,
+    "ic_t_stat": -0.723813,
+    "n_periods": 121,
+    "quintile_spread": -0.004047
+  },
+  "equal_weight_composite": {
+    "mean_rank_ic": -0.007396,
+    "ic_t_stat": -0.500067,
+    "n_periods": 121,
+    "quintile_spread": -0.002805,
+    "decile_spread": -0.006381,
+    "yearly_ic": {
+      "2016": -0.081399,
+      "2017": 0.050654,
+      "2018": 0.027165,
+      "2019": -0.01635,
+      "2020": -0.049825,
+      "2021": -0.01143,
+      "2022": -0.010075,
+      "2023": -0.041085,
+      "2024": 0.04227,
+      "2025": -0.037078,
+      "2026": 0.061071
+    }
+  },
+  "incremental_mean_rank_ic": 0.004952,
+  "incremental_ic_gate": 0.005,
+  "engine_improved_signal_quality": false,
+  "leakage_checks": {
+    "strictly_forward_labels": {
+      "strictly_forward": true,
+      "n_violations": 0,
+      "n": 15470
+    },
+    "placebo_n_shuffles": 100,
+    "placebo_mean_rank_ic": 8.8e-05,
+    "placebo_abs_mean_rank_ic": 0.006416,
+    "placebo_std_ic": 0.008156,
+    "placebo_collapsed": true,
+    "placebo_note": "average shuffled-label mean rank IC over 100 permutations must collapse to ~0"
+  },
+  "split_plan": {
+    "walk_forward_folds": 4,
+    "purged_kfold_folds": 5,
+    "min_embargo_gaps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "total_purged": 1022,
+    "n_months": 125
+  },
+  "cost_model": {
+    "cost_bps": 10.0,
+    "gross_mean_spread": -0.003352,
+    "net_mean_spread": -0.003522,
+    "mean_turnover": 0.170667,
+    "total_cost_drag": 0.02048
+  },
+  "composite_sharpe": -0.270582,
+  "composite_max_drawdown": -0.449175,
+  "multiple_testing": {
+    "n_trials": 7,
+    "deflated_sharpe_ratio": 0.0
+  },
+  "holdout": {
+    "reserved": true,
+    "n_holdout_months": 25,
+    "holdout_window": [
+      "2024-05",
+      "2026-05"
+    ],
+    "touch_permitted": true,
+    "touch_count": 1,
+    "composite_search_ic": -0.010437,
+    "composite_holdout_ic": 0.004284,
+    "baseline_search_ic": -0.009863,
+    "baseline_holdout_ic": -0.021892,
+    "incremental_search_ic": -0.000575,
+    "incremental_holdout_ic": 0.026175,
+    "ledger": {
+      "holdout_start": "2024-05",
+      "holdout_end": "2026-05",
+      "purpose": "final single-touch out-of-sample sign-off",
+      "touched": true,
+      "touch_count": 1,
+      "touch_log": [
+        "2026-05: Phase 7-C final single-touch out-of-sample read"
+      ]
+    }
+  },
+  "gate_summary": {
+    "counts": {
+      "PASS": 18,
+      "FAIL": 1,
+      "WARNING": 2
+    },
+    "gates": [
+      {
+        "gate_name": "no_lookahead_gate",
+        "status": "PASS",
+        "metric": "forward_label_violations",
+        "value": 0,
+        "threshold": "0",
+        "note": "every label resolves strictly after its scoring month"
+      },
+      {
+        "gate_name": "placebo_collapses_gate",
+        "status": "PASS",
+        "metric": "within_period_label_shuffle_ic_collapses",
+        "value": true,
+        "threshold": "true",
+        "note": "shuffled-label composite IC must collapse toward zero"
+      },
+      {
+        "gate_name": "composite_built_gate",
+        "status": "PASS",
+        "metric": "composite_mean_rank_ic_computed",
+        "value": true,
+        "threshold": "true",
+        "note": "5 approved buckets equal-weighted"
+      },
+      {
+        "gate_name": "min_buckets_gate",
+        "status": "PASS",
+        "metric": "approved_bucket_count",
+        "value": 5,
+        "threshold": ">=2",
+        "note": "need at least two approved factor buckets for a multi-factor composite"
+      },
+      {
+        "gate_name": "incremental_ic_gate",
+        "status": "FAIL",
+        "metric": "composite_minus_baseline_mean_rank_ic",
+        "value": 0.004952,
+        "threshold": ">= 0.005",
+        "note": "composite must beat the equal-weight price-only baseline (the success gate)"
+      },
+      {
+        "gate_name": "ic_significance_gate",
+        "status": "WARNING",
+        "metric": "composite_ic_t_stat",
+        "value": -0.500067,
+        "threshold": "|t| >= 2",
+        "note": "informational: cross-sectional IC significance"
+      },
+      {
+        "gate_name": "sector_neutralization_caveat_gate",
+        "status": "WARNING",
+        "metric": "sector_map_point_in_time",
+        "value": false,
+        "threshold": "true (ideal)",
+        "note": "static current-as-of sector map used for neutralization (membership is stable; flagged)"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_live_data_gate",
+        "status": "PASS",
+        "metric": "live_data_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paid_api_gate",
+        "status": "PASS",
+        "metric": "paid_apis_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_deploy_gate",
+        "status": "PASS",
+        "metric": "deployed",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_production_model_gate",
+        "status": "PASS",
+        "metric": "production_model_built",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_weight_optimization_gate",
+        "status": "PASS",
+        "metric": "factor_weights_optimized",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_future_fundamentals_gate",
+        "status": "PASS",
+        "metric": "future_fundamentals_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paper_trader_gate",
+        "status": "PASS",
+        "metric": "paper_trader_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_gcp_gate",
+        "status": "PASS",
+        "metric": "gcp_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_d_drive_write_gate",
+        "status": "PASS",
+        "metric": "d_drive_written",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      }
+    ]
+  },
+  "recommendation": "MULTIFACTOR_RANKING_ENGINE_WEAK",
+  "recommendation_allowed_values": [
+    "MULTIFACTOR_RANKING_ENGINE_CONFIRMED",
+    "MULTIFACTOR_RANKING_ENGINE_WEAK",
+    "NEEDS_FACTOR_DATA_FOUNDATION",
+    "NEEDS_VALIDATION_REVIEW",
+    "ERROR"
+  ],
+  "what_is_still_only_a_template_or_caveated": [
+    "Sector neutralization uses a static current-as-of sector map (not strictly point-in-time).",
+    "Value uses adjusted price vs reported (unadjusted-basis) annual EPS \u2014 a caveated share-free E/P.",
+    "Fundamentals are annual 10-K only (no TTM quarterly blend), so value/quality/growth are stale up to ~1 year.",
+    "Revisions/sentiment bucket is unavailable (empty local panel) \u2014 not built, not faked.",
+    "Cost bps and the quintile-portfolio construction are modelling assumptions, not a real book."
+  ],
+  "recommended_next_phase": {
+    "phase": "7-D",
+    "title": "Risk Decomposition (System 1 book-level risk view)"
+  },
+  "commit_appropriate": false,
+  "commit_note": "Per task instruction nothing is committed or pushed.",
+  "artifacts": [
+    "research\\output\\phase7c_multifactor_ranking_engine\\phase7c_multifactor_ranking_engine.json",
+    "research\\output\\phase7c_multifactor_ranking_engine\\factor_data_inventory.csv",
+    "research\\output\\phase7c_multifactor_ranking_engine\\factor_catalog.csv",
+    "research\\output\\phase7c_multifactor_ranking_engine\\factor_scoreboard.csv",
+    "research\\output\\phase7c_multifactor_ranking_engine\\composite_scoreboard.csv",
+    "research\\output\\phase7c_multifactor_ranking_engine\\validation_gate_matrix.csv",
+    "research\\output\\phase7c_multifactor_ranking_engine\\multiple_testing_tracker.csv",
+    "research\\output\\phase7c_multifactor_ranking_engine\\phase7d_next_plan.json"
+  ]
+}

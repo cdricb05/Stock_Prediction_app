@@ -1,0 +1,9 @@
+config_id,config_type,mean_rank_ic,ic_t_stat,n_periods,quintile_spread
+momentum,single_factor,0.007256,0.432394,112,0.002987
+low_volatility,single_factor,-0.033783,-2.146275,121,-0.011982
+value,single_factor,0.021044,1.125967,66,0.000712
+quality,single_factor,-0.010118,-0.755718,64,-0.004841
+growth,single_factor,0.010227,0.705008,94,-0.00082
+price_only_baseline,composite,-0.012348,-0.723813,121,-0.004047
+equal_weight_composite,composite,-0.007396,-0.500067,121,-0.002805
+__deflated_sharpe_ratio__,n_trials=7,0.0,,,
