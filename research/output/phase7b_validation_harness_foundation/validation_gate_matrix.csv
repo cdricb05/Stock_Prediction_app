@@ -1,0 +1,25 @@
+gate_name,status,metric,value,threshold,note
+walk_forward_implemented_gate,PASS,walk_forward_folds_leakage_clean,True,true,"4 expanding folds, all train labels resolve before test+embargo"
+purged_cv_implemented_gate,PASS,overlapping_train_sample_purged,True,true,total purged across demo folds=5
+no_lookahead_gate,PASS,label_violations,0,0,no same-day or backward labels permitted
+placebo_collapses_gate,PASS,placebo_mean_rank_ic,-0.004075,|placebo| <= 0.02,within-period label shuffle must collapse IC
+signal_recovered_gate,PASS,honest_mean_rank_ic,0.480728,>= 0.03,instrument recovers the known synthetic signal
+holdout_single_touch_gate,PASS,second_touch_flagged_violation,True,true,OOS holdout is a spent budget; second touch is a discipline violation
+multiple_testing_counter_gate,PASS,deflated_sharpe_ratio,0.0,"in [0,1]",n_trials=20
+cost_model_net_vs_gross_gate,PASS,net_mean_below_gross_mean,True,net < gross,gross=-0.000456 net=-0.000659
+metric_suite_gate,PASS,full_metric_suite_computed,True,true,"IC t-stat, decile spread, Sharpe, max drawdown all computed"
+regime_decomposition_gate,PASS,regimes_and_years_reported,"{'regimes': 2, 'years': 95}",>=2 each,IC decomposed by regime and by year (stationarity not assumed)
+sensitivity_surface_framework_gate,PASS,surface_points_evaluated,5,>0,whole-range surface + plateau ratio; never reports a single best point alone
+equal_weight_baseline_gate,PASS,equal_weight_composite_available,True,true,simple-average benchmark wired; weight optimization disabled
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_network_gate,PASS,network_used,False,false,
+no_paid_api_gate,PASS,paid_apis_used,False,false,
+no_deploy_gate,PASS,deployed,False,false,
+no_production_model_gate,PASS,production_model_built,False,false,
+no_factor_alpha_built_gate,PASS,factor_alpha_built,False,false,
+no_weight_optimization_gate,PASS,factor_weights_optimized,False,false,
+no_paper_trader_gate,PASS,paper_trader_touched,False,false,
+no_gcp_gate,PASS,gcp_touched,False,false,
+preview_only_gate,PASS,preview_only,True,true,

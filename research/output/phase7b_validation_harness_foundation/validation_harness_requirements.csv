@@ -1,0 +1,11 @@
+req,core_requirement,charter_section,capability,status,acceptance_criterion
+walk_forward_validation,1,Section 6,walk_forward_splits() expanding train -> forward test with embargo gap,implemented,every fold's train labels resolve >= embargo periods before test opens (min_embargo_gap >= 0)
+purged_cv_with_embargo,2,Section 6 (safeguard 2),purged_kfold_splits() purges label-overlap rows and embargoes post-test periods,implemented,a deliberately overlapping train sample is dropped; n_purged > 0 on the demo panel
+true_holdout_single_touch,3,Section 6 (safeguard 2),HoldoutLedger records the OOS window and flags any touch beyond the first,implemented,first touch permitted; second touch flagged as a spent-budget violation
+multiple_testing_counter,4,Section 6 (safeguard 1),MultipleTestingTracker + expected_max_sharpe + deflated_sharpe_ratio,implemented,"config count increments per trial; deflated Sharpe in [0,1] and falls as n_trials rises"
+cost_model_net_vs_gross,5,Section 6,turnover_from_weights + apply_transaction_costs (bps * turnover drag),implemented,net mean < gross mean whenever turnover and cost_bps are positive
+metric_suite,6,Section 6,"mean rank IC, IC t-stat, yearly IC, decile/quintile spread, Sharpe, max drawdown, turnover, cost-adjusted return",implemented,all metrics computed on the self-check panel and reported in the metric catalog
+regime_subperiod_decomposition,7,Section 6 (safeguard 3),decompose_by_group + yearly_ic (per-regime / per-subperiod IC),implemented,"headline IC is reported per regime and per year, not only in aggregate"
+sensitivity_surface_framework,8,Section 2.5 / Section 6,sensitivity_surface() reports the whole parameter range + plateau ratio; never optimizes,framework_template,full surface returned with best_param flagged NOT a recommendation; no real factor swept yet
+safety_gates,9,"Sections 1, 6",assert_strictly_forward_labels + no production model / Paper Trader / GCP / deploy / orders / automation,implemented,no same-day/backward labels; every safety flag false; preview-only true
+equal_weight_baseline,10,Section 5,equal_weight_composite() simple-average benchmark; weight optimization disabled,implemented,composite is a plain mean of standardized factor scores; no weights learned

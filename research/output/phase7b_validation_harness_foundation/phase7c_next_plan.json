@@ -1,0 +1,37 @@
+{
+  "phase": "7-C",
+  "title": "Multi-Factor Ranking Engine (System 1) \u2014 single-factor compute + equal-weight composite",
+  "charter_mapping": "Charter Phase 2 (single-factor) + Phase 3 (composite, equal weight)",
+  "gated_on": "Phase 7-B validation harness trusted (this phase READY) and point-in-time data populated",
+  "harness_ready": true,
+  "build_next": [
+    "Compute the six single-name factor buckets point-in-time (Value, Momentum, Quality, Volatility, Growth, Sentiment/Flow).",
+    "Cross-sectional z-score, winsorize +/-3, sector-neutralize each factor.",
+    "Combine EQUAL WEIGHT into a composite cross-sectional rank of the S&P 500 (equal_weight_composite).",
+    "Grade every factor and the composite THROUGH this 7-B harness: walk-forward + purged CV, deflated Sharpe with the config counter, per-regime/year decomposition, net-of-cost metrics, all against the equal-weight benchmark."
+  ],
+  "explicitly_not_in_7c": [
+    "factor-weight optimization (forbidden until the owner endorses a weighting philosophy)",
+    "regime overlay / System 2 (that is Phase 7-E, gated on a trusted System 1)",
+    "any order / broker / automation / Paper Trader / GCP / deploy work",
+    "live provider calls beyond the charter's free-data-first sources"
+  ],
+  "harness_entry_points": [
+    "walk_forward_splits",
+    "purged_kfold_splits",
+    "HoldoutLedger",
+    "MultipleTestingTracker",
+    "deflated_sharpe_ratio",
+    "apply_transaction_costs",
+    "period_rank_ics",
+    "ic_summary",
+    "yearly_ic",
+    "quantile_spread",
+    "sharpe",
+    "max_drawdown",
+    "decompose_by_group",
+    "sensitivity_surface",
+    "equal_weight_composite"
+  ],
+  "reuse_note": "Import these from research/run_phase7b_validation_harness_foundation.py (no work runs at import time); they reuse research/metrics.py for rank IC."
+}

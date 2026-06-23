@@ -1,0 +1,3 @@
+trial_id,config_id,phase,description,data_split,metric_name,metric_value,deflated_sharpe,holdout_touched,decision
+1,EXAMPLE_equal_weight_baseline,7-C,equal-weight composite of 6 buckets,walk_forward+purged_cv,mean_rank_ic,<fill>,<fill>,no,<record only>
+...,...,...,(one row per configuration evaluated),...,...,...,...,...,...

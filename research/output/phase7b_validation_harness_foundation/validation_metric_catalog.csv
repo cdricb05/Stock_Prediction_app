@@ -1,0 +1,12 @@
+metric,category,definition,good_looks_like,status
+mean_rank_ic,selection_skill,mean across periods of the Spearman rank IC (predicted vs realized),>= ~0.03 and stable across periods,implemented
+ic_t_stat,statistical_significance,mean period IC / (period-IC std / sqrt(n_periods)),|t| >= ~2 with adequate period count,implemented
+yearly_ic,robustness,mean rank IC grouped by calendar year,positive and not driven by a single year,implemented
+decile_spread,monotonicity,"per-period top-decile minus bottom-decile mean realized, averaged",positive and consistent with the IC sign,implemented
+quintile_spread,monotonicity,same as decile spread with q=5 (top/bottom quintile),positive; smoother than deciles on small panels,implemented
+sharpe,risk_adjusted_return,annualized mean/std of a per-period (net) return series,positive after costs and after the deflated-Sharpe haircut,implemented
+max_drawdown,downside_risk,max peak-to-trough decline of the compounded equity curve,shallow relative to return; reported alongside Sharpe,implemented
+turnover,cost_reality,0.5 * sum|new_w - prev_w| per rebalance,low enough that net survives realistic cost bps,implemented
+cost_adjusted_return,cost_reality,gross per-period return minus turnover * cost_bps/1e4,still positive after modeled costs/slippage,implemented
+deflated_sharpe_ratio,multiple_testing,P(observed Sharpe > expected max Sharpe over n_trials),near 1 after accounting for the number of configurations tried,implemented
+placebo_ic,leakage_control,mean rank IC after within-period label permutation,collapses toward 0 (any signal would indicate leakage),implemented

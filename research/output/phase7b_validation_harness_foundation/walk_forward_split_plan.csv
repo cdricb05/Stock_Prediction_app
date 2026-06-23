@@ -1,0 +1,10 @@
+scheme,fold,test_period_lo,test_period_hi,n_train,n_test,n_purged,n_embargoed,embargo,min_embargo_gap
+walk_forward_expanding,0,12,32,540,1260,0,0,2,2
+walk_forward_expanding,1,33,53,1800,1260,0,0,2,2
+walk_forward_expanding,2,54,74,3060,1260,0,0,2,2
+walk_forward_expanding,3,75,94,4320,1200,0,0,2,2
+purged_kfold,0,0,18,4440,1140,60,60,2,
+purged_kfold,1,19,37,4380,1140,120,60,2,
+purged_kfold,2,38,56,4380,1140,120,60,2,
+purged_kfold,3,57,75,4380,1140,120,60,2,
+purged_kfold,4,76,94,4500,1140,60,0,2,

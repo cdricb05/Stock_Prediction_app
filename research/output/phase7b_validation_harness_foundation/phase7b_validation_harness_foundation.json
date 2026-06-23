@@ -1,0 +1,710 @@
+{
+  "phase": "7-B",
+  "objective": "Build the measuring instrument before building more signals: a reusable, leakage-safe validation harness (walk-forward + purged CV with embargo, single-touch holdout, multiple-testing discipline, cost model, full metric suite, regime decomposition, sensitivity-surface framework, equal-weight baseline) that every future factor/ranking model must pass before it is considered real. No factor alpha, no weight optimization, no live data.",
+  "generated_by": "research\\run_phase7b_validation_harness_foundation.py",
+  "charter": {
+    "path": "docs/project_charter_sp500_multifactor_ranking_v1.md",
+    "mapping": "Charter Phase 0 (backtest harness, build FIRST) + Phase 1 (point-in-time data discipline)",
+    "principle": "Build the measuring instrument before building more signals."
+  },
+  "network_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "live_data_used": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "deployed": false,
+  "production_model_built": false,
+  "factor_alpha_built": false,
+  "factor_weights_optimized": false,
+  "binary_artifacts_created": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "raw_files_modified": false,
+  "d_drive_written": false,
+  "capabilities": {
+    "total_requirements": 10,
+    "implemented": 9,
+    "framework_template": 1,
+    "requirements": [
+      {
+        "req": "walk_forward_validation",
+        "core_req": 1,
+        "charter": "Section 6",
+        "capability": "walk_forward_splits() expanding train -> forward test with embargo gap",
+        "status": "implemented",
+        "acceptance": "every fold's train labels resolve >= embargo periods before test opens (min_embargo_gap >= 0)"
+      },
+      {
+        "req": "purged_cv_with_embargo",
+        "core_req": 2,
+        "charter": "Section 6 (safeguard 2)",
+        "capability": "purged_kfold_splits() purges label-overlap rows and embargoes post-test periods",
+        "status": "implemented",
+        "acceptance": "a deliberately overlapping train sample is dropped; n_purged > 0 on the demo panel"
+      },
+      {
+        "req": "true_holdout_single_touch",
+        "core_req": 3,
+        "charter": "Section 6 (safeguard 2)",
+        "capability": "HoldoutLedger records the OOS window and flags any touch beyond the first",
+        "status": "implemented",
+        "acceptance": "first touch permitted; second touch flagged as a spent-budget violation"
+      },
+      {
+        "req": "multiple_testing_counter",
+        "core_req": 4,
+        "charter": "Section 6 (safeguard 1)",
+        "capability": "MultipleTestingTracker + expected_max_sharpe + deflated_sharpe_ratio",
+        "status": "implemented",
+        "acceptance": "config count increments per trial; deflated Sharpe in [0,1] and falls as n_trials rises"
+      },
+      {
+        "req": "cost_model_net_vs_gross",
+        "core_req": 5,
+        "charter": "Section 6",
+        "capability": "turnover_from_weights + apply_transaction_costs (bps * turnover drag)",
+        "status": "implemented",
+        "acceptance": "net mean < gross mean whenever turnover and cost_bps are positive"
+      },
+      {
+        "req": "metric_suite",
+        "core_req": 6,
+        "charter": "Section 6",
+        "capability": "mean rank IC, IC t-stat, yearly IC, decile/quintile spread, Sharpe, max drawdown, turnover, cost-adjusted return",
+        "status": "implemented",
+        "acceptance": "all metrics computed on the self-check panel and reported in the metric catalog"
+      },
+      {
+        "req": "regime_subperiod_decomposition",
+        "core_req": 7,
+        "charter": "Section 6 (safeguard 3)",
+        "capability": "decompose_by_group + yearly_ic (per-regime / per-subperiod IC)",
+        "status": "implemented",
+        "acceptance": "headline IC is reported per regime and per year, not only in aggregate"
+      },
+      {
+        "req": "sensitivity_surface_framework",
+        "core_req": 8,
+        "charter": "Section 2.5 / Section 6",
+        "capability": "sensitivity_surface() reports the whole parameter range + plateau ratio; never optimizes",
+        "status": "framework_template",
+        "acceptance": "full surface returned with best_param flagged NOT a recommendation; no real factor swept yet"
+      },
+      {
+        "req": "safety_gates",
+        "core_req": 9,
+        "charter": "Sections 1, 6",
+        "capability": "assert_strictly_forward_labels + no production model / Paper Trader / GCP / deploy / orders / automation",
+        "status": "implemented",
+        "acceptance": "no same-day/backward labels; every safety flag false; preview-only true"
+      },
+      {
+        "req": "equal_weight_baseline",
+        "core_req": 10,
+        "charter": "Section 5",
+        "capability": "equal_weight_composite() simple-average benchmark; weight optimization disabled",
+        "status": "implemented",
+        "acceptance": "composite is a plain mean of standardized factor scores; no weights learned"
+      }
+    ]
+  },
+  "metric_catalog": [
+    {
+      "metric": "mean_rank_ic",
+      "category": "selection_skill",
+      "definition": "mean across periods of the Spearman rank IC (predicted vs realized)",
+      "good_looks_like": ">= ~0.03 and stable across periods",
+      "status": "implemented"
+    },
+    {
+      "metric": "ic_t_stat",
+      "category": "statistical_significance",
+      "definition": "mean period IC / (period-IC std / sqrt(n_periods))",
+      "good_looks_like": "|t| >= ~2 with adequate period count",
+      "status": "implemented"
+    },
+    {
+      "metric": "yearly_ic",
+      "category": "robustness",
+      "definition": "mean rank IC grouped by calendar year",
+      "good_looks_like": "positive and not driven by a single year",
+      "status": "implemented"
+    },
+    {
+      "metric": "decile_spread",
+      "category": "monotonicity",
+      "definition": "per-period top-decile minus bottom-decile mean realized, averaged",
+      "good_looks_like": "positive and consistent with the IC sign",
+      "status": "implemented"
+    },
+    {
+      "metric": "quintile_spread",
+      "category": "monotonicity",
+      "definition": "same as decile spread with q=5 (top/bottom quintile)",
+      "good_looks_like": "positive; smoother than deciles on small panels",
+      "status": "implemented"
+    },
+    {
+      "metric": "sharpe",
+      "category": "risk_adjusted_return",
+      "definition": "annualized mean/std of a per-period (net) return series",
+      "good_looks_like": "positive after costs and after the deflated-Sharpe haircut",
+      "status": "implemented"
+    },
+    {
+      "metric": "max_drawdown",
+      "category": "downside_risk",
+      "definition": "max peak-to-trough decline of the compounded equity curve",
+      "good_looks_like": "shallow relative to return; reported alongside Sharpe",
+      "status": "implemented"
+    },
+    {
+      "metric": "turnover",
+      "category": "cost_reality",
+      "definition": "0.5 * sum|new_w - prev_w| per rebalance",
+      "good_looks_like": "low enough that net survives realistic cost bps",
+      "status": "implemented"
+    },
+    {
+      "metric": "cost_adjusted_return",
+      "category": "cost_reality",
+      "definition": "gross per-period return minus turnover * cost_bps/1e4",
+      "good_looks_like": "still positive after modeled costs/slippage",
+      "status": "implemented"
+    },
+    {
+      "metric": "deflated_sharpe_ratio",
+      "category": "multiple_testing",
+      "definition": "P(observed Sharpe > expected max Sharpe over n_trials)",
+      "good_looks_like": "near 1 after accounting for the number of configurations tried",
+      "status": "implemented"
+    },
+    {
+      "metric": "placebo_ic",
+      "category": "leakage_control",
+      "definition": "mean rank IC after within-period label permutation",
+      "good_looks_like": "collapses toward 0 (any signal would indicate leakage)",
+      "status": "implemented"
+    }
+  ],
+  "self_check": {
+    "data": "deterministic synthetic cross-sectional panel (seeded); no market data",
+    "n_periods": 96,
+    "n_names": 60,
+    "strictly_forward_labels": {
+      "strictly_forward": true,
+      "n_violations": 0,
+      "n": 5700
+    },
+    "honest_mean_rank_ic": 0.480728,
+    "honest_ic_t_stat": 45.456093,
+    "placebo_mean_rank_ic": -0.004075,
+    "signal_recovered": true,
+    "placebo_collapsed": true,
+    "walk_forward_leakage_clean": true,
+    "purge_effectiveness": {
+      "overlapping_sample_purged": true,
+      "total_purged_across_folds": 5,
+      "n_folds": 2
+    },
+    "n_walk_forward_folds": 4,
+    "n_purged_kfold_folds": 5,
+    "walk_forward_folds": [
+      {
+        "scheme": "walk_forward_expanding",
+        "fold": 0,
+        "test_period_lo": 12,
+        "test_period_hi": 32,
+        "n_train": 540,
+        "n_test": 1260,
+        "n_purged": 0,
+        "n_embargoed": 0,
+        "embargo": 2,
+        "min_embargo_gap": 2
+      },
+      {
+        "scheme": "walk_forward_expanding",
+        "fold": 1,
+        "test_period_lo": 33,
+        "test_period_hi": 53,
+        "n_train": 1800,
+        "n_test": 1260,
+        "n_purged": 0,
+        "n_embargoed": 0,
+        "embargo": 2,
+        "min_embargo_gap": 2
+      },
+      {
+        "scheme": "walk_forward_expanding",
+        "fold": 2,
+        "test_period_lo": 54,
+        "test_period_hi": 74,
+        "n_train": 3060,
+        "n_test": 1260,
+        "n_purged": 0,
+        "n_embargoed": 0,
+        "embargo": 2,
+        "min_embargo_gap": 2
+      },
+      {
+        "scheme": "walk_forward_expanding",
+        "fold": 3,
+        "test_period_lo": 75,
+        "test_period_hi": 94,
+        "n_train": 4320,
+        "n_test": 1200,
+        "n_purged": 0,
+        "n_embargoed": 0,
+        "embargo": 2,
+        "min_embargo_gap": 2
+      }
+    ],
+    "purged_kfold_folds": [
+      {
+        "scheme": "purged_kfold",
+        "fold": 0,
+        "test_period_lo": 0,
+        "test_period_hi": 18,
+        "n_train": 4440,
+        "n_test": 1140,
+        "n_purged": 60,
+        "n_embargoed": 60,
+        "embargo": 2,
+        "min_embargo_gap": null
+      },
+      {
+        "scheme": "purged_kfold",
+        "fold": 1,
+        "test_period_lo": 19,
+        "test_period_hi": 37,
+        "n_train": 4380,
+        "n_test": 1140,
+        "n_purged": 120,
+        "n_embargoed": 60,
+        "embargo": 2,
+        "min_embargo_gap": null
+      },
+      {
+        "scheme": "purged_kfold",
+        "fold": 2,
+        "test_period_lo": 38,
+        "test_period_hi": 56,
+        "n_train": 4380,
+        "n_test": 1140,
+        "n_purged": 120,
+        "n_embargoed": 60,
+        "embargo": 2,
+        "min_embargo_gap": null
+      },
+      {
+        "scheme": "purged_kfold",
+        "fold": 3,
+        "test_period_lo": 57,
+        "test_period_hi": 75,
+        "n_train": 4380,
+        "n_test": 1140,
+        "n_purged": 120,
+        "n_embargoed": 60,
+        "embargo": 2,
+        "min_embargo_gap": null
+      },
+      {
+        "scheme": "purged_kfold",
+        "fold": 4,
+        "test_period_lo": 76,
+        "test_period_hi": 94,
+        "n_train": 4500,
+        "n_test": 1140,
+        "n_purged": 60,
+        "n_embargoed": 0,
+        "embargo": 2,
+        "min_embargo_gap": null
+      }
+    ],
+    "yearly_ic": {
+      "0": 0.5644345651569881,
+      "1": 0.33186996387885526,
+      "10": 0.37421505973881636,
+      "11": 0.47407613225896084,
+      "12": 0.6117254792998055,
+      "13": 0.5340928035565435,
+      "14": 0.46879688802445124,
+      "15": 0.47513198110586274,
+      "16": 0.34376215615448735,
+      "17": 0.571992220061128,
+      "18": 0.44995832175604333,
+      "19": 0.3304251180883579,
+      "2": 0.5344818005001389,
+      "20": 0.4504584606835232,
+      "21": 0.6045568213392609,
+      "22": 0.5010836343428731,
+      "23": 0.5115865518199499,
+      "24": 0.5857738260627953,
+      "25": 0.3804390108363434,
+      "26": 0.434231731036399,
+      "27": 0.48585718255070853,
+      "28": 0.43161989441511533,
+      "29": 0.6196165601555987,
+      "3": 0.6715198666296194,
+      "30": 0.5140872464573493,
+      "31": 0.5040844679077522,
+      "32": 0.22545151430953042,
+      "33": 0.5011947763267575,
+      "34": 0.4495693248124479,
+      "35": 0.628563489858294,
+      "36": 0.46451792164490135,
+      "37": 0.3294804112253404,
+      "38": 0.5259238677410392,
+      "39": 0.6524034454015004,
+      "4": 0.4982495137538205,
+      "40": 0.4352320088913587,
+      "41": 0.49397054737427065,
+      "42": 0.5474854126146151,
+      "43": 0.43462072797999446,
+      "44": 0.529647124201167,
+      "45": 0.4901917199222006,
+      "46": 0.5711030841900528,
+      "47": 0.5837732703528759,
+      "48": 0.5547652125590442,
+      "49": 0.4597388163378716,
+      "5": 0.223450958599611,
+      "50": 0.5465962767435398,
+      "51": 0.5833287024173381,
+      "52": 0.4098916365657127,
+      "53": 0.4723534315087524,
+      "54": 0.2650180605723812,
+      "55": 0.4969158099472076,
+      "56": 0.5096971380939149,
+      "57": 0.5179772158933037,
+      "58": 0.36504584606835233,
+      "59": 0.38621839399833285,
+      "6": 0.5857182550708531,
+      "60": 0.3928869130313976,
+      "61": 0.39360933592664626,
+      "62": 0.3909974993053626,
+      "63": 0.42945262572936926,
+      "64": 0.4902472909141428,
+      "65": 0.6011114198388441,
+      "66": 0.26429563767713254,
+      "67": 0.38960822450680743,
+      "68": 0.4071686579605446,
+      "69": 0.565768268963601,
+      "7": 0.49508196721311476,
+      "70": 0.5414281744929147,
+      "71": 0.6113364823562101,
+      "72": 0.4544040011114198,
+      "73": 0.3515976660183384,
+      "74": 0.5018616282300639,
+      "75": 0.42845234787440956,
+      "76": 0.5015282022784107,
+      "77": 0.449069185884968,
+      "78": 0.4714642956376771,
+      "79": 0.4775215337593776,
+      "8": 0.32759099749930537,
+      "80": 0.4651847735482078,
+      "81": 0.35087524312308976,
+      "82": 0.680577938316199,
+      "83": 0.718310641844957,
+      "84": 0.36693525979438735,
+      "85": 0.4605723812170047,
+      "86": 0.7195887746596277,
+      "87": 0.5573214781883856,
+      "88": 0.41594887468741315,
+      "89": 0.5520978049458183,
+      "9": 0.44017782717421505,
+      "90": 0.5019727702139484,
+      "91": 0.3345373714920811,
+      "92": 0.6171714365101417,
+      "93": 0.43795498749652684,
+      "94": 0.6155043067518755
+    },
+    "regime_decomposition": {
+      "risk_off": {
+        "mean_rank_ic": 0.488711,
+        "ic_std": 0.098387,
+        "ic_t_stat": 34.053644,
+        "n_periods": 47.0
+      },
+      "risk_on": {
+        "mean_rank_ic": 0.472911,
+        "ic_std": 0.107937,
+        "ic_t_stat": 30.35512,
+        "n_periods": 48.0
+      }
+    },
+    "mean_decile_spread": 2.02625,
+    "cost_model": {
+      "cost_bps": 10.0,
+      "n_periods": 95,
+      "gross_mean": -0.000456,
+      "net_mean": -0.000659,
+      "mean_turnover": 0.203129,
+      "total_cost_drag": 0.019297
+    },
+    "net_sharpe": -0.125729,
+    "net_max_drawdown": -0.192992,
+    "deflated_sharpe_ratio": 0.0,
+    "multiple_testing": {
+      "n_trials": 20,
+      "expected_max_sharpe": 0.5835
+    },
+    "holdout_single_touch_enforced": true,
+    "holdout_ledger": {
+      "holdout_start": "2023",
+      "holdout_end": "2023",
+      "purpose": "final single-touch out-of-sample sign-off",
+      "touched": true,
+      "touch_count": 2,
+      "touch_log": [
+        "selfcheck: final sign-off",
+        "selfcheck: accidental re-peek [VIOLATION: holdout already spent]"
+      ]
+    },
+    "sensitivity_surface_diagnostics": {
+      "n_points": 5,
+      "evaluated": 5,
+      "metric_min": 0.75,
+      "metric_max": 1.0,
+      "metric_median": 0.9375,
+      "metric_range": 0.25,
+      "plateau_ratio": 0.6,
+      "best_param_NOT_a_recommendation": true
+    },
+    "error": null
+  },
+  "gate_summary": {
+    "counts": {
+      "PASS": 24,
+      "FAIL": 0,
+      "WARNING": 0
+    },
+    "gates": [
+      {
+        "gate_name": "walk_forward_implemented_gate",
+        "status": "PASS",
+        "metric": "walk_forward_folds_leakage_clean",
+        "value": true,
+        "threshold": "true",
+        "note": "4 expanding folds, all train labels resolve before test+embargo"
+      },
+      {
+        "gate_name": "purged_cv_implemented_gate",
+        "status": "PASS",
+        "metric": "overlapping_train_sample_purged",
+        "value": true,
+        "threshold": "true",
+        "note": "total purged across demo folds=5"
+      },
+      {
+        "gate_name": "no_lookahead_gate",
+        "status": "PASS",
+        "metric": "label_violations",
+        "value": 0,
+        "threshold": "0",
+        "note": "no same-day or backward labels permitted"
+      },
+      {
+        "gate_name": "placebo_collapses_gate",
+        "status": "PASS",
+        "metric": "placebo_mean_rank_ic",
+        "value": -0.004075,
+        "threshold": "|placebo| <= 0.02",
+        "note": "within-period label shuffle must collapse IC"
+      },
+      {
+        "gate_name": "signal_recovered_gate",
+        "status": "PASS",
+        "metric": "honest_mean_rank_ic",
+        "value": 0.480728,
+        "threshold": ">= 0.03",
+        "note": "instrument recovers the known synthetic signal"
+      },
+      {
+        "gate_name": "holdout_single_touch_gate",
+        "status": "PASS",
+        "metric": "second_touch_flagged_violation",
+        "value": true,
+        "threshold": "true",
+        "note": "OOS holdout is a spent budget; second touch is a discipline violation"
+      },
+      {
+        "gate_name": "multiple_testing_counter_gate",
+        "status": "PASS",
+        "metric": "deflated_sharpe_ratio",
+        "value": 0.0,
+        "threshold": "in [0,1]",
+        "note": "n_trials=20"
+      },
+      {
+        "gate_name": "cost_model_net_vs_gross_gate",
+        "status": "PASS",
+        "metric": "net_mean_below_gross_mean",
+        "value": true,
+        "threshold": "net < gross",
+        "note": "gross=-0.000456 net=-0.000659"
+      },
+      {
+        "gate_name": "metric_suite_gate",
+        "status": "PASS",
+        "metric": "full_metric_suite_computed",
+        "value": true,
+        "threshold": "true",
+        "note": "IC t-stat, decile spread, Sharpe, max drawdown all computed"
+      },
+      {
+        "gate_name": "regime_decomposition_gate",
+        "status": "PASS",
+        "metric": "regimes_and_years_reported",
+        "value": {
+          "regimes": 2,
+          "years": 95
+        },
+        "threshold": ">=2 each",
+        "note": "IC decomposed by regime and by year (stationarity not assumed)"
+      },
+      {
+        "gate_name": "sensitivity_surface_framework_gate",
+        "status": "PASS",
+        "metric": "surface_points_evaluated",
+        "value": 5,
+        "threshold": ">0",
+        "note": "whole-range surface + plateau ratio; never reports a single best point alone"
+      },
+      {
+        "gate_name": "equal_weight_baseline_gate",
+        "status": "PASS",
+        "metric": "equal_weight_composite_available",
+        "value": true,
+        "threshold": "true",
+        "note": "simple-average benchmark wired; weight optimization disabled"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paid_api_gate",
+        "status": "PASS",
+        "metric": "paid_apis_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_deploy_gate",
+        "status": "PASS",
+        "metric": "deployed",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_production_model_gate",
+        "status": "PASS",
+        "metric": "production_model_built",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_factor_alpha_built_gate",
+        "status": "PASS",
+        "metric": "factor_alpha_built",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_weight_optimization_gate",
+        "status": "PASS",
+        "metric": "factor_weights_optimized",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paper_trader_gate",
+        "status": "PASS",
+        "metric": "paper_trader_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_gcp_gate",
+        "status": "PASS",
+        "metric": "gcp_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      }
+    ]
+  },
+  "recommendation": "READY_FOR_PHASE7C_MULTIFACTOR_RANKING_ENGINE",
+  "recommendation_allowed_values": [
+    "READY_FOR_PHASE7C_MULTIFACTOR_RANKING_ENGINE",
+    "NEEDS_VALIDATION_REVIEW",
+    "BLOCKED",
+    "ERROR"
+  ],
+  "what_is_still_only_a_template": [
+    "sensitivity_surface: framework is live and tested, but no real factor model exists to sweep yet (a synthetic concave evaluator is used in the self-check).",
+    "deflated_sharpe_ratio: uses default skew=0 / kurt=3 until a real net-return series exists.",
+    "multiple_testing_tracker_template.csv: an illustrative ledger; real trials are logged at evaluation time by MultipleTestingTracker in Phase 7-C+.",
+    "cost model: cost_bps is an assumption until a real book's turnover and fills exist."
+  ],
+  "recommended_next_phase": {
+    "phase": "7-C",
+    "title": "Multi-Factor Ranking Engine (System 1)"
+  },
+  "commit_appropriate": false,
+  "commit_note": "Per task instruction nothing is committed or pushed. A future commit should stage only research/run_phase7b_validation_harness_foundation.py, tests/test_phase7b_validation_harness_foundation.py, docs/phase7b_validation_harness_foundation_v1.md and research/output/phase7b_validation_harness_foundation/*.",
+  "artifacts": [
+    "research\\output\\phase7b_validation_harness_foundation\\phase7b_validation_harness_foundation.json",
+    "research\\output\\phase7b_validation_harness_foundation\\validation_harness_requirements.csv",
+    "research\\output\\phase7b_validation_harness_foundation\\validation_metric_catalog.csv",
+    "research\\output\\phase7b_validation_harness_foundation\\validation_gate_matrix.csv",
+    "research\\output\\phase7b_validation_harness_foundation\\multiple_testing_tracker_template.csv",
+    "research\\output\\phase7b_validation_harness_foundation\\walk_forward_split_plan.csv",
+    "research\\output\\phase7b_validation_harness_foundation\\phase7c_next_plan.json"
+  ]
+}
