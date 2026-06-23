@@ -1,15 +1,20 @@
 {
   "from_phase": "7-I",
-  "recommendation": "LIVE_COLLECTION_APPROVAL_REQUIRED",
-  "phase7j_retest_allowed": false,
+  "recommendation": "READY_FOR_PHASE7J_BROAD_UNIVERSE_SIGNAL_RETEST",
+  "phase7j_retest_allowed": true,
   "candidate_universe_size": 8702,
   "pilot_ticker_count": 300,
-  "usable_price_tickers": 0,
+  "usable_price_tickers": 296,
   "next_steps": [
     {
-      "step": "run_approved_pilot_price_collection",
-      "scope": "ENV_APPROVAL_REQUIRED",
-      "detail": "Set PHASE7I_LIVE_APPROVED=YES and re-run (see live_run_command.ps1). Collects daily prices for up to 300 top candidates."
+      "step": "collect_sec_companyfacts_for_pilot",
+      "scope": "FOLLOW_ON_FREE",
+      "detail": "Collect SEC companyfacts for the price-covered universe via the existing stdlib EDGAR client, then build the same de-cumulated TTM panel (7-G/7-H)."
+    },
+    {
+      "step": "phase7j_broad_universe_signal_retest",
+      "scope": "LOCAL_RETEST",
+      "detail": "Re-grade the Phase 7-F/7-H composite through the UNMODIFIED 7-B harness on the broad universe. Equal weight, no sign flipping, no optimization, regimes diagnostic only. Report survivorship caveat (current-as-of membership)."
     }
   ],
   "hard_constraints": [

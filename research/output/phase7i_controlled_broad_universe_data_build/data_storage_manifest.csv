@@ -1,9 +1,9 @@
 artifact,location,drive,kind,large_data,exists_now,written_this_run,note
-phase7i_broad_universe,D:/Stock_Prediction_app_data/phase7i_broad_universe,D:,directory,true,false,false,Root for all Phase 7-I large data (NEW dir; existing phase2k_g panel untouched).
-prices,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices,D:,directory,true,false,false,Normalized broad daily-price panel + reports.
-cache_prices,D:/Stock_Prediction_app_data/phase7i_broad_universe/cache_prices,D:,directory,true,false,false,Per-ticker price cache (prevents re-download and overwrite on re-run).
+phase7i_broad_universe,D:/Stock_Prediction_app_data/phase7i_broad_universe,D:,directory,true,true,false,Root for all Phase 7-I large data (NEW dir; existing phase2k_g panel untouched).
+prices,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices,D:,directory,true,true,false,Normalized broad daily-price panel + reports.
+cache_prices,D:/Stock_Prediction_app_data/phase7i_broad_universe/cache_prices,D:,directory,true,true,false,Per-ticker price cache (prevents re-download and overwrite on re-run).
 sec_companyfacts,D:/Stock_Prediction_app_data/phase7i_broad_universe/sec_companyfacts,D:,directory,true,false,false,Raw SEC companyfacts/submissions JSON (follow-on).
-phase7i_broad_price_history_free.csv,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv,D:,price_panel_csv,true,false,false,Combined long-format adjusted OHLCV panel for the pilot universe.
-phase7i_broad_data_quality_report.json,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_data_quality_report.json,D:,data_quality_json,false,false,false,Data-quality report for the broad panel.
-phase7i_broad_build_summary.json,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_build_summary.json,D:,build_summary_json,false,false,false,Reproducible live-run metadata.
+phase7i_broad_price_history_free.csv,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv,D:,price_panel_csv,true,true,true,Combined long-format adjusted OHLCV panel for the pilot universe.
+phase7i_broad_data_quality_report.json,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_data_quality_report.json,D:,data_quality_json,false,true,true,Data-quality report for the broad panel.
+phase7i_broad_build_summary.json,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_build_summary.json,D:,build_summary_json,false,true,true,Reproducible live-run metadata.
 phase7i_cik_map_full.csv,D:/Stock_Prediction_app_data/phase7i_broad_universe/phase7i_cik_map_full.csv,D:,cik_map_csv,false,false,false,ticker->CIK->title map (derived locally).
