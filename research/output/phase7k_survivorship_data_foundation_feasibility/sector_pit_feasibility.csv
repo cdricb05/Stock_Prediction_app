@@ -1,0 +1,4 @@
+source,sector_field,point_in_time,effective_dated,coverage,note
+Wikipedia GICS Sector (current constituents table),GICS Sector,false,false,current members only,"Single current snapshot; no as-of-date history, no reclassification log."
+SEC submissions sicDescription,SIC (current),false,false,current filer snapshot,"SIC is the issuer's current classification, not an effective-dated GICS history."
+local phase2k_p_sector_map_current.csv,sector (static),false,false,128 current names,Static current-as-of map (point_in_time=false per Phase 7-G).

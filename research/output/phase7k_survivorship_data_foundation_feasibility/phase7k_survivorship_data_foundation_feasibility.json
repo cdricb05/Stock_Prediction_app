@@ -1,0 +1,181 @@
+{
+  "phase": "7-K",
+  "objective": "Determine \u2014 by TESTING, not assuming \u2014 whether a genuinely survivorship-aware, point-in-time S&P 500 research universe can be assembled from free/local sources (historical index membership, delisted-name prices, point-in-time sectors, and CIK identity continuity), and emit a hard go/no-go recommendation. Feasibility pilot only: no modelling, no factors, no portfolio, no trading, no Paper Trader.",
+  "question": "CAN WE BUILD A SURVIVORSHIP-AWARE DATASET GOOD ENOUGH TO RETEST THE SIGNAL?",
+  "survivorship_dataset_buildable_free": "NO",
+  "recommendation": "FREE_DATA_NOT_SUFFICIENT",
+  "provisional_pending_live_pilot": true,
+  "allowed_recommendations": [
+    "SURVIVORSHIP_DATA_FOUNDATION_FEASIBLE",
+    "SURVIVORSHIP_DATA_FOUNDATION_PARTIAL",
+    "FREE_DATA_NOT_SUFFICIENT",
+    "NEEDS_PAID_OR_EXTERNAL_DATA",
+    "ERROR"
+  ],
+  "live_approval": {
+    "env_var": "PHASE7K_LIVE_APPROVED",
+    "required_value": "YES",
+    "approved_this_run": false,
+    "live_pilot_ran": false,
+    "web_check_cap": 50,
+    "price_probe_cap": 20,
+    "web_checks_used": 0,
+    "price_probes_used": 0,
+    "network_requests": 0
+  },
+  "pillar_feasibility": {
+    "historical_membership": false,
+    "delisted_prices_some": false,
+    "delisted_prices_strong": false,
+    "pit_sectors": false,
+    "identity_continuity": false
+  },
+  "determinations": {
+    "membership_events": 0,
+    "membership_span_years": 0,
+    "delisted_probed": 0,
+    "delisted_usable_any_removed": 0,
+    "genuine_delisting_probed": 0,
+    "genuine_delisting_usable": 0,
+    "genuine_delisting_usable_fraction": 0.0,
+    "delisted_zero": true,
+    "yfinance_genuine_delisting_usable": 0,
+    "stooq_status": "not_run",
+    "stooq_blocked_requests": 0,
+    "pit_sector_effective_dated_free_source": false,
+    "identity_survivors_resolved": 0,
+    "removed_names_in_current_sec_dir": 0,
+    "removed_names_probed_for_identity": 0
+  },
+  "dependency_check": {
+    "pandas": true,
+    "bs4": true,
+    "yfinance": true
+  },
+  "local_inventory": {
+    "local_historical_membership_present": false,
+    "local_delisted_prices_present": false,
+    "local_pit_sectors_present": false,
+    "local_identity_anchor_present": true
+  },
+  "membership_pilot": {
+    "events": 0,
+    "span_years": 0,
+    "removed_ticker_count": 0,
+    "feasible": false
+  },
+  "delisted_price_probe": {
+    "probed": 0,
+    "usable_any": 0,
+    "usable_fraction": 0.0,
+    "true_delisting_probed": 0,
+    "true_delisting_usable": 0,
+    "true_delisting_fraction": 0.0,
+    "some_feasible": false,
+    "strong_feasible": false,
+    "zero": true,
+    "yfinance_any": false,
+    "stooq_any": false,
+    "yfinance_usable": 0,
+    "stooq_blocked": 0,
+    "stooq_status": "not_run"
+  },
+  "sector_pit_feasibility": {
+    "any_effective_dated_free_source": false,
+    "effective_dated": false,
+    "note": "No free source provides effective-dated (point-in-time) sector history."
+  },
+  "identity_pilot": {
+    "probed": 0,
+    "resolved": 0,
+    "removed_probed": 0,
+    "removed_in_dir": 0,
+    "feasible": false
+  },
+  "decision_flags": {
+    "tested": false,
+    "membership_feasible": false,
+    "delisted_some_feasible": false,
+    "delisted_strong_feasible": false,
+    "delisted_zero": true,
+    "pit_sector_feasible": false,
+    "identity_feasible": false
+  },
+  "gate_matrix_summary": {
+    "pass": 16,
+    "fail": 0,
+    "warn": 0,
+    "n_info": 1,
+    "n_na": 4,
+    "safety_fail": false,
+    "recommendation": "FREE_DATA_NOT_SUFFICIENT"
+  },
+  "large_data_storage_root": "D:/Stock_Prediction_app_data/phase7k_survivorship_data_foundation",
+  "phase7l_next_plan": {
+    "from_phase": "7-K",
+    "recommendation": "FREE_DATA_NOT_SUFFICIENT",
+    "pillar_feasibility": {
+      "historical_membership": false,
+      "delisted_prices_some": false,
+      "delisted_prices_strong": false,
+      "pit_sectors": false,
+      "identity_continuity": false
+    },
+    "evidence": {
+      "membership_events": 0,
+      "membership_span_years": 0,
+      "genuine_delisting_usable": 0,
+      "genuine_delisting_probed": 0,
+      "genuine_delisting_usable_fraction": 0.0,
+      "all_removed_usable": 0,
+      "all_removed_probed": 0,
+      "identity_resolved": 0,
+      "removed_in_sec_dir": 0
+    },
+    "next_steps": [
+      {
+        "step": "decision_free_data_insufficient",
+        "scope": "DECISION",
+        "detail": "Free sources cannot support a reliable survivorship-aware universe (membership and/or delisted-price coverage insufficient). Recommend pivoting off multifactor alpha-hunting to a simpler momentum/risk strategy on the current survivor universe, with the survivorship caveat documented; or acquire external data if a reliable edge is required."
+      }
+    ],
+    "hard_constraints": [
+      "free sources only",
+      "no paid APIs",
+      "do not install packages",
+      "large data on D: only",
+      "repo outputs are summaries only",
+      "no factor-weight optimization",
+      "no factor-sign flipping",
+      "no regime selection or weighting",
+      "no trading/order/automation",
+      "no Paper Trader/GCP/broker/deployment",
+      "do not commit",
+      "do not push"
+    ]
+  },
+  "artifacts": {
+    "report": "research/output/phase7k_survivorship_data_foundation_feasibility/phase7k_survivorship_data_foundation_feasibility.json",
+    "local_survivorship_source_inventory": "research/output/phase7k_survivorship_data_foundation_feasibility/local_survivorship_source_inventory.csv",
+    "free_source_feasibility_matrix": "research/output/phase7k_survivorship_data_foundation_feasibility/free_source_feasibility_matrix.csv",
+    "membership_timeline_pilot": "research/output/phase7k_survivorship_data_foundation_feasibility/membership_timeline_pilot.csv",
+    "delisted_price_probe": "research/output/phase7k_survivorship_data_foundation_feasibility/delisted_price_probe.csv",
+    "sector_pit_feasibility": "research/output/phase7k_survivorship_data_foundation_feasibility/sector_pit_feasibility.csv",
+    "identity_mapping_feasibility": "research/output/phase7k_survivorship_data_foundation_feasibility/identity_mapping_feasibility.csv",
+    "data_foundation_decision_matrix": "research/output/phase7k_survivorship_data_foundation_feasibility/data_foundation_decision_matrix.csv",
+    "phase7l_next_plan": "research/output/phase7k_survivorship_data_foundation_feasibility/phase7l_next_plan.json"
+  },
+  "safety": {
+    "feasibility_only": true,
+    "live_data_used": false,
+    "paid_api_used": false,
+    "packages_installed": false,
+    "model_factor_or_portfolio_logic": false,
+    "trading_order_automation": false,
+    "repo_received_large_data": false,
+    "wrote_to_data_drive": false,
+    "paper_trader_gcp_broker_touched": false,
+    "committed": false,
+    "pushed": false
+  }
+}

@@ -1,0 +1,6 @@
+pillar,source,access_method,dependency,dependency_available,tested_live,result,detail
+historical_membership,Wikipedia: List of S&P 500 companies (constituents + changes table),urllib GET + bs4 html.parser table extraction,bs4,true,false,NOT_TESTED,"free, public; expected reachable. Reconstructs dated add/remove events; the anchor (current) list is current-as-of."
+delisted_prices,yfinance (Yahoo) — free,yf.download(ticker),yfinance,true,false,NOT_TESTED,Yahoo commonly DROPS acquired/bankrupt symbols over time; survivorship coverage is the open question this probe answers.
+delisted_prices,Stooq — free CSV,urllib GET stooq.com/q/d/l/?s={sym}.us&i=d,urllib (stdlib),true,false,NOT_TESTED,Stooq sometimes retains delisted US names; tested as a stdlib fallback.
+pit_sectors,Wikipedia GICS sector (current) / SEC sicDescription (current) / local map,current snapshot only — no effective-dated history,n/a,true,false,NOT_TESTED,All free sources expose only the CURRENT sector label; none is effective-dated. No free point-in-time sector history.
+identity_continuity,SEC EDGAR submissions (CIK + formerNames) — free stdlib urllib,data.sec.gov/submissions/CIK{cik10}.json,urllib (stdlib),true,false,NOT_TESTED,CIK is a stable identity anchor; formerNames trace renames for survivors.

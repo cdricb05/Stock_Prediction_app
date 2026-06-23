@@ -1,0 +1,5 @@
+pillar,feasible,free_source,evidence,blocker,severity
+historical_membership,false,Wikipedia constituents + selected-changes table,not tested,anchor list is current-as-of; 'selected' changes may miss intra-period churn,blocking
+delisted_prices,false,yfinance + Stooq,not tested,free providers returned ZERO usable prices for genuine delistings,blocking
+pit_sectors,false,(none — current-only snapshots),no effective-dated free sector history exists,sector-neutralization cannot be made point-in-time on free data,blocking
+identity_continuity,false,SEC EDGAR submissions (CIK + formerNames),not tested,delisted issuers frequently absent from the current SEC ticker directory,degraded

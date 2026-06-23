@@ -1,0 +1,43 @@
+{
+  "from_phase": "7-K",
+  "recommendation": "FREE_DATA_NOT_SUFFICIENT",
+  "pillar_feasibility": {
+    "historical_membership": false,
+    "delisted_prices_some": false,
+    "delisted_prices_strong": false,
+    "pit_sectors": false,
+    "identity_continuity": false
+  },
+  "evidence": {
+    "membership_events": 0,
+    "membership_span_years": 0,
+    "genuine_delisting_usable": 0,
+    "genuine_delisting_probed": 0,
+    "genuine_delisting_usable_fraction": 0.0,
+    "all_removed_usable": 0,
+    "all_removed_probed": 0,
+    "identity_resolved": 0,
+    "removed_in_sec_dir": 0
+  },
+  "next_steps": [
+    {
+      "step": "decision_free_data_insufficient",
+      "scope": "DECISION",
+      "detail": "Free sources cannot support a reliable survivorship-aware universe (membership and/or delisted-price coverage insufficient). Recommend pivoting off multifactor alpha-hunting to a simpler momentum/risk strategy on the current survivor universe, with the survivorship caveat documented; or acquire external data if a reliable edge is required."
+    }
+  ],
+  "hard_constraints": [
+    "free sources only",
+    "no paid APIs",
+    "do not install packages",
+    "large data on D: only",
+    "repo outputs are summaries only",
+    "no factor-weight optimization",
+    "no factor-sign flipping",
+    "no regime selection or weighting",
+    "no trading/order/automation",
+    "no Paper Trader/GCP/broker/deployment",
+    "do not commit",
+    "do not push"
+  ]
+}
