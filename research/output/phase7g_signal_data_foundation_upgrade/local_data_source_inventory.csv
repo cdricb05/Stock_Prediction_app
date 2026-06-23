@@ -1,0 +1,8 @@
+source,path,exists,kind,rows,tickers,point_in_time,usable_for_universe_expansion,note
+adjusted_price_panel,D:\Stock_Prediction_app_data\phase2k_g\output\phase2k_g_expanded_price_history_free.csv,true,daily_price,335541,128,n/a,false,ONLY local daily-price source; bounds the ranked universe. No broader local price exists.
+sec_fundamentals_universe,research/output/phase3l_sec_universe_signal_gate/fundamentals_universe.csv,true,sec_fundamentals,46687,128,true,false,Point-in-time SEC 10-K/10-Q rows; only for tickers already in the price panel.
+sector_map_current,research/input/phase2k_p_sector_map_current.csv,true,sector_classification,128,128,false,false,Static current-as-of GICS-like map; point_in_time=false. No PIT sector history locally.
+sec_company_tickers,research/output/phase3l_sec_universe_signal_gate/raw/company_tickers.json,true,ticker_directory,10415,10415,n/a,false,"Ticker->CIK directory only; NO local price and NO collected fundamentals for these names. Defines the addressable-but-uncollected pool, not a usable universe."
+free_universe_sample,research/input/phase2k_g_free_universe_tickers_sample.csv,true,ticker_list,15,15,false,false,Tiny manual current-member sample; explicitly not point-in-time / survivorship-caveated.
+simfin_universe_coverage,research/output/phase5e1e_simfin_free_collector/simfin_universe_coverage.csv,true,coverage_plan,128,128,n/a,false,"Coverage plan only (status 'planned', 0 statements present). Collecting requires a live SimFin call — out of scope this phase."
+global_asset_universe,research/output/phase3u_global_asset_universe_readiness/target_global_asset_universe.csv,true,etf_list,22,22,n/a,false,"Cross-asset ETFs, not S&P single names; does not expand the equity ranking universe."

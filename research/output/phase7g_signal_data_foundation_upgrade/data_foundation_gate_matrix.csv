@@ -1,0 +1,14 @@
+gate,status,kind,detail
+broader_universe_available_locally,FAIL,capability,"price-covered=128, SEC-known=10415, addressable-but-uncollected=10287"
+survivorship_bias_addressable_locally,FAIL,capability,No point-in-time historical S&P membership locally; only current-constituent names have price/fundamentals. Survivorship/current-constituent bias cannot be removed locally.
+point_in_time_sector_available_locally,FAIL,capability,Only a static current-as-of sector map (point_in_time=false) exists locally.
+quarterly_3mo_densification_feasible,PASS,capability,"YTD 10-Q flows de-cumulate into point-in-time 3-month quarters for the core fields: revenue=1679q, net_income=2691q, operating_cash_flow=3608q"
+ttm_continuity_sufficient,PASS,capability,"continuity-ready tickers (>= 8 TTM windows) vs MIN_NAMES=20: revenue=68, net_income=106, operating_cash_flow=116"
+fundamental_density_materially_upgradable_locally,PASS,capability,"A denser quarterly/TTM fundamental panel CAN be built locally (de-cumulation), a real upgrade over Phase 7-F's clean-frame-only TTM (which graded 0 months)."
+no_live_data_calls,PASS,safety,"All inputs are local, already-collected files."
+no_paid_api_calls,PASS,safety,No provider/paid API invoked.
+reproducible_offline,PASS,safety,"Deterministic; no randomness, no network."
+no_trading_order_automation,PASS,safety,No order/execution/automation logic present.
+no_factor_weight_optimization,PASS,safety,No factor weighting/tuning in this phase.
+no_regime_throttle_activation,PASS,safety,No regime activation logic in this phase.
+price_panel_read_only,PASS,safety,D: price panel opened read-only; nothing written to D:.

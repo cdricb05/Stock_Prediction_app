@@ -1,0 +1,9 @@
+metric,value,detail
+engine_universe_ticker_count,128,sector ∩ annual-fundamentals ∩ price (tickers actually ranked)
+price_panel_ticker_count,128,distinct non-SPY tickers in the local adjusted price panel
+sector_mapped_ticker_count,128,"tickers with a sector label in the (static, non-PIT) sector map"
+annual_fundamental_ticker_count,128,tickers with point-in-time 10-K fundamentals locally
+price_date_min,2016-01-04,first date in the local price panel
+price_date_max,2026-06-16,last date in the local price panel
+median_ticker_price_history_days,2628,median per-ticker daily price observations across the universe
+universe_full_history_fraction,0.9922,fraction of universe present from the panel start (back-fill / late-listing proxy)

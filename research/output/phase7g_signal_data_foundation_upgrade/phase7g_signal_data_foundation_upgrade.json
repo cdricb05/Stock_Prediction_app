@@ -1,0 +1,231 @@
+{
+  "phase": "7-G",
+  "objective": "Upgrade the local research data foundation (universe breadth, point-in-time sector correctness, quarterly/TTM fundamental density, survivorship bias) so the Phase 7-F signal can be re-evaluated under more realistic conditions.",
+  "recommendation": "DATA_FOUNDATION_PARTIAL",
+  "allowed_recommendations": [
+    "READY_FOR_PHASE7H_RETEST_SIGNAL_ON_UPGRADED_DATA",
+    "NEEDS_CONTROLLED_DATA_COLLECTION",
+    "DATA_FOUNDATION_PARTIAL",
+    "DATA_QUALITY_BLOCKED",
+    "ERROR"
+  ],
+  "determinations": {
+    "broader_universe_exists_locally": false,
+    "point_in_time_sectors_exist_locally": false,
+    "denser_quarterly_ttm_feasible_locally": true,
+    "phase7h_retest_allowed": true,
+    "phase7h_retest_scope": "fundamental_density_only"
+  },
+  "universe_inventory": {
+    "engine_universe_count": 128,
+    "price_panel_count": 128,
+    "sector_mapped_count": 128,
+    "annual_fundamental_count": 128,
+    "price_date_min": "2016-01-04",
+    "price_date_max": "2026-06-16"
+  },
+  "local_source_inventory": {
+    "broader_local_universe_exists": false,
+    "sec_known_tickers": 10415,
+    "price_covered_tickers": 128,
+    "addressable_but_uncollected": 10287
+  },
+  "sector_readiness": {
+    "pit_sector_available_local": false,
+    "sector_coverage": 128,
+    "universe": 128,
+    "distinct_sectors": 11
+  },
+  "quarterly_ttm_readiness": {
+    "core_continuity_ready": {
+      "revenue": 68,
+      "net_income": 106,
+      "operating_cash_flow": 116
+    },
+    "densification_feasible": true,
+    "ttm_continuity_sufficient": true,
+    "field_summary": {
+      "revenue": {
+        "tickers_with_3mo": 93,
+        "total_3mo_quarters": 1679,
+        "tickers_with_ttm": 80,
+        "total_ttm_windows": 1347,
+        "continuity_ready_tickers": 68,
+        "provenance": {
+          "clean_frame": 133,
+          "q1_is_3mo": 336,
+          "decumulated_ytd": 810,
+          "annual_minus_q3ytd": 400
+        }
+      },
+      "net_income": {
+        "tickers_with_3mo": 122,
+        "total_3mo_quarters": 2691,
+        "tickers_with_ttm": 112,
+        "total_ttm_windows": 2267,
+        "continuity_ready_tickers": 106,
+        "provenance": {
+          "clean_frame": 227,
+          "q1_is_3mo": 532,
+          "decumulated_ytd": 1290,
+          "annual_minus_q3ytd": 642
+        }
+      },
+      "operating_cash_flow": {
+        "tickers_with_3mo": 128,
+        "total_3mo_quarters": 3608,
+        "tickers_with_ttm": 119,
+        "total_ttm_windows": 3122,
+        "continuity_ready_tickers": 116,
+        "provenance": {
+          "clean_frame": 209,
+          "q1_is_3mo": 774,
+          "decumulated_ytd": 1750,
+          "annual_minus_q3ytd": 875
+        }
+      },
+      "operating_income": {
+        "tickers_with_3mo": 100,
+        "total_3mo_quarters": 2472,
+        "tickers_with_ttm": 98,
+        "total_ttm_windows": 2125,
+        "continuity_ready_tickers": 95,
+        "provenance": {
+          "clean_frame": 181,
+          "q1_is_3mo": 501,
+          "decumulated_ytd": 1199,
+          "annual_minus_q3ytd": 591
+        }
+      },
+      "capital_expenditures": {
+        "tickers_with_3mo": 97,
+        "total_3mo_quarters": 2732,
+        "tickers_with_ttm": 92,
+        "total_ttm_windows": 2399,
+        "continuity_ready_tickers": 89,
+        "provenance": {
+          "clean_frame": 150,
+          "q1_is_3mo": 589,
+          "decumulated_ytd": 1324,
+          "annual_minus_q3ytd": 669
+        }
+      },
+      "free_cash_flow": {
+        "tickers_with_3mo": 97,
+        "total_3mo_quarters": 2674,
+        "tickers_with_ttm": 90,
+        "total_ttm_windows": 2325,
+        "continuity_ready_tickers": 88,
+        "provenance": {
+          "clean_frame": 0,
+          "q1_is_3mo": 723,
+          "decumulated_ytd": 1300,
+          "annual_minus_q3ytd": 651
+        }
+      },
+      "eps_diluted": {
+        "tickers_with_3mo": 127,
+        "total_3mo_quarters": 2924,
+        "tickers_with_ttm": 118,
+        "total_ttm_windows": 2493,
+        "continuity_ready_tickers": 115,
+        "provenance": {
+          "clean_frame": 220,
+          "q1_is_3mo": 588,
+          "decumulated_ytd": 1415,
+          "annual_minus_q3ytd": 701
+        }
+      }
+    }
+  },
+  "broader_universe_candidate": {
+    "candidate_universe_count": 128,
+    "equals_current_engine_universe": true,
+    "engine_universe_count": 128,
+    "broader_than_current": false,
+    "note": "Candidate universe is bounded by the single local price panel. SEC lists thousands of names but none have local price/fundamentals, so no broader research universe can be assembled locally without controlled collection."
+  },
+  "gate_matrix_summary": {
+    "pass": 10,
+    "fail": 3,
+    "safety_fail": false,
+    "fundamental_density_upgradable": true,
+    "broader_universe_local": false,
+    "pit_sector_local": false
+  },
+  "remaining_blockers": [
+    "constrained ~128-name current-constituent universe (no broader local price)",
+    "survivorship / current-constituent bias (no delisted-name history locally)",
+    "static non-point-in-time sector classification (no as-of-date sector history)"
+  ],
+  "phase7h_next_plan": {
+    "from_phase": "7-G",
+    "recommendation": "DATA_FOUNDATION_PARTIAL",
+    "phase7h_retest_allowed": true,
+    "phase7h_retest_scope": "fundamental_density_only",
+    "immediate_local_steps": [
+      {
+        "step": "build_dense_ttm_fundamental_panel",
+        "scope": "LOCAL_ONLY",
+        "detail": "De-cumulate YTD 10-Q flows into point-in-time 3-month quarters and roll trailing-4-quarter TTM for revenue / net_income / operating_cash_flow / operating_income / capex / fcf / eps, then rebuild Phase 7-F value/quality/growth buckets on TTM levels (equal-weight, no sign flipping, no optimization)."
+      },
+      {
+        "step": "rerun_phase7f_fundamental_signal_on_dense_ttm",
+        "scope": "LOCAL_ONLY",
+        "detail": "Re-grade the upgraded composite through the UNMODIFIED Phase 7-B harness on the same ~128-name universe. This is a fundamental-density retest only; it does NOT resolve universe breadth or survivorship bias.",
+        "caveat": "Same-universe; not a true robustness retest of the dominant 7-F weakness."
+      }
+    ],
+    "collection_gated_steps": [
+      {
+        "step": "collect_historical_pit_universe_membership",
+        "scope": "CONTROLLED_COLLECTION_REQUIRED",
+        "blocker": "No local point-in-time S&P membership / delisted-name price history.",
+        "detail": "Acquire survivorship-aware historical index membership plus daily prices for names beyond the current 128 (incl. delisted), via a controlled, budgeted, explicitly-approved collection run \u2014 NOT in this phase."
+      },
+      {
+        "step": "collect_point_in_time_sector_history",
+        "scope": "CONTROLLED_COLLECTION_REQUIRED",
+        "blocker": "Only a static current-as-of sector map exists; no as-of-date sector history.",
+        "detail": "Acquire historical GICS/sector assignments with effective dates for PIT neutralization."
+      },
+      {
+        "step": "optional_quarterly_fundamental_provider_backfill",
+        "scope": "CONTROLLED_COLLECTION_REQUIRED",
+        "blocker": "SimFin coverage is 'planned' (0 collected); SEC clean 3-month frames are sparse.",
+        "detail": "Only if local de-cumulation proves insufficient: a controlled SimFin/SEC backfill to densify quarterly fundamentals further."
+      }
+    ],
+    "hard_constraints": [
+      "no live or paid data calls",
+      "no factor-weight optimization",
+      "no factor-sign flipping",
+      "regimes diagnostic only",
+      "no trading/order/automation",
+      "do not commit",
+      "do not push"
+    ]
+  },
+  "artifacts": {
+    "report": "research/output/phase7g_signal_data_foundation_upgrade/phase7g_signal_data_foundation_upgrade.json",
+    "universe_inventory": "research/output/phase7g_signal_data_foundation_upgrade/universe_inventory.csv",
+    "local_data_source_inventory": "research/output/phase7g_signal_data_foundation_upgrade/local_data_source_inventory.csv",
+    "sector_data_readiness": "research/output/phase7g_signal_data_foundation_upgrade/sector_data_readiness.csv",
+    "quarterly_ttm_readiness": "research/output/phase7g_signal_data_foundation_upgrade/quarterly_ttm_readiness.csv",
+    "broader_universe_candidate": "research/output/phase7g_signal_data_foundation_upgrade/broader_universe_candidate.csv",
+    "data_foundation_gate_matrix": "research/output/phase7g_signal_data_foundation_upgrade/data_foundation_gate_matrix.csv",
+    "phase7h_next_plan": "research/output/phase7g_signal_data_foundation_upgrade/phase7h_next_plan.json"
+  },
+  "safety": {
+    "preview_only": true,
+    "live_data_used": false,
+    "paid_api_used": false,
+    "trading_order_automation": false,
+    "factor_weights_optimized": false,
+    "factor_signs_flipped": false,
+    "regimes_used_to_select_or_weight": false,
+    "wrote_to_price_drive": false,
+    "committed": false,
+    "pushed": false
+  }
+}

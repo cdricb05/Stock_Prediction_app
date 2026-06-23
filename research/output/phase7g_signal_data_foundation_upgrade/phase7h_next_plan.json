@@ -1,0 +1,48 @@
+{
+  "from_phase": "7-G",
+  "recommendation": "DATA_FOUNDATION_PARTIAL",
+  "phase7h_retest_allowed": true,
+  "phase7h_retest_scope": "fundamental_density_only",
+  "immediate_local_steps": [
+    {
+      "step": "build_dense_ttm_fundamental_panel",
+      "scope": "LOCAL_ONLY",
+      "detail": "De-cumulate YTD 10-Q flows into point-in-time 3-month quarters and roll trailing-4-quarter TTM for revenue / net_income / operating_cash_flow / operating_income / capex / fcf / eps, then rebuild Phase 7-F value/quality/growth buckets on TTM levels (equal-weight, no sign flipping, no optimization)."
+    },
+    {
+      "step": "rerun_phase7f_fundamental_signal_on_dense_ttm",
+      "scope": "LOCAL_ONLY",
+      "detail": "Re-grade the upgraded composite through the UNMODIFIED Phase 7-B harness on the same ~128-name universe. This is a fundamental-density retest only; it does NOT resolve universe breadth or survivorship bias.",
+      "caveat": "Same-universe; not a true robustness retest of the dominant 7-F weakness."
+    }
+  ],
+  "collection_gated_steps": [
+    {
+      "step": "collect_historical_pit_universe_membership",
+      "scope": "CONTROLLED_COLLECTION_REQUIRED",
+      "blocker": "No local point-in-time S&P membership / delisted-name price history.",
+      "detail": "Acquire survivorship-aware historical index membership plus daily prices for names beyond the current 128 (incl. delisted), via a controlled, budgeted, explicitly-approved collection run \u2014 NOT in this phase."
+    },
+    {
+      "step": "collect_point_in_time_sector_history",
+      "scope": "CONTROLLED_COLLECTION_REQUIRED",
+      "blocker": "Only a static current-as-of sector map exists; no as-of-date sector history.",
+      "detail": "Acquire historical GICS/sector assignments with effective dates for PIT neutralization."
+    },
+    {
+      "step": "optional_quarterly_fundamental_provider_backfill",
+      "scope": "CONTROLLED_COLLECTION_REQUIRED",
+      "blocker": "SimFin coverage is 'planned' (0 collected); SEC clean 3-month frames are sparse.",
+      "detail": "Only if local de-cumulation proves insufficient: a controlled SimFin/SEC backfill to densify quarterly fundamentals further."
+    }
+  ],
+  "hard_constraints": [
+    "no live or paid data calls",
+    "no factor-weight optimization",
+    "no factor-sign flipping",
+    "regimes diagnostic only",
+    "no trading/order/automation",
+    "do not commit",
+    "do not push"
+  ]
+}

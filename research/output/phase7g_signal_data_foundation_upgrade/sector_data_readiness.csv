@@ -1,0 +1,6 @@
+check,result,detail
+sector_source_present,true,research/input/phase2k_p_sector_map_current.csv
+point_in_time,false,map declares point_in_time=false (current-as-of static mapping)
+universe_sector_coverage,128/128,engine-universe tickers with a sector label
+distinct_sectors,11,"Communication Services, Consumer Discretionary, Consumer Staples, Energy, Financials, Health Care, Industrials, Information Technology, Materials, Real Estate, Utilities"
+pit_sector_history_available_locally,false,No local source of historical (as-of-date) sector membership exists; only the static current map. Sector reclassifications are not captured.
