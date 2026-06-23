@@ -1,0 +1,15 @@
+bucket,factor_key,source,role,definition,available,approved,coverage_fraction
+value_ttm,ttm_sales_yield,fundamentals_ttm,alpha,TTM revenue / market cap (implied diluted shares * price); higher = cheaper,true,true,0.241228
+value_ttm,ttm_earnings_yield,fundamentals_ttm,alpha,TTM net income / market cap; higher = cheaper,true,true,0.360589
+value_ttm,ttm_operating_cashflow_yield,fundamentals_ttm,alpha,TTM operating cash flow / market cap; higher = cheaper,true,true,0.374185
+value_ttm,ttm_fcf_yield,fundamentals_ttm,alpha,TTM free cash flow / market cap; higher = cheaper (FCF may be negative),true,true,0.280263
+quality_ttm,ttm_net_margin,fundamentals_ttm,alpha,TTM net income / TTM revenue; higher = better,true,true,0.233897
+quality_ttm,ttm_operating_margin,fundamentals_ttm,alpha,TTM operating income / TTM revenue; higher = better,true,true,0.212406
+quality_ttm,ttm_ocf_margin,fundamentals_ttm,alpha,TTM operating cash flow / TTM revenue; higher = better,true,true,0.290602
+growth_ttm,ttm_revenue_growth,fundamentals_ttm,alpha,TTM revenue / TTM revenue one year ago - 1; higher = better,true,true,0.274561
+growth_ttm,ttm_net_income_growth,fundamentals_ttm,alpha,TTM net income / TTM net income one year ago - 1 (prior > 0 only),true,true,0.315539
+growth_ttm,ttm_ocf_growth,fundamentals_ttm,alpha,TTM operating cash flow / TTM operating cash flow one year ago - 1 (prior > 0 only),true,true,0.473183
+momentum,mom_12_1,price,alpha,preserved Phase 7-F price-momentum spec,true,true,0.895739
+momentum,mom_6_1,price,alpha,preserved Phase 7-F price-momentum spec,true,true,0.94386
+momentum,mom_riskadj,price,alpha,preserved Phase 7-F price-momentum spec,true,true,0.895739
+low_volatility,low_volatility,price,risk_descriptor,"negative trailing realized vol; reported only, excluded from alpha composite",true,false,0.967857

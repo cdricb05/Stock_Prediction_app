@@ -1,0 +1,8 @@
+ttm_field,tickers_with_ttm,total_ttm_windows,continuity_ready_tickers,min_ttm_windows_per_ticker,meets_min_names,field_class
+revenue,80,1347,68,8,true,core
+net_income,112,2267,106,8,true,core
+operating_cash_flow,119,3122,116,8,true,core
+operating_income,98,2125,95,8,true,optional
+free_cash_flow,90,2325,88,8,true,optional
+capital_expenditures,92,2399,89,8,true,optional
+eps_diluted,118,2493,115,8,true,optional

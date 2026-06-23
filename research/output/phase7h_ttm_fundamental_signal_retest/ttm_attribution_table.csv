@@ -1,0 +1,7 @@
+series,mean_rank_ic,ic_t_stat,n_periods,incremental_vs_7f
+phase7f_baseline_composite,0.017726,1.245017,118,0.0
+phase7h_momentum_only,0.007916,0.470156,118,-0.00981
+phase7h_value_ttm_bucket,0.023006,1.098753,64,0.005281
+phase7h_quality_ttm_bucket,-0.012712,-0.67459,73,-0.030438
+phase7h_growth_ttm_bucket,-0.003519,-0.264254,92,-0.021245
+phase7h_final_composite,0.013954,0.922253,118,-0.003772

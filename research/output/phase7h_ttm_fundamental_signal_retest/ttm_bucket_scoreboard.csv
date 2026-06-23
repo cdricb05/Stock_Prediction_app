@@ -1,0 +1,5 @@
+bucket,members,mean_rank_ic,ic_t_stat,n_periods,quintile_spread,incremental_vs_7f
+momentum,mom_12_1;mom_6_1;mom_riskadj,0.007916,0.470156,118,0.002154,-0.00981
+value_ttm,ttm_sales_yield;ttm_earnings_yield;ttm_operating_cashflow_yield;ttm_fcf_yield,0.023006,1.098753,64,0.00112,0.005281
+quality_ttm,ttm_net_margin;ttm_operating_margin;ttm_ocf_margin,-0.012712,-0.67459,73,-0.004733,-0.030438
+growth_ttm,ttm_revenue_growth;ttm_net_income_growth;ttm_ocf_growth,-0.003519,-0.264254,92,0.000626,-0.021245

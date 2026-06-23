@@ -1,0 +1,10 @@
+series,mean_rank_ic,ic_t_stat,n_periods,quintile_spread,decile_spread
+phase7f_upgraded_composite_baseline (recomputed),0.017726,1.245017,118,0.006333,0.007572
+phase7f_baseline_published,0.0177,1.25,,,
+phase7h_ttm_final_composite,0.013954,0.922253,118,0.00527,0.006418
+incremental_ic (7h - 7f),-0.003772,,,,
+ic_t_stat_change (7h - 7f),-0.322764,,,,
+  ttm_composite_sharpe,0.543572,,,,
+  ttm_composite_max_drawdown,-0.210365,,,,
+  ttm_net_mean_spread,0.00505,,,,
+  holdout_incremental_ic,-0.011205,,,,

@@ -1,0 +1,33 @@
+{
+  "from_phase": "7-H",
+  "recommendation": "TTM_SIGNAL_RELIABILITY_WEAK",
+  "did_dense_ttm_improve_signal_quality": "NO",
+  "approved_buckets": [
+    "momentum",
+    "value_ttm",
+    "quality_ttm",
+    "growth_ttm"
+  ],
+  "core_ttm_continuity_ready": {
+    "revenue": 68,
+    "net_income": 106,
+    "operating_cash_flow": 116
+  },
+  "recommended_next_phase": {
+    "phase": "7-I",
+    "title": "Controlled broader-universe + survivorship-aware collection (gated)",
+    "rationale": "Local fundamental density is now exhausted; the binding limit is the ~128-name current-constituent universe and survivorship bias (Phase 7-G). The next real gain requires a controlled, explicitly-approved collection of survivorship-aware historical membership + delisted-name prices + point-in-time sectors \u2014 NOT more local polishing."
+  },
+  "hard_constraints": [
+    "no live or paid data calls",
+    "no universe broadening or data collection in-phase",
+    "no factor-weight optimization",
+    "no factor-sign flipping",
+    "regimes diagnostic only",
+    "no regime-throttle activation",
+    "no trading / order / broker / automation",
+    "no Paper Trader / GCP / deploy",
+    "do not commit",
+    "do not push"
+  ]
+}
