@@ -1,0 +1,16 @@
+ticker,sector,weight,notional_usd_at_assumed_book
+AAPL,Information Technology,0.125,1250000.0
+AMGN,Health Care,0.116667,1166666.67
+BKNG,Consumer Discretionary,0.108333,1083333.33
+CL,Consumer Staples,0.1,1000000.0
+DE,Industrials,0.091667,916666.67
+GD,Industrials,0.083333,833333.33
+IBM,Information Technology,0.075,750000.0
+LIN,Materials,0.066667,666666.67
+MDT,Health Care,0.058333,583333.33
+NKE,Consumer Discretionary,0.05,500000.0
+PG,Consumer Staples,0.041667,416666.67
+RTX,Industrials,0.033333,333333.33
+T,Communication Services,0.025,250000.0
+UPS,Industrials,0.016667,166666.67
+ZTS,Health Care,0.008333,83333.33

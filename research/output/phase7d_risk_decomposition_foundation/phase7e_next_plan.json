@@ -1,0 +1,25 @@
+{
+  "phase": "7-E",
+  "title": "Regime / Risk Overlay Foundation (System 2)",
+  "charter_mapping": "Charter Phase 5 \u2014 regime classification + risk overlay on top of System 1 + the 7-D risk lens",
+  "gated_on": "Phase 7-D risk decomposition accepted; this run recommendation = READY_FOR_PHASE7E_REGIME_OVERLAY",
+  "current_book_snapshot": {
+    "net_beta": 0.552833,
+    "effective_n_names": 11.612903,
+    "top_sector": "Industrials"
+  },
+  "build_next": [
+    "Classify market regimes from local price/vol history (e.g., trend / vol / dispersion states).",
+    "Define a measurement-only overlay that REPORTS how the 7-D risk lens shifts by regime.",
+    "Keep it descriptive: no position sizing, no hedging, no orders, no automation."
+  ],
+  "explicitly_not_in_7e": [
+    "position sizing or weight optimization (forbidden until the owner endorses a sizing philosophy)",
+    "hedging, order generation, broker connectivity, automation",
+    "live provider calls / Paper Trader / GCP / deploy"
+  ],
+  "reused_from_7c_7d": [
+    "Phase 7-C point-in-time factor construction (factor tilt lens)",
+    "Phase 7-D per-position beta / vol / idiosyncratic / liquidity decomposition"
+  ]
+}

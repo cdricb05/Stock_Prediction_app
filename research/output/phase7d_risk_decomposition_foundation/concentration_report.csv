@@ -1,0 +1,17 @@
+metric,value
+n_positions,15
+herfindahl_index,0.086111
+effective_n_names,11.612903
+max_name_weight,0.125
+top3_weight,0.35
+top5_weight,0.541667
+n_sectors,7
+sector_herfindahl_index,0.174444
+effective_n_sectors,5.732484
+top_sector,Industrials
+top_sector_weight,0.225
+net_beta,0.552833
+portfolio_vol_annual,0.119795
+systematic_variance_share,0.324213
+idiosyncratic_variance_share,0.675787
+diversifiable_idiosyncratic_vol_annual,0.075424

@@ -1,0 +1,29 @@
+gate_name,status,metric,value,threshold,note
+weights_normalized_gate,PASS,portfolio_weight_sum,1.0,1.0,sample portfolio weights sum to one
+position_vol_gate,PASS,positions_with_realized_vol,15,>=1,trailing realized volatility computed per position
+beta_gate,PASS,net_beta_to_spy,0.552833,computed,net beta to SPY computed from trailing returns
+idiosyncratic_gate,PASS,idiosyncratic_vol_annual,0.098479,computed,systematic-vs-idiosyncratic variance split computed
+concentration_gate,PASS,herfindahl_index,0.086111,computed,Herfindahl index + effective N computed
+liquidity_gate,PASS,positions_with_days_to_liquidate,15,>=1,ADV-based days-to-liquidate computed
+factor_tilt_gate,PASS,factor_tilt_available,True,true (ideal),Phase 7-C factor tilt lens populated (informational if unavailable)
+name_concentration_flag,PASS,max_name_weight,0.125,<= 0.2,informational: single-name concentration of the sample book
+sector_concentration_flag,PASS,top_sector_weight,0.225,<= 0.4,informational: single-sector concentration of the sample book
+breadth_flag,PASS,effective_n_names,11.612903,>= 8.0,informational: effective number of names (1/HHI)
+market_beta_flag,PASS,abs_net_beta,0.552833,<= 1.3,informational: book net market exposure
+liquidity_flag,PASS,worst_days_to_liquidate,0.02055,<= 5.0,informational: slowest-to-liquidate name at the assumed book size
+sector_map_pit_flag,WARNING,sector_map_point_in_time,False,true (ideal),static current-as-of sector map used for sector exposure (membership is stable; flagged)
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_hedging_gate,PASS,hedging_enabled,False,false,
+no_order_sizing_gate,PASS,order_sizing_enabled,False,false,
+no_trade_recommendation_gate,PASS,trade_recommendation_made,False,false,
+no_network_gate,PASS,network_used,False,false,
+no_live_data_gate,PASS,live_data_used,False,false,
+no_paid_api_gate,PASS,paid_apis_used,False,false,
+no_deploy_gate,PASS,deployed,False,false,
+no_production_model_gate,PASS,production_model_built,False,false,
+no_paper_trader_gate,PASS,paper_trader_touched,False,false,
+no_gcp_gate,PASS,gcp_touched,False,false,
+no_d_drive_write_gate,PASS,d_drive_written,False,false,
+preview_only_gate,PASS,preview_only,True,true,

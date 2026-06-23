@@ -1,0 +1,495 @@
+{
+  "phase": "7-D",
+  "objective": "Build the measurement-only, book-level risk decomposition layer (charter Phase 4.5): given a deterministic sample portfolio built from local data, explain its market beta, sector concentration, factor tilt, idiosyncratic/concentration, and liquidity exposures. Explains exposure; does not predict returns, does not recommend trades, sizes nothing, hedges nothing, places no orders.",
+  "generated_by": "research\\run_phase7d_risk_decomposition_foundation.py",
+  "charter": {
+    "path": "docs/project_charter_sp500_multifactor_ranking_v1.md",
+    "mapping": "Charter Phase 4.5 \u2014 book-level risk decomposition (measurement only).",
+    "principle": "Explain exposure, not predict returns. No sizing, no hedging, no orders."
+  },
+  "reuses": "research/run_phase7c_multifactor_ranking_engine.py (factor construction, sector map, loaders)",
+  "preview_only": true,
+  "network_used": false,
+  "live_data_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "hedging_enabled": false,
+  "order_sizing_enabled": false,
+  "trade_recommendation_made": false,
+  "deployed": false,
+  "production_model_built": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "raw_files_modified": false,
+  "d_drive_written": false,
+  "binary_artifacts_created": false,
+  "data": {
+    "price_panel": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+    "price_date_range": "2016-01-04..2026-06-16",
+    "risk_window_days": 252,
+    "risk_window_dates": "2025-06-16..2026-06-16",
+    "investable_universe_n": 128
+  },
+  "sample_portfolio": {
+    "is_live_holdings": false,
+    "construction": "deterministic: 15 names evenly spaced across the sorted universe, linearly-decaying weights summing to 1 (NOT a recommendation)",
+    "n_positions": 15,
+    "assumed_gross_book_usd": 10000000.0,
+    "holdings": [
+      {
+        "ticker": "AAPL",
+        "sector": "Information Technology",
+        "weight": 0.125
+      },
+      {
+        "ticker": "AMGN",
+        "sector": "Health Care",
+        "weight": 0.116667
+      },
+      {
+        "ticker": "BKNG",
+        "sector": "Consumer Discretionary",
+        "weight": 0.108333
+      },
+      {
+        "ticker": "CL",
+        "sector": "Consumer Staples",
+        "weight": 0.1
+      },
+      {
+        "ticker": "DE",
+        "sector": "Industrials",
+        "weight": 0.091667
+      },
+      {
+        "ticker": "GD",
+        "sector": "Industrials",
+        "weight": 0.083333
+      },
+      {
+        "ticker": "IBM",
+        "sector": "Information Technology",
+        "weight": 0.075
+      },
+      {
+        "ticker": "LIN",
+        "sector": "Materials",
+        "weight": 0.066667
+      },
+      {
+        "ticker": "MDT",
+        "sector": "Health Care",
+        "weight": 0.058333
+      },
+      {
+        "ticker": "NKE",
+        "sector": "Consumer Discretionary",
+        "weight": 0.05
+      },
+      {
+        "ticker": "PG",
+        "sector": "Consumer Staples",
+        "weight": 0.041667
+      },
+      {
+        "ticker": "RTX",
+        "sector": "Industrials",
+        "weight": 0.033333
+      },
+      {
+        "ticker": "T",
+        "sector": "Communication Services",
+        "weight": 0.025
+      },
+      {
+        "ticker": "UPS",
+        "sector": "Industrials",
+        "weight": 0.016667
+      },
+      {
+        "ticker": "ZTS",
+        "sector": "Health Care",
+        "weight": 0.008333
+      }
+    ]
+  },
+  "risk_view": {
+    "market_beta_exposure": {
+      "net_beta": 0.552833,
+      "beta_coverage_weight": 1.0,
+      "portfolio_vol_annual": 0.119795,
+      "spy_vol_annual": 0.123384,
+      "systematic_vol_annual": 0.068211,
+      "idiosyncratic_vol_annual": 0.098479,
+      "systematic_variance_share": 0.324213,
+      "idiosyncratic_variance_share": 0.675787
+    },
+    "sector_concentration": {
+      "sectors": [
+        {
+          "sector": "Industrials",
+          "weight": 0.225,
+          "n_names": 4
+        },
+        {
+          "sector": "Information Technology",
+          "weight": 0.2,
+          "n_names": 2
+        },
+        {
+          "sector": "Health Care",
+          "weight": 0.183333,
+          "n_names": 3
+        },
+        {
+          "sector": "Consumer Discretionary",
+          "weight": 0.158333,
+          "n_names": 2
+        },
+        {
+          "sector": "Consumer Staples",
+          "weight": 0.141667,
+          "n_names": 2
+        },
+        {
+          "sector": "Materials",
+          "weight": 0.066667,
+          "n_names": 1
+        },
+        {
+          "sector": "Communication Services",
+          "weight": 0.025,
+          "n_names": 1
+        }
+      ],
+      "top_sector": "Industrials",
+      "top_sector_weight": 0.225,
+      "sector_herfindahl_index": 0.174444,
+      "effective_n_sectors": 5.732484
+    },
+    "factor_tilt_exposure": {
+      "available": true,
+      "factors": {
+        "momentum": {
+          "available": true,
+          "book_tilt_z": -0.200233,
+          "coverage": 1.0,
+          "as_of_month": "2026-06"
+        },
+        "low_volatility": {
+          "available": true,
+          "book_tilt_z": 0.342319,
+          "coverage": 1.0,
+          "as_of_month": "2026-06"
+        },
+        "value": {
+          "available": true,
+          "book_tilt_z": 0.315405,
+          "coverage": 1.0,
+          "as_of_month": "2026-06"
+        },
+        "quality": {
+          "available": true,
+          "book_tilt_z": 0.418925,
+          "coverage": 0.8,
+          "as_of_month": "2026-06"
+        },
+        "growth": {
+          "available": true,
+          "book_tilt_z": -0.154868,
+          "coverage": 0.933333,
+          "as_of_month": "2026-06"
+        }
+      },
+      "composite_tilt_z": 0.14431
+    },
+    "idiosyncratic_concentration_risk": {
+      "herfindahl_index": 0.086111,
+      "effective_n_names": 11.612903,
+      "max_name_weight": 0.125,
+      "top3_weight": 0.35,
+      "top5_weight": 0.541667,
+      "idiosyncratic_variance_share": 0.675787,
+      "diversifiable_idiosyncratic_vol_annual": 0.075424
+    },
+    "liquidity_risk": {
+      "assumed_gross_book_usd": 10000000.0,
+      "participation_rate": 0.1,
+      "worst_days_to_liquidate": 0.02055,
+      "thin_names": [],
+      "n_positions_priced": 15
+    }
+  },
+  "sector_neutralization_note": {
+    "sector_map_point_in_time": false,
+    "caveat": "static current-as-of sector map; membership is stable but not strictly PIT"
+  },
+  "gate_summary": {
+    "counts": {
+      "PASS": 27,
+      "FAIL": 0,
+      "WARNING": 1
+    },
+    "gates": [
+      {
+        "gate_name": "weights_normalized_gate",
+        "status": "PASS",
+        "metric": "portfolio_weight_sum",
+        "value": 1.0,
+        "threshold": "1.0",
+        "note": "sample portfolio weights sum to one"
+      },
+      {
+        "gate_name": "position_vol_gate",
+        "status": "PASS",
+        "metric": "positions_with_realized_vol",
+        "value": 15,
+        "threshold": ">=1",
+        "note": "trailing realized volatility computed per position"
+      },
+      {
+        "gate_name": "beta_gate",
+        "status": "PASS",
+        "metric": "net_beta_to_spy",
+        "value": 0.552833,
+        "threshold": "computed",
+        "note": "net beta to SPY computed from trailing returns"
+      },
+      {
+        "gate_name": "idiosyncratic_gate",
+        "status": "PASS",
+        "metric": "idiosyncratic_vol_annual",
+        "value": 0.098479,
+        "threshold": "computed",
+        "note": "systematic-vs-idiosyncratic variance split computed"
+      },
+      {
+        "gate_name": "concentration_gate",
+        "status": "PASS",
+        "metric": "herfindahl_index",
+        "value": 0.086111,
+        "threshold": "computed",
+        "note": "Herfindahl index + effective N computed"
+      },
+      {
+        "gate_name": "liquidity_gate",
+        "status": "PASS",
+        "metric": "positions_with_days_to_liquidate",
+        "value": 15,
+        "threshold": ">=1",
+        "note": "ADV-based days-to-liquidate computed"
+      },
+      {
+        "gate_name": "factor_tilt_gate",
+        "status": "PASS",
+        "metric": "factor_tilt_available",
+        "value": true,
+        "threshold": "true (ideal)",
+        "note": "Phase 7-C factor tilt lens populated (informational if unavailable)"
+      },
+      {
+        "gate_name": "name_concentration_flag",
+        "status": "PASS",
+        "metric": "max_name_weight",
+        "value": 0.125,
+        "threshold": "<= 0.2",
+        "note": "informational: single-name concentration of the sample book"
+      },
+      {
+        "gate_name": "sector_concentration_flag",
+        "status": "PASS",
+        "metric": "top_sector_weight",
+        "value": 0.225,
+        "threshold": "<= 0.4",
+        "note": "informational: single-sector concentration of the sample book"
+      },
+      {
+        "gate_name": "breadth_flag",
+        "status": "PASS",
+        "metric": "effective_n_names",
+        "value": 11.612903,
+        "threshold": ">= 8.0",
+        "note": "informational: effective number of names (1/HHI)"
+      },
+      {
+        "gate_name": "market_beta_flag",
+        "status": "PASS",
+        "metric": "abs_net_beta",
+        "value": 0.552833,
+        "threshold": "<= 1.3",
+        "note": "informational: book net market exposure"
+      },
+      {
+        "gate_name": "liquidity_flag",
+        "status": "PASS",
+        "metric": "worst_days_to_liquidate",
+        "value": 0.02055,
+        "threshold": "<= 5.0",
+        "note": "informational: slowest-to-liquidate name at the assumed book size"
+      },
+      {
+        "gate_name": "sector_map_pit_flag",
+        "status": "WARNING",
+        "metric": "sector_map_point_in_time",
+        "value": false,
+        "threshold": "true (ideal)",
+        "note": "static current-as-of sector map used for sector exposure (membership is stable; flagged)"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_hedging_gate",
+        "status": "PASS",
+        "metric": "hedging_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_order_sizing_gate",
+        "status": "PASS",
+        "metric": "order_sizing_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_trade_recommendation_gate",
+        "status": "PASS",
+        "metric": "trade_recommendation_made",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_live_data_gate",
+        "status": "PASS",
+        "metric": "live_data_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paid_api_gate",
+        "status": "PASS",
+        "metric": "paid_apis_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_deploy_gate",
+        "status": "PASS",
+        "metric": "deployed",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_production_model_gate",
+        "status": "PASS",
+        "metric": "production_model_built",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paper_trader_gate",
+        "status": "PASS",
+        "metric": "paper_trader_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_gcp_gate",
+        "status": "PASS",
+        "metric": "gcp_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_d_drive_write_gate",
+        "status": "PASS",
+        "metric": "d_drive_written",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      }
+    ]
+  },
+  "recommendation": "READY_FOR_PHASE7E_REGIME_OVERLAY",
+  "recommendation_allowed_values": [
+    "READY_FOR_PHASE7E_REGIME_OVERLAY",
+    "NEEDS_RISK_REVIEW",
+    "DATA_QUALITY_BLOCKED",
+    "ERROR"
+  ],
+  "what_is_still_caveated": [
+    "The portfolio is a DETERMINISTIC SAMPLE, not live or recommended holdings.",
+    "Beta / vol / idiosyncratic split use a single trailing window (no regime conditioning yet \u2014 that is Phase 7-E).",
+    "Idiosyncratic split assumes residual = portfolio variance minus net-beta systematic variance; the diversifiable proxy additionally assumes zero residual correlation across names.",
+    "Liquidity uses adjusted-close * volume as a dollar-volume proxy at an ASSUMED gross book size.",
+    "Sector exposure uses a static current-as-of sector map (not strictly point-in-time).",
+    "Factor tilt reuses annual-only Phase 7-C factors (value/quality/growth stale up to ~1 year)."
+  ],
+  "recommended_next_phase": {
+    "phase": "7-E",
+    "title": "Regime / Risk Overlay Foundation (System 2)"
+  },
+  "commit_appropriate": false,
+  "commit_note": "Per task instruction nothing is committed or pushed.",
+  "artifacts": [
+    "research\\output\\phase7d_risk_decomposition_foundation\\phase7d_risk_decomposition_foundation.json",
+    "research\\output\\phase7d_risk_decomposition_foundation\\sample_portfolio.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\position_risk_decomposition.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\sector_exposure.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\factor_tilt_exposure.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\liquidity_risk_report.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\concentration_report.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\risk_gate_matrix.csv",
+    "research\\output\\phase7d_risk_decomposition_foundation\\phase7e_next_plan.json"
+  ]
+}
