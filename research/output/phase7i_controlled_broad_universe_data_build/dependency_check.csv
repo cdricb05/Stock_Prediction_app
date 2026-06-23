@@ -1,0 +1,6 @@
+dependency,kind,available,version,purpose,note
+pandas,required,true,3.0.3,Tabular assembly / data-quality of the price panel.,present
+yfinance,required,true,1.4.0,Free daily adjusted OHLCV price collector (the only price dependency).,present
+urllib.request,stdlib,true,stdlib,SEC EDGAR companyfacts/submissions collector (no third-party dep).,Python standard library; always present.
+json,stdlib,true,stdlib,SEC EDGAR companyfacts/submissions collector (no third-party dep).,Python standard library; always present.
+csv,stdlib,true,stdlib,SEC EDGAR companyfacts/submissions collector (no third-party dep).,Python standard library; always present.

@@ -1,0 +1,27 @@
+{
+  "from_phase": "7-I",
+  "recommendation": "LIVE_COLLECTION_APPROVAL_REQUIRED",
+  "phase7j_retest_allowed": false,
+  "candidate_universe_size": 8702,
+  "pilot_ticker_count": 300,
+  "usable_price_tickers": 0,
+  "next_steps": [
+    {
+      "step": "run_approved_pilot_price_collection",
+      "scope": "ENV_APPROVAL_REQUIRED",
+      "detail": "Set PHASE7I_LIVE_APPROVED=YES and re-run (see live_run_command.ps1). Collects daily prices for up to 300 top candidates."
+    }
+  ],
+  "hard_constraints": [
+    "free sources only",
+    "no paid APIs",
+    "do not install packages",
+    "large data on D: only",
+    "repo outputs are summaries only",
+    "no factor/model/retest in the data-build phase",
+    "no trading/order/automation",
+    "no Paper Trader/GCP/broker/deployment",
+    "do not commit",
+    "do not push"
+  ]
+}

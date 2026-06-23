@@ -1,0 +1,125 @@
+{
+  "phase": "7-I",
+  "objective": "Build a controlled, reproducible, free-data pipeline that can expand the research universe from the current ~128 names to a materially larger local universe with daily prices and point-in-time SEC fundamentals, so Phase 7-F/7-H can later be retested honestly. This phase plans the build and (only under explicit env approval) runs a small pilot; it does not model or retest.",
+  "recommendation": "LIVE_COLLECTION_APPROVAL_REQUIRED",
+  "allowed_recommendations": [
+    "READY_FOR_PHASE7J_BROAD_UNIVERSE_SIGNAL_RETEST",
+    "LIVE_COLLECTION_APPROVAL_REQUIRED",
+    "BROAD_UNIVERSE_DATA_PARTIAL",
+    "DATA_COLLECTION_BLOCKED",
+    "ERROR"
+  ],
+  "live_approval": {
+    "env_var": "PHASE7I_LIVE_APPROVED",
+    "required_value": "YES",
+    "approved_this_run": false,
+    "live_collection_ran": false
+  },
+  "determinations": {
+    "candidate_universe_size": 8702,
+    "directory_size": 10415,
+    "price_collector_dependency_available": true,
+    "sec_collector_dependency_available": true,
+    "missing_required_dependencies": [],
+    "live_collection_ran": false,
+    "usable_price_tickers": 0,
+    "tickers_collected": 0,
+    "phase7j_retest_allowed": false,
+    "large_data_storage_root": "D:/Stock_Prediction_app_data/phase7i_broad_universe"
+  },
+  "dependency_check": {
+    "missing_required": [],
+    "price_collector_available": true,
+    "sec_collector_available": true,
+    "pandas_available": true,
+    "all_required_available": true
+  },
+  "candidate_universe": {
+    "directory_size": 10415,
+    "candidate_universe_size": 8702,
+    "excluded_count": 1713,
+    "exclusion_reason_counts": {
+      "invalid_characters": 540,
+      "title_fund_or_etf": 375,
+      "title_preferred": 15,
+      "suffix_unit": 251,
+      "suffix_warrant": 430,
+      "title_right": 1,
+      "suffix_rights": 101
+    },
+    "already_collected_local_count": 128,
+    "local_price_panel_tickers": 129
+  },
+  "collection_plan": {
+    "pilot_ticker_count": 300,
+    "pilot_cap": 300,
+    "price_track_ready": true,
+    "sec_track_ready": true
+  },
+  "live_collection": {
+    "ran": false,
+    "usable_price_tickers": 0,
+    "collected_tickers": 0
+  },
+  "gate_matrix_summary": {
+    "pass": 18,
+    "fail": 0,
+    "n_info": 1,
+    "n_na": 1,
+    "safety_fail": false,
+    "price_dependency_missing": false,
+    "live_ran": false,
+    "usable_price_tickers": 0
+  },
+  "phase7j_next_plan": {
+    "from_phase": "7-I",
+    "recommendation": "LIVE_COLLECTION_APPROVAL_REQUIRED",
+    "phase7j_retest_allowed": false,
+    "candidate_universe_size": 8702,
+    "pilot_ticker_count": 300,
+    "usable_price_tickers": 0,
+    "next_steps": [
+      {
+        "step": "run_approved_pilot_price_collection",
+        "scope": "ENV_APPROVAL_REQUIRED",
+        "detail": "Set PHASE7I_LIVE_APPROVED=YES and re-run (see live_run_command.ps1). Collects daily prices for up to 300 top candidates."
+      }
+    ],
+    "hard_constraints": [
+      "free sources only",
+      "no paid APIs",
+      "do not install packages",
+      "large data on D: only",
+      "repo outputs are summaries only",
+      "no factor/model/retest in the data-build phase",
+      "no trading/order/automation",
+      "no Paper Trader/GCP/broker/deployment",
+      "do not commit",
+      "do not push"
+    ]
+  },
+  "artifacts": {
+    "report": "research/output/phase7i_controlled_broad_universe_data_build/phase7i_controlled_broad_universe_data_build.json",
+    "candidate_universe": "research/output/phase7i_controlled_broad_universe_data_build/candidate_universe.csv",
+    "collection_plan": "research/output/phase7i_controlled_broad_universe_data_build/collection_plan.csv",
+    "dependency_check": "research/output/phase7i_controlled_broad_universe_data_build/dependency_check.csv",
+    "data_storage_manifest": "research/output/phase7i_controlled_broad_universe_data_build/data_storage_manifest.csv",
+    "live_run_command": "research/output/phase7i_controlled_broad_universe_data_build/live_run_command.ps1",
+    "collection_status": "research/output/phase7i_controlled_broad_universe_data_build/collection_status.csv",
+    "phase7j_next_plan": "research/output/phase7i_controlled_broad_universe_data_build/phase7j_next_plan.json"
+  },
+  "safety": {
+    "preview_only_data_build": true,
+    "live_data_used": false,
+    "paid_api_used": false,
+    "packages_installed": false,
+    "trading_order_automation": false,
+    "model_or_retest_performed": false,
+    "repo_received_large_data": false,
+    "wrote_to_data_drive": false,
+    "wrote_to_existing_phase2k_g_panel": false,
+    "paper_trader_gcp_broker_touched": false,
+    "committed": false,
+    "pushed": false
+  }
+}
