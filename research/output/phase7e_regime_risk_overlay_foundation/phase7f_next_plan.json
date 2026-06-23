@@ -1,0 +1,29 @@
+{
+  "phase": "7-F",
+  "title": "Signal Reliability Upgrade (System 1 robustness)",
+  "charter_mapping": "Charter \u2014 strengthen System 1 before any regime throttle is considered live",
+  "gated_on": "Phase 7-E regime overlay accepted; this run recommendation = READY_FOR_PHASE7F_SIGNAL_RELIABILITY_UPGRADE",
+  "available_regime_axes": [
+    "risk_regime",
+    "vol_regime",
+    "trend_regime",
+    "inflation_regime",
+    "rates_regime",
+    "dollar_regime"
+  ],
+  "build_next": [
+    "Broaden the System 1 universe beyond ~127 large caps and add a TTM-quarterly fundamentals blend (the 7-C composite is still WEAK; reliability is the bottleneck).",
+    "Stress-test factor / composite IC stability across the regimes labelled here (descriptive input to robustness, NOT a weighting signal).",
+    "Keep the regime throttle template NOT LIVE until System 1 shows a confirmed, regime-robust edge and the owner endorses a sizing philosophy."
+  ],
+  "explicitly_not_in_7f": [
+    "activating the regime throttle / any sizing or hedging",
+    "factor-weight optimization or fitting weights to regime IC",
+    "any order / broker / automation / Paper Trader / GCP / deploy work",
+    "live provider calls"
+  ],
+  "reused_entry_points": [
+    "run_phase7c_multifactor_ranking_engine (factor construction, loaders, grade_series)",
+    "run_phase7b_validation_harness_foundation (period_rank_ics, ic_summary, yearly_ic)"
+  ]
+}

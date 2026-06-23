@@ -1,0 +1,13 @@
+regime_axis,regime_label,posture,suggested_gross_throttle_low,suggested_gross_throttle_high,activation_status,owner_review_required,note
+risk_regime,risk_off,RISK_OFF,0.3,0.6,NOT_LIVE / NOT_TRADING,true,"illustrative default; NOT optimized, NOT fitted to IC-by-regime"
+risk_regime,risk_on,RISK_ON,0.9,1.0,NOT_LIVE / NOT_TRADING,true,"illustrative default; NOT optimized, NOT fitted to IC-by-regime"
+vol_regime,high_vol,RISK_OFF,0.4,0.7,NOT_LIVE / NOT_TRADING,true,"illustrative default; NOT optimized, NOT fitted to IC-by-regime"
+vol_regime,low_vol,RISK_ON,0.9,1.0,NOT_LIVE / NOT_TRADING,true,"illustrative default; NOT optimized, NOT fitted to IC-by-regime"
+trend_regime,above_trend,RISK_ON,0.9,1.0,NOT_LIVE / NOT_TRADING,true,"illustrative default; NOT optimized, NOT fitted to IC-by-regime"
+trend_regime,below_trend,RISK_OFF,0.4,0.7,NOT_LIVE / NOT_TRADING,true,"illustrative default; NOT optimized, NOT fitted to IC-by-regime"
+inflation_regime,disinflation,CONTEXT,,,NOT_LIVE / NOT_TRADING,true,macro context only; not a direct gross throttle
+inflation_regime,inflation_up,CONTEXT,,,NOT_LIVE / NOT_TRADING,true,macro context only; not a direct gross throttle
+rates_regime,rates_down,CONTEXT,,,NOT_LIVE / NOT_TRADING,true,macro context only; not a direct gross throttle
+rates_regime,rates_up,CONTEXT,,,NOT_LIVE / NOT_TRADING,true,macro context only; not a direct gross throttle
+dollar_regime,dollar_down,CONTEXT,,,NOT_LIVE / NOT_TRADING,true,macro context only; not a direct gross throttle
+dollar_regime,dollar_up,CONTEXT,,,NOT_LIVE / NOT_TRADING,true,macro context only; not a direct gross throttle

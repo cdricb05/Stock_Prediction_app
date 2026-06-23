@@ -1,0 +1,1159 @@
+{
+  "phase": "7-E",
+  "objective": "Build a DESCRIPTIVE System 2 regime overlay: classify each historical scoring month into market regimes (risk-on/off, high/low vol, above/below trend, inflation up/down, rates up/down, dollar up/down) from local lagged / as-of data only, then report how the Phase 7-C factor / baseline / composite rank IC and a market-risk proxy behaved by regime, plus regime transitions and a NOT-LIVE risk-throttle template. Not predictive, no weight optimization, no orders, no live data.",
+  "generated_by": "research\\run_phase7e_regime_risk_overlay_foundation.py",
+  "charter": {
+    "path": "docs/project_charter_sp500_multifactor_ranking_v1.md",
+    "mapping": "Charter Phase 5 \u2014 System 2 regime / risk overlay (descriptive foundation).",
+    "principle": "Describe how the signal and risk behave by regime. Not predictive. No sizing, no hedging, no orders, no weight optimization."
+  },
+  "reuses": "run_phase7c_multifactor_ranking_engine (signals) + run_phase7b_validation_harness_foundation (IC)",
+  "predecessor_recommendations": {
+    "phase7c": "MULTIFACTOR_RANKING_ENGINE_WEAK",
+    "phase7d": "READY_FOR_PHASE7E_REGIME_OVERLAY"
+  },
+  "network_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "live_data_used": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "hedging_enabled": false,
+  "order_sizing_enabled": false,
+  "trade_recommendation_made": false,
+  "deployed": false,
+  "production_model_built": false,
+  "factor_weights_optimized": false,
+  "future_regime_labels_used": false,
+  "same_day_forward_leakage": false,
+  "binary_artifacts_created": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "raw_files_modified": false,
+  "d_drive_written": false,
+  "throttle_live": false,
+  "owner_review_required": true,
+  "predictive_claim_made": false,
+  "is_predictive": false,
+  "predictive_disclaimer": "The regime overlay is DESCRIPTIVE only. It classifies past months and reports conditional behaviour; it does not forecast regimes or returns and must not be read as a trading signal.",
+  "data": {
+    "price_panel": "D:\\Stock_Prediction_app_data\\phase2k_g\\output\\phase2k_g_expanded_price_history_free.csv",
+    "benchmark": "SPY",
+    "history_months": 126,
+    "month_range": [
+      "2016-01",
+      "2026-06"
+    ],
+    "macro_files": {
+      "cpi": "research\\input\\CPIAUCSL.csv",
+      "ten_year_yield": "research\\input\\fredgraph.csv",
+      "dollar_index": "research\\input\\DTWEXBGS.csv"
+    },
+    "signal_universe_n": 128
+  },
+  "regime_axes": {
+    "risk_regime": {
+      "labels": [
+        "risk_on",
+        "risk_off"
+      ],
+      "source": "SPY price",
+      "definition": "risk-off when SPY is >=10% below its trailing 252-day peak, else risk-on",
+      "available": true,
+      "n_labeled_months": 123
+    },
+    "vol_regime": {
+      "labels": [
+        "low_vol",
+        "high_vol"
+      ],
+      "source": "SPY price",
+      "definition": "high-vol when trailing 21-day annualized SPY realized vol exceeds its as-of expanding median (>=12m history), else low-vol",
+      "available": true,
+      "n_labeled_months": 114
+    },
+    "trend_regime": {
+      "labels": [
+        "above_trend",
+        "below_trend"
+      ],
+      "source": "SPY price",
+      "definition": "above-trend when SPY month-end close >= its 200-day SMA, else below-trend",
+      "available": true,
+      "n_labeled_months": 117
+    },
+    "inflation_regime": {
+      "labels": [
+        "inflation_up",
+        "disinflation"
+      ],
+      "source": "CPIAUCSL (FRED)",
+      "definition": "inflation-up when as-of CPI YoY is higher than 3 months earlier, else disinflationary",
+      "available": true,
+      "n_labeled_months": 126
+    },
+    "rates_regime": {
+      "labels": [
+        "rates_up",
+        "rates_down"
+      ],
+      "source": "DGS10 (FRED)",
+      "definition": "rates-up when the as-of 10-year Treasury yield is higher than 3 months earlier",
+      "available": true,
+      "n_labeled_months": 126
+    },
+    "dollar_regime": {
+      "labels": [
+        "dollar_up",
+        "dollar_down"
+      ],
+      "source": "DTWEXBGS (FRED)",
+      "definition": "dollar-up when the as-of broad trade-weighted USD index is higher than 3 months earlier",
+      "available": true,
+      "n_labeled_months": 126
+    }
+  },
+  "available_regime_axes": [
+    "risk_regime",
+    "vol_regime",
+    "trend_regime",
+    "inflation_regime",
+    "rates_regime",
+    "dollar_regime"
+  ],
+  "as_of_audit": {
+    "regime_label_asof_violations": 0,
+    "rule": "price regimes use trailing daily SPY windows ending at month-end m; macro regimes are lagged >= 1 month; labels never read the forward return"
+  },
+  "classification_summary": {
+    "risk_regime": {
+      "label_counts": {
+        "risk_on": 108,
+        "risk_off": 15
+      },
+      "persistence": {
+        "risk_on": 0.971963,
+        "risk_off": 0.8
+      },
+      "avg_run_length_months": {
+        "risk_on": 27.0,
+        "risk_off": 5.0
+      },
+      "n_transitions": 122
+    },
+    "vol_regime": {
+      "label_counts": {
+        "low_vol": 43,
+        "high_vol": 71
+      },
+      "persistence": {
+        "low_vol": 0.511628,
+        "high_vol": 0.714286
+      },
+      "avg_run_length_months": {
+        "low_vol": 2.047619,
+        "high_vol": 3.380952
+      },
+      "n_transitions": 113
+    },
+    "trend_regime": {
+      "label_counts": {
+        "above_trend": 97,
+        "below_trend": 20
+      },
+      "persistence": {
+        "above_trend": 0.895833,
+        "below_trend": 0.5
+      },
+      "avg_run_length_months": {
+        "above_trend": 8.818182,
+        "below_trend": 2.0
+      },
+      "n_transitions": 116
+    },
+    "inflation_regime": {
+      "label_counts": {
+        "inflation_up": 72,
+        "disinflation": 54
+      },
+      "persistence": {
+        "inflation_up": 0.802817,
+        "disinflation": 0.740741
+      },
+      "avg_run_length_months": {
+        "inflation_up": 4.8,
+        "disinflation": 3.857143
+      },
+      "n_transitions": 125
+    },
+    "rates_regime": {
+      "label_counts": {
+        "rates_up": 72,
+        "rates_down": 54
+      },
+      "persistence": {
+        "rates_up": 0.760563,
+        "rates_down": 0.685185
+      },
+      "avg_run_length_months": {
+        "rates_up": 4.0,
+        "rates_down": 3.176471
+      },
+      "n_transitions": 125
+    },
+    "dollar_regime": {
+      "label_counts": {
+        "dollar_up": 69,
+        "dollar_down": 57
+      },
+      "persistence": {
+        "dollar_up": 0.735294,
+        "dollar_down": 0.684211
+      },
+      "avg_run_length_months": {
+        "dollar_up": 3.631579,
+        "dollar_down": 3.166667
+      },
+      "n_transitions": 125
+    }
+  },
+  "full_sample_mean_rank_ic": {
+    "momentum": 0.007256,
+    "low_volatility": -0.033783,
+    "value": 0.021044,
+    "quality": -0.010118,
+    "growth": 0.010227,
+    "price_only_baseline": -0.012348,
+    "equal_weight_composite": -0.007396
+  },
+  "factor_ic_by_regime": {
+    "momentum": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 97,
+          "mean_rank_ic": 0.011348,
+          "ic_t_stat": 0.627876
+        },
+        "risk_off": {
+          "n_months": 15,
+          "mean_rank_ic": -0.019202,
+          "ic_t_stat": -0.416108
+        }
+      },
+      "vol_regime": {
+        "low_vol": {
+          "n_months": 42,
+          "mean_rank_ic": 0.051261,
+          "ic_t_stat": 1.797679
+        },
+        "high_vol": {
+          "n_months": 70,
+          "mean_rank_ic": -0.019147,
+          "ic_t_stat": -0.947895
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 92,
+          "mean_rank_ic": 0.005406,
+          "ic_t_stat": 0.290913
+        },
+        "below_trend": {
+          "n_months": 20,
+          "mean_rank_ic": 0.015765,
+          "ic_t_stat": 0.3942
+        }
+      },
+      "inflation_regime": {
+        "inflation_up": {
+          "n_months": 61,
+          "mean_rank_ic": 0.018165,
+          "ic_t_stat": 0.893849
+        },
+        "disinflation": {
+          "n_months": 51,
+          "mean_rank_ic": -0.005792,
+          "ic_t_stat": -0.208187
+        }
+      },
+      "rates_regime": {
+        "rates_up": {
+          "n_months": 65,
+          "mean_rank_ic": -0.000124,
+          "ic_t_stat": -0.006042
+        },
+        "rates_down": {
+          "n_months": 47,
+          "mean_rank_ic": 0.017462,
+          "ic_t_stat": 0.613529
+        }
+      },
+      "dollar_regime": {
+        "dollar_up": {
+          "n_months": 59,
+          "mean_rank_ic": 0.00987,
+          "ic_t_stat": 0.402753
+        },
+        "dollar_down": {
+          "n_months": 53,
+          "mean_rank_ic": 0.004346,
+          "ic_t_stat": 0.189813
+        }
+      }
+    },
+    "low_volatility": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 106,
+          "mean_rank_ic": -0.031038,
+          "ic_t_stat": -1.910117
+        },
+        "risk_off": {
+          "n_months": 15,
+          "mean_rank_ic": -0.053182,
+          "ic_t_stat": -0.95425
+        }
+      },
+      "vol_regime": {
+        "low_vol": {
+          "n_months": 43,
+          "mean_rank_ic": -0.016248,
+          "ic_t_stat": -0.635804
+        },
+        "high_vol": {
+          "n_months": 70,
+          "mean_rank_ic": -0.039442,
+          "ic_t_stat": -1.88265
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 96,
+          "mean_rank_ic": -0.020833,
+          "ic_t_stat": -1.261502
+        },
+        "below_trend": {
+          "n_months": 20,
+          "mean_rank_ic": -0.093825,
+          "ic_t_stat": -2.066794
+        }
+      },
+      "inflation_regime": {
+        "inflation_up": {
+          "n_months": 67,
+          "mean_rank_ic": -0.014475,
+          "ic_t_stat": -0.77082
+        },
+        "disinflation": {
+          "n_months": 54,
+          "mean_rank_ic": -0.057738,
+          "ic_t_stat": -2.194072
+        }
+      },
+      "rates_regime": {
+        "rates_down": {
+          "n_months": 51,
+          "mean_rank_ic": -0.056332,
+          "ic_t_stat": -2.237715
+        },
+        "rates_up": {
+          "n_months": 70,
+          "mean_rank_ic": -0.017354,
+          "ic_t_stat": -0.866675
+        }
+      },
+      "dollar_regime": {
+        "dollar_down": {
+          "n_months": 56,
+          "mean_rank_ic": -0.04193,
+          "ic_t_stat": -1.66223
+        },
+        "dollar_up": {
+          "n_months": 65,
+          "mean_rank_ic": -0.026764,
+          "ic_t_stat": -1.351803
+        }
+      }
+    },
+    "value": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 55,
+          "mean_rank_ic": 0.027526,
+          "ic_t_stat": 1.363088
+        },
+        "risk_off": {
+          "n_months": 11,
+          "mean_rank_ic": -0.011365,
+          "ic_t_stat": -0.227905
+        }
+      },
+      "vol_regime": {
+        "low_vol": {
+          "n_months": 24,
+          "mean_rank_ic": -0.0059,
+          "ic_t_stat": -0.204487
+        },
+        "high_vol": {
+          "n_months": 42,
+          "mean_rank_ic": 0.036441,
+          "ic_t_stat": 1.503499
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 53,
+          "mean_rank_ic": 0.031909,
+          "ic_t_stat": 1.564038
+        },
+        "below_trend": {
+          "n_months": 13,
+          "mean_rank_ic": -0.023251,
+          "ic_t_stat": -0.513636
+        }
+      },
+      "inflation_regime": {
+        "inflation_up": {
+          "n_months": 36,
+          "mean_rank_ic": 0.042197,
+          "ic_t_stat": 1.985604
+        },
+        "disinflation": {
+          "n_months": 30,
+          "mean_rank_ic": -0.00434,
+          "ic_t_stat": -0.135374
+        }
+      },
+      "rates_regime": {
+        "rates_up": {
+          "n_months": 44,
+          "mean_rank_ic": 0.036338,
+          "ic_t_stat": 1.556502
+        },
+        "rates_down": {
+          "n_months": 22,
+          "mean_rank_ic": -0.009544,
+          "ic_t_stat": -0.310519
+        }
+      },
+      "dollar_regime": {
+        "dollar_down": {
+          "n_months": 29,
+          "mean_rank_ic": 0.02703,
+          "ic_t_stat": 0.833016
+        },
+        "dollar_up": {
+          "n_months": 37,
+          "mean_rank_ic": 0.016352,
+          "ic_t_stat": 0.745005
+        }
+      }
+    },
+    "quality": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 53,
+          "mean_rank_ic": -0.009984,
+          "ic_t_stat": -0.736402
+        },
+        "risk_off": {
+          "n_months": 11,
+          "mean_rank_ic": -0.010767,
+          "ic_t_stat": -0.242845
+        }
+      },
+      "vol_regime": {
+        "high_vol": {
+          "n_months": 41,
+          "mean_rank_ic": -0.003906,
+          "ic_t_stat": -0.225066
+        },
+        "low_vol": {
+          "n_months": 23,
+          "mean_rank_ic": -0.021192,
+          "ic_t_stat": -1.006232
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 51,
+          "mean_rank_ic": -0.012418,
+          "ic_t_stat": -0.844043
+        },
+        "below_trend": {
+          "n_months": 13,
+          "mean_rank_ic": -0.001096,
+          "ic_t_stat": -0.033244
+        }
+      },
+      "inflation_regime": {
+        "disinflation": {
+          "n_months": 29,
+          "mean_rank_ic": -0.028377,
+          "ic_t_stat": -1.194494
+        },
+        "inflation_up": {
+          "n_months": 35,
+          "mean_rank_ic": 0.005011,
+          "ic_t_stat": 0.347924
+        }
+      },
+      "rates_regime": {
+        "rates_up": {
+          "n_months": 42,
+          "mean_rank_ic": 0.007673,
+          "ic_t_stat": 0.478688
+        },
+        "rates_down": {
+          "n_months": 22,
+          "mean_rank_ic": -0.044082,
+          "ic_t_stat": -1.927295
+        }
+      },
+      "dollar_regime": {
+        "dollar_down": {
+          "n_months": 27,
+          "mean_rank_ic": -0.027665,
+          "ic_t_stat": -1.182817
+        },
+        "dollar_up": {
+          "n_months": 37,
+          "mean_rank_ic": 0.002686,
+          "ic_t_stat": 0.17213
+        }
+      }
+    },
+    "growth": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 79,
+          "mean_rank_ic": 0.016258,
+          "ic_t_stat": 0.987308
+        },
+        "risk_off": {
+          "n_months": 15,
+          "mean_rank_ic": -0.021531,
+          "ic_t_stat": -0.80309
+        }
+      },
+      "vol_regime": {
+        "low_vol": {
+          "n_months": 32,
+          "mean_rank_ic": 0.007425,
+          "ic_t_stat": 0.271131
+        },
+        "high_vol": {
+          "n_months": 62,
+          "mean_rank_ic": 0.011674,
+          "ic_t_stat": 0.685957
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 74,
+          "mean_rank_ic": 0.01763,
+          "ic_t_stat": 1.024088
+        },
+        "below_trend": {
+          "n_months": 20,
+          "mean_rank_ic": -0.017161,
+          "ic_t_stat": -0.713592
+        }
+      },
+      "inflation_regime": {
+        "inflation_up": {
+          "n_months": 48,
+          "mean_rank_ic": 0.020159,
+          "ic_t_stat": 0.873493
+        },
+        "disinflation": {
+          "n_months": 46,
+          "mean_rank_ic": -0.000136,
+          "ic_t_stat": -0.007777
+        }
+      },
+      "rates_regime": {
+        "rates_up": {
+          "n_months": 54,
+          "mean_rank_ic": -0.002539,
+          "ic_t_stat": -0.136526
+        },
+        "rates_down": {
+          "n_months": 40,
+          "mean_rank_ic": 0.027463,
+          "ic_t_stat": 1.191313
+        }
+      },
+      "dollar_regime": {
+        "dollar_up": {
+          "n_months": 53,
+          "mean_rank_ic": 0.026348,
+          "ic_t_stat": 1.244538
+        },
+        "dollar_down": {
+          "n_months": 41,
+          "mean_rank_ic": -0.010611,
+          "ic_t_stat": -0.567711
+        }
+      }
+    }
+  },
+  "composite_ic_by_regime": {
+    "price_only_baseline": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 106,
+          "mean_rank_ic": -0.00903,
+          "ic_t_stat": -0.50808
+        },
+        "risk_off": {
+          "n_months": 15,
+          "mean_rank_ic": -0.035795,
+          "ic_t_stat": -0.619691
+        }
+      },
+      "vol_regime": {
+        "low_vol": {
+          "n_months": 43,
+          "mean_rank_ic": 0.029625,
+          "ic_t_stat": 0.984955
+        },
+        "high_vol": {
+          "n_months": 70,
+          "mean_rank_ic": -0.03057,
+          "ic_t_stat": -1.435158
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 96,
+          "mean_rank_ic": -0.005036,
+          "ic_t_stat": -0.271075
+        },
+        "below_trend": {
+          "n_months": 20,
+          "mean_rank_ic": -0.039971,
+          "ic_t_stat": -0.863064
+        }
+      },
+      "inflation_regime": {
+        "inflation_up": {
+          "n_months": 67,
+          "mean_rank_ic": 0.00065,
+          "ic_t_stat": 0.034132
+        },
+        "disinflation": {
+          "n_months": 54,
+          "mean_rank_ic": -0.028476,
+          "ic_t_stat": -0.945558
+        }
+      },
+      "rates_regime": {
+        "rates_down": {
+          "n_months": 51,
+          "mean_rank_ic": -0.013087,
+          "ic_t_stat": -0.441472
+        },
+        "rates_up": {
+          "n_months": 70,
+          "mean_rank_ic": -0.01181,
+          "ic_t_stat": -0.582554
+        }
+      },
+      "dollar_regime": {
+        "dollar_down": {
+          "n_months": 56,
+          "mean_rank_ic": -0.014093,
+          "ic_t_stat": -0.527819
+        },
+        "dollar_up": {
+          "n_months": 65,
+          "mean_rank_ic": -0.010845,
+          "ic_t_stat": -0.490961
+        }
+      }
+    },
+    "equal_weight_composite": {
+      "risk_regime": {
+        "risk_on": {
+          "n_months": 106,
+          "mean_rank_ic": -0.00247,
+          "ic_t_stat": -0.155101
+        },
+        "risk_off": {
+          "n_months": 15,
+          "mean_rank_ic": -0.042202,
+          "ic_t_stat": -1.06193
+        }
+      },
+      "vol_regime": {
+        "low_vol": {
+          "n_months": 43,
+          "mean_rank_ic": 0.026101,
+          "ic_t_stat": 1.005328
+        },
+        "high_vol": {
+          "n_months": 70,
+          "mean_rank_ic": -0.019515,
+          "ic_t_stat": -1.080551
+        }
+      },
+      "trend_regime": {
+        "above_trend": {
+          "n_months": 96,
+          "mean_rank_ic": 0.002272,
+          "ic_t_stat": 0.139876
+        },
+        "below_trend": {
+          "n_months": 20,
+          "mean_rank_ic": -0.044106,
+          "ic_t_stat": -1.24816
+        }
+      },
+      "inflation_regime": {
+        "inflation_up": {
+          "n_months": 67,
+          "mean_rank_ic": 0.007262,
+          "ic_t_stat": 0.436916
+        },
+        "disinflation": {
+          "n_months": 54,
+          "mean_rank_ic": -0.025582,
+          "ic_t_stat": -0.987122
+        }
+      },
+      "rates_regime": {
+        "rates_down": {
+          "n_months": 51,
+          "mean_rank_ic": -0.008329,
+          "ic_t_stat": -0.309191
+        },
+        "rates_up": {
+          "n_months": 70,
+          "mean_rank_ic": -0.006716,
+          "ic_t_stat": -0.405411
+        }
+      },
+      "dollar_regime": {
+        "dollar_down": {
+          "n_months": 56,
+          "mean_rank_ic": -0.006083,
+          "ic_t_stat": -0.262711
+        },
+        "dollar_up": {
+          "n_months": 65,
+          "mean_rank_ic": -0.008527,
+          "ic_t_stat": -0.44543
+        }
+      }
+    }
+  },
+  "risk_by_regime": {
+    "risk_regime": {
+      "risk_on": {
+        "n_months": 108,
+        "spy_fwd_ret_mean_monthly": 0.013245,
+        "spy_fwd_ret_vol_annual": 0.130359,
+        "spy_fwd_worst_month": -0.088049,
+        "universe_xsec_dispersion_mean": 0.06633
+      },
+      "risk_off": {
+        "n_months": 15,
+        "spy_fwd_ret_mean_monthly": 0.010835,
+        "spy_fwd_ret_vol_annual": 0.266906,
+        "spy_fwd_worst_month": -0.124871,
+        "universe_xsec_dispersion_mean": 0.077339
+      }
+    },
+    "vol_regime": {
+      "low_vol": {
+        "n_months": 43,
+        "spy_fwd_ret_mean_monthly": 0.008067,
+        "spy_fwd_ret_vol_annual": 0.107923,
+        "spy_fwd_worst_month": -0.069104,
+        "universe_xsec_dispersion_mean": 0.066463
+      },
+      "high_vol": {
+        "n_months": 71,
+        "spy_fwd_ret_mean_monthly": 0.015956,
+        "spy_fwd_ret_vol_annual": 0.180985,
+        "spy_fwd_worst_month": -0.124871,
+        "universe_xsec_dispersion_mean": 0.069629
+      }
+    },
+    "trend_regime": {
+      "above_trend": {
+        "n_months": 97,
+        "spy_fwd_ret_mean_monthly": 0.009603,
+        "spy_fwd_ret_vol_annual": 0.129306,
+        "spy_fwd_worst_month": -0.088049,
+        "universe_xsec_dispersion_mean": 0.066062
+      },
+      "below_trend": {
+        "n_months": 20,
+        "spy_fwd_ret_mean_monthly": 0.030846,
+        "spy_fwd_ret_vol_annual": 0.240486,
+        "spy_fwd_worst_month": -0.124871,
+        "universe_xsec_dispersion_mean": 0.079396
+      }
+    },
+    "inflation_regime": {
+      "inflation_up": {
+        "n_months": 72,
+        "spy_fwd_ret_mean_monthly": 0.009182,
+        "spy_fwd_ret_vol_annual": 0.157939,
+        "spy_fwd_worst_month": -0.124871,
+        "universe_xsec_dispersion_mean": 0.066297
+      },
+      "disinflation": {
+        "n_months": 54,
+        "spy_fwd_ret_mean_monthly": 0.018484,
+        "spy_fwd_ret_vol_annual": 0.141433,
+        "spy_fwd_worst_month": -0.088049,
+        "universe_xsec_dispersion_mean": 0.068881
+      }
+    },
+    "rates_regime": {
+      "rates_up": {
+        "n_months": 72,
+        "spy_fwd_ret_mean_monthly": 0.009174,
+        "spy_fwd_ret_vol_annual": 0.15098,
+        "spy_fwd_worst_month": -0.088049,
+        "universe_xsec_dispersion_mean": 0.067832
+      },
+      "rates_down": {
+        "n_months": 54,
+        "spy_fwd_ret_mean_monthly": 0.018494,
+        "spy_fwd_ret_vol_annual": 0.15113,
+        "spy_fwd_worst_month": -0.124871,
+        "universe_xsec_dispersion_mean": 0.066863
+      }
+    },
+    "dollar_regime": {
+      "dollar_up": {
+        "n_months": 69,
+        "spy_fwd_ret_mean_monthly": 0.015238,
+        "spy_fwd_ret_vol_annual": 0.153571,
+        "spy_fwd_worst_month": -0.092446,
+        "universe_xsec_dispersion_mean": 0.065881
+      },
+      "dollar_down": {
+        "n_months": 57,
+        "spy_fwd_ret_mean_monthly": 0.01077,
+        "spy_fwd_ret_vol_annual": 0.149439,
+        "spy_fwd_worst_month": -0.124871,
+        "universe_xsec_dispersion_mean": 0.069241
+      }
+    }
+  },
+  "static_book_risk_reference": {
+    "note": "Phase 7-D produced a single as-of book risk snapshot (one trailing window), not a per-regime re-estimation. Reported here for reference; the time-varying risk-by-regime above is the market-risk proxy.",
+    "net_beta": 0.552833,
+    "systematic_variance_share": 0.324213,
+    "effective_n_names": 11.612903
+  },
+  "throttle_template": {
+    "activation_status": "NOT_LIVE / NOT_TRADING",
+    "owner_review_required": true,
+    "note": "Illustrative postures + suggested gross-throttle ranges by regime. NOT optimized, NOT fitted to the IC-by-regime results, NOT connected to any sizing or order path."
+  },
+  "gate_summary": {
+    "counts": {
+      "PASS": 31,
+      "FAIL": 0,
+      "WARNING": 1
+    },
+    "gates": [
+      {
+        "gate_name": "regimes_computed_gate",
+        "status": "PASS",
+        "metric": "available_regime_axes",
+        "value": 6,
+        "threshold": ">= 1",
+        "note": "at least one regime axis classified from local lagged data"
+      },
+      {
+        "gate_name": "min_regime_axes_gate",
+        "status": "PASS",
+        "metric": "available_regime_axes",
+        "value": 6,
+        "threshold": ">= 2",
+        "note": "need at least two independent regime axes"
+      },
+      {
+        "gate_name": "min_regime_months_gate",
+        "status": "PASS",
+        "metric": "graded_composite_months",
+        "value": 121,
+        "threshold": ">= 24",
+        "note": "enough graded months to decompose IC by regime"
+      },
+      {
+        "gate_name": "as_of_lagged_gate",
+        "status": "PASS",
+        "metric": "regime_label_asof_violations",
+        "value": 0,
+        "threshold": "0",
+        "note": "every regime label uses only data observable at/before its scoring month-end"
+      },
+      {
+        "gate_name": "no_forward_leakage_gate",
+        "status": "PASS",
+        "metric": "regime_uses_forward_return",
+        "value": false,
+        "threshold": "false",
+        "note": "regime labels never read the forward (m->m+1) return they condition"
+      },
+      {
+        "gate_name": "factor_ic_by_regime_gate",
+        "status": "PASS",
+        "metric": "factors_decomposed_by_regime",
+        "value": 5,
+        "threshold": ">= 1",
+        "note": "per-factor rank IC partitioned by regime"
+      },
+      {
+        "gate_name": "composite_ic_by_regime_gate",
+        "status": "PASS",
+        "metric": "baseline_and_composite_decomposed",
+        "value": true,
+        "threshold": "true",
+        "note": "baseline and composite rank IC partitioned by regime"
+      },
+      {
+        "gate_name": "transition_matrix_gate",
+        "status": "PASS",
+        "metric": "transitions_computed",
+        "value": true,
+        "threshold": "true",
+        "note": "month-over-month regime transition counts + persistence computed"
+      },
+      {
+        "gate_name": "throttle_template_not_live_gate",
+        "status": "PASS",
+        "metric": "throttle_activated",
+        "value": false,
+        "threshold": "false",
+        "note": "risk-throttle template emitted but NOT activated (NOT LIVE / OWNER REVIEW REQUIRED)"
+      },
+      {
+        "gate_name": "macro_coverage_flag",
+        "status": "PASS",
+        "metric": "available_macro_axes",
+        "value": 3,
+        "threshold": ">= 1 (informational)",
+        "note": "macro regime context available from local FRED CSVs"
+      },
+      {
+        "gate_name": "sector_map_pit_flag",
+        "status": "WARNING",
+        "metric": "sector_map_point_in_time",
+        "value": false,
+        "threshold": "true (ideal)",
+        "note": "reused 7-C signals rest on a static current-as-of sector map (flagged, non-blocking)"
+      },
+      {
+        "gate_name": "descriptive_only_flag",
+        "status": "PASS",
+        "metric": "predictive_claim_made",
+        "value": false,
+        "threshold": "false",
+        "note": "informational: regime overlay is descriptive, makes no predictive claim"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_hedging_gate",
+        "status": "PASS",
+        "metric": "hedging_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_order_sizing_gate",
+        "status": "PASS",
+        "metric": "order_sizing_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_trade_recommendation_gate",
+        "status": "PASS",
+        "metric": "trade_recommendation_made",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_live_data_gate",
+        "status": "PASS",
+        "metric": "live_data_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paid_api_gate",
+        "status": "PASS",
+        "metric": "paid_apis_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_deploy_gate",
+        "status": "PASS",
+        "metric": "deployed",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_production_model_gate",
+        "status": "PASS",
+        "metric": "production_model_built",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_weight_optimization_gate",
+        "status": "PASS",
+        "metric": "factor_weights_optimized",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_future_regime_labels_gate",
+        "status": "PASS",
+        "metric": "future_regime_labels_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_same_day_forward_leakage_gate",
+        "status": "PASS",
+        "metric": "same_day_forward_leakage",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paper_trader_gate",
+        "status": "PASS",
+        "metric": "paper_trader_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_gcp_gate",
+        "status": "PASS",
+        "metric": "gcp_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_d_drive_write_gate",
+        "status": "PASS",
+        "metric": "d_drive_written",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "throttle_not_live_gate",
+        "status": "PASS",
+        "metric": "throttle_live",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "owner_review_required_gate",
+        "status": "PASS",
+        "metric": "owner_review_required",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      }
+    ]
+  },
+  "recommendation": "READY_FOR_PHASE7F_SIGNAL_RELIABILITY_UPGRADE",
+  "recommendation_allowed_values": [
+    "READY_FOR_PHASE7F_SIGNAL_RELIABILITY_UPGRADE",
+    "NEEDS_REGIME_REVIEW",
+    "DATA_QUALITY_BLOCKED",
+    "ERROR"
+  ],
+  "what_is_still_caveated": [
+    "The overlay is DESCRIPTIVE, not predictive: conditional IC/risk by regime is in-sample history, not a forecast and not an edge claim.",
+    "Regime labels rest on simple, fixed rules (trend/vol/drawdown thresholds, 3-month macro direction) chosen a priori \u2014 not tuned and not fitted to the IC outcome.",
+    "Per-regime IC samples are short (months split across regimes), so per-regime t-stats are weak; read them as descriptive, not significant.",
+    "The reused 7-C signals carry their own caveats (static sector map, annual-only fundamentals, WEAK composite edge).",
+    "The 7-D book risk decomposition is a single as-of snapshot, not re-estimated per regime.",
+    "The throttle template is illustrative and NOT LIVE \u2014 values are placeholders pending owner review."
+  ],
+  "recommended_next_phase": {
+    "phase": "7-F",
+    "title": "Signal Reliability Upgrade (System 1 robustness)"
+  },
+  "commit_appropriate": false,
+  "commit_note": "Per task instruction nothing is committed or pushed.",
+  "artifacts": [
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\phase7e_regime_risk_overlay_foundation.json",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\regime_classification_summary.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\regime_transition_matrix.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\factor_ic_by_regime.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\composite_ic_by_regime.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\risk_by_regime.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\regime_throttle_template.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\regime_gate_matrix.csv",
+    "research\\output\\phase7e_regime_risk_overlay_foundation\\phase7f_next_plan.json"
+  ]
+}

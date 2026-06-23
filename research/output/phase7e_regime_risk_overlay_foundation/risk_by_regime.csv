@@ -1,0 +1,13 @@
+regime_axis,regime_label,n_months,spy_fwd_ret_mean_monthly,spy_fwd_ret_vol_annual,spy_fwd_worst_month,universe_xsec_dispersion_mean
+risk_regime,risk_off,15,0.010835,0.266906,-0.124871,0.077339
+risk_regime,risk_on,108,0.013245,0.130359,-0.088049,0.06633
+vol_regime,high_vol,71,0.015956,0.180985,-0.124871,0.069629
+vol_regime,low_vol,43,0.008067,0.107923,-0.069104,0.066463
+trend_regime,above_trend,97,0.009603,0.129306,-0.088049,0.066062
+trend_regime,below_trend,20,0.030846,0.240486,-0.124871,0.079396
+inflation_regime,disinflation,54,0.018484,0.141433,-0.088049,0.068881
+inflation_regime,inflation_up,72,0.009182,0.157939,-0.124871,0.066297
+rates_regime,rates_down,54,0.018494,0.15113,-0.124871,0.066863
+rates_regime,rates_up,72,0.009174,0.15098,-0.088049,0.067832
+dollar_regime,dollar_down,57,0.01077,0.149439,-0.124871,0.069241
+dollar_regime,dollar_up,69,0.015238,0.153571,-0.092446,0.065881

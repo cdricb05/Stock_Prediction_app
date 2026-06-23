@@ -1,0 +1,13 @@
+regime_axis,regime_label,n_months,fraction_of_history,first_month,last_month,avg_run_length_months,persistence_prob
+risk_regime,risk_off,15,0.119,2018-12,2023-02,5.0,0.8
+risk_regime,risk_on,108,0.8571,2016-04,2026-06,27.0,0.971963
+vol_regime,high_vol,71,0.5635,2017-08,2026-06,3.380952,0.714286
+vol_regime,low_vol,43,0.3413,2017-01,2026-05,2.047619,0.511628
+trend_regime,above_trend,97,0.7698,2016-10,2026-06,8.818182,0.895833
+trend_regime,below_trend,20,0.1587,2018-10,2026-03,2.0,0.5
+inflation_regime,disinflation,54,0.4286,2016-06,2026-04,3.857143,0.740741
+inflation_regime,inflation_up,72,0.5714,2016-01,2026-06,4.8,0.802817
+rates_regime,rates_down,54,0.4286,2016-02,2026-03,3.176471,0.685185
+rates_regime,rates_up,72,0.5714,2016-01,2026-06,4.0,0.760563
+dollar_regime,dollar_down,57,0.4524,2016-04,2026-03,3.166667,0.684211
+dollar_regime,dollar_up,69,0.5476,2016-01,2026-06,3.631579,0.735294

@@ -1,0 +1,33 @@
+gate_name,status,metric,value,threshold,note
+regimes_computed_gate,PASS,available_regime_axes,6,>= 1,at least one regime axis classified from local lagged data
+min_regime_axes_gate,PASS,available_regime_axes,6,>= 2,need at least two independent regime axes
+min_regime_months_gate,PASS,graded_composite_months,121,>= 24,enough graded months to decompose IC by regime
+as_of_lagged_gate,PASS,regime_label_asof_violations,0,0,every regime label uses only data observable at/before its scoring month-end
+no_forward_leakage_gate,PASS,regime_uses_forward_return,False,false,regime labels never read the forward (m->m+1) return they condition
+factor_ic_by_regime_gate,PASS,factors_decomposed_by_regime,5,>= 1,per-factor rank IC partitioned by regime
+composite_ic_by_regime_gate,PASS,baseline_and_composite_decomposed,True,true,baseline and composite rank IC partitioned by regime
+transition_matrix_gate,PASS,transitions_computed,True,true,month-over-month regime transition counts + persistence computed
+throttle_template_not_live_gate,PASS,throttle_activated,False,false,risk-throttle template emitted but NOT activated (NOT LIVE / OWNER REVIEW REQUIRED)
+macro_coverage_flag,PASS,available_macro_axes,3,>= 1 (informational),macro regime context available from local FRED CSVs
+sector_map_pit_flag,WARNING,sector_map_point_in_time,False,true (ideal),"reused 7-C signals rest on a static current-as-of sector map (flagged, non-blocking)"
+descriptive_only_flag,PASS,predictive_claim_made,False,false,"informational: regime overlay is descriptive, makes no predictive claim"
+no_orders_gate,PASS,orders_enabled,False,false,
+no_broker_execution_gate,PASS,broker_execution_enabled,False,false,
+no_automation_gate,PASS,automation_enabled,False,false,
+no_hedging_gate,PASS,hedging_enabled,False,false,
+no_order_sizing_gate,PASS,order_sizing_enabled,False,false,
+no_trade_recommendation_gate,PASS,trade_recommendation_made,False,false,
+no_network_gate,PASS,network_used,False,false,
+no_live_data_gate,PASS,live_data_used,False,false,
+no_paid_api_gate,PASS,paid_apis_used,False,false,
+no_deploy_gate,PASS,deployed,False,false,
+no_production_model_gate,PASS,production_model_built,False,false,
+no_weight_optimization_gate,PASS,factor_weights_optimized,False,false,
+no_future_regime_labels_gate,PASS,future_regime_labels_used,False,false,
+no_same_day_forward_leakage_gate,PASS,same_day_forward_leakage,False,false,
+no_paper_trader_gate,PASS,paper_trader_touched,False,false,
+no_gcp_gate,PASS,gcp_touched,False,false,
+no_d_drive_write_gate,PASS,d_drive_written,False,false,
+throttle_not_live_gate,PASS,throttle_live,False,false,
+owner_review_required_gate,PASS,owner_review_required,True,true,
+preview_only_gate,PASS,preview_only,True,true,
