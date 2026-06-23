@@ -1,0 +1,5 @@
+series,mean_rank_ic,ic_t_stat,n_periods,incremental_vs_price_only,quintile_spread,decile_spread,note
+broad_price_only_baseline,0.016942,0.877693,107,0.0,0.005604,0.009974,canonical 12-1 momentum (single price factor)
+broad_momentum_only,0.012768,0.689136,113,-0.004174,0.004893,0.011859,equal-weight momentum bucket
+broad_final_composite,0.011255,0.793481,120,-0.005687,0.003799,0.006749,equal weight across approved alpha buckets
+phase7f_128name_context,0.017726,1.245,,,,,CONTEXT ONLY — not the primary comparison

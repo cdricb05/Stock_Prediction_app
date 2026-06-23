@@ -1,0 +1,13 @@
+item,scope,count,detail
+usable_price_tickers,phase7i,296,threshold 250; met=True
+tickers_with_any_fundamental,sec,224,SEC companyfacts normalized rows: 158701
+tickers_with_computable_fundamental_bucket,factor,221,threshold 200; met=True
+price_names_in_panel,factor,296,non-benchmark tickers with usable price history in the broad panel
+realized_label_periods,factor,120,monthly forward-return periods
+ttm_field:revenue,ttm,132,ttm_windows=2846 continuity_ready=111
+ttm_field:net_income,ttm,176,ttm_windows=5185 continuity_ready=167
+ttm_field:operating_cash_flow,ttm,186,ttm_windows=4949 continuity_ready=177
+ttm_field:operating_income,ttm,148,ttm_windows=4221 continuity_ready=138
+ttm_field:free_cash_flow,ttm,159,ttm_windows=4221 continuity_ready=152
+ttm_field:capital_expenditures,ttm,161,ttm_windows=4470 continuity_ready=153
+ttm_field:eps_diluted,ttm,178,ttm_windows=5669 continuity_ready=172

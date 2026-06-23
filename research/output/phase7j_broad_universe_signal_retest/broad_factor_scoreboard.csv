@@ -1,0 +1,15 @@
+factor,mean_rank_ic,ic_t_stat,n_periods,coverage,approved
+ttm_sales_yield,0.019595,1.080985,110,0.261667,True
+ttm_revenue_growth,0.017025,1.078574,107,0.256903,True
+mom_12_1,0.016942,0.877693,107,0.88684,True
+mom_riskadj,0.013498,0.698223,107,0.88684,True
+ttm_earnings_yield,0.013444,0.903799,120,0.394148,True
+ttm_fcf_yield,0.010118,0.610622,111,0.312689,True
+mom_6_1,0.008921,0.505326,113,0.939068,True
+ttm_operating_cashflow_yield,0.005551,0.327034,120,0.399618,True
+ttm_net_income_growth,0.001092,0.124275,120,0.544773,True
+ttm_ocf_growth,-0.004402,-0.482633,120,0.582003,True
+ttm_ocf_margin,-0.01478,-1.080636,111,0.257256,True
+ttm_net_margin,-0.017838,-1.062206,110,0.249875,True
+ttm_operating_margin,-0.026321,-1.478248,104,0.203117,True
+low_volatility,-0.048776,-2.173204,115,0.956595,True

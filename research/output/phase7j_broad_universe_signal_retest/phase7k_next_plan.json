@@ -1,0 +1,31 @@
+{
+  "from_phase": "7-J",
+  "recommendation": "BROAD_UNIVERSE_SIGNAL_WEAK",
+  "broad_universe_signal_survived": "NO",
+  "broad_final_composite_ic": 0.011255,
+  "broad_final_composite_t": 0.793481,
+  "broad_price_only_ic": 0.016942,
+  "incremental_ic_vs_price_only": -0.005687,
+  "fundamental_coverage_tickers": 221,
+  "next_steps": [
+    {
+      "step": "phase7k_data_foundation_not_polishing",
+      "scope": "DATA",
+      "detail": "Signal did not survive on the broad universe. Do NOT resume local factor polishing. The next best path is a genuinely survivorship-free data foundation: delisted-name daily prices + point-in-time index membership + point-in-time sector history (free sources: SEC + stooq/yfinance delisted where available), then a sector-neutral re-grade. If that is infeasible free, the honest conclusion is that the multifactor edge is not reliably demonstrable on free data."
+    }
+  ],
+  "hard_constraints": [
+    "free sources only",
+    "no paid APIs",
+    "do not install packages",
+    "large data on D: only",
+    "repo outputs are summaries only",
+    "no factor-weight optimization",
+    "no factor-sign flipping",
+    "no regime selection or weighting",
+    "no trading/order/automation",
+    "no Paper Trader/GCP/broker/deployment",
+    "do not commit",
+    "do not push"
+  ]
+}

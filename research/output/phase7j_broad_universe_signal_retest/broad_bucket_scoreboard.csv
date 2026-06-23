@@ -1,0 +1,5 @@
+bucket,members,mean_rank_ic,ic_t_stat,n_periods,approved
+momentum,"mom_12_1,mom_6_1,mom_riskadj",0.012768,0.689136,113,True
+value_ttm,"ttm_sales_yield,ttm_earnings_yield,ttm_operating_cashflow_yield,ttm_fcf_yield",0.014278,0.932481,120,True
+quality_ttm,"ttm_net_margin,ttm_operating_margin,ttm_ocf_margin",-0.020959,-1.470517,111,True
+growth_ttm,"ttm_revenue_growth,ttm_net_income_growth,ttm_ocf_growth",0.003182,0.321792,120,True

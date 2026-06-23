@@ -1,0 +1,27 @@
+gate,status,detail
+phase7i_usable_price_tickers,PASS,296 usable price tickers (need >= 250)
+sec_fundamentals_collected,PASS,158701 fundamental rows for 224 tickers
+fundamental_bucket_coverage,PASS,221 tickers with >= 1 computable fundamental bucket (need >= 200)
+min_alpha_buckets,PASS,"approved alpha buckets: momentum,value_ttm,quality_ttm,growth_ttm"
+composite_gradable,PASS,composite mean rank IC computed
+composite_ic_positive,PASS,composite IC = 0.011255
+composite_t_stat_gate,FAIL,composite IC t-stat = 0.793481 (need >= 1.5)
+beats_price_only_baseline,FAIL,incremental IC vs price-only = -0.005687 (need >= 0.005)
+strictly_forward_labels,PASS,forward labels resolve strictly after the decision month
+placebo_collapses,PASS,within-period label-permutation placebo collapses toward zero
+sector_neutralization_caveat,WARN,no point-in-time sector history for the broad universe; standardization is NOT sector-neutral
+survivorship_caveat,WARN,"broad universe is current-as-of membership (price pilot of largest names), not point-in-time"
+free_sec_data_only,PASS,only SEC EDGAR public companyfacts/submissions JSON used
+no_paid_api,PASS,no paid API called
+no_packages_installed,PASS,stdlib urllib + pandas only; nothing installed
+no_factor_weight_optimization,PASS,equal weight within and across buckets
+no_factor_sign_flipping,PASS,factor signs a priori; never flipped to chase IC
+no_regime_selection_or_weighting,PASS,regimes diagnostic only
+low_volatility_excluded_from_composite,PASS,low-vol graded standalone as a risk descriptor only
+no_future_fundamentals,PASS,TTM availability = max of de-cumulation legs; activated only pre-month-end
+large_data_on_data_drive,PASS,raw SEC payloads + broad fundamentals under D: only
+repo_outputs_are_summaries_only,PASS,repo receives committed-safe scoreboards only
+no_trading_order_automation,PASS,no order/broker/automation logic
+no_paper_trader_gcp_broker,PASS,no Paper Trader / GCP / broker / deployment
+not_committed,PASS,not committed
+not_pushed,PASS,not pushed

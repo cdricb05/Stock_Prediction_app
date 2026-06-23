@@ -1,0 +1,15 @@
+factor,bucket,role,definition,needs
+ttm_sales_yield,value_ttm,alpha,TTM revenue / market cap (implied diluted shares * price); higher = cheaper,"revenue,price,shares"
+ttm_earnings_yield,value_ttm,alpha,TTM net income / market cap; higher = cheaper,"net_income,price,shares"
+ttm_operating_cashflow_yield,value_ttm,alpha,TTM operating cash flow / market cap; higher = cheaper,"operating_cash_flow,price,shares"
+ttm_fcf_yield,value_ttm,alpha,TTM free cash flow / market cap; higher = cheaper (FCF may be negative),"free_cash_flow,price,shares"
+ttm_net_margin,quality_ttm,alpha,TTM net income / TTM revenue; higher = better,"net_income,revenue"
+ttm_operating_margin,quality_ttm,alpha,TTM operating income / TTM revenue; higher = better,"operating_income,revenue"
+ttm_ocf_margin,quality_ttm,alpha,TTM operating cash flow / TTM revenue; higher = better,"operating_cash_flow,revenue"
+ttm_revenue_growth,growth_ttm,alpha,TTM revenue / TTM revenue one year ago - 1; higher = better,revenue
+ttm_net_income_growth,growth_ttm,alpha,TTM net income / TTM net income one year ago - 1 (prior > 0 only),net_income
+ttm_ocf_growth,growth_ttm,alpha,TTM operating cash flow / TTM operating cash flow one year ago - 1 (prior > 0 only),operating_cash_flow
+mom_12_1,momentum,alpha,price momentum (mom_12_1),price
+mom_6_1,momentum,alpha,price momentum (mom_6_1),price
+mom_riskadj,momentum,alpha,price momentum (mom_riskadj),price
+low_volatility,risk,risk_descriptor,trailing return volatility (inverted),price
