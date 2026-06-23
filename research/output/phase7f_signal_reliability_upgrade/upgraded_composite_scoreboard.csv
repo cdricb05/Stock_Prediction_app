@@ -1,0 +1,17 @@
+series,mean_rank_ic,ic_t_stat,n_periods,quintile_spread,decile_spread
+phase7c_price_only_baseline,-0.012348,-0.723813,121,-0.004047,-0.008658
+phase7c_equal_weight_composite (old baseline),-0.007396,-0.500067,121,-0.002805,-0.006381
+"phase7c_minus_lowvol (old specs, attribution control)",0.012298,0.919806,112,0.003129,0.006993
+upgraded_bucket_momentum,0.007916,0.470156,118,0.002154,0.006792
+upgraded_bucket_value,0.025013,1.453861,66,0.002761,0.006366
+upgraded_bucket_quality,-0.009122,-0.56788,94,-0.004166,-0.004904
+upgraded_bucket_growth,-0.004765,-0.40956,102,0.00138,-0.000392
+upgraded_equal_weight_composite,0.017726,1.245017,118,0.006333,0.007572
+incremental (upgraded - old baseline),0.025122,,,,
+incremental (upgraded - price_only),0.030074,,,,
+  attribution: low-vol exclusion effect,0.019694,,,,
+  attribution: fundamental spec upgrade effect,0.005428,,,,
+  upgraded_composite_sharpe,0.649746,,,,
+  upgraded_composite_max_drawdown,-0.206642,,,,
+  upgraded_net_mean_spread,0.006145,,,,
+  holdout_incremental_ic,0.040949,,,,

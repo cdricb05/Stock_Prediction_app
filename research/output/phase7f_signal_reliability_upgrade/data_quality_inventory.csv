@@ -1,0 +1,13 @@
+data_source,field,rows,tickers,point_in_time,used_for
+annual_10K,revenue,916,96,true (availability gated),annual flow level; YoY/levels for value/quality/growth
+annual_10K,net_income,1127,122,true (availability gated),annual flow level; YoY/levels for value/quality/growth
+annual_10K,eps_diluted,1264,127,true (availability gated),annual flow level; YoY/levels for value/quality/growth
+annual_10K,operating_income,932,101,true (availability gated),annual flow level; YoY/levels for value/quality/growth
+annual_10K,operating_cash_flow,1013,127,true (availability gated),annual flow level; YoY/levels for value/quality/growth
+annual_10K,free_cash_flow,754,96,true (availability gated),annual flow level; YoY/levels for value/quality/growth
+quarterly_balance_pit,total_assets,3669,128,true (availability gated),most-recent balance -> quarterly recency for ratios
+quarterly_balance_pit,shareholder_equity,3094,121,true (availability gated),most-recent balance -> quarterly recency for ratios
+quarterly_balance_pit,total_liabilities,2563,93,true (availability gated),most-recent balance -> quarterly recency for ratios
+clean_quarterly_frame,net_income,342,120,true (3-month CYyyyyQn frames),"TTM roll-forward input; SPARSE -> TTM graded months=0, coverage=0.000188 (data-foundation gap)"
+price_history,adjusted_close/volume,335541,128,true,"momentum (12-1/6-1/risk-adj), low-vol descriptor, forward labels"
+sector_map,sector,128,128,false,sector-neutralization (caveated; not strictly PIT)

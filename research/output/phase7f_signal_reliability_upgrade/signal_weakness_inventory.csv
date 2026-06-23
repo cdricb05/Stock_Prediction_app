@@ -1,0 +1,11 @@
+weakness_id,source_phase,failure_mode,root_cause,status_in_7f,addressed_by
+W1,7-C/7-E,composite full-sample mean rank IC negative (-0.0074),weak/mis-specified factor set on a narrow universe,partial,broadened multi-spec value/quality/growth/momentum buckets
+W2,7-C,"single-metric buckets (one E/P, one ROE, one rev-YoY)",single-spec buckets are fragile and high-variance,addressed,each bucket now an equal-weight blend of multiple sub-factors
+W3,7-C,annual-only (10-K) fundamentals stale up to ~1 year,reliance on annual-only fundamentals; no quarterly recency,partial,quarterly balance recency for ROE/ROA/turnover/accruals; TTM roll-forward attempted (coverage-limited)
+W4,7-C,quality = ROE only (no asset efficiency / cash flow),narrow quality definition,addressed,"added ROA, margins, FCF margin, asset turnover, accruals"
+W5,7-C/7-E,low-volatility treated as an alpha factor,"low-vol is a risk descriptor, not cross-sectional alpha here",addressed,"low-vol demoted to a reported risk descriptor, excluded from composite"
+W6,7-C,value distorted by split-adjusted EPS vs adjusted price,adjusted-price vs as-reported-share basis mismatch,partial,"added cash-flow/sales/book yields via most-recent implied shares; residual split caveat documented, not eliminated"
+W7,7-C/7-E,constrained ~127-name large-cap universe,constrained / potentially unrepresentative universe; current-constituent bias,not_addressed,universe is bounded by local data; flagged as the primary remaining data-foundation gap for Phase 7-G
+W8,7-C,no quarterly / TTM fundamentals construction,lack of TTM levels; no point-in-time quarterly flow series,partial,TTM roll-forward implemented; local clean-quarterly frames too sparse for broad coverage (reported)
+W9,7-C,revisions / sentiment bucket unavailable (empty panel),no estimate-revision / sentiment data locally,not_addressed,still unavailable; not fabricated
+W10,7-C,static current-as-of sector map (not strictly PIT),sector classification not point-in-time,not_addressed,"inherited caveat; sector membership is stable, flagged"

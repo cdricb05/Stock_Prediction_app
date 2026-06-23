@@ -1,0 +1,33 @@
+{
+  "phase": "7-G",
+  "title": "Signal Data Foundation Upgrade (universe breadth + quarterly fundamentals)",
+  "charter_mapping": "Charter \u2014 keep strengthening System 1 reliability before any sizing / regime activation",
+  "gated_on": "Phase 7-F signal reliability upgrade; this run recommendation = SIGNAL_RELIABILITY_UPGRADED",
+  "approved_alpha_buckets": [
+    "momentum",
+    "value",
+    "quality",
+    "growth"
+  ],
+  "primary_remaining_gaps": [
+    "Universe breadth: ~127 large caps with current-constituent bias (W7) \u2014 the binding reliability constraint; needs a broader, survivorship-aware local panel.",
+    "Quarterly/TTM fundamentals: local clean 3-month quarterly frames are too sparse for broad TTM coverage (W8) \u2014 needs a denser point-in-time quarterly source.",
+    "Revisions / sentiment bucket still unavailable (W9); sector map still not strictly PIT (W10)."
+  ],
+  "build_next": [
+    "Acquire/assemble a broader, survivorship-aware local universe and a denser point-in-time quarterly fundamentals panel (no live provider calls in-phase; collection is its own gated step).",
+    "Re-grade the upgraded factor catalogue on the broader panel through the unmodified 7-B harness.",
+    "Keep equal-weight; no weight optimization, no sign flipping, no regime-based selection."
+  ],
+  "explicitly_not_in_7g": [
+    "factor-weight optimization or fitting weights/signs to IC or to regime performance",
+    "activating any regime throttle, sizing, or hedging",
+    "any order / broker / automation / Paper Trader / GCP / deploy work",
+    "live provider calls inside the grading phase"
+  ],
+  "reused_entry_points": [
+    "run_phase7c_multifactor_ranking_engine (loaders, factor construction, grade_series)",
+    "run_phase7e_regime_risk_overlay_foundation (regime classification, ic_by_regime)",
+    "run_phase7b_validation_harness_foundation (period_rank_ics, ic_summary, yearly_ic)"
+  ]
+}

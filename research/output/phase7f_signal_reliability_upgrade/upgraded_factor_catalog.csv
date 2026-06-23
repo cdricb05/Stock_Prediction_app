@@ -1,0 +1,20 @@
+bucket,factor_key,source,role,definition,split_invariant,available,approved,coverage_fraction,note
+momentum,mom_12_1,price,alpha,12-1 price momentum: close[m-1]/close[m-13]-1 (skips the most recent month),false,true,true,0.895739,kept from Phase 7-C; classic cross-sectional momentum
+momentum,mom_6_1,price,alpha,6-1 price momentum: close[m-1]/close[m-7]-1 (shorter horizon spec),false,true,true,0.94386,NEW horizon diversification of the momentum bucket
+momentum,mom_riskadj,price,alpha,risk-adjusted 12-1 momentum: (12-1 return) / trailing 12-month monthly-return stdev,false,true,true,0.895739,NEW; rewards steady trends over volatile ones
+value,val_earnings_yield,fundamentals,alpha,annual diluted EPS / price (E/P); higher = cheaper = better,false,true,true,0.457018,kept from Phase 7-C; residual split-basis caveat (see docs)
+value,val_sales_yield,fundamentals,alpha,annual revenue / (implied diluted shares * price); higher = cheaper,false,true,true,0.302882,NEW; sales-to-price using implied shares NI/EPS
+value,val_fcf_yield,fundamentals,alpha,annual free cash flow / (implied diluted shares * price); higher = cheaper,false,true,true,0.299687,"NEW; cash-flow value, robust to accrual accounting"
+value,val_book_yield,fundamentals,alpha,latest shareholder equity / (implied diluted shares * price); higher = cheaper,false,true,true,0.369173,NEW; book-to-price using the most-recent quarterly equity
+quality,qual_roe,fundamentals,alpha,return on equity = annual net income / latest shareholder equity,true,true,true,0.340602,kept from Phase 7-C
+quality,qual_roa,fundamentals,alpha,return on assets = annual net income / latest total assets (asset efficiency),true,true,true,0.419486,NEW asset-efficiency quality measure
+quality,qual_net_margin,fundamentals,alpha,net margin = annual net income / annual revenue,true,true,true,0.312469,NEW profitability margin
+quality,qual_oper_margin,fundamentals,alpha,operating margin = annual operating income / annual revenue,true,true,true,0.285401,NEW operating profitability margin
+quality,qual_fcf_margin,fundamentals,alpha,free-cash-flow margin = annual free cash flow / annual revenue,true,true,true,0.292669,NEW cash-flow-based quality (not solely ROE)
+quality,qual_asset_turnover,fundamentals,alpha,asset turnover = annual revenue / latest total assets,true,true,true,0.407018,NEW asset-efficiency measure
+quality,qual_accruals_inv,fundamentals,alpha,negative balance-sheet accruals = -((net income - operating cash flow) / total assets); lower accruals = higher earnings quality (sign inverted a priori),true,true,true,0.406266,NEW earnings-quality / accruals measure; cash earnings preferred
+growth,grow_revenue_yoy,fundamentals,alpha,revenue YoY = latest annual revenue / prior annual revenue - 1,true,true,true,0.409273,kept from Phase 7-C
+growth,grow_earnings_yoy,fundamentals,alpha,earnings YoY = latest annual net income / prior annual net income - 1 (prior > 0 only),true,true,true,0.380201,NEW; guarded against negative-base sign distortion
+growth,grow_fcf_yoy,fundamentals,alpha,free-cash-flow YoY = latest annual FCF / prior annual FCF - 1 (prior > 0 only),true,true,true,0.404261,NEW cash-flow growth
+low_volatility,low_volatility,price,risk_descriptor,negative trailing 126-trading-day realized daily-return volatility,false,true,true,0.967857,"a-priori RISK DESCRIPTOR: low-vol is a risk characteristic, not an alpha factor; reported for evidence but excluded from the alpha composite"
+value_ttm,ttm_earnings_yield,fundamentals_ttm,alpha,TTM earnings yield = TTM net income / (implied shares * price); TTM built by annual+interim roll-forward from clean 3-month quarterly frames,false,true,false,0.000188,NEW TTM attempt; included only if local clean-quarterly coverage clears approval

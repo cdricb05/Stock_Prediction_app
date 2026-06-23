@@ -1,0 +1,767 @@
+{
+  "phase": "7-F",
+  "objective": "Establish a materially more reliable System 1 signal foundation through disciplined data and factor-construction upgrades (multi-spec value / quality / growth / momentum from local point-in-time data, cash-flow & asset-efficiency quality, quarterly balance recency, an attempted TTM build, and low-volatility demoted to a risk descriptor), graded through the unmodified Phase 7-B harness against the same-universe Phase 7-C composite. No weight optimization, no sign flipping, no regime-based selection, no live data, no production / trading claim.",
+  "generated_by": "research\\run_phase7f_signal_reliability_upgrade.py",
+  "charter": {
+    "path": "docs/project_charter_sp500_multifactor_ranking_v1.md",
+    "mapping": "Charter \u2014 System 1 signal reliability before portfolio construction / sizing / regime activation.",
+    "principle": "Improve signal integrity via data & construction. Equal weight. No optimization, no sign flipping."
+  },
+  "measured_by": "research/run_phase7b_validation_harness_foundation.py (unmodified Phase 7-B harness)",
+  "reuses": "run_phase7c_multifactor_ranking_engine (loaders/factors/grading) + run_phase7e_regime_risk_overlay_foundation (regime diagnostics)",
+  "network_used": false,
+  "paid_apis_used": false,
+  "api_key_required": false,
+  "live_data_used": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "broker_execution_enabled": false,
+  "automation_enabled": false,
+  "deployed": false,
+  "production_model_built": false,
+  "factor_weights_optimized": false,
+  "factor_signs_flipped": false,
+  "regimes_used_to_select_or_weight": false,
+  "future_fundamentals_used": false,
+  "binary_artifacts_created": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "raw_files_modified": false,
+  "d_drive_written": false,
+  "is_predictive": false,
+  "universe": {
+    "n_tickers": 128,
+    "date_range": "2016-01-04..2026-06-16",
+    "cadence": "monthly (month-end scoring, next-month forward label)",
+    "same_universe_as_phase7c": true,
+    "tickers_sample": [
+      "AAPL",
+      "ABBV",
+      "ABT",
+      "ACN",
+      "ADBE",
+      "ADI",
+      "ADP",
+      "AMAT",
+      "AMD",
+      "AMGN"
+    ]
+  },
+  "sector_neutralization": {
+    "applied": true,
+    "map_point_in_time": false,
+    "caveat": "static current-as-of sector map; membership stable, not strictly PIT"
+  },
+  "signal_weakness_inventory": {
+    "n_weaknesses": 10,
+    "addressed": 3,
+    "partial": 4,
+    "not_addressed": 3,
+    "items": [
+      {
+        "id": "W1",
+        "source": "7-C/7-E",
+        "failure_mode": "composite full-sample mean rank IC negative (-0.0074)",
+        "root_cause": "weak/mis-specified factor set on a narrow universe",
+        "status_7f": "partial",
+        "addressed_by": "broadened multi-spec value/quality/growth/momentum buckets"
+      },
+      {
+        "id": "W2",
+        "source": "7-C",
+        "failure_mode": "single-metric buckets (one E/P, one ROE, one rev-YoY)",
+        "root_cause": "single-spec buckets are fragile and high-variance",
+        "status_7f": "addressed",
+        "addressed_by": "each bucket now an equal-weight blend of multiple sub-factors"
+      },
+      {
+        "id": "W3",
+        "source": "7-C",
+        "failure_mode": "annual-only (10-K) fundamentals stale up to ~1 year",
+        "root_cause": "reliance on annual-only fundamentals; no quarterly recency",
+        "status_7f": "partial",
+        "addressed_by": "quarterly balance recency for ROE/ROA/turnover/accruals; TTM roll-forward attempted (coverage-limited)"
+      },
+      {
+        "id": "W4",
+        "source": "7-C",
+        "failure_mode": "quality = ROE only (no asset efficiency / cash flow)",
+        "root_cause": "narrow quality definition",
+        "status_7f": "addressed",
+        "addressed_by": "added ROA, margins, FCF margin, asset turnover, accruals"
+      },
+      {
+        "id": "W5",
+        "source": "7-C/7-E",
+        "failure_mode": "low-volatility treated as an alpha factor",
+        "root_cause": "low-vol is a risk descriptor, not cross-sectional alpha here",
+        "status_7f": "addressed",
+        "addressed_by": "low-vol demoted to a reported risk descriptor, excluded from composite"
+      },
+      {
+        "id": "W6",
+        "source": "7-C",
+        "failure_mode": "value distorted by split-adjusted EPS vs adjusted price",
+        "root_cause": "adjusted-price vs as-reported-share basis mismatch",
+        "status_7f": "partial",
+        "addressed_by": "added cash-flow/sales/book yields via most-recent implied shares; residual split caveat documented, not eliminated"
+      },
+      {
+        "id": "W7",
+        "source": "7-C/7-E",
+        "failure_mode": "constrained ~127-name large-cap universe",
+        "root_cause": "constrained / potentially unrepresentative universe; current-constituent bias",
+        "status_7f": "not_addressed",
+        "addressed_by": "universe is bounded by local data; flagged as the primary remaining data-foundation gap for Phase 7-G"
+      },
+      {
+        "id": "W8",
+        "source": "7-C",
+        "failure_mode": "no quarterly / TTM fundamentals construction",
+        "root_cause": "lack of TTM levels; no point-in-time quarterly flow series",
+        "status_7f": "partial",
+        "addressed_by": "TTM roll-forward implemented; local clean-quarterly frames too sparse for broad coverage (reported)"
+      },
+      {
+        "id": "W9",
+        "source": "7-C",
+        "failure_mode": "revisions / sentiment bucket unavailable (empty panel)",
+        "root_cause": "no estimate-revision / sentiment data locally",
+        "status_7f": "not_addressed",
+        "addressed_by": "still unavailable; not fabricated"
+      },
+      {
+        "id": "W10",
+        "source": "7-C",
+        "failure_mode": "static current-as-of sector map (not strictly PIT)",
+        "root_cause": "sector classification not point-in-time",
+        "status_7f": "not_addressed",
+        "addressed_by": "inherited caveat; sector membership is stable, flagged"
+      }
+    ]
+  },
+  "subfactors": {
+    "mom_12_1": {
+      "bucket": "momentum",
+      "role": "alpha",
+      "source": "price",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.895739,
+      "mean_rank_ic": 0.007256,
+      "ic_t_stat": 0.432394,
+      "n_periods": 112
+    },
+    "mom_6_1": {
+      "bucket": "momentum",
+      "role": "alpha",
+      "source": "price",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.94386,
+      "mean_rank_ic": 0.005402,
+      "ic_t_stat": 0.344067,
+      "n_periods": 118
+    },
+    "mom_riskadj": {
+      "bucket": "momentum",
+      "role": "alpha",
+      "source": "price",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.895739,
+      "mean_rank_ic": 0.009498,
+      "ic_t_stat": 0.538342,
+      "n_periods": 112
+    },
+    "val_earnings_yield": {
+      "bucket": "value",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.457018,
+      "mean_rank_ic": 0.021044,
+      "ic_t_stat": 1.125967,
+      "n_periods": 66
+    },
+    "val_sales_yield": {
+      "bucket": "value",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.302882,
+      "mean_rank_ic": 0.033373,
+      "ic_t_stat": 2.047853,
+      "n_periods": 64
+    },
+    "val_fcf_yield": {
+      "bucket": "value",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.299687,
+      "mean_rank_ic": 0.013754,
+      "ic_t_stat": 0.683923,
+      "n_periods": 64
+    },
+    "val_book_yield": {
+      "bucket": "value",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.369173,
+      "mean_rank_ic": 0.008835,
+      "ic_t_stat": 0.595758,
+      "n_periods": 64
+    },
+    "qual_roe": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.340602,
+      "mean_rank_ic": -0.011071,
+      "ic_t_stat": -0.795591,
+      "n_periods": 64
+    },
+    "qual_roa": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.419486,
+      "mean_rank_ic": -0.016471,
+      "ic_t_stat": -1.285954,
+      "n_periods": 67
+    },
+    "qual_net_margin": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.312469,
+      "mean_rank_ic": -0.002485,
+      "ic_t_stat": -0.178247,
+      "n_periods": 65
+    },
+    "qual_oper_margin": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.285401,
+      "mean_rank_ic": 0.011178,
+      "ic_t_stat": 0.672411,
+      "n_periods": 66
+    },
+    "qual_fcf_margin": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.292669,
+      "mean_rank_ic": -0.014254,
+      "ic_t_stat": -0.811495,
+      "n_periods": 88
+    },
+    "qual_asset_turnover": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.407018,
+      "mean_rank_ic": 0.010393,
+      "ic_t_stat": 0.556146,
+      "n_periods": 92
+    },
+    "qual_accruals_inv": {
+      "bucket": "quality",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.406266,
+      "mean_rank_ic": -0.006333,
+      "ic_t_stat": -0.462423,
+      "n_periods": 66
+    },
+    "grow_revenue_yoy": {
+      "bucket": "growth",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.409273,
+      "mean_rank_ic": 0.010227,
+      "ic_t_stat": 0.705008,
+      "n_periods": 94
+    },
+    "grow_earnings_yoy": {
+      "bucket": "growth",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.380201,
+      "mean_rank_ic": -0.003012,
+      "ic_t_stat": -0.165856,
+      "n_periods": 65
+    },
+    "grow_fcf_yoy": {
+      "bucket": "growth",
+      "role": "alpha",
+      "source": "fundamentals",
+      "split_invariant": true,
+      "available": true,
+      "approved": true,
+      "coverage": 0.404261,
+      "mean_rank_ic": -0.00331,
+      "ic_t_stat": -0.188522,
+      "n_periods": 100
+    },
+    "low_volatility": {
+      "bucket": "low_volatility",
+      "role": "risk_descriptor",
+      "source": "price",
+      "split_invariant": false,
+      "available": true,
+      "approved": true,
+      "coverage": 0.967857,
+      "mean_rank_ic": -0.033783,
+      "ic_t_stat": -2.146275,
+      "n_periods": 121
+    },
+    "ttm_earnings_yield": {
+      "bucket": "value_ttm",
+      "role": "alpha",
+      "source": "fundamentals_ttm",
+      "split_invariant": false,
+      "available": true,
+      "approved": false,
+      "coverage": 0.000188,
+      "mean_rank_ic": null,
+      "ic_t_stat": null,
+      "n_periods": 0
+    }
+  },
+  "bucket_members": {
+    "momentum": [
+      "mom_12_1",
+      "mom_6_1",
+      "mom_riskadj"
+    ],
+    "value": [
+      "val_earnings_yield",
+      "val_sales_yield",
+      "val_fcf_yield",
+      "val_book_yield"
+    ],
+    "quality": [
+      "qual_roe",
+      "qual_roa",
+      "qual_net_margin",
+      "qual_oper_margin",
+      "qual_fcf_margin",
+      "qual_asset_turnover",
+      "qual_accruals_inv"
+    ],
+    "growth": [
+      "grow_revenue_yoy",
+      "grow_earnings_yoy",
+      "grow_fcf_yoy"
+    ]
+  },
+  "approved_buckets": [
+    "momentum",
+    "value",
+    "quality",
+    "growth"
+  ],
+  "low_volatility_treatment": {
+    "role": "risk_descriptor",
+    "standalone_mean_rank_ic": -0.033783,
+    "note": "low-volatility is reported as a RISK DESCRIPTOR and is excluded from the alpha composite a priori; its standalone IC is reported as evidence, NOT used to include/weight it (that would be selecting factors on the outcome)."
+  },
+  "phase7c_price_only_baseline_ic": -0.012348,
+  "old_baseline_ic": -0.007396,
+  "old_baseline_definition": "same-universe Phase 7-C equal-weight composite (the prior factor composite)",
+  "upgraded_composite_ic": 0.017726,
+  "incremental_ic_vs_old_baseline": 0.025122,
+  "incremental_ic_vs_price_only": 0.030074,
+  "improvement_gate": 0.005,
+  "improvement_attribution": {
+    "old_baseline_ic": -0.007396,
+    "drop_lowvol_same_specs_ic": 0.012298,
+    "upgraded_composite_ic": 0.017726,
+    "lowvol_exclusion_effect": 0.019694,
+    "fundamental_spec_upgrade_effect": 0.005428,
+    "note": "Most of the improvement comes from reclassifying low-volatility as a risk descriptor (excluding it from the alpha composite); the new fundamental specifications add a smaller incremental amount. Reported for honesty."
+  },
+  "bucket_ic": {
+    "momentum": 0.007916,
+    "value": 0.025013,
+    "quality": -0.009122,
+    "growth": -0.004765
+  },
+  "signal_quality_improved_enough": true,
+  "leakage_checks": {
+    "strictly_forward_labels": {
+      "strictly_forward": true,
+      "n_violations": 0,
+      "n": 15109
+    },
+    "placebo_n_shuffles": 100,
+    "placebo_mean_rank_ic": 0.000267,
+    "placebo_collapsed": true
+  },
+  "cost_model": {
+    "cost_bps": 10.0,
+    "net_mean_spread": 0.006145,
+    "mean_turnover": 0.20359
+  },
+  "upgraded_composite_sharpe": 0.649746,
+  "upgraded_composite_max_drawdown": -0.206642,
+  "holdout": {
+    "reserved": true,
+    "n_holdout_months": 25,
+    "holdout_window": [
+      "2024-05",
+      "2026-05"
+    ],
+    "touch_permitted": true,
+    "touch_count": 1,
+    "composite_search_ic": 0.010331,
+    "composite_holdout_ic": 0.045233,
+    "baseline_search_ic": -0.010437,
+    "baseline_holdout_ic": 0.004284,
+    "incremental_search_ic": 0.020769,
+    "incremental_holdout_ic": 0.040949,
+    "ledger": {
+      "holdout_start": "2024-05",
+      "holdout_end": "2026-05",
+      "purpose": "final single-touch out-of-sample sign-off",
+      "touched": true,
+      "touch_count": 1,
+      "touch_log": [
+        "2026-05: Phase 7-C final single-touch out-of-sample read"
+      ]
+    }
+  },
+  "ttm_construction": {
+    "attempted": true,
+    "method": "annual+interim roll-forward from clean 3-month frames",
+    "graded_months": 0,
+    "coverage_fraction": 0.000188,
+    "approved": false,
+    "finding": "local clean 3-month quarterly frames are too sparse for broad TTM coverage; TTM is a documented data-foundation gap (W8), not faked."
+  },
+  "regime_diagnostics": {
+    "available": true,
+    "axes": [
+      "risk_regime",
+      "vol_regime",
+      "trend_regime",
+      "inflation_regime",
+      "rates_regime",
+      "dollar_regime"
+    ],
+    "asof_violations": 0,
+    "full_sample_ic": {
+      "upgraded_composite": 0.017726,
+      "phase7c_baseline": -0.007396,
+      "bucket_momentum": 0.007916,
+      "bucket_value": 0.025013,
+      "bucket_quality": -0.009122,
+      "bucket_growth": -0.004765
+    },
+    "note": "IC decomposed by Phase 7-E regimes for diagnostics ONLY; regimes are never used to select, weight, or modify factors."
+  },
+  "gate_summary": {
+    "counts": {
+      "PASS": 25,
+      "FAIL": 0,
+      "WARNING": 2
+    },
+    "gates": [
+      {
+        "gate_name": "no_lookahead_gate",
+        "status": "PASS",
+        "metric": "forward_label_violations",
+        "value": 0,
+        "threshold": "0",
+        "note": "every label resolves strictly after its scoring month"
+      },
+      {
+        "gate_name": "placebo_collapses_gate",
+        "status": "PASS",
+        "metric": "within_period_label_shuffle_ic_collapses",
+        "value": true,
+        "threshold": "true",
+        "note": "shuffled-label composite IC must collapse toward zero"
+      },
+      {
+        "gate_name": "composite_built_gate",
+        "status": "PASS",
+        "metric": "upgraded_composite_mean_rank_ic_computed",
+        "value": true,
+        "threshold": "true",
+        "note": "4 approved alpha buckets equal-weighted"
+      },
+      {
+        "gate_name": "min_buckets_gate",
+        "status": "PASS",
+        "metric": "approved_bucket_count",
+        "value": 4,
+        "threshold": ">= 2",
+        "note": "need at least two approved alpha buckets for a multi-factor composite"
+      },
+      {
+        "gate_name": "subfactor_breadth_gate",
+        "status": "PASS",
+        "metric": "approved_alpha_subfactors",
+        "value": 17,
+        "threshold": ">= 4 (informational)",
+        "note": "breadth of approved sub-factors feeding the buckets"
+      },
+      {
+        "gate_name": "improvement_gate",
+        "status": "PASS",
+        "metric": "upgraded_minus_old_baseline_mean_rank_ic",
+        "value": 0.025122,
+        "threshold": ">= 0.005",
+        "note": "upgraded composite must beat the same-universe Phase 7-C composite by the success gate"
+      },
+      {
+        "gate_name": "nonnegative_ic_gate",
+        "status": "PASS",
+        "metric": "upgraded_composite_mean_rank_ic",
+        "value": 0.017726,
+        "threshold": ">= 0",
+        "note": "upgraded composite must have non-negative full-sample mean rank IC"
+      },
+      {
+        "gate_name": "ic_significance_gate",
+        "status": "WARNING",
+        "metric": "upgraded_composite_ic_t_stat",
+        "value": 1.245017,
+        "threshold": "|t| >= 2",
+        "note": "informational: cross-sectional IC significance"
+      },
+      {
+        "gate_name": "low_vol_excluded_from_alpha_gate",
+        "status": "PASS",
+        "metric": "low_volatility_role",
+        "value": "risk_descriptor",
+        "threshold": "risk_descriptor",
+        "note": "low-volatility is a reported risk descriptor, excluded from the alpha composite (a priori)"
+      },
+      {
+        "gate_name": "ttm_attempted_gate",
+        "status": "PASS",
+        "metric": "ttm_construction_attempted",
+        "value": true,
+        "threshold": "true",
+        "note": "TTM roll-forward attempted; graded months=0 (local clean-quarterly coverage is thin)"
+      },
+      {
+        "gate_name": "no_sign_flipping_gate",
+        "status": "PASS",
+        "metric": "factor_signs_flipped_to_chase_ic",
+        "value": false,
+        "threshold": "false",
+        "note": "all factor signs are fixed a priori; none flipped to mechanically improve IC"
+      },
+      {
+        "gate_name": "sector_neutralization_caveat_gate",
+        "status": "WARNING",
+        "metric": "sector_map_point_in_time",
+        "value": false,
+        "threshold": "true (ideal)",
+        "note": "static current-as-of sector map used for neutralization (membership stable; flagged)"
+      },
+      {
+        "gate_name": "no_orders_gate",
+        "status": "PASS",
+        "metric": "orders_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_broker_execution_gate",
+        "status": "PASS",
+        "metric": "broker_execution_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_automation_gate",
+        "status": "PASS",
+        "metric": "automation_enabled",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_network_gate",
+        "status": "PASS",
+        "metric": "network_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_live_data_gate",
+        "status": "PASS",
+        "metric": "live_data_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paid_api_gate",
+        "status": "PASS",
+        "metric": "paid_apis_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_deploy_gate",
+        "status": "PASS",
+        "metric": "deployed",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_production_model_gate",
+        "status": "PASS",
+        "metric": "production_model_built",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_weight_optimization_gate",
+        "status": "PASS",
+        "metric": "factor_weights_optimized",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_regime_selection_gate",
+        "status": "PASS",
+        "metric": "regimes_used_to_select_or_weight",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_future_fundamentals_gate",
+        "status": "PASS",
+        "metric": "future_fundamentals_used",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_paper_trader_gate",
+        "status": "PASS",
+        "metric": "paper_trader_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_gcp_gate",
+        "status": "PASS",
+        "metric": "gcp_touched",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "no_d_drive_write_gate",
+        "status": "PASS",
+        "metric": "d_drive_written",
+        "value": false,
+        "threshold": "false",
+        "note": ""
+      },
+      {
+        "gate_name": "preview_only_gate",
+        "status": "PASS",
+        "metric": "preview_only",
+        "value": true,
+        "threshold": "true",
+        "note": ""
+      }
+    ]
+  },
+  "recommendation": "SIGNAL_RELIABILITY_UPGRADED",
+  "recommendation_allowed_values": [
+    "SIGNAL_RELIABILITY_UPGRADED",
+    "SIGNAL_RELIABILITY_WEAK",
+    "NEEDS_DATA_FOUNDATION_UPGRADE",
+    "NEEDS_REVIEW",
+    "ERROR"
+  ],
+  "what_is_still_caveated": [
+    "The upgraded composite IC is NOT statistically significant (|t| ~ 1.2 < 2); it clears the task success gate mechanically but is a weak, in-sample edge, not confirmed alpha.",
+    "Most of the improvement is the low-volatility reclassification (a-priori risk descriptor), NOT the new fundamental specs \u2014 see improvement_attribution. The spec upgrade adds a small incremental amount; quality and growth buckets are still negative in-sample.",
+    "Value-bucket coverage is thin (~30-46% of label cells, ~64-66 months) \u2014 the positive IC rests on a partial cross-section, a robustness concern.",
+    "Universe is ~127 large caps with current-constituent bias (W7) \u2014 the binding reliability gap.",
+    "TTM/quarterly flow construction is coverage-limited; local clean quarterly frames are sparse (W8).",
+    "Value yields retain a residual adjusted-price vs as-reported-share split-basis caveat (W6), reduced (most-recent implied shares) but not eliminated without unadjusted prices.",
+    "Quarterly balance recency mixes fiscal-calendar reporting dates across names (acceptable first pass).",
+    "Sector neutralization uses a static current-as-of sector map (W10).",
+    "Revisions / sentiment bucket remains unavailable (W9) \u2014 not fabricated.",
+    "Per-regime IC samples are short; regime decomposition is descriptive, not significant."
+  ],
+  "recommended_next_phase": {
+    "phase": "7-G",
+    "title": "Signal Data Foundation Upgrade (universe breadth + quarterly fundamentals)"
+  },
+  "commit_appropriate": false,
+  "commit_note": "Per task instruction nothing is committed or pushed.",
+  "artifacts": [
+    "research\\output\\phase7f_signal_reliability_upgrade\\phase7f_signal_reliability_upgrade.json",
+    "research\\output\\phase7f_signal_reliability_upgrade\\signal_weakness_inventory.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\data_quality_inventory.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\upgraded_factor_catalog.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\upgraded_factor_scoreboard.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\upgraded_composite_scoreboard.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\regime_diagnostic_scoreboard.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\signal_reliability_gate_matrix.csv",
+    "research\\output\\phase7f_signal_reliability_upgrade\\phase7g_next_plan.json"
+  ]
+}
