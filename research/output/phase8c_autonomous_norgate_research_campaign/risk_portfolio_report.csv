@@ -1,0 +1,16 @@
+experiment_id,family,score_key,quantile,scope,status,net_max_drawdown_25bps,spy_max_drawdown,one_sided_turnover,avg_names,beta_spy,delisted_weight_avg,top_sector,top_sector_weight
+C1F01,low_volatility,downside_vol,top_quintile,full,REJECTED,-0.432124,-0.507845,0.1341,583.57,0.696,0.4196,Financials,0.285
+C1F02,low_volatility,downside_vol,top_decile,full,REJECTED,-0.405973,-0.507845,0.185,292.03,0.634,0.4152,Financials,0.292
+C1F03,low_volatility,low_vol,top_quintile,full,REJECTED,-0.449858,-0.507845,0.1147,583.57,0.689,0.3994,Financials,0.2973
+C1F04,low_volatility,low_vol,top_decile,full,REJECTED,-0.40242,-0.507845,0.152,292.03,0.604,0.3882,Financials,0.3064
+C1F05,volatility_adjusted_momentum,vol_adj_mom,top_quintile,full,REJECTED,-0.553149,-0.507845,0.2486,572.88,0.963,0.4646,Financials,0.1933
+C1F06,volatility_adjusted_momentum,vol_adj_mom,top_decile,full,REJECTED,-0.559912,-0.507845,0.311,286.68,0.966,0.4659,Financials,0.1786
+C1F07,momentum,mom_12_1,top_quintile,full,REJECTED,-0.572125,-0.507845,0.2453,572.88,1.087,0.509,Information Technology,0.1649
+C1F08,momentum,mom_6_1,top_quintile,full,REJECTED,-0.579979,-0.507845,0.3593,583.56,1.094,0.5249,Information Technology,0.1664
+C1F09,short_term_reversal,rev_losers,top_quintile,full,REJECTED,-0.720729,-0.507845,0.7498,588.05,1.583,0.5633,Health Care,0.1804
+C1F10,trend_breadth,trend_score,top_quintile,full,REJECTED,-0.462702,-0.507845,0.4569,584.88,0.803,0.4724,Financials,0.2045
+C1F11,trend_breadth,trend_ma12,top_quintile,full,REJECTED,-0.50792,-0.507845,0.2913,584.88,0.965,0.5154,Information Technology,0.1608
+C1F12,liquidity_turnover,illiquidity,top_quintile,full,REJECTED,-0.595579,-0.507845,0.1667,588.08,1.113,0.5641,Financials,0.2784
+C1F13,liquidity_turnover,high_liquidity,top_quintile,full,REJECTED,-0.570169,-0.507845,0.1086,588.08,1.174,0.3844,Information Technology,0.1633
+C1F14,sector_relative,sector_rel_mom,top_quintile,full,REJECTED,-0.554533,-0.507845,0.2835,572.88,1.085,0.5036,Health Care,0.1561
+C1F15,market_relative,rel_strength,top_quintile,full,REJECTED,-0.572125,-0.507845,0.2467,572.15,1.085,0.4828,Health Care,0.1667

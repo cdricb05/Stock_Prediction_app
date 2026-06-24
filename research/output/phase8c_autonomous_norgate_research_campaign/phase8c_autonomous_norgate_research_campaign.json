@@ -1,0 +1,163 @@
+{
+  "phase": "8-C",
+  "generated_utc": "2026-06-24T20:35:30Z",
+  "objective": "Run an autonomous, bounded, multi-cycle Norgate research campaign: expand to the broadest feasible survivorship-aware universe, allocate a <=120 experiment budget across the agent system over up to 3 cycles, pre-register every experiment, CHALLENGE existing leads, run holdout / rolling / cost-stress / placebo / multiple-testing / risk validation, and stop when a signal passes the CONFIRMED_SIGNAL gate, the budget is exhausted, or the director rejects the current families. Research only; no orders / automation / optimized weights.",
+  "recommendation": "SIGNAL_RESEARCH_REJECTED_ON_BROAD_DATA",
+  "recommendation_reason": "all tested families fail the benchmark/cost/recency gates on broad data",
+  "allowed_recommendations": [
+    "CONFIRMED_SIGNAL_FOUND",
+    "LEADS_WEAK_KEEP_RESEARCH_ONLY",
+    "SIGNAL_RESEARCH_REJECTED_ON_BROAD_DATA",
+    "FULL_PANEL_BUILD_REQUIRED",
+    "DATA_PANEL_BLOCKED",
+    "ORCHESTRATOR_BLOCKED",
+    "NEEDS_RESEARCH_DIRECTOR_REVIEW",
+    "ERROR"
+  ],
+  "allowed_statuses": [
+    "CONFIRMED_SIGNAL",
+    "WEAK",
+    "REJECTED",
+    "BLOCKED",
+    "DIAGNOSTIC_ONLY"
+  ],
+  "orchestrator_ready": true,
+  "orchestrator_problems": [],
+  "panel_ok": true,
+  "panel_issues": [],
+  "selected_universe": {
+    "selected_universe": "Russell 3000 Current & Past",
+    "index_name": "Russell 3000",
+    "superset_symbols": 12266,
+    "selection_rule": "broadest feasible Current & Past universe in documented preference order",
+    "preference_order": [
+      "Russell 3000 Current & Past",
+      "S&P Composite 1500 Current & Past",
+      "Russell 1000 Current & Past",
+      "Russell 2000 Current & Past",
+      "S&P 1000 Current & Past",
+      "S&P 500 Current & Past"
+    ]
+  },
+  "universe_discovery_source": "norgate",
+  "panel_shape": {
+    "symbols": 12266,
+    "months": 438,
+    "date_min": "1990-01-31",
+    "date_max": "2026-06-30",
+    "active": 3746,
+    "delisted": 8520
+  },
+  "cycles_run": 2,
+  "cycle_log": [
+    {
+      "cycle": 1,
+      "experiments_added": 30,
+      "experiments_skipped_cumulative": 0,
+      "candidates_scored": 15,
+      "n_confirmed": 0,
+      "n_weak": 0,
+      "n_rejected": 15,
+      "n_blocked": 0,
+      "director_decision": "REJECT_TREND: no positive leads survive"
+    },
+    {
+      "cycle": 2,
+      "experiments_added": 0,
+      "experiments_skipped_cumulative": 0,
+      "candidates_scored": 15,
+      "n_confirmed": 0,
+      "n_weak": 0,
+      "n_rejected": 15,
+      "n_blocked": 0,
+      "director_decision": "all cycle-1 families rejected on broad data; no robustness warranted"
+    }
+  ],
+  "stop_reason": "all cycle-1 families rejected on broad data; no robustness warranted",
+  "budget": {
+    "experiments_registered": 30,
+    "max_experiments": 120,
+    "n_challenge": 15,
+    "challenge_fraction": 0.5,
+    "challenge_min_required": 0.3,
+    "challenge_ok": true,
+    "n_non_momentum": 21,
+    "non_momentum_fraction": 0.7,
+    "non_momentum_min_required": 0.25,
+    "non_momentum_ok": true,
+    "per_family_counts": {
+      "liquidity_turnover": 2,
+      "low_volatility": 14,
+      "market_relative": 1,
+      "momentum": 2,
+      "sector_relative": 1,
+      "short_term_reversal": 1,
+      "trend_breadth": 2,
+      "volatility_adjusted_momentum": 7
+    },
+    "max_per_family": 40,
+    "per_family_ok": true,
+    "n_skipped_for_caps": 0,
+    "all_registered_before_scoring": true
+  },
+  "confirmed_signals": [],
+  "weak_signals": [],
+  "rejected_signals": [
+    "C1F01",
+    "C1F02",
+    "C1F03",
+    "C1F04",
+    "C1F05",
+    "C1F06",
+    "C1F07",
+    "C1F08",
+    "C1F09",
+    "C1F10",
+    "C1F11",
+    "C1F12",
+    "C1F13",
+    "C1F14",
+    "C1F15"
+  ],
+  "n_search_universe": 46,
+  "multiple_testing": {
+    "search_universe_phase8a": 18,
+    "search_universe_phase8b": 13,
+    "search_universe_phase8c_candidates": 15,
+    "search_universe_total": 46,
+    "mt_required_excess_over_spy_sharpe": 0.249414,
+    "mt_rule": "required net-Sharpe-over-SPY margin = 0.15 * max(1, log10(N_search)); monotonic in N",
+    "additional_deflation": "placebo (>=0.25) + out-of-sample 2/3 holdouts incl. most recent + rolling-10y beat-SPY >= 60% required ON TOP of the margin; borderline never rounded up",
+    "n_confirmed_after_correction": 0,
+    "interpretation": "With 46 experiments in the campaign search universe a single-bar screen would surface lucky winners; the deflated margin plus placebo, holdout, recency and rolling gates are the correction applied before any signal is called CONFIRMED_SIGNAL."
+  },
+  "confirmed_signal_gate": {
+    "net_sharpe_beats_spy_by": 0.15,
+    "net_sharpe_beats_ew_by": 0.1,
+    "holdouts_beat_spy_min": 2,
+    "must_beat_recent_holdout": true,
+    "rolling_10y_beat_frac": 0.6,
+    "dd_worse_than_spy_pp_max": 0.1,
+    "avg_turnover_max": 0.5,
+    "avg_holdings_min": 30,
+    "placebo_margin": 0.25,
+    "multiple_testing_required": true
+  },
+  "safety": {
+    "research_only": true,
+    "norgate_only": true,
+    "packages_installed": false,
+    "paper_trader_touched": false,
+    "gcp_touched": false,
+    "broker_or_orders": false,
+    "automation": false,
+    "optimized_weights": false,
+    "factor_signs_modified_after_results": false,
+    "regime_activation": false,
+    "fundamentals_used": false,
+    "failed_experiments_hidden": false,
+    "committed": false,
+    "pushed": false,
+    "large_data_location": "D:/Stock_Prediction_app_data/research_panels/phase8c_russell3000"
+  }
+}

@@ -1,0 +1,2 @@
+n_confirmed_signals,ensemble_ready,independent_signals_required,optimized_weights_built,note
+0,False,2,False,ensemble assessed only if >=2 independent signals are confirmed; no optimized ensemble weights are built (forbidden)

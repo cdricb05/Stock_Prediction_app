@@ -1,0 +1,16 @@
+experiment_id,cycle,challenges,scope,hypothesis,finding,verdict
+C1X_downside_vol.H1990,1,C1X_downside_vol,holdout:1990-2004,DISPROVE: does downside_vol top_quintile beat SPY in 1990-2004?,1990-2004: net_sharpe=1.411073 vs SPY 0.760375 -> beats_spy=True,lead survives this holdout
+C1X_downside_vol.H2005,1,C1X_downside_vol,holdout:2005-2014,DISPROVE: does downside_vol top_quintile beat SPY in 2005-2014?,2005-2014: net_sharpe=0.667495 vs SPY 0.570131 -> beats_spy=True,lead survives this holdout
+C1X_downside_vol.H2015,1,C1X_downside_vol,holdout:2015-2026,DISPROVE: does downside_vol top_quintile beat SPY in 2015-2026?,2015-2026: net_sharpe=0.733569 vs SPY 0.945875 -> beats_spy=False,lead FAILS to beat SPY in this holdout
+C1X_downside_vol.C50,1,C1X_downside_vol,cost@50bps,DISPROVE: is downside_vol top_quintile still net-positive at 50bps?,net_sharpe@50bps=0.877578 -> net_positive=True,lead survives this cost level
+C1X_downside_vol.C100,1,C1X_downside_vol,cost@100bps,DISPROVE: is downside_vol top_quintile still net-positive at 100bps?,net_sharpe@100bps=0.748093 -> net_positive=True,lead survives this cost level
+C1X_low_vol.H1990,1,C1X_low_vol,holdout:1990-2004,DISPROVE: does low_vol top_quintile beat SPY in 1990-2004?,1990-2004: net_sharpe=1.409989 vs SPY 0.760375 -> beats_spy=True,lead survives this holdout
+C1X_low_vol.H2005,1,C1X_low_vol,holdout:2005-2014,DISPROVE: does low_vol top_quintile beat SPY in 2005-2014?,2005-2014: net_sharpe=0.644303 vs SPY 0.570131 -> beats_spy=True,lead survives this holdout
+C1X_low_vol.H2015,1,C1X_low_vol,holdout:2015-2026,DISPROVE: does low_vol top_quintile beat SPY in 2015-2026?,2015-2026: net_sharpe=0.666787 vs SPY 0.945875 -> beats_spy=False,lead FAILS to beat SPY in this holdout
+C1X_low_vol.C50,1,C1X_low_vol,cost@50bps,DISPROVE: is low_vol top_quintile still net-positive at 50bps?,net_sharpe@50bps=0.849217 -> net_positive=True,lead survives this cost level
+C1X_low_vol.C100,1,C1X_low_vol,cost@100bps,DISPROVE: is low_vol top_quintile still net-positive at 100bps?,net_sharpe@100bps=0.738333 -> net_positive=True,lead survives this cost level
+C1X_vol_adj_mom.H1990,1,C1X_vol_adj_mom,holdout:1990-2004,DISPROVE: does vol_adj_mom top_quintile beat SPY in 1990-2004?,1990-2004: net_sharpe=1.243241 vs SPY 0.760375 -> beats_spy=True,lead survives this holdout
+C1X_vol_adj_mom.H2005,1,C1X_vol_adj_mom,holdout:2005-2014,DISPROVE: does vol_adj_mom top_quintile beat SPY in 2005-2014?,2005-2014: net_sharpe=0.413888 vs SPY 0.570131 -> beats_spy=False,lead FAILS to beat SPY in this holdout
+C1X_vol_adj_mom.H2015,1,C1X_vol_adj_mom,holdout:2015-2026,DISPROVE: does vol_adj_mom top_quintile beat SPY in 2015-2026?,2015-2026: net_sharpe=0.714623 vs SPY 0.945875 -> beats_spy=False,lead FAILS to beat SPY in this holdout
+C1X_vol_adj_mom.C50,1,C1X_vol_adj_mom,cost@50bps,DISPROVE: is vol_adj_mom top_quintile still net-positive at 50bps?,net_sharpe@50bps=0.746032 -> net_positive=True,lead survives this cost level
+C1X_vol_adj_mom.C100,1,C1X_vol_adj_mom,cost@100bps,DISPROVE: is vol_adj_mom top_quintile still net-positive at 100bps?,net_sharpe@100bps=0.578209 -> net_positive=True,lead survives this cost level

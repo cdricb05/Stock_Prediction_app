@@ -1,0 +1,13 @@
+agent,experiments_owned,challenge_experiments,role
+quant-research-director,0,0,"owns cycle agenda, budget allocation, stop/go decisions"
+data-foundation-agent,0,0,owns Norgate panel build + data quality (Russell 3000 Current & Past)
+universe-construction-agent,0,0,owns point-in-time membership masks + tradability filters
+feature-library-agent,0,0,owns 18 feature definitions + leakage rules
+momentum-signal-agent,4,0,runs allocated signal experiments
+reversal-signal-agent,1,0,runs allocated signal experiments
+trend-breadth-signal-agent,4,0,runs allocated signal experiments
+volatility-liquidity-agent,6,0,runs allocated signal experiments
+validation-skeptic-agent,15,15,runs allocated signal experiments
+risk-portfolio-agent,0,0,runs allocated signal experiments
+meta-model-ensemble-agent,0,0,assesses ensemble readiness only (no optimized weights)
+signal-publishing-agent,0,0,drafts a paper-research contract only if >=1 signal confirmed

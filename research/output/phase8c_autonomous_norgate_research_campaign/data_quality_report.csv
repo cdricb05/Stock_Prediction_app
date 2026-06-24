@@ -1,0 +1,13 @@
+metric,value
+panel_symbols_total,12266
+panel_symbols_active,3746
+panel_symbols_delisted,8520
+survivorship_dropout_fraction,0.6946
+n_months,438
+date_min,1990-01-31
+date_max,2026-06-30
+spy_obs,402
+members_any_month,432
+max_simultaneous_members,3081
+missing_close_fraction,0.6279
+build_seconds,555.7

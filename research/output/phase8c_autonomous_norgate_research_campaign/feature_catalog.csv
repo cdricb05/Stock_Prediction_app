@@ -1,0 +1,19 @@
+feature,family,definition,description,information_set,registered_before_scoring
+ret_1m,momentum,close.pct_change(),contemporaneous 1m total return; used for reversal,close<=t,True
+mom_12_1,momentum,close[t-1]/close[t-12]-1,12-1 momentum (skips most recent month),close<=t-1,True
+mom_6_1,momentum,close[t-1]/close[t-6]-1,6-1 momentum (skips most recent month),close<=t-1,True
+mom_3,momentum,close[t]/close[t-3]-1,3-month momentum,close<=t,True
+rev_losers,reversal,-close.pct_change(),1-month short-term reversal (buy losers),close<=t,True
+vol_adj_mom,volatility_liquidity,mom_12_1 / rolling12_vol(ret_1m),volatility-adjusted 12-1 momentum,close<=t-1,True
+liq_gate,volatility_liquidity,dollar_vol >= cross-sectional median,liquidity eligibility gate,dollar_vol<=t,True
+rel_strength,breadth_relative_strength,mom_12_1 - SPY mom_12_1,relative strength vs SPY,close<=t-1,True
+trend_score,trend_breakout,close / rolling12_max(close),proximity to 12m high (breakout),close<=t,True
+sector_rel_mom,breadth_relative_strength,sector-demeaned mom_12_1,sector-relative (breadth) momentum,close<=t-1,True
+low_vol,low_volatility,-rolling12_vol(ret_1m),"low-volatility anomaly (a-priori, not a sign flip)",close<=t,True
+downside_vol,low_volatility,"-rolling12_std(min(ret_1m,0))",low downside-deviation anomaly,close<=t,True
+illiquidity,liquidity,-dollar_vol,illiquidity premium (low dollar volume),dollar_vol<=t,True
+high_liquidity,liquidity,dollar_vol,liquidity / large-cap proxy (high dollar volume),dollar_vol<=t,True
+low_vol_6,low_volatility,-rolling6_vol(ret_1m),"low-volatility anomaly, 6m window (robustness, a-priori)",close<=t,True
+downside_vol_6,low_volatility,"-rolling6_std(min(ret_1m,0))","low downside-deviation, 6m window (robustness, a-priori)",close<=t,True
+trend_ma12,trend_breadth,close/rolling12_mean(close)-1,distance above 12m moving average (trend/breadth),close<=t,True
+vol_adj_mom_6,volatility_adjusted_momentum,mom_6_1 / rolling12_vol(ret_1m),volatility-adjusted 6-1 momentum (robustness),close<=t-1,True

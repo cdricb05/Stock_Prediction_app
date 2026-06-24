@@ -1,0 +1,7 @@
+field,value
+selected_universe,Russell 3000 Current & Past
+index_name,Russell 3000
+superset_symbols,12266
+selection_rule,broadest feasible Current & Past universe in documented preference order
+discovery_source,norgate
+preference_order,Russell 3000 Current & Past > S&P Composite 1500 Current & Past > Russell 1000 Current & Past > Russell 2000 Current & Past > S&P 1000 Current & Past > S&P 500 Current & Past

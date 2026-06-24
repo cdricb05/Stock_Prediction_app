@@ -1,0 +1,26 @@
+{
+  "from_phase": "8-C",
+  "recommendation": "SIGNAL_RESEARCH_REJECTED_ON_BROAD_DATA",
+  "next_phase": "8-D",
+  "selected_universe": "Russell 3000 Current & Past",
+  "next_steps": [
+    "All tested deterministic families fail the benchmark/cost/recency gates on broad data.",
+    "8-D: the research-director should decide whether deterministic cross-sectional anomalies are worth further pursuit, or whether the program pivots (still research-only)."
+  ],
+  "hard_constraints": [
+    "Norgate is the only provider",
+    "large data only on D:",
+    "repo outputs are summaries only",
+    "no package install",
+    "no paid APIs",
+    "no Paper Trader",
+    "no GCP",
+    "no broker/order/automation",
+    "no optimized weights without explicit director approval",
+    "no factor-sign flipping",
+    "no regime activation/throttling",
+    "do not hide failed experiments",
+    "do not commit",
+    "do not push"
+  ]
+}

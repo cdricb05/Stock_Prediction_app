@@ -1,0 +1,11 @@
+field,value
+selected_universe,Russell 3000 Current & Past
+index_name,Russell 3000
+superset_symbols,12266
+current_members,2893
+panel_symbols_total,12266
+n_months,438
+date_range,1990-01-31..2026-06-30
+panel_root,D:/Stock_Prediction_app_data/research_panels/phase8c_russell3000
+built_this_run,False
+note,large data on D: (not committed); repo holds summaries only
