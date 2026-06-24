@@ -1,0 +1,13 @@
+agent,n_experiments,experiment_ids,deliverable_artifact,note
+momentum-signal-agent,3,"MR01, MR03, MR05",momentum_agent_report.csv,scores allocated experiments
+reversal-signal-agent,2,"NM03, NM04",reversal_agent_report.csv,scores allocated experiments
+trend-breadth-signal-agent,1,MR06,trend_breadth_agent_report.csv,scores allocated experiments
+volatility-liquidity-agent,7,"MR02, MR04, NM01, NM02, NM05, NM06, NM07",volatility_liquidity_agent_report.csv,scores allocated experiments
+validation-skeptic-agent,10,"CH01, CH02, CH03, CH04, CH05, CH06, CH07, CH08, CH09, CH10",validation_skeptic_report.csv,scores allocated experiments
+risk-portfolio-agent,4,"RS01, RS02, RS03, RS04",risk_portfolio_report.csv,scores allocated experiments
+quant-research-director,0,,research_director_decision.json / research_agenda.csv,support role (no scored experiments this round)
+data-foundation-agent,0,,data_panel_check.csv,support role (no scored experiments this round)
+universe-construction-agent,0,,universe_check.csv,support role (no scored experiments this round)
+feature-library-agent,0,,feature_catalog.csv,support role (no scored experiments this round)
+meta-model-ensemble-agent,0,,ensemble_readiness_report.csv,support role (no scored experiments this round)
+signal-publishing-agent,0,,paper_signal_contract.csv,support role (no scored experiments this round)

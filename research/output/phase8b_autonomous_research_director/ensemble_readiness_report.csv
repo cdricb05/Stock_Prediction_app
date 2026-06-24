@@ -1,0 +1,7 @@
+metric,value,note
+n_confirmed_signals,0,signals that passed full confirmation this round
+confirmed_signal_ids,(none),
+corr_EXP02_EXP11_net,0.98,net-return correlation of the two 8-A momentum-family survivors
+distinct_low_correlation_signals,False,need >=2 confirmed signals with corr<0.7 before an ensemble is meaningful
+ensemble_ready,False,NO optimized weights computed; equal-weight only and only when ready
+optimized_weights_used,False,forbidden in 8-B per the research-director protocol

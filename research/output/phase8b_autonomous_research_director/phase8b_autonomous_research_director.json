@@ -1,0 +1,189 @@
+{
+  "phase": "8-B",
+  "objective": "Operate the Phase 8-A agent system as an autonomous research loop: read project state and agent contracts, allocate a bounded experiment budget (<=30) across confirmation, momentum-robustness, non-momentum orthogonal, and risk-stress work; CHALLENGE the 8-A approved signals out-of-sample; run holdout / rolling / cost-stress / multiple-testing / risk validation; and decide whether the autonomous research loop is ready. Research only; no orders / automation / optimized weights.",
+  "generated_utc": "2026-06-24T18:53:46Z",
+  "recommendation": "SIGNALS_WEAK_KEEP_RESEARCH_ONLY",
+  "allowed_recommendations": [
+    "AUTONOMOUS_RESEARCH_LOOP_READY",
+    "SIGNALS_WEAK_KEEP_RESEARCH_ONLY",
+    "SIGNAL_RESEARCH_REJECTED_ON_CLEAN_DATA",
+    "ORCHESTRATOR_BLOCKED",
+    "DATA_PANEL_BLOCKED",
+    "NEEDS_RESEARCH_DIRECTOR_REVIEW",
+    "ERROR"
+  ],
+  "allowed_experiment_statuses": [
+    "APPROVED",
+    "WEAK",
+    "REJECTED",
+    "DIAGNOSTIC_ONLY",
+    "BLOCKED"
+  ],
+  "decision": {
+    "recommendation": "SIGNALS_WEAK_KEEP_RESEARCH_ONLY",
+    "confirmed_8a_signals": [],
+    "weak_8a_signals": [
+      "EXP02",
+      "EXP11"
+    ],
+    "rejected_8a_signals": [],
+    "positive_but_thin_8a_signals": [
+      "EXP02",
+      "EXP11"
+    ],
+    "n_candidate_signals": 13,
+    "n_candidate_approved": 0,
+    "n_candidate_weak": 7,
+    "n_candidate_rejected": 6,
+    "n_candidate_blocked": 0,
+    "promising_leads": [
+      {
+        "experiment_id": "NM07",
+        "score_key": "downside_vol",
+        "quantile": "top_quintile",
+        "family": "low_volatility",
+        "net_sharpe_25bps": 0.864899,
+        "net_sharpe_minus_spy": 0.095312,
+        "net_max_drawdown_25bps": -0.424169,
+        "n_subperiods_beat_spy": 2
+      },
+      {
+        "experiment_id": "NM01",
+        "score_key": "low_vol",
+        "quantile": "top_quintile",
+        "family": "low_volatility",
+        "net_sharpe_25bps": 0.855845,
+        "net_sharpe_minus_spy": 0.086258,
+        "net_max_drawdown_25bps": -0.389039,
+        "n_subperiods_beat_spy": 2
+      },
+      {
+        "experiment_id": "MR02",
+        "score_key": "vol_adj_mom",
+        "quantile": "top_quintile",
+        "family": "volatility_liquidity",
+        "net_sharpe_25bps": 0.838704,
+        "net_sharpe_minus_spy": 0.069117,
+        "net_max_drawdown_25bps": -0.520938,
+        "n_subperiods_beat_spy": 1
+      }
+    ]
+  },
+  "confirmation": {
+    "EXP02": {
+      "phase8a_id": "EXP02",
+      "phase8b_id": "MR01",
+      "score_key": "mom_12_1",
+      "quantile": "top_quintile",
+      "status": "WEAK",
+      "reason": "does not confirm out-of-sample (beats SPY in only 1/3 sub-periods, recent_beats_spy=False, cost_robust_50bps=True)",
+      "net_sharpe_25bps": 0.798517,
+      "net_sharpe_minus_spy": 0.02893,
+      "net_sharpe_minus_ew": 0.023513,
+      "cost50_sharpe": 0.707271,
+      "cost100_sharpe": 0.524809,
+      "n_subperiods_positive": 3,
+      "n_subperiods_beat_spy": 1,
+      "n_subperiods_judged": 3,
+      "recent_positive": true,
+      "recent_beats_spy": false,
+      "rolling_frac_positive": 1.0,
+      "rolling_frac_beat_spy": 0.384615,
+      "rolling_min_sharpe": 0.170553,
+      "beta_spy": 0.945,
+      "confirmed": false
+    },
+    "EXP11": {
+      "phase8a_id": "EXP11",
+      "phase8b_id": "MR02",
+      "score_key": "vol_adj_mom",
+      "quantile": "top_quintile",
+      "status": "WEAK",
+      "reason": "does not confirm out-of-sample (beats SPY in only 1/3 sub-periods, recent_beats_spy=False, cost_robust_50bps=True)",
+      "net_sharpe_25bps": 0.838704,
+      "net_sharpe_minus_spy": 0.069117,
+      "net_sharpe_minus_ew": 0.0637,
+      "cost50_sharpe": 0.739701,
+      "cost100_sharpe": 0.541457,
+      "n_subperiods_positive": 3,
+      "n_subperiods_beat_spy": 1,
+      "n_subperiods_judged": 3,
+      "recent_positive": true,
+      "recent_beats_spy": false,
+      "rolling_frac_positive": 1.0,
+      "rolling_frac_beat_spy": 0.461538,
+      "rolling_min_sharpe": 0.211778,
+      "beta_spy": 0.864,
+      "confirmed": false
+    }
+  },
+  "multiple_testing": {
+    "search_universe_8a": 18,
+    "search_universe_8b_candidates": 13,
+    "search_universe_total": 31,
+    "n_8b_experiments_registered": 27,
+    "n_candidate_approved_8b": 0,
+    "correction": "out-of-sample stability (>=2/3 holdout sub-periods positive + recent positive + net-positive at 50bps) required ON TOP of the full-sample gate; borderline never rounded up",
+    "interpretation": "With 31 experiments in the search universe, a single-bar net-Sharpe screen would be expected to surface lucky winners; the stability + recency + cost-robustness requirement is the deflation applied before any signal is called confirmed."
+  },
+  "orchestrator": {
+    "ready": true,
+    "problems": [],
+    "subagents_ok": true,
+    "n_subagents": 12,
+    "n_contracts": 6,
+    "phase8a_inputs_present": {
+      "research_director_decision.json": true,
+      "approved_signals.csv": true,
+      "failed_experiments.csv": true,
+      "experiment_registry.csv": true,
+      "all_experiments_scoreboard.csv": true,
+      "norgate_sample_panel_manifest.csv": true,
+      "survivorship_audit.csv": true
+    },
+    "phase8a_approved_ids": [
+      "EXP02",
+      "EXP11"
+    ]
+  },
+  "autonomy_budget": {
+    "max_experiments": 30,
+    "experiments_registered": 27,
+    "n_challenge": 10,
+    "challenge_fraction": 0.37,
+    "challenge_min_required": 0.3,
+    "n_non_momentum": 7,
+    "non_momentum_fraction": 0.259,
+    "non_momentum_min_required": 0.2,
+    "all_registered_before_scoring": true
+  },
+  "panel": {
+    "source": "Phase 8-A persisted survivorship-aware panel (reused, not recollected)",
+    "root": "D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample",
+    "n_symbols": 1363,
+    "n_months": 438,
+    "date_range": [
+      "1990-01-31",
+      "2026-06-30"
+    ],
+    "n_active": 662,
+    "n_delisted": 701,
+    "ok": true,
+    "issues": []
+  },
+  "safety": {
+    "provider_is_local_norgate_only": true,
+    "reused_existing_panel_no_recollection": true,
+    "network_or_paid_api_used": false,
+    "packages_installed": false,
+    "large_data_only_on_d": true,
+    "optimized_weights_used": false,
+    "factor_signs_modified_after_results": false,
+    "regime_activation_or_throttling": false,
+    "failed_experiments_hidden": false,
+    "paper_trader_gcp_broker_touched": false,
+    "orders_or_automation_created": false,
+    "committed": false,
+    "pushed": false
+  }
+}

@@ -1,0 +1,2 @@
+experiment_id,score_key,quantile,gate,family,status,n_periods,avg_names,one_sided_turnover,net_sharpe_25bps,net_ann_return_25bps,net_max_drawdown_25bps,net_sharpe_50bps,spy_sharpe,ew_universe_sharpe,net_sharpe_minus_spy,net_sharpe_minus_placebo,subperiods_positive,reason
+MR06,sector_rel_mom,top_quintile,,breadth_relative_strength,REJECTED,425,100.12,0.2494,0.756384,0.110948,-0.544852,0.660578,0.769587,0.775004,-0.013203,0.276929,3/3,underperforms SPY (net Sharpe 0.756384 <= SPY 0.769587)

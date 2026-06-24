@@ -1,0 +1,7 @@
+signal_id,phase8a_id,scope,max_pos,net_sharpe_25bps,net_max_drawdown_25bps,one_sided_turnover,avg_names,avg_max_weight,beta_spy,top_sector,top_sector_weight,delisted_weight_avg,finding
+MR01,EXP02,base,0.1,0.798517,-0.523425,0.247,100.12,0.01,0.945,Information Technology,0.1536,0.3293,dd -0.523425 (floor -0.6); turnover 0.247 (ceil 0.6); beta 0.945; top sector Information Technology 0.1536; avg delisted weight 0.3293; avg max name weight 0.01 << 0.1 cap (non-binding -> low single-name concentration risk; ADV capacity deferred to 8-C)
+MR02,EXP11,base,0.1,0.838704,-0.520938,0.2455,100.12,0.01,0.864,Financials,0.1462,0.2999,dd -0.520938 (floor -0.6); turnover 0.2455 (ceil 0.6); beta 0.864; top sector Financials 0.1462; avg delisted weight 0.2999; avg max name weight 0.01 << 0.1 cap (non-binding -> low single-name concentration risk; ADV capacity deferred to 8-C)
+RS01,EXP02,breadth:concentrated,0.1,0.710689,-0.620281,0.3318,25.24,0.0396,1.093,Information Technology,0.2392,0.3563,net Sharpe 0.710689 (delta vs base -0.088) at cap 0.10
+RS02,EXP02,breadth:broad,0.1,0.830191,-0.50035,0.1959,166.54,0.006,0.92,Financials,0.1452,0.3197,net Sharpe 0.830191 (delta vs base 0.032) at cap 0.10
+RS03,EXP11,breadth:concentrated,0.1,0.650059,-0.563373,0.3549,25.24,0.0396,0.899,Information Technology,0.1477,0.2972,net Sharpe 0.650059 (delta vs base -0.189) at cap 0.10
+RS04,EXP11,breadth:broad,0.1,0.876846,-0.518076,0.1904,166.54,0.006,0.891,Financials,0.1556,0.3051,net Sharpe 0.876846 (delta vs base 0.038) at cap 0.10

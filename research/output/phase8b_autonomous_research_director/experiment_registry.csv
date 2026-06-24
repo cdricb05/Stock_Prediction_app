@@ -1,0 +1,28 @@
+experiment_id,category,owning_agent,family,scope,challenges,hypothesis,status
+MR01,CONFIRM,momentum-signal-agent,momentum,full,EXP02,EXP02 12-1 momentum quintile survives out-of-sample confirmation,WEAK
+MR02,CONFIRM,volatility-liquidity-agent,volatility_liquidity,full,EXP11,EXP11 volatility-adjusted momentum quintile survives confirmation,WEAK
+MR03,MOMENTUM_ROBUSTNESS,momentum-signal-agent,momentum,full,,12-1 momentum quintile is robust when restricted to liquid names,WEAK
+MR04,MOMENTUM_ROBUSTNESS,volatility-liquidity-agent,volatility_liquidity,full,,vol-adjusted momentum quintile is robust among liquid names,WEAK
+MR05,MOMENTUM_ROBUSTNESS,momentum-signal-agent,momentum,full,,6-1 momentum quintile is a robust shorter-horizon variant,REJECTED
+MR06,MOMENTUM_ROBUSTNESS,trend-breadth-signal-agent,breadth_relative_strength,full,,sector-relative (breadth) momentum quintile is robust,REJECTED
+NM01,NON_MOMENTUM,volatility-liquidity-agent,low_volatility,full,,low-volatility anomaly: lowest-vol quintile earns superior risk-adjusted return,WEAK
+NM02,NON_MOMENTUM,volatility-liquidity-agent,low_volatility,full,,low-volatility anomaly concentrates in the lowest-vol decile,WEAK
+NM03,NON_MOMENTUM,reversal-signal-agent,reversal,full,,1-month reversal (buy losers) quintile — reassessed on clean data,REJECTED
+NM04,NON_MOMENTUM,reversal-signal-agent,reversal,full,,1-month reversal (buy losers) decile — reassessed on clean data,REJECTED
+NM05,NON_MOMENTUM,volatility-liquidity-agent,liquidity,full,,illiquidity premium: lowest dollar-volume quintile earns a premium,REJECTED
+NM06,NON_MOMENTUM,volatility-liquidity-agent,liquidity,full,,liquidity/large-cap proxy: highest dollar-volume quintile (control),REJECTED
+NM07,NON_MOMENTUM,volatility-liquidity-agent,low_volatility,full,,low downside-deviation quintile earns superior risk-adjusted return,WEAK
+CH01,CHALLENGE,validation-skeptic-agent,validation,subperiod:1990-2004,EXP02,EXP02 edge persists in holdout 1990-2004,DIAGNOSTIC_ONLY
+CH02,CHALLENGE,validation-skeptic-agent,validation,subperiod:2005-2014,EXP02,EXP02 edge persists in holdout 2005-2014,DIAGNOSTIC_ONLY
+CH03,CHALLENGE,validation-skeptic-agent,validation,subperiod:2015-2026,EXP02,EXP02 edge persists in holdout 2015-2026,DIAGNOSTIC_ONLY
+CH04,CHALLENGE,validation-skeptic-agent,validation,subperiod:1990-2004,EXP11,EXP11 edge persists in holdout 1990-2004,DIAGNOSTIC_ONLY
+CH05,CHALLENGE,validation-skeptic-agent,validation,subperiod:2005-2014,EXP11,EXP11 edge persists in holdout 2005-2014,DIAGNOSTIC_ONLY
+CH06,CHALLENGE,validation-skeptic-agent,validation,subperiod:2015-2026,EXP11,EXP11 edge persists in holdout 2015-2026,DIAGNOSTIC_ONLY
+CH07,CHALLENGE,validation-skeptic-agent,validation,cost@50bps,EXP02,EXP02 edge survives 50bps round-trip costs,DIAGNOSTIC_ONLY
+CH08,CHALLENGE,validation-skeptic-agent,validation,cost@100bps,EXP02,EXP02 edge survives 100bps round-trip costs,DIAGNOSTIC_ONLY
+CH09,CHALLENGE,validation-skeptic-agent,validation,cost@50bps,EXP11,EXP11 edge survives 50bps round-trip costs,DIAGNOSTIC_ONLY
+CH10,CHALLENGE,validation-skeptic-agent,validation,cost@100bps,EXP11,EXP11 edge survives 100bps round-trip costs,DIAGNOSTIC_ONLY
+RS01,RISK_STRESS,risk-portfolio-agent,risk,breadth:concentrated,EXP02,EXP02 is robust to concentration (selection breadth = concentrated),DIAGNOSTIC_ONLY
+RS02,RISK_STRESS,risk-portfolio-agent,risk,breadth:broad,EXP02,EXP02 is robust to breadth (selection breadth = broad),DIAGNOSTIC_ONLY
+RS03,RISK_STRESS,risk-portfolio-agent,risk,breadth:concentrated,EXP11,EXP11 is robust to concentration (selection breadth = concentrated),DIAGNOSTIC_ONLY
+RS04,RISK_STRESS,risk-portfolio-agent,risk,breadth:broad,EXP11,EXP11 is robust to breadth (selection breadth = broad),DIAGNOSTIC_ONLY

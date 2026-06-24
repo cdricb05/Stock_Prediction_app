@@ -1,0 +1,6 @@
+theme,rationale,n_experiments,owning_agents
+"Confirm Phase 8-A approved signals (EXP02, EXP11) out-of-sample",8-A edge was thin (+0.03..0.07 Sharpe); must verify it is not a lucky winner.,2,"momentum-signal-agent, volatility-liquidity-agent"
+Challenge/disprove the approved signals via holdout sub-periods + cost stress,>=30% of budget mandated to try to disprove the survivors before trusting them.,10,validation-skeptic-agent
+"Bounded, pre-registered momentum-family robustness variants",Test whether the survivor edge generalizes across horizon/liquidity/breadth.,4,"momentum-signal-agent, trend-breadth-signal-agent, volatility-liquidity-agent"
+"Orthogonal non-momentum families (low-vol, downside-vol, liquidity, reversal)",">=20% of budget mandated to seek orthogonal, deterministic alternatives.",7,"reversal-signal-agent, volatility-liquidity-agent"
+Capacity (tight cap) and concentration (loose cap) risk stress,Confirm the edge is not an artifact of concentration or capacity assumptions.,4,risk-portfolio-agent

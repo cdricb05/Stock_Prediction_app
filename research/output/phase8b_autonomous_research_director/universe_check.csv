@@ -1,0 +1,5 @@
+scope,median_members,max_members,n_months,pit_membership_confirmed
+full,501,508,438,True
+1990-2004,500,505,180,True
+2005-2014,501,505,120,True
+2015-2026,505,508,138,True

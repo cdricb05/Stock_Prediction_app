@@ -1,0 +1,11 @@
+check,value,status
+panel_root,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample,OK
+files_present,"monthly_close_total_return.csv, monthly_dollar_volume.csv, membership_panel.csv, metadata.csv, spy_monthly_total_return.csv",OK
+n_symbols,1363,OK
+n_months,438,OK
+date_range,1990-01-31..2026-06-30,OK
+n_active,662,OK
+n_delisted,701,OK
+membership_sum,219867,OK
+spy_observations,402,OK
+overall,USABLE,OK

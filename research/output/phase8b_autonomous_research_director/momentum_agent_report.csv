@@ -1,0 +1,4 @@
+experiment_id,score_key,quantile,gate,family,status,n_periods,avg_names,one_sided_turnover,net_sharpe_25bps,net_ann_return_25bps,net_max_drawdown_25bps,net_sharpe_50bps,spy_sharpe,ew_universe_sharpe,net_sharpe_minus_spy,net_sharpe_minus_placebo,subperiods_positive,reason
+MR01,mom_12_1,top_quintile,,momentum,WEAK,425,100.12,0.247,0.798517,0.123013,-0.523425,0.707271,0.769587,0.775004,0.02893,0.362937,3/3,"does not confirm out-of-sample (beats SPY in only 1/3 sub-periods, recent_beats_spy=False, cost_robust_50bps=True)"
+MR03,mom_12_1,top_quintile,liq_gate,momentum,WEAK,425,69.52,0.2842,0.780707,0.128645,-0.550355,0.68348,0.769587,0.775004,0.01112,0.359794,3/3,"does not confirm out-of-sample (beats SPY in only 1/3 sub-periods, recent_beats_spy=False, cost_robust_50bps=True)"
+MR05,mom_6_1,top_quintile,,momentum,REJECTED,431,100.29,0.3627,0.608758,0.090369,-0.554753,0.477019,0.769587,0.753211,-0.160829,0.105032,3/3,underperforms SPY (net Sharpe 0.608758 <= SPY 0.769587)

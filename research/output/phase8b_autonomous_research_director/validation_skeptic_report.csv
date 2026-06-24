@@ -1,0 +1,25 @@
+signal_id,phase8a_id,check_type,scope,net_sharpe,net_ann_return,beats_spy,beats_ew,verdict,detail
+MR01,EXP02,leakage,full,0.798517,0.123013,True,True,PASS,PASS_NO_LOOKAHEAD
+MR01,EXP02,placebo,full,0.798517,,,,PASS,net Sharpe beats placebo by 0.362937 (margin 0.25)
+MR01,EXP02,holdout,1990-2004,1.087968,0.17298,True,True,PERSISTENT,n_periods=168
+MR01,EXP02,holdout,2005-2014,0.445425,0.063415,False,False,NON_PERSISTENT,n_periods=120
+MR01,EXP02,holdout,2015-2026,0.780251,0.116721,False,True,NON_PERSISTENT,n_periods=137
+MR01,EXP02,rolling_10y,26 windows,0.737885,,0.384615,,UNDERPERFORMS_SPY_MAJORITY,min=0.170553 median=0.737885 max=1.233302 frac_positive=1.0 frac_beat_spy=0.384615
+MR01,EXP02,cost_stress,10bps,0.853264,0.132955,True,,SURVIVES,net Sharpe at 10bps
+MR01,EXP02,cost_stress,25bps,0.798517,0.123013,True,,SURVIVES,net Sharpe at 25bps
+MR01,EXP02,cost_stress,50bps,0.707271,0.10662,False,,SURVIVES,net Sharpe at 50bps
+MR01,EXP02,cost_stress,100bps,0.524809,0.074488,False,,SURVIVES,net Sharpe at 100bps
+MR01,EXP02,multiple_testing,31 tests,0.798517,,,,DEFLATED_BY_STABILITY,out-of-sample stability (>=2/3 holdout sub-periods positive + recent positive + net-positive at 50bps) required ON TOP of the full-sample gate; borderline never rounded up
+MR01,EXP02,CONFIRMATION,overall,0.798517,0.123013,True,True,WEAK,"does not confirm out-of-sample (beats SPY in only 1/3 sub-periods, recent_beats_spy=False, cost_robust_50bps=True)"
+MR02,EXP11,leakage,full,0.838704,0.119581,True,True,PASS,PASS_NO_LOOKAHEAD
+MR02,EXP11,placebo,full,0.838704,,,,PASS,net Sharpe beats placebo by 0.372752 (margin 0.25)
+MR02,EXP11,holdout,1990-2004,1.168516,0.167918,True,True,PERSISTENT,n_periods=168
+MR02,EXP11,holdout,2005-2014,0.463567,0.060942,False,False,NON_PERSISTENT,n_periods=120
+MR02,EXP11,holdout,2015-2026,0.795596,0.114318,False,True,NON_PERSISTENT,n_periods=137
+MR02,EXP11,rolling_10y,26 windows,0.789497,,0.461538,,UNDERPERFORMS_SPY_MAJORITY,min=0.211778 median=0.789497 max=1.272116 frac_positive=1.0 frac_beat_spy=0.461538
+MR02,EXP11,cost_stress,10bps,0.898059,0.129428,True,,SURVIVES,net Sharpe at 10bps
+MR02,EXP11,cost_stress,25bps,0.838704,0.119581,True,,SURVIVES,net Sharpe at 25bps
+MR02,EXP11,cost_stress,50bps,0.739701,0.103343,False,,SURVIVES,net Sharpe at 50bps
+MR02,EXP11,cost_stress,100bps,0.541457,0.071508,False,,SURVIVES,net Sharpe at 100bps
+MR02,EXP11,multiple_testing,31 tests,0.838704,,,,DEFLATED_BY_STABILITY,out-of-sample stability (>=2/3 holdout sub-periods positive + recent positive + net-positive at 50bps) required ON TOP of the full-sample gate; borderline never rounded up
+MR02,EXP11,CONFIRMATION,overall,0.838704,0.119581,True,True,WEAK,"does not confirm out-of-sample (beats SPY in only 1/3 sub-periods, recent_beats_spy=False, cost_robust_50bps=True)"

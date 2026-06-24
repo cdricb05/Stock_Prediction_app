@@ -1,0 +1,2 @@
+signal_id,phase8a_id,definition,universe,rebalance,quantile,cost_assumption_bps,expected_net_sharpe,status,safety,note
+(none),,,,,,,,NO_CONFIRMED_SIGNAL,PREVIEW ONLY | NO ORDERS | NO AUTOMATION | MANUAL REVIEW,No signal passed full confirmation this round; no paper-research contract drafted. Keep research-only.

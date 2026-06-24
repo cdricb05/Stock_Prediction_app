@@ -1,0 +1,25 @@
+{
+  "from_phase": "8-B",
+  "recommendation": "SIGNALS_WEAK_KEEP_RESEARCH_ONLY",
+  "next_phase": "8-C",
+  "next_steps": [
+    "8-A survivors ['EXP02', 'EXP11'] are positive full-sample but FAIL out-of-sample confirmation (beat SPY only in 1990-2004, not in 2005-2014 or the most recent 2015-2026): keep research-only, do NOT promote.",
+    "Prioritize the most promising NON-momentum leads for confirmation on a wider/longer survivorship-aware panel: NM07:downside_vol (net Sharpe 0.864899, +0.095312 vs SPY), NM01:low_vol (net Sharpe 0.855845, +0.086258 vs SPY), MR02:vol_adj_mom (net Sharpe 0.838704, +0.069117 vs SPY). They beat SPY full-sample with shallower drawdowns, but must clear the same out-of-sample sub-period + recency gate before trust.",
+    "Build the full Norgate superset panel (and optionally Russell 3000) and re-run this exact confirmation gate; only deterministic rules, no re-tuning of momentum, no optimized weights, no factor-sign flipping."
+  ],
+  "hard_constraints": [
+    "Norgate is the only provider",
+    "reuse/extend the panel on D: only",
+    "repo outputs are summaries only",
+    "no package install",
+    "no paid APIs",
+    "no Paper Trader",
+    "no GCP",
+    "no broker/order/automation",
+    "no optimized weights without explicit director approval",
+    "no factor-sign flipping",
+    "do not hide failed experiments",
+    "do not commit",
+    "do not push"
+  ]
+}
