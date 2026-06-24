@@ -1,0 +1,29 @@
+{
+  "from_phase": "7-L",
+  "recommendation": "MOMENTUM_STRATEGY_VIABLE_FOR_PAPER_RESEARCH",
+  "momentum_viable_for_paper_research": "YES",
+  "decision_config": "u296:mom_6_1:top_decile",
+  "net_sharpe_at_primary_cost": 1.437302,
+  "next_steps": [
+    {
+      "step": "phase7m_paper_research_strategy_spec",
+      "scope": "RESEARCH_SPEC",
+      "detail": "Momentum cleared the strict viability bars in research. Next: write a paper-research strategy specification (rules, rebalance cadence, cost/turnover budget, position limits, drawdown stop policy) and a survivorship-bias impact study, BEFORE any Paper Trader preview. Still no orders, no automation, no optimization. Acquiring survivorship-free data would materially raise confidence."
+    }
+  ],
+  "hard_constraints": [
+    "research only \u2014 not Paper Trader, not production, not deployment",
+    "free/local data only",
+    "no paid APIs unless explicitly approved",
+    "do not install packages",
+    "no factor-weight optimization",
+    "no new alpha factors",
+    "no factor-sign flipping",
+    "no regime-based selection or weighting",
+    "no leverage",
+    "no trading/order/automation",
+    "no Paper Trader/GCP/broker/deployment",
+    "do not commit",
+    "do not push"
+  ]
+}

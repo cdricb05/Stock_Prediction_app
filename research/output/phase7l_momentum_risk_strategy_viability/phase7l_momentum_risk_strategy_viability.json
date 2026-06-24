@@ -1,0 +1,806 @@
+{
+  "phase": "7-L",
+  "objective": "Test whether the remaining honest signal (simple price/momentum) can support a realistic, risk-managed RESEARCH strategy after turnover, transaction costs, drawdowns, position limits, and regime/risk diagnostics, on both the 128-name and the broad 296-name universe. Long-only, equal weight, monthly rebalance, no leverage, max position cap. No factor-weight optimization, no new alpha factors, no regime selection/weighting, no failed-composite candidate, no trading/orders.",
+  "question": "CAN SIMPLE PRICE/MOMENTUM BECOME A VIABLE RISK-MANAGED RESEARCH STRATEGY?",
+  "momentum_viable_for_paper_research": "YES",
+  "recommendation": "MOMENTUM_STRATEGY_VIABLE_FOR_PAPER_RESEARCH",
+  "allowed_recommendations": [
+    "MOMENTUM_STRATEGY_VIABLE_FOR_PAPER_RESEARCH",
+    "MOMENTUM_SIGNAL_ONLY_WEAK",
+    "MOMENTUM_RESEARCH_STOP",
+    "ERROR"
+  ],
+  "universes": {
+    "u128": 128,
+    "u296": 296
+  },
+  "history_span": {
+    "start": "2016-08",
+    "end": "2026-05"
+  },
+  "strategy_variants_tested": [
+    "mom_12_1",
+    "mom_6_1",
+    "mom_riskadj",
+    "momentum_bucket"
+  ],
+  "selection_rules": [
+    "top_decile",
+    "top_quintile"
+  ],
+  "cost_bps_grid": [
+    0.0,
+    10.0,
+    25.0,
+    50.0
+  ],
+  "primary_cost_bps": 25.0,
+  "max_position_cap": 0.1,
+  "n_strategy_configs": 16,
+  "decision": {
+    "decision_config": "u296:mom_6_1:top_decile",
+    "primary_cost_bps": 25.0,
+    "net_sharpe_at_primary_cost": 1.437302,
+    "net_ann_return_at_primary_cost": 0.382598,
+    "gross_sharpe": 1.524473,
+    "net_max_drawdown": -0.197578,
+    "spy_sharpe": 0.984471,
+    "spy_max_drawdown": -0.239272,
+    "equal_weight_universe_sharpe": 1.253429,
+    "mean_one_sided_turnover": 0.360743,
+    "positive_net_after_cost": true,
+    "beats_spy": true,
+    "beats_equal_weight_universe": true,
+    "drawdown_acceptable": true,
+    "turnover_acceptable": true,
+    "raw_momentum_positive": true,
+    "dd_floor": -0.6,
+    "dd_rel_spy": 0.15,
+    "turnover_ceiling": 0.5,
+    "n_configs": 16,
+    "configs_independently_viable": 9,
+    "canonical_12_1_bucket_also_viable": true,
+    "best_net_sharpe_minus_eqw_universe": 0.183873
+  },
+  "decision_rule": {
+    "viable_if": "net Sharpe @ primary cost > 0 AND drawdown acceptable AND turnover acceptable AND beats SPY and equal-weight-universe on Sharpe",
+    "weak_if": "raw momentum positive and beats benchmarks net of cost, but drawdown/turnover make it unattractive",
+    "stop_if": "fails after costs (net Sharpe <= 0 or negative net return) OR underperforms either benchmark on a risk-adjusted basis",
+    "dd_floor": -0.6,
+    "dd_rel_spy": 0.15,
+    "turnover_ceiling": 0.5,
+    "borderline_rounded_up": false
+  },
+  "best_strategy": {
+    "config": "u296:mom_6_1:top_decile",
+    "universe": "u296",
+    "variant": "mom_6_1",
+    "selection": "top_decile",
+    "n_periods": 113,
+    "gross": {
+      "ann_return": 0.412068,
+      "ann_vol": 0.248677,
+      "sharpe": 1.524473,
+      "max_drawdown": -0.192429,
+      "hit_rate": 0.681416
+    },
+    "net_25bps": {
+      "ann_return": 0.382598,
+      "sharpe": 1.437302,
+      "max_drawdown": -0.197578
+    },
+    "cost_curve": {
+      "0": {
+        "ann_return": 0.412068,
+        "sharpe": 1.524473
+      },
+      "10": {
+        "ann_return": 0.400212,
+        "sharpe": 1.489613
+      },
+      "25": {
+        "ann_return": 0.382598,
+        "sharpe": 1.437302
+      },
+      "50": {
+        "ann_return": 0.353688,
+        "sharpe": 1.350066
+      }
+    },
+    "mean_one_sided_turnover": 0.360743,
+    "avg_names": 27.769912
+  },
+  "all_strategies": [
+    {
+      "config": "u128:mom_12_1:top_decile",
+      "universe": "u128",
+      "variant": "mom_12_1",
+      "selection": "top_decile",
+      "n_periods": 112,
+      "gross": {
+        "ann_return": 0.263986,
+        "ann_vol": 0.23053,
+        "sharpe": 1.13429,
+        "max_drawdown": -0.197415,
+        "hit_rate": 0.642857
+      },
+      "net_25bps": {
+        "ann_return": 0.243421,
+        "sharpe": 1.062059,
+        "max_drawdown": -0.201316
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.263986,
+          "sharpe": 1.13429
+        },
+        "10": {
+          "ann_return": 0.255724,
+          "sharpe": 1.10541
+        },
+        "25": {
+          "ann_return": 0.243421,
+          "sharpe": 1.062059
+        },
+        "50": {
+          "ann_return": 0.223159,
+          "sharpe": 0.989734
+        }
+      },
+      "mean_one_sided_turnover": 0.278274,
+      "avg_names": 12.0
+    },
+    {
+      "config": "u128:mom_12_1:top_quintile",
+      "universe": "u128",
+      "variant": "mom_12_1",
+      "selection": "top_quintile",
+      "n_periods": 112,
+      "gross": {
+        "ann_return": 0.216521,
+        "ann_vol": 0.179667,
+        "sharpe": 1.186958,
+        "max_drawdown": -0.174081,
+        "hit_rate": 0.642857
+      },
+      "net_25bps": {
+        "ann_return": 0.200822,
+        "sharpe": 1.113146,
+        "max_drawdown": -0.176031
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.216521,
+          "sharpe": 1.186958
+        },
+        "10": {
+          "ann_return": 0.210219,
+          "sharpe": 1.157432
+        },
+        "25": {
+          "ann_return": 0.200822,
+          "sharpe": 1.113146
+        },
+        "50": {
+          "ann_return": 0.185307,
+          "sharpe": 1.039352
+        }
+      },
+      "mean_one_sided_turnover": 0.219464,
+      "avg_names": 25.0
+    },
+    {
+      "config": "u128:mom_6_1:top_decile",
+      "universe": "u128",
+      "variant": "mom_6_1",
+      "selection": "top_decile",
+      "n_periods": 118,
+      "gross": {
+        "ann_return": 0.297462,
+        "ann_vol": 0.198765,
+        "sharpe": 1.419842,
+        "max_drawdown": -0.156547,
+        "hit_rate": 0.677966
+      },
+      "net_25bps": {
+        "ann_return": 0.269013,
+        "sharpe": 1.305302,
+        "max_drawdown": -0.173875
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.297462,
+          "sharpe": 1.419842
+        },
+        "10": {
+          "ann_return": 0.286014,
+          "sharpe": 1.37403
+        },
+        "25": {
+          "ann_return": 0.269013,
+          "sharpe": 1.305302
+        },
+        "50": {
+          "ann_return": 0.241131,
+          "sharpe": 1.190758
+        }
+      },
+      "mean_one_sided_turnover": 0.376412,
+      "avg_names": 12.0
+    },
+    {
+      "config": "u128:mom_6_1:top_quintile",
+      "universe": "u128",
+      "variant": "mom_6_1",
+      "selection": "top_quintile",
+      "n_periods": 118,
+      "gross": {
+        "ann_return": 0.238727,
+        "ann_vol": 0.163679,
+        "sharpe": 1.399755,
+        "max_drawdown": -0.224692,
+        "hit_rate": 0.694915
+      },
+      "net_25bps": {
+        "ann_return": 0.215717,
+        "sharpe": 1.282282,
+        "max_drawdown": -0.236323
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.238727,
+          "sharpe": 1.399755
+        },
+        "10": {
+          "ann_return": 0.229476,
+          "sharpe": 1.352762
+        },
+        "25": {
+          "ann_return": 0.215717,
+          "sharpe": 1.282282
+        },
+        "50": {
+          "ann_return": 0.193095,
+          "sharpe": 1.164869
+        }
+      },
+      "mean_one_sided_turnover": 0.317119,
+      "avg_names": 25.0
+    },
+    {
+      "config": "u128:mom_riskadj:top_decile",
+      "universe": "u128",
+      "variant": "mom_riskadj",
+      "selection": "top_decile",
+      "n_periods": 112,
+      "gross": {
+        "ann_return": 0.202905,
+        "ann_vol": 0.185319,
+        "sharpe": 1.094218,
+        "max_drawdown": -0.208263,
+        "hit_rate": 0.598214
+      },
+      "net_25bps": {
+        "ann_return": 0.180304,
+        "sharpe": 0.989805,
+        "max_drawdown": -0.225517
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.202905,
+          "sharpe": 1.094218
+        },
+        "10": {
+          "ann_return": 0.193818,
+          "sharpe": 1.052447
+        },
+        "25": {
+          "ann_return": 0.180304,
+          "sharpe": 0.989805
+        },
+        "50": {
+          "ann_return": 0.158088,
+          "sharpe": 0.885463
+        }
+      },
+      "mean_one_sided_turnover": 0.31994,
+      "avg_names": 12.0
+    },
+    {
+      "config": "u128:mom_riskadj:top_quintile",
+      "universe": "u128",
+      "variant": "mom_riskadj",
+      "selection": "top_quintile",
+      "n_periods": 112,
+      "gross": {
+        "ann_return": 0.192688,
+        "ann_vol": 0.158363,
+        "sharpe": 1.19805,
+        "max_drawdown": -0.165738,
+        "hit_rate": 0.660714
+      },
+      "net_25bps": {
+        "ann_return": 0.176112,
+        "sharpe": 1.107419,
+        "max_drawdown": -0.167929
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.192688,
+          "sharpe": 1.19805
+        },
+        "10": {
+          "ann_return": 0.186032,
+          "sharpe": 1.161782
+        },
+        "25": {
+          "ann_return": 0.176112,
+          "sharpe": 1.107419
+        },
+        "50": {
+          "ann_return": 0.159746,
+          "sharpe": 1.016928
+        }
+      },
+      "mean_one_sided_turnover": 0.235893,
+      "avg_names": 25.0
+    },
+    {
+      "config": "u128:momentum_bucket:top_decile",
+      "universe": "u128",
+      "variant": "momentum_bucket",
+      "selection": "top_decile",
+      "n_periods": 118,
+      "gross": {
+        "ann_return": 0.25787,
+        "ann_vol": 0.202926,
+        "sharpe": 1.238582,
+        "max_drawdown": -0.19153,
+        "hit_rate": 0.686441
+      },
+      "net_25bps": {
+        "ann_return": 0.235901,
+        "sharpe": 1.149252,
+        "max_drawdown": -0.205846
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.25787,
+          "sharpe": 1.238582
+        },
+        "10": {
+          "ann_return": 0.249041,
+          "sharpe": 1.202841
+        },
+        "25": {
+          "ann_return": 0.235901,
+          "sharpe": 1.149252
+        },
+        "50": {
+          "ann_return": 0.21428,
+          "sharpe": 1.06001
+        }
+      },
+      "mean_one_sided_turnover": 0.298023,
+      "avg_names": 12.0
+    },
+    {
+      "config": "u128:momentum_bucket:top_quintile",
+      "universe": "u128",
+      "variant": "momentum_bucket",
+      "selection": "top_quintile",
+      "n_periods": 118,
+      "gross": {
+        "ann_return": 0.216758,
+        "ann_vol": 0.168725,
+        "sharpe": 1.254323,
+        "max_drawdown": -0.163309,
+        "hit_rate": 0.652542
+      },
+      "net_25bps": {
+        "ann_return": 0.199216,
+        "sharpe": 1.166063,
+        "max_drawdown": -0.176271
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.216758,
+          "sharpe": 1.254323
+        },
+        "10": {
+          "ann_return": 0.209713,
+          "sharpe": 1.219012
+        },
+        "25": {
+          "ann_return": 0.199216,
+          "sharpe": 1.166063
+        },
+        "50": {
+          "ann_return": 0.181903,
+          "sharpe": 1.077873
+        }
+      },
+      "mean_one_sided_turnover": 0.245254,
+      "avg_names": 25.0
+    },
+    {
+      "config": "u296:mom_12_1:top_decile",
+      "universe": "u296",
+      "variant": "mom_12_1",
+      "selection": "top_decile",
+      "n_periods": 107,
+      "gross": {
+        "ann_return": 0.377954,
+        "ann_vol": 0.257371,
+        "sharpe": 1.384194,
+        "max_drawdown": -0.219038,
+        "hit_rate": 0.682243
+      },
+      "net_25bps": {
+        "ann_return": 0.357039,
+        "sharpe": 1.323078,
+        "max_drawdown": -0.223179
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.377954,
+          "sharpe": 1.384194
+        },
+        "10": {
+          "ann_return": 0.369553,
+          "sharpe": 1.35975
+        },
+        "25": {
+          "ann_return": 0.357039,
+          "sharpe": 1.323078
+        },
+        "50": {
+          "ann_return": 0.336411,
+          "sharpe": 1.261944
+        }
+      },
+      "mean_one_sided_turnover": 0.260877,
+      "avg_names": 27.700935
+    },
+    {
+      "config": "u296:mom_12_1:top_quintile",
+      "universe": "u296",
+      "variant": "mom_12_1",
+      "selection": "top_quintile",
+      "n_periods": 107,
+      "gross": {
+        "ann_return": 0.300091,
+        "ann_vol": 0.208757,
+        "sharpe": 1.371569,
+        "max_drawdown": -0.194556,
+        "hit_rate": 0.672897
+      },
+      "net_25bps": {
+        "ann_return": 0.283249,
+        "sharpe": 1.307215,
+        "max_drawdown": -0.196698
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.300091,
+          "sharpe": 1.371569
+        },
+        "10": {
+          "ann_return": 0.29333,
+          "sharpe": 1.345823
+        },
+        "25": {
+          "ann_return": 0.283249,
+          "sharpe": 1.307215
+        },
+        "50": {
+          "ann_return": 0.266605,
+          "sharpe": 1.2429
+        }
+      },
+      "mean_one_sided_turnover": 0.221229,
+      "avg_names": 55.981308
+    },
+    {
+      "config": "u296:mom_6_1:top_decile",
+      "universe": "u296",
+      "variant": "mom_6_1",
+      "selection": "top_decile",
+      "n_periods": 113,
+      "gross": {
+        "ann_return": 0.412068,
+        "ann_vol": 0.248677,
+        "sharpe": 1.524473,
+        "max_drawdown": -0.192429,
+        "hit_rate": 0.681416
+      },
+      "net_25bps": {
+        "ann_return": 0.382598,
+        "sharpe": 1.437302,
+        "max_drawdown": -0.197578
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.412068,
+          "sharpe": 1.524473
+        },
+        "10": {
+          "ann_return": 0.400212,
+          "sharpe": 1.489613
+        },
+        "25": {
+          "ann_return": 0.382598,
+          "sharpe": 1.437302
+        },
+        "50": {
+          "ann_return": 0.353688,
+          "sharpe": 1.350066
+        }
+      },
+      "mean_one_sided_turnover": 0.360743,
+      "avg_names": 27.769912
+    },
+    {
+      "config": "u296:mom_6_1:top_quintile",
+      "universe": "u296",
+      "variant": "mom_6_1",
+      "selection": "top_quintile",
+      "n_periods": 113,
+      "gross": {
+        "ann_return": 0.297728,
+        "ann_vol": 0.201695,
+        "sharpe": 1.404075,
+        "max_drawdown": -0.224521,
+        "hit_rate": 0.690265
+      },
+      "net_25bps": {
+        "ann_return": 0.274197,
+        "sharpe": 1.311942,
+        "max_drawdown": -0.239224
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.297728,
+          "sharpe": 1.404075
+        },
+        "10": {
+          "ann_return": 0.288268,
+          "sharpe": 1.367239
+        },
+        "25": {
+          "ann_return": 0.274197,
+          "sharpe": 1.311942
+        },
+        "50": {
+          "ann_return": 0.251055,
+          "sharpe": 1.219681
+        }
+      },
+      "mean_one_sided_turnover": 0.31113,
+      "avg_names": 56.141593
+    },
+    {
+      "config": "u296:mom_riskadj:top_decile",
+      "universe": "u296",
+      "variant": "mom_riskadj",
+      "selection": "top_decile",
+      "n_periods": 107,
+      "gross": {
+        "ann_return": 0.295477,
+        "ann_vol": 0.216244,
+        "sharpe": 1.313473,
+        "max_drawdown": -0.197074,
+        "hit_rate": 0.700935
+      },
+      "net_25bps": {
+        "ann_return": 0.272676,
+        "sharpe": 1.230076,
+        "max_drawdown": -0.200174
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.295477,
+          "sharpe": 1.313473
+        },
+        "10": {
+          "ann_return": 0.286312,
+          "sharpe": 1.280129
+        },
+        "25": {
+          "ann_return": 0.272676,
+          "sharpe": 1.230076
+        },
+        "50": {
+          "ann_return": 0.25024,
+          "sharpe": 1.146563
+        }
+      },
+      "mean_one_sided_turnover": 0.301876,
+      "avg_names": 27.700935
+    },
+    {
+      "config": "u296:mom_riskadj:top_quintile",
+      "universe": "u296",
+      "variant": "mom_riskadj",
+      "selection": "top_quintile",
+      "n_periods": 107,
+      "gross": {
+        "ann_return": 0.254921,
+        "ann_vol": 0.183588,
+        "sharpe": 1.337959,
+        "max_drawdown": -0.192956,
+        "hit_rate": 0.700935
+      },
+      "net_25bps": {
+        "ann_return": 0.237449,
+        "sharpe": 1.259946,
+        "max_drawdown": -0.194838
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.254921,
+          "sharpe": 1.337959
+        },
+        "10": {
+          "ann_return": 0.247905,
+          "sharpe": 1.306755
+        },
+        "25": {
+          "ann_return": 0.237449,
+          "sharpe": 1.259946
+        },
+        "50": {
+          "ann_return": 0.220199,
+          "sharpe": 1.181928
+        }
+      },
+      "mean_one_sided_turnover": 0.237521,
+      "avg_names": 55.981308
+    },
+    {
+      "config": "u296:momentum_bucket:top_decile",
+      "universe": "u296",
+      "variant": "momentum_bucket",
+      "selection": "top_decile",
+      "n_periods": 113,
+      "gross": {
+        "ann_return": 0.392285,
+        "ann_vol": 0.245787,
+        "sharpe": 1.481135,
+        "max_drawdown": -0.190842,
+        "hit_rate": 0.707965
+      },
+      "net_25bps": {
+        "ann_return": 0.368883,
+        "sharpe": 1.410047,
+        "max_drawdown": -0.205873
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.392285,
+          "sharpe": 1.481135
+        },
+        "10": {
+          "ann_return": 0.382881,
+          "sharpe": 1.452701
+        },
+        "25": {
+          "ann_return": 0.368883,
+          "sharpe": 1.410047
+        },
+        "50": {
+          "ann_return": 0.34584,
+          "sharpe": 1.338957
+        }
+      },
+      "mean_one_sided_turnover": 0.289326,
+      "avg_names": 27.769912
+    },
+    {
+      "config": "u296:momentum_bucket:top_quintile",
+      "universe": "u296",
+      "variant": "momentum_bucket",
+      "selection": "top_quintile",
+      "n_periods": 113,
+      "gross": {
+        "ann_return": 0.281174,
+        "ann_vol": 0.19527,
+        "sharpe": 1.376592,
+        "max_drawdown": -0.196902,
+        "hit_rate": 0.690265
+      },
+      "net_25bps": {
+        "ann_return": 0.262517,
+        "sharpe": 1.29957,
+        "max_drawdown": -0.210255
+      },
+      "cost_curve": {
+        "0": {
+          "ann_return": 0.281174,
+          "sharpe": 1.376592
+        },
+        "10": {
+          "ann_return": 0.273682,
+          "sharpe": 1.345783
+        },
+        "25": {
+          "ann_return": 0.262517,
+          "sharpe": 1.29957
+        },
+        "50": {
+          "ann_return": 0.244108,
+          "sharpe": 1.22256
+        }
+      },
+      "mean_one_sided_turnover": 0.248847,
+      "avg_names": 56.141593
+    }
+  ],
+  "benchmarks": {
+    "spy": {
+      "ann_return": 0.152282,
+      "ann_vol": 0.157328,
+      "sharpe": 0.984471,
+      "max_drawdown": -0.239272,
+      "hit_rate": 0.699115,
+      "n_periods": 113
+    },
+    "equal_weight_universe": {
+      "ann_return": 0.219391,
+      "ann_vol": 0.171112,
+      "sharpe": 1.253429,
+      "max_drawdown": -0.235055,
+      "hit_rate": 0.725664,
+      "n_periods": 113
+    },
+    "phase7j_broad_price_only_baseline_ic": 0.016942,
+    "phase7j_note": "Phase 7-J broad price-only baseline is an IC (selection skill), not a portfolio; the mom_12_1 variant here is its portfolio analogue."
+  },
+  "gate_matrix_summary": {
+    "pass": 23,
+    "fail": 0,
+    "warn": 3,
+    "safety_fail": false
+  },
+  "caveats": [
+    "Both universes are current-as-of constituents; long-only momentum results are survivorship-biased upward (Phase 7-K: no free survivorship-aware data foundation).",
+    "No point-in-time sector history: sector exposure is reported only, never neutralized.",
+    "Price history starts 2016 \u2014 no 2008-style crash in sample; drawdowns understate tail risk.",
+    "Transaction costs and the max-position cap are modelling assumptions, not a real book.",
+    "Regimes are descriptive diagnostics only \u2014 never used to select or weight."
+  ],
+  "artifacts": {
+    "report": "research/output/phase7l_momentum_risk_strategy_viability/phase7l_momentum_risk_strategy_viability.json",
+    "scoreboard": "research/output/phase7l_momentum_risk_strategy_viability/momentum_strategy_scoreboard.csv",
+    "cost_sensitivity": "research/output/phase7l_momentum_risk_strategy_viability/momentum_cost_sensitivity.csv",
+    "turnover": "research/output/phase7l_momentum_risk_strategy_viability/momentum_turnover_report.csv",
+    "drawdown": "research/output/phase7l_momentum_risk_strategy_viability/momentum_drawdown_report.csv",
+    "yearly_performance": "research/output/phase7l_momentum_risk_strategy_viability/momentum_yearly_performance.csv",
+    "regime_diagnostics": "research/output/phase7l_momentum_risk_strategy_viability/momentum_regime_diagnostics.csv",
+    "risk_exposure": "research/output/phase7l_momentum_risk_strategy_viability/momentum_risk_exposure_report.csv",
+    "gate_matrix": "research/output/phase7l_momentum_risk_strategy_viability/momentum_strategy_gate_matrix.csv",
+    "next_plan": "research/output/phase7l_momentum_risk_strategy_viability/phase7m_next_plan.json"
+  },
+  "safety": {
+    "research_only": true,
+    "is_paper_trader": false,
+    "is_production": false,
+    "is_deployment": false,
+    "live_data_used": false,
+    "network_used": false,
+    "paid_api_used": false,
+    "packages_installed": false,
+    "new_data_collected": false,
+    "factor_weight_optimization": false,
+    "new_alpha_factors": false,
+    "failed_composite_used_as_candidate": false,
+    "factor_sign_flipping": false,
+    "regime_selection_or_weighting": false,
+    "leverage_used": false,
+    "wrote_to_data_drive": false,
+    "trading_order_automation": false,
+    "paper_trader_gcp_broker_touched": false,
+    "committed": false,
+    "pushed": false
+  }
+}

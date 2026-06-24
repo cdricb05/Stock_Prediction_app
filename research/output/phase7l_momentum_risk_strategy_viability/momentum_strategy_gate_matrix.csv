@@ -1,0 +1,27 @@
+gate,status,detail
+strategies_evaluated,PASS,16 (universe x variant x selection) strategy configs simulated
+both_universes_tested,PASS,expected 4 variants x 2 selections x 2 universes = 16 configs; produced 16
+spy_benchmark_available,PASS,SPY Sharpe = 0.984471
+equal_weight_universe_benchmark_available,PASS,equal-weight universe Sharpe = 1.253429
+positive_net_sharpe_after_primary_cost,PASS,best net Sharpe @ 25.0bps = 1.437302
+beats_spy_risk_adjusted,PASS,best net Sharpe 1.437302 vs SPY 0.984471
+beats_equal_weight_universe_risk_adjusted,PASS,best net Sharpe 1.437302 vs eqw-universe 1.253429
+drawdown_acceptable,PASS,best net max drawdown -0.197578 (floor -0.6; <= SPY -0.239272 - 0.15)
+turnover_acceptable,PASS,mean one-sided turnover 0.360743 (ceiling 0.5)
+survivorship_caveat,WARN,both universes are current-as-of constituents (Phase 7-K: no free survivorship-aware data); long-only results are survivorship-biased upward
+sector_neutralization_caveat,WARN,"no point-in-time sector history; sector exposure is reported only, never neutralized"
+history_span_caveat,WARN,price history begins 2016; no 2008-style crash in sample — drawdowns understate tail risk
+local_data_only,PASS,only local price panels + repo-local macro CSVs read
+no_paid_api,PASS,no API called
+no_packages_installed,PASS,numpy + pandas only; nothing installed
+no_new_data_collected,PASS,no new data collected; existing local panels only
+no_factor_weight_optimization,PASS,equal weight within the momentum bucket; no weights fit
+no_new_alpha_factors,PASS,"only 12-1 / 6-1 / risk-adjusted momentum (reused, signs a priori)"
+failed_composite_excluded,PASS,the failed multifactor composite is NOT a candidate strategy
+no_factor_sign_flipping,PASS,momentum signs a priori; never flipped
+no_regime_selection_or_weighting,PASS,regimes used as diagnostics only
+no_leverage,PASS,"long-only, weights sum to 1, max position cap 0.10"
+no_trading_order_automation,PASS,no order/broker/automation logic
+no_paper_trader_gcp_broker,PASS,no Paper Trader / GCP / broker / deployment
+not_committed,PASS,not committed
+not_pushed,PASS,not pushed

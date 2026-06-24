@@ -1,0 +1,17 @@
+config,universe,variant,selection,avg_names,avg_max_weight,avg_effective_n,sector_map_coverage_fraction,top_sector,top_sector_avg_weight,note
+u128:mom_12_1:top_decile,u128,mom_12_1,top_decile,12.0,0.083333,12.0,1.0,Information Technology,0.357887,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:mom_12_1:top_quintile,u128,mom_12_1,top_quintile,25.0,0.04,25.0,1.0,Information Technology,0.304286,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:mom_6_1:top_decile,u128,mom_6_1,top_decile,12.0,0.083333,12.0,1.0,Information Technology,0.356638,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:mom_6_1:top_quintile,u128,mom_6_1,top_quintile,25.0,0.04,25.0,1.0,Information Technology,0.291864,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:mom_riskadj:top_decile,u128,mom_riskadj,top_decile,12.0,0.083333,12.0,1.0,Information Technology,0.289435,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:mom_riskadj:top_quintile,u128,mom_riskadj,top_quintile,25.0,0.04,25.0,1.0,Information Technology,0.257143,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:momentum_bucket:top_decile,u128,momentum_bucket,top_decile,12.0,0.083333,12.0,1.0,Information Technology,0.345339,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u128:momentum_bucket:top_quintile,u128,momentum_bucket,top_quintile,25.0,0.04,25.0,1.0,Information Technology,0.291525,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:mom_12_1:top_decile,u296,mom_12_1,top_decile,27.700935,0.036144,27.700935,0.342496,Information Technology,0.134976,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:mom_12_1:top_quintile,u296,mom_12_1,top_quintile,55.981308,0.017881,55.981308,0.389403,Information Technology,0.124836,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:mom_6_1:top_decile,u296,mom_6_1,top_decile,27.769912,0.036056,27.769912,0.345208,Information Technology,0.133098,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:mom_6_1:top_quintile,u296,mom_6_1,top_quintile,56.141593,0.017832,56.141593,0.38667,Information Technology,0.119945,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:mom_riskadj:top_decile,u296,mom_riskadj,top_decile,27.700935,0.036144,27.700935,0.424726,Information Technology,0.124172,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:mom_riskadj:top_quintile,u296,mom_riskadj,top_quintile,55.981308,0.017881,55.981308,0.440414,Information Technology,0.112157,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:momentum_bucket:top_decile,u296,momentum_bucket,top_decile,27.769912,0.036056,27.769912,0.3633,Information Technology,0.132183,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
+u296:momentum_bucket:top_quintile,u296,momentum_bucket,top_quintile,56.141593,0.017832,56.141593,0.393652,Information Technology,0.119274,exposure report only; current-as-of sector map (NOT point-in-time); no neutralization
