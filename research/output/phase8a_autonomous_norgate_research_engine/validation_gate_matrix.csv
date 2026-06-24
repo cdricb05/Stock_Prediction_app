@@ -1,0 +1,19 @@
+experiment_id,family,gate_positive_net,gate_beats_spy,gate_beats_ew_universe,gate_placebo_clean,gate_leakage_pass,gate_drawdown_ok,gate_turnover_ok,gate_enough_history,status,reason
+EXP01,momentum,True,False,False,True,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.736625 <= SPY 0.769587)
+EXP02,momentum,True,True,True,True,True,True,True,True,APPROVED,"positive net, beats SPY+EW, placebo-clean, dd/turnover acceptable"
+EXP03,momentum,True,False,False,False,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.601101 <= SPY 0.769587)
+EXP04,momentum,True,False,False,False,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.608758 <= SPY 0.769587)
+EXP05,momentum,True,False,False,False,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.574512 <= SPY 0.769587)
+EXP06,momentum,True,False,False,False,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.631898 <= SPY 0.769587)
+EXP07,reversal,True,False,False,False,True,False,False,True,REJECTED,underperforms SPY (net Sharpe 0.244346 <= SPY 0.769587)
+EXP08,reversal,True,False,False,False,True,False,False,True,REJECTED,underperforms SPY (net Sharpe 0.352563 <= SPY 0.769587)
+EXP09,reversal,True,False,False,False,True,False,False,True,REJECTED,underperforms SPY (net Sharpe 0.354494 <= SPY 0.769587)
+EXP10,volatility_liquidity,True,False,False,True,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.719588 <= SPY 0.769587)
+EXP11,volatility_liquidity,True,True,True,True,True,True,True,True,APPROVED,"positive net, beats SPY+EW, placebo-clean, dd/turnover acceptable"
+EXP12,volatility_liquidity,True,False,False,True,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.743238 <= SPY 0.769587)
+EXP13,breadth_relative_strength,True,False,False,False,True,False,True,True,REJECTED,underperforms SPY (net Sharpe 0.634437 <= SPY 0.758914)
+EXP14,breadth_relative_strength,True,False,False,False,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.668675 <= SPY 0.758914)
+EXP15,trend_breakout,True,False,False,False,True,True,False,True,REJECTED,underperforms SPY (net Sharpe 0.671006 <= SPY 0.786848)
+EXP16,trend_breakout,True,False,False,False,True,True,False,True,REJECTED,underperforms SPY (net Sharpe 0.607909 <= SPY 0.786848)
+EXP17,breadth_relative_strength,True,False,False,True,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.746073 <= SPY 0.769587)
+EXP18,breadth_relative_strength,True,False,False,True,True,True,True,True,REJECTED,underperforms SPY (net Sharpe 0.756384 <= SPY 0.769587)

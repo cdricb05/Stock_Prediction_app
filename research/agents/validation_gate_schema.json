@@ -1,0 +1,35 @@
+{
+  "validation_gate_schema_version": "1.0",
+  "phase": "8-A",
+  "description": "The fixed, a-priori validation gates the skeptic agent applies to every experiment. Thresholds are pre-registered and never relaxed to admit a favored signal. APPROVED requires ALL gates to pass.",
+  "primary_cost_bps": 25.0,
+  "cost_grid_bps": [0.0, 10.0, 25.0, 50.0],
+  "thresholds": {
+    "dd_floor": -0.60,
+    "dd_rel_spy": 0.15,
+    "turnover_ceiling_one_sided_monthly": 0.60,
+    "placebo_sharpe_margin": 0.25,
+    "min_periods_valid": 36,
+    "min_names_portfolio": 20
+  },
+  "gates": [
+    {"id": "gate_positive_net", "rule": "net Sharpe @25bps > 0 AND net ann return @25bps > 0", "required_for_approved": true},
+    {"id": "gate_beats_spy", "rule": "net Sharpe @25bps > SPY Sharpe over the same periods", "required_for_approved": true},
+    {"id": "gate_beats_ew_universe", "rule": "net Sharpe @25bps > equal-weight survivorship-aware universe Sharpe", "required_for_approved": true},
+    {"id": "gate_placebo_clean", "rule": "net Sharpe @25bps minus permuted-signal placebo Sharpe >= placebo_sharpe_margin", "required_for_approved": true},
+    {"id": "gate_leakage_pass", "rule": "signal uses only data <= t; forward return realized over (t, t+1]; structural check passes", "required_for_approved": true},
+    {"id": "gate_drawdown_ok", "rule": "net max drawdown >= dd_floor AND not more than dd_rel_spy deeper than SPY", "required_for_approved": true},
+    {"id": "gate_turnover_ok", "rule": "mean one-sided monthly turnover <= turnover_ceiling", "required_for_approved": true},
+    {"id": "gate_enough_history", "rule": "n monthly periods >= min_periods_valid", "required_for_approved": true}
+  ],
+  "status_rules": {
+    "APPROVED": "all required gates pass",
+    "WEAK": "positive net and beats SPY and placebo-clean, but fails EW-universe and/or drawdown and/or turnover",
+    "REJECTED": "fails after costs, underperforms SPY, fails placebo, or fails leakage",
+    "NEEDS_FULL_PANEL": "insufficient history or cross-section to judge"
+  },
+  "multiple_testing": {
+    "log_all_experiments": true,
+    "note": "The director discounts winners by the number of experiments tested; lucky single-winner results among many are not promotable without out-of-sample confirmation."
+  }
+}

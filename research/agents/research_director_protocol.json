@@ -1,0 +1,47 @@
+{
+  "research_director_protocol_version": "1.0",
+  "phase": "8-A",
+  "mandate": "Govern the research engine: set the agenda and budget, enforce anti-p-hacking, and make the binding stop/go decision. The director is the only role that may declare a signal ready and the only role that may approve any optimized weighting in a later phase.",
+  "experiment_budget": {
+    "max_experiments_per_cycle": 20,
+    "pre_registration_required": true,
+    "families_allowed_phase8a": ["momentum", "reversal", "trend_breakout", "volatility_liquidity", "breadth_relative_strength"],
+    "families_forbidden_phase8a": ["fundamentals", "optimized_ensemble_weights", "regime_activation_or_throttling", "ml_fit_beyond_deterministic_rules", "live_trading_signals"]
+  },
+  "anti_p_hacking_rules": [
+    "Every experiment is registered before its verdict.",
+    "Thresholds are fixed a priori; borderline results are never rounded into a pass.",
+    "Each signal must beat a permuted-signal placebo by the required margin.",
+    "Each signal must beat BOTH SPY and the equal-weight survivorship-aware universe.",
+    "Multiple-testing exposure is logged; a single lucky winner among many is not promotable without out-of-sample confirmation.",
+    "No factor-sign flipping; no fitting parameters to the outcome."
+  ],
+  "recommendation_vocabulary": [
+    "NORGATE_RESEARCH_ENGINE_READY",
+    "BUILD_FULL_NORGATE_PANEL_NEXT",
+    "SIGNAL_RESEARCH_REJECTED_ON_CLEAN_DATA",
+    "NORGATE_INTEGRATION_BLOCKED",
+    "AGENT_SYSTEM_CREATION_BLOCKED",
+    "NEEDS_RESEARCH_DIRECTOR_REVIEW",
+    "ERROR"
+  ],
+  "decision_rule": {
+    "NORGATE_RESEARCH_ENGINE_READY": "subagents created AND Norgate historical membership + active/delisted access works AND >=1 signal viable after costs on survivorship-aware data",
+    "BUILD_FULL_NORGATE_PANEL_NEXT": "subagents created AND Norgate access works BUT sample too small/slow for a valid judgment",
+    "SIGNAL_RESEARCH_REJECTED_ON_CLEAN_DATA": "subagents created AND Norgate access works BUT all signals fail",
+    "NORGATE_INTEGRATION_BLOCKED": "Norgate access fails or membership/delisted data cannot be retrieved",
+    "AGENT_SYSTEM_CREATION_BLOCKED": "agent creation fails",
+    "NEEDS_RESEARCH_DIRECTOR_REVIEW": "results ambiguous",
+    "ERROR": "unhandled failure"
+  },
+  "stop_conditions": [
+    "All signals fail on clean data -> stop signal hunting; escalate for an agenda change.",
+    "Norgate or agent-system blocking condition -> resolve before any further experiments.",
+    "No order/broker/automation work, no Paper Trader, no GCP, no deployment, ever, in this protocol.",
+    "No commit, no push."
+  ],
+  "escalation_rules": [
+    "Any agent may escalate an exception or dispute to the director; the director's decision is binding.",
+    "Optimized weighting (factors or ensemble) requires explicit, logged director approval and is out of scope for Phase 8A."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "manifest_version": "1.0",
+  "phase": "8-A",
+  "system": "Autonomous Norgate Research Engine",
+  "provider": "Norgate Data (local desktop database only)",
+  "global_forbidden_actions": [
+    "create or enable orders / broker calls / order staging",
+    "create or enable automation of any kind",
+    "touch Paper Trader",
+    "touch GCP / deployment",
+    "use any paid API other than local Norgate access",
+    "install packages",
+    "look-ahead / use data beyond the decision month",
+    "optimized factor or ensemble weights in Phase 8A",
+    "regime activation or throttling",
+    "ML fitting beyond deterministic score rules",
+    "use fundamentals in Phase 8A",
+    "hidden tuning / sign flipping / fitting to outcome",
+    "hallucinate data, fields, results, or API behavior",
+    "commit",
+    "push"
+  ],
+  "large_data_roots": [
+    "D:/Stock_Prediction_app_data/norgate",
+    "D:/Stock_Prediction_app_data/research_panels",
+    "D:/Stock_Prediction_app_data/model_artifacts"
+  ],
+  "agents": [
+    {"name": "quant-research-director", "objective": "Own agenda, experiment budget, stop/go decisions, anti-p-hacking, final recommendation.", "subagent_file": ".claude/agents/quant-research-director.md", "primary_outputs": ["research_director_decision.json"]},
+    {"name": "data-foundation-agent", "objective": "Norgate ingestion, normalization, data quality, survivorship audit, corporate actions, provider metadata.", "subagent_file": ".claude/agents/data-foundation-agent.md", "primary_outputs": ["data_quality_report.csv", "survivorship_audit.csv"]},
+    {"name": "universe-construction-agent", "objective": "Point-in-time tradable universes from membership, status, listing, liquidity.", "subagent_file": ".claude/agents/universe-construction-agent.md", "primary_outputs": ["universe_membership_panel.csv", "universe_coverage_report.csv"]},
+    {"name": "feature-library-agent", "objective": "Leak-safe versioned feature panels with documented lag, source, leakage constraint.", "subagent_file": ".claude/agents/feature-library-agent.md", "primary_outputs": ["feature_catalog.csv", "feature_lineage.json"]},
+    {"name": "momentum-signal-agent", "objective": "Momentum features and momentum strategy variants (12-1, 6-1, 3m, risk-adjusted, relative strength).", "subagent_file": ".claude/agents/momentum-signal-agent.md", "primary_outputs": ["momentum_signal_scoreboard.csv"]},
+    {"name": "reversal-signal-agent", "objective": "Short-term reversal / overreaction hypotheses, bounded deterministic variants.", "subagent_file": ".claude/agents/reversal-signal-agent.md", "primary_outputs": ["reversal_signal_scoreboard.csv"]},
+    {"name": "trend-breadth-signal-agent", "objective": "Trend, breakout, breadth, market-internal signals.", "subagent_file": ".claude/agents/trend-breadth-signal-agent.md", "primary_outputs": ["trend_breadth_signal_scoreboard.csv"]},
+    {"name": "volatility-liquidity-agent", "objective": "Volatility, liquidity, turnover, dollar-volume, crowding signals.", "subagent_file": ".claude/agents/volatility-liquidity-agent.md", "primary_outputs": ["volatility_liquidity_signal_scoreboard.csv"]},
+    {"name": "validation-skeptic-agent", "objective": "Disprove every signal: leakage, placebo, cost sensitivity, year stability, regime diagnostics, holdout, multiple-testing.", "subagent_file": ".claude/agents/validation-skeptic-agent.md", "primary_outputs": ["validation_gate_matrix.csv", "failed_experiments.csv", "approved_signals.csv"]},
+    {"name": "risk-portfolio-agent", "objective": "Approved signals -> portfolio simulations with position caps, turnover, costs, drawdown, beta, concentration, sector exposure, liquidity.", "subagent_file": ".claude/agents/risk-portfolio-agent.md", "primary_outputs": ["portfolio_risk_report.csv", "strategy_scoreboard.csv"]},
+    {"name": "meta-model-ensemble-agent", "objective": "Combine ONLY approved signals; correlation + ensemble readiness; no optimized weights in 8A.", "subagent_file": ".claude/agents/meta-model-ensemble-agent.md", "primary_outputs": ["signal_correlation_matrix.csv", "ensemble_readiness_report.csv"]},
+    {"name": "signal-publishing-agent", "objective": "Paper-research signal previews only; no orders/broker/automation.", "subagent_file": ".claude/agents/signal-publishing-agent.md", "primary_outputs": ["signal_preview_contract.csv"]}
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "from_phase": "8-A",
+  "recommendation": "NORGATE_RESEARCH_ENGINE_READY",
+  "next_phase": "8-B",
+  "next_steps": [
+    "Scale the survivorship-aware panel to the full Norgate S&P 500 Current & Past superset (and optionally Russell 3000) with the same point-in-time membership and GICS sectors.",
+    "Hand approved signals to risk-portfolio-agent for full portfolio risk reports (beta, concentration, sector exposure, liquidity-constrained sizing).",
+    "Run validation-skeptic holdout / sub-period stability and a multiple-testing correction across the full experiment registry before any ensemble."
+  ],
+  "hard_constraints": [
+    "Norgate is the only provider",
+    "large data on D: only",
+    "repo outputs are summaries only",
+    "do not install packages",
+    "no paid APIs other than local Norgate",
+    "no Paper Trader",
+    "no GCP",
+    "no broker/order/automation",
+    "no optimized ensemble weights in 8B without explicit director approval",
+    "do not commit",
+    "do not push"
+  ]
+}

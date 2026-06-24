@@ -1,0 +1,13 @@
+agent,role,subagent_file,contract,key_outputs
+quant-research-director,"Owns agenda, experiment budget, stop/go decisions, anti-p-hacking",.claude/agents/quant-research-director.md,research/agents/agent_contracts.json,research_director_decision.json
+data-foundation-agent,"Norgate ingestion, normalization, quality, survivorship audit",.claude/agents/data-foundation-agent.md,research/agents/agent_contracts.json,data_quality_report.csv; survivorship_audit.csv
+universe-construction-agent,Point-in-time universes from membership/status/liquidity,.claude/agents/universe-construction-agent.md,research/agents/agent_contracts.json,universe_membership_panel.csv; universe_coverage_report.csv
+feature-library-agent,Leak-safe versioned feature panels with lineage,.claude/agents/feature-library-agent.md,research/agents/agent_contracts.json,feature_catalog.csv; feature_lineage.json
+momentum-signal-agent,Momentum features and momentum strategy variants,.claude/agents/momentum-signal-agent.md,research/agents/agent_contracts.json,momentum_signal_scoreboard.csv
+reversal-signal-agent,Short-term reversal / overreaction hypotheses,.claude/agents/reversal-signal-agent.md,research/agents/agent_contracts.json,reversal_signal_scoreboard.csv
+trend-breadth-signal-agent,"Trend, breakout, breadth, market-internal signals",.claude/agents/trend-breadth-signal-agent.md,research/agents/agent_contracts.json,trend_breadth_signal_scoreboard.csv
+volatility-liquidity-agent,"Volatility, liquidity, turnover, crowding signals",.claude/agents/volatility-liquidity-agent.md,research/agents/agent_contracts.json,volatility_liquidity_signal_scoreboard.csv
+validation-skeptic-agent,Disproves signals: leakage/placebo/cost/stability/multiple-testing,.claude/agents/validation-skeptic-agent.md,research/agents/agent_contracts.json,validation_gate_matrix.csv; failed_experiments.csv; approved_signals.csv
+risk-portfolio-agent,Approved signals -> portfolio sims with risk constraints,.claude/agents/risk-portfolio-agent.md,research/agents/agent_contracts.json,portfolio_risk_report.csv; strategy_scoreboard.csv
+meta-model-ensemble-agent,Combine ONLY approved signals; no optimized weights in 8A,.claude/agents/meta-model-ensemble-agent.md,research/agents/agent_contracts.json,signal_correlation_matrix.csv; ensemble_readiness_report.csv
+signal-publishing-agent,Paper-research signal previews only; no orders/automation,.claude/agents/signal-publishing-agent.md,research/agents/agent_contracts.json,signal_preview_contract.csv

@@ -1,0 +1,58 @@
+{
+  "phase": "8-A",
+  "generated_utc": "2026-06-24T17:31:32Z",
+  "recommendation": "NORGATE_RESEARCH_ENGINE_READY",
+  "allowed_recommendations": [
+    "NORGATE_RESEARCH_ENGINE_READY",
+    "BUILD_FULL_NORGATE_PANEL_NEXT",
+    "SIGNAL_RESEARCH_REJECTED_ON_CLEAN_DATA",
+    "NORGATE_INTEGRATION_BLOCKED",
+    "AGENT_SYSTEM_CREATION_BLOCKED",
+    "NEEDS_RESEARCH_DIRECTOR_REVIEW",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "agents_created": true,
+    "norgate_available": true,
+    "historical_membership_ok": true,
+    "active_delisted_access_ok": true,
+    "panel_valid_for_judgment": true,
+    "n_experiments": 18,
+    "n_approved": 2,
+    "n_weak": 0,
+    "n_rejected": 16,
+    "n_needs_full_panel": 0
+  },
+  "anti_p_hacking": {
+    "n_experiments_registered": 18,
+    "all_experiments_pre_specified": true,
+    "placebo_required_margin": 0.25,
+    "leakage_check_required": true,
+    "must_beat_spy_and_ew_universe": true,
+    "borderline_never_rounded_up": true,
+    "n_approved": 2,
+    "n_rejected": 16,
+    "n_weak": 0
+  },
+  "best_approved_signal": {
+    "experiment_id": "EXP11",
+    "family": "volatility_liquidity",
+    "score_key": "vol_adj_mom",
+    "quantile": "top_quintile",
+    "net_sharpe_25bps": 0.838704,
+    "net_ann_return_25bps": 0.119581,
+    "net_max_drawdown_25bps": -0.520938,
+    "net_sharpe_minus_ew": 0.0637,
+    "net_sharpe_minus_placebo": 0.372752
+  },
+  "stop_conditions_honored": [
+    "no fundamentals",
+    "no optimized ensemble weights",
+    "no regime activation/throttling",
+    "no ML fitting beyond deterministic score rules",
+    "no live trading signals",
+    "no orders/broker/automation",
+    "no commit",
+    "no push"
+  ]
+}

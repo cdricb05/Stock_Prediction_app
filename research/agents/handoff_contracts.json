@@ -1,0 +1,34 @@
+{
+  "handoff_contracts_version": "1.0",
+  "phase": "8-A",
+  "description": "Directed handoff graph between agents. Each edge carries an artifact and a gate that MUST pass before the receiving agent may act.",
+  "gates": {
+    "data_quality_pass": "data-foundation-agent certified coverage, total-return adjustment, and survivorship retention",
+    "pit_membership_present": "point-in-time membership resolved from Norgate index_constituent_timeseries",
+    "leakage_pass": "every feature recomputable with future data zeroed (no look-ahead)",
+    "candidate_signal": "a signal scoreboard exists with net-of-cost metrics; not yet validated",
+    "all_gates_pass": "validation-skeptic-agent confirms every required gate passed",
+    "risk_acceptable": "risk-portfolio-agent confirms position cap, no leverage, liquidity feasibility",
+    "ensemble_ready": "approved signals are genuinely diversifying (not redundant)",
+    "preview_only": "publication is read-only with safety labels; no orders/automation",
+    "escalation": "unresolved dispute or exception routed to the research director"
+  },
+  "edges": [
+    {"from": "data-foundation-agent", "to": "universe-construction-agent", "artifact": "normalized panel + data_quality_report.csv", "gate": "data_quality_pass"},
+    {"from": "universe-construction-agent", "to": "feature-library-agent", "artifact": "universe_membership_panel.csv", "gate": "pit_membership_present"},
+    {"from": "feature-library-agent", "to": "momentum-signal-agent", "artifact": "feature_catalog.csv + feature_lineage.json", "gate": "leakage_pass"},
+    {"from": "feature-library-agent", "to": "reversal-signal-agent", "artifact": "feature_catalog.csv + feature_lineage.json", "gate": "leakage_pass"},
+    {"from": "feature-library-agent", "to": "trend-breadth-signal-agent", "artifact": "feature_catalog.csv + feature_lineage.json", "gate": "leakage_pass"},
+    {"from": "feature-library-agent", "to": "volatility-liquidity-agent", "artifact": "feature_catalog.csv + feature_lineage.json", "gate": "leakage_pass"},
+    {"from": "momentum-signal-agent", "to": "validation-skeptic-agent", "artifact": "momentum_signal_scoreboard.csv", "gate": "candidate_signal"},
+    {"from": "reversal-signal-agent", "to": "validation-skeptic-agent", "artifact": "reversal_signal_scoreboard.csv", "gate": "candidate_signal"},
+    {"from": "trend-breadth-signal-agent", "to": "validation-skeptic-agent", "artifact": "trend_breadth_signal_scoreboard.csv", "gate": "candidate_signal"},
+    {"from": "volatility-liquidity-agent", "to": "validation-skeptic-agent", "artifact": "volatility_liquidity_signal_scoreboard.csv", "gate": "candidate_signal"},
+    {"from": "validation-skeptic-agent", "to": "risk-portfolio-agent", "artifact": "approved_signals.csv", "gate": "all_gates_pass"},
+    {"from": "validation-skeptic-agent", "to": "quant-research-director", "artifact": "validation_gate_matrix.csv", "gate": "escalation"},
+    {"from": "risk-portfolio-agent", "to": "meta-model-ensemble-agent", "artifact": "strategy_scoreboard.csv + portfolio_risk_report.csv", "gate": "risk_acceptable"},
+    {"from": "meta-model-ensemble-agent", "to": "signal-publishing-agent", "artifact": "ensemble_readiness_report.csv", "gate": "ensemble_ready"},
+    {"from": "meta-model-ensemble-agent", "to": "quant-research-director", "artifact": "optimized-weighting request", "gate": "escalation"},
+    {"from": "signal-publishing-agent", "to": "quant-research-director", "artifact": "signal_preview_contract.csv", "gate": "preview_only"}
+  ]
+}

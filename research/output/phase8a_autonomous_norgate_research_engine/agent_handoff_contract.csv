@@ -1,0 +1,16 @@
+from_agent,to_agent,handoff_artifact,gate
+data-foundation-agent,universe-construction-agent,normalized panel + quality report,data_quality_pass
+universe-construction-agent,feature-library-agent,point-in-time universe panel,pit_membership_present
+feature-library-agent,momentum-signal-agent,leak-safe feature catalog,leakage_pass
+feature-library-agent,reversal-signal-agent,leak-safe feature catalog,leakage_pass
+feature-library-agent,trend-breadth-signal-agent,leak-safe feature catalog,leakage_pass
+feature-library-agent,volatility-liquidity-agent,leak-safe feature catalog,leakage_pass
+momentum-signal-agent,validation-skeptic-agent,momentum scoreboard,candidate_signal
+reversal-signal-agent,validation-skeptic-agent,reversal scoreboard,candidate_signal
+trend-breadth-signal-agent,validation-skeptic-agent,trend/breadth scoreboard,candidate_signal
+volatility-liquidity-agent,validation-skeptic-agent,vol/liquidity scoreboard,candidate_signal
+validation-skeptic-agent,risk-portfolio-agent,approved_signals.csv,all_gates_pass
+risk-portfolio-agent,meta-model-ensemble-agent,strategy scoreboard,risk_acceptable
+meta-model-ensemble-agent,signal-publishing-agent,ensemble readiness report,ensemble_ready
+signal-publishing-agent,quant-research-director,signal preview contract,preview_only
+validation-skeptic-agent,quant-research-director,validation gate matrix,escalation

@@ -1,0 +1,11 @@
+metric,value
+symbols_total,1363
+symbols_active,662
+symbols_delisted,701
+delisted_with_member_history,645
+ever_sp500_members,1298
+ever_member_delisted,645
+survivorship_dropout_fraction,0.4969
+membership_months_observed,438
+max_simultaneous_members,508
+median_simultaneous_members,501

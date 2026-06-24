@@ -1,0 +1,156 @@
+{
+  "contracts_version": "1.0",
+  "phase": "8-A",
+  "common": {
+    "no_hallucination_rule": "Assert only data/fields/results/API behavior present in a produced artifact; cite it. Unknown stays unknown.",
+    "no_hidden_tuning_rule": "All experiments pre-registered; thresholds fixed a priori; borderline never rounded up; no sign flipping or fitting to outcome.",
+    "no_production_order_automation_rule": "Research only. Never create, enable, stage, or recommend orders, broker calls, or automation.",
+    "failure_reporting": "On any failure, log function/target/error and use a documented fallback; escalate blocking conditions upward rather than guessing."
+  },
+  "agents": [
+    {
+      "name": "quant-research-director",
+      "objective": "Own agenda, budget, stop/go, anti-p-hacking, final recommendation.",
+      "allowed_actions": ["set agenda and experiment budget", "approve/reject/escalate signals", "emit research_director_decision.json"],
+      "forbidden_actions": ["approve a signal failing any gate", "round borderline up", "orders/automation", "commit", "push"],
+      "input_artifacts": ["validation_gate_matrix.csv", "approved_signals.csv", "failed_experiments.csv", "research_director_protocol.json"],
+      "output_artifacts": ["research_director_decision.json"],
+      "required_validation_gates": ["positive_net_after_25bps", "beats_spy", "beats_ew_universe", "placebo_clean", "leakage_pass", "drawdown_ok", "turnover_ok", "enough_history"],
+      "handoff_dependencies": ["validation-skeptic-agent -> quant-research-director"],
+      "escalation_rules": ["all unresolved disputes and exception requests terminate here"],
+      "stop_conditions": ["no approved signal AND no weak signal -> SIGNAL_RESEARCH_REJECTED_ON_CLEAN_DATA", "ambiguous -> NEEDS_RESEARCH_DIRECTOR_REVIEW"]
+    },
+    {
+      "name": "data-foundation-agent",
+      "objective": "Norgate ingestion, normalization, quality, survivorship audit.",
+      "allowed_actions": ["introspect norgatedata", "ingest price/volume/membership/classification", "normalize to monthly panel", "write large data to D: roots"],
+      "forbidden_actions": ["invent Norgate functions", "write large data off the D: roots", "silently drop delisted members", "paid API/network", "commit", "push"],
+      "input_artifacts": ["norgatedata (local)"],
+      "output_artifacts": ["data_quality_report.csv", "survivorship_audit.csv", "norgate_data_access_report.csv", "normalized panel (D:)"],
+      "required_validation_gates": ["total_return_adjustment_explicit", "month_end_resample_explicit", "delisted_retained_while_member"],
+      "handoff_dependencies": ["data-foundation-agent -> universe-construction-agent (data_quality_pass)"],
+      "escalation_rules": ["membership or delisted access unavailable -> NORGATE_INTEGRATION_BLOCKED to director"],
+      "stop_conditions": ["provider import fails", "no symbols returned by universe watchlist"]
+    },
+    {
+      "name": "universe-construction-agent",
+      "objective": "Point-in-time tradable universes.",
+      "allowed_actions": ["resolve PIT membership", "apply liquidity/tradability filters observable at/before t"],
+      "forbidden_actions": ["restrict to currently-listed names", "look-ahead membership", "orders/automation", "commit", "push"],
+      "input_artifacts": ["normalized panel", "membership panel", "dollar-volume panel", "metadata"],
+      "output_artifacts": ["universe_membership_panel.csv", "universe_coverage_report.csv"],
+      "required_validation_gates": ["pit_membership_matches_norgate", "filters_use_only_past_data"],
+      "handoff_dependencies": ["universe-construction-agent -> feature-library-agent (pit_membership_present)"],
+      "escalation_rules": ["membership unresolved for range -> mark periods ineligible, report to director"],
+      "stop_conditions": ["zero member-months observed"]
+    },
+    {
+      "name": "feature-library-agent",
+      "objective": "Leak-safe versioned features with lineage.",
+      "allowed_actions": ["build versioned features", "document lag/source/leakage", "run leak-safety checks"],
+      "forbidden_actions": ["forward-looking inputs", "fundamentals in 8A", "ship a non-leak-safe feature", "orders/automation", "commit", "push"],
+      "input_artifacts": ["normalized panel", "PIT universe", "dollar-volume panel", "sector map", "SPY series"],
+      "output_artifacts": ["feature_catalog.csv", "feature_lineage.json"],
+      "required_validation_gates": ["leakage_pass_per_feature", "lag_documented"],
+      "handoff_dependencies": ["feature-library-agent -> each signal agent (leakage_pass)"],
+      "escalation_rules": ["feature cannot be made leak-safe -> mark REJECTED with reason"],
+      "stop_conditions": ["no leak-safe feature can be produced"]
+    },
+    {
+      "name": "momentum-signal-agent",
+      "objective": "Momentum variants.",
+      "allowed_actions": ["compute 12-1/6-1/3m/risk-adjusted/relative-strength momentum", "form decile/quintile long-only books", "report net-of-cost metrics"],
+      "forbidden_actions": ["look-ahead", "optimized weights", "regime activation", "ML fit", "sign flipping", "orders/automation", "commit", "push"],
+      "input_artifacts": ["feature_catalog.csv", "PIT universe", "monthly panel", "SPY series"],
+      "output_artifacts": ["momentum_signal_scoreboard.csv"],
+      "required_validation_gates": ["leak_safe_features_only", "net_of_cost_10_25_50bps_reported"],
+      "handoff_dependencies": ["momentum-signal-agent -> validation-skeptic-agent (candidate_signal)"],
+      "escalation_rules": ["insufficient cross-section -> NEEDS_FULL_PANEL"],
+      "stop_conditions": ["never self-approves"]
+    },
+    {
+      "name": "reversal-signal-agent",
+      "objective": "Short-term reversal variants.",
+      "allowed_actions": ["compute 1-month loser/winner reversal variants", "form decile/quintile books", "report net-of-cost metrics incl. turnover"],
+      "forbidden_actions": ["look-ahead", "optimized weights", "regime activation", "ML fit", "orders/automation", "commit", "push"],
+      "input_artifacts": ["feature_catalog.csv", "PIT universe", "monthly panel"],
+      "output_artifacts": ["reversal_signal_scoreboard.csv"],
+      "required_validation_gates": ["leak_safe_features_only", "turnover_reported"],
+      "handoff_dependencies": ["reversal-signal-agent -> validation-skeptic-agent (candidate_signal)"],
+      "escalation_rules": ["degenerate/untestable variant -> REJECTED/NEEDS_FULL_PANEL"],
+      "stop_conditions": ["never self-approves"]
+    },
+    {
+      "name": "trend-breadth-signal-agent",
+      "objective": "Trend/breakout/breadth/relative-strength variants.",
+      "allowed_actions": ["compute uptrend/breakout/relative-strength/sector-relative signals", "form decile/quintile books"],
+      "forbidden_actions": ["look-ahead", "optimized weights", "regime activation", "ML fit", "impute missing sectors", "orders/automation", "commit", "push"],
+      "input_artifacts": ["feature_catalog.csv", "PIT universe", "monthly panel", "sector map", "SPY series"],
+      "output_artifacts": ["trend_breadth_signal_scoreboard.csv"],
+      "required_validation_gates": ["rolling_stats_use_only_past_data", "valid_pit_sector_map_for_sector_relative"],
+      "handoff_dependencies": ["trend-breadth-signal-agent -> validation-skeptic-agent (candidate_signal)"],
+      "escalation_rules": ["sector map unavailable -> sector-relative variants NEEDS_FULL_PANEL"],
+      "stop_conditions": ["never self-approves"]
+    },
+    {
+      "name": "volatility-liquidity-agent",
+      "objective": "Volatility/liquidity/crowding variants.",
+      "allowed_actions": ["compute vol-adjusted momentum", "liquidity-gated momentum", "report net metrics"],
+      "forbidden_actions": ["look-ahead", "optimized weights", "regime activation", "ML fit", "orders/automation", "commit", "push"],
+      "input_artifacts": ["feature_catalog.csv", "PIT universe", "monthly panel", "dollar-volume panel"],
+      "output_artifacts": ["volatility_liquidity_signal_scoreboard.csv"],
+      "required_validation_gates": ["vol_and_dollarvol_use_only_past_data", "liquidity_gate_from_pit_distribution"],
+      "handoff_dependencies": ["volatility-liquidity-agent -> validation-skeptic-agent (candidate_signal)"],
+      "escalation_rules": ["missing dollar-volume -> exclude from gate and log"],
+      "stop_conditions": ["never self-approves"]
+    },
+    {
+      "name": "validation-skeptic-agent",
+      "objective": "Disprove every signal; gatekeeper.",
+      "allowed_actions": ["run leakage/placebo/cost/year-stability/regime/holdout checks", "log multiple-testing exposure", "emit gate matrix + approved/failed lists"],
+      "forbidden_actions": ["approve a signal failing any gate", "round borderline up", "relax thresholds", "orders/automation", "commit", "push"],
+      "input_artifacts": ["candidate scoreboards", "PIT universe", "panel", "SPY series", "experiment_registry"],
+      "output_artifacts": ["validation_gate_matrix.csv", "failed_experiments.csv", "approved_signals.csv"],
+      "required_validation_gates": ["positive_net_after_25bps", "beats_spy", "beats_ew_universe", "placebo_clean", "leakage_pass", "drawdown_ok", "turnover_ok", "enough_history"],
+      "handoff_dependencies": ["validation-skeptic-agent -> risk-portfolio-agent (all_gates_pass)", "validation-skeptic-agent -> quant-research-director"],
+      "escalation_rules": ["high multiple-testing exposure -> flag lucky winners to director"],
+      "stop_conditions": ["default to rejection on any failed gate"]
+    },
+    {
+      "name": "risk-portfolio-agent",
+      "objective": "Approved signals -> portfolio risk sims.",
+      "allowed_actions": ["simulate long-only books", "measure beta/concentration/sector/liquidity", "report net metrics 10/25/50bps"],
+      "forbidden_actions": ["include non-approved signals", "leverage", "optimized weights", "regime activation", "orders/automation", "commit", "push"],
+      "input_artifacts": ["approved_signals.csv", "PIT universe", "monthly panel", "dollar-volume panel", "sector map", "SPY"],
+      "output_artifacts": ["portfolio_risk_report.csv", "strategy_scoreboard.csv"],
+      "required_validation_gates": ["position_cap_enforced", "no_leverage", "costs_on_full_traded_fraction", "liquidity_feasible"],
+      "handoff_dependencies": ["risk-portfolio-agent -> meta-model-ensemble-agent (risk_acceptable)"],
+      "escalation_rules": ["risk-bar breach -> report breach, do not silently cap away"],
+      "stop_conditions": ["strategy infeasible on liquidity -> mark and report"]
+    },
+    {
+      "name": "meta-model-ensemble-agent",
+      "objective": "Combine ONLY approved signals; readiness.",
+      "allowed_actions": ["compute correlation matrix", "equal-weight combination diagnostics", "emit readiness verdict"],
+      "forbidden_actions": ["optimized ensemble weights in 8A", "include non-approved signals", "regime activation", "ML fit", "orders/automation", "commit", "push"],
+      "input_artifacts": ["approved_signals.csv", "strategy_scoreboard.csv", "per-strategy return series"],
+      "output_artifacts": ["signal_correlation_matrix.csv", "ensemble_readiness_report.csv"],
+      "required_validation_gates": ["approved_signals_only", "equal_weight_only", "diversification_present"],
+      "handoff_dependencies": ["meta-model-ensemble-agent -> signal-publishing-agent (ensemble_ready)", "meta-model-ensemble-agent -> quant-research-director (weighting approval)"],
+      "escalation_rules": ["all approved signals redundant -> NOT_READY with evidence"],
+      "stop_conditions": ["fewer than 2 approved signals -> readiness deferred"]
+    },
+    {
+      "name": "signal-publishing-agent",
+      "objective": "Paper-research previews only.",
+      "allowed_actions": ["package approved/ready signals as read-only preview", "attach safety labels"],
+      "forbidden_actions": ["orders/broker/order-staging/automation", "Paper Trader/GCP/deployment", "re-score at publish", "commit", "push"],
+      "input_artifacts": ["approved_signals.csv", "ensemble_readiness_report.csv", "strategy_scoreboard.csv"],
+      "output_artifacts": ["signal_preview_contract.csv"],
+      "required_validation_gates": ["safety_labels_present", "only_approved_and_cleared_signals"],
+      "handoff_dependencies": ["signal-publishing-agent -> quant-research-director (preview_only)"],
+      "escalation_rules": ["any order/automation request -> refuse and log out-of-scope"],
+      "stop_conditions": ["nothing approved -> publish nothing"]
+    }
+  ]
+}

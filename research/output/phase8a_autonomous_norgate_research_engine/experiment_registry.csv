@@ -1,0 +1,19 @@
+experiment_id,owning_agent,family,quantile,gate,hypothesis,n_periods,status
+EXP01,momentum-signal-agent,momentum,top_decile,,12-1 momentum predicts cross-sectional returns,425,REJECTED
+EXP02,momentum-signal-agent,momentum,top_quintile,,12-1 momentum predicts cross-sectional returns,425,APPROVED
+EXP03,momentum-signal-agent,momentum,top_decile,,6-1 momentum predicts cross-sectional returns,431,REJECTED
+EXP04,momentum-signal-agent,momentum,top_quintile,,6-1 momentum predicts cross-sectional returns,431,REJECTED
+EXP05,momentum-signal-agent,momentum,top_decile,,3-month momentum predicts cross-sectional returns,434,REJECTED
+EXP06,momentum-signal-agent,momentum,top_quintile,,3-month momentum predicts cross-sectional returns,434,REJECTED
+EXP07,reversal-signal-agent,reversal,top_decile,,1-month losers rebound (short-term reversal),436,REJECTED
+EXP08,reversal-signal-agent,reversal,top_quintile,,1-month losers rebound (short-term reversal),436,REJECTED
+EXP09,reversal-signal-agent,reversal,top_decile,,1-month winners continue (anti-reversal control),436,REJECTED
+EXP10,volatility-liquidity-agent,volatility_liquidity,top_decile,,volatility-adjusted momentum improves risk-adjusted return,425,REJECTED
+EXP11,volatility-liquidity-agent,volatility_liquidity,top_quintile,,volatility-adjusted momentum improves risk-adjusted return,425,APPROVED
+EXP12,volatility-liquidity-agent,volatility_liquidity,top_decile,liq_gate,momentum among liquid names is more robust,425,REJECTED
+EXP13,trend-breadth-signal-agent,breadth_relative_strength,top_decile,rel_gate,names beating SPY (relative strength) outperform,389,REJECTED
+EXP14,trend-breadth-signal-agent,breadth_relative_strength,top_quintile,rel_gate,names beating SPY (relative strength) outperform,389,REJECTED
+EXP15,trend-breadth-signal-agent,trend_breakout,top_decile,uptrend_gate,uptrend names near 12m highs continue (breakout),430,REJECTED
+EXP16,trend-breadth-signal-agent,trend_breakout,top_quintile,uptrend_gate,uptrend names near 12m highs continue (breakout),430,REJECTED
+EXP17,trend-breadth-signal-agent,breadth_relative_strength,top_decile,,sector-relative (breadth) momentum predicts returns,425,REJECTED
+EXP18,trend-breadth-signal-agent,breadth_relative_strength,top_quintile,,sector-relative (breadth) momentum predicts returns,425,REJECTED

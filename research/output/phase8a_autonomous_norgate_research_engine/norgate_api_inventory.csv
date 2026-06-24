@@ -1,0 +1,57 @@
+function,kind,signature,used_in_phase8a
+PaddingType,class,(*values),False
+StockPriceAdjustmentType,class,(*values),False
+assetid,function,(symbol: str),False
+base_symbol,function,(symbol),False
+base_type,function,(symbol),False
+blank_check_company_timeseries,function,"(symbol, padding_setting=<PaddingType.NONE: 0>, start_date='1800-01-01', end_date='2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat='', timezone='')",False
+business_summary,function,(symbol),False
+capital_event_timeseries,function,"(symbol, padding_setting=<PaddingType.NONE: 0>, start_date: str = '1800-01-01', end_date: str = '2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat: str = '', timezone: str = '', format: str = '')",False
+classification,function,"(symbol, schemename: str, classificationresulttype: str)",True
+classification_at_level,function,"(symbol, schemename: str, classificationresulttype: str, level: int)",True
+corresponding_industry_index,function,"(symbol, indexfamilycode: str, level: int, indexreturntype: str)",False
+currency,function,(symbol),False
+database,function,(databasename: str),False
+database_symbols,function,(databasename: str),True
+databases,function,(),True
+dividend_yield_timeseries,function,"(symbol, padding_setting=<PaddingType.NONE: 0>, start_date='1800-01-01', end_date: str = '2999-01-01', limit: int = -1, timeseriesformat='numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat: str = '', timezone: str = '', format: str = '')",False
+domicile,function,(symbol),False
+exchange_name,function,(symbol),False
+exchange_name_full,function,(symbol),False
+financial_summary,function,(symbol),False
+first_notice_date,function,"(symbol, datetimeformat='iso', format='', tz='UTC')",False
+first_quoted_date,function,"(symbol, datetimeformat='iso', format='', tz='UTC')",True
+fundamental,function,"(symbol, field: str, datetimeformat: str = 'iso', format: str = '')",False
+futures_market_name,function,(symbol),False
+futures_market_session_contracts,function,(session_symbol),False
+futures_market_session_name,function,(symbol),False
+futures_market_session_symbol,function,(symbol),False
+futures_market_session_symbols,function,(),False
+futures_market_session_type,function,(sessionsymbol),False
+futures_market_symbol,function,(symbol),False
+futures_market_symbols,function,(),False
+index_constituent_timeseries,function,"(symbol, indexname: str, padding_setting=<PaddingType.NONE: 0>, start_date='1800-01-01', end_date: str = '2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat: str = '', timezone: str = '', format: str = '')",True
+last_database_update_time,function,(databasename),False
+last_price_update_time,function,(symbol),False
+last_quoted_date,function,"(symbol, datetimeformat='iso', format='', tz='UTC')",True
+lowest_ever_tick_size,function,(symbol),False
+major_exchange_listed_timeseries,function,"(symbol, padding_setting=<PaddingType.NONE: 0>, start_date='1800-01-01', end_date='2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat='', timezone='', format: str = '')",True
+margin,function,(symbol),False
+padding_status_timeseries,function,"(symbol, padding_setting=<PaddingType.NONE: 0>, start_date='1800-01-01', end_date='2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat: str = '', timezone: str = '', format: str = '')",False
+point_value,function,(symbol),False
+price_timeseries,function,"(symbol, stock_price_adjustment_setting=<StockPriceAdjustmentType.TOTALRETURN: 3>, padding_setting=<PaddingType.NONE: 0>, start_date: str = '1800-01-01', end_date: str = '2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', fields=None, datetimeformat: str = '', timezone: str = '', interval: str = 'D', format: str = '')",True
+second_last_quoted_date,function,"(symbol, datetimeformat='iso', format='', tz='UTC')",False
+security_name,function,(symbol),True
+session_type,function,(symbol),False
+sharesfloat,function,"(symbol, datetimeformat='iso', format='')",False
+sharesoutstanding,function,"(symbol, datetimeformat='iso', format='')",False
+status,function,(),True
+subtype1,function,(symbol),False
+subtype2,function,(symbol),False
+subtype3,function,(symbol),False
+symbol,function,(assetid: int),False
+tick_size,function,(symbol),False
+unadjusted_close_timeseries,function,"(symbol, padding_setting=<PaddingType.NONE: 0>, start_date='1800-01-01', end_date: str = '2999-01-01', limit: int = -1, timeseriesformat: str = 'numpy-recarray', pandas_dataframe=None, numpy_ndarray=None, numpy_recarray=None, datetimeformat: str = '', timezone: str = '', format: str = '')",False
+watchlist,function,(watchlistname: str),False
+watchlist_symbols,function,(watchlistname: str),True
+watchlists,function,(),True

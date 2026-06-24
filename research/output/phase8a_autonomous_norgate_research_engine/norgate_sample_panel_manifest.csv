@@ -1,0 +1,7 @@
+artifact,path,rows,cols,note
+monthly_close,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample/monthly_close_total_return.csv,,,large data on D: (not committed)
+membership,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample/membership_panel.csv,,,large data on D: (not committed)
+metadata,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample/metadata.csv,,,large data on D: (not committed)
+dollar_volume,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample/monthly_dollar_volume.csv,,,large data on D: (not committed)
+spy_monthly,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample/spy_monthly_total_return.csv,,,large data on D: (not committed)
+panel_shape,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample,438,1363,months 1990-01-31..2026-06-30
