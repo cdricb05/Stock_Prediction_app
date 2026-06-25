@@ -1,0 +1,7 @@
+variant,n_events,n_recent_events,lift_vs_control,ev_after_25bps,ev_after_50bps,worst_decile_mean,recent_lift_vs_control,hit_rate,beats_spy_active,beats_cash_active,ev_improved_vs_baseline,worst_decile_improved,reason
+S8E-011_baseline,11881,6320,0.004035,0.001276,-0.003724,-0.157763,0.003413,0.523272,False,True,,,
+S8E-011+earn_confirm,692,394,0.005328,0.003779,-0.001221,-0.155446,0.004877,0.543353,False,True,True,True,
+S8E-011+earn_confirm+remove_bottom_liquidity_quintile,588,329,0.007348,0.003834,-0.001166,-0.160202,0.008392,0.542517,False,True,True,False,
+S8E-011+earn_confirm+remove_extreme_beta_tails,146,101,-0.005161,0.005038,3.8e-05,-0.118432,-0.014875,0.561644,True,True,True,True,
+S8E-011+earn_confirm+remove_top_volatility_quintile,416,246,-0.000571,0.001242,-0.003758,-0.128618,-0.002461,0.550481,True,True,False,True,
+S8E-011+earn_confirm+remove_bottom_liq_and_top_vol,347,199,-0.00057,-0.000134,-0.005134,-0.135227,-0.000185,0.536023,False,True,False,True,

@@ -1,0 +1,10 @@
+exp_id,family,driver,cohort,is_challenge,n_events,n_matched_control,triggered_mean,control_mean,lift_vs_control,hit_rate,control_hit_rate,ev_after_25bps,recent_lift_vs_control
+S8G-C20,C_earnings_surprise_x_sensitivity,earnings_surprise,cohort_surprise_sensitive,False,2127,1443,-0.00092,0.001106,-0.001178,0.496004,0.492743,-0.00592,-0.004109
+S8G-C05,C_earnings_surprise_x_sensitivity,earnings_surprise,cohort_surprise_sensitive,False,723,484,0.00082,-0.00071,0.003655,0.500692,0.492813,-0.00418,0.001663
+S8G-C60,C_earnings_surprise_x_sensitivity,earnings_surprise,cohort_surprise_sensitive,False,2104,1427,0.00277,0.003137,-5.3e-05,0.492871,0.491605,-0.00223,-0.003192
+S8G-B20,B_analyst_revision_x_sensitivity,analyst_revision_proxy,cohort_surprise_sensitive,False,1345,901,0.001213,0.001132,0.001575,0.510037,0.492743,-0.003787,-0.001846
+S8G-F20,F_s8e011_plus_external_confirmation,rates,cohort_rates_neg,False,692,316,0.008779,-0.003917,0.005328,0.543353,0.492688,0.003779,0.004877
+S8G-H20,H_sec_filings_x_sensitivity,sec_filing,cohort_filing_active,False,2202,1451,-0.000839,0.001233,-0.003044,0.500908,0.492756,-0.005839,-0.001362
+S8G-901,C_earnings_surprise_x_sensitivity,earnings_surprise,,True,6051,4012,0.001727,0.001483,0.001933,0.50157,0.492714,-0.003273,-2.2e-05
+S8G-902,C_earnings_surprise_x_sensitivity,earnings_surprise,cohort_surprise_sensitive,True,440,299,0.004968,0.000161,0.003752,0.529545,0.492743,-3.2e-05,0.003656
+S8G-903,F_s8e011_plus_external_confirmation,rates,,True,2974,1951,0.001055,0.002262,-0.000275,0.494956,0.492769,-0.003945,0.00144

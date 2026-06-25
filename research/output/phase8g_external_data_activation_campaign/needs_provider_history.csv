@@ -1,0 +1,1 @@
+exp_id,cycle,family,agent,driver,cohort,is_challenge,real_external_data,needs_provider,status,promotion,n_events,n_recent_events,lift_vs_control,ev_after_25bps,worst_decile_mean,recent_lift_vs_control,hit_rate,reason

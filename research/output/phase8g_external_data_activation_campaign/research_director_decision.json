@@ -1,0 +1,57 @@
+{
+  "phase": "8-G",
+  "generated_utc": "2026-06-25T03:31:32Z",
+  "recommendation": "PROMISING_EXTERNAL_SIGNAL_FOUND",
+  "allowed_recommendations": [
+    "CONFIRMED_EXTERNAL_SIGNAL_FOUND",
+    "PROMISING_EXTERNAL_SIGNAL_FOUND",
+    "PROMISING_NEEDS_PROVIDER_HISTORY",
+    "NEEDS_NEWS_SENTIMENT_PROVIDER_DATA",
+    "NEEDS_ANALYST_REVISION_PROVIDER_DATA",
+    "NEEDS_EXTERNAL_PROVIDER_DATA",
+    "EXTERNAL_SIGNAL_RESEARCH_REJECTED",
+    "PROVIDER_ACCESS_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_confirmed": 0,
+    "n_promising": 1,
+    "n_needs_history": 0,
+    "n_needs_provider": 3,
+    "n_testable_scored": 9,
+    "any_provider_key": false
+  },
+  "thesis": "real external event data x ticker sensitivity x market context (no-key activation)",
+  "s8e011_confirmation": {
+    "baseline_ev_after_25bps": 0.001276,
+    "confirmed_ev_after_25bps": 0.003779,
+    "baseline_worst_decile": -0.157763,
+    "confirmed_worst_decile": -0.155446,
+    "confirmation_improves_ev": true,
+    "confirmed_beats_spy_active": false
+  },
+  "anti_p_hacking": {
+    "all_pre_registered": true,
+    "thresholds_fixed_a_priori": true,
+    "cohort_estimated_from_prior_reactivity": true,
+    "challenge_fraction": 0.3333,
+    "external_data_never_faked": true,
+    "revision_proxy_capped_below_confirmed": true
+  },
+  "stop_conditions_honored": [
+    "local data first; real data activated before asking for providers",
+    "no factor-sign flipping",
+    "no weight optimization",
+    "no regime activation",
+    "no ML fitting",
+    "external data never faked",
+    "revision proxy labelled + capped",
+    "no secrets printed",
+    "no live trading signals",
+    "no broker/orders/automation",
+    "no Paper Trader / GCP / deployment",
+    "failed experiments not hidden",
+    "no commit",
+    "no push"
+  ]
+}

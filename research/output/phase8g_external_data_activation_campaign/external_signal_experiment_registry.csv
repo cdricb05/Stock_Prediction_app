@@ -1,0 +1,13 @@
+exp_id,cycle,family,agent,driver,cohort,is_challenge,real_external_data,needs_provider,hypothesis,pre_registered
+S8G-C20,1,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_surprise_sensitive,False,True,False,Positive EPS surprise in a surprise-sensitive name drifts up 20d (PEAD).,True
+S8G-C05,1,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_surprise_sensitive,False,True,False,Large (>=10%) positive EPS surprise in a surprise-sensitive name drifts up 5d.,True
+S8G-C60,1,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_surprise_sensitive,False,True,False,Positive EPS surprise in a surprise-sensitive name drifts up 60d.,True
+S8G-B20,1,B_analyst_revision_x_sensitivity,analyst-revision-agent,analyst_revision_proxy,cohort_surprise_sensitive,False,True,False,Improving surprise (revision proxy) in a surprise-sensitive name drifts up 20d.,True
+S8G-F20,1,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,rates,cohort_rates_neg,False,True,False,S8E-011 (rates sell-off x short-duration cohort) CONFIRMED by a recent positive earnings surprise — does real external confirmation lift the macro lead?,True
+S8G-H20,1,H_sec_filings_x_sensitivity,earnings-event-agent,sec_filing,cohort_filing_active,False,True,False,A fresh SEC filing in a surprise-sensitive name precedes drift over 20d.,True
+S8G-901,1,C_earnings_surprise_x_sensitivity,validation-skeptic-agent,earnings_surprise,,True,True,False,"CHALLENGE/placebo: positive surprise, NO cohort — isolates cohort lift.",True
+S8G-902,1,C_earnings_surprise_x_sensitivity,validation-skeptic-agent,earnings_surprise,cohort_surprise_sensitive,True,True,False,"CHALLENGE: NEGATIVE surprise + surprise-sensitive cohort — wrong sign, must not drift up.",True
+S8G-903,1,F_s8e011_plus_external_confirmation,validation-skeptic-agent,rates,,True,True,False,"CHALLENGE/placebo: rates sell-off + earnings confirm, NO short-duration cohort — isolates the cohort contribution to the confirmed lead.",True
+S8G-A01,1,A_news_sentiment_x_sensitivity,news-sentiment-agent,news_sentiment,sentiment_sensitive,False,False,True,Positive news-sentiment shock x sentiment-sensitive name (GDELT attempted; rate-limited).,True
+S8G-D01,1,D_options_iv_x_sensitivity,options-signal-agent,options_iv,options_informative,False,False,True,"IV/skew shift x options-informative name — no local data, no key.",True
+S8G-E01,1,E_short_interest_x_sensitivity,short-interest-agent,short_interest,squeeze_sensitive,False,False,True,Rising short interest x squeeze-sensitive name — FINRA biweekly is free (next step).,True

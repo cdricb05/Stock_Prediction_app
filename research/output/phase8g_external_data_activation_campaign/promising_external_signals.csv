@@ -1,0 +1,2 @@
+exp_id,cycle,family,agent,driver,cohort,is_challenge,real_external_data,needs_provider,status,promotion,n_events,n_recent_events,lift_vs_control,ev_after_25bps,worst_decile_mean,recent_lift_vs_control,hit_rate,reason
+S8G-F20,1,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,rates,cohort_rates_neg,False,True,False,REJECTED,PROMISING_EXTERNAL_SIGNAL,692,394,0.005328,0.003779,-0.155446,0.004877,0.543353,"insufficient events (total=692, recent=394)"

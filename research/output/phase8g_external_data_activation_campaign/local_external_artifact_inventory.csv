@@ -1,0 +1,4 @@
+artifact,family,path,exists,n_rows,n_tickers,kind,point_in_time_field,point_in_time_usable
+earnings_surprise,C_earnings_surprise_x_sensitivity,C:/Users/binis/Stock_Prediction_app_push/research/output/phase3m_earnings_estimates_signal_gate/earnings_events_universe.csv,True,8390,75,"EPS actual/estimate/surprise, PIT",availability_date,True
+earnings_features,B_analyst_revision_x_sensitivity,C:/Users/binis/Stock_Prediction_app_push/research/output/phase3m_earnings_estimates_signal_gate/earnings_features_universe.csv,True,8363,75,trailing surprise + surprise_acceleration + estimate_revision_proxy (PROXY),availability_date,True
+sec_filings_sample,H_sec_filings_x_sensitivity,C:/Users/binis/Stock_Prediction_app_push/research/output/phase3f_sec_fundamentals_sample/fundamentals_sample.csv,True,368,5,SEC EDGAR 10-K/10-Q filing dates,availability_datetime,True

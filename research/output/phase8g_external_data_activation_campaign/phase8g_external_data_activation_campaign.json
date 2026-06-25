@@ -1,0 +1,176 @@
+{
+  "phase": "8-G",
+  "objective": "Activate real external-event data that is reachable without a paid key (local earnings-surprise cache, a labelled analyst-revision proxy, local + no-key SEC filings), join it leak-safe to the persisted sensitivity grid, and test earnings/revision/filing x ticker-sensitivity and S8E-011 + external confirmation through the IDENTICAL fixed 8-E gate to learn whether real external data confirms a sensitivity lead. Research only; external data never faked.",
+  "generated_utc": "2026-06-25T03:31:32Z",
+  "recommendation": "PROMISING_EXTERNAL_SIGNAL_FOUND",
+  "allowed_recommendations": [
+    "CONFIRMED_EXTERNAL_SIGNAL_FOUND",
+    "PROMISING_EXTERNAL_SIGNAL_FOUND",
+    "PROMISING_NEEDS_PROVIDER_HISTORY",
+    "NEEDS_NEWS_SENTIMENT_PROVIDER_DATA",
+    "NEEDS_ANALYST_REVISION_PROVIDER_DATA",
+    "NEEDS_EXTERNAL_PROVIDER_DATA",
+    "EXTERNAL_SIGNAL_RESEARCH_REJECTED",
+    "PROVIDER_ACCESS_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_confirmed": 0,
+    "n_promising": 1,
+    "n_needs_history": 0,
+    "n_needs_provider": 3,
+    "n_testable_scored": 9,
+    "any_provider_key": false
+  },
+  "question_answered": "Does real external event data turn a promising sensitivity lead into a confirmed signal?",
+  "agents": [
+    "quant-research-director",
+    "data-foundation-agent",
+    "universe-construction-agent",
+    "feature-library-agent",
+    "external-data-agent",
+    "news-sentiment-agent",
+    "analyst-revision-agent",
+    "earnings-event-agent",
+    "options-signal-agent",
+    "short-interest-agent",
+    "transcript-tone-agent",
+    "sensitivity-signal-agent",
+    "validation-skeptic-agent",
+    "risk-portfolio-agent",
+    "model-contribution-agent"
+  ],
+  "families": [
+    "C_earnings_surprise_x_sensitivity",
+    "B_analyst_revision_x_sensitivity",
+    "A_news_sentiment_x_sensitivity",
+    "D_options_iv_x_sensitivity",
+    "E_short_interest_x_sensitivity",
+    "F_s8e011_plus_external_confirmation",
+    "H_sec_filings_x_sensitivity"
+  ],
+  "panel": {
+    "panel_ok": true,
+    "n_symbols": 1254,
+    "n_obs": 855109,
+    "date_range": [
+      "1993-07-30",
+      "2026-05-22"
+    ]
+  },
+  "activation": {
+    "earnings_event_obs": 8293,
+    "surprise_sensitive_obs": 2902,
+    "recent_pos_obs": 49976,
+    "filing_event_obs": 5926,
+    "live_external_collection_ran": true,
+    "news_sentiment_activated": false
+  },
+  "provider": {
+    "any_key_present": false,
+    "n_keys_checked": 12,
+    "readiness": {
+      "A_news_sentiment_x_sensitivity": false,
+      "B_analyst_revision_x_sensitivity": false,
+      "C_earnings_surprise_x_sensitivity": false,
+      "D_options_iv_x_sensitivity": false,
+      "E_short_interest_x_sensitivity": false,
+      "F_s8e011_plus_external_confirmation": false
+    }
+  },
+  "s8e011_confirmation": {
+    "baseline_ev_after_25bps": 0.001276,
+    "confirmed_ev_after_25bps": 0.003779,
+    "baseline_worst_decile": -0.157763,
+    "confirmed_worst_decile": -0.155446,
+    "confirmation_improves_ev": true,
+    "confirmed_beats_spy_active": false
+  },
+  "experiments": {
+    "n_total": 12,
+    "confirmed": [],
+    "promising": [
+      "S8G-F20"
+    ],
+    "needs_history": [],
+    "needs_provider": [
+      "S8G-A01",
+      "S8G-D01",
+      "S8G-E01"
+    ],
+    "rejected": [
+      "S8G-C20",
+      "S8G-C05",
+      "S8G-C60",
+      "S8G-B20",
+      "S8G-H20",
+      "S8G-901",
+      "S8G-902",
+      "S8G-903"
+    ]
+  },
+  "budget": {
+    "experiments_registered": 12,
+    "max_total_experiments": 250,
+    "n_testable": 9,
+    "n_needs_provider": 3,
+    "n_challenge": 3,
+    "challenge_fraction": 0.3333,
+    "challenge_ok": true,
+    "per_family_counts": {
+      "C_earnings_surprise_x_sensitivity": 5,
+      "B_analyst_revision_x_sensitivity": 1,
+      "F_s8e011_plus_external_confirmation": 2,
+      "H_sec_filings_x_sensitivity": 1,
+      "A_news_sentiment_x_sensitivity": 1,
+      "D_options_iv_x_sensitivity": 1,
+      "E_short_interest_x_sensitivity": 1
+    },
+    "per_family_ok": true,
+    "within_total_budget": true,
+    "all_pre_registered": true
+  },
+  "multiple_testing": {
+    "n_experiments_total": 12,
+    "n_testable_scored": 9,
+    "n_needs_provider": 3,
+    "base_lift_hurdle": 0.0015,
+    "deflated_lift_hurdle": 0.0015,
+    "method": "8-E fixed gate; cohort-aware matched control (same period/ctrl_bucket, NOT in cohort) + recent 2015-2026 + walk-forward; challenges showing lift flagged",
+    "n_confirmed": 0,
+    "n_promising": 1,
+    "n_needs_history": 0,
+    "challenge_fraction": 0.3333,
+    "challenges_showing_lift": [
+      "S8G-901",
+      "S8G-902"
+    ]
+  },
+  "safety": {
+    "research_only": true,
+    "local_first": true,
+    "provider_keys_detected": false,
+    "secrets_printed": false,
+    "no_key_public_collection_ran": true,
+    "news_sentiment_faked": false,
+    "revision_is_labelled_proxy_not_confirmed": true,
+    "mock_fixtures_excluded_from_scoreboard": true,
+    "external_data_faked": false,
+    "point_in_time_join": true,
+    "thresholds_fixed_a_priori": true,
+    "packages_installed": false,
+    "large_data_only_on_d": true,
+    "optimized_weights": false,
+    "factor_signs_modified_after_results": false,
+    "regime_activation": false,
+    "ml_fit": false,
+    "failed_experiments_hidden": false,
+    "live_trading_signals": false,
+    "broker_or_orders": false,
+    "automation": false,
+    "paper_trader_touched": false,
+    "gcp_touched": false,
+    "committed": false,
+    "pushed": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "from_phase": "8-G",
+  "recommendation": "PROMISING_EXTERNAL_SIGNAL_FOUND",
+  "next_phase": "8-H",
+  "next_steps": [
+    "Acquire a true analyst-revision feed (FMP/Finnhub/Zacks) and re-run family B with real consensus revisions (replaces the local proxy); identical fixed gate.",
+    "Activate FINRA biweekly short interest (free, no key) -> family E.",
+    "Acquire a timestamped news/sentiment history (GDELT bulk or NewsAPI) -> family A.",
+    "Broaden the daily universe (S&P 1500 / Russell 3000) and re-run the earnings PEAD x surprise-sensitivity setups for more events on the fixed gate.",
+    "Expand the no-key SEC EDGAR filing pull to more tickers/years -> family H at scale."
+  ],
+  "provider_priority": [
+    "analyst_revision_real",
+    "short_interest_finra",
+    "news_sentiment",
+    "options_iv",
+    "transcript_tone"
+  ],
+  "provider_readiness": {
+    "A_news_sentiment_x_sensitivity": false,
+    "B_analyst_revision_x_sensitivity": false,
+    "C_earnings_surprise_x_sensitivity": false,
+    "D_options_iv_x_sensitivity": false,
+    "E_short_interest_x_sensitivity": false,
+    "F_s8e011_plus_external_confirmation": false
+  },
+  "hard_constraints": [
+    "local data first; Norgate + FRED for price/macro",
+    "do not install packages",
+    "large data on D: only; repo gets summaries/panels",
+    "never print secrets",
+    "bounded no-key collection; point-in-time joins only",
+    "no Paper Trader / GCP / deployment",
+    "no broker/order/automation",
+    "no live trading signals",
+    "no weight optimization",
+    "no factor-sign flipping",
+    "no regime activation",
+    "external data never faked",
+    "do not hide failed experiments",
+    "do not commit",
+    "do not push"
+  ]
+}
