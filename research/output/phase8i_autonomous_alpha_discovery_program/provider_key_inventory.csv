@@ -1,0 +1,13 @@
+key_env_var,present,feeds_families,detection
+ALPHAVANTAGE_API_KEY,False,A_news_sentiment_x_sensitivity;B_analyst_revision_x_sensitivity;C_earnings_surprise_x_sensitivity,os.environ membership (value never read)
+FINNHUB_API_KEY,False,B_analyst_revision_x_sensitivity;C_earnings_surprise_x_sensitivity;E_short_interest_x_sensitivity;F_s8e011_plus_external_confirmation,os.environ membership (value never read)
+FMP_API_KEY,False,B_analyst_revision_x_sensitivity;C_earnings_surprise_x_sensitivity;E_short_interest_x_sensitivity;F_s8e011_plus_external_confirmation,os.environ membership (value never read)
+POLYGON_API_KEY,False,A_news_sentiment_x_sensitivity;D_options_iv_x_sensitivity,os.environ membership (value never read)
+BENZINGA_API_KEY,False,A_news_sentiment_x_sensitivity,os.environ membership (value never read)
+EODHD_API_KEY,False,A_news_sentiment_x_sensitivity;C_earnings_surprise_x_sensitivity,os.environ membership (value never read)
+INTRINIO_API_KEY,False,B_analyst_revision_x_sensitivity;D_options_iv_x_sensitivity,os.environ membership (value never read)
+TIINGO_API_KEY,False,,os.environ membership (value never read)
+NEWSAPI_KEY,False,A_news_sentiment_x_sensitivity,os.environ membership (value never read)
+IEX_CLOUD_API_KEY,False,D_options_iv_x_sensitivity,os.environ membership (value never read)
+SEC_API_KEY,False,,os.environ membership (value never read)
+QUANDL_API_KEY,False,E_short_interest_x_sensitivity,os.environ membership (value never read)

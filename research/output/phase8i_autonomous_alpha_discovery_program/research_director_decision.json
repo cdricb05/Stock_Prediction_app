@@ -1,0 +1,109 @@
+{
+  "phase": "8-I",
+  "generated_utc": "2026-06-25T13:51:25Z",
+  "recommendation": "PROMISING_ALPHA_SIGNAL_FOUND",
+  "allowed_recommendations": [
+    "CONFIRMED_ALPHA_SIGNAL_FOUND",
+    "PROMISING_ALPHA_SIGNAL_FOUND",
+    "PROMISING_BUT_PROVIDER_LIMITED",
+    "PROVIDER_REQUIRED_FOR_NEXT_BREAKTHROUGH",
+    "EXTERNAL_DATA_EXPANSION_REQUIRED",
+    "ALPHA_RESEARCH_REJECTED_ON_AVAILABLE_DATA",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "allowed_alpha_statuses": [
+    "CONFIRMED_ALPHA_SIGNAL",
+    "PROMISING_ALPHA_SIGNAL",
+    "PROVIDER_REQUIRED",
+    "REJECTED",
+    "BLOCKED"
+  ],
+  "decision_detail": {
+    "n_testable_scored": 49,
+    "n_confirmed": 0,
+    "n_promising": 5,
+    "n_clean_promising": 1,
+    "n_provider_limited_promising": 4,
+    "n_provider_required": 3,
+    "any_provider_key": false,
+    "confirmed_ids": [],
+    "clean_promising_ids": [
+      "S8E-011"
+    ],
+    "provider_limited_ids": [
+      "S8G-F20",
+      "S8I-C-SECLEAD-20",
+      "S8I-C-HIGHBETA-20",
+      "S8I-C-VOLSENS-20"
+    ]
+  },
+  "thesis": "combinatorial alpha: external event x ticker sensitivity x context x confirmation",
+  "best_current_path": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+  "top_next_options": [
+    {
+      "rank": 1,
+      "option": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+      "lever": "local_fixed_filters",
+      "needs_provider": false,
+      "prob_success": 0.6,
+      "ceiling": "medium",
+      "why": "fixed beta filter already flips beats-SPY-active True and clears the -12% tail on the confirmed variant; the open question is stability on more events"
+    },
+    {
+      "rank": 2,
+      "option": "Acquire a BROAD multi-ticker earnings + analyst-revision provider feed (FMP/Finnhub/Zacks/EODHD across S&P 500/1500) and rebuild a chunked weekly sensitivity grid on D: so universe and events expand together; re-run F20 + the C/R families on the fixed gate.",
+      "lever": "provider_earnings_revision",
+      "needs_provider": true,
+      "prob_success": 0.5,
+      "ceiling": "high",
+      "why": "the ONLY lever that lifts F20's 692 events past the >=1000 gate; raises EVERY earnings/revision candidate's coverage at once"
+    },
+    {
+      "rank": 3,
+      "option": "Widen the no-key SEC EDGAR filings overlay + activate FINRA biweekly short-interest history (free bulk) and test filings/short-interest x sensitivity on the fixed gate.",
+      "lever": "nokey_filings_short_interest",
+      "needs_provider": false,
+      "prob_success": 0.4,
+      "ceiling": "medium",
+      "why": "no-key/free; filings overlay already showed +1.22% lift on 68 events \u2014 direction, not yet coverage"
+    },
+    {
+      "rank": 4,
+      "option": "Acquire a timestamped news/sentiment history (GDELT bulk export or NewsAPI) and test sentiment-shock x sensitivity + a news confirmation of the macro leads.",
+      "lever": "provider_news_sentiment",
+      "needs_provider": true,
+      "prob_success": 0.3,
+      "ceiling": "medium",
+      "why": "connector proven live (HTTP 200) but only a recent window; a real PIT history is required and unproven for alpha"
+    }
+  ],
+  "binding_constraint": "event-data BREADTH and provider history (earnings feed = 75 tickers; no key for true revision/news/options/short) \u2014 NOT the Norgate panel",
+  "anti_p_hacking": {
+    "all_pre_registered": true,
+    "thresholds_fixed_a_priori": true,
+    "thresholds_modified_after_results": false,
+    "factor_signs_modified_after_results": false,
+    "challenge_fraction": 0.3469,
+    "external_data_never_faked": true,
+    "revision_proxy_capped_below_confirmed": true,
+    "combinations_use_only_existing_real_columns": true
+  },
+  "stop_conditions_honored": [
+    "local data first; Norgate for price/macro; no package install",
+    "no threshold change to rescue a result",
+    "no factor-sign flipping",
+    "no weight optimization",
+    "no regime activation",
+    "no ML fitting",
+    "external data never faked",
+    "revision proxy labelled + capped",
+    "no secrets printed",
+    "no live trading signals",
+    "no broker/orders/automation",
+    "no Paper Trader / GCP / deployment",
+    "failed experiments not hidden",
+    "no commit",
+    "no push"
+  ]
+}

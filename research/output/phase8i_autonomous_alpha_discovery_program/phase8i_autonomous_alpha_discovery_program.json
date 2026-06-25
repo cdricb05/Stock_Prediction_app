@@ -1,0 +1,260 @@
+{
+  "phase": "8-I",
+  "objective": "Run an autonomous multi-cycle alpha-discovery program across every reachable information family (local/no-key/provider-key), build a durable candidate registry, generate and validate pre-registered external-event x ticker-sensitivity x context combinations on the IDENTICAL fixed 8-E gate, then decide the BEST current path to a real signal and rank the next options by probability of success. Research only; thresholds fixed a priori; external data never faked.",
+  "generated_utc": "2026-06-25T13:51:25Z",
+  "recommendation": "PROMISING_ALPHA_SIGNAL_FOUND",
+  "allowed_recommendations": [
+    "CONFIRMED_ALPHA_SIGNAL_FOUND",
+    "PROMISING_ALPHA_SIGNAL_FOUND",
+    "PROMISING_BUT_PROVIDER_LIMITED",
+    "PROVIDER_REQUIRED_FOR_NEXT_BREAKTHROUGH",
+    "EXTERNAL_DATA_EXPANSION_REQUIRED",
+    "ALPHA_RESEARCH_REJECTED_ON_AVAILABLE_DATA",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_testable_scored": 49,
+    "n_confirmed": 0,
+    "n_promising": 5,
+    "n_clean_promising": 1,
+    "n_provider_limited_promising": 4,
+    "n_provider_required": 3,
+    "any_provider_key": false,
+    "confirmed_ids": [],
+    "clean_promising_ids": [
+      "S8E-011"
+    ],
+    "provider_limited_ids": [
+      "S8G-F20",
+      "S8I-C-SECLEAD-20",
+      "S8I-C-HIGHBETA-20",
+      "S8I-C-VOLSENS-20"
+    ]
+  },
+  "question_answered": "What is the best current path to a real signal, and which candidates / data sources should be pursued next without user micro-direction?",
+  "agents": [
+    "quant-research-director",
+    "data-foundation-agent",
+    "universe-construction-agent",
+    "feature-library-agent",
+    "external-data-agent",
+    "news-sentiment-agent",
+    "analyst-revision-agent",
+    "earnings-event-agent",
+    "options-signal-agent",
+    "short-interest-agent",
+    "transcript-tone-agent",
+    "sensitivity-signal-agent",
+    "validation-skeptic-agent",
+    "risk-portfolio-agent",
+    "model-contribution-agent"
+  ],
+  "cycles_run": 5,
+  "panel": {
+    "panel_ok": true,
+    "n_symbols": 1254,
+    "n_obs": 855109,
+    "date_range": [
+      "1993-07-30",
+      "2026-05-22"
+    ]
+  },
+  "research_state": {
+    "prior_8g": "PROMISING_EXTERNAL_SIGNAL_FOUND",
+    "prior_8h": "PROMISING_BUT_COVERAGE_LIMITED",
+    "ranked_existing_leads": 9,
+    "coverage_or_provider_blocked": [
+      "S8G-F20"
+    ],
+    "invalid_logic_rejected": [
+      "S8G-C60",
+      "S8G-B20",
+      "S8G-C05",
+      "S8G-H20",
+      "S8G-C20"
+    ]
+  },
+  "candidates": {
+    "n_total": 52,
+    "n_testable_scored": 49,
+    "n_new_combination_candidates": 26,
+    "confirmed": [],
+    "promising": [
+      "S8G-F20",
+      "S8E-011",
+      "S8I-C-SECLEAD-20",
+      "S8I-C-HIGHBETA-20",
+      "S8I-C-VOLSENS-20"
+    ],
+    "provider_required": [
+      "S8G-A01",
+      "S8G-D01",
+      "S8G-E01"
+    ],
+    "rejected": [
+      "S8G-C20",
+      "S8G-C05",
+      "S8G-C60",
+      "S8G-B20",
+      "S8G-H20",
+      "S8E-001",
+      "S8E-002",
+      "S8E-010",
+      "S8E-020",
+      "S8E-030",
+      "S8E-031",
+      "S8E-040",
+      "S8E-050",
+      "S8E-051",
+      "S8E-060",
+      "S8E-070",
+      "S8E-101",
+      "S8E-110",
+      "S8E-130",
+      "S8I-C-LOWBETA-20",
+      "S8I-C-LARGE-SECLEAD-10",
+      "S8I-R-RATES-20",
+      "S8I-R-SECLEAD-20",
+      "S8I-M-OIL-20",
+      "S8I-M-USD-20",
+      "S8I-M-CREDIT-20",
+      "S8I-M-VIX-20"
+    ]
+  },
+  "best_current_path": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+  "top_next_options": [
+    {
+      "rank": 1,
+      "option": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+      "lever": "local_fixed_filters",
+      "needs_provider": false,
+      "prob_success": 0.6,
+      "ceiling": "medium",
+      "why": "fixed beta filter already flips beats-SPY-active True and clears the -12% tail on the confirmed variant; the open question is stability on more events"
+    },
+    {
+      "rank": 2,
+      "option": "Acquire a BROAD multi-ticker earnings + analyst-revision provider feed (FMP/Finnhub/Zacks/EODHD across S&P 500/1500) and rebuild a chunked weekly sensitivity grid on D: so universe and events expand together; re-run F20 + the C/R families on the fixed gate.",
+      "lever": "provider_earnings_revision",
+      "needs_provider": true,
+      "prob_success": 0.5,
+      "ceiling": "high",
+      "why": "the ONLY lever that lifts F20's 692 events past the >=1000 gate; raises EVERY earnings/revision candidate's coverage at once"
+    },
+    {
+      "rank": 3,
+      "option": "Widen the no-key SEC EDGAR filings overlay + activate FINRA biweekly short-interest history (free bulk) and test filings/short-interest x sensitivity on the fixed gate.",
+      "lever": "nokey_filings_short_interest",
+      "needs_provider": false,
+      "prob_success": 0.4,
+      "ceiling": "medium",
+      "why": "no-key/free; filings overlay already showed +1.22% lift on 68 events \u2014 direction, not yet coverage"
+    },
+    {
+      "rank": 4,
+      "option": "Acquire a timestamped news/sentiment history (GDELT bulk export or NewsAPI) and test sentiment-shock x sensitivity + a news confirmation of the macro leads.",
+      "lever": "provider_news_sentiment",
+      "needs_provider": true,
+      "prob_success": 0.3,
+      "ceiling": "medium",
+      "why": "connector proven live (HTTP 200) but only a recent window; a real PIT history is required and unproven for alpha"
+    }
+  ],
+  "data_activation": {
+    "edgar_fetched_live": 0,
+    "edgar_from_cache": 75,
+    "filing_event_obs": 7358,
+    "earnings_event_obs": 8293,
+    "news_http": "429",
+    "news_succeeded": false,
+    "finra_http": "200",
+    "finra_succeeded": true
+  },
+  "provider": {
+    "any_key_present": false,
+    "n_keys_checked": 12,
+    "readiness": {
+      "A_news_sentiment_x_sensitivity": false,
+      "B_analyst_revision_x_sensitivity": false,
+      "C_earnings_surprise_x_sensitivity": false,
+      "D_options_iv_x_sensitivity": false,
+      "E_short_interest_x_sensitivity": false,
+      "F_s8e011_plus_external_confirmation": false
+    }
+  },
+  "budget": {
+    "experiments_registered": 52,
+    "max_total_experiments": 250,
+    "n_testable": 49,
+    "n_needs_provider": 3,
+    "n_challenge": 17,
+    "challenge_fraction": 0.3469,
+    "challenge_ok": true,
+    "per_family_counts": {
+      "C_earnings_surprise_x_sensitivity": 12,
+      "B_analyst_revision_x_sensitivity": 4,
+      "F_s8e011_plus_external_confirmation": 7,
+      "H_sec_filings_x_sensitivity": 1,
+      "A_news_sentiment_x_sensitivity": 1,
+      "D_options_iv_x_sensitivity": 1,
+      "E_short_interest_x_sensitivity": 1,
+      "G_macro_cross_asset_x_sensitivity": 25
+    },
+    "per_family_ok": true,
+    "within_total_budget": true,
+    "all_pre_registered": true
+  },
+  "multiple_testing": {
+    "n_experiments_total": 52,
+    "n_testable_scored": 49,
+    "n_needs_provider": 3,
+    "base_lift_hurdle": 0.0015,
+    "deflated_lift_hurdle": 0.002535,
+    "method": "8-E fixed gate; cohort-aware matched control (same period/ctrl_bucket, NOT in cohort) + recent 2015-2026 + walk-forward; challenges showing lift flagged",
+    "n_confirmed": 0,
+    "n_promising": 3,
+    "n_needs_history": 2,
+    "challenge_fraction": 0.3469,
+    "challenges_showing_lift": [
+      "S8G-901",
+      "S8G-902",
+      "S8E-911",
+      "S8I-901",
+      "S8I-902",
+      "S8I-904"
+    ],
+    "n_alpha_confirmed": 0,
+    "n_alpha_promising": 5,
+    "n_alpha_provider_required": 3
+  },
+  "safety": {
+    "research_only": true,
+    "local_first": true,
+    "provider_keys_detected": false,
+    "secrets_printed": false,
+    "no_key_public_collection_ran": true,
+    "news_sentiment_faked": false,
+    "short_interest_faked": false,
+    "revision_is_labelled_proxy_not_confirmed": true,
+    "mock_fixtures_excluded": true,
+    "external_data_faked": false,
+    "point_in_time_join": true,
+    "thresholds_fixed_a_priori": true,
+    "thresholds_modified_after_results": false,
+    "factor_signs_modified_after_results": false,
+    "packages_installed": false,
+    "large_data_only_on_d": true,
+    "optimized_weights": false,
+    "regime_activation": false,
+    "ml_fit": false,
+    "failed_experiments_hidden": false,
+    "live_trading_signals": false,
+    "broker_or_orders": false,
+    "automation": false,
+    "paper_trader_touched": false,
+    "gcp_touched": false,
+    "committed": false,
+    "pushed": false
+  }
+}

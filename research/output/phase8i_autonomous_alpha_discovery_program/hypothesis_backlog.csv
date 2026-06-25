@@ -1,0 +1,12 @@
+backlog_id,priority,hypothesis_id,family,work_item,blocker,owning_agent,rationale
+BL8I-01,high,S8I-C-VOLSENS-20,C_earnings_surprise_x_sensitivity,acquire provider breadth to lift coverage past the fixed gate,provider_or_coverage,earnings-event-agent,promising: lift=0.005264 ev25=0.005025 n=1152
+BL8I-02,high,S8I-C-HIGHBETA-20,C_earnings_surprise_x_sensitivity,acquire provider breadth to lift coverage past the fixed gate,provider_or_coverage,earnings-event-agent,promising: lift=0.003583 ev25=0.004164 n=1168
+BL8I-03,high,S8G-F20,F_s8e011_plus_external_confirmation,acquire provider breadth to lift coverage past the fixed gate,provider_or_coverage,sensitivity-signal-agent,promising: lift=0.005328 ev25=0.003779 n=692
+BL8I-04,high,S8I-C-SECLEAD-20,C_earnings_surprise_x_sensitivity,acquire provider breadth to lift coverage past the fixed gate,provider_or_coverage,earnings-event-agent,promising: lift=0.003238 ev25=0.002685 n=933
+BL8I-05,high,S8E-011,G_macro_cross_asset_x_sensitivity,apply fixed structural filter + re-validate stability,local_only,sensitivity-signal-agent,promising: lift=0.004035 ev25=0.001276 n=11881
+BL8I-06,medium,A_news_sentiment_x_sensitivity,A_news_sentiment_x_sensitivity,acquire timestamped news/sentiment history,provider_or_bulk,external-data-agent,no-key/local data insufficient for a PIT confirmation overlay
+BL8I-07,high,E_short_interest_x_sensitivity,E_short_interest_x_sensitivity,activate FINRA biweekly short-interest bulk history,provider_or_bulk,external-data-agent,no-key/local data insufficient for a PIT confirmation overlay
+BL8I-08,medium,D_options_iv_x_sensitivity,D_options_iv_x_sensitivity,acquire options IV/skew history,provider_or_bulk,external-data-agent,no-key/local data insufficient for a PIT confirmation overlay
+BL8I-09,high,B_analyst_revision_x_sensitivity,B_analyst_revision_x_sensitivity,acquire a TRUE analyst-revision consensus feed (replace proxy),provider_or_bulk,external-data-agent,no-key/local data insufficient for a PIT confirmation overlay
+BL8I-10,medium,S8I-C-SECLEAD-20,C_earnings_surprise_x_sensitivity,earnings x sector-leadership PEAD on broader feed,coverage,sensitivity-signal-agent,combination tested this phase; re-run when event coverage expands
+BL8I-11,medium,S8I-M-OIL-20,F_s8e011_plus_external_confirmation,oil/usd/credit shock x sensitivity + earnings confirm at scale,coverage,sensitivity-signal-agent,combination tested this phase; re-run when event coverage expands

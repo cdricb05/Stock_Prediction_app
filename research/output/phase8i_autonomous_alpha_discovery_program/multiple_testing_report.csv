@@ -1,0 +1,15 @@
+metric,value
+n_experiments_total,52
+n_testable_scored,49
+n_needs_provider,3
+base_lift_hurdle,0.0015
+deflated_lift_hurdle,0.002535
+method,"8-E fixed gate; cohort-aware matched control (same period/ctrl_bucket, NOT in cohort) + recent 2015-2026 + walk-forward; challenges showing lift flagged"
+n_confirmed,0
+n_promising,3
+n_needs_history,2
+challenge_fraction,0.3469
+challenges_showing_lift,S8G-901;S8G-902;S8E-911;S8I-901;S8I-902;S8I-904
+n_alpha_confirmed,0
+n_alpha_promising,5
+n_alpha_provider_required,3

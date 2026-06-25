@@ -1,0 +1,8 @@
+source,family,no_key_attempted,produced_real_events,n_events,blocker,outcome
+local_earnings_surprise_cache,C_earnings_surprise_x_sensitivity,True,True,8320,,REAL_EVENTS
+local_revision_proxy,B_analyst_revision_x_sensitivity,False,True,8320,true analyst-revision feed,REAL_EVENTS
+sec_edgar_filings_nokey,H_sec_filings_x_sensitivity,True,True,9737,,REAL_EVENTS
+gdelt_news_nokey,A_news_sentiment_x_sensitivity,True,False,0,timestamped news/sentiment history,BLOCKED_NEEDS_PROVIDER
+finra_short_interest_nokey,E_short_interest_x_sensitivity,True,False,0,biweekly short-interest history,CONNECTOR_LIVE_NO_HISTORY
+norgate_macro_cross_asset,G_macro_cross_asset_x_sensitivity,True,True,,,LOCAL_ACTIVATED
+options_iv,D_options_iv_x_sensitivity,False,False,0,options IV/skew history,BLOCKED_NEEDS_PROVIDER

@@ -1,0 +1,53 @@
+exp_id,cycle,family,agent,driver,cohort,is_challenge,real_external_data,needs_provider,hypothesis,pre_registered_before_scoring
+S8G-C20,1,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_surprise_sensitive,False,True,False,Positive EPS surprise in a surprise-sensitive name drifts up 20d (PEAD).,True
+S8G-C05,1,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_surprise_sensitive,False,True,False,Large (>=10%) positive EPS surprise in a surprise-sensitive name drifts up 5d.,True
+S8G-C60,1,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_surprise_sensitive,False,True,False,Positive EPS surprise in a surprise-sensitive name drifts up 60d.,True
+S8G-B20,1,B_analyst_revision_x_sensitivity,analyst-revision-agent,analyst_revision_proxy,cohort_surprise_sensitive,False,True,False,Improving surprise (revision proxy) in a surprise-sensitive name drifts up 20d.,True
+S8G-F20,1,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,rates,cohort_rates_neg,False,True,False,S8E-011 (rates sell-off x short-duration cohort) CONFIRMED by a recent positive earnings surprise — does real external confirmation lift the macro lead?,True
+S8G-H20,1,H_sec_filings_x_sensitivity,earnings-event-agent,sec_filing,cohort_filing_active,False,True,False,A fresh SEC filing in a surprise-sensitive name precedes drift over 20d.,True
+S8G-901,1,C_earnings_surprise_x_sensitivity,validation-skeptic-agent,earnings_surprise,,True,True,False,"CHALLENGE/placebo: positive surprise, NO cohort — isolates cohort lift.",True
+S8G-902,1,C_earnings_surprise_x_sensitivity,validation-skeptic-agent,earnings_surprise,cohort_surprise_sensitive,True,True,False,"CHALLENGE: NEGATIVE surprise + surprise-sensitive cohort — wrong sign, must not drift up.",True
+S8G-903,1,F_s8e011_plus_external_confirmation,validation-skeptic-agent,rates,,True,True,False,"CHALLENGE/placebo: rates sell-off + earnings confirm, NO short-duration cohort — isolates the cohort contribution to the confirmed lead.",True
+S8G-A01,1,A_news_sentiment_x_sensitivity,news-sentiment-agent,news_sentiment,sentiment_sensitive,False,False,True,Positive news-sentiment shock x sentiment-sensitive name (GDELT attempted; rate-limited).,True
+S8G-D01,1,D_options_iv_x_sensitivity,options-signal-agent,options_iv,options_informative,False,False,True,"IV/skew shift x options-informative name — no local data, no key.",True
+S8G-E01,1,E_short_interest_x_sensitivity,short-interest-agent,short_interest,squeeze_sensitive,False,False,True,Rising short interest x squeeze-sensitive name — FINRA biweekly is free (next step).,True
+S8E-001,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,cohort_oil_pos,False,True,False,"When crude shocks UP, oil-positive-sensitive names that confirm continue over 20d.",True
+S8E-002,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,cohort_oil_neg,False,True,False,"When crude shocks DOWN, oil-negative-sensitive names (input-cost relief) outperform over 20d.",True
+S8E-010,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,rates,cohort_rates_pos,False,True,False,"When bonds rally (yields fall), long-duration-sensitive names in uptrends outperform over 20d.",True
+S8E-011,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,rates,cohort_rates_neg,False,True,False,"When bonds sell off (yields rise), short-duration-sensitive names outperform over 20d.",True
+S8E-020,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,credit,cohort_low_beta,False,True,False,"Under credit stress, low-beta defensives above their 200d MA outperform over 10d.",True
+S8E-030,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,cohort_low_beta,False,True,False,"On a volatility spike, low-beta defensives in uptrends outperform over 10d.",True
+S8E-031,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,cohort_vol_spike_sens,False,True,False,Volatility-spike-sensitive names that just sold off rebound over 20d once vol spikes.,True
+S8E-040,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,market,cohort_high_beta,False,True,False,"After a market down-shock, oversold high-beta names rebound over 10d.",True
+S8E-050,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,usd,cohort_usd_pos,False,True,False,"When the dollar shocks up, dollar-positive-sensitive names with rel strength continue over 20d.",True
+S8E-051,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,usd,cohort_usd_neg,False,True,False,"When the dollar shocks down, dollar-negative-sensitive exporters outperform over 20d.",True
+S8E-060,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,commodity,cohort_oil_pos,False,True,False,"When broad commodities shock up, commodity-sensitive names that confirm continue over 20d.",True
+S8E-070,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,sector,cohort_sector_lead,False,True,False,Sector-leadership-sensitive names leading a healthy sector keep leading over 20d.,True
+S8E-901,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,cohort_oil_neg,True,True,False,CHALLENGE: oil UP shock but oil-NEGATIVE cohort — disproves shock alone drives lift.,True
+S8E-902,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,rates,cohort_rates_neg,True,True,False,CHALLENGE: bond rally but SHORT-duration cohort — wrong sensitivity sign.,True
+S8E-903,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,cohort_high_beta,True,True,False,CHALLENGE: vol spike but HIGH-beta cohort — defensive hypothesis inverted.,True
+S8E-910,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,,True,True,False,"CHALLENGE/placebo: oil shock + confirm, NO sensitivity cohort — isolates cohort lift.",True
+S8E-911,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,,True,True,False,"CHALLENGE/placebo: vol spike + uptrend, NO cohort — isolates defensive-cohort lift.",True
+S8E-920,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,cohort_oil_pos,True,True,False,"CHALLENGE/placebo: oil-positive cohort + confirm, NO oil shock — isolates the shock lift.",True
+S8E-101,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,cohort_oil_pos,False,True,False,Refine: stronger oil shock + oil-positive cohort confirmed by an uptrend.,True
+S8E-110,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,rates,cohort_rates_pos,False,True,False,Refine: stronger bond rally + long-duration cohort + relative strength.,True
+S8E-130,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,cohort_low_beta,False,True,False,Refine: bigger vol spike + low-beta defensive + low own-vol confirmation.,True
+S8E-940,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,,True,True,False,"CHALLENGE/placebo: big vol spike alone, NO cohort/confirm — must not match refined lift.",True
+S8E-941,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,market,cohort_low_beta,True,True,False,"CHALLENGE/placebo: low-beta cohort alone, NO shock/confirm — isolates shock+confirm lift.",True
+S8E-960,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,vix,cohort_low_beta,True,True,False,CHALLENGE: same defensive edge at 60d (higher cost drag) — does lift survive?,True
+S8E-961,3,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,oil,cohort_oil_pos,True,True,False,CHALLENGE: strongest oil-sensitivity lead restricted to 2015-2026 recency stress.,True
+S8I-C-SECLEAD-20,3,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_sector_lead,False,True,False,Positive EPS surprise in a sector-leading name drifts up 20d (catalyst x leadership).,True
+S8I-C-LOWBETA-20,3,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_low_beta,False,True,False,Positive EPS surprise in a low-beta defensive name drifts up 20d.,True
+S8I-C-HIGHBETA-20,3,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_high_beta,False,True,False,Positive EPS surprise in a high-beta name drifts up 20d.,True
+S8I-C-VOLSENS-20,3,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_vol_spike_sens,False,True,False,Positive EPS surprise in a volatility-sensitive name drifts up 20d.,True
+S8I-C-LARGE-SECLEAD-10,3,C_earnings_surprise_x_sensitivity,earnings-event-agent,earnings_surprise,cohort_sector_lead,False,True,False,Large (>=10%) positive EPS surprise in a sector-leading name drifts up 10d.,True
+S8I-R-RATES-20,3,B_analyst_revision_x_sensitivity,analyst-revision-agent,analyst_revision_proxy,cohort_rates_neg,False,True,False,Improving surprise (revision proxy) in a rates-sensitive name drifts up 20d.,True
+S8I-R-SECLEAD-20,3,B_analyst_revision_x_sensitivity,analyst-revision-agent,analyst_revision_proxy,cohort_sector_lead,False,True,False,Improving surprise (revision proxy) in a sector-leading name drifts up 20d.,True
+S8I-M-OIL-20,3,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,oil,cohort_oil_pos,False,True,False,"Oil rally shock in an oil-positive name CONFIRMED by a recent positive surprise, 20d.",True
+S8I-M-USD-20,3,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,usd,cohort_usd_neg,False,True,False,"USD sell-off in a USD-negative name CONFIRMED by a recent positive surprise, 20d.",True
+S8I-M-CREDIT-20,3,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,credit,cohort_credit_sens,False,True,False,"Credit-spread widening in a credit-sensitive name CONFIRMED by a recent surprise, 20d.",True
+S8I-M-VIX-20,3,F_s8e011_plus_external_confirmation,sensitivity-signal-agent,vix,cohort_vol_spike_sens,False,True,False,VIX spike in a volatility-sensitive name drifts over 20d (downside-sensitivity test).,True
+S8I-901,3,C_earnings_surprise_x_sensitivity,validation-skeptic-agent,earnings_surprise,,True,True,False,"CHALLENGE/placebo: positive surprise, NO cohort — isolates the cohort contribution.",True
+S8I-902,3,C_earnings_surprise_x_sensitivity,validation-skeptic-agent,earnings_surprise,cohort_surprise_sensitive,True,True,False,"CHALLENGE: NEGATIVE surprise + surprise-sensitive cohort — wrong sign, must not drift up.",True
+S8I-903,3,F_s8e011_plus_external_confirmation,validation-skeptic-agent,oil,,True,True,False,"CHALLENGE/placebo: oil shock + earnings confirm, NO oil cohort — isolates the cohort.",True
+S8I-904,3,B_analyst_revision_x_sensitivity,validation-skeptic-agent,analyst_revision_proxy,,True,True,False,"CHALLENGE/placebo: revision proxy up, NO cohort — isolates the cohort contribution.",True
