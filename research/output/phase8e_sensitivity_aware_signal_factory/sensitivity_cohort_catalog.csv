@@ -1,0 +1,12 @@
+cohort,label,driver,proxy,side,quantile_rule,estimated_from,mechanism
+cohort_high_beta,high_beta_market_sensitive,market,SPY,high,>= 0.80 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),top-quintile rolling market beta — amplifies market shocks
+cohort_low_beta,low_beta_defensive,market,SPY,low,<= 0.20 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),"bottom-quintile market beta — defensive, dampens market shocks"
+cohort_oil_pos,oil_positive_sensitive,oil,USO,high,>= 0.80 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),top-quintile oil beta — rises with crude
+cohort_oil_neg,oil_negative_sensitive,oil,USO,low,<= 0.20 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),bottom-quintile oil beta — hurt by rising crude (oil as input cost)
+cohort_rates_pos,rates_positive_sensitive,rates,TLT,high,>= 0.80 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),"top-quintile TLT beta — long-duration, benefits when yields fall"
+cohort_rates_neg,rates_negative_sensitive,rates,TLT,low,<= 0.20 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),bottom-quintile TLT beta — short-duration / hurt when yields fall
+cohort_credit_sens,credit_stress_sensitive,credit,HYG,high,>= 0.80 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),top-quintile HYG beta — transmits credit/risk-off stress
+cohort_usd_pos,dollar_positive_sensitive,usd,UUP,high,>= 0.80 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),top-quintile UUP beta — rises with the dollar
+cohort_usd_neg,dollar_negative_sensitive,usd,UUP,low,<= 0.20 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),bottom-quintile UUP beta — hurt by a rising dollar (exporters)
+cohort_vol_spike_sens,volatility_spike_sensitive,vix,$VIX,low,<= 0.20 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),bottom-quintile VIX beta (most negative) — most hurt by volatility spikes
+cohort_sector_lead,sector_leadership_sensitive,sector,SECTOR,high,>= 0.80 pctile,leak-safe rolling 252d beta (cross-sectional rank per date),top-quintile own-sector-ETF beta — moves with sector leadership

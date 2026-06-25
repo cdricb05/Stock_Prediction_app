@@ -1,0 +1,15 @@
+driver_name,driver_label,driver_family,proxy_symbol,data_source,frequency,point_in_time_safe,expected_mechanism,likely_horizon,availability,proxy_coverage_rows,proxy_start,proxy_end,proxy_status
+market,Market (SPY),macro_cross_asset,SPY,Norgate ETF,daily,True,broad equity beta / risk appetite,5d/10d/20d/60d,LOCAL_READY,8407,1993-01-29,2026-06-24,OK
+oil,Crude oil (USO),macro_cross_asset,USO,Norgate ETF,daily,True,energy input/output cost; energy-sector revenue,5d/10d/20d,LOCAL_READY,5083,2006-04-10,2026-06-24,OK
+rates,Long duration (TLT),macro_cross_asset,TLT,Norgate ETF,daily,True,rate/duration sensitivity (TLT up == yields down),10d/20d/60d,LOCAL_READY,6016,2002-07-26,2026-06-24,OK
+credit,High-yield credit (HYG),macro_cross_asset,HYG,Norgate ETF,daily,True,credit-spread / risk-off stress transmission,5d/10d/20d,LOCAL_READY,4832,2007-04-11,2026-06-24,OK
+usd,US dollar (UUP),macro_cross_asset,UUP,Norgate ETF,daily,True,FX translation / exporter competitiveness,10d/20d/60d,LOCAL_READY,4866,2007-02-20,2026-06-24,OK
+vix,Volatility ($VIX),macro_cross_asset,$VIX,Norgate index,daily,True,implied-volatility regime / risk-off shocks,5d/10d/20d,LOCAL_READY,9185,1990-01-02,2026-06-24,OK
+commodity,Broad commodities (DBC),macro_cross_asset,DBC,Norgate ETF,daily,True,inflation / commodity-input sensitivity,10d/20d/60d,LOCAL_READY,5128,2006-02-03,2026-06-24,OK
+size,Small caps (IWM),macro_cross_asset,IWM,Norgate ETF,daily,True,size / risk-appetite tilt,10d/20d/60d,LOCAL_READY,6557,2000-05-26,2026-06-24,OK
+sector,Own GICS sector ETF,sector_industry,SECTOR,Norgate ETF,daily,True,sector leadership / rotation sensitivity,10d/20d/60d,LOCAL_READY,,,,
+analyst_revision,Analyst estimate revisions,analyst_estimates,,IBES/Zacks/FMP/AlphaVantage (paid/keyed),event,True,consensus EPS/target revisions re-rate revision-sensitive names,5d/20d/60d,NEEDS_PROVIDER,,,,
+earnings_surprise,Earnings surprise/guidance,earnings_events,,AlphaVantage/FMP/Finnhub (keyed),event,True,surprise + guidance drift in surprise-sensitive names,5d/20d,NEEDS_PROVIDER,,,,
+news_sentiment,News sentiment shocks,news_sentiment,,news/sentiment provider (keyed),event,True,sentiment shocks move sentiment-reactive names,1d/5d/10d,NEEDS_PROVIDER,,,,
+options_iv,Options IV / skew,options_iv,,OptionMetrics/IVolatility/CBOE (paid),daily,True,implied-vol/skew shifts precede moves in options-informative names,5d/10d/20d,NEEDS_PROVIDER,,,,
+short_interest,Short interest / borrow,short_interest,,FINRA/Ortex/S3 (paid/keyed),biweekly,True,borrow/short-squeeze dynamics in heavily-shorted names,10d/20d,NEEDS_PROVIDER,,,,

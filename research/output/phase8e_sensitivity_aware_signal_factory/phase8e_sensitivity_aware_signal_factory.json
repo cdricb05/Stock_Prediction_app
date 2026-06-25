@@ -1,0 +1,258 @@
+{
+  "phase": "8-E",
+  "objective": "Discover repeatable signals by modelling external-driver shocks x estimated ticker sensitivity cohorts x confirming conditions. Estimate (never assume) which tickers are sensitive to which drivers, fire only when a driver shocks and the sensitive cohort is present, and compare triggered events to matched controls that saw the SAME shock but are NOT in the sensitive cohort. Research only; no orders/automation/optimization.",
+  "generated_utc": "2026-06-25T00:19:02Z",
+  "recommendation": "PROMISING_SENSITIVITY_SETUPS_NEED_MORE_VALIDATION",
+  "allowed_recommendations": [
+    "CONFIRMED_SENSITIVITY_SIGNAL_FOUND",
+    "PROMISING_SENSITIVITY_SETUPS_NEED_MORE_VALIDATION",
+    "NEEDS_EXTERNAL_PROVIDER_DATA",
+    "SENSITIVITY_SIGNAL_RESEARCH_REJECTED",
+    "NEEDS_HUMAN_PROVIDER_DECISION",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_confirmed": 0,
+    "n_promising": 1,
+    "n_rejected": 24,
+    "n_needs_provider": 3,
+    "n_testable_candidates": 15,
+    "n_total": 28
+  },
+  "question_answered": "Can we find a repeatable signal by modelling external-driver shocks and ticker-specific sensitivity cohorts vs matched controls (same shock, not in cohort), net of costs, OOS and in 2015-2026?",
+  "provider": "Norgate Data (local desktop database) + on-disk FRED CSVs",
+  "selected_universe": {
+    "selected_universe": "S&P 500 Current & Past",
+    "index_name": "S&P 500",
+    "superset_symbols": 1894,
+    "justification": "broadest feasible survivorship-aware daily universe; broader universes deferred to a dedicated build (Phase 8-E)",
+    "feasible": true
+  },
+  "available_universes": [
+    {
+      "universe": "Russell 3000 Current & Past",
+      "index_name": "Russell 3000",
+      "available": true,
+      "superset_symbols": 12266,
+      "feasible_for_daily_grid": false,
+      "feasible": false,
+      "note": "too large for in-memory daily grid (defer to dedicated build)"
+    },
+    {
+      "universe": "S&P Composite 1500 Current & Past",
+      "index_name": "S&P Composite 1500",
+      "available": true,
+      "superset_symbols": 4240,
+      "feasible_for_daily_grid": false,
+      "feasible": false,
+      "note": "too large for in-memory daily grid (defer to dedicated build)"
+    },
+    {
+      "universe": "S&P 500 Current & Past",
+      "index_name": "S&P 500",
+      "available": true,
+      "superset_symbols": 1894,
+      "feasible_for_daily_grid": true,
+      "feasible": true,
+      "note": ""
+    }
+  ],
+  "external_data": {
+    "local_families_ready": [
+      "fundamentals_pit",
+      "macro_cross_asset",
+      "sector_industry"
+    ],
+    "needs_provider_families": [
+      "analyst_estimates",
+      "earnings_events",
+      "options_iv",
+      "news",
+      "sentiment",
+      "transcripts",
+      "short_interest"
+    ],
+    "news_or_sentiment_local": false,
+    "proxy_coverage_ok": 19,
+    "proxy_coverage_total": 19
+  },
+  "panel_shape": {
+    "n_symbols_with_obs": 1254,
+    "n_grid_observations": 855109,
+    "n_grid_dates": 1713,
+    "grid_freq_weekly": "W-WED",
+    "date_range": [
+      "1993-07-30",
+      "2026-05-22"
+    ],
+    "active": 646,
+    "delisted": 608,
+    "panel_ok": true,
+    "large_data_root": "D:/Stock_Prediction_app_data/research_panels/phase8e_sensitivity",
+    "persisted_files": {
+      "weekly_observation_grid": "D:/Stock_Prediction_app_data/research_panels/phase8e_sensitivity/weekly_observation_grid.csv",
+      "symbol_metadata": "D:/Stock_Prediction_app_data/research_panels/phase8e_sensitivity/symbol_metadata.csv",
+      "ticker_sensitivity_map_full": "D:/Stock_Prediction_app_data/research_panels/phase8e_sensitivity/ticker_sensitivity_map_full.csv",
+      "spy_daily_close": "D:/Stock_Prediction_app_data/research_panels/phase8e_sensitivity/spy_daily_close.csv"
+    },
+    "notes": []
+  },
+  "sensitivity_drivers": [
+    "market",
+    "oil",
+    "rates",
+    "credit",
+    "usd",
+    "vix",
+    "commodity",
+    "size",
+    "sector"
+  ],
+  "shock_drivers": [
+    "market",
+    "oil",
+    "rates",
+    "credit",
+    "usd",
+    "vix",
+    "commodity"
+  ],
+  "cohorts": [
+    "cohort_high_beta",
+    "cohort_low_beta",
+    "cohort_oil_pos",
+    "cohort_oil_neg",
+    "cohort_rates_pos",
+    "cohort_rates_neg",
+    "cohort_credit_sens",
+    "cohort_usd_pos",
+    "cohort_usd_neg",
+    "cohort_vol_spike_sens",
+    "cohort_sector_lead"
+  ],
+  "n_cohorts": 11,
+  "budget": {
+    "setups_registered": 28,
+    "max_total_setups": 200,
+    "n_testable": 25,
+    "n_needs_provider": 3,
+    "n_challenge": 10,
+    "challenge_fraction": 0.4,
+    "challenge_ok": true,
+    "per_family_counts": {
+      "macro_shock_x_sensitivity": 25,
+      "revision_event_x_sensitivity": 1,
+      "news_sentiment_x_sensitivity": 1,
+      "options_iv_x_sensitivity": 1
+    },
+    "per_family_ok": true,
+    "all_registered_before_scoring": true,
+    "n_skipped": 0
+  },
+  "cycle_log": [
+    {
+      "cycle": 1,
+      "registered": 21,
+      "leads": "S8E-011",
+      "confirmed": 0,
+      "promising": 1,
+      "rejected": 17,
+      "needs_provider": 3,
+      "note": "macro-shock x sensitivity templates + challenges + provider templates"
+    },
+    {
+      "cycle": 2,
+      "registered": 5,
+      "leads": "S8E-011",
+      "confirmed": 0,
+      "promising": 0,
+      "rejected": 5,
+      "needs_provider": 0,
+      "note": "refinements on surviving leads"
+    },
+    {
+      "cycle": 3,
+      "registered": 2,
+      "leads": "S8E-011",
+      "confirmed": 0,
+      "promising": 0,
+      "rejected": 2,
+      "needs_provider": 0,
+      "note": "cost/recency stress challenges on surviving leads"
+    }
+  ],
+  "setups": {
+    "n_registered": 28,
+    "confirmed_signals": [],
+    "promising_signals": [
+      "S8E-011"
+    ],
+    "rejected_signals": [
+      "S8E-001",
+      "S8E-002",
+      "S8E-010",
+      "S8E-020",
+      "S8E-030",
+      "S8E-031",
+      "S8E-040",
+      "S8E-050",
+      "S8E-051",
+      "S8E-060",
+      "S8E-070",
+      "S8E-901",
+      "S8E-902",
+      "S8E-903",
+      "S8E-910",
+      "S8E-911",
+      "S8E-920",
+      "S8E-101",
+      "S8E-110",
+      "S8E-130",
+      "S8E-940",
+      "S8E-941",
+      "S8E-960",
+      "S8E-961"
+    ],
+    "needs_provider_signals": [
+      "S8E-700",
+      "S8E-710",
+      "S8E-720"
+    ]
+  },
+  "multiple_testing": {
+    "n_setups_searched": 25,
+    "n_needs_provider_untested": 3,
+    "base_lift_hurdle": 0.0015,
+    "deflated_lift_hurdle": 0.002097,
+    "method": "a-priori lift hurdle inflated by log10(n_search); cohort-aware matched control (same shock, NOT in cohort) + recent-period + walk-forward + placebo all required",
+    "n_confirmed_after_deflation": 0,
+    "n_promising": 1,
+    "challenge_fraction": 0.4,
+    "placebos_showing_lift": [
+      "S8E-911"
+    ]
+  },
+  "safety": {
+    "research_only": true,
+    "norgate_only_plus_local_fred": true,
+    "network_or_paid_api_used": false,
+    "packages_installed": false,
+    "large_data_only_on_d": true,
+    "external_data_faked": false,
+    "always_on_factor_test": false,
+    "optimized_weights": false,
+    "factor_signs_modified_after_results": false,
+    "regime_activation": false,
+    "ml_fit": false,
+    "holdout_feedback_used_to_tune_thresholds": false,
+    "failed_experiments_hidden": false,
+    "live_trading_signals": false,
+    "broker_or_orders": false,
+    "automation": false,
+    "paper_trader_touched": false,
+    "gcp_touched": false,
+    "committed": false,
+    "pushed": false
+  }
+}

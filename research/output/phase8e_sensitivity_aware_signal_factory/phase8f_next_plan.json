@@ -1,0 +1,33 @@
+{
+  "from_phase": "8-E",
+  "recommendation": "PROMISING_SENSITIVITY_SETUPS_NEED_MORE_VALIDATION",
+  "next_phase": "8-F",
+  "selected_universe": "S&P 500 Current & Past",
+  "next_steps": [
+    "Broaden the daily universe to test whether promising sensitivity setups clear the event-count and recency gates on more data; keep thresholds FIXED (no tuning).",
+    "Acquire the highest-priority provider dataset (analyst revisions) to add a second driver family."
+  ],
+  "provider_priority": [
+    "analyst_revision",
+    "earnings_surprise",
+    "news_sentiment",
+    "options_iv",
+    "short_interest"
+  ],
+  "hard_constraints": [
+    "Norgate + local data only",
+    "large data on D: only",
+    "repo outputs are summaries only",
+    "do not install packages",
+    "no Paper Trader / GCP / deployment",
+    "no broker/order/automation",
+    "no live trading signals",
+    "no weight optimization",
+    "no factor-sign flipping after results",
+    "no regime activation/throttling",
+    "external data never faked",
+    "do not hide failed experiments",
+    "do not commit",
+    "do not push"
+  ]
+}

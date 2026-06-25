@@ -1,0 +1,11 @@
+family_key,family_label,availability,local_present,blocks_setup_family,detail
+analyst_estimates,Analyst estimates & revisions,NEEDS_PROVIDER,False,revision_event_x_sensitivity,no local time series found
+earnings_events,Earnings events / surprise / guidance,NEEDS_PROVIDER,False,revision_event_x_sensitivity,no local time series found
+fundamentals_pit,Point-in-time fundamentals,LOCAL_PARTIAL,True,,"SimFin quarterly + SEC EDGAR normalized fundamentals on disk (PIT, filing-dated)"
+options_iv,Options / implied volatility / skew,NEEDS_PROVIDER,False,options_iv_x_sensitivity,no local time series found
+news,News,NEEDS_PROVIDER,False,news_sentiment_x_sensitivity,no local time series found
+sentiment,Sentiment,NEEDS_PROVIDER,False,news_sentiment_x_sensitivity,no local time series found
+transcripts,Transcripts / management tone,NEEDS_PROVIDER,False,news_sentiment_x_sensitivity,no local time series found
+short_interest,Short interest / borrow cost,NEEDS_PROVIDER,False,,no local time series found
+macro_cross_asset,Macro & cross-asset,LOCAL_READY,True,macro_shock_x_sensitivity,"Norgate ETF/index proxies (SPY, sector ETFs, TLT, HYG, UUP, USO, GLD, DBC, $VIX) + FRED CSVs"
+sector_industry,Sector / industry context,LOCAL_READY,True,macro_shock_x_sensitivity,"Norgate GICS sector + SPDR sector ETFs (current-as-of sector map present, flagged NOT PIT)"

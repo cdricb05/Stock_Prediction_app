@@ -1,0 +1,10 @@
+metric,value
+n_setups_searched,25
+n_needs_provider_untested,3
+base_lift_hurdle,0.0015
+deflated_lift_hurdle,0.002097
+method,"a-priori lift hurdle inflated by log10(n_search); cohort-aware matched control (same shock, NOT in cohort) + recent-period + walk-forward + placebo all required"
+n_confirmed_after_deflation,0
+n_promising,1
+challenge_fraction,0.4
+placebos_showing_lift,S8E-911

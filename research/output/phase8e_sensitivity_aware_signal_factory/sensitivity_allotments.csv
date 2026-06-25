@@ -1,0 +1,12 @@
+cohort,driver,side,as_of_date,n_members_in_cohort,n_members_total,fraction,label
+cohort_high_beta,market,high,2026-05-22,101,502,0.201195,high_beta_market_sensitive
+cohort_low_beta,market,low,2026-05-22,100,502,0.199203,low_beta_defensive
+cohort_oil_pos,oil,high,2026-05-22,101,502,0.201195,oil_positive_sensitive
+cohort_oil_neg,oil,low,2026-05-22,100,502,0.199203,oil_negative_sensitive
+cohort_rates_pos,rates,high,2026-05-22,101,502,0.201195,rates_positive_sensitive
+cohort_rates_neg,rates,low,2026-05-22,100,502,0.199203,rates_negative_sensitive
+cohort_credit_sens,credit,high,2026-05-22,101,502,0.201195,credit_stress_sensitive
+cohort_usd_pos,usd,high,2026-05-22,101,502,0.201195,dollar_positive_sensitive
+cohort_usd_neg,usd,low,2026-05-22,100,502,0.199203,dollar_negative_sensitive
+cohort_vol_spike_sens,vix,low,2026-05-22,100,502,0.199203,volatility_spike_sensitive
+cohort_sector_lead,sector,high,2026-05-22,101,502,0.201195,sector_leadership_sensitive

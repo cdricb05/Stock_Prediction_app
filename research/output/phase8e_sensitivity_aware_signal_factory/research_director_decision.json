@@ -1,0 +1,68 @@
+{
+  "phase": "8-E",
+  "generated_utc": "2026-06-25T00:19:02Z",
+  "recommendation": "PROMISING_SENSITIVITY_SETUPS_NEED_MORE_VALIDATION",
+  "allowed_recommendations": [
+    "CONFIRMED_SENSITIVITY_SIGNAL_FOUND",
+    "PROMISING_SENSITIVITY_SETUPS_NEED_MORE_VALIDATION",
+    "NEEDS_EXTERNAL_PROVIDER_DATA",
+    "SENSITIVITY_SIGNAL_RESEARCH_REJECTED",
+    "NEEDS_HUMAN_PROVIDER_DECISION",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_confirmed": 0,
+    "n_promising": 1,
+    "n_rejected": 24,
+    "n_needs_provider": 3,
+    "n_testable_candidates": 15,
+    "n_total": 28
+  },
+  "thesis": "external input x ticker sensitivity x market context x conditional setup",
+  "assessment_redesign": {
+    "from": "which single price/volume factor works across all tickers",
+    "to": "which tickers are sensitive to which external drivers; when a driver shocks, does the sensitive cohort beat matched controls that saw the same shock but are not in the cohort"
+  },
+  "anti_p_hacking": {
+    "all_setups_pre_registered": true,
+    "thresholds_fixed_a_priori": true,
+    "sensitivity_direction_estimated_not_assumed": true,
+    "no_threshold_tuning_on_test_results": true,
+    "challenge_fraction": 0.4,
+    "cohort_aware_matched_control_required": true,
+    "placebo_controls_required": true,
+    "multiple_testing_deflation": 0.002097,
+    "borderline_never_rounded_up": true
+  },
+  "best_lead": {
+    "setup_id": "S8E-011",
+    "family": "macro_shock_x_sensitivity",
+    "driver": "rates",
+    "cohort": "cohort_rates_neg",
+    "status": "PROMISING_SENSITIVITY_SETUP",
+    "horizon": 20,
+    "lift_vs_control": 0.004035,
+    "ev_after_25bps": 0.001276,
+    "recent_lift_vs_control": 0.003413,
+    "reason": "positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+  },
+  "stop_conditions_honored": [
+    "no price/volume-only signal mining (every candidate uses an external driver + sensitivity cohort)",
+    "no single universal factor across every ticker",
+    "sensitivity direction estimated from data",
+    "no weak full-sample promotion",
+    "no portfolio-weight optimization",
+    "no factor-sign flipping",
+    "no regime activation/throttling",
+    "no ML fitting",
+    "no holdout feedback used to tune thresholds",
+    "external data never faked (missing -> acquisition plan)",
+    "no live trading signals",
+    "no orders/broker/automation",
+    "no Paper Trader / GCP / deployment",
+    "failed experiments not hidden",
+    "no commit",
+    "no push"
+  ]
+}
