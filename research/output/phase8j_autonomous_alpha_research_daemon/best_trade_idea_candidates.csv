@@ -1,0 +1,3 @@
+rank,candidate_id,family,driver,cohort,alpha_promotion,provider_limited,n_events,n_recent_events,lift_vs_control,ev_after_25bps,recent_lift_vs_control,worst_decile_mean,actionability,rationale
+1,S8J-RATES-EARNCONF-20,F_s8e011_plus_external_confirmation,rates,cohort_rates_neg,PROMISING_ALPHA_SIGNAL,True,692,394,0.005328,0.003779,0.004877,-0.155446,PAPER_REVIEW_ONLY_MANUAL,"insufficient events (total=692, recent=394)"
+2,S8J-RATES-MACRO-20,G_macro_cross_asset_x_sensitivity,rates,cohort_rates_neg,PROMISING_ALPHA_SIGNAL,False,11881,6320,0.004035,0.001276,0.003413,-0.157763,PAPER_REVIEW_ONLY_MANUAL,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"

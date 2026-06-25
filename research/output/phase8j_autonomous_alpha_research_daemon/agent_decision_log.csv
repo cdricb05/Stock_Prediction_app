@@ -1,0 +1,2 @@
+cycle,role,decision,n_confirmed,n_promising,queue_remaining,rationale
+1,research-director-agent,CONTINUE_LOCAL_RESEARCH,0,2,21,21 untested pre-registered hypotheses remain; keep mining local/no-key combinations on the fixed gate

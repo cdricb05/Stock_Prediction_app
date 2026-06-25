@@ -1,0 +1,14 @@
+cycle,role,task,status,detail
+1,research-director-agent,"orchestrate cycle, select next action",DONE,"batch=12 families=C_earnings_surprise_x_sensitivity,F_s8e011_plus_external_confirmation,G_macro_cross_asset_x_sensitivity"
+1,data-foundation-agent,load persisted 8-E grid + leak-safe event joins,DONE,Norgate weekly grid reused; no rebuild
+1,universe-agent,confirm S&P universe / delisting-safe panel,DONE,survivorship-safe persisted panel
+1,external-data-agent,activate local/no-key sources; log blockers,DONE,"7 sources; blockers=A_news_sentiment_x_sensitivity,D_options_iv_x_sensitivity,E_short_interest_x_sensitivity,B_analyst_revision_x_sensitivity"
+1,hypothesis-generator-agent,draw next pre-registered hypotheses,DONE,8 real + 4 challenge/placebo
+1,macro-sensitivity-agent,score macro/cross-asset x sensitivity,DONE,rates/oil/usd/credit/vix x cohorts
+1,earnings-catalyst-agent,score earnings/filing x sensitivity,DONE,PEAD x sector-leadership/beta/vol/macro context
+1,news-sentiment-agent,news/sentiment x sensitivity,BLOCKED,no PIT news history (provider required)
+1,analyst-revision-agent,"revision x sensitivity (proxy, capped)",IDLE,labelled proxy; never CONFIRMED
+1,options-short-interest-agent,options IV / short-interest x sensitivity,BLOCKED,no PIT options/short history (provider/bulk required)
+1,validation-skeptic-agent,matched control + recent + WF + placebo/leakage + MT,DONE,challenges=4; placebo/leakage enforced
+1,risk-tail-agent,tail / worst-decile / concentration,DONE,fixed -12% floor + SPY-active comparison
+1,model-candidate-agent,model-candidate registry update (no deploy),DONE,confirmed=0 promising=2

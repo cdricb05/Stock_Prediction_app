@@ -1,0 +1,42 @@
+{
+  "phase": "8-J",
+  "created_utc": "2026-06-25T16:22:55Z",
+  "last_run_utc": "2026-06-25T16:23:50Z",
+  "cycles_completed": 1,
+  "experiments_scored": 12,
+  "bank_size": 33,
+  "queue_remaining": 21,
+  "tested_ids": [
+    "S8J-RATES-MACRO-20",
+    "S8J-RATES-EARNCONF-20",
+    "S8J-CH-EARN-NOCOHORT-20",
+    "S8J-RATES-EARNPOS-20",
+    "S8J-RATES-SECLEAD-20",
+    "S8J-CH-EARN-NEG-20",
+    "S8J-OIL-POS-20",
+    "S8J-OIL-SECLEAD-20",
+    "S8J-CH-EARN-SECLEAD-NEG-20",
+    "S8J-USD-NEG-20",
+    "S8J-USD-SECLEAD-20",
+    "S8J-CH-RATES-NOCOHORT-20"
+  ],
+  "aggregate": {
+    "n_real": 11,
+    "n_testable": 8,
+    "n_confirmed": 0,
+    "n_promising": 2,
+    "n_clean_promising": 1,
+    "n_provider_limited": 1,
+    "n_provider_required": 3,
+    "n_rejected": 6,
+    "confirmed_ids": [],
+    "clean_promising_ids": [
+      "S8J-RATES-MACRO-20"
+    ],
+    "provider_limited_ids": [
+      "S8J-RATES-EARNCONF-20"
+    ]
+  },
+  "any_provider_key": false,
+  "dry_run": true
+}

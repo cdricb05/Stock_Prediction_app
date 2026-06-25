@@ -1,0 +1,9 @@
+cycle,exp_id,family,alpha_promotion,ext_promotion,provider_limited,n_events,ev_after_25bps,lift_vs_control,decision,reason
+1,S8J-RATES-MACRO-20,G_macro_cross_asset_x_sensitivity,PROMISING_ALPHA_SIGNAL,PROMISING_EXTERNAL_SIGNAL,False,11881,0.001276,0.004035,PROMOTED_PROMISING,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+1,S8J-RATES-EARNCONF-20,F_s8e011_plus_external_confirmation,PROMISING_ALPHA_SIGNAL,PROMISING_EXTERNAL_SIGNAL,True,692,0.003779,0.005328,PROMOTED_PROMISING,"insufficient events (total=692, recent=394)"
+1,S8J-RATES-EARNPOS-20,C_earnings_surprise_x_sensitivity,REJECTED,REJECTED,False,870,0.001528,-0.000356,REJECTED,"insufficient events (total=870, recent=394)"
+1,S8J-RATES-SECLEAD-20,F_s8e011_plus_external_confirmation,REJECTED,REJECTED,False,9907,-0.001001,0.000733,REJECTED,non-positive EV after 25bps (-0.001001)
+1,S8J-OIL-POS-20,F_s8e011_plus_external_confirmation,REJECTED,REJECTED,False,17389,-0.009983,-0.001752,REJECTED,non-positive EV after 25bps (-0.009983)
+1,S8J-OIL-SECLEAD-20,F_s8e011_plus_external_confirmation,REJECTED,REJECTED,False,8053,-0.008383,0.000142,REJECTED,non-positive EV after 25bps (-0.008383)
+1,S8J-USD-NEG-20,F_s8e011_plus_external_confirmation,REJECTED,REJECTED,False,15438,-0.007944,-6.6e-05,REJECTED,non-positive EV after 25bps (-0.007944)
+1,S8J-USD-SECLEAD-20,F_s8e011_plus_external_confirmation,REJECTED,REJECTED,False,5620,-0.008406,-0.00378,REJECTED,non-positive EV after 25bps (-0.008406)

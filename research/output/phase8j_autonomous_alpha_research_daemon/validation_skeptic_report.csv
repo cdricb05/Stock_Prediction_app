@@ -1,0 +1,13 @@
+exp_id,family,is_challenge,n_events,n_recent_events,lift_vs_control,ev_after_25bps,recent_lift_vs_control,worst_decile_mean,alpha_promotion,skeptic_verdict,skeptic_note
+S8J-RATES-MACRO-20,G_macro_cross_asset_x_sensitivity,False,11881,6320,0.004035,0.001276,0.003413,-0.157763,PROMISING_ALPHA_SIGNAL,PROMISING_LOCAL_NEXT_STEP,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+S8J-RATES-EARNCONF-20,F_s8e011_plus_external_confirmation,False,692,394,0.005328,0.003779,0.004877,-0.155446,PROMISING_ALPHA_SIGNAL,REAL_BUT_LIMITED,"insufficient events (total=692, recent=394)"
+S8J-CH-EARN-NOCOHORT-20,C_earnings_surprise_x_sensitivity,True,6051,1952,0.001933,-0.003273,-2.2e-05,-0.141688,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)
+S8J-RATES-EARNPOS-20,C_earnings_surprise_x_sensitivity,False,870,394,-0.000356,0.001528,-0.000261,-0.153022,REJECTED,REJECTED_BY_GATE,"insufficient events (total=870, recent=394)"
+S8J-RATES-SECLEAD-20,F_s8e011_plus_external_confirmation,False,9907,5211,0.000733,-0.001001,1.4e-05,-0.202677,REJECTED,REJECTED_BY_GATE,non-positive EV after 25bps (-0.001001)
+S8J-CH-EARN-NEG-20,C_earnings_surprise_x_sensitivity,True,440,178,0.003752,-3.2e-05,0.003656,-0.158847,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)
+S8J-OIL-POS-20,F_s8e011_plus_external_confirmation,False,17389,10094,-0.001752,-0.009983,-0.002083,-0.165153,REJECTED,REJECTED_BY_GATE,non-positive EV after 25bps (-0.009983)
+S8J-OIL-SECLEAD-20,F_s8e011_plus_external_confirmation,False,8053,4951,0.000142,-0.008383,7e-06,-0.175076,REJECTED,REJECTED_BY_GATE,non-positive EV after 25bps (-0.008383)
+S8J-CH-EARN-SECLEAD-NEG-20,C_earnings_surprise_x_sensitivity,True,215,95,0.01757,0.001726,0.023522,-0.176997,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)
+S8J-USD-NEG-20,F_s8e011_plus_external_confirmation,False,15438,10289,-6.6e-05,-0.007944,-0.007721,-0.164245,REJECTED,REJECTED_BY_GATE,non-positive EV after 25bps (-0.007944)
+S8J-USD-SECLEAD-20,F_s8e011_plus_external_confirmation,False,5620,3428,-0.00378,-0.008406,-0.009419,-0.193637,REJECTED,REJECTED_BY_GATE,non-positive EV after 25bps (-0.008406)
+S8J-CH-RATES-NOCOHORT-20,F_s8e011_plus_external_confirmation,True,2974,1557,-0.000275,-0.003945,0.00144,-0.131049,REJECTED,CHALLENGE_CLEAN,challenge/placebo control (diagnostic; never promoted)

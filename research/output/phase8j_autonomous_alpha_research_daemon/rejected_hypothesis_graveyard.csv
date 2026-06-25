@@ -1,0 +1,11 @@
+cycle,exp_id,family,is_challenge,n_events,lift_vs_control,ev_after_25bps,rejection_reason
+1,S8J-CH-EARN-NOCOHORT-20,C_earnings_surprise_x_sensitivity,True,6051,0.001933,-0.003273,challenge/placebo control (diagnostic; never promoted)
+1,S8J-RATES-EARNPOS-20,C_earnings_surprise_x_sensitivity,False,870,-0.000356,0.001528,"insufficient events (total=870, recent=394)"
+1,S8J-RATES-SECLEAD-20,F_s8e011_plus_external_confirmation,False,9907,0.000733,-0.001001,non-positive EV after 25bps (-0.001001)
+1,S8J-CH-EARN-NEG-20,C_earnings_surprise_x_sensitivity,True,440,0.003752,-3.2e-05,challenge/placebo control (diagnostic; never promoted)
+1,S8J-OIL-POS-20,F_s8e011_plus_external_confirmation,False,17389,-0.001752,-0.009983,non-positive EV after 25bps (-0.009983)
+1,S8J-OIL-SECLEAD-20,F_s8e011_plus_external_confirmation,False,8053,0.000142,-0.008383,non-positive EV after 25bps (-0.008383)
+1,S8J-CH-EARN-SECLEAD-NEG-20,C_earnings_surprise_x_sensitivity,True,215,0.01757,0.001726,challenge/placebo control (diagnostic; never promoted)
+1,S8J-USD-NEG-20,F_s8e011_plus_external_confirmation,False,15438,-6.6e-05,-0.007944,non-positive EV after 25bps (-0.007944)
+1,S8J-USD-SECLEAD-20,F_s8e011_plus_external_confirmation,False,5620,-0.00378,-0.008406,non-positive EV after 25bps (-0.008406)
+1,S8J-CH-RATES-NOCOHORT-20,F_s8e011_plus_external_confirmation,True,2974,-0.000275,-0.003945,challenge/placebo control (diagnostic; never promoted)

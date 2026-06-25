@@ -1,0 +1,14 @@
+role,n_tasks,n_done,n_blocked,n_idle,status
+research-director-agent,1,1,0,0,ACTIVE
+data-foundation-agent,1,1,0,0,ACTIVE
+universe-agent,1,1,0,0,ACTIVE
+external-data-agent,1,1,0,0,ACTIVE
+hypothesis-generator-agent,1,1,0,0,ACTIVE
+macro-sensitivity-agent,1,1,0,0,ACTIVE
+earnings-catalyst-agent,1,1,0,0,ACTIVE
+news-sentiment-agent,1,0,1,0,BLOCKED
+analyst-revision-agent,1,0,0,1,IDLE
+options-short-interest-agent,1,0,1,0,BLOCKED
+validation-skeptic-agent,1,1,0,0,ACTIVE
+risk-tail-agent,1,1,0,0,ACTIVE
+model-candidate-agent,1,1,0,0,ACTIVE
