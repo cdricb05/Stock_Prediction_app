@@ -1,0 +1,21 @@
+mandatory_family,critical,fmp_can_access,fmp_issue,alpha_vantage,finnhub,eodhd,free_source,cheapest_viable_provider,provider_unlocks_most_families,env_var
+broad_earnings_surprise,True,yes,none,yes(EARNINGS),yes,yes,,FMP,yes,FMP_API_KEY
+earnings_calendar,True,yes,none,yes(EARNINGS_CALENDAR),yes,yes,,FMP,yes,FMP_API_KEY
+analyst_estimates,True,yes,none,limited,yes(premium),yes,,FMP,yes,FMP_API_KEY
+analyst_recommendations,True,yes,none,no,yes,yes,,FMP,yes,FMP_API_KEY
+analyst_price_targets,True,yes,none,no,yes(premium),limited,,FMP,yes,FMP_API_KEY
+ratings_or_grades,True,yes,none,no,yes,limited,,FMP,yes,FMP_API_KEY
+key_metrics,False,no,subscription,partial(OVERVIEW),yes(metrics),yes,SEC EDGAR(derive),FMP,no,FMP_API_KEY
+ratios,False,no,subscription,partial,yes(metrics),yes,SEC EDGAR(derive),FMP,no,FMP_API_KEY
+fundamentals_statements,False,yes,none,yes,yes,yes,SEC EDGAR companyfacts(free),SEC EDGAR (free),no,
+company_profile,False,yes,none,yes(OVERVIEW),yes,yes,SEC EDGAR(free),SEC EDGAR (free),no,
+transcripts_or_guidance,False,yes(premium),unknown,no,yes(premium),no,,UNKNOWN,no,FMP_API_KEY
+news_or_press_releases,False,yes,unknown,yes(NEWS_SENTIMENT),yes,yes,GDELT(free),GDELT (free),no,
+insider_transactions,False,yes,unknown,no,yes,limited,SEC EDGAR Form 4(free),SEC EDGAR (free),no,
+institutional_ownership_13f,False,yes,unknown,no,limited,no,SEC EDGAR 13F(free),SEC EDGAR (free),no,
+options_iv_skew_putcall,False,no,not_offered,partial(HIST_OPTIONS),limited,yes(options),,UNKNOWN,no,INTRINIO_API_KEY
+short_interest_borrow,False,limited,unknown,no,yes(premium),no,FINRA(free),FINRA (free),no,
+sec_filings_event_classification,False,limited,unknown,no,limited,no,SEC EDGAR(free),SEC EDGAR (free),no,
+macro_cross_asset_context,False,no,unknown,partial,no,partial,Norgate(local),Norgate (local),no,
+sector_industry_context,False,yes(profile),unknown,partial,yes,yes,Norgate(local),Norgate (local),no,
+liquidity_volume_volatility_positioning,False,no,unknown,partial,partial,partial,Norgate(local),Norgate (local),no,

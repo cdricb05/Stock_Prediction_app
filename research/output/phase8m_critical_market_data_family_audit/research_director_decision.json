@@ -1,0 +1,45 @@
+{
+  "phase": "8-M",
+  "decision": "CURRENT_FMP_ACCESS_SUFFICIENT_FOR_CRITICAL_FAMILIES",
+  "decision_allowed_values": [
+    "CURRENT_FMP_ACCESS_SUFFICIENT_FOR_CRITICAL_FAMILIES",
+    "FMP_SUBSCRIPTION_UPGRADE_REQUIRED",
+    "FMP_CLIENT_ENDPOINT_UPDATE_REQUIRED",
+    "CHEAPER_PROVIDER_RECOMMENDED",
+    "MIXED_PROVIDER_STRATEGY_RECOMMENDED",
+    "BLOCKED_MISSING_FMP_KEY",
+    "ERROR"
+  ],
+  "decision_is_terminal": true,
+  "probe_executed": true,
+  "api_key_present": true,
+  "key_rejected": false,
+  "recommended_first_provider": "FMP (current plan)",
+  "recommended_first_provider_reason": "The current FMP plan already entitles the critical earnings/analyst families; no new provider purchase is required - proceed to controlled backfill.",
+  "critical_family_status": {
+    "broad_earnings_surprise": "ACCESS_VERIFIED",
+    "earnings_calendar": "ACCESS_VERIFIED",
+    "analyst_estimates": "ACCESS_VERIFIED",
+    "analyst_recommendations": "ACCESS_VERIFIED",
+    "analyst_price_targets": "ACCESS_VERIFIED",
+    "ratings_or_grades": "ACCESS_VERIFIED"
+  },
+  "free_sources_to_exhaust_first": [
+    "FINRA (short interest)",
+    "GDELT (news)",
+    "SEC EDGAR (filings/insider/13F)",
+    "Norgate (local)"
+  ],
+  "do_not_buy_yet": [
+    "options IV/skew specialist (no signal needs it yet)",
+    "paid news (GDELT free first)",
+    "paid short interest (FINRA free first)"
+  ],
+  "exact_next_command": "python research/run_phase5e1_fmp_controlled_backfill.py --live (controlled PIT backfill of the now-entitled critical families)",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "deployed": false,
+  "committed": false
+}

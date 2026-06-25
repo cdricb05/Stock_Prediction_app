@@ -1,0 +1,9 @@
+item,value,detail
+bug_id,PHASE8M_CONTROLLER_ENDPOINT_ORDER,Generic endpoint cap dropped all critical earnings/analyst families.
+root_cause_file,research/run_phase5e0_fmp_provider_trial_collector.py,_select_live_endpoints() sorts by smoke_priority then slices [:max_endpoints].
+root_cause_catalog,research/providers/fmp_client.py,catalog smoke_priority orders fundamentals 1-6 and earnings/analyst 90-94 (last).
+original_symptom,0_planned_0_attempted,with --max-endpoints 6 the six critical families were never attempted.
+fix,critical_first_queue,build_probe_queue() always front-loads critical families by rank (earnings/analyst rank 0-5) ahead of fundamentals/profile (rank 10+).
+fix_cap_exempt,cap_cannot_drop_critical,the endpoint-family cap trims ONLY the non-critical tail; if cap < #critical the cap is overridden so no critical family is dropped.
+fix_budget,budget_trims_non_critical_only,the request budget is respected by dropping non-critical families only.
+resulting_probe_order,earnings_surprises;earnings_calendar;analyst_estimates;analyst_recommendations;analyst_price_targets;ratings_grades_consensus;key_metrics_quarterly;ratios_quarterly;income_statement_quarterly;balance_sheet_statement_quarterly;cash_flow_statement_quarterly;company_profile,critical-first bounded queue actually used this run (cap=12).

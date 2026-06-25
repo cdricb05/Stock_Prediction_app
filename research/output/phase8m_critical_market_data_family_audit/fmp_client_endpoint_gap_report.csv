@@ -1,0 +1,14 @@
+endpoint_family,mandatory_family,catalog_endpoint,mapping_status,path_template,status,needs_client_update
+earnings_surprises,broad_earnings_surprise,earnings_surprises,mapped_in_client,/stable/earnings?symbol={symbol},ACCESS_VERIFIED,no
+earnings_calendar,earnings_calendar,earnings_calendar,mapped_in_client,/stable/earnings?symbol={symbol},ACCESS_VERIFIED,no
+analyst_estimates,analyst_estimates,analyst_estimates,mapped_in_client,/stable/analyst-estimates?symbol={symbol}&period=annual,ACCESS_VERIFIED,no
+analyst_recommendations,analyst_recommendations,analyst_recommendations,mapped_in_client,/stable/grades?symbol={symbol},ACCESS_VERIFIED,no
+analyst_price_targets,analyst_price_targets,analyst_price_targets,mapped_in_client,/stable/price-target-summary?symbol={symbol},ACCESS_VERIFIED,no
+ratings_grades_consensus,ratings_or_grades,(probe_adapter),probe_adapter_added,/stable/grades-consensus?symbol={symbol},ACCESS_VERIFIED,yes
+key_metrics_quarterly,key_metrics,key_metrics_quarterly,mapped_in_client,/stable/key-metrics?symbol={symbol}&period=quarter,SUBSCRIPTION_ENTITLEMENT_BLOCK,no
+ratios_quarterly,ratios,ratios_quarterly,mapped_in_client,/stable/ratios?symbol={symbol}&period=quarter,SUBSCRIPTION_ENTITLEMENT_BLOCK,no
+income_statement_quarterly,fundamentals_statements,income_statement_quarterly,mapped_in_client,/stable/income-statement?symbol={symbol}&period=quarter,ACCESS_VERIFIED,no
+balance_sheet_statement_quarterly,fundamentals_statements,balance_sheet_statement_quarterly,mapped_in_client,/stable/balance-sheet-statement?symbol={symbol}&period=quarter,ACCESS_VERIFIED,no
+cash_flow_statement_quarterly,fundamentals_statements,cash_flow_statement_quarterly,mapped_in_client,/stable/cash-flow-statement?symbol={symbol}&period=quarter,ACCESS_VERIFIED,no
+company_profile,company_profile,company_profile,mapped_in_client,/stable/profile?symbol={symbol},ACCESS_VERIFIED,no
+(none),transcripts_or_guidance,(unmapped),missing_mapping,ADD: /stable/earning-call-transcript?symbol={symbol},NOT_TESTED_NO_MAPPING,yes

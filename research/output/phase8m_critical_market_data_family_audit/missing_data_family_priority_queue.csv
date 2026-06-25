@@ -1,0 +1,5 @@
+priority,mandatory_family,critical,current_status,recommended_provider,env_var,free_first,signals_unlocked
+1,key_metrics,False,SUBSCRIPTION_ENTITLEMENT_BLOCK,FMP,FMP_API_KEY,,valuation_quality_cohort_support
+2,ratios,False,SUBSCRIPTION_ENTITLEMENT_BLOCK,FMP,FMP_API_KEY,,leverage_quality_cohort_support
+3,transcripts_or_guidance,False,NOT_TESTED_NO_MAPPING,FMP (premium),FMP_API_KEY,,transcript_tone x earnings/macro_sensitivity
+4,options_iv_skew_putcall,False,NOT_AVAILABLE_IN_CURRENT_PROVIDER,Intrinio / ORATS / Tradier / CBOE,INTRINIO_API_KEY,,options_iv_skew x downside/volatility_sensitivity

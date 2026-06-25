@@ -1,0 +1,21 @@
+mandatory_family,resolution_kind,critical,status,provider,env_var,free_alternative,signals_unlocked,note
+broad_earnings_surprise,fmp_probe,True,ACCESS_VERIFIED,FMP,FMP_API_KEY,,earnings_surprise x rates_sensitivity;earnings_surprise x sector_leadership,actual-vs-estimate EPS/revenue surprises per report date.
+earnings_calendar,fmp_probe,True,ACCESS_VERIFIED,FMP,FMP_API_KEY,,earnings_event_confirmation x rates_sensitivity;earnings_drift x sector_leadership,per-ticker historical earnings dates + estimate/actual.
+analyst_estimates,fmp_probe,True,ACCESS_VERIFIED,FMP,FMP_API_KEY,,analyst_revision x sensitivity,forward consensus estimates - basis for revision breadth.
+analyst_recommendations,fmp_probe,True,ACCESS_VERIFIED,FMP,FMP_API_KEY,,analyst_recommendation_change x sector_leadership,analyst buy/hold/sell grade changes over time.
+analyst_price_targets,fmp_probe,True,ACCESS_VERIFIED,FMP,FMP_API_KEY,,price_target_revision x sensitivity_cohort,analyst price-target revisions (direction vs price).
+ratings_or_grades,fmp_probe,True,ACCESS_VERIFIED,FMP,FMP_API_KEY,,grade_change x sector_leadership,consensus grade/rating snapshot (grades-consensus).
+key_metrics,fmp_probe,False,SUBSCRIPTION_ENTITLEMENT_BLOCK,FMP,FMP_API_KEY,,valuation_quality_cohort_support,valuation/quality per-share metrics (previously FAILED).
+ratios,fmp_probe,False,SUBSCRIPTION_ENTITLEMENT_BLOCK,FMP,FMP_API_KEY,,leverage_quality_cohort_support,quarterly financial ratios (previously FAILED).
+fundamentals_statements,fmp_probe,False,ACCESS_VERIFIED,FMP,FMP_API_KEY,SEC EDGAR companyfacts (free),value_quality_growth_cohort_support,income/balance/cash-flow statements (previously reachable).
+company_profile,fmp_probe,False,ACCESS_VERIFIED,FMP,FMP_API_KEY,SEC EDGAR (free),sector_mapping_support,sector/industry/identity (auth canary; previously reachable).
+transcripts_or_guidance,no_mapping,False,NOT_TESTED_NO_MAPPING,FMP (premium),FMP_API_KEY,,transcript_tone x earnings/macro_sensitivity,no client mapping yet; add /stable/earning-call-transcript probe and re-run.
+news_or_press_releases,free_source,False,FREE_SOURCE_AVAILABLE,GDELT (free) then FMP/Benzinga,,"GDELT 2.0 (free, no key)",news_sentiment x sensitivity,exhaust free GDELT historical news before any paid news provider.
+insider_transactions,free_source,False,FREE_SOURCE_AVAILABLE,SEC EDGAR (free),,SEC EDGAR Form 4 (free),insider x event_confirmation,SEC EDGAR Form 4 feed is free and authoritative.
+institutional_ownership_13f,free_source,False,FREE_SOURCE_AVAILABLE,SEC EDGAR (free),,SEC EDGAR 13F (free),institutional_13f x event_confirmation,SEC EDGAR 13F filings are free and authoritative.
+options_iv_skew_putcall,provider_other,False,NOT_AVAILABLE_IN_CURRENT_PROVIDER,Intrinio / ORATS / Tradier / CBOE,INTRINIO_API_KEY,,options_iv_skew x downside/volatility_sensitivity,FMP does not provide options IV/skew; needs an options-specialist provider.
+short_interest_borrow,free_source,False,FREE_SOURCE_AVAILABLE,FINRA (free) then Finnhub/Ortex,,FINRA bi-monthly short interest (free),short_interest x liquidity/volatility/earnings_confirmation,exhaust free FINRA short interest before any paid borrow/utilization feed.
+sec_filings_event_classification,free_source,False,FREE_SOURCE_AVAILABLE,SEC EDGAR (free),,SEC EDGAR full-text + submissions (free),filing_event x earnings_confirmation,SEC EDGAR filing index is free; already activated in Phase 8-L.
+macro_cross_asset_context,local,False,LOCAL_DATA_ALREADY_AVAILABLE,Norgate (local),,Norgate cross-asset (local),macro_regime_context (conditioning),cross-asset macro pack already available locally (Phase 8-E/8-L).
+sector_industry_context,local,False,LOCAL_DATA_ALREADY_AVAILABLE,Norgate (local) + FMP profile,,Norgate sector/industry (local),sector_leadership (conditioning),sector mapping already available locally.
+liquidity_volume_volatility_positioning,local,False,LOCAL_DATA_ALREADY_AVAILABLE,Norgate (local),,Norgate price/volume (local),liquidity/volatility_gates (conditioning),liquidity/volume/volatility derived locally from Norgate price/volume.

@@ -1,0 +1,21 @@
+mandatory_family,critical,status,cheapest_viable_provider,approx_monthly_cost_usd,free_alternative,env_var
+broad_earnings_surprise,True,ACCESS_VERIFIED,FMP,UNKNOWN,,FMP_API_KEY
+earnings_calendar,True,ACCESS_VERIFIED,FMP,UNKNOWN,,FMP_API_KEY
+analyst_estimates,True,ACCESS_VERIFIED,FMP,UNKNOWN,,FMP_API_KEY
+analyst_recommendations,True,ACCESS_VERIFIED,FMP,UNKNOWN,,FMP_API_KEY
+analyst_price_targets,True,ACCESS_VERIFIED,FMP,UNKNOWN,,FMP_API_KEY
+ratings_or_grades,True,ACCESS_VERIFIED,FMP,UNKNOWN,,FMP_API_KEY
+key_metrics,False,SUBSCRIPTION_ENTITLEMENT_BLOCK,FMP,free,SEC EDGAR(derive),FMP_API_KEY
+ratios,False,SUBSCRIPTION_ENTITLEMENT_BLOCK,FMP,free,SEC EDGAR(derive),FMP_API_KEY
+fundamentals_statements,False,ACCESS_VERIFIED,SEC EDGAR (free),free,SEC EDGAR companyfacts(free),
+company_profile,False,ACCESS_VERIFIED,SEC EDGAR (free),free,SEC EDGAR(free),
+transcripts_or_guidance,False,NOT_TESTED_NO_MAPPING,UNKNOWN,UNKNOWN,,FMP_API_KEY
+news_or_press_releases,False,FREE_SOURCE_AVAILABLE,GDELT (free),free,GDELT(free),
+insider_transactions,False,FREE_SOURCE_AVAILABLE,SEC EDGAR (free),free,SEC EDGAR Form 4(free),
+institutional_ownership_13f,False,FREE_SOURCE_AVAILABLE,SEC EDGAR (free),free,SEC EDGAR 13F(free),
+options_iv_skew_putcall,False,NOT_AVAILABLE_IN_CURRENT_PROVIDER,UNKNOWN,UNKNOWN,,INTRINIO_API_KEY
+short_interest_borrow,False,FREE_SOURCE_AVAILABLE,FINRA (free),free,FINRA(free),
+sec_filings_event_classification,False,FREE_SOURCE_AVAILABLE,SEC EDGAR (free),free,SEC EDGAR(free),
+macro_cross_asset_context,False,LOCAL_DATA_ALREADY_AVAILABLE,Norgate (local),free,Norgate(local),
+sector_industry_context,False,LOCAL_DATA_ALREADY_AVAILABLE,Norgate (local),free,Norgate(local),
+liquidity_volume_volatility_positioning,False,LOCAL_DATA_ALREADY_AVAILABLE,Norgate (local),free,Norgate(local),

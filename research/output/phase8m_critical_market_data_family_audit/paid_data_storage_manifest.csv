@@ -1,0 +1,3 @@
+path,purpose,gitignored,committed,file_count
+research/data/fmp/raw,verbatim FMP raw JSON payloads (paid data),yes,no,50
+research/data/fmp/normalized,normalized point-in-time CSVs from paid data,yes,no,4

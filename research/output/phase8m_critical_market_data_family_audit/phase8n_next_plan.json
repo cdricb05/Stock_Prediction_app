@@ -1,0 +1,23 @@
+{
+  "phase": "8-N",
+  "title": "FMP Critical-Family Controlled Backfill / Provider Activation",
+  "depends_on_decision": "CURRENT_FMP_ACCESS_SUFFICIENT_FOR_CRITICAL_FAMILIES",
+  "objective": "Act on the Phase 8-M entitlement decision: if FMP entitles the critical families, run the controlled PIT backfill (Phase 5-E1) for earnings + analyst families; if blocked, activate the recommended provider/tier or fix the flagged endpoint mapping, then re-probe.",
+  "next_command": "python research/run_phase5e1_fmp_controlled_backfill.py --live (controlled PIT backfill of the now-entitled critical families)",
+  "bounded_limits": {
+    "max_tickers": 3,
+    "max_endpoint_families": 12,
+    "max_requests": 40
+  },
+  "free_sources_to_exhaust_first": [
+    "FINRA (short interest)",
+    "GDELT (news)",
+    "SEC EDGAR (filings/insider/13F)",
+    "Norgate (local)"
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "committed": false
+}
