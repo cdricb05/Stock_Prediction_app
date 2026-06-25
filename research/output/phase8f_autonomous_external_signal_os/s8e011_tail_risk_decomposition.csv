@@ -1,0 +1,7 @@
+slice,n_events,mean_fwd,threshold_fwd_excess_20,detail
+worst_decile_overall,1189,-0.157763,-0.096327,
+tail_top_sector,285,,,sector=Energy contributes 24.0% of worst-decile events
+tail_top_liquidity_bucket,279,,,liquidity_bucket=4 contributes 23.5% of worst-decile events
+tail_top_volatility_bucket,708,,,volatility_bucket=4 contributes 59.5% of worst-decile events
+tail_top_beta_bucket,835,,,beta_bucket=2 contributes 70.2% of worst-decile events
+tail_top_year,154,,,year=2009 contributes 13.0% of worst-decile events

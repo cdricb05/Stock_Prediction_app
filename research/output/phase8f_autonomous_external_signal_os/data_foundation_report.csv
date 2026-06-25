@@ -1,0 +1,9 @@
+check,status,detail
+persisted_8e_panel_reused,OK,D:/Stock_Prediction_app_data/research_panels/phase8e_sensitivity
+weekly_grid_rows,OK,855109
+n_symbols,OK,1254
+date_range,OK,1993-07-30..2026-05-22
+point_in_time_safety,OK,rolling betas + driver shocks trailing; forward labels shifted forward (8-E leak tests pass)
+external_raw_path,OWNED,D:/Stock_Prediction_app_data/external_raw
+external_normalized_path,OWNED,D:/Stock_Prediction_app_data/external_normalized
+external_adapters_path,OWNED,D:/Stock_Prediction_app_data/external_adapters

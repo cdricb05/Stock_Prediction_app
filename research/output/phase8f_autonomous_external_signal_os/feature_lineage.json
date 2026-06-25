@@ -1,0 +1,143 @@
+{
+  "phase": "8-F",
+  "price_volume_features": "8-D FEATURE_CATALOG (leak-safe, trailing)",
+  "sensitivity_features": {
+    "method": "leak-safe rolling 252d beta of each ticker return to each driver proxy return",
+    "drivers": [
+      "market",
+      "oil",
+      "rates",
+      "credit",
+      "usd",
+      "vix",
+      "commodity",
+      "size",
+      "sector"
+    ],
+    "cohorts": [
+      "cohort_high_beta",
+      "cohort_low_beta",
+      "cohort_oil_pos",
+      "cohort_oil_neg",
+      "cohort_rates_pos",
+      "cohort_rates_neg",
+      "cohort_credit_sens",
+      "cohort_usd_pos",
+      "cohort_usd_neg",
+      "cohort_vol_spike_sens",
+      "cohort_sector_lead"
+    ],
+    "estimated_not_assumed": true
+  },
+  "driver_shock_features": "date-level trailing 20d return + 252d z-score per proxy (leak-safe)",
+  "external_event_features": {
+    "news_sentiment": {
+      "agent": "news-sentiment-agent",
+      "fields": [
+        "event_timestamp",
+        "point_in_time_available_at",
+        "ticker",
+        "provider",
+        "headline",
+        "summary",
+        "article_url_or_provider_id",
+        "sentiment_score",
+        "sentiment_label",
+        "relevance_score",
+        "source",
+        "topic_tags",
+        "raw_payload_path"
+      ],
+      "status": "schema_ready_no_data"
+    },
+    "analyst_revisions": {
+      "agent": "analyst-revision-agent",
+      "fields": [
+        "event_timestamp",
+        "point_in_time_available_at",
+        "ticker",
+        "fiscal_period",
+        "estimate_type",
+        "old_value",
+        "new_value",
+        "revision_direction",
+        "revision_magnitude",
+        "analyst_count",
+        "consensus_change",
+        "provider_id",
+        "raw_payload_path"
+      ],
+      "status": "schema_ready_no_data"
+    },
+    "earnings": {
+      "agent": "earnings-event-agent",
+      "fields": [
+        "event_timestamp",
+        "point_in_time_available_at",
+        "ticker",
+        "fiscal_period",
+        "actual_eps",
+        "estimated_eps",
+        "surprise_pct",
+        "revenue_actual",
+        "revenue_estimate",
+        "guidance_direction",
+        "guidance_magnitude",
+        "provider_id",
+        "raw_payload_path"
+      ],
+      "status": "schema_ready_no_data"
+    },
+    "options_iv": {
+      "agent": "options-signal-agent",
+      "fields": [
+        "event_timestamp",
+        "point_in_time_available_at",
+        "ticker",
+        "implied_volatility",
+        "iv_percentile",
+        "put_call_ratio",
+        "skew",
+        "term_structure",
+        "volume_open_interest_signal",
+        "provider_id",
+        "raw_payload_path"
+      ],
+      "status": "schema_ready_no_data"
+    },
+    "short_interest": {
+      "agent": "short-interest-agent",
+      "fields": [
+        "event_timestamp",
+        "point_in_time_available_at",
+        "ticker",
+        "short_interest",
+        "short_interest_pct_float",
+        "days_to_cover",
+        "borrow_rate",
+        "utilization",
+        "provider_id",
+        "raw_payload_path"
+      ],
+      "status": "schema_ready_no_data"
+    },
+    "transcript_tone": {
+      "agent": "transcript-tone-agent",
+      "fields": [
+        "event_timestamp",
+        "point_in_time_available_at",
+        "ticker",
+        "transcript_type",
+        "sentiment_score",
+        "uncertainty_score",
+        "guidance_tone",
+        "forward_looking_language_score",
+        "provider_id",
+        "raw_payload_path"
+      ],
+      "status": "schema_ready_no_data"
+    }
+  },
+  "forward_labels": "fwd_excess_{5,10,20,60} + fwd_total_5 (forward-shifted; never an input)",
+  "lineage_note": "external event features are DECLARED with point-in-time availability fields; no external feature is computed until provider data is collected."
+}

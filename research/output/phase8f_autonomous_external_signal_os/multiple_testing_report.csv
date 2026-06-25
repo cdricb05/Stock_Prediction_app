@@ -1,0 +1,12 @@
+metric,value
+n_experiments_total,31
+n_testable_scored,25
+n_needs_provider,6
+base_lift_hurdle,0.0015
+deflated_lift_hurdle,0.002097
+method,"a-priori lift hurdle inflated by log10(n_search); cohort-aware matched control (same shock, NOT in cohort) + recent-period + walk-forward + fixed-filter stress"
+n_confirmed,0
+n_promising_unconfirmed,1
+n_promising_needs_provider,0
+challenge_fraction,0.4
+challenges_showing_lift,S8E-911

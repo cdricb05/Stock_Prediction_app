@@ -1,0 +1,104 @@
+{
+  "phase": "8-F",
+  "generated_utc": "2026-06-25T01:18:16Z",
+  "recommendation": "PROMISING_BUT_UNCONFIRMED",
+  "current_best_leads": [
+    {
+      "signal_id": "S8E-011",
+      "family": "G_macro_cross_asset_x_sensitivity",
+      "driver": "rates",
+      "cohort": "cohort_rates_neg",
+      "status": "PROMISING_BUT_UNCONFIRMED",
+      "lift_vs_control": 0.004035,
+      "ev_after_25bps": 0.001276,
+      "blocker": "worst-decile tail + portfolio does not beat SPY/cash active",
+      "fixed_filter_helps_tail": true
+    }
+  ],
+  "promising_unconfirmed": [
+    "S8E-011"
+  ],
+  "rejected_families": [
+    "G_macro_cross_asset_x_sensitivity",
+    "8-B momentum/value/quality",
+    "8-C broad price/volume",
+    "8-D conditional price/volume"
+  ],
+  "external_data_gaps": [
+    "news_sentiment",
+    "analyst_revision",
+    "earnings",
+    "options_iv",
+    "short_interest",
+    "transcript_tone"
+  ],
+  "provider_readiness": {
+    "A_news_sentiment_x_sensitivity": false,
+    "B_analyst_revision_x_sensitivity": false,
+    "C_earnings_surprise_x_sensitivity": false,
+    "D_options_iv_x_sensitivity": false,
+    "E_short_interest_x_sensitivity": false,
+    "F_s8e011_plus_external_confirmation": false
+  },
+  "confirmed_signals": [],
+  "promising_signals": [
+    "S8E-011"
+  ],
+  "rejected_signals": [
+    "S8E-001",
+    "S8E-002",
+    "S8E-010",
+    "S8E-020",
+    "S8E-030",
+    "S8E-031",
+    "S8E-040",
+    "S8E-050",
+    "S8E-051",
+    "S8E-060",
+    "S8E-070",
+    "S8E-901",
+    "S8E-902",
+    "S8E-903",
+    "S8E-910",
+    "S8E-911",
+    "S8E-920",
+    "S8E-101",
+    "S8E-110",
+    "S8E-130",
+    "S8E-940",
+    "S8E-941",
+    "S8E-960",
+    "S8E-961"
+  ],
+  "needs_provider_families": [
+    "A_news_sentiment_x_sensitivity",
+    "B_analyst_revision_x_sensitivity",
+    "C_earnings_surprise_x_sensitivity",
+    "D_options_iv_x_sensitivity",
+    "E_short_interest_x_sensitivity",
+    "F_s8e011_plus_external_confirmation"
+  ],
+  "open_research_questions": [
+    "Does a fixed liquidity/vol filter rescue the S8E-011 tail without tuning?",
+    "Does an upward analyst revision confirm S8E-011 (family F) once revision data exists?",
+    "Which external family (revisions vs news) yields the first CONFIRMED external signal?",
+    "Do sensitivity cohorts add lift on a broader (S&P 1500 / R3000) survivorship-aware panel?"
+  ],
+  "next_autonomous_actions": [
+    "Acquire analyst-revision provider data (priority 1) and run family B + F with the SAME gate.",
+    "Acquire news/sentiment data (priority 2); run family A.",
+    "Broaden the daily universe and re-run S8E-011 with fixed filters; thresholds FIXED."
+  ],
+  "stop_conditions": [
+    "stop when one signal is CONFIRMED",
+    "stop when all local + credential-available external sources are exhausted",
+    "stop when provider access is required for the next meaningful step",
+    "stop on a safety/leakage problem",
+    "stop when the experiment budget (250) is exhausted"
+  ],
+  "panel": {
+    "n_symbols": 1254,
+    "n_obs": 855109,
+    "source": "persisted 8-E weekly grid (reused, no rebuild)"
+  }
+}

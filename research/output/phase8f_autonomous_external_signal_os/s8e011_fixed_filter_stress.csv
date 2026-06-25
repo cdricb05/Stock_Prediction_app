@@ -1,0 +1,6 @@
+filter,n_events,n_recent_events,lift_vs_control,ev_after_25bps,worst_decile_mean,recent_lift_vs_control,max_sector_fraction,beats_spy_active,beats_cash_active,worst_decile_improved,reason
+baseline_no_filter,11881,6320,0.004035,0.001276,-0.157763,0.003413,0.293662,False,True,,
+remove_bottom_liquidity_quintile,9944,5229,0.005716,0.001221,-0.156242,0.00478,0.291633,False,True,True,
+remove_extreme_beta_tails,2687,1715,0.004612,0.006817,-0.11806,0.003636,0.35281,False,True,True,
+remove_top_volatility_quintile,7266,4150,0.006562,0.00249,-0.123514,0.006765,0.371043,False,True,True,
+remove_bottom_liq_and_top_vol,6016,3374,0.006107,0.001829,-0.125302,0.007465,0.374834,False,True,True,

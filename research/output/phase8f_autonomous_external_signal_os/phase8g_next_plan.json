@@ -1,0 +1,44 @@
+{
+  "from_phase": "8-F",
+  "recommendation": "PROMISING_BUT_UNCONFIRMED",
+  "next_phase": "8-G",
+  "next_steps": [
+    "Acquire analyst-revision provider data (priority 1): set FMP/Finnhub/Intrinio key, run analyst_revision_adapter.py (bounded), then run family B + family F (S8E-011 + revision confirmation) through the IDENTICAL gate \u2014 thresholds FIXED, no tuning.",
+    "Acquire news/sentiment data (priority 2; GDELT is free): run family A.",
+    "Broaden the daily universe (S&P 1500 / Russell 3000, chunked) and re-run S8E-011 with the fixed pre-declared filters to test whether the tail/portfolio gate clears on more data.",
+    "Re-run earnings (C), options (D), short-interest (E) families as their providers come online."
+  ],
+  "provider_priority": [
+    "analyst_revision",
+    "news_sentiment",
+    "earnings_surprise",
+    "options_iv",
+    "short_interest",
+    "transcript_tone"
+  ],
+  "provider_readiness": {
+    "A_news_sentiment_x_sensitivity": false,
+    "B_analyst_revision_x_sensitivity": false,
+    "C_earnings_surprise_x_sensitivity": false,
+    "D_options_iv_x_sensitivity": false,
+    "E_short_interest_x_sensitivity": false,
+    "F_s8e011_plus_external_confirmation": false
+  },
+  "hard_constraints": [
+    "local data first; Norgate + FRED only for price/macro",
+    "do not install packages",
+    "large data on D: only; repo outputs are summaries/manifests",
+    "bounded live collection (<=25 tickers / 30 days / 500 events)",
+    "never print secrets",
+    "no Paper Trader / GCP / deployment",
+    "no broker/order/automation",
+    "no live trading signals",
+    "no weight optimization",
+    "no factor-sign flipping after results",
+    "no regime activation/throttling",
+    "external data never faked",
+    "do not hide failed experiments",
+    "do not commit",
+    "do not push"
+  ]
+}

@@ -1,0 +1,29 @@
+origin_phase,hypothesis,family,status,reason
+8-B,always_on_momentum_value_quality,carry_forward,REJECTED,weak full-sample; rejected
+8-C,broad_always_on_price_volume_factor,carry_forward,REJECTED,Russell 3000; rejected
+8-D,conditional_price_volume_setups,carry_forward,REJECTED,0 confirmed / 0 promising / 19 rejected
+8-E,macro_shock_x_sensitivity (most variants),carry_forward,REJECTED,lifts erased by cost; 24 rejected
+8-F,"When crude shocks UP, oil-positive-sensitive names that confirm continue over 20d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.01145)
+8-F,"When crude shocks DOWN, oil-negative-sensitive names (input-cost relief) outperform over 20d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.011135)
+8-F,"When bonds rally (yields fall), long-duration-sensitive names in uptrends outperform over 20d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.00899)
+8-F,"Under credit stress, low-beta defensives above their 200d MA outperform over 10d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.004339)
+8-F,"On a volatility spike, low-beta defensives in uptrends outperform over 10d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.003565)
+8-F,Volatility-spike-sensitive names that just sold off rebound over 20d once vol spikes.,G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.00875)
+8-F,"After a market down-shock, oversold high-beta names rebound over 10d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.00308)
+8-F,"When the dollar shocks up, dollar-positive-sensitive names with rel strength continue over 20d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.006095)
+8-F,"When the dollar shocks down, dollar-negative-sensitive exporters outperform over 20d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.012052)
+8-F,"When broad commodities shock up, commodity-sensitive names that confirm continue over 20d.",G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.010555)
+8-F,Sector-leadership-sensitive names leading a healthy sector keep leading over 20d.,G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.000937)
+8-F,CHALLENGE: oil UP shock but oil-NEGATIVE cohort — disproves shock alone drives lift.,G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,CHALLENGE: bond rally but SHORT-duration cohort — wrong sensitivity sign.,G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,CHALLENGE: vol spike but HIGH-beta cohort — defensive hypothesis inverted.,G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,"CHALLENGE/placebo: oil shock + confirm, NO sensitivity cohort — isolates cohort lift.",G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,"CHALLENGE/placebo: vol spike + uptrend, NO cohort — isolates defensive-cohort lift.",G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,"CHALLENGE/placebo: oil-positive cohort + confirm, NO oil shock — isolates the shock lift.",G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,Refine: stronger oil shock + oil-positive cohort confirmed by an uptrend.,G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.021379)
+8-F,Refine: stronger bond rally + long-duration cohort + relative strength.,G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.015604)
+8-F,Refine: bigger vol spike + low-beta defensive + low own-vol confirmation.,G_macro_cross_asset_x_sensitivity,REJECTED,non-positive EV after 25bps (-0.005129)
+8-F,"CHALLENGE/placebo: big vol spike alone, NO cohort/confirm — must not match refined lift.",G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,"CHALLENGE/placebo: low-beta cohort alone, NO shock/confirm — isolates shock+confirm lift.",G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,CHALLENGE: same defensive edge at 60d (higher cost drag) — does lift survive?,G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)
+8-F,CHALLENGE: strongest oil-sensitivity lead restricted to 2015-2026 recency stress.,G_macro_cross_asset_x_sensitivity,REJECTED,challenge/placebo control (diagnostic; never promoted)

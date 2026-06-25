@@ -1,0 +1,11 @@
+backlog_id,work_item,owning_agent,priority,state,description
+BL-01,S8E-011 validation,sensitivity-signal-agent,high,DONE_THIS_PHASE,Deep-dive S8E-011 tail/portfolio failure; test fixed pre-declared filters.
+BL-02,news/sentiment ingestion,news-sentiment-agent,high,CONNECTOR_BUILT_PENDING_KEY,Build news/sentiment connector + schema + fixture; collect when a key exists.
+BL-03,analyst revision ingestion,analyst-revision-agent,high,CONNECTOR_BUILT_PENDING_KEY,Build analyst-revision connector + schema; revision drift is the top-priority anomaly.
+BL-04,earnings surprise/guidance ingestion,earnings-event-agent,medium,CONNECTOR_BUILT_PENDING_KEY,Build earnings connector; inventory local SEC/SimFin; PEAD x surprise-sensitivity.
+BL-05,options IV/skew ingestion,options-signal-agent,medium,CONNECTOR_BUILT_PENDING_KEY,Build options connector + schema; IV/skew lead in options-informative names.
+BL-06,short-interest ingestion,short-interest-agent,low,CONNECTOR_BUILT_PENDING_KEY,Build short-interest connector; FINRA biweekly is free.
+BL-07,transcript/tone ingestion,transcript-tone-agent,low,CONNECTOR_BUILT_PENDING_KEY,Build transcript-tone connector + schema.
+BL-08,provider credentials needed,external-data-agent,high,BLOCKED_NO_KEY,No provider key detected; emit acquisition commands and route keys to connectors.
+BL-09,external event signal tests,sensitivity-signal-agent,high,PARTIAL_G_DONE_AF_PENDING_PROVIDER,"Pre-register A-G external-event x sensitivity setups; run G now, A-F on provider data."
+BL-10,model-candidate promotion tests,model-contribution-agent,medium,DONE_THIS_PHASE,Decide which signals may enter the model-candidate registry (no deploy / no Paper Trader).

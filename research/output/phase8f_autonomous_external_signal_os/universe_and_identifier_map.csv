@@ -1,0 +1,1255 @@
+ticker,gics_sector,sector_etf,first_quoted_date,last_quoted_date,is_delisted,norgate_symbol,provider_identifier_hint
+A,Health Care,XLV,1999-11-18,nan,False,A,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AABA-201910,Consumer Discretionary,XLY,1996-04-12,2019-10-02,True,AABA-201910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AAL,Industrials,XLI,2013-12-09,nan,False,AAL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AAL-199702,Financials,XLF,1980-03-17,1997-02-21,True,AAL-199702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AAMRQ-201312,Industrials,XLI,1950-01-03,2013-12-06,True,AAMRQ-201312,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AAP,Consumer Discretionary,XLY,2001-11-29,nan,False,AAP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AAPL,Information Technology,XLK,1980-12-12,nan,False,AAPL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AAV-199901,Financials,XLF,1950-01-03,1999-01-29,True,AAV-199901,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABBV,Health Care,XLV,2012-12-10,nan,False,ABBV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABI-200811,Health Care,XLV,1960-12-13,2008-11-21,True,ABI-200811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABKFQ-201304,Financials,XLF,1991-07-11,2013-04-30,True,ABKFQ-201304,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABMD-202212,Health Care,XLV,1987-07-29,2022-12-21,True,ABMD-202212,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABNB,Consumer Discretionary,XLY,2020-12-10,nan,False,ABNB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABS-200606,Consumer Staples,XLP,1970-02-10,2006-06-01,True,ABS-200606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ABT,Health Care,XLV,1950-01-03,nan,False,ABT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACAS-201701,UNKNOWN,nan,1997-08-29,2017-01-03,True,ACAS-201701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACGL,Financials,XLF,1995-09-14,nan,False,ACGL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACKH-200712,Industrials,XLI,1950-01-03,2007-12-12,True,ACKH-200712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACN,Information Technology,XLK,2001-07-19,nan,False,ACN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACS-201002,Industrials,XLI,1994-09-27,2010-02-05,True,ACS-201002,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACV-201105,Consumer Staples,XLP,1965-06-11,2011-05-10,True,ACV-201105,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ACY-199411,Health Care,XLV,1950-01-03,1994-11-22,True,ACY-199411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADBE,Information Technology,XLK,1986-08-13,nan,False,ADBE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADCT-201012,Information Technology,XLK,1980-03-17,2010-12-09,True,ADCT-201012,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADI,Information Technology,XLK,1979-04-03,nan,False,ADI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADM,Consumer Staples,XLP,1950-01-03,nan,False,ADM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADP,Industrials,XLI,1967-06-26,nan,False,ADP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADSK,Information Technology,XLK,1985-06-28,nan,False,ADSK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ADT-201604,Industrials,XLI,2012-09-17,2016-04-29,True,ADT-201604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AEE,Utilities,XLU,1952-12-15,nan,False,AEE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AEP,Utilities,XLU,1950-01-03,nan,False,AEP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AES,Utilities,XLU,1991-06-26,nan,False,AES,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AET-201811,Health Care,XLV,1968-09-24,2018-11-28,True,AET-201811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AFL,Financials,XLF,1974-06-14,nan,False,AFL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AFS-200011,Financials,XLF,1996-05-08,2000-11-30,True,AFS-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AGC-200108,Financials,XLF,1969-05-26,2001-08-28,True,AGC-200108,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AGN-201503,Health Care,XLV,1989-06-21,2015-03-16,True,AGN-201503,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AGN-202005,Health Care,XLV,1993-02-17,2020-05-08,True,AGN-202005,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AHM-199810,Financials,XLF,1973-01-08,1998-10-01,True,AHM-199810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AIG,Financials,XLF,1972-04-03,nan,False,AIG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AIT-199910,Communication Services,XLC,1983-11-21,1999-10-08,True,AIT-199910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AIV,Real Estate,XLRE,1994-07-22,nan,False,AIV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AIZ,Financials,XLF,2004-02-05,nan,False,AIZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AJG,Financials,XLF,1984-06-20,nan,False,AJG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AKAM,Information Technology,XLK,1999-10-29,nan,False,AKAM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AKS-202003,Materials,XLB,1994-03-30,2020-03-12,True,AKS-202003,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AL-200711,Materials,XLB,1950-05-31,2007-11-14,True,AL-200711,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALB,Materials,XLB,1994-02-22,nan,False,ALB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALGN,Health Care,XLV,2001-01-26,nan,False,ALGN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALK,Industrials,XLI,1962-07-02,nan,False,ALK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALL,Financials,XLF,1993-06-03,nan,False,ALL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALLE,Industrials,XLI,2013-11-18,nan,False,ALLE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALTR-201512,Information Technology,XLK,1988-03-31,2015-12-24,True,ALTR-201512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ALXN-202107,Health Care,XLV,1996-02-28,2021-07-20,True,ALXN-202107,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AM-201308,Consumer Discretionary,XLY,1982-11-01,2013-08-08,True,AM-201308,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMAT,Information Technology,XLK,1982-11-01,nan,False,AMAT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMCC-201701,Information Technology,XLK,1997-11-25,2017-01-26,True,AMCC-201701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMCR,Materials,XLB,2019-06-11,nan,False,AMCR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMD,Information Technology,XLK,1979-10-15,nan,False,AMD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AME,Industrials,XLI,1950-01-03,nan,False,AME,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMG,Financials,XLF,1997-11-21,nan,False,AMG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMGN,Health Care,XLV,1983-06-17,nan,False,AMGN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMH-199709,Information Technology,XLK,1977-12-05,1997-09-18,True,AMH-199709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMP,Financials,XLF,2005-09-15,nan,False,AMP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMP-199904,Industrials,XLI,1959-11-24,1999-04-01,True,AMP-199904,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMT,Real Estate,XLRE,1998-02-27,nan,False,AMT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMX-199311,Materials,XLB,1950-01-03,1993-11-15,True,AMX-199311,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AMZN,Consumer Discretionary,XLY,1997-05-15,nan,False,AMZN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AN,Consumer Discretionary,XLY,1990-05-11,nan,False,AN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AN-199812,Energy,XLE,1950-01-03,1998-12-31,True,AN-199812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANDV-201809,Energy,XLE,1962-07-02,2018-09-28,True,ANDV-201809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANDW-200712,Information Technology,XLK,1982-11-01,2007-12-27,True,ANDW-200712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANET,Information Technology,XLK,2014-06-06,nan,False,ANET,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANF,Consumer Discretionary,XLY,1996-09-26,nan,False,ANF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANRZQ-201607,Energy,XLE,2005-02-15,2016-07-26,True,ANRZQ-201607,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANSS-202507,Information Technology,XLK,1996-06-20,2025-07-16,True,ANSS-202507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ANV-199904,Industrials,XLI,1950-01-03,1999-04-09,True,ANV-199904,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AON,Financials,XLF,1980-06-02,nan,False,AON,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AOS,Industrials,XLI,1983-09-30,nan,False,AOS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APA,Energy,XLE,1963-08-02,nan,False,APA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APC-201908,Energy,XLE,1986-09-08,2019-08-08,True,APC-201908,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APCC-200702,Industrials,XLI,1988-07-22,2007-02-14,True,APCC-200702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APD,Materials,XLB,1961-11-13,nan,False,APD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APH,Information Technology,XLK,1991-11-08,nan,False,APH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APO,Financials,XLF,2011-03-30,nan,False,APO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APOL-201702,Consumer Discretionary,XLY,1994-12-06,2017-02-01,True,APOL-201702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APP,Information Technology,XLK,2021-04-15,nan,False,APP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+APTV,Consumer Discretionary,XLY,2011-11-17,nan,False,APTV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AR-199911,Materials,XLB,1950-01-03,1999-11-17,True,AR-199911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ARC-200004,Energy,XLE,1950-01-03,2000-04-17,True,ARC-200004,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ARE,Real Estate,XLRE,1997-05-28,nan,False,ARE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ARES,Financials,XLF,2014-05-02,nan,False,ARES,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ARG-201605,Materials,XLB,1986-12-19,2016-05-20,True,ARG-201605,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AS-199909,Materials,XLB,1950-01-03,1999-09-30,True,AS-199909,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ASC-199906,Consumer Staples,XLP,1967-06-28,1999-06-23,True,ASC-199906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ASH,Materials,XLB,1950-05-08,nan,False,ASH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ASN-200710,Real Estate,XLRE,1982-11-01,2007-10-05,True,ASN-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ASND-199906,Information Technology,XLK,1994-05-13,1999-06-24,True,ASND-199906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ASO-200611,Financials,XLF,1981-05-20,2006-11-03,True,ASO-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AT-200711,Communication Services,XLC,1965-01-18,2007-11-16,True,AT-200711,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ATI,Industrials,XLI,1966-05-02,nan,False,ATI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ATI-199906,Communication Services,XLC,1993-12-03,1999-06-29,True,ATI-199906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ATO,Utilities,XLU,1983-12-28,nan,False,ATO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ATVI-202310,Communication Services,XLC,1983-06-09,2023-10-12,True,ATVI-202310,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AV-200710,Information Technology,XLK,2000-09-18,2007-10-25,True,AV-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AVB,Real Estate,XLRE,1994-03-11,nan,False,AVB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AVGO,Information Technology,XLK,2009-08-06,nan,False,AVGO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AVP-202001,Consumer Staples,XLP,1964-04-20,2020-01-03,True,AVP-202001,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AVY,Materials,XLB,1967-06-20,nan,False,AVY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AW-200812,Industrials,XLI,1991-09-10,2008-12-05,True,AW-200812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AWE-200410,Communication Services,XLC,2000-04-27,2004-10-26,True,AWE-200410,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AWK,Utilities,XLU,2008-04-23,nan,False,AWK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AXON,Industrials,XLI,2001-06-07,nan,False,AXON,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AXP,Financials,XLF,1972-04-04,nan,False,AXP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AYE-201102,Utilities,XLU,1950-01-03,2011-02-25,True,AYE-201102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AYI,Industrials,XLI,2001-11-28,nan,False,AYI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AZA-200106,Health Care,XLV,1983-06-08,2001-06-22,True,AZA-200106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+AZO,Consumer Discretionary,XLY,1991-04-02,nan,False,AZO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+B,Materials,XLB,1985-02-01,nan,False,B,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BA,Industrials,XLI,1950-01-03,nan,False,BA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BAC,Financials,XLF,1972-04-03,nan,False,BAC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BAC-199809,Financials,XLF,1976-06-28,1998-09-30,True,BAC-199809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BALL,Materials,XLB,1973-12-17,nan,False,BALL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BAX,Health Care,XLV,1961-05-16,nan,False,BAX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BAY-199808,Information Technology,XLK,1991-07-31,1998-08-28,True,BAY-199808,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BBBYQ-202309,Consumer Discretionary,XLY,1992-06-05,2023-09-29,True,BBBYQ-202309,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BBI-199801,Financials,XLF,1979-12-17,1998-01-09,True,BBI-199801,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BBWI,Consumer Discretionary,XLY,1982-04-01,nan,False,BBWI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BBY,Consumer Discretionary,XLY,1985-04-18,nan,False,BBY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BC,Consumer Discretionary,XLY,1950-01-03,nan,False,BC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BCO,Industrials,XLI,1950-01-03,nan,False,BCO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BCR-201712,Health Care,XLV,1968-09-30,2017-12-28,True,BCR-201712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BDK-201003,Consumer Discretionary,XLY,1950-01-03,2010-03-12,True,BDK-201003,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BDX,Health Care,XLV,1963-09-25,nan,False,BDX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BEAM-201404,Consumer Staples,XLP,1950-01-03,2014-04-30,True,BEAM-201404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BEN,Financials,XLF,1983-09-23,nan,False,BEN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BEV-200603,Health Care,XLV,1969-03-13,2006-03-14,True,BEV-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BF.B,Consumer Staples,XLP,1962-07-02,nan,False,BF.B,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BFH,Financials,XLF,2001-06-08,nan,False,BFH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BFI-199907,Industrials,XLI,1971-12-15,1999-07-30,True,BFI-199907,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BFO-200010,Consumer Staples,XLP,1950-01-03,2000-10-04,True,BFO-200010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BG,Consumer Staples,XLP,2001-08-02,nan,False,BG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BGEN-200311,Health Care,XLV,1983-03-22,2003-11-12,True,BGEN-200311,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BGGSQ-202101,Industrials,XLI,1950-01-04,2021-01-06,True,BGGSQ-202101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BHF,Financials,XLF,2017-07-17,nan,False,BHF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BHMSQ-200401,Materials,XLB,1950-01-03,2004-01-05,True,BHMSQ-200401,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BIGGQ,Consumer Discretionary,XLY,1985-06-20,nan,False,BIGGQ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BIIB,Health Care,XLV,1991-09-17,nan,False,BIIB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BIO,Health Care,XLV,1980-02-27,nan,False,BIO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BJS-201004,Energy,XLE,1990-07-20,2010-04-28,True,BJS-201004,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BKB-199909,Financials,XLF,1971-01-07,1999-09-30,True,BKB-199909,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BKNG,Consumer Discretionary,XLY,1999-03-30,nan,False,BKNG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BKR,Energy,XLE,1961-10-03,nan,False,BKR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BLDR,Industrials,XLI,2005-06-22,nan,False,BLDR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BLK,Financials,XLF,1999-10-01,nan,False,BLK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BLS-200612,Communication Services,XLC,1983-11-21,2006-12-29,True,BLS-200612,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BLY-199612,Consumer Discretionary,XLY,1975-08-12,1996-12-18,True,BLY-199612,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BMC-201309,Information Technology,XLK,1988-08-12,2013-09-10,True,BMC-201309,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BMET-200709,Health Care,XLV,1982-12-17,2007-09-25,True,BMET-200709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BMG-200101,Materials,XLB,1985-07-15,2001-01-10,True,BMG-200101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BMS-201906,Materials,XLB,1966-09-13,2019-06-10,True,BMS-201906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BMY,Health Care,XLV,1950-01-03,nan,False,BMY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BN-199503,Materials,XLB,1950-01-03,1995-03-14,True,BN-199503,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BNI-201002,Industrials,XLI,1970-03-03,2010-02-12,True,BNI-201002,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BNL-199806,Financials,XLF,1950-01-03,1998-06-30,True,BNL-199806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BNY,Financials,XLF,1969-12-04,nan,False,BNY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BOAT-199701,Financials,XLF,1982-11-01,1997-01-06,True,BOAT-199701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BOL-200710,Health Care,XLV,1958-03-24,2007-10-26,True,BOL-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BR,Industrials,XLI,2007-03-22,nan,False,BR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BR-200603,Energy,XLE,1988-07-08,2006-03-31,True,BR-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BRCM-201601,Information Technology,XLK,1998-04-17,2016-01-29,True,BRCM-201601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BRK.B,Financials,XLF,1996-05-09,nan,False,BRK.B,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BRL-200812,Health Care,XLV,1987-06-12,2008-12-22,True,BRL-200812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BRNO-199508,Consumer Staples,XLP,1982-11-01,1995-08-17,True,BRNO-199508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BRO,Financials,XLF,1982-11-01,nan,False,BRO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BSC-200805,Financials,XLF,1985-10-29,2008-05-30,True,BSC-200805,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BSET,Consumer Discretionary,XLY,1978-01-03,nan,False,BSET,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BSX,Health Care,XLV,1992-05-19,nan,False,BSX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BT-199906,Financials,XLF,1969-05-16,1999-06-03,True,BT-199906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BTUUQ-201704,Energy,XLE,2001-05-22,2017-04-03,True,BTUUQ-201704,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BUD-200811,Consumer Staples,XLP,1980-03-17,2008-11-17,True,BUD-200811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BV-199409,Consumer Discretionary,XLY,1983-02-01,1994-09-29,True,BV-199409,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BVSN-202005,Information Technology,XLK,1996-06-21,2020-05-18,True,BVSN-202005,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BWA,Consumer Discretionary,XLY,1993-08-13,nan,False,BWA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BX,Financials,XLF,2007-06-22,nan,False,BX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+BXP,Real Estate,XLRE,1997-06-18,nan,False,BXP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+C,Financials,XLF,1986-10-29,nan,False,C,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+C-199811,Consumer Discretionary,XLY,1950-01-03,1998-11-12,True,C-199811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CA-201811,Information Technology,XLK,1981-12-15,2018-11-02,True,CA-201811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CAG,Consumer Staples,XLP,1973-01-09,nan,False,CAG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CAH,Health Care,XLV,1983-08-04,nan,False,CAH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CAL,Consumer Discretionary,XLY,1950-01-03,nan,False,CAL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CAM-201604,Energy,XLE,1995-07-05,2016-04-01,True,CAM-201604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CAR,Industrials,XLI,1983-09-14,nan,False,CAR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CARR,Industrials,XLI,2020-03-19,nan,False,CARR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CASY,Consumer Staples,XLP,1983-10-20,nan,False,CASY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CAT,Industrials,XLI,1950-01-03,nan,False,CAT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CB,Financials,XLF,1993-03-25,nan,False,CB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CB-201601,Financials,XLF,1976-01-29,2016-01-14,True,CB-201601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBB-199801,Industrials,XLI,1970-01-02,1998-01-27,True,CBB-199801,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBE-201211,Industrials,XLI,1950-01-03,2012-11-30,True,CBE-201211,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBH-200803,Financials,XLF,1984-10-18,2008-03-28,True,CBH-200803,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBOE,Financials,XLF,2010-06-15,nan,False,CBOE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBRE,Real Estate,XLRE,2004-06-10,nan,False,CBRE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBS-199511,Communication Services,XLC,1950-01-03,1995-11-24,True,CBS-199511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBS-200005,Communication Services,XLC,1950-01-03,2000-05-03,True,CBS-200005,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CBSS-200709,Financials,XLF,1982-11-01,2007-09-06,True,CBSS-200709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCB-199602,Communication Services,XLC,1962-07-02,1996-02-09,True,CCB-199602,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCEP,Consumer Staples,XLP,1986-11-21,nan,False,CCEP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCI,Real Estate,XLRE,1998-08-18,nan,False,CCI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCI-199810,Financials,XLF,1968-11-01,1998-10-07,True,CCI-199810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCK,Materials,XLB,1950-01-03,nan,False,CCK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCL,Consumer Discretionary,XLY,1987-07-24,nan,False,CCL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCTYQ-201109,Consumer Discretionary,XLY,1968-11-18,2011-09-27,True,CCTYQ-201109,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CCU-200807,Communication Services,XLC,1984-04-19,2008-07-30,True,CCU-200807,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CDNS,Information Technology,XLK,1987-06-10,nan,False,CDNS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CDW,Information Technology,XLK,2013-06-27,nan,False,CDW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CE,Materials,XLB,2005-01-21,nan,False,CE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CE-200402,Industrials,XLI,1984-06-21,2004-02-26,True,CE-200402,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CEG,Utilities,XLU,2022-01-19,nan,False,CEG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CEG-201203,Utilities,XLU,1950-03-29,2012-03-12,True,CEG-201203,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CELG-201911,Health Care,XLV,1987-07-28,2019-11-20,True,CELG-201911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CEN-200711,Industrials,XLI,1963-03-06,2007-11-08,True,CEN-200711,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CEPH-201110,Health Care,XLV,1991-04-25,2011-10-13,True,CEPH-201110,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CERN-202206,Health Care,XLV,1986-12-05,2022-06-07,True,CERN-202206,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CF,Materials,XLB,2005-08-11,nan,False,CF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CF-200408,Financials,XLF,1988-01-22,2004-08-31,True,CF-200408,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CFC-200806,Financials,XLF,1982-11-01,2008-06-30,True,CFC-200806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CFG,Financials,XLF,2014-09-24,nan,False,CFG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CFL-199804,Financials,XLF,1982-11-01,1998-04-27,True,CFL-199804,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CFN-201503,Health Care,XLV,2009-08-21,2015-03-16,True,CFN-201503,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CG-200011,Utilities,XLU,1950-01-03,2000-11-01,True,CG-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CGP-200101,Energy,XLE,1963-02-20,2001-01-29,True,CGP-200101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHA-200006,Materials,XLB,1950-01-03,2000-06-20,True,CHA-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHD,Consumer Staples,XLP,1980-03-17,nan,False,CHD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHIR-200604,Health Care,XLV,1983-08-02,2006-04-19,True,CHIR-200604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHKAQ-202102,Energy,XLE,1993-02-05,2021-02-09,True,CHKAQ-202102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHRS-201206,Consumer Discretionary,XLY,1980-03-17,2012-06-14,True,CHRS-201206,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHRW,Industrials,XLI,1997-10-15,nan,False,CHRW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CHTR,Communication Services,XLC,2009-12-02,nan,False,CHTR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CI,Health Care,XLV,1979-05-16,nan,False,CI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CIC-199505,Financials,XLF,1968-08-19,1995-05-10,True,CIC-199505,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CIEN,Information Technology,XLK,1997-02-07,nan,False,CIEN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CIN-200603,Utilities,XLU,1950-01-03,2006-03-31,True,CIN-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CINF,Financials,XLF,1980-03-17,nan,False,CINF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CIT-200106,Financials,XLF,1997-11-13,2001-06-01,True,CIT-200106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CITGQ-200912,Financials,XLF,2002-07-02,2009-12-09,True,CITGQ-200912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CKL-199505,Industrials,XLI,1950-01-03,1995-05-25,True,CKL-199505,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CL,Consumer Staples,XLP,1950-01-03,nan,False,CL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CLF,Materials,XLB,1960-07-27,nan,False,CLF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CLX,Consumer Staples,XLP,1968-08-01,nan,False,CLX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMA-202601,Financials,XLF,1980-03-17,2026-01-30,True,CMA-202601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMB-199603,Financials,XLF,1965-03-15,1996-03-29,True,CMB-199603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMCSA,Communication Services,XLC,1980-03-17,nan,False,CMCSA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMCSK-201512,Communication Services,XLC,1986-12-24,2015-12-11,True,CMCSK-201512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CME,Financials,XLF,2002-12-06,nan,False,CME,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMG,Consumer Discretionary,XLY,2006-01-26,nan,False,CMG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMI,Industrials,XLI,1964-09-10,nan,False,CMI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMS,Utilities,XLU,1950-01-03,nan,False,CMS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMVT-201302,Information Technology,XLK,1988-01-07,2013-02-04,True,CMVT-201302,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CMX-200703,Health Care,XLV,1995-02-22,2007-03-21,True,CMX-200703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNA,Financials,XLF,1969-02-03,nan,False,CNA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNC,Health Care,XLV,2001-12-13,nan,False,CNC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNCEQ-200309,Financials,XLF,1985-11-14,2003-09-10,True,CNCEQ-200309,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNG-200001,Utilities,XLU,1950-01-03,2000-01-28,True,CNG-200001,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNP,Utilities,XLU,1950-01-03,nan,False,CNP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNW-201510,Industrials,XLI,1965-05-05,2015-10-29,True,CNW-201510,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNX,Energy,XLE,1999-04-30,nan,False,CNX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CNXT-201104,Information Technology,XLK,1998-12-09,2011-04-18,True,CNXT-201104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COC-200208,Energy,XLE,1999-07-13,2002-08-30,True,COC-200208,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COF,Financials,XLF,1994-11-16,nan,False,COF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COHR,Information Technology,XLK,1987-10-02,nan,False,COHR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COIN,Financials,XLF,2021-04-14,nan,False,COIN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COL-201811,Industrials,XLI,2001-06-15,2018-11-26,True,COL-201811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COMS-201004,Information Technology,XLK,1984-03-21,2010-04-09,True,COMS-201004,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COO,Health Care,XLV,1983-01-21,nan,False,COO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COP,Energy,XLE,1950-01-03,nan,False,COP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COR,Health Care,XLV,1995-04-04,nan,False,COR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COST,Consumer Staples,XLP,1985-11-27,nan,False,COST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COTY,Consumer Staples,XLP,2013-06-13,nan,False,COTY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+COV-201501,Health Care,XLV,2007-06-14,2015-01-26,True,COV-201501,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPAY,Financials,XLF,2010-12-15,nan,False,CPAY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPB,Consumer Staples,XLP,1954-12-13,nan,False,CPB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPNLQ-200802,Utilities,XLU,1996-09-20,2008-02-01,True,CPNLQ-200802,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPPRQ-202102,Consumer Discretionary,XLY,1950-01-03,2021-02-01,True,CPPRQ-202102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPQ-200205,Information Technology,XLK,1983-12-09,2002-05-03,True,CPQ-200205,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPRI,Consumer Discretionary,XLY,2011-12-15,nan,False,CPRI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPRT,Industrials,XLI,1994-03-17,nan,False,CPRT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPT,Real Estate,XLRE,1993-07-22,nan,False,CPT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CPWR-201412,Information Technology,XLK,1992-12-16,2014-12-15,True,CPWR-201412,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CRH,Materials,XLB,2003-10-28,nan,False,CRH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CRL,Health Care,XLV,2000-06-23,nan,False,CRL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CRM,Information Technology,XLK,2004-06-23,nan,False,CRM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CRR-199706,Industrials,XLI,1987-03-26,1997-06-02,True,CRR-199706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CRWD,Information Technology,XLK,2019-06-12,nan,False,CRWD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CSCO,Information Technology,XLK,1990-02-16,nan,False,CSCO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CSE-199911,Industrials,XLI,1994-06-24,1999-11-12,True,CSE-199911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CSGP,Real Estate,XLRE,1998-07-01,nan,False,CSGP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CSR-200006,Utilities,XLU,1950-01-03,2000-06-15,True,CSR-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CSRA-201804,Information Technology,XLK,2015-11-16,2018-04-03,True,CSRA-201804,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CSX,Industrials,XLI,1980-11-03,nan,False,CSX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTAS,Industrials,XLI,1983-08-19,nan,False,CTAS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTB-202106,Consumer Discretionary,XLY,1960-07-11,2021-06-04,True,CTB-202106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTLT-202412,Health Care,XLV,2014-07-31,2024-12-17,True,CTLT-202412,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTRA-202605,Energy,XLE,1990-02-08,2026-05-06,True,CTRA-202605,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTSH,Information Technology,XLK,1998-06-19,nan,False,CTSH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTVA,Materials,XLB,2019-05-24,nan,False,CTVA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTX-200908,Consumer Discretionary,XLY,1971-12-28,2009-08-18,True,CTX-200908,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CTXS-202209,Information Technology,XLK,1995-12-08,2022-09-29,True,CTXS-202209,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CUE-199309,Materials,XLB,1950-01-03,1993-09-30,True,CUE-199309,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVC-201606,Communication Services,XLC,1986-01-17,2016-06-20,True,CVC-201606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVG-201810,Industrials,XLI,1998-08-13,2018-10-04,True,CVG-201810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVGQE-200412,Utilities,XLU,1962-07-02,2004-12-03,True,CVGQE-200412,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVH-201305,Health Care,XLV,1991-04-17,2013-05-06,True,CVH-201305,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVNA,Consumer Discretionary,XLY,2017-04-28,nan,False,CVNA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVS,Health Care,XLV,1950-01-03,nan,False,CVS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVSA,Consumer Discretionary,XLY,1991-06-21,nan,False,CVSA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CVX,Energy,XLE,1950-01-03,nan,False,CVX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CXO-202101,Energy,XLE,2007-08-03,2021-01-15,True,CXO-202101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CXT,Information Technology,XLK,1950-01-03,nan,False,CXT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CYM-199912,Materials,XLB,1985-05-30,1999-12-02,True,CYM-199912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CYR-199606,Information Technology,XLK,1980-11-18,1996-06-28,True,CYR-199606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+CZR,Consumer Discretionary,XLY,1992-12-07,nan,False,CZR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+D,Utilities,XLU,1950-01-03,nan,False,D,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DAL,Industrials,XLI,2007-04-26,nan,False,DAL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DALRQ-200704,Industrials,XLI,1957-04-17,2007-04-27,True,DALRQ-200704,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DASH,Consumer Discretionary,XLY,2020-12-09,nan,False,DASH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DAY-202602,Industrials,XLI,2018-04-26,2026-02-03,True,DAY-202602,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DCNAQ-200801,Consumer Discretionary,XLY,1950-01-03,2008-01-31,True,DCNAQ-200801,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DD,Materials,XLB,2017-09-01,nan,False,DD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DD-201708,Materials,XLB,1950-01-03,2017-08-31,True,DD-201708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DDOG,Information Technology,XLK,2019-09-19,nan,False,DDOG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DDS,Consumer Discretionary,XLY,1969-10-27,nan,False,DDS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DE,Industrials,XLI,1950-01-03,nan,False,DE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DEC-199806,Information Technology,XLK,1966-11-14,1998-06-11,True,DEC-199806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DECK,Consumer Discretionary,XLY,1993-10-15,nan,False,DECK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DELL,Information Technology,XLK,2016-08-17,nan,False,DELL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DELL-201310,Information Technology,XLK,1988-06-22,2013-10-29,True,DELL-201310,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DFODQ-202106,Consumer Staples,XLP,1996-04-17,2021-06-02,True,DFODQ-202106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DFS-202505,Financials,XLF,2007-06-14,2025-05-16,True,DFS-202505,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DG,Consumer Staples,XLP,2009-11-13,nan,False,DG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DG-200707,Consumer Discretionary,XLY,1982-11-01,2007-07-06,True,DG-200707,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DGN-199910,Information Technology,XLK,1973-12-28,1999-10-12,True,DGN-199910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DGX,Health Care,XLV,1996-12-17,nan,False,DGX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DHI,Consumer Discretionary,XLY,1992-06-05,nan,False,DHI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DHR,Health Care,XLV,1969-12-10,nan,False,DHR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DI-199809,Energy,XLE,1950-01-03,1998-09-29,True,DI-199809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DIGI-199809,Information Technology,XLK,1982-11-01,1998-09-04,True,DIGI-199809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DINO,Energy,XLE,1962-07-02,nan,False,DINO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DIS,Communication Services,XLC,1957-11-12,nan,False,DIS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DISCK-202204,Communication Services,XLC,2008-09-18,2022-04-08,True,DISCK-202204,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DISH-202312,Communication Services,XLC,1995-06-21,2023-12-29,True,DISH-202312,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DJ-200712,Communication Services,XLC,1976-07-13,2007-12-13,True,DJ-200712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DLR,Real Estate,XLRE,2004-10-29,nan,False,DLR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DLTR,Consumer Staples,XLP,1995-03-07,nan,False,DLTR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DLX,Industrials,XLI,1980-04-25,nan,False,DLX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DNB-201902,Industrials,XLI,2000-09-18,2019-02-07,True,DNB-201902,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DNRCQ-202009,Energy,XLE,1995-09-06,2020-09-18,True,DNRCQ-202009,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DOC,Real Estate,XLRE,1985-05-23,nan,False,DOC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DOFSQ-202104,Energy,XLE,1995-10-11,2021-04-23,True,DOFSQ-202104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DOV,Industrials,XLI,1956-12-03,nan,False,DOV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DOW,Materials,XLB,2019-03-20,nan,False,DOW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DOW-201708,Materials,XLB,1950-01-03,2017-08-31,True,DOW-201708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DPHIQ-200910,Consumer Discretionary,XLY,1999-02-05,2009-10-07,True,DPHIQ-200910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DPZ,Consumer Discretionary,XLY,2004-07-13,nan,False,DPZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DRE-202209,Real Estate,XLRE,1986-02-06,2022-09-30,True,DRE-202209,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DRI,Consumer Discretionary,XLY,1995-05-09,nan,False,DRI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DTE,Utilities,XLU,1950-01-03,nan,False,DTE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DTV-201507,Communication Services,XLC,1985-11-18,2015-07-24,True,DTV-201507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DUK,Utilities,XLU,1961-07-12,nan,False,DUK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DVA,Health Care,XLV,1995-10-31,nan,False,DVA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DVN,Energy,XLE,1992-03-17,nan,False,DVN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DWD-199705,Financials,XLF,1993-02-23,1997-05-30,True,DWD-199705,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DXC,Information Technology,XLK,1964-01-22,nan,False,DXC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DXCM,Health Care,XLV,2005-04-14,nan,False,DXCM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+DYN-201804,Utilities,XLU,1950-01-03,2018-04-06,True,DYN-201804,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+E-199504,Utilities,XLU,1975-04-10,1995-04-28,True,E-199504,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EA,Communication Services,XLC,1989-09-20,nan,False,EA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EBAY,Consumer Discretionary,XLY,1998-09-24,nan,False,EBAY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EC-200606,Materials,XLB,1981-05-21,2006-06-09,True,EC-200606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ECH-199807,Consumer Discretionary,XLY,1962-07-02,1998-07-09,True,ECH-199807,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ECHO,Communication Services,XLC,2007-12-31,nan,False,ECHO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ECL,Materials,XLB,1980-03-17,nan,False,ECL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ECO-200301,Materials,XLB,1983-10-11,2003-01-31,True,ECO-200301,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ED,Utilities,XLU,1950-01-03,nan,False,ED,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EDS-200808,Industrials,XLI,1984-10-19,2008-08-25,True,EDS-200808,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EFU-200011,Utilities,XLU,1957-03-04,2000-11-08,True,EFU-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EFX,Industrials,XLI,1971-05-11,nan,False,EFX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EG,Financials,XLF,1995-10-03,nan,False,EG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EHC,Health Care,XLV,1986-09-24,nan,False,EHC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EIX,Utilities,XLU,1950-01-03,nan,False,EIX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EKDKQ-201309,Consumer Discretionary,XLY,1950-01-03,2013-09-03,True,EKDKQ-201309,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EL,Consumer Staples,XLP,1995-11-17,nan,False,EL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ELV,Health Care,XLV,2001-10-30,nan,False,ELV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EMC-201609,Information Technology,XLK,1986-04-04,2016-09-06,True,EMC-201609,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EME,Industrials,XLI,1995-12-28,nan,False,EME,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EMN,Materials,XLB,1993-12-14,nan,False,EMN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EMR,Industrials,XLI,1950-01-03,nan,False,EMR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ENDPQ-202405,Health Care,XLV,1996-09-26,2024-05-01,True,ENDPQ-202405,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ENPH,Information Technology,XLK,2012-03-30,nan,False,ENPH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ENRNQ-200411,Utilities,XLU,1950-01-03,2004-11-17,True,ENRNQ-200411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ENS-199708,Utilities,XLU,1953-04-14,1997-08-05,True,ENS-199708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EOG,Energy,XLE,1989-10-04,nan,False,EOG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EOP-200702,Real Estate,XLRE,1997-07-08,2007-02-09,True,EOP-200702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EP-201205,Energy,XLE,1992-03-13,2012-05-24,True,EP-201205,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EPAM,Information Technology,XLK,2012-02-08,nan,False,EPAM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EQ-200906,Communication Services,XLC,2006-05-04,2009-06-30,True,EQ-200906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EQIX,Real Estate,XLRE,2000-08-11,nan,False,EQIX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EQR,Real Estate,XLRE,1993-08-12,nan,False,EQR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EQT,Energy,XLE,1950-06-05,nan,False,EQT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ERIE,Financials,XLF,1995-10-02,nan,False,ERIE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ES,Utilities,XLU,1967-02-20,nan,False,ES,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ESRX-201812,Health Care,XLV,1992-06-09,2018-12-20,True,ESRX-201812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ESS,Real Estate,XLRE,1994-06-07,nan,False,ESS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ESY-199505,Industrials,XLI,1966-06-13,1995-05-08,True,ESY-199505,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ETFC-202010,Financials,XLF,1996-08-16,2020-10-01,True,ETFC-202010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ETN,Industrials,XLI,1950-01-03,nan,False,ETN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ETR,Utilities,XLU,1950-01-03,nan,False,ETR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ETS-200603,Information Technology,XLK,1989-05-31,2006-03-01,True,ETS-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ETSY,Consumer Discretionary,XLY,2015-04-16,nan,False,ETSY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EVHC-201810,Health Care,XLV,1997-12-03,2018-10-10,True,EVHC-201810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EVRG,Utilities,XLU,1950-01-03,nan,False,EVRG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EW,Health Care,XLV,2000-03-27,nan,False,EW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EXC,Utilities,XLU,1950-01-03,nan,False,EXC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EXE,Energy,XLE,2021-02-10,nan,False,EXE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EXPD,Industrials,XLI,1984-09-26,nan,False,EXPD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EXPE,Consumer Discretionary,XLY,2005-07-20,nan,False,EXPE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+EXR,Real Estate,XLRE,2004-08-12,nan,False,EXR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+F,Consumer Discretionary,XLY,1956-03-07,nan,False,F,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FANG,Energy,XLE,2012-10-12,nan,False,FANG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FAST,Industrials,XLI,1987-08-20,nan,False,FAST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FBF-200403,Financials,XLF,1968-11-15,2004-03-31,True,FBF-200403,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FBIN,Industrials,XLI,2011-09-16,nan,False,FBIN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FBO-199603,Materials,XLB,1955-01-24,1996-03-12,True,FBO-199603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FCN-199810,Financials,XLF,1973-02-21,1998-10-01,True,FCN-199810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FCX,Materials,XLB,1995-07-10,nan,False,FCX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FDC-200709,Industrials,XLI,1992-04-09,2007-09-24,True,FDC-200709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FDO-201507,Consumer Discretionary,XLY,1972-01-04,2015-07-06,True,FDO-201507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FDS,Financials,XLF,1996-06-28,nan,False,FDS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FDX,Industrials,XLI,1978-12-28,nan,False,FDX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FE,Utilities,XLU,1950-01-03,nan,False,FE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FFB-199512,Financials,XLF,1971-05-17,1995-12-29,True,FFB-199512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FFIV,Information Technology,XLK,1999-06-04,nan,False,FFIV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FG-199804,Financials,XLF,1970-07-27,1998-04-24,True,FG-199804,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FHI,Financials,XLF,1998-05-14,nan,False,FHI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FHN,Financials,XLF,1980-03-17,nan,False,FHN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FICO,Information Technology,XLK,1987-07-22,nan,False,FICO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FIS,Financials,XLF,2001-06-20,nan,False,FIS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FISV,Financials,XLF,1986-09-25,nan,False,FISV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FITB,Financials,XLF,1980-03-17,nan,False,FITB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FIX,Industrials,XLI,1997-06-27,nan,False,FIX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FJ-200011,Consumer Staples,XLP,1980-01-29,2000-11-27,True,FJ-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FJCC-200809,Consumer Discretionary,XLY,1950-01-03,2008-09-05,True,FJCC-200809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FL-202509,Consumer Discretionary,XLY,1950-01-03,2025-09-05,True,FL-202509,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FLIR-202105,Information Technology,XLK,1993-06-22,2021-05-13,True,FLIR-202105,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FLMIQ-200408,UNKNOWN,nan,1968-12-06,2004-08-23,True,FLMIQ-200408,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FLR,Industrials,XLI,2000-12-01,nan,False,FLR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FLS,Industrials,XLI,1980-03-17,nan,False,FLS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FLTWQ-200907,Consumer Discretionary,XLY,1968-05-27,2009-07-27,True,FLTWQ-200907,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FMC,Materials,XLB,1950-01-03,nan,False,FMC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FMCC,Financials,XLF,1985-01-23,nan,False,FMCC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FMY-199905,Consumer Staples,XLP,1986-10-23,1999-05-27,True,FMY-199905,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FNB-199511,Financials,XLF,1971-12-30,1995-11-30,True,FNB-199511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FNMA,Financials,XLF,1970-08-31,nan,False,FNMA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FOSL,Consumer Discretionary,XLY,1993-04-08,nan,False,FOSL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FOX,Communication Services,XLC,2019-03-13,nan,False,FOX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FOXA,Communication Services,XLC,2019-03-12,nan,False,FOXA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FPC-200011,Utilities,XLU,1950-01-03,2000-11-30,True,FPC-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FRCB,Financials,XLF,2010-12-09,nan,False,FRCB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FRM-199612,UNKNOWN,nan,1975-01-16,1996-12-23,True,FRM-199612,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FRO-199909,Communication Services,XLC,1959-03-30,1999-09-28,True,FRO-199909,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FRT,Real Estate,XLRE,1975-06-09,nan,False,FRT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FRX-201406,Health Care,XLV,1967-10-24,2014-06-30,True,FRX-201406,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FSH-200611,Health Care,XLV,1991-12-18,2006-11-09,True,FSH-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FSL.B-200612,Information Technology,XLK,2004-11-23,2006-12-01,True,FSL.B-200612,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FSLR,Information Technology,XLK,2006-11-17,nan,False,FSLR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FTI,Energy,XLE,2017-01-17,nan,False,FTI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FTI-201701,Energy,XLE,2001-06-14,2017-01-13,True,FTI-201701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FTL-200004,Consumer Discretionary,XLY,1987-03-03,2000-04-20,True,FTL-200004,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FTNT,Information Technology,XLK,2009-11-18,nan,False,FTNT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FTRCQ-202104,Communication Services,XLC,1980-03-17,2021-04-30,True,FTRCQ-202104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FTV,Industrials,XLI,2016-06-13,nan,False,FTV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+FWLT-201412,Industrials,XLI,1950-01-03,2014-12-03,True,FWLT-201412,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+G-200509,Consumer Staples,XLP,1950-01-03,2005-09-30,True,G-200509,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GAP,Consumer Discretionary,XLY,1976-07-30,nan,False,GAP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GAPTQ-201203,Consumer Staples,XLP,1958-12-15,2012-03-14,True,GAPTQ-201203,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GAS-201112,Utilities,XLU,1969-05-02,2011-12-09,True,GAS-201112,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GAS-201606,Utilities,XLU,1982-11-01,2016-06-30,True,GAS-201606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GBLXQ-200312,Communication Services,XLC,1998-08-14,2003-12-09,True,GBLXQ-200312,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GCO,Consumer Discretionary,XLY,1950-01-05,nan,False,GCO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GD,Industrials,XLI,1950-01-03,nan,False,GD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GDDY,Information Technology,XLK,2015-04-01,nan,False,GDDY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GDT-200604,Health Care,XLV,1994-12-14,2006-04-21,True,GDT-200604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GDW-200609,Financials,XLF,1971-11-04,2006-09-29,True,GDW-200609,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GE,Industrials,XLI,1950-01-03,nan,False,GE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GEB-199408,Consumer Staples,XLP,1956-09-18,1994-08-24,True,GEB-199408,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GEHC,Health Care,XLV,2022-12-15,nan,False,GEHC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GEN,Information Technology,XLK,1989-06-23,nan,False,GEN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GENZ-201104,Health Care,XLV,1986-06-05,2011-04-08,True,GENZ-201104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GEV,Industrials,XLI,2024-03-27,nan,False,GEV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GFS.A-199810,Consumer Staples,XLP,1962-07-02,1998-10-30,True,GFS.A-199810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GGP-201808,Real Estate,XLRE,1993-04-08,2018-08-27,True,GGP-201808,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GHC,Consumer Discretionary,XLY,1971-09-15,nan,False,GHC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GIC-200001,Information Technology,XLK,1992-06-10,2000-01-05,True,GIC-200001,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GIDL-199709,Industrials,XLI,1989-07-20,1997-09-29,True,GIDL-199709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GILD,Health Care,XLV,1992-01-22,nan,False,GILD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GIS,Consumer Staples,XLP,1950-01-04,nan,False,GIS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GL,Financials,XLF,1980-10-01,nan,False,GL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GLD-199705,Materials,XLB,1994-06-16,1997-05-05,True,GLD-199705,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GLK-200507,Materials,XLB,1962-07-02,2005-07-01,True,GLK-200507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GLW,Information Technology,XLK,1950-01-03,nan,False,GLW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GM,Consumer Discretionary,XLY,2010-11-18,nan,False,GM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GMCR-201603,Consumer Staples,XLP,1993-09-21,2016-03-02,True,GMCR-201603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GME,Consumer Discretionary,XLY,2002-02-13,nan,False,GME,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GNRC,Industrials,XLI,2010-02-11,nan,False,GNRC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GNT-199806,Financials,XLF,1983-05-04,1998-06-30,True,GNT-199806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GNW,Financials,XLF,2004-05-25,nan,False,GNW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GOOG,Communication Services,XLC,2014-03-27,nan,False,GOOG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GOOGL,Communication Services,XLC,2004-08-19,nan,False,GOOGL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GOSHA-200507,UNKNOWN,nan,1985-05-02,2005-07-14,True,GOSHA-200507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GP-200512,Materials,XLB,1950-01-03,2005-12-22,True,GP-200512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GPC,Consumer Discretionary,XLY,1968-08-20,nan,False,GPC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GPN,Financials,XLF,2001-01-16,nan,False,GPN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GPU-200111,Utilities,XLU,1950-01-03,2001-11-06,True,GPU-200111,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GQ-199404,Industrials,XLI,1950-01-03,1994-04-15,True,GQ-199404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GR-201207,Industrials,XLI,1950-01-03,2012-07-26,True,GR-201207,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GRA-202109,Materials,XLB,1953-02-27,2021-09-21,True,GRA-202109,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GRMN,Consumer Discretionary,XLY,2000-12-08,nan,False,GRMN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GRN-199812,Financials,XLF,1980-11-03,1998-12-21,True,GRN-199812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GS,Financials,XLF,1999-05-04,nan,False,GS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GSX-199810,Industrials,XLI,1950-01-03,1998-10-06,True,GSX-199810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GT,Consumer Discretionary,XLY,1950-01-03,nan,False,GT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GTE-200006,Communication Services,XLC,1950-01-03,2000-06-30,True,GTE-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GTW-200710,Information Technology,XLK,1993-12-08,2007-10-16,True,GTW-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GWF-199707,Financials,XLF,1960-01-28,1997-07-01,True,GWF-199707,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+GWW,Industrials,XLI,1971-06-23,nan,False,GWW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+H-200107,Communication Services,XLC,1964-07-09,2001-07-12,True,H-200107,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HAL,Energy,XLE,1950-01-03,nan,False,HAL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HAR-201703,Consumer Discretionary,XLY,1986-11-14,2017-03-10,True,HAR-201703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HAS,Consumer Discretionary,XLY,1971-08-11,nan,False,HAS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HBAN,Financials,XLF,1980-03-17,nan,False,HBAN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HBI-202511,Consumer Discretionary,XLY,2006-08-16,2025-11-28,True,HBI-202511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HBOC-199901,Information Technology,XLK,1982-11-01,1999-01-13,True,HBOC-199901,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HCA,Health Care,XLV,2011-03-10,nan,False,HCA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HCA-200611,Health Care,XLV,1990-05-17,2006-11-17,True,HCA-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HCBK-201510,Financials,XLF,1999-07-13,2015-10-30,True,HCBK-201510,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HCR-200712,Health Care,XLV,1991-10-18,2007-12-21,True,HCR-200712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HD,Consumer Discretionary,XLY,1981-09-22,nan,False,HD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HDLM-201301,Consumer Discretionary,XLY,1963-11-12,2013-01-15,True,HDLM-201301,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HES-202507,Energy,XLE,1962-05-24,2025-07-17,True,HES-202507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HET-200801,Consumer Discretionary,XLY,1984-11-01,2008-01-28,True,HET-200801,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HFS-199712,Industrials,XLI,1992-12-10,1997-12-17,True,HFS-199712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HI-200303,Financials,XLF,1950-01-03,2003-03-28,True,HI-200303,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HIG,Financials,XLF,1995-12-15,nan,False,HIG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HII,Industrials,XLI,2011-03-22,nan,False,HII,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HLT,Consumer Discretionary,XLY,2013-12-12,nan,False,HLT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HLT-200710,Consumer Discretionary,XLY,1950-01-03,2007-10-24,True,HLT-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HM-200112,Materials,XLB,1950-01-03,2001-12-14,True,HM-200112,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HMA-201401,Health Care,XLV,1991-02-06,2014-01-24,True,HMA-201401,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HNZ-201306,Consumer Staples,XLP,1950-01-03,2013-06-07,True,HNZ-201306,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HOG,Consumer Discretionary,XLY,1986-07-08,nan,False,HOG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HOLX-202604,Health Care,XLV,1990-03-01,2026-04-06,True,HOLX-202604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HON,Industrials,XLI,1950-01-03,nan,False,HON,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HON-199912,Industrials,XLI,1950-01-03,1999-12-01,True,HON-199912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HOOD,Financials,XLF,2021-07-29,nan,False,HOOD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HOT-201609,Consumer Discretionary,XLY,1972-05-03,2016-09-22,True,HOT-201609,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HP,Energy,XLE,1962-07-02,nan,False,HP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HPC-200811,Materials,XLB,1950-01-03,2008-11-13,True,HPC-200811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HPE,Information Technology,XLK,2015-10-19,nan,False,HPE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HPQ,Information Technology,XLK,1961-03-17,nan,False,HPQ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HRB,Consumer Discretionary,XLY,1969-10-13,nan,False,HRB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HRL,Consumer Staples,XLP,1962-07-10,nan,False,HRL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HRZIQ-200107,Industrials,XLI,1962-07-02,2001-07-12,True,HRZIQ-200107,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HSH-201408,Consumer Staples,XLP,1950-01-03,2014-08-28,True,HSH-201408,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HSIC,Health Care,XLV,1995-11-03,nan,False,HSIC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HSP-201509,Health Care,XLV,2004-04-20,2015-09-02,True,HSP-201509,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HST,Real Estate,XLRE,1968-08-26,nan,False,HST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HSY,Consumer Staples,XLP,1950-01-03,nan,False,HSY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HTMXQ-201305,Consumer Discretionary,XLY,1950-01-03,2013-05-30,True,HTMXQ-201305,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HUBB,Industrials,XLI,1962-07-02,nan,False,HUBB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HUM,Health Care,XLV,1969-07-02,nan,False,HUM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+HWM,Industrials,XLI,1951-06-11,nan,False,HWM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+I-199603,Financials,XLF,1958-04-25,1996-03-29,True,I-199603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IBKR,Financials,XLF,2007-05-04,nan,False,IBKR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IBM,Information Technology,XLK,1950-01-03,nan,False,IBM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ICE,Financials,XLF,2005-11-16,nan,False,ICE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IDXX,Health Care,XLV,1991-06-21,nan,False,IDXX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IEX,Industrials,XLI,1989-06-02,nan,False,IEX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IFF,Materials,XLB,1964-03-02,nan,False,IFF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IGT-201504,Consumer Discretionary,XLY,1981-10-22,2015-04-06,True,IGT-201504,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IKN-200810,Industrials,XLI,1969-06-16,2008-10-31,True,IKN-200810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ILMN,Health Care,XLV,2000-07-28,nan,False,ILMN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IMNX-200207,Health Care,XLV,1983-07-01,2002-07-15,True,IMNX-200207,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INCLF-200701,Materials,XLB,1950-01-03,2007-01-05,True,INCLF-200701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INCY,Health Care,XLV,1993-11-04,nan,False,INCY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INFO-202202,Industrials,XLI,2014-06-19,2022-02-25,True,INFO-202202,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INGR-200611,Information Technology,XLK,1982-11-01,2006-11-29,True,INGR-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INTC,Information Technology,XLK,1973-05-03,nan,False,INTC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INTU,Information Technology,XLK,1993-03-12,nan,False,INTU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+INVH,Real Estate,XLRE,2017-02-01,nan,False,INVH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IP,Materials,XLB,1950-01-04,nan,False,IP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IPG-202511,Communication Services,XLC,1971-08-23,2025-11-26,True,IPG-202511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IPGP,Information Technology,XLK,2006-12-13,nan,False,IPGP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IQV,Health Care,XLV,2013-05-09,nan,False,IQV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IR,Industrials,XLI,2017-05-12,nan,False,IR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IRM,Real Estate,XLRE,1996-02-01,nan,False,IRM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ISRG,Health Care,XLV,2000-06-13,nan,False,ISRG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IT,Information Technology,XLK,1993-10-05,nan,False,IT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ITT,Industrials,XLI,1950-01-03,nan,False,ITT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ITT-199802,Industrials,XLI,1995-12-20,1998-02-23,True,ITT-199802,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ITW,Industrials,XLI,1973-03-13,nan,False,ITW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+IVZ,Financials,XLF,1995-08-25,nan,False,IVZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+J,Industrials,XLI,1971-04-27,nan,False,J,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JAVA-201001,Information Technology,XLK,1986-03-04,2010-01-26,True,JAVA-201001,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JBHT,Industrials,XLI,1983-11-22,nan,False,JBHT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JBL,Information Technology,XLK,1993-04-29,nan,False,JBL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JCI,Industrials,XLI,1967-11-14,nan,False,JCI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JCI-201609,Consumer Discretionary,XLY,1965-10-11,2016-09-02,True,JCI-201609,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JEF,Financials,XLF,1950-01-03,nan,False,JEF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JH-200705,Industrials,XLI,1970-07-14,2007-05-01,True,JH-200705,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JHF-200404,Financials,XLF,2000-01-27,2004-04-28,True,JHF-200404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JKHY,Financials,XLF,1985-11-20,nan,False,JKHY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JNJ,Health Care,XLV,1950-01-03,nan,False,JNJ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JNPR-202507,Information Technology,XLK,1999-06-25,2025-07-01,True,JNPR-202507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JNS-201705,Financials,XLF,2000-06-26,2017-05-26,True,JNS-201705,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JNY-201404,Consumer Discretionary,XLY,1991-05-16,2014-04-08,True,JNY-201404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JOS-200005,Consumer Discretionary,XLY,1965-06-16,2000-05-10,True,JOS-200005,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JOY-201704,Industrials,XLI,2001-06-15,2017-04-05,True,JOY-201704,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JP-200603,Financials,XLF,1969-06-09,2006-03-31,True,JP-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JPM,Financials,XLF,1969-03-05,nan,False,JPM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JPM-200012,Financials,XLF,1969-04-01,2000-12-29,True,JPM-200012,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JWN-202505,Consumer Discretionary,XLY,1980-03-17,2025-05-20,True,JWN-202505,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+JWP-199310,Industrials,XLI,1982-11-01,1993-10-08,True,JWP-199310,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+K-202512,Consumer Staples,XLP,1959-05-12,2025-12-10,True,K-202512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KATE-201707,Consumer Discretionary,XLY,1981-06-09,2017-07-11,True,KATE-201707,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KBH,Consumer Discretionary,XLY,1986-08-01,nan,False,KBH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KDP,Consumer Staples,XLP,2008-04-28,nan,False,KDP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KEY,Financials,XLF,1980-03-17,nan,False,KEY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KEYS,Information Technology,XLK,2014-10-20,nan,False,KEYS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KG-201102,Health Care,XLV,1998-06-25,2011-02-28,True,KG-201102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KHC,Consumer Staples,XLP,2015-07-06,nan,False,KHC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KIM,Real Estate,XLRE,1991-11-22,nan,False,KIM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KKR,Financials,XLF,2010-07-15,nan,False,KKR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KLAC,Information Technology,XLK,1980-10-08,nan,False,KLAC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KM-200212,Consumer Discretionary,XLY,1950-01-03,2002-12-18,True,KM-200212,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KMB,Consumer Staples,XLP,1950-01-03,nan,False,KMB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KMG-200608,Energy,XLE,1956-02-23,2006-08-10,True,KMG-200608,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KMI,Energy,XLE,2011-02-11,nan,False,KMI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KMI-200705,Energy,XLE,1970-11-24,2007-05-30,True,KMI-200705,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KMX,Consumer Discretionary,XLY,1997-02-04,nan,False,KMX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KO,Consumer Staples,XLP,1950-01-03,nan,False,KO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KR,Consumer Staples,XLP,1950-01-03,nan,False,KR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KRB-200512,Financials,XLF,1991-01-22,2005-12-30,True,KRB-200512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KRFT-201507,Consumer Staples,XLP,2012-09-17,2015-07-02,True,KRFT-201507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KRI-200606,Communication Services,XLC,1969-08-14,2006-06-27,True,KRI-200606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KSE-200708,Utilities,XLU,1950-07-26,2007-08-24,True,KSE-200708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KSS,Consumer Discretionary,XLY,1992-05-19,nan,False,KSS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KSU-202112,Industrials,XLI,1950-01-03,2021-12-13,True,KSU-202112,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KVUE,Consumer Staples,XLP,2023-05-04,nan,False,KVUE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+KWP-199911,Communication Services,XLC,1984-12-05,1999-11-15,True,KWP-199911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+L,Financials,XLF,1959-03-09,nan,False,L,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LDG-200810,Consumer Staples,XLP,1971-11-29,2008-10-30,True,LDG-200810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LDOS,Industrials,XLI,2006-10-13,nan,False,LDOS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LDW-200012,Industrials,XLI,1983-10-20,2000-12-21,True,LDW-200012,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LEG,Consumer Discretionary,XLY,1979-06-25,nan,False,LEG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LEHMQ-201203,Financials,XLF,1994-05-11,2012-03-05,True,LEHMQ-201203,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LEN,Consumer Discretionary,XLY,1971-06-23,nan,False,LEN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LH,Health Care,XLV,1988-07-07,nan,False,LH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LHX,Industrials,XLI,1955-07-13,nan,False,LHX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LIFE-201402,Health Care,XLV,1999-02-26,2014-02-03,True,LIFE-201402,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LII,Industrials,XLI,1999-07-29,nan,False,LII,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LIN,Materials,XLB,2018-10-31,nan,False,LIN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LIT-200105,UNKNOWN,nan,1957-07-30,2001-05-30,True,LIT-200105,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LITE,Information Technology,XLK,2015-07-23,nan,False,LITE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LKQ,Consumer Discretionary,XLY,2003-10-03,nan,False,LKQ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LLL-201906,Industrials,XLI,1998-05-19,2019-06-28,True,LLL-201906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LLTC-201703,Information Technology,XLK,1986-05-28,2017-03-10,True,LLTC-201703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LLX-199710,Energy,XLE,1962-07-02,1997-10-22,True,LLX-199710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LLY,Health Care,XLV,1970-07-09,nan,False,LLY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LM-202007,Financials,XLF,1983-08-01,2020-07-31,True,LM-202007,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LMT,Industrials,XLI,1950-01-03,nan,False,LMT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LNC,Financials,XLF,1969-08-20,nan,False,LNC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LNT,Utilities,XLU,1976-03-30,nan,False,LNT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LO-201506,Consumer Staples,XLP,2002-02-01,2015-06-11,True,LO-201506,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LOR-199604,Industrials,XLI,1962-07-02,1996-04-29,True,LOR-199604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LOTS-199507,Information Technology,XLK,1983-10-06,1995-07-05,True,LOTS-199507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LOW,Consumer Discretionary,XLY,1979-12-19,nan,False,LOW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LPX,Industrials,XLI,1972-12-29,nan,False,LPX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LRCX,Information Technology,XLK,1984-05-04,nan,False,LRCX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LSI-201405,Information Technology,XLK,1983-05-13,2014-05-06,True,LSI-201405,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LU-200611,Information Technology,XLK,1996-04-04,2006-11-30,True,LU-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LUB-202205,Consumer Discretionary,XLY,1982-02-22,2022-05-27,True,LUB-202205,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LULU,Consumer Discretionary,XLY,2007-07-27,nan,False,LULU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LUMN,Communication Services,XLC,1978-10-24,nan,False,LUMN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LUV,Industrials,XLI,1975-10-24,nan,False,LUV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LVLT-201710,Communication Services,XLC,1998-04-01,2017-10-31,True,LVLT-201710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LVS,Consumer Discretionary,XLY,2004-12-15,nan,False,LVS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LW,Consumer Staples,XLP,2016-11-01,nan,False,LW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LXK-201611,Information Technology,XLK,1995-11-15,2016-11-28,True,LXK-201611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LYB,Materials,XLB,2010-04-28,nan,False,LYB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+LYV,Communication Services,XLC,2005-12-14,nan,False,LYV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+M,Consumer Discretionary,XLY,1992-02-05,nan,False,M,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MA,Financials,XLF,2006-05-25,nan,False,MA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAA,Real Estate,XLRE,1994-01-28,nan,False,MAA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAC,Real Estate,XLRE,1994-03-10,nan,False,MAC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAI-199506,Information Technology,XLK,1962-07-02,1995-06-30,True,MAI-199506,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAR,Consumer Discretionary,XLY,1998-03-23,nan,False,MAR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAS,Industrials,XLI,1962-07-02,nan,False,MAS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAT,Consumer Discretionary,XLY,1963-08-12,nan,False,MAT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MAY-200508,Consumer Discretionary,XLY,1950-01-03,2005-08-29,True,MAY-200508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MBI,Financials,XLF,1987-07-01,nan,False,MBI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCAWA-199409,Consumer Discretionary,XLY,1987-08-21,1994-09-19,True,MCAWA-199409,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCD,Consumer Discretionary,XLY,1966-07-05,nan,False,MCD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCHP,Information Technology,XLK,1993-03-19,nan,False,MCHP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCIC-199809,Communication Services,XLC,1980-03-17,1998-09-14,True,MCIC-199809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCK,Health Care,XLV,1994-11-10,nan,False,MCK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCK-199411,Health Care,XLV,1955-08-16,1994-11-30,True,MCK-199411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MCO,Financials,XLF,1969-06-12,nan,False,MCO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MD-199707,Industrials,XLI,1959-03-31,1997-07-31,True,MD-199707,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MDLZ,Consumer Staples,XLP,2001-06-13,nan,False,MDLZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MDP-202112,Communication Services,XLC,1965-12-09,2021-12-01,True,MDP-202112,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MDRIQ-202006,Energy,XLE,1982-12-31,2020-06-30,True,MDRIQ-202006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MDT,Health Care,XLV,1977-11-21,nan,False,MDT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MEA-200201,Materials,XLB,1950-01-03,2002-01-29,True,MEA-200201,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MEDI-200706,Health Care,XLV,1991-05-08,2007-06-18,True,MEDI-200706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MEE-201106,Energy,XLE,1957-10-28,2011-06-01,True,MEE-201106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MEL-200706,Financials,XLF,1980-03-17,2007-06-29,True,MEL-200706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MER-200812,Financials,XLF,1971-07-27,2008-12-31,True,MER-200812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MERQ-200611,Information Technology,XLK,1993-10-29,2006-11-08,True,MERQ-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MET,Financials,XLF,2000-04-05,nan,False,MET,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+META,Communication Services,XLC,2012-05-18,nan,False,META,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MFE-201102,Information Technology,XLK,1992-10-06,2011-02-28,True,MFE-201102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MGM,Consumer Discretionary,XLY,1988-05-02,nan,False,MGM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MHK,Consumer Discretionary,XLY,1992-04-01,nan,False,MHK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MHS-201203,Health Care,XLV,2003-08-20,2012-03-30,True,MHS-201203,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MI-201107,Financials,XLF,1980-03-17,2011-07-05,True,MI-201107,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MII-199906,Materials,XLB,1989-06-26,1999-06-21,True,MII-199906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MIL-201007,Health Care,XLV,1980-03-17,2010-07-14,True,MIL-201007,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MIR-200005,Consumer Discretionary,XLY,1978-08-15,2000-05-31,True,MIR-200005,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MIR-201012,Utilities,XLU,2000-09-27,2010-12-03,True,MIR-201012,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MJN-201706,Consumer Staples,XLP,2009-02-11,2017-06-14,True,MJN-201706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MKC,Consumer Staples,XLP,1980-03-17,nan,False,MKC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MKG-200010,Health Care,XLV,1950-01-03,2000-10-17,True,MKG-200010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MKTX,Financials,XLF,2004-11-05,nan,False,MKTX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ML-199503,Materials,XLB,1950-01-03,1995-03-15,True,ML-199503,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MLM,Materials,XLB,1994-02-17,nan,False,MLM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MMI-201205,Information Technology,XLK,2010-12-17,2012-05-21,True,MMI-201205,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MMM,Industrials,XLI,1950-01-03,nan,False,MMM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MNKKQ-202206,Health Care,XLV,2013-06-17,2022-06-16,True,MNKKQ-202206,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MNR-199809,Health Care,XLV,1977-07-11,1998-09-25,True,MNR-199809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MNST,Consumer Staples,XLP,1985-12-09,nan,False,MNST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MO,Consumer Staples,XLP,1950-01-03,nan,False,MO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MOB-199911,Energy,XLE,1950-01-03,1999-11-30,True,MOB-199911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MOH,Health Care,XLV,2003-07-02,nan,False,MOH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MOLX-201312,Information Technology,XLK,1980-03-17,2013-12-06,True,MOLX-201312,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MON-201806,Materials,XLB,2000-10-18,2018-06-06,True,MON-201806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MOS,Materials,XLB,1988-01-26,nan,False,MOS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MPC,Energy,XLE,2011-06-23,nan,False,MPC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MPWR,Information Technology,XLK,2004-11-19,nan,False,MPWR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MRK,Health Care,XLV,1950-01-03,nan,False,MRK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MRN-199606,Industrials,XLI,1972-07-07,1996-06-28,True,MRN-199606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MRNA,Health Care,XLV,2018-12-07,nan,False,MRNA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MRO-202411,Energy,XLE,1950-01-03,2024-11-21,True,MRO-202411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MRSH,Financials,XLF,1968-02-19,nan,False,MRSH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MS,Financials,XLF,1986-03-21,nan,False,MS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MSCI,Financials,XLF,2007-11-15,nan,False,MSCI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MSFT,Information Technology,XLK,1986-03-13,nan,False,MSFT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MSI,Information Technology,XLK,1950-01-03,nan,False,MSI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MST-199808,Consumer Discretionary,XLY,1950-01-04,1998-08-18,True,MST-199808,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTB,Financials,XLF,1980-03-17,nan,False,MTB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTCH,Communication Services,XLC,2015-11-19,nan,False,MTCH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTD,Health Care,XLV,1997-11-14,nan,False,MTD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTG,Financials,XLF,1991-08-07,nan,False,MTG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTL-199909,Financials,XLF,1982-11-01,1999-09-17,True,MTL-199909,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTLQQ-201103,Consumer Discretionary,XLY,1950-01-03,2011-03-31,True,MTLQQ-201103,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MTW,Industrials,XLI,1982-11-01,nan,False,MTW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MU,Information Technology,XLK,1984-06-01,nan,False,MU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MUR,Energy,XLE,1962-01-02,nan,False,MUR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MWI-200402,Industrials,XLI,1980-11-13,2004-02-27,True,MWI-200402,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MWV-201507,Materials,XLB,1950-01-03,2015-07-01,True,MWV-201507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MWW-201610,Information Technology,XLK,1996-12-13,2016-10-31,True,MWW-201610,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MXIM-202108,Information Technology,XLK,1988-02-29,2021-08-25,True,MXIM-202108,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MXS-199506,Energy,XLE,1951-11-19,1995-06-08,True,MXS-199506,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MYG-200603,Consumer Discretionary,XLY,1950-01-03,2006-03-31,True,MYG-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+MZIAQ-201302,Industrials,XLI,1950-01-03,2013-02-15,True,MZIAQ-201302,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NAE-199708,Utilities,XLU,1962-07-02,1997-08-06,True,NAE-199708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NAV-202106,Industrials,XLI,1950-01-03,2021-06-30,True,NAV-202106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NAVI,Financials,XLF,2014-04-17,nan,False,NAVI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NBL-202010,Energy,XLE,1980-03-17,2020-10-02,True,NBL-202010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NBR,Energy,XLE,1962-07-02,nan,False,NBR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NC,Energy,XLE,1961-09-13,nan,False,NC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NCC-200812,Financials,XLF,1982-11-01,2008-12-31,True,NCC-200812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NCE-200008,Utilities,XLU,1950-01-04,2000-08-18,True,NCE-200008,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NCLH,Consumer Discretionary,XLY,2013-01-18,nan,False,NCLH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NDAQ,Financials,XLF,2002-07-01,nan,False,NDAQ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NDSN,Industrials,XLI,1980-03-18,nan,False,NDSN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NEBLQ-202102,Energy,XLE,1985-09-23,2021-02-08,True,NEBLQ-202102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NEC-199706,Industrials,XLI,1968-10-22,1997-06-10,True,NEC-199706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NEE,Utilities,XLU,1950-02-15,nan,False,NEE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NEM,Materials,XLB,1950-01-03,nan,False,NEM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NEU,Materials,XLB,1965-10-14,nan,False,NEU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NFB-200611,Financials,XLF,1982-11-01,2006-11-30,True,NFB-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NFLX,Communication Services,XLC,2002-05-23,nan,False,NFLX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NFX-201902,Energy,XLE,1993-11-12,2019-02-13,True,NFX-201902,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NGH-200012,Consumer Staples,XLP,1991-03-21,2000-12-11,True,NGH-200012,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NI,Utilities,XLU,1962-12-19,nan,False,NI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NKE,Consumer Discretionary,XLY,1980-12-02,nan,False,NKE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NKTR,Health Care,XLV,1994-05-03,nan,False,NKTR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NL,Industrials,XLI,1950-01-03,nan,False,NL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NLC-199912,Materials,XLB,1964-10-05,1999-12-20,True,NLC-199912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NLSN-202210,Industrials,XLI,2011-01-26,2022-10-11,True,NLSN-202210,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NMK-200201,Utilities,XLU,1950-01-23,2002-01-31,True,NMK-200201,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NOC,Industrials,XLI,1951-12-10,nan,False,NOC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NOV,Energy,XLE,1996-10-29,nan,False,NOV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NOVL-201104,Information Technology,XLK,1985-01-17,2011-04-27,True,NOVL-201104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NOW,Information Technology,XLK,2012-06-29,nan,False,NOW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NRG,Utilities,XLU,2003-12-02,nan,False,NRG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NRTLQ-201510,Information Technology,XLK,1975-11-10,2015-10-13,True,NRTLQ-201510,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NSC,Industrials,XLI,1982-06-02,nan,False,NSC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NSI-200306,Industrials,XLI,1950-01-03,2003-06-12,True,NSI-200306,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NSM-201109,Information Technology,XLK,1970-10-20,2011-09-23,True,NSM-201109,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NTAP,Information Technology,XLK,1995-11-21,nan,False,NTAP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NTRS,Financials,XLF,1980-03-17,nan,False,NTRS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NUE,Materials,XLB,1962-07-02,nan,False,NUE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NVDA,Information Technology,XLK,1999-01-22,nan,False,NVDA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NVLS-201206,Information Technology,XLK,1988-08-11,2012-06-04,True,NVLS-201206,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NVR,Consumer Discretionary,XLY,1986-06-17,nan,False,NVR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NWL,Consumer Discretionary,XLY,1979-06-28,nan,False,NWL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NWS,Communication Services,XLC,2013-06-19,nan,False,NWS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NWSA,Communication Services,XLC,2013-06-19,nan,False,NWSA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NXPI,Information Technology,XLK,2010-08-06,nan,False,NXPI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NXTL-200508,Communication Services,XLC,1992-01-28,2005-08-12,True,NXTL-200508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NYN-199708,Communication Services,XLC,1983-11-21,1997-08-14,True,NYN-199708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NYT,Communication Services,XLC,1969-01-14,nan,False,NYT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+NYX-201311,Financials,XLF,2004-08-12,2013-11-12,True,NYX-201311,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+O,Real Estate,XLRE,1994-10-18,nan,False,O,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OAT-200108,Consumer Staples,XLP,1951-01-22,2001-08-02,True,OAT-200108,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ODFL,Industrials,XLI,1991-10-24,nan,False,ODFL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ODP-202512,Consumer Discretionary,XLY,1988-06-01,2025-12-09,True,ODP-202512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OGN,Health Care,XLV,2021-05-14,nan,False,OGN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OI,Materials,XLB,1991-12-11,nan,False,OI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OK-200103,Financials,XLF,1982-11-01,2001-03-30,True,OK-200103,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OKE,Energy,XLE,1954-05-24,nan,False,OKE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OM-199709,Consumer Discretionary,XLY,1950-01-04,1997-09-30,True,OM-199709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OMC,Communication Services,XLC,1980-03-17,nan,False,OMC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OMX-201311,Consumer Discretionary,XLY,1965-06-02,2013-11-05,True,OMX-201311,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ON,Information Technology,XLK,2000-04-28,nan,False,ON,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ONE-200406,Financials,XLF,1982-11-01,2004-06-30,True,ONE-200406,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ORCL,Information Technology,XLK,1986-03-12,nan,False,ORCL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ORLY,Consumer Discretionary,XLY,1993-04-23,nan,False,ORLY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ORX-199902,Energy,XLE,1988-10-05,1999-02-26,True,ORX-199902,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OTIS,Industrials,XLI,2020-03-19,nan,False,OTIS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OWENQ-200610,Industrials,XLI,1952-03-11,2006-10-31,True,OWENQ-200610,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+OXY,Energy,XLE,1962-07-02,nan,False,OXY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PAC-199703,Communication Services,XLC,1983-11-21,1997-03-31,True,PAC-199703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PALM-201006,Information Technology,XLK,2000-03-02,2010-06-30,True,PALM-201006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PANW,Information Technology,XLK,2012-07-20,nan,False,PANW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PAS-201002,Consumer Staples,XLP,1963-03-25,2010-02-26,True,PAS-201002,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PAYC,Industrials,XLI,2014-04-15,nan,False,PAYC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PAYX,Industrials,XLI,1983-08-26,nan,False,PAYX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PBCT-202204,Financials,XLF,1988-07-06,2022-04-01,True,PBCT-202204,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PBG-201002,Consumer Staples,XLP,1999-03-31,2010-02-26,True,PBG-201002,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PBI,Industrials,XLI,1950-09-18,nan,False,PBI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PBY-201602,Consumer Discretionary,XLY,1962-07-03,2016-02-03,True,PBY-201602,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCAR,Industrials,XLI,1978-01-03,nan,False,PCAR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCG,Utilities,XLU,1950-01-03,nan,False,PCG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCH-202601,Real Estate,XLRE,1969-12-15,2026-01-30,True,PCH-202601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCI-199407,Industrials,XLI,1962-07-02,1994-07-07,True,PCI-199407,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCL-201602,Real Estate,XLRE,1989-06-02,2016-02-19,True,PCL-201602,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCLB-199310,Consumer Staples,XLP,1982-03-02,1993-10-21,True,PCLB-199310,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCP-201601,Industrials,XLI,1980-03-17,2016-01-29,True,PCP-201601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PCS-200404,Communication Services,XLC,1998-11-17,2004-04-22,True,PCS-200404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PD-200703,Materials,XLB,1950-01-03,2007-03-19,True,PD-200703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PDCO-202504,Health Care,XLV,1992-10-28,2025-04-16,True,PDCO-202504,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PDG-200603,Materials,XLB,1984-11-01,2006-03-08,True,PDG-200603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PEG,Utilities,XLU,1950-01-03,nan,False,PEG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PEL-199706,Utilities,XLU,1950-01-03,1997-06-18,True,PEL-199706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PENN,Consumer Discretionary,XLY,1994-05-26,nan,False,PENN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PEP,Consumer Staples,XLP,1950-01-03,nan,False,PEP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PET-199806,Utilities,XLU,1950-01-03,1998-06-26,True,PET-199806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PETM-201503,Consumer Discretionary,XLY,1993-07-23,2015-03-11,True,PETM-201503,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PFE,Health Care,XLV,1950-01-03,nan,False,PFE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PFG,Financials,XLF,2001-10-23,nan,False,PFG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PG,Consumer Staples,XLP,1950-01-03,nan,False,PG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PGL-200702,Utilities,XLU,1950-01-03,2007-02-21,True,PGL-200702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PGN-201207,Utilities,XLU,1950-01-03,2012-07-02,True,PGN-201207,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PGR,Financials,XLF,1980-03-17,nan,False,PGR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PH,Industrials,XLI,1964-12-09,nan,False,PH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PHA-200304,Health Care,XLV,1950-01-03,2003-04-15,True,PHA-200304,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PHB-199910,Consumer Staples,XLP,1982-11-01,1999-10-01,True,PHB-199910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PHM,Consumer Discretionary,XLY,1972-02-07,nan,False,PHM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PIN-199410,Utilities,XLU,1950-01-24,1994-10-24,True,PIN-199410,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PKG,Materials,XLB,2000-01-28,nan,False,PKG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PLD,Real Estate,XLRE,1997-11-21,nan,False,PLD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PLD-201106,Real Estate,XLRE,1994-03-31,2011-06-02,True,PLD-201106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PLL-201508,Industrials,XLI,1962-07-02,2015-08-28,True,PLL-201508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PLTR,Information Technology,XLK,2020-09-30,nan,False,PLTR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PM,Consumer Staples,XLP,2008-03-17,nan,False,PM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PMCS-201601,Information Technology,XLK,1991-04-24,2016-01-14,True,PMCS-201601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PMI-199911,Financials,XLF,1986-10-27,1999-11-23,True,PMI-199911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PNC,Financials,XLF,1980-03-17,nan,False,PNC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PNR,Industrials,XLI,1982-11-01,nan,False,PNR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PNU-200003,Health Care,XLV,1959-01-05,2000-03-31,True,PNU-200003,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PNW,Utilities,XLU,1961-08-28,nan,False,PNW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PODD,Health Care,XLV,2007-05-15,nan,False,PODD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+POM-201603,Utilities,XLU,1950-01-03,2016-03-23,True,POM-201603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+POOL,Consumer Discretionary,XLY,1995-10-13,nan,False,POOL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PPG,Materials,XLB,1950-01-03,nan,False,PPG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PPL,Utilities,XLU,1950-01-03,nan,False,PPL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PPLI,Communication Services,XLC,1993-01-18,nan,False,PPLI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PPW-199911,Utilities,XLU,1966-01-03,1999-11-29,True,PPW-199911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PRD-200110,Consumer Discretionary,XLY,1957-11-04,2001-10-09,True,PRD-200110,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PRGO,Health Care,XLV,1991-12-17,nan,False,PRGO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PRSU,Consumer Discretionary,XLY,1950-01-03,nan,False,PRSU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PRU,Financials,XLF,2001-12-13,nan,False,PRU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PSA,Real Estate,XLRE,1980-11-18,nan,False,PSA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PSFT-200501,Information Technology,XLK,1992-11-19,2005-01-07,True,PSFT-200501,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PSKY,Communication Services,XLC,1990-06-14,nan,False,PSKY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PSX,Energy,XLE,2012-04-12,nan,False,PSX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PT-199505,Consumer Staples,XLP,1991-04-02,1995-05-11,True,PT-199505,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PTC,Information Technology,XLK,1989-12-08,nan,False,PTC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PTV-201011,Materials,XLB,1999-10-27,2010-11-16,True,PTV-201011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PVH,Consumer Discretionary,XLY,1950-01-03,nan,False,PVH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PVN-200509,Financials,XLF,1971-08-30,2005-09-30,True,PVN-200509,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PVT-199906,Financials,XLF,1982-11-01,1999-06-30,True,PVT-199906,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PWER-201307,Information Technology,XLK,1997-10-01,2013-07-25,True,PWER-201307,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PWJ-200011,Financials,XLF,1972-04-03,2000-11-03,True,PWJ-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PWR,Industrials,XLI,1998-02-12,nan,False,PWR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PX-201810,Materials,XLB,1992-06-17,2018-10-30,True,PX-201810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PXD-202405,Energy,XLE,1987-12-22,2024-05-02,True,PXD-202405,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PYPL,Financials,XLF,2015-07-06,nan,False,PYPL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+PZE-199908,Energy,XLE,1962-07-02,1999-08-17,True,PZE-199908,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+Q-201103,Communication Services,XLC,1997-06-24,2011-03-31,True,Q-201103,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+QCOM,Information Technology,XLK,1991-12-13,nan,False,QCOM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+QEP-202103,Energy,XLE,2010-06-16,2021-03-16,True,QEP-202103,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+QLGC-201608,Information Technology,XLK,1994-02-28,2016-08-15,True,QLGC-201608,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+QRVO,Information Technology,XLK,2015-01-02,nan,False,QRVO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+QTRN-200309,Health Care,XLV,1994-04-21,2003-09-25,True,QTRN-200309,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+R,Industrials,XLI,1960-09-19,nan,False,R,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RADCQ-202409,Consumer Staples,XLP,1968-10-07,2024-09-03,True,RADCQ-202409,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RAI-201707,Consumer Staples,XLP,1999-06-01,2017-07-24,True,RAI-201707,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RAL-200112,Consumer Staples,XLP,1962-01-10,2001-12-12,True,RAL-200112,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RATL-200302,Information Technology,XLK,1983-08-15,2003-02-20,True,RATL-200302,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RBD-199903,Consumer Discretionary,XLY,1959-06-22,1999-03-24,True,RBD-199903,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RBK-200601,Consumer Discretionary,XLY,1985-07-26,2006-01-31,True,RBK-200601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RCL,Consumer Discretionary,XLY,1993-04-28,nan,False,RCL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RDC-201904,Energy,XLE,1967-12-11,2019-04-10,True,RDC-201904,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+REG,Real Estate,XLRE,1993-10-29,nan,False,REG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+REGN,Health Care,XLV,1991-04-02,nan,False,REGN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RF,Financials,XLF,1980-03-17,nan,False,RF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RHI,Industrials,XLI,1980-03-17,nan,False,RHI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RHT-201907,Information Technology,XLK,1999-08-11,2019-07-08,True,RHT-201907,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RIG,Energy,XLE,1993-05-28,nan,False,RIG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RJF,Financials,XLF,1983-07-01,nan,False,RJF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RL,Consumer Discretionary,XLY,1997-06-12,nan,False,RL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RLM-200005,Materials,XLB,1950-01-03,2000-05-03,True,RLM-200005,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RMD,Health Care,XLV,1995-06-02,nan,False,RMD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RML-200608,Consumer Discretionary,XLY,1969-01-16,2006-08-01,True,RML-200608,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RNB-199912,Financials,XLF,1972-01-12,1999-12-31,True,RNB-199912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ROH-200904,Materials,XLB,1950-01-03,2009-04-01,True,ROH-200904,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ROK,Industrials,XLI,1950-01-03,nan,False,ROK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ROL,Industrials,XLI,1962-07-02,nan,False,ROL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ROP,Information Technology,XLK,1992-02-13,nan,False,ROP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ROST,Consumer Discretionary,XLY,1985-08-08,nan,False,ROST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RRC,Energy,XLE,1980-06-19,nan,False,RRC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RRD-202202,Industrials,XLI,1962-12-07,2022-02-25,True,RRD-202202,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RSG,Industrials,XLI,1998-07-01,nan,False,RSG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RSHCQ-201510,Consumer Discretionary,XLY,1950-01-03,2015-10-07,True,RSHCQ-201510,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RTN-202004,Industrials,XLI,1952-09-15,2020-04-02,True,RTN-202004,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RTX,Industrials,XLI,1950-01-03,nan,False,RTX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RVTY,Health Care,XLV,1965-07-06,nan,False,RVTY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RX-201002,Health Care,XLV,1996-10-17,2010-02-25,True,RX-201002,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RYAN-200610,Consumer Discretionary,XLY,1982-07-13,2006-10-31,True,RYAN-200610,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RYC-199908,Industrials,XLI,1982-06-02,1999-08-12,True,RYC-199908,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+RYI-200710,Materials,XLB,1950-01-03,2007-10-18,True,RYI-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+S-200503,Consumer Discretionary,XLY,1950-01-03,2005-03-24,True,S-200503,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+S-202003,Communication Services,XLC,1963-04-10,2020-03-31,True,S-202003,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SAF-200809,Financials,XLF,1980-03-17,2008-09-22,True,SAF-200809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SAI-199812,Financials,XLF,1962-07-02,1998-12-31,True,SAI-199812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SANM,Information Technology,XLK,1993-04-14,nan,False,SANM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SAPE-201502,Information Technology,XLK,1996-04-04,2015-02-05,True,SAPE-201502,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SB-199711,Financials,XLF,1960-09-07,1997-11-26,True,SB-199711,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SBAC,Real Estate,XLRE,1999-06-16,nan,False,SBAC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SBL-200701,Information Technology,XLK,1980-03-17,2007-01-09,True,SBL-200701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SBNY,Financials,XLF,2004-03-23,nan,False,SBNY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SBUX,Consumer Discretionary,XLY,1992-06-26,nan,False,SBUX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SCG-201812,Utilities,XLU,1950-01-03,2018-12-31,True,SCG-201812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SCHW,Financials,XLF,1987-09-22,nan,False,SCHW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SCI,Consumer Discretionary,XLY,1970-12-07,nan,False,SCI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SDH-200106,Consumer Discretionary,XLY,1993-10-12,2001-06-20,True,SDH-200106,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SDS-200508,Industrials,XLI,1986-03-13,2005-08-11,True,SDS-200508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SE-201702,Energy,XLE,2006-12-14,2017-02-24,True,SE-201702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SEBL-200601,Information Technology,XLK,1996-06-28,2006-01-31,True,SEBL-200601,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SEDG,Information Technology,XLK,2015-03-26,nan,False,SEDG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SEE-202604,Materials,XLB,1979-05-31,2026-04-08,True,SEE-202604,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SEG-200011,Information Technology,XLK,1982-11-01,2000-11-21,True,SEG-200011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SFA-200602,Information Technology,XLK,1968-01-30,2006-02-24,True,SFA-200602,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SFS-200008,Energy,XLE,1990-03-09,2000-08-29,True,SFS-200008,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SFX-199509,Industrials,XLI,1983-12-27,1995-09-21,True,SFX-199509,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SGID-200610,Information Technology,XLK,1986-10-29,2006-10-17,True,SGID-200610,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SGP-200911,Health Care,XLV,1953-03-23,2009-11-03,True,SGP-200911,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SHEL,Energy,XLE,1954-07-20,nan,False,SHEL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SHLDQ-202210,Consumer Discretionary,XLY,2003-04-28,2022-10-31,True,SHLDQ-202210,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SHOY-200204,Consumer Discretionary,XLY,1980-03-17,2002-04-11,True,SHOY-200204,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SHW,Materials,XLB,1962-07-02,nan,False,SHW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SIAL-201511,Materials,XLB,1980-03-17,2015-11-17,True,SIAL-201511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SIG,Consumer Discretionary,XLY,1988-07-14,nan,False,SIG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SII-201008,Energy,XLE,1968-02-26,2010-08-27,True,SII-201008,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SITC,Real Estate,XLRE,1993-02-02,nan,False,SITC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SIVBQ-202411,Financials,XLF,1987-10-26,2024-11-07,True,SIVBQ-202411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SJM,Consumer Staples,XLP,1965-10-20,nan,False,SJM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SK-199805,Industrials,XLI,1980-03-17,1998-05-20,True,SK-199805,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SK-200006,Industrials,XLI,1982-07-14,2000-06-09,True,SK-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SKY,Consumer Discretionary,XLY,1963-01-17,nan,False,SKY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SLB,Energy,XLE,1950-01-03,nan,False,SLB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SLG,Real Estate,XLRE,1997-08-15,nan,False,SLG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SLM,Financials,XLF,1983-09-23,nan,False,SLM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SLR-200710,Information Technology,XLK,1989-11-15,2007-10-01,True,SLR-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SMCI,Information Technology,XLK,2007-03-29,nan,False,SMCI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SMI-200109,Consumer Discretionary,XLY,1966-12-30,2001-09-05,True,SMI-200109,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SMS-200007,Information Technology,XLK,1982-11-01,2000-07-05,True,SMS-200007,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNA,Industrials,XLI,1978-02-27,nan,False,SNA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNC-199511,Financials,XLF,1982-11-01,1995-11-30,True,SNC-199511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNDK,Information Technology,XLK,2025-02-13,nan,False,SNDK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNDK-201605,Information Technology,XLK,1995-11-08,2016-05-11,True,SNDK-201605,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNI-201803,Communication Services,XLC,2008-06-12,2018-03-06,True,SNI-201803,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNPS,Information Technology,XLK,1992-02-26,nan,False,SNPS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNT-199910,Utilities,XLU,1950-01-03,1999-10-25,True,SNT-199910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SNV-202512,Financials,XLF,1982-11-01,2025-12-31,True,SNV-202512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SO,Utilities,XLU,1950-01-03,nan,False,SO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SOLV,Health Care,XLV,2024-03-26,nan,False,SOLV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SOTR-200410,Financials,XLF,1982-11-01,2004-10-29,True,SOTR-200410,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SOV-200901,Financials,XLF,1986-08-12,2009-01-29,True,SOV-200901,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SPG,Real Estate,XLRE,1993-12-14,nan,False,SPG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SPGI,Financials,XLF,1950-01-03,nan,False,SPGI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SPLS-201709,Consumer Discretionary,XLY,1989-04-28,2017-09-12,True,SPLS-201709,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SPP-199512,Consumer Staples,XLP,1950-01-03,1995-12-12,True,SPP-199512,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SPXC,Industrials,XLI,1972-08-02,nan,False,SPXC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SRCL-202411,Industrials,XLI,1996-08-23,2024-11-01,True,SRCL-202411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SRE,Utilities,XLU,1998-06-29,nan,False,SRE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SRR-200708,Consumer Discretionary,XLY,1961-01-20,2007-08-17,True,SRR-200708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SSP,Communication Services,XLC,1988-06-29,nan,False,SSP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STE,Health Care,XLV,1992-06-01,nan,False,STE,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STI-201912,Financials,XLF,1985-07-01,2019-12-06,True,STI-201912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STJ-201701,Health Care,XLV,1980-03-17,2017-01-04,True,STJ-201701,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STLD,Materials,XLB,1996-11-22,nan,False,STLD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STO-199811,Materials,XLB,1962-07-02,1998-11-17,True,STO-199811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STR-201609,Utilities,XLU,1961-01-09,2016-09-16,True,STR-201609,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STT,Financials,XLF,1980-03-17,nan,False,STT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STX,Information Technology,XLK,2002-12-11,nan,False,STX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+STZ,Consumer Staples,XLP,1982-11-01,nan,False,STZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SUB-200102,Financials,XLF,1970-11-23,2001-02-28,True,SUB-200102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SUN-201210,Energy,XLE,1950-01-03,2012-10-04,True,SUN-201210,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SUNEQ-201712,Information Technology,XLK,1995-07-13,2017-12-29,True,SUNEQ-201712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SVU-201810,Consumer Staples,XLP,1967-09-13,2018-10-19,True,SVU-201810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SW,Materials,XLB,2008-04-25,nan,False,SW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SWK,Industrials,XLI,1966-06-15,nan,False,SWK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SWKS,Information Technology,XLK,1968-03-13,nan,False,SWKS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SWN-202409,Energy,XLE,1980-03-17,2024-09-30,True,SWN-202409,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SWY-201501,Consumer Staples,XLP,1990-04-26,2015-01-29,True,SWY-201501,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SXCL-201702,Energy,XLE,1986-06-11,2017-02-15,True,SXCL-201702,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SYF,Financials,XLF,2014-07-31,nan,False,SYF,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SYK,Health Care,XLV,1980-03-17,nan,False,SYK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SYN-199410,Health Care,XLV,1962-07-02,1994-10-28,True,SYN-199410,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+SYY,Consumer Staples,XLP,1971-02-26,nan,False,SYY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+T,Communication Services,XLC,1983-11-21,nan,False,T,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+T-200511,Communication Services,XLC,1950-01-03,2005-11-18,True,T-200511,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TA-199907,Financials,XLF,1950-01-03,1999-07-21,True,TA-199907,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TAP,Consumer Staples,XLP,1975-06-12,nan,False,TAP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TAP.B-200404,Financials,XLF,2002-08-07,2004-04-01,True,TAP.B-200404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TCOMA-199903,Communication Services,XLC,1980-03-17,1999-03-09,True,TCOMA-199903,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TDC,Information Technology,XLK,2007-09-12,nan,False,TDC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TDG,Industrials,XLI,2006-03-15,nan,False,TDG,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TDM-199708,Information Technology,XLK,1982-11-01,1997-08-29,True,TDM-199708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TDY,Information Technology,XLK,1999-11-23,nan,False,TDY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TE-201606,Utilities,XLU,1962-07-02,2016-06-30,True,TE-201606,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TECH,Health Care,XLV,1989-02-09,nan,False,TECH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TEG-201506,Utilities,XLU,1953-05-04,2015-06-29,True,TEG-201506,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TEK-200711,Information Technology,XLK,1964-01-10,2007-11-21,True,TEK-200711,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TEL,Information Technology,XLK,2007-06-14,nan,False,TEL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TEN-202211,Consumer Discretionary,XLY,1958-03-17,2022-11-16,True,TEN-202211,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TER,Information Technology,XLK,1970-10-19,nan,False,TER,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TEX,Industrials,XLI,1982-11-11,nan,False,TEX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TFC,Financials,XLF,1980-03-18,nan,False,TFC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TFCF-201903,Communication Services,XLC,1986-05-20,2019-03-19,True,TFCF-201903,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TFCFA-201903,Communication Services,XLC,1994-11-03,2019-03-19,True,TFCFA-201903,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TFX,Health Care,XLV,1967-04-24,nan,False,TFX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TGNA-202603,Communication Services,XLC,1969-03-10,2026-03-19,True,TGNA-202603,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TGT,Consumer Staples,XLP,1969-09-08,nan,False,TGT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+THC,Health Care,XLV,1971-04-28,nan,False,THC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+THY-199708,Health Care,XLV,1971-10-15,1997-08-26,True,THY-199708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TIC-199312,Financials,XLF,1968-12-09,1993-12-31,True,TIC-199312,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TIE-201301,Materials,XLB,1996-06-05,2013-01-07,True,TIE-201301,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TIF-202101,Consumer Discretionary,XLY,1987-05-05,2021-01-06,True,TIF-202101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TIN-201202,Materials,XLB,1983-12-19,2012-02-10,True,TIN-201202,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TJX,Consumer Discretionary,XLY,1964-05-12,nan,False,TJX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TKO,Communication Services,XLC,1999-10-19,nan,False,TKO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TKR,Industrials,XLI,1950-01-03,nan,False,TKR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TLAB-201312,Information Technology,XLK,1980-07-15,2013-12-03,True,TLAB-201312,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TMC-200006,Communication Services,XLC,1964-05-27,2000-06-12,True,TMC-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TMO,Health Care,XLV,1980-03-17,nan,False,TMO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TMUS,Communication Services,XLC,2007-04-19,nan,False,TMUS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TNB-201205,Industrials,XLI,1962-09-27,2012-05-16,True,TNB-201205,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TNL,Consumer Discretionary,XLY,2006-07-19,nan,False,TNL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TOS-200109,Consumer Discretionary,XLY,1980-01-30,2001-09-10,True,TOS-200109,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TOY-200507,Consumer Discretionary,XLY,1979-06-29,2005-07-21,True,TOY-200507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TPL,Energy,XLE,1950-01-03,nan,False,TPL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TPR,Consumer Discretionary,XLY,2000-10-05,nan,False,TPR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TRB-200712,Communication Services,XLC,1983-10-12,2007-12-20,True,TRB-200712,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TRGP,Energy,XLE,2010-12-07,nan,False,TRGP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TRIP,Communication Services,XLC,2011-12-07,nan,False,TRIP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TRMB,Information Technology,XLK,1990-07-20,nan,False,TRMB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TROW,Financials,XLF,1986-04-02,nan,False,TROW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TRV,Financials,XLF,1975-11-17,nan,False,TRV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TRW-200212,Consumer Discretionary,XLY,1950-01-03,2002-12-11,True,TRW-200212,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TSCO,Consumer Discretionary,XLY,1994-02-17,nan,False,TSCO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TSG-200703,Industrials,XLI,1996-10-11,2007-03-30,True,TSG-200703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TSLA,Consumer Discretionary,XLY,2010-06-29,nan,False,TSLA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TSN,Consumer Staples,XLP,1980-03-17,nan,False,TSN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TSS-201909,Industrials,XLI,1983-08-10,2019-09-17,True,TSS-201909,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TT,Industrials,XLI,1950-01-04,nan,False,TT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TT-200806,Industrials,XLI,1995-02-03,2008-06-05,True,TT-200806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TTD,Communication Services,XLC,2016-09-21,nan,False,TTD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TTWO,Communication Services,XLC,1997-04-15,nan,False,TTWO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TUPBQ-202506,Consumer Discretionary,XLY,1996-05-20,2025-06-11,True,TUPBQ-202506,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TWC-201605,Communication Services,XLC,2007-01-05,2016-05-17,True,TWC-201605,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TWTR-202210,Communication Services,XLC,2013-11-07,2022-10-27,True,TWTR-202210,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TWX-200101,Communication Services,XLC,1964-04-29,2001-01-11,True,TWX-200101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TWX-201806,Communication Services,XLC,1992-03-19,2018-06-14,True,TWX-201806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TX-200110,Energy,XLE,1950-01-03,2001-10-09,True,TX-200110,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TXN,Information Technology,XLK,1950-01-04,nan,False,TXN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TXT,Industrials,XLI,1950-01-03,nan,False,TXT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TXU-200710,Utilities,XLU,1951-02-13,2007-10-10,True,TXU-200710,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+TYL,Information Technology,XLK,1967-07-31,nan,False,TYL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UA,Consumer Discretionary,XLY,2016-03-23,nan,False,UA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UAA,Consumer Discretionary,XLY,2005-11-18,nan,False,UAA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UAL,Industrials,XLI,2006-01-25,nan,False,UAL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UALAQ-200602,Industrials,XLI,1950-01-03,2006-02-01,True,UALAQ-200602,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UAWGQ-200303,Industrials,XLI,1962-07-02,2003-03-31,True,UAWGQ-200303,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UBER,Industrials,XLI,2019-05-10,nan,False,UBER,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UCC-199904,Materials,XLB,1950-01-03,1999-04-30,True,UCC-199904,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UCL-200508,Energy,XLE,1950-01-03,2005-08-10,True,UCL-200508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UCM-200010,Utilities,XLU,1950-01-03,2000-10-20,True,UCM-200010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UDR,Real Estate,XLRE,1982-11-01,nan,False,UDR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UHS,Health Care,XLV,1981-07-09,nan,False,UHS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UIS,Information Technology,XLK,1950-01-03,nan,False,UIS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UK-200102,Materials,XLB,1950-01-03,2001-02-06,True,UK-200102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ULTA,Consumer Discretionary,XLY,2007-10-25,nan,False,ULTA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UMG-200006,Communication Services,XLC,1995-10-27,2000-06-14,True,UMG-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UN-202011,Consumer Staples,XLP,1961-12-12,2020-11-27,True,UN-202011,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UNH,Health Care,XLV,1984-10-17,nan,False,UNH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UNM,Financials,XLF,1986-11-06,nan,False,UNM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UNP,Industrials,XLI,1969-07-16,nan,False,UNP,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UPC-200406,Financials,XLF,1982-11-01,2004-06-30,True,UPC-200406,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UPR-200007,Energy,XLE,1995-10-11,2000-07-14,True,UPR-200007,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UPS,Industrials,XLI,1999-11-10,nan,False,UPS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+URBN,Consumer Discretionary,XLY,1993-11-09,nan,False,URBN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+URI,Industrials,XLI,1997-12-18,nan,False,URI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USB,Financials,XLF,1980-03-17,nan,False,USB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USB-200102,Financials,XLF,1980-03-17,2001-02-23,True,USB-200102,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USBC-199708,Financials,XLF,1982-11-01,1997-08-01,True,USBC-199708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USH-199706,Financials,XLF,1968-08-06,1997-06-17,True,USH-199706,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USHC-199607,Health Care,XLV,1983-02-09,1996-07-19,True,USHC-199607,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USS-199810,Health Care,XLV,1982-11-01,1998-10-01,True,USS-199810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UST-200901,Consumer Staples,XLP,1950-01-03,2009-01-05,True,UST-200901,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+USW-200006,Communication Services,XLC,1983-11-21,2000-06-30,True,USW-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+UVN-200703,Communication Services,XLC,1996-09-27,2007-03-28,True,UVN-200703,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+V,Financials,XLF,2008-03-19,nan,False,V,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VALPQ-202104,Energy,XLE,1980-03-17,2021-04-27,True,VALPQ-202104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VAR-202104,Health Care,XLV,1959-09-14,2021-04-14,True,VAR-202104,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VAT-199609,Consumer Discretionary,XLY,1962-07-02,1996-09-05,True,VAT-199609,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VEEV,Health Care,XLV,2013-10-16,nan,False,VEEV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VFC,Consumer Discretionary,XLY,1966-07-25,nan,False,VFC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VIAB-201912,Communication Services,XLC,2005-12-05,2019-12-04,True,VIAB-201912,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VIAV,Information Technology,XLK,1993-11-17,nan,False,VIAV,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VICI,Real Estate,XLRE,2017-10-17,nan,False,VICI,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VLO,Energy,XLE,1980-01-02,nan,False,VLO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VLTO,Industrials,XLI,2023-09-27,nan,False,VLTO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VMC,Materials,XLB,1950-01-11,nan,False,VMC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VNO,Real Estate,XLRE,1962-01-31,nan,False,VNO,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VO-200012,Communication Services,XLC,1950-01-03,2000-12-08,True,VO-200012,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VRSK,Industrials,XLI,2009-10-07,nan,False,VRSK,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VRSN,Information Technology,XLK,1998-01-30,nan,False,VRSN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VRT,Industrials,XLI,2018-07-30,nan,False,VRT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VRTS-200507,Information Technology,XLK,1993-12-09,2005-07-01,True,VRTS-200507,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VRTX,Health Care,XLV,1991-07-24,nan,False,VRTX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VST,Utilities,XLU,2016-10-04,nan,False,VST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VSTNQ-201010,Consumer Discretionary,XLY,2000-06-08,2010-10-01,True,VSTNQ-201010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VTR,Real Estate,XLRE,1989-09-19,nan,False,VTR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VTRS,Health Care,XLV,1980-03-17,nan,False,VTRS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VTSS-201504,Information Technology,XLK,1991-12-11,2015-04-27,True,VTSS-201504,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VYX,Information Technology,XLK,1996-12-11,nan,False,VYX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+VZ,Communication Services,XLC,1983-11-21,nan,False,VZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WAB,Industrials,XLI,1995-06-16,nan,False,WAB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WAI-199808,Energy,XLE,1994-03-18,1998-08-10,True,WAI-199808,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WAMUQ-201203,Financials,XLF,1983-03-11,2012-03-20,True,WAMUQ-201203,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WAT,Health Care,XLV,1995-11-17,nan,False,WAT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WB-200108,Financials,XLF,1970-03-02,2001-08-31,True,WB-200108,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WB-200812,Financials,XLF,1980-03-17,2008-12-31,True,WB-200812,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WBA-202508,Consumer Staples,XLP,1950-01-03,2025-08-27,True,WBA-202508,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WBD,Communication Services,XLC,2005-07-06,nan,False,WBD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WCG-202001,Health Care,XLV,2004-07-01,2020-01-23,True,WCG-202001,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WCOEQ-200404,Communication Services,XLC,1982-11-02,2004-04-20,True,WCOEQ-200404,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WDAY,Information Technology,XLK,2012-10-12,nan,False,WDAY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WDC,Information Technology,XLK,1980-03-17,nan,False,WDC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WEC,Utilities,XLU,1950-01-03,nan,False,WEC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WELL,Real Estate,XLRE,1980-03-19,nan,False,WELL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WEN-200809,Consumer Discretionary,XLY,1980-03-17,2008-09-29,True,WEN-200809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WFC,Financials,XLF,1962-12-10,nan,False,WFC,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WFC-199811,Financials,XLF,1970-02-09,1998-11-02,True,WFC-199811,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WFM-201708,Consumer Staples,XLP,1992-01-23,2017-08-25,True,WFM-201708,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WFRD,Energy,XLE,1980-03-17,nan,False,WFRD,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WHR,Consumer Discretionary,XLY,1955-01-03,nan,False,WHR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WINMQ-202009,Communication Services,XLC,2005-02-09,2020-09-21,True,WINMQ-202009,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WLA-200006,Health Care,XLV,1951-06-18,2000-06-19,True,WLA-200006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WLL-200203,Materials,XLB,1982-11-01,2002-03-14,True,WLL-200203,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WLP-200411,Health Care,XLV,1993-01-28,2004-11-30,True,WLP-200411,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WM,Industrials,XLI,1988-06-03,nan,False,WM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WMB,Energy,XLE,1962-07-02,nan,False,WMB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WMT,Consumer Staples,XLP,1972-11-20,nan,False,WMT,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WMX-199807,Industrials,XLI,1973-10-25,1998-07-16,True,WMX-199807,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WNDXQ-200611,Consumer Staples,XLP,1952-02-18,2006-11-21,True,WNDXQ-200611,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WOR,Industrials,XLI,1982-11-01,nan,False,WOR,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WPX-202101,Energy,XLE,2011-12-12,2021-01-06,True,WPX-202101,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WRB,Financials,XLF,1980-03-17,nan,False,WRB,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WRK-202407,Materials,XLB,2015-06-24,2024-07-05,True,WRK-202407,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WSM,Consumer Discretionary,XLY,1983-07-07,nan,False,WSM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WST,Health Care,XLV,1980-03-17,nan,False,WST,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WTW,Financials,XLF,2001-06-12,nan,False,WTW,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WU,Financials,XLF,2006-09-20,nan,False,WU,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WWY-200810,Consumer Staples,XLP,1950-01-03,2008-10-06,True,WWY-200810,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WY,Real Estate,XLRE,1963-12-06,nan,False,WY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WYE-200910,Health Care,XLV,1950-01-03,2009-10-15,True,WYE-200910,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+WYNN,Consumer Discretionary,XLY,2002-10-25,nan,False,WYNN,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+X-202506,Materials,XLB,1991-04-12,2025-06-17,True,X-202506,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XEC-202109,Energy,XLE,2002-09-25,2021-09-30,True,XEC-202109,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XEL,Utilities,XLU,1950-01-03,nan,False,XEL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XL-201809,Financials,XLF,1991-07-19,2018-09-11,True,XL-201809,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XLNX-202202,Information Technology,XLK,1990-06-12,2022-02-11,True,XLNX-202202,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XOM,Energy,XLE,1950-01-03,nan,False,XOM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XRAY,Health Care,XLV,1987-08-12,nan,False,XRAY,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XRX,Information Technology,XLK,1961-07-11,nan,False,XRX,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XTO-201006,Energy,XLE,1993-05-12,2010-06-25,True,XTO-201006,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XYL,Industrials,XLI,2011-10-13,nan,False,XYL,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+XYZ,Financials,XLF,2015-11-19,nan,False,XYZ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+YELLQ,Industrials,XLI,1973-05-03,nan,False,YELLQ,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+YNR-200010,Communication Services,XLC,1998-05-12,2000-10-03,True,YNR-200010,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+YUM,Consumer Discretionary,XLY,1997-09-12,nan,False,YUM,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ZBH,Health Care,XLV,2001-07-25,nan,False,ZBH,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ZBRA,Information Technology,XLK,1991-08-15,nan,False,ZBRA,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ZE-199805,Consumer Discretionary,XLY,1950-01-03,1998-05-21,True,ZE-199805,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ZION,Financials,XLF,1980-03-17,nan,False,ZION,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ZRN-199806,Industrials,XLI,1968-03-21,1998-06-11,True,ZRN-199806,map via ticker+exchange; providers key on ticker/CUSIP/FIGI
+ZTS,Health Care,XLV,2013-02-01,nan,False,ZTS,map via ticker+exchange; providers key on ticker/CUSIP/FIGI

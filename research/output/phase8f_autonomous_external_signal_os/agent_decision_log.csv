@@ -1,0 +1,4 @@
+cycle,decision,rationale,continue,stop_reason
+1,continue,"macro (G) testable, 1 promising-unconfirmed lead(s); external A-F pre-registered (no key); S8E-011 deep-dive underway",True,
+2,continue,all six external connectors + schemas + mock fixtures built and ready; tail decomposition complete; provider keys remain the only blocker for A-F,True,
+3,stop_provider_required,no CONFIRMED signal on locally-testable data; S8E-011 remains promising-unconfirmed (fixed filters help tail=True); escalate for provider acquisition in priority order,False,next meaningful step (external families A-F) requires provider access; the OS is built and ready to collect the moment a key is supplied

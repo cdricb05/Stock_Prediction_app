@@ -1,0 +1,2 @@
+exp_id,cycle,family,agent,kind,is_challenge,needs_provider,external_driver,cohort,status,n_events,n_recent_events,lift_vs_control,ev_after_25bps,worst_decile_mean,recent_lift_vs_control,hit_rate,reason
+S8E-011,1,G_macro_cross_asset_x_sensitivity,sensitivity-signal-agent,signal_test,False,False,rates,cohort_rates_neg,PROMISING_BUT_UNCONFIRMED,11881,6320,0.004035,0.001276,-0.157763,0.003413,0.523272,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"

@@ -1,0 +1,17 @@
+cycle,agent,task,result
+1,data-foundation-agent,verify local data + reuse persisted 8-E panel,OK
+1,universe-construction-agent,active/delisted universe + identifier map,OK
+1,feature-library-agent,external feature schema + sensitivity lineage,OK
+1,external-data-agent,detect provider keys; build connectors,NO_KEY
+1,sensitivity-signal-agent,run macro (G) x sensitivity + pre-register A-F,1 promising
+1,validation-skeptic-agent,S8E-011 fixed-filter stress,4 filters
+2,news-sentiment-agent,news/sentiment schema + connector + mock,BUILT_NO_KEY
+2,analyst-revision-agent,analyst-revision schema + connector + mock,BUILT_NO_KEY
+2,earnings-event-agent,earnings schema + connector; local SEC/SimFin inventory,BUILT_NO_KEY
+2,options-signal-agent,options IV/skew schema + connector + mock,BUILT_NO_KEY
+2,short-interest-agent,short-interest schema + connector + mock,BUILT_NO_KEY
+2,transcript-tone-agent,transcript-tone schema + connector + mock,BUILT_NO_KEY
+2,validation-skeptic-agent,S8E-011 tail decomposition,6 tail slices
+3,risk-portfolio-agent,tail/worst-decile/concentration on testable experiments,OK
+3,model-contribution-agent,model-candidate registry decision (no deploy),OK
+3,quant-research-director,promote/reject + next-cycle decision,OK

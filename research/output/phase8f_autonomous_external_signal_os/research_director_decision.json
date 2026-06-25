@@ -1,0 +1,71 @@
+{
+  "phase": "8-F",
+  "generated_utc": "2026-06-25T01:16:33Z",
+  "recommendation": "PROMISING_BUT_UNCONFIRMED",
+  "allowed_recommendations": [
+    "CONFIRMED_EXTERNAL_SENSITIVITY_SIGNAL_FOUND",
+    "PROMISING_NEEDS_PROVIDER_HISTORY",
+    "PROMISING_BUT_UNCONFIRMED",
+    "NEEDS_NEWS_SENTIMENT_PROVIDER_DATA",
+    "NEEDS_ANALYST_REVISION_PROVIDER_DATA",
+    "NEEDS_EXTERNAL_PROVIDER_DATA",
+    "EXTERNAL_SIGNAL_RESEARCH_REJECTED",
+    "AUTONOMOUS_SIGNAL_OS_READY_BUT_PROVIDER_BLOCKED",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_confirmed": 0,
+    "n_promising_unconfirmed": 1,
+    "n_promising_needs_provider": 0,
+    "n_needs_provider": 6,
+    "n_testable_scored": 25,
+    "any_provider_key_present": false,
+    "provider_readiness": {
+      "A_news_sentiment_x_sensitivity": false,
+      "B_analyst_revision_x_sensitivity": false,
+      "C_earnings_surprise_x_sensitivity": false,
+      "D_options_iv_x_sensitivity": false,
+      "E_short_interest_x_sensitivity": false,
+      "F_s8e011_plus_external_confirmation": false
+    }
+  },
+  "thesis": "external event x ticker sensitivity x market context, operated by an autonomous agent OS",
+  "best_lead": {
+    "signal_id": "S8E-011",
+    "family": "G_macro_cross_asset_x_sensitivity",
+    "status": "PROMISING_BUT_UNCONFIRMED",
+    "lift_vs_control": 0.004035,
+    "ev_after_25bps": 0.001276,
+    "blocker": "tail/portfolio gate",
+    "reason": "positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+  },
+  "fixed_filter_helps_tail": true,
+  "anti_p_hacking": {
+    "all_experiments_pre_registered": true,
+    "thresholds_fixed_a_priori": true,
+    "sensitivity_direction_estimated_not_assumed": true,
+    "fixed_filters_declared_on_ex_ante_buckets": true,
+    "challenge_fraction": 0.4,
+    "external_data_never_faked": true,
+    "mock_fixtures_excluded_from_scoreboard": true
+  },
+  "stop_conditions_honored": [
+    "no price/volume-only mining",
+    "no single universal factor",
+    "sensitivity estimated from data",
+    "no weak full-sample promotion",
+    "no weight optimization",
+    "no factor-sign flipping",
+    "no regime activation/throttling",
+    "no ML fitting",
+    "external data never faked",
+    "no secrets printed",
+    "no live trading signals",
+    "no broker/orders/automation",
+    "no Paper Trader / GCP / deployment",
+    "failed experiments not hidden",
+    "no commit",
+    "no push"
+  ]
+}

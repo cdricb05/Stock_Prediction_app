@@ -1,0 +1,22 @@
+candidate_id,family,external_driver,cohort,signal_status,registry_decision,proposed_contribution,lift_vs_control,ev_after_25bps,worst_decile_mean,deployed,paper_trader_output,production,note
+S8E-001,G_macro_cross_asset_x_sensitivity,oil,cohort_oil_pos,REJECTED,REJECT,no contribution,-0.002909,-0.01145,-0.167452,False,False,False,non-positive EV after 25bps (-0.01145)
+S8E-002,G_macro_cross_asset_x_sensitivity,oil,cohort_oil_neg,REJECTED,REJECT,no contribution,0.003551,-0.011135,-0.15363,False,False,False,non-positive EV after 25bps (-0.011135)
+S8E-010,G_macro_cross_asset_x_sensitivity,rates,cohort_rates_pos,REJECTED,REJECT,no contribution,-0.002223,-0.00899,-0.114988,False,False,False,non-positive EV after 25bps (-0.00899)
+S8E-011,G_macro_cross_asset_x_sensitivity,rates,cohort_rates_neg,PROMISING_BUT_UNCONFIRMED,HOLD_BLOCKED_ON_TAIL,conditional feature pending tail/portfolio fix,0.004035,0.001276,-0.157763,False,False,False,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+S8E-020,G_macro_cross_asset_x_sensitivity,credit,cohort_low_beta,REJECTED,REJECT,no contribution,-0.002868,-0.004339,-0.083456,False,False,False,non-positive EV after 25bps (-0.004339)
+S8E-030,G_macro_cross_asset_x_sensitivity,vix,cohort_low_beta,REJECTED,REJECT,no contribution,-0.000198,-0.003565,-0.083093,False,False,False,non-positive EV after 25bps (-0.003565)
+S8E-031,G_macro_cross_asset_x_sensitivity,vix,cohort_vol_spike_sens,REJECTED,REJECT,no contribution,0.000359,-0.00875,-0.235824,False,False,False,non-positive EV after 25bps (-0.00875)
+S8E-040,G_macro_cross_asset_x_sensitivity,market,cohort_high_beta,REJECTED,REJECT,no contribution,-0.000151,-0.00308,-0.198976,False,False,False,non-positive EV after 25bps (-0.00308)
+S8E-050,G_macro_cross_asset_x_sensitivity,usd,cohort_usd_pos,REJECTED,REJECT,no contribution,0.003419,-0.006095,-0.149398,False,False,False,non-positive EV after 25bps (-0.006095)
+S8E-051,G_macro_cross_asset_x_sensitivity,usd,cohort_usd_neg,REJECTED,REJECT,no contribution,-0.002046,-0.012052,-0.159893,False,False,False,non-positive EV after 25bps (-0.012052)
+S8E-060,G_macro_cross_asset_x_sensitivity,commodity,cohort_oil_pos,REJECTED,REJECT,no contribution,-0.000184,-0.010555,-0.167716,False,False,False,non-positive EV after 25bps (-0.010555)
+S8E-070,G_macro_cross_asset_x_sensitivity,sector,cohort_sector_lead,REJECTED,REJECT,no contribution,0.002532,-0.000937,-0.159853,False,False,False,non-positive EV after 25bps (-0.000937)
+S8E-101,G_macro_cross_asset_x_sensitivity,oil,cohort_oil_pos,REJECTED,REJECT,no contribution,-0.004388,-0.021379,-0.181876,False,False,False,non-positive EV after 25bps (-0.021379)
+S8E-110,G_macro_cross_asset_x_sensitivity,rates,cohort_rates_pos,REJECTED,REJECT,no contribution,-0.010662,-0.015604,-0.122096,False,False,False,non-positive EV after 25bps (-0.015604)
+S8E-130,G_macro_cross_asset_x_sensitivity,vix,cohort_low_beta,REJECTED,REJECT,no contribution,-0.003659,-0.005129,-0.115055,False,False,False,non-positive EV after 25bps (-0.005129)
+F8F-A01,A_news_sentiment_x_sensitivity,news_sentiment,sentiment_sensitive,NEEDS_PROVIDER_DATA,BLOCKED_ON_PROVIDER,pending external provider history,,,,False,False,False,no provider key present; adapter + schema + mock fixture + dry-run command built
+F8F-B01,B_analyst_revision_x_sensitivity,analyst_revision,revision_sensitive,NEEDS_PROVIDER_DATA,BLOCKED_ON_PROVIDER,pending external provider history,,,,False,False,False,no provider key present; adapter + schema + mock fixture + dry-run command built
+F8F-C01,C_earnings_surprise_x_sensitivity,earnings_surprise,surprise_sensitive,NEEDS_PROVIDER_DATA,BLOCKED_ON_PROVIDER,pending external provider history,,,,False,False,False,no provider key present; adapter + schema + mock fixture + dry-run command built
+F8F-D01,D_options_iv_x_sensitivity,options_iv,options_informative,NEEDS_PROVIDER_DATA,BLOCKED_ON_PROVIDER,pending external provider history,,,,False,False,False,no provider key present; adapter + schema + mock fixture + dry-run command built
+F8F-E01,E_short_interest_x_sensitivity,short_interest,squeeze_sensitive,NEEDS_PROVIDER_DATA,BLOCKED_ON_PROVIDER,pending external provider history,,,,False,False,False,no provider key present; adapter + schema + mock fixture + dry-run command built
+F8F-F01,F_s8e011_plus_external_confirmation,analyst_revision,cohort_rates_neg,NEEDS_PROVIDER_DATA,BLOCKED_ON_PROVIDER,pending external provider history,,,,False,False,False,no provider key present; adapter + schema + mock fixture + dry-run command built
