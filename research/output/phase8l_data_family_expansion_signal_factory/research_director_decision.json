@@ -1,0 +1,196 @@
+{
+  "phase": "8-L",
+  "generated_utc": "2026-06-25T19:29:34Z",
+  "recommendation": "PROMISING_ALPHA_SIGNAL_FOUND",
+  "stop_reason": "WAVE_BUDGET_EXHAUSTED",
+  "next_action": "CONTINUE_LOCAL_RESEARCH",
+  "allowed_recommendations": [
+    "CONFIRMED_ALPHA_SIGNAL_FOUND",
+    "PROMISING_ALPHA_SIGNAL_FOUND",
+    "PROMISING_BUT_PROVIDER_LIMITED",
+    "PROVIDER_REQUIRED_FOR_NEXT_BREAKTHROUGH",
+    "EXTERNAL_DATA_EXPANSION_REQUIRED",
+    "ALPHA_RESEARCH_REJECTED_ON_AVAILABLE_DATA",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "allowed_alpha_statuses": [
+    "CONFIRMED_ALPHA_SIGNAL",
+    "PROMISING_ALPHA_SIGNAL",
+    "PROVIDER_REQUIRED",
+    "REJECTED",
+    "BLOCKED"
+  ],
+  "allowed_actions": [
+    "CONTINUE_LOCAL_RESEARCH",
+    "EXPAND_NO_KEY_DATA",
+    "BUILD_BROADER_PANEL",
+    "REQUIRE_PROVIDER",
+    "PROMOTE_CONFIRMED_SIGNAL",
+    "REJECT_FAMILY",
+    "STOP"
+  ],
+  "allowed_stop_conditions": [
+    "CONFIRMED_ALPHA_SIGNAL_FOUND",
+    "PROVIDER_ONLY_BLOCKER",
+    "SAFETY_OR_LEAKAGE_BLOCKER",
+    "EXPERIMENT_BUDGET_EXHAUSTED",
+    "TIME_BUDGET_EXHAUSTED",
+    "WAVE_BUDGET_EXHAUSTED",
+    "MANUAL_STOP_FILE_DETECTED"
+  ],
+  "allowed_family_statuses": [
+    "LOCAL_DATA_FOUND",
+    "FREE_NO_KEY_SOURCE_ACTIVATED",
+    "FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT",
+    "EXISTING_PROVIDER_KEY_ACTIVATED",
+    "PAID_PROVIDER_REQUIRED",
+    "NOT_RELEVANT_AFTER_TESTING",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_testable_scored": 24,
+    "n_confirmed": 0,
+    "n_promising": 7,
+    "n_clean_promising": 2,
+    "n_provider_limited_promising": 5,
+    "n_provider_required": 3,
+    "any_provider_key": false,
+    "confirmed_ids": [],
+    "clean_promising_ids": [
+      "S8L-RATES-MACRO-20",
+      "S8L-RATES-MACRO-VOLCOMP-20"
+    ],
+    "provider_limited_ids": [
+      "S8L-RATES-EARNCONF-20",
+      "S8L-EARNCONF-RATES-20",
+      "S8L-EARN-VOLSENS-20",
+      "S8L-EARN-SECLEAD-20",
+      "S8L-EARN-HIGHBETA-20"
+    ]
+  },
+  "waves_activated": 12,
+  "provider_recommendation": {
+    "recommended_first_provider": "FMP",
+    "recommended_first_provider_reason": "FMP is the smallest single subscription that attacks BOTH top blockers (broad earnings surprise + analyst estimate revisions) and additionally unlocks transcripts, guidance/press releases, fundamentals and a filings feed \u2014 the most high-value families per dollar.",
+    "recommended_provider_bundle": [
+      "FINRA(free)",
+      "GDELT(free)",
+      "SEC_EDGAR(free)",
+      "FMP(paid)"
+    ],
+    "do_not_buy_yet_list": [
+      "NewsAPI",
+      "Polygon",
+      "Quandl",
+      "Tiingo"
+    ],
+    "free_sources_to_exhaust_first": [
+      "FINRA short interest",
+      "GDELT news",
+      "SEC EDGAR filings/insider/13F/8-K guidance",
+      "SimFin/SEC-XBRL fundamentals"
+    ],
+    "provider_activation_order": [
+      "FINRA(free)",
+      "GDELT(free)",
+      "SEC_EDGAR(free)",
+      "SimFin(free)",
+      "FMP(first paid)",
+      "Intrinio/Polygon options (only if a signal needs IV/skew)",
+      "Benzinga/Tiingo/Polygon news (only for deep PIT history)"
+    ],
+    "exact_env_vars_needed": [
+      "FMP_API_KEY"
+    ],
+    "free_sources_no_key_required": [
+      "FINRA",
+      "GDELT",
+      "SEC_EDGAR",
+      "SimFin"
+    ]
+  },
+  "first_subscription_recommendation": "FMP (broad earnings surprise + analyst revisions)",
+  "free_before_paid": [
+    "FINRA short interest",
+    "GDELT news",
+    "SEC EDGAR filings/insider/13F/8-K guidance",
+    "SimFin/SEC-XBRL fundamentals"
+  ],
+  "do_not_buy_yet": [
+    "NewsAPI",
+    "Polygon",
+    "Quandl",
+    "Tiingo"
+  ],
+  "best_current_path": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+  "top_next_options": [
+    {
+      "rank": 1,
+      "option": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+      "lever": "local_fixed_filters",
+      "needs_provider": false,
+      "prob_success": 0.6,
+      "ceiling": "medium",
+      "why": "fixed beta filter already flips beats-SPY-active True and clears the -12% tail on the confirmed variant; the open question is stability on more events"
+    },
+    {
+      "rank": 2,
+      "option": "Acquire a BROAD multi-ticker earnings + analyst-revision provider feed (FMP/Finnhub/Zacks/EODHD across S&P 500/1500) and rebuild a chunked weekly sensitivity grid on D: so universe and events expand together; re-run F20 + the C/R families on the fixed gate.",
+      "lever": "provider_earnings_revision",
+      "needs_provider": true,
+      "prob_success": 0.5,
+      "ceiling": "high",
+      "why": "the ONLY lever that lifts F20's 692 events past the >=1000 gate; raises EVERY earnings/revision candidate's coverage at once"
+    },
+    {
+      "rank": 3,
+      "option": "Widen the no-key SEC EDGAR filings overlay + activate FINRA biweekly short-interest history (free bulk) and test filings/short-interest x sensitivity on the fixed gate.",
+      "lever": "nokey_filings_short_interest",
+      "needs_provider": false,
+      "prob_success": 0.4,
+      "ceiling": "medium",
+      "why": "no-key/free; filings overlay already showed +1.22% lift on 68 events \u2014 direction, not yet coverage"
+    },
+    {
+      "rank": 4,
+      "option": "Acquire a timestamped news/sentiment history (GDELT bulk export or NewsAPI) and test sentiment-shock x sensitivity + a news confirmation of the macro leads.",
+      "lever": "provider_news_sentiment",
+      "needs_provider": true,
+      "prob_success": 0.3,
+      "ceiling": "medium",
+      "why": "connector proven live (HTTP 200) but only a recent window; a real PIT history is required and unproven for alpha"
+    }
+  ],
+  "any_trade_ready": false,
+  "binding_constraint": "event-data BREADTH and provider history; NOT the Norgate panel",
+  "anti_p_hacking": {
+    "all_pre_registered": true,
+    "thresholds_fixed_a_priori": true,
+    "thresholds_modified_after_results": false,
+    "factor_signs_modified_after_results": false,
+    "challenge_fraction": 0.375,
+    "external_data_never_faked": true,
+    "unlocked_signal_specs_are_spec_only": true,
+    "revision_proxy_capped_below_confirmed": true,
+    "optimized_weights": false,
+    "combinations_use_only_existing_real_columns": true
+  },
+  "stop_conditions_honored": [
+    "local data first; Norgate for price/macro; no package install",
+    "no threshold change to rescue a result",
+    "no factor-sign flipping",
+    "no weight optimization",
+    "no regime activation",
+    "no ML fitting",
+    "external data never faked",
+    "revision proxy labelled + capped",
+    "no secrets printed (keys by name/presence only)",
+    "no live trading signals",
+    "no broker/orders/automation",
+    "no Paper Trader / GCP / deployment",
+    "failed experiments not hidden",
+    "no commit",
+    "no push"
+  ]
+}

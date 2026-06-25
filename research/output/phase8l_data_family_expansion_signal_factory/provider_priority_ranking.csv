@@ -1,0 +1,15 @@
+priority,tier,order_within_tier,provider,env_var,n_families,attacks_top_blocker,cost_usd_month_approx,rationale
+0,FREE_ATTEMPT_FIRST,1,SEC_EDGAR,(none),5,False,free,free/no-key — exhaust before any paid subscription
+0,FREE_ATTEMPT_FIRST,2,FINRA,(none),1,False,free,free/no-key — exhaust before any paid subscription
+0,FREE_ATTEMPT_FIRST,3,GDELT,(none),1,False,free,free/no-key — exhaust before any paid subscription
+0,FREE_ATTEMPT_FIRST,4,SimFin,(none),1,False,free/local,free/no-key — exhaust before any paid subscription
+1,PAID,1,FMP,FMP_API_KEY,7,True,~22-29 (Starter),FIRST SUBSCRIPTION: solves the top blocker (broad earnings + analyst revisions) and the most families at once
+2,PAID,2,EODHD,EODHD_API_KEY,3,True,~20-80 by bundle,specialist/secondary — subscribe only if a candidate signal needs it
+3,PAID,3,Finnhub,FINNHUB_API_KEY,5,True,~0 (free tier) / paid for history,specialist/secondary — subscribe only if a candidate signal needs it
+4,PAID,4,AlphaVantage,ALPHAVANTAGE_API_KEY,4,True,"~0 (free tier, 25/day) / ~50 premium",specialist/secondary — subscribe only if a candidate signal needs it
+5,PAID,5,Benzinga,BENZINGA_API_KEY,3,True,enterprise (quote required),specialist/secondary — subscribe only if a candidate signal needs it
+6,PAID,6,Intrinio,INTRINIO_API_KEY,3,True,options packages (quote required),specialist/secondary — subscribe only if a candidate signal needs it
+7,PAID,7,Polygon,POLYGON_API_KEY,2,False,~29-199 by tier,specialist/secondary — subscribe only if a candidate signal needs it
+8,PAID,8,Tiingo,TIINGO_API_KEY,2,False,~10,specialist/secondary — subscribe only if a candidate signal needs it
+9,PAID,9,Quandl,QUANDL_API_KEY,1,False,dataset-dependent,specialist/secondary — subscribe only if a candidate signal needs it
+10,PAID,10,NewsAPI,NEWSAPI_KEY,1,False,~0 dev (no history) / ~449 business,specialist/secondary — subscribe only if a candidate signal needs it

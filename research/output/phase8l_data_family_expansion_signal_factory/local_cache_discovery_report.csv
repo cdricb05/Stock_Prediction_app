@@ -1,0 +1,9 @@
+cache,data_family,found,rows_or_symbols,location_hint,status,note
+earnings_event_cache,broad_earnings_surprise,True,75 tickers / 8320 events,8-G load_earnings_events (Norgate-derived cache),FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,thin coverage (~75 tickers) — broad earnings needs a provider
+sec_filing_event_cache,sec_filings_event_classification,True,7358 filing-event obs,8-G/8-H no-key SEC EDGAR submissions cache,FREE_NO_KEY_SOURCE_ACTIVATED,filing_event column live in the grid
+norgate_sensitivity_panel,macro_cross_asset_context,True,1254 symbols / 855109 obs,8-F persisted 8-E grid (Norgate + FRED),LOCAL_DATA_FOUND,drv_* macro shocks + sensitivity cohorts live in the grid
+fred_macro_series,macro_cross_asset_context,True,on-disk FRED series (rates/credit/usd/vix proxies),on-disk FRED cache used by 8-E driver construction,LOCAL_DATA_FOUND,fully local; no provider needed
+news_sentiment_store,historical_news_sentiment,False,0 (no PIT news store),(none on disk),FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,GDELT recent window only; deep history needs a provider
+options_iv_store,options_iv_skew_putcall_unusual_activity,False,0,(none on disk),PAID_PROVIDER_REQUIRED,no local options IV/skew data
+short_interest_store,short_interest_borrow_utilization,False,0 (FINRA not yet backfilled),(none on disk),FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,FINRA free biweekly history collectable no-key
+fundamentals_store,company_fundamentals_valuation_quality_leverage,False,0 (price-derived context only),(none on disk),FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,SimFin/SEC-XBRL collectable free

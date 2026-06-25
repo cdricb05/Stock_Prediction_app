@@ -1,0 +1,12 @@
+env_var,key_present,value_read,providers,families_served,note
+ALPHAVANTAGE_API_KEY,False,False,AlphaVantage,broad_earnings_surprise;company_fundamentals_valuation_quality_leverage;historical_news_sentiment;options_iv_skew_putcall_unusual_activity,presence-only; value never read or printed
+FINNHUB_API_KEY,False,False,Finnhub,analyst_estimates_revisions;company_fundamentals_valuation_quality_leverage;earnings_call_transcripts_tone;historical_news_sentiment;short_interest_borrow_utilization,presence-only; value never read or printed
+FMP_API_KEY,False,False,FMP,analyst_estimates_revisions;broad_earnings_surprise;company_fundamentals_valuation_quality_leverage;earnings_call_transcripts_tone;guidance_press_releases;historical_news_sentiment;sec_filings_event_classification,presence-only; value never read or printed
+POLYGON_API_KEY,False,False,Polygon,historical_news_sentiment;options_iv_skew_putcall_unusual_activity,presence-only; value never read or printed
+EODHD_API_KEY,False,False,EODHD,analyst_estimates_revisions;broad_earnings_surprise;company_fundamentals_valuation_quality_leverage,presence-only; value never read or printed
+INTRINIO_API_KEY,False,False,Intrinio,analyst_estimates_revisions;company_fundamentals_valuation_quality_leverage;options_iv_skew_putcall_unusual_activity,presence-only; value never read or printed
+TIINGO_API_KEY,False,False,Tiingo,company_fundamentals_valuation_quality_leverage;historical_news_sentiment,presence-only; value never read or printed
+NEWSAPI_KEY,False,False,NewsAPI,historical_news_sentiment,presence-only; value never read or printed
+BENZINGA_API_KEY,False,False,Benzinga,analyst_estimates_revisions;guidance_press_releases;historical_news_sentiment,presence-only; value never read or printed
+SEC_API_KEY,False,False,(none),(none),presence-only; value never read or printed
+QUANDL_API_KEY,False,False,Quandl,short_interest_borrow_utilization,presence-only; value never read or printed

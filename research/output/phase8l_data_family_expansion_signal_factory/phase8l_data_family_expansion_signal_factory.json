@@ -1,0 +1,464 @@
+{
+  "phase": "8-L",
+  "objective": "Operate and upgrade the alpha factory so it keeps expanding across EVERY missing data family: audit families, inspect local caches, attempt free/no-key activation, detect provider keys by name, rank the smallest provider set that unlocks the most high-value families, decide what to subscribe to, and continue testing local signals (tail-risk repair, earnings-confirmation) \u2014 answering which data sources to activate/subscribe to and which signal families become testable or confirmable when we do.",
+  "generated_utc": "2026-06-25T19:29:34Z",
+  "stop_reason": "WAVE_BUDGET_EXHAUSTED",
+  "allowed_stop_conditions": [
+    "CONFIRMED_ALPHA_SIGNAL_FOUND",
+    "PROVIDER_ONLY_BLOCKER",
+    "SAFETY_OR_LEAKAGE_BLOCKER",
+    "EXPERIMENT_BUDGET_EXHAUSTED",
+    "TIME_BUDGET_EXHAUSTED",
+    "WAVE_BUDGET_EXHAUSTED",
+    "MANUAL_STOP_FILE_DETECTED"
+  ],
+  "recommendation": "PROMISING_ALPHA_SIGNAL_FOUND",
+  "allowed_recommendations": [
+    "CONFIRMED_ALPHA_SIGNAL_FOUND",
+    "PROMISING_ALPHA_SIGNAL_FOUND",
+    "PROMISING_BUT_PROVIDER_LIMITED",
+    "PROVIDER_REQUIRED_FOR_NEXT_BREAKTHROUGH",
+    "EXTERNAL_DATA_EXPANSION_REQUIRED",
+    "ALPHA_RESEARCH_REJECTED_ON_AVAILABLE_DATA",
+    "ASSESSMENT_FRAMEWORK_BLOCKED",
+    "ERROR"
+  ],
+  "decision_detail": {
+    "n_testable_scored": 24,
+    "n_confirmed": 0,
+    "n_promising": 7,
+    "n_clean_promising": 2,
+    "n_provider_limited_promising": 5,
+    "n_provider_required": 3,
+    "any_provider_key": false,
+    "confirmed_ids": [],
+    "clean_promising_ids": [
+      "S8L-RATES-MACRO-20",
+      "S8L-RATES-MACRO-VOLCOMP-20"
+    ],
+    "provider_limited_ids": [
+      "S8L-RATES-EARNCONF-20",
+      "S8L-EARNCONF-RATES-20",
+      "S8L-EARN-VOLSENS-20",
+      "S8L-EARN-SECLEAD-20",
+      "S8L-EARN-HIGHBETA-20"
+    ]
+  },
+  "daemon_roles": [
+    "research-director-agent",
+    "data-foundation-agent",
+    "universe-agent",
+    "external-data-agent",
+    "hypothesis-generator-agent",
+    "macro-sensitivity-agent",
+    "earnings-catalyst-agent",
+    "news-sentiment-agent",
+    "analyst-revision-agent",
+    "options-short-interest-agent",
+    "validation-skeptic-agent",
+    "risk-tail-agent",
+    "model-candidate-agent"
+  ],
+  "next_action": "CONTINUE_LOCAL_RESEARCH",
+  "next_action_reason": "clean promising lead(s) exist; next local step is the fixed structural beta-tail/volatility filter re-validation",
+  "allowed_actions": [
+    "CONTINUE_LOCAL_RESEARCH",
+    "EXPAND_NO_KEY_DATA",
+    "BUILD_BROADER_PANEL",
+    "REQUIRE_PROVIDER",
+    "PROMOTE_CONFIRMED_SIGNAL",
+    "REJECT_FAMILY",
+    "STOP"
+  ],
+  "run_config": {
+    "once": false,
+    "max_cycles": null,
+    "max_experiments": null,
+    "max_waves": null,
+    "time_budget_minutes": null,
+    "dry_run": false,
+    "activate_live": true,
+    "continue_when_bank_exhausted": true,
+    "hypotheses_per_cycle": 12
+  },
+  "waves": {
+    "n_waves_total": 12,
+    "n_waves_activated": 12,
+    "wave_limit": 12,
+    "activated_waves": [
+      "WAVE_PHASE8K_STATE_REBUILD",
+      "WAVE_MISSING_DATA_FAMILY_AUDIT",
+      "WAVE_LOCAL_CACHE_DISCOVERY",
+      "WAVE_FREE_NO_KEY_ACTIVATION",
+      "WAVE_PROVIDER_KEY_ACTIVATION",
+      "WAVE_PROVIDER_SUBSCRIPTION_RANKING",
+      "WAVE_EARNINGS_ANALYST_PROVIDER_DECISION",
+      "WAVE_NEWS_SENTIMENT_PROVIDER_DECISION",
+      "WAVE_OPTIONS_IV_SKEW_PROVIDER_DECISION",
+      "WAVE_SHORT_INTEREST_BORROW_ACTIVATION",
+      "WAVE_TAIL_RISK_REPAIR_SIGNAL_TESTS",
+      "WAVE_TRADE_IDEA_PROMOTION"
+    ],
+    "n_scoring_waves": 3,
+    "registry": [
+      {
+        "wave_index": 0,
+        "wave_id": "WAVE_PHASE8K_STATE_REBUILD",
+        "generated_from": "self_refill_director",
+        "active_focus": "rebuild the 8-K clean macro leads (S8E-011 anchor, sector-leadership, earnings-confirmed F20) on the fixed 8-E gate for continuity",
+        "data_families_targeted": "macro_cross_asset_context;liquidity_volume_volatility_positioning",
+        "hypothesis_bank_id": "BANK-00-WAVE_PHASE8K_STATE_REBUILD",
+        "experiments_generated": 8,
+        "experiments_scored": 8,
+        "stop_reason": "BANK_SCORED",
+        "next_wave_reason": "leads anchored; audit every missing data family next"
+      },
+      {
+        "wave_index": 1,
+        "wave_id": "WAVE_MISSING_DATA_FAMILY_AUDIT",
+        "generated_from": "self_refill_director",
+        "active_focus": "resolve all 14 data families to a concrete status (no vague entries)",
+        "data_families_targeted": "broad_earnings_surprise;analyst_estimates_revisions;historical_news_sentiment",
+        "hypothesis_bank_id": "BANK-01-WAVE_MISSING_DATA_FAMILY_AUDIT",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "ANALYSIS_ONLY",
+        "next_wave_reason": "families classified; inspect local caches for each next"
+      },
+      {
+        "wave_index": 2,
+        "wave_id": "WAVE_LOCAL_CACHE_DISCOVERY",
+        "generated_from": "self_refill_director",
+        "active_focus": "inventory local caches on disk (earnings, filings, Norgate panel, FRED)",
+        "data_families_targeted": "broad_earnings_surprise;sec_filings_event_classification;macro_cross_asset_context",
+        "hypothesis_bank_id": "BANK-02-WAVE_LOCAL_CACHE_DISCOVERY",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "ANALYSIS_ONLY",
+        "next_wave_reason": "local caches mapped; attempt free/no-key activation next"
+      },
+      {
+        "wave_index": 3,
+        "wave_id": "WAVE_FREE_NO_KEY_ACTIVATION",
+        "generated_from": "self_refill_director",
+        "active_focus": "attempt SEC EDGAR / GDELT / FINRA free no-key sources; record outcomes honestly",
+        "data_families_targeted": "sec_filings_event_classification;historical_news_sentiment;short_interest_borrow_utilization",
+        "hypothesis_bank_id": "BANK-03-WAVE_FREE_NO_KEY_ACTIVATION",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "ANALYSIS_ONLY",
+        "next_wave_reason": "free sources exhausted; detect existing provider keys next"
+      },
+      {
+        "wave_index": 4,
+        "wave_id": "WAVE_PROVIDER_KEY_ACTIVATION",
+        "generated_from": "self_refill_director",
+        "active_focus": "detect provider env vars by name/presence only (never read values)",
+        "data_families_targeted": "broad_earnings_surprise;analyst_estimates_revisions",
+        "hypothesis_bank_id": "BANK-04-WAVE_PROVIDER_KEY_ACTIVATION",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "ANALYSIS_ONLY",
+        "next_wave_reason": "keys inventoried; rank the smallest unlocking provider set next"
+      },
+      {
+        "wave_index": 5,
+        "wave_id": "WAVE_PROVIDER_SUBSCRIPTION_RANKING",
+        "generated_from": "self_refill_director",
+        "active_focus": "rank the smallest provider set that unlocks the most high-value families",
+        "data_families_targeted": "broad_earnings_surprise;analyst_estimates_revisions;historical_news_sentiment",
+        "hypothesis_bank_id": "BANK-05-WAVE_PROVIDER_SUBSCRIPTION_RANKING",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "ANALYSIS_ONLY",
+        "next_wave_reason": "ranking ready; commit the earnings/analyst provider decision next"
+      },
+      {
+        "wave_index": 6,
+        "wave_id": "WAVE_EARNINGS_ANALYST_PROVIDER_DECISION",
+        "generated_from": "self_refill_director",
+        "active_focus": "test earnings-confirmed candidates AND decide the earnings/analyst provider (FMP)",
+        "data_families_targeted": "broad_earnings_surprise;analyst_estimates_revisions",
+        "hypothesis_bank_id": "BANK-06-WAVE_EARNINGS_ANALYST_PROVIDER_DECISION",
+        "experiments_generated": 8,
+        "experiments_scored": 8,
+        "stop_reason": "BANK_SCORED",
+        "next_wave_reason": "earnings/analyst decided; decide the news/sentiment provider next"
+      },
+      {
+        "wave_index": 7,
+        "wave_id": "WAVE_NEWS_SENTIMENT_PROVIDER_DECISION",
+        "generated_from": "self_refill_director",
+        "active_focus": "exhaust GDELT free window; decide the deep-history news/sentiment provider",
+        "data_families_targeted": "historical_news_sentiment",
+        "hypothesis_bank_id": "BANK-07-WAVE_NEWS_SENTIMENT_PROVIDER_DECISION",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "PROVIDER_REQUIREMENT_LOGGED",
+        "next_wave_reason": "news decided (GDELT first, paid for history); decide options next"
+      },
+      {
+        "wave_index": 8,
+        "wave_id": "WAVE_OPTIONS_IV_SKEW_PROVIDER_DECISION",
+        "generated_from": "self_refill_director",
+        "active_focus": "no local options data; decide the IV/skew provider (only if a signal needs it)",
+        "data_families_targeted": "options_iv_skew_putcall_unusual_activity",
+        "hypothesis_bank_id": "BANK-08-WAVE_OPTIONS_IV_SKEW_PROVIDER_DECISION",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "PROVIDER_REQUIREMENT_LOGGED",
+        "next_wave_reason": "options deferred unless a candidate needs IV/skew; activate FINRA short next"
+      },
+      {
+        "wave_index": 9,
+        "wave_id": "WAVE_SHORT_INTEREST_BORROW_ACTIVATION",
+        "generated_from": "self_refill_director",
+        "active_focus": "attempt FINRA free short interest before any paid short/borrow source",
+        "data_families_targeted": "short_interest_borrow_utilization",
+        "hypothesis_bank_id": "BANK-09-WAVE_SHORT_INTEREST_BORROW_ACTIVATION",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "PROVIDER_REQUIREMENT_LOGGED",
+        "next_wave_reason": "short interest activated/decided; repair tail risk on the best leads next"
+      },
+      {
+        "wave_index": 10,
+        "wave_id": "WAVE_TAIL_RISK_REPAIR_SIGNAL_TESTS",
+        "generated_from": "self_refill_director",
+        "active_focus": "apply fixed beta-tail / vol-quintile / sector-cap filters to repair the clean macro leads (no tuning after scoring)",
+        "data_families_targeted": "liquidity_volume_volatility_positioning;macro_cross_asset_context",
+        "hypothesis_bank_id": "BANK-10-WAVE_TAIL_RISK_REPAIR_SIGNAL_TESTS",
+        "experiments_generated": 8,
+        "experiments_scored": 8,
+        "stop_reason": "BANK_SCORED",
+        "next_wave_reason": "tail filters scored; promote paper-review trade-idea candidates last"
+      },
+      {
+        "wave_index": 11,
+        "wave_id": "WAVE_TRADE_IDEA_PROMOTION",
+        "generated_from": "self_refill_director",
+        "active_focus": "promote promising leads to paper-review-only trade ideas (with trade-ready reason)",
+        "data_families_targeted": "macro_cross_asset_context;broad_earnings_surprise",
+        "hypothesis_bank_id": "BANK-11-WAVE_TRADE_IDEA_PROMOTION",
+        "experiments_generated": 0,
+        "experiments_scored": 0,
+        "stop_reason": "ANALYSIS_ONLY",
+        "next_wave_reason": "all waves complete \u2014 terminal on WAVE_BUDGET_EXHAUSTED unless bounded sooner"
+      }
+    ]
+  },
+  "loop": {
+    "cycles_completed": 3,
+    "experiments_scored": 24,
+    "bank_size": 24,
+    "queue_remaining": 0,
+    "hypothesis_banks_generated": 12,
+    "challenge_fraction": 0.375
+  },
+  "panel": {
+    "panel_ok": true,
+    "n_symbols": 1254,
+    "n_obs": 855109,
+    "date_range": [
+      "1993-07-30",
+      "2026-05-22"
+    ]
+  },
+  "candidates": {
+    "n_real_tested": 18,
+    "n_testable": 15,
+    "n_confirmed": 0,
+    "n_promising": 7,
+    "n_clean_promising": 2,
+    "n_provider_limited": 5,
+    "n_provider_required": 3,
+    "n_rejected": 8,
+    "confirmed_ids": [],
+    "clean_promising_ids": [
+      "S8L-RATES-MACRO-20",
+      "S8L-RATES-MACRO-VOLCOMP-20"
+    ],
+    "provider_limited_ids": [
+      "S8L-RATES-EARNCONF-20",
+      "S8L-EARNCONF-RATES-20",
+      "S8L-EARN-VOLSENS-20",
+      "S8L-EARN-SECLEAD-20",
+      "S8L-EARN-HIGHBETA-20"
+    ]
+  },
+  "data_families": {
+    "n_families": 14,
+    "status_counts": {
+      "FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT": 8,
+      "PAID_PROVIDER_REQUIRED": 2,
+      "FREE_NO_KEY_SOURCE_ACTIVATED": 1,
+      "LOCAL_DATA_FOUND": 3
+    },
+    "allowed_statuses": [
+      "LOCAL_DATA_FOUND",
+      "FREE_NO_KEY_SOURCE_ACTIVATED",
+      "FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT",
+      "EXISTING_PROVIDER_KEY_ACTIVATED",
+      "PAID_PROVIDER_REQUIRED",
+      "NOT_RELEVANT_AFTER_TESTING",
+      "ERROR"
+    ],
+    "first_subscription_recommendation": "FMP",
+    "families_requiring_subscription": [
+      "broad_earnings_surprise",
+      "analyst_estimates_revisions",
+      "historical_news_sentiment",
+      "earnings_call_transcripts_tone",
+      "options_iv_skew_putcall_unusual_activity",
+      "short_interest_borrow_utilization",
+      "guidance_press_releases"
+    ],
+    "families_local_or_free": [
+      "sec_filings_event_classification",
+      "sector_industry_context",
+      "macro_cross_asset_context",
+      "liquidity_volume_volatility_positioning"
+    ]
+  },
+  "provider_recommendation": {
+    "recommended_first_provider": "FMP",
+    "recommended_first_provider_reason": "FMP is the smallest single subscription that attacks BOTH top blockers (broad earnings surprise + analyst estimate revisions) and additionally unlocks transcripts, guidance/press releases, fundamentals and a filings feed \u2014 the most high-value families per dollar.",
+    "recommended_provider_bundle": [
+      "FINRA(free)",
+      "GDELT(free)",
+      "SEC_EDGAR(free)",
+      "FMP(paid)"
+    ],
+    "do_not_buy_yet_list": [
+      "NewsAPI",
+      "Polygon",
+      "Quandl",
+      "Tiingo"
+    ],
+    "free_sources_to_exhaust_first": [
+      "FINRA short interest",
+      "GDELT news",
+      "SEC EDGAR filings/insider/13F/8-K guidance",
+      "SimFin/SEC-XBRL fundamentals"
+    ],
+    "provider_activation_order": [
+      "FINRA(free)",
+      "GDELT(free)",
+      "SEC_EDGAR(free)",
+      "SimFin(free)",
+      "FMP(first paid)",
+      "Intrinio/Polygon options (only if a signal needs IV/skew)",
+      "Benzinga/Tiingo/Polygon news (only for deep PIT history)"
+    ],
+    "exact_env_vars_needed": [
+      "FMP_API_KEY"
+    ],
+    "free_sources_no_key_required": [
+      "FINRA",
+      "GDELT",
+      "SEC_EDGAR",
+      "SimFin"
+    ]
+  },
+  "rejected_families": [],
+  "best_current_path": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+  "top_next_options": [
+    {
+      "rank": 1,
+      "option": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+      "lever": "local_fixed_filters",
+      "needs_provider": false,
+      "prob_success": 0.6,
+      "ceiling": "medium",
+      "why": "fixed beta filter already flips beats-SPY-active True and clears the -12% tail on the confirmed variant; the open question is stability on more events"
+    },
+    {
+      "rank": 2,
+      "option": "Acquire a BROAD multi-ticker earnings + analyst-revision provider feed (FMP/Finnhub/Zacks/EODHD across S&P 500/1500) and rebuild a chunked weekly sensitivity grid on D: so universe and events expand together; re-run F20 + the C/R families on the fixed gate.",
+      "lever": "provider_earnings_revision",
+      "needs_provider": true,
+      "prob_success": 0.5,
+      "ceiling": "high",
+      "why": "the ONLY lever that lifts F20's 692 events past the >=1000 gate; raises EVERY earnings/revision candidate's coverage at once"
+    },
+    {
+      "rank": 3,
+      "option": "Widen the no-key SEC EDGAR filings overlay + activate FINRA biweekly short-interest history (free bulk) and test filings/short-interest x sensitivity on the fixed gate.",
+      "lever": "nokey_filings_short_interest",
+      "needs_provider": false,
+      "prob_success": 0.4,
+      "ceiling": "medium",
+      "why": "no-key/free; filings overlay already showed +1.22% lift on 68 events \u2014 direction, not yet coverage"
+    },
+    {
+      "rank": 4,
+      "option": "Acquire a timestamped news/sentiment history (GDELT bulk export or NewsAPI) and test sentiment-shock x sensitivity + a news confirmation of the macro leads.",
+      "lever": "provider_news_sentiment",
+      "needs_provider": true,
+      "prob_success": 0.3,
+      "ceiling": "medium",
+      "why": "connector proven live (HTTP 200) but only a recent window; a real PIT history is required and unproven for alpha"
+    }
+  ],
+  "provider": {
+    "any_key_present": false,
+    "n_keys_checked": 11,
+    "n_blocked_families": 4,
+    "first_subscription": "FMP",
+    "readiness": {
+      "ALPHAVANTAGE_API_KEY": false,
+      "FINNHUB_API_KEY": false,
+      "FMP_API_KEY": false,
+      "POLYGON_API_KEY": false,
+      "EODHD_API_KEY": false,
+      "INTRINIO_API_KEY": false,
+      "TIINGO_API_KEY": false,
+      "NEWSAPI_KEY": false,
+      "BENZINGA_API_KEY": false,
+      "SEC_API_KEY": false,
+      "QUANDL_API_KEY": false
+    }
+  },
+  "trade_ready": {
+    "any_trade_ready": false,
+    "reason": "no CONFIRMED full-coverage signal yet; promising leads need tail-repair + walk-forward confirmation or provider data"
+  },
+  "how_to_run_longer": {
+    "validation_once": "python research/run_phase8l_data_family_expansion_signal_factory.py --once",
+    "full_factory": "python research/run_phase8l_data_family_expansion_signal_factory.py --resume --stop-on-confirmed",
+    "long_campaign": "python research/run_phase8l_data_family_expansion_signal_factory.py --time-budget-minutes 180 --max-experiments 400 --resume --stop-on-confirmed --heartbeat-seconds 30",
+    "manual_stop": "create D:\\Stock_Prediction_app_data\\data_family_expansion_signal_factory\\STOP_FACTORY.txt to halt before the next cycle"
+  },
+  "safety": {
+    "research_only": true,
+    "local_first": true,
+    "provider_keys_detected": false,
+    "provider_keys_value_read": false,
+    "secrets_printed": false,
+    "external_data_faked": false,
+    "news_sentiment_faked": false,
+    "short_interest_faked": false,
+    "revision_is_labelled_proxy_not_confirmed": true,
+    "unlocked_signal_specs_are_spec_only": true,
+    "mock_fixtures_excluded": true,
+    "point_in_time_join": true,
+    "thresholds_fixed_a_priori": true,
+    "thresholds_modified_after_results": false,
+    "factor_signs_modified_after_results": false,
+    "all_pre_registered": true,
+    "packages_installed": false,
+    "large_state_only_on_d": true,
+    "optimized_weights": false,
+    "regime_activation": false,
+    "ml_fit": false,
+    "failed_experiments_hidden": false,
+    "live_trading_signals": false,
+    "broker_or_orders": false,
+    "automation_of_orders": false,
+    "paper_trader_touched": false,
+    "gcp_touched": false,
+    "deployment": false,
+    "committed": false,
+    "pushed": false
+  }
+}

@@ -1,0 +1,15 @@
+data_family,best_provider,signals_unlocked,expected_event_count_gain,expected_validation_quality_gain,current_blocker_addressed
+broad_earnings_surprise,FMP,earnings x context family; lifts F20>=1000 events,high (75 -> S&P 500/1500 names),high (clears the >=1000-event gate broadly),earnings feed covers only ~75 tickers
+analyst_estimates_revisions,FMP,true revision x sensitivity (uncaps the proxy),high,"high (real, uncapped)","revision signal is a proxy, never CONFIRMED"
+historical_news_sentiment,Benzinga,sentiment shock x sensitivity; macro-lead news confirmation,medium-high,medium,no deep PIT news/sentiment history
+earnings_call_transcripts_tone,FMP,management-tone x earnings-surprise confirmation,medium,medium,no transcript text/tone source
+options_iv_skew_putcall_unusual_activity,Intrinio,IV-percentile / skew / put-call x sensitivity,high (daily per name),medium,no options IV/skew history
+short_interest_borrow_utilization,Finnhub,short-interest increase / days-to-cover x liquidity/beta context,medium,medium,no deep biweekly short-interest / borrow / utilization history
+insider_transactions,SEC_EDGAR,insider-buy cluster x sensitivity,medium,medium,no insider-transaction event store
+institutional_ownership_13f,SEC_EDGAR,ownership-change x sensitivity (low-frequency overlay only),low (quarterly),low,no 13F ownership store; quarterly cadence limits short-horizon drift use
+sec_filings_event_classification,SEC_EDGAR,filing x sensitivity family,low (already active),low-medium (item-level classification),filing events already mapped; finer 8-K item classification is optional
+guidance_press_releases,FMP,guidance raise/cut x earnings/macro sensitivity,medium,medium,no structured guidance / press-release event store
+company_fundamentals_valuation_quality_leverage,FMP,quality/leverage/valuation conditioning,context (per-name overlay),medium,no fundamentals statements for quality/leverage context
+sector_industry_context,(local/free),sector-leadership x macro driver family,n/a (active),n/a (active),none — fully local
+macro_cross_asset_context,(local/free),rates/oil/usd/credit/vix/commodity/market shock families,n/a (active),n/a (active),none — fully local
+liquidity_volume_volatility_positioning,(local/free),beta/vol/liquidity conditioning + tail-risk repair filters,n/a (active),n/a (active),none — fully local

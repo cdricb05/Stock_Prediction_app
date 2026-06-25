@@ -1,0 +1,7 @@
+source,data_family,key_required,attempted,reachable,rows_returned,outcome,note
+SEC_EDGAR,sec_filings_event_classification,False,True,True,7358,FREE_NO_KEY_SOURCE_ACTIVATED,no-key submissions feed; filing_event live in the grid
+GDELT,historical_news_sentiment,False,True,False,0,FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,connector live but only a recent window — no deep PIT history without a provider
+FINRA,short_interest_borrow_utilization,False,True,False,0,FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,reg-SHO daily reachable; biweekly consolidated history collectable but not yet backfilled
+SEC_EDGAR_FORM4,insider_transactions,False,False,True,0,FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,Form 4 reachable no-key; collector not yet built
+SEC_EDGAR_13F,institutional_ownership_13f,False,False,True,0,FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,13F reachable no-key; quarterly cadence weak for short-horizon drift
+SimFin_SEC_XBRL,company_fundamentals_valuation_quality_leverage,False,False,True,0,FREE_NO_KEY_SOURCE_ATTEMPTED_BUT_INSUFFICIENT,bulk fundamentals collectable free; overlay not yet built

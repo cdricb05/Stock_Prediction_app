@@ -1,0 +1,4 @@
+cycle,utc,wave_id,batch_size,experiments_scored_total,queue_remaining,n_confirmed,n_promising,n_provider_required,n_rejected,next_action,note
+1,2026-06-25T19:30:39Z,WAVE_PHASE8K_STATE_REBUILD,8,8,0,0,3,3,2,CONTINUE_LOCAL_RESEARCH,clean promising lead(s) exist; next local step is the fixed structural beta-tail/volatility filter re-validation
+2,2026-06-25T19:31:06Z,WAVE_EARNINGS_ANALYST_PROVIDER_DECISION,8,16,0,0,7,3,3,CONTINUE_LOCAL_RESEARCH,clean promising lead(s) exist; next local step is the fixed structural beta-tail/volatility filter re-validation
+3,2026-06-25T19:31:31Z,WAVE_TAIL_RISK_REPAIR_SIGNAL_TESTS,8,24,0,0,7,3,8,CONTINUE_LOCAL_RESEARCH,clean promising lead(s) exist; next local step is the fixed structural beta-tail/volatility filter re-validation

@@ -1,0 +1,25 @@
+exp_id,family,is_challenge,n_events,n_recent_events,lift_vs_control,ev_after_25bps,recent_lift_vs_control,worst_decile_mean,alpha_promotion,skeptic_verdict,skeptic_note
+S8L-RATES-MACRO-20,G_macro_cross_asset_x_sensitivity,False,11881,6320,0.004035,0.001276,0.003413,-0.157763,PROMISING_ALPHA_SIGNAL,PROMISING_LOCAL_NEXT_STEP,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+S8L-RATES-MACRO-SECLEAD-20,G_macro_cross_asset_x_sensitivity,False,9907,5211,0.000733,-0.001001,1.4e-05,-0.202677,REJECTED,REJECTED_BY_GATE,non-positive EV after 25bps (-0.001001)
+S8L-CH-REBUILD-WRONGDIR-20,G_macro_cross_asset_x_sensitivity,True,7619,3559,-0.001465,-0.001827,-0.005515,-0.146421,REJECTED,CHALLENGE_CLEAN,challenge/placebo control (diagnostic; never promoted)
+S8L-RATES-MACRO-VOLCOMP-20,G_macro_cross_asset_x_sensitivity,False,11881,6320,0.004035,0.001276,0.003413,-0.157763,PROMISING_ALPHA_SIGNAL,PROMISING_LOCAL_NEXT_STEP,"positive but misses: portfolio_beats_spy_and_cash_active, worst_decile_not_catastrophic"
+S8L-RATES-EARNCONF-20,F_s8e011_plus_external_confirmation,False,692,394,0.005328,0.003779,0.004877,-0.155446,PROMISING_ALPHA_SIGNAL,REAL_BUT_LIMITED,"insufficient events (total=692, recent=394)"
+S8L-CH-REBUILD-NOCOHORT-20,G_macro_cross_asset_x_sensitivity,True,51892,26285,0.000721,-0.004026,0.003172,-0.132834,REJECTED,CHALLENGE_CLEAN,challenge/placebo control (diagnostic; never promoted)
+S8L-RATES-MACRO-LOWBETA-20,G_macro_cross_asset_x_sensitivity,False,455,283,0.025908,-0.011352,0.012026,-0.144475,REJECTED,REJECTED_BY_GATE,"insufficient events (total=455, recent=283)"
+S8L-CH-REBUILD-EARNCONF-NOCOHORT-20,G_macro_cross_asset_x_sensitivity,True,2974,1557,-0.000275,-0.003945,0.00144,-0.131049,REJECTED,CHALLENGE_CLEAN,challenge/placebo control (diagnostic; never promoted)
+S8L-EARNCONF-RATES-20,F_s8e011_plus_external_confirmation,False,692,394,0.005328,0.003779,0.004877,-0.155446,PROMISING_ALPHA_SIGNAL,REAL_BUT_LIMITED,"insufficient events (total=692, recent=394)"
+S8L-EARN-VOLSENS-20,C_earnings_surprise_x_sensitivity,False,1152,380,0.005264,0.005025,-0.000328,-0.172356,PROMISING_ALPHA_SIGNAL,REAL_BUT_LIMITED,fails 2015-2026 recency (recent lift -0.000328)
+S8L-CH-EARN-NEG-VOLSENS-20,C_earnings_surprise_x_sensitivity,True,267,76,0.023559,-0.002275,0.036072,-0.193337,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)
+S8L-EARN-SECLEAD-20,C_earnings_surprise_x_sensitivity,False,933,411,0.003238,0.002685,0.002213,-0.172827,PROMISING_ALPHA_SIGNAL,REAL_BUT_LIMITED,"insufficient events (total=933, recent=411)"
+S8L-EARN-HIGHBETA-20,C_earnings_surprise_x_sensitivity,False,1168,399,0.003583,0.004164,-0.000942,-0.174032,PROMISING_ALPHA_SIGNAL,REAL_BUT_LIMITED,fails 2015-2026 recency (recent lift -0.000942)
+S8L-CH-EARN-NEG-SECLEAD-20,C_earnings_surprise_x_sensitivity,True,215,95,0.01757,0.001726,0.023522,-0.176997,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)
+S8L-REV-PROXY-RATES-20,B_analyst_revision_x_sensitivity,False,499,212,-0.004301,-0.001319,-0.002201,-0.150615,REJECTED,REJECTED_BY_GATE,"insufficient events (total=499, recent=212)"
+S8L-CH-EARN-NOCOHORT-20,C_earnings_surprise_x_sensitivity,True,6051,1952,0.001933,-0.003273,-2.2e-05,-0.141688,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)
+S8L-TAIL-MACRO-LOWBETA-20,G_macro_cross_asset_x_sensitivity,False,455,283,0.025908,-0.011352,0.012026,-0.144475,REJECTED,REJECTED_BY_GATE,"insufficient events (total=455, recent=283)"
+S8L-TAIL-MACRO-VOLCOMP-LOWBETA-20,G_macro_cross_asset_x_sensitivity,False,455,283,0.025908,-0.011352,0.012026,-0.144475,REJECTED,REJECTED_BY_GATE,"insufficient events (total=455, recent=283)"
+S8L-CH-TAIL-WRONGDIR-LOWBETA-20,G_macro_cross_asset_x_sensitivity,True,337,230,-0.000114,-0.009346,-0.002909,-0.110745,REJECTED,CHALLENGE_CLEAN,challenge/placebo control (diagnostic; never promoted)
+S8L-TAIL-SECLEAD-LOWBETA-20,F_s8e011_plus_external_confirmation,False,22,9,0.004747,-0.00439,-0.033283,-0.122884,REJECTED,REJECTED_BY_GATE,"insufficient events (total=22, recent=9)"
+S8L-TAIL-EARNCONF-LOWBETA-20,F_s8e011_plus_external_confirmation,False,17,10,0.126422,-0.018839,0.023893,-0.094399,REJECTED,REJECTED_BY_GATE,"insufficient events (total=17, recent=10)"
+S8L-CH-TAIL-NOCOHORT-LOWBETA-20,G_macro_cross_asset_x_sensitivity,True,9003,4580,-0.0016,-0.008811,0.000345,-0.125575,REJECTED,CHALLENGE_CLEAN,challenge/placebo control (diagnostic; never promoted)
+S8L-TAIL-SECSTRONG-LOWBETA-20,F_s8e011_plus_external_confirmation,False,438,268,0.022166,-0.01555,0.010198,-0.149194,REJECTED,REJECTED_BY_GATE,"insufficient events (total=438, recent=268)"
+S8L-CH-TAIL-HIGHBETA-20,G_macro_cross_asset_x_sensitivity,True,6766,3134,0.001029,0.001282,-0.000259,-0.171658,REJECTED,CHALLENGE_LEAKS,challenge/placebo control (diagnostic; never promoted)

@@ -1,0 +1,10 @@
+bundle_order,provider,tier,env_var,cost_usd_month_approx,families_unlocked,in_recommended_bundle,rationale
+1,FINRA,FREE_EXHAUST_FIRST,(none),free,short_interest_borrow_utilization,True,no-key free source — must be exhausted before any paid subscription
+2,GDELT,FREE_EXHAUST_FIRST,(none),free,historical_news_sentiment,True,no-key free source — must be exhausted before any paid subscription
+3,SEC_EDGAR,FREE_EXHAUST_FIRST,(none),free,sec_filings_event_classification;insider_transactions;institutional_ownership_13f;guidance_press_releases;company_fundamentals_valuation_quality_leverage,True,no-key free source — must be exhausted before any paid subscription
+4,SimFin,FREE_EXHAUST_FIRST,(none),free,company_fundamentals_valuation_quality_leverage,True,no-key free source — must be exhausted before any paid subscription
+5,FMP,FIRST_PAID_SUBSCRIPTION,FMP_API_KEY,~22-29 (Starter),broad_earnings_surprise;analyst_estimates_revisions;earnings_call_transcripts_tone;historical_news_sentiment;guidance_press_releases;company_fundamentals_valuation_quality_leverage;sec_filings_event_classification,True,"FMP is the smallest single subscription that attacks BOTH top blockers (broad earnings surprise + analyst estimate revisions) and additionally unlocks transcripts, guidance/press releases, fundamentals and a filings feed — the most high-value families per dollar."
+6,NewsAPI,DO_NOT_BUY_YET,NEWSAPI_KEY,~0 dev (no history) / ~449 business,historical_news_sentiment,False,specialist — subscribe only if a candidate signal specifically needs it
+7,Polygon,DO_NOT_BUY_YET,POLYGON_API_KEY,~29-199 by tier,options_iv_skew_putcall_unusual_activity;historical_news_sentiment,False,specialist — subscribe only if a candidate signal specifically needs it
+8,Quandl,DO_NOT_BUY_YET,QUANDL_API_KEY,dataset-dependent,short_interest_borrow_utilization,False,specialist — subscribe only if a candidate signal specifically needs it
+9,Tiingo,DO_NOT_BUY_YET,TIINGO_API_KEY,~10,historical_news_sentiment;company_fundamentals_valuation_quality_leverage,False,specialist — subscribe only if a candidate signal specifically needs it

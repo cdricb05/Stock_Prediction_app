@@ -1,0 +1,8 @@
+activation_order,provider,env_var,key_present,action,gating_condition,activation_command
+1,FINRA,(none),False,build FINRA biweekly consolidated short-interest history (no key),ALWAYS — free,python research/run_phase8l_data_family_expansion_signal_factory.py --resume --activate-live
+2,GDELT,(none),False,exhaust the GDELT free news/sentiment window (no key),ALWAYS — free,python research/run_phase8l_data_family_expansion_signal_factory.py --resume --activate-live
+3,SEC_EDGAR,(none),False,scale the no-key SEC EDGAR filings/insider/13F/8-K feed,ALWAYS — free,python research/run_phase8l_data_family_expansion_signal_factory.py --resume --activate-live
+4,SimFin,(none),False,load free SimFin / SEC-XBRL fundamentals overlay,ALWAYS — free,python research/run_phase8l_data_family_expansion_signal_factory.py --resume
+5,FMP,FMP_API_KEY,False,subscribe FMP Starter; backfill earnings surprises + analyst revisions across S&P 1500; rebuild grid,FIRST PAID — clears the top blocker,"$env:FMP_API_KEY = ""<your_key>"" ; python research/run_phase8l_data_family_expansion_signal_factory.py --resume --activate-live --stop-on-confirmed"
+6,Intrinio,INTRINIO_API_KEY,False,trial Intrinio options (IV/skew),ONLY if a candidate signal needs IV/skew,"$env:INTRINIO_API_KEY = ""<your_key>"""
+7,Benzinga,BENZINGA_API_KEY,False,trial Benzinga for deep PIT news history,ONLY for deep news history after GDELT,"$env:BENZINGA_API_KEY = ""<your_key>"""

@@ -1,0 +1,4 @@
+candidate_id,family,alpha_promotion,required_data_families,provider_to_unlock,env_var,expected_event_gain,note
+S8G-A01,A_news_sentiment_x_sensitivity,PROVIDER_REQUIRED,historical_news_sentiment,Benzinga,BENZINGA_API_KEY,medium-high,provider data required to make this family testable/confirmable
+S8G-D01,D_options_iv_x_sensitivity,PROVIDER_REQUIRED,options_iv_skew_putcall_unusual_activity,Intrinio,INTRINIO_API_KEY,high (daily per name),provider data required to make this family testable/confirmable
+S8G-E01,E_short_interest_x_sensitivity,PROVIDER_REQUIRED,short_interest_borrow_utilization,Finnhub,FINNHUB_API_KEY,medium,provider data required to make this family testable/confirmable

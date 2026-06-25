@@ -1,0 +1,126 @@
+{
+  "from_phase": "8-L",
+  "next_phase": "8-M",
+  "recommendation": "PROMISING_ALPHA_SIGNAL_FOUND",
+  "stop_reason": "WAVE_BUDGET_EXHAUSTED",
+  "next_action": "CONTINUE_LOCAL_RESEARCH",
+  "best_current_path": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+  "ranked_next_options": [
+    {
+      "rank": 1,
+      "option": "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+      "lever": "local_fixed_filters",
+      "needs_provider": false,
+      "prob_success": 0.6,
+      "ceiling": "medium",
+      "why": "fixed beta filter already flips beats-SPY-active True and clears the -12% tail on the confirmed variant; the open question is stability on more events"
+    },
+    {
+      "rank": 2,
+      "option": "Acquire a BROAD multi-ticker earnings + analyst-revision provider feed (FMP/Finnhub/Zacks/EODHD across S&P 500/1500) and rebuild a chunked weekly sensitivity grid on D: so universe and events expand together; re-run F20 + the C/R families on the fixed gate.",
+      "lever": "provider_earnings_revision",
+      "needs_provider": true,
+      "prob_success": 0.5,
+      "ceiling": "high",
+      "why": "the ONLY lever that lifts F20's 692 events past the >=1000 gate; raises EVERY earnings/revision candidate's coverage at once"
+    },
+    {
+      "rank": 3,
+      "option": "Widen the no-key SEC EDGAR filings overlay + activate FINRA biweekly short-interest history (free bulk) and test filings/short-interest x sensitivity on the fixed gate.",
+      "lever": "nokey_filings_short_interest",
+      "needs_provider": false,
+      "prob_success": 0.4,
+      "ceiling": "medium",
+      "why": "no-key/free; filings overlay already showed +1.22% lift on 68 events \u2014 direction, not yet coverage"
+    },
+    {
+      "rank": 4,
+      "option": "Acquire a timestamped news/sentiment history (GDELT bulk export or NewsAPI) and test sentiment-shock x sensitivity + a news confirmation of the macro leads.",
+      "lever": "provider_news_sentiment",
+      "needs_provider": true,
+      "prob_success": 0.3,
+      "ceiling": "medium",
+      "why": "connector proven live (HTTP 200) but only a recent window; a real PIT history is required and unproven for alpha"
+    }
+  ],
+  "first_subscription_recommendation": "FMP",
+  "recommended_provider_bundle": [
+    "FINRA(free)",
+    "GDELT(free)",
+    "SEC_EDGAR(free)",
+    "FMP(paid)"
+  ],
+  "do_not_buy_yet": [
+    "NewsAPI",
+    "Polygon",
+    "Quandl",
+    "Tiingo"
+  ],
+  "free_sources_to_exhaust_first": [
+    "FINRA short interest",
+    "GDELT news",
+    "SEC EDGAR filings/insider/13F/8-K guidance",
+    "SimFin/SEC-XBRL fundamentals"
+  ],
+  "provider_activation_order": [
+    "FINRA(free)",
+    "GDELT(free)",
+    "SEC_EDGAR(free)",
+    "SimFin(free)",
+    "FMP(first paid)",
+    "Intrinio/Polygon options (only if a signal needs IV/skew)",
+    "Benzinga/Tiingo/Polygon news (only for deep PIT history)"
+  ],
+  "exact_env_vars_needed": [
+    "FMP_API_KEY"
+  ],
+  "families_requiring_subscription": [
+    "broad_earnings_surprise",
+    "analyst_estimates_revisions",
+    "historical_news_sentiment",
+    "earnings_call_transcripts_tone",
+    "options_iv_skew_putcall_unusual_activity",
+    "short_interest_borrow_utilization",
+    "guidance_press_releases"
+  ],
+  "binding_constraint": "event-data breadth + provider history (earnings/revision/news/short)",
+  "next_steps": [
+    "Apply the fixed beta-tail / volatility structural filters to the best promising macro x sensitivity and earnings-confirmed leads and re-validate the filtered variant's stability (LOCAL, no new data).",
+    "Acquire a BROAD multi-ticker earnings + analyst-revision provider feed (FMP/Finnhub/Zacks/EODHD across S&P 500/1500) and rebuild a chunked weekly sensitivity grid on D: so universe and events expand together; re-run F20 + the C/R families on the fixed gate.",
+    "Widen the no-key SEC EDGAR filings overlay + activate FINRA biweekly short-interest history (free bulk) and test filings/short-interest x sensitivity on the fixed gate.",
+    "Acquire a timestamped news/sentiment history (GDELT bulk export or NewsAPI) and test sentiment-shock x sensitivity + a news confirmation of the macro leads."
+  ],
+  "provider_readiness": {
+    "ALPHAVANTAGE_API_KEY": false,
+    "FINNHUB_API_KEY": false,
+    "FMP_API_KEY": false,
+    "POLYGON_API_KEY": false,
+    "EODHD_API_KEY": false,
+    "INTRINIO_API_KEY": false,
+    "TIINGO_API_KEY": false,
+    "NEWSAPI_KEY": false,
+    "BENZINGA_API_KEY": false,
+    "SEC_API_KEY": false,
+    "QUANDL_API_KEY": false
+  },
+  "resume_command": "python research/run_phase8l_data_family_expansion_signal_factory.py --resume --stop-on-confirmed",
+  "after_fmp_command": "$env:FMP_API_KEY = \"<your_key>\" ; python research/run_phase8l_data_family_expansion_signal_factory.py --resume --activate-live --stop-on-confirmed",
+  "hard_constraints": [
+    "local data first; Norgate + FRED for price/macro",
+    "do not install packages",
+    "large state on D: only; repo gets summaries/snapshots",
+    "never print secrets",
+    "bounded no-key collection; point-in-time joins only",
+    "thresholds fixed a priori",
+    "no Paper Trader / GCP / deployment",
+    "no broker/order/automation",
+    "no live trading signals",
+    "no weight optimization",
+    "no factor-sign flipping",
+    "no regime activation",
+    "external data never faked",
+    "do not hide failed experiments",
+    "do not commit",
+    "do not push"
+  ]
+}

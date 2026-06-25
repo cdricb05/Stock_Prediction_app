@@ -1,0 +1,15 @@
+provider,is_free,cost_usd_month_approx,n_families,attacks_top_blocker,families,value_rating,cost_note
+FMP,False,~22-29 (Starter),7,True,broad_earnings_surprise;analyst_estimates_revisions;earnings_call_transcripts_tone;historical_news_sentiment;guidance_press_releases;company_fundamentals_valuation_quality_leverage;sec_filings_event_classification,HIGH,approximate public list tier — verify on provider site
+Finnhub,False,~0 (free tier) / paid for history,5,True,analyst_estimates_revisions;historical_news_sentiment;earnings_call_transcripts_tone;company_fundamentals_valuation_quality_leverage;short_interest_borrow_utilization,HIGH,approximate public list tier — verify on provider site
+AlphaVantage,False,"~0 (free tier, 25/day) / ~50 premium",4,True,broad_earnings_surprise;company_fundamentals_valuation_quality_leverage;historical_news_sentiment;options_iv_skew_putcall_unusual_activity,HIGH,approximate public list tier — verify on provider site
+EODHD,False,~20-80 by bundle,3,True,broad_earnings_surprise;analyst_estimates_revisions;company_fundamentals_valuation_quality_leverage,MEDIUM,approximate public list tier — verify on provider site
+Benzinga,False,enterprise (quote required),3,True,historical_news_sentiment;analyst_estimates_revisions;guidance_press_releases,MEDIUM,approximate public list tier — verify on provider site
+Intrinio,False,options packages (quote required),3,True,options_iv_skew_putcall_unusual_activity;analyst_estimates_revisions;company_fundamentals_valuation_quality_leverage,MEDIUM,approximate public list tier — verify on provider site
+Polygon,False,~29-199 by tier,2,False,options_iv_skew_putcall_unusual_activity;historical_news_sentiment,LOW/SPECIALIST,approximate public list tier — verify on provider site
+Tiingo,False,~10,2,False,historical_news_sentiment;company_fundamentals_valuation_quality_leverage,LOW/SPECIALIST,approximate public list tier — verify on provider site
+Quandl,False,dataset-dependent,1,False,short_interest_borrow_utilization,LOW/SPECIALIST,approximate public list tier — verify on provider site
+NewsAPI,False,~0 dev (no history) / ~449 business,1,False,historical_news_sentiment,LOW/SPECIALIST,approximate public list tier — verify on provider site
+FINRA,True,free,1,False,short_interest_borrow_utilization,INFINITE (free),approximate public list tier — verify on provider site
+GDELT,True,free,1,False,historical_news_sentiment,INFINITE (free),approximate public list tier — verify on provider site
+SEC_EDGAR,True,free,5,False,sec_filings_event_classification;insider_transactions;institutional_ownership_13f;guidance_press_releases;company_fundamentals_valuation_quality_leverage,INFINITE (free),approximate public list tier — verify on provider site
+SimFin,True,free/local,1,False,company_fundamentals_valuation_quality_leverage,INFINITE (free),approximate public list tier — verify on provider site
