@@ -1,0 +1,10 @@
+criterion,weight,description
+coverage_100_500_tickers,critical,"Does one key cover 100-500 tickers (current + S&P 500-like), not just 20?"
+history_depth,critical,Years of history for backtests (>= 8-10y of quarterly earnings preferred)
+point_in_time_dates,critical,As-of / report dates so a backtest only sees data available at the time
+api_limits,high,Requests/day and /min; can a full-universe refresh complete in one day?
+cost,high,Monthly cost; favor the cheapest tier that covers the required families
+license_terms,high,Redistribution/storage terms; we cache locally and never commit payloads
+update_frequency,medium,How fresh is the data after an event (real-time vs delayed like SimFin)?
+bulk_download_support,high,Bulk/batch endpoints so 500 tickers do not require 500 throttled calls
+normalized_schema_stability,medium,Stable documented schema so the in-repo adapter does not churn

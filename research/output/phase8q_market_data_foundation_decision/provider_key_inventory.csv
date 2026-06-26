@@ -1,0 +1,7 @@
+env_var,provider,key_present,value_read,note
+FRED_API_KEY,FRED,False,False,"macro time series (free, generous limits)"
+ALPHAVANTAGE_API_KEY,Alpha Vantage,False,False,earnings actual/estimate/surprise (free 25 req/day - throughput-limited)
+SIMFIN_API_KEY,SimFin,False,False,"fundamentals statements (free, DELAYED - not real-time PIT)"
+FMP_API_KEY,FMP (current plan),False,False,"current plan PARTIAL on every critical family (8-N: 8/20, systematic 402)"
+FINNHUB_API_KEY,Finnhub,False,False,analyst estimates/recommendations/price targets (free 60 req/min; history often premium)
+EODHD_API_KEY,EODHD,False,False,mid-priced single bundle (~$20-$80/mo) covering earnings + fundamentals + analyst

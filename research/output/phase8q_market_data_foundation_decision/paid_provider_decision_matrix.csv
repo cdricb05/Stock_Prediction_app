@@ -1,0 +1,8 @@
+test_order,provider,env_var,monthly_cost,families_covered,covers_100_500,history_depth,point_in_time,bulk_download,recommended,note
+1,Alpha Vantage,ALPHAVANTAGE_API_KEY,$0 free (25 req/day) or ~$50/mo,earnings (2),no (free throughput),yes,yes,no,keep free as cheap evidence only,8-P: rate-limited after 3 req; free tier cannot cover 500 tickers in reasonable time
+2,EODHD,EODHD_API_KEY,~$20-$80/mo,earnings + fundamentals + analyst (6),yes,yes,yes,yes,TEST FIRST among paid (cheapest broad bundle),cheapest single bundle covering earnings+fundamentals+analyst with bulk download
+3,FMP (upgrade tier / Premium),FMP_API_KEY,~$69/mo,all six critical (6),yes,yes,yes,yes,fallback if EODHD insufficient (already mapped in repo),8-O: upgrade NOT justified by default; Premium only if EODHD fails; Ultimate REJECTED
+4,Finnhub,FINNHUB_API_KEY,$0 free (60 req/min) or ~$50/mo,analyst (4) + earnings,partial (history premium),partial,partial,no,free for analyst families if signal survives,better rate limit than AV; PIT/history for revisions/targets is the weak point
+5,SimFin,SIMFIN_API_KEY,$0 free / low paid,fundamentals (delayed),yes (delayed),yes,no (delayed),yes,fundamentals research drafts only (delay caveat),"broad + bulk but DELAYED; not an earnings/analyst solution, not clean real-time PIT"
+6,FRED,FRED_API_KEY,$0 free,macro only,yes (macro),yes,yes,yes,KEEP free for macro - genuinely sufficient,MACRO ONLY; does not serve equity earnings/analyst/fundamentals
+99,FMP (Ultimate tier),FMP_API_KEY,most expensive,all (over-provisioned),yes,yes,yes,yes,REJECTED - no evidence requires it,8-O: explicitly REJECTED; cheaper sources already supply every critical family

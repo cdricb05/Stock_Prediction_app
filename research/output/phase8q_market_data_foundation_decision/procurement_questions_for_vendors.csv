@@ -1,0 +1,10 @@
+question,why_it_matters
+"Does a single subscription cover earnings, fundamentals, and analyst data for the full S&P 500 (and ideally 1000+ US tickers)?",one key for 100-500+ tickers avoids stitching multiple providers
+How many years of quarterly earnings actual/estimate/surprise history are included?,backtests need >= 8-10y of history
+"Do earnings/estimate records carry the original report/announcement date AND the as-of/last-updated date (true point-in-time), or only the latest restated values?",PIT dates are mandatory to avoid look-ahead bias
+"What are the requests-per-minute and requests-per-day limits, and is there a bulk endpoint to pull the full universe in one job?",AV free (25/day) proved unusable for broad coverage; we need a full refresh in <1 day
+"What is the exact monthly/annual cost for the tier that meets the above, and is there a cheaper tier that still covers earnings+fundamentals?",favor the cheapest tier covering the required families; reject over-provisioned tiers
+Do the license terms permit caching/storing the normalized data locally for research (we never redistribute or commit payloads)?,we cache locally under gitignored trees; storage rights must be explicit
+"How quickly is data updated after an earnings release (real-time, T+1, or delayed like SimFin)?",delayed fundamentals are unusable as a clean real-time PIT signal source
+"Is the response schema stable and documented, with change notifications?",schema churn breaks the in-repo adapter
+Is point-in-time index membership (survivorship-aware S&P 500 history) available?,needed for the future robust universe to remove survivorship bias

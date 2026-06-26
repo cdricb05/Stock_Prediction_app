@@ -1,0 +1,7 @@
+provider,role,critical_families_covered,broad_coverage_proven,evidence_phase,verdict
+FMP (current plan),earnings + analyst (partial),6 (all PARTIAL),"no (8/20, systematic 402)",8-N,INSUFFICIENT
+Alpha Vantage (free),earnings actual/estimate/surprise,2,no (rate-limited 25/day; +1 ticker -> 9/20),8-P,HELPS_BUT_NOT_BROAD
+FRED,macro series,0 equity (macro only),yes (macro),n/a,SUFFICIENT_FOR_MACRO
+SimFin,fundamentals (delayed),fundamentals,yes-but-delayed,n/a,FUNDAMENTALS_DELAYED_NOT_EARNINGS
+Finnhub (free),analyst families,4 analyst,partial (history premium),8-O,ANALYST_PARTIAL
+EODHD (candidate paid),earnings+fundamentals+analyst bundle,6,yes (documented),8-O,TEST_FIRST_PAID

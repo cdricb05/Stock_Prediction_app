@@ -1,0 +1,5 @@
+target,scope,size_estimate,is_final_target,purpose
+minimum_scoring_gate,statistical floor,20,False,minimum tickers to score a signal - NOT the target universe
+current_working_universe,Phase 5C / current available,~30-60,False,what we can research today; broaden from here
+broad_research_universe,S&P 500-like,~500,True,the real near-term target for serious cross-sectional alpha research
+future_robust_universe,survivorship-aware / PIT membership,500+ historical,True,point-in-time index membership to remove survivorship bias

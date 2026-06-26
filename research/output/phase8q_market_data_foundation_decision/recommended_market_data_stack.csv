@@ -1,0 +1,16 @@
+family,tier,recommended_source,buy_or_free,status
+adjusted OHLCV prices,0,free (existing OHLCV cache),free,MANDATORY_NOW
+sector / industry / ticker identity,0,free (repo metadata),free,MANDATORY_NOW
+FRED macro series,0,free (FRED),free,MANDATORY_NOW
+earnings actual / estimate / surprise / report date,0,BUY broad earnings/fundamentals provider (test EODHD/FMP Premium),paid,MANDATORY_NOW
+analyst estimates / revisions,1,paid bundle (EODHD/FMP Premium) or Finnhub paid for history,paid,NEEDED_IF_SIGNAL_SURVIVES
+analyst recommendations,1,free (Finnhub) to start; paid only if PIT history needed,paid,NEEDED_IF_SIGNAL_SURVIVES
+price target revisions,1,paid bundle (EODHD/FMP Premium) or Finnhub paid,paid,NEEDED_IF_SIGNAL_SURVIVES
+fundamentals statements,1,SimFin free for research drafts; paid bundle for PIT-clean recent data,paid,NEEDED_IF_SIGNAL_SURVIVES
+ratios / quality / value / growth features,1,derive in-repo from whichever fundamentals source is chosen,derive/in-repo,NEEDED_IF_SIGNAL_SURVIVES
+news sentiment,2,DEFER,defer,DEFERRED
+earnings transcripts,3,DEFER,defer,DEFERRED
+options implied volatility / skew,3,DEFER,defer,DEFERRED
+short interest / borrow,2,DEFER,defer,DEFERRED
+insider transactions,2,DEFER (free when needed),defer,DEFERRED
+13F institutional ownership,2,DEFER (free when needed),defer,DEFERRED

@@ -1,0 +1,7 @@
+family,tier,defer_until,rationale
+news sentiment,2,a core earnings/price signal is validated out-of-sample,high cost-to-signal ratio; defer until a core signal earns the right to add it
+earnings transcripts,3,a validated core signal + an NLP research plan exist,"expensive, heavy to process; no current-roadmap need"
+options implied volatility / skew,3,a validated core signal + a vol-strategy thesis exist,specialist paid data; not on the current roadmap
+short interest / borrow,2,a validated core signal exists,"low-frequency, niche; defer"
+insider transactions,2,a validated core signal exists,free via EDGAR with real filing dates; valuable but not required now
+13F institutional ownership,2,a validated core signal exists,free via EDGAR but 45-day reporting lag; not required now

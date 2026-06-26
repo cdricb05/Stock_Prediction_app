@@ -1,0 +1,16 @@
+family,tier,tier_label,required_now,rationale
+FRED macro series,0,Tier 0 - required now,True,"FRED is genuinely sufficient: full history, vintages, generous limits - MACRO ONLY (does not serve equity earnings/analyst data)"
+adjusted OHLCV prices,0,Tier 0 - required now,True,already held for the working universe; free is sufficient and PIT-safe
+earnings actual / estimate / surprise / report date,0,Tier 0 - required now,True,8-P: AV free RATE-LIMITED after 3 req; 25 req/day => ~20 days for 500 tickers. PIT-safe but free THROUGHPUT insufficient for broad coverage
+sector / industry / ticker identity,0,Tier 0 - required now,True,static-ish reference; free suffices though historical membership is not PIT
+analyst estimates / revisions,1,Tier 1 - required if earnings signal survives,False,8-N: FMP analyst families PARTIAL/blocked; AV does NOT serve them; free Finnhub history/PIT is limited - buy with the earnings bundle if signal survives
+analyst recommendations,1,Tier 1 - required if earnings signal survives,False,Finnhub free covers current recommendation trends broadly; PIT history is the weak point - acceptable to start free
+fundamentals statements,1,Tier 1 - required if earnings signal survives,False,"SimFin free is broad but DELAYED - usable for older history, NOT a clean real-time PIT source; not an earnings/analyst solution"
+price target revisions,1,Tier 1 - required if earnings signal survives,False,revision history with reliable as-of dates is typically a paid feature
+ratios / quality / value / growth features,1,Tier 1 - required if earnings signal survives,False,computed locally; quality depends entirely on the fundamentals source/PIT
+13F institutional ownership,2,Tier 2 - valuable but not required yet,False,free via EDGAR but 45-day reporting lag; not required now
+insider transactions,2,Tier 2 - valuable but not required yet,False,free via EDGAR with real filing dates; valuable but not required now
+news sentiment,2,Tier 2 - valuable but not required yet,False,high cost-to-signal ratio; defer until a core signal earns the right to add it
+short interest / borrow,2,Tier 2 - valuable but not required yet,False,"low-frequency, niche; defer"
+earnings transcripts,3,Tier 3 - expensive optional expansion,False,"expensive, heavy to process; no current-roadmap need"
+options implied volatility / skew,3,Tier 3 - expensive optional expansion,False,specialist paid data; not on the current roadmap

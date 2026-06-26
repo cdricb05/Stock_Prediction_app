@@ -1,0 +1,6 @@
+question,answer,rationale
+Should we stop trying free sources for earnings (as the broad foundation)?,YES_FOR_BROAD_COVERAGE,8-P: Alpha Vantage free (25 req/day) rate-limited after 3 req and added 1 ticker (combined 9/20). Free is fine for a 20-ticker gate but cannot serve 100-500 tickers in reasonable time. Keep AV free only as cheap evidence.
+Is an FMP upgrade (Premium) justified?,ONLY_AS_FALLBACK,8-O: not justified by default; justified only if the cheaper EODHD bundle fails on coverage/PIT/history. FMP adapter is already mapped in-repo.
+Is FMP Ultimate justified?,NO_REJECTED,8-O: explicitly rejected; no evidence requires the Ultimate tier - cheaper sources already cover every critical family.
+Should we buy a cheaper earnings/fundamentals provider instead?,YES_TEST_EODHD_FIRST,EODHD (~$20-$80/mo) is the cheapest single bundle covering earnings + fundamentals + analyst with bulk download and PIT dates - test it first.
+Should we wait to buy sentiment/transcripts/options until a core signal works?,YES_DEFER,"news sentiment, transcripts, options IV/skew, short interest, 13F are Tier 2/3 - defer until a validated core earnings/price signal earns the right to add them."

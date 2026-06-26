@@ -1,0 +1,16 @@
+family,tier,free_provider,free_coverable,free_enough_for_100_500,point_in_time_safe,limiting_factor
+adjusted OHLCV prices,0,existing local cache / yfinance / Alpha Vantage,True,True,True,none - free is sufficient for broad coverage
+sector / industry / ticker identity,0,existing repo metadata / free reference,True,True,False,free coverage OK but point-in-time as-of dates are weak
+FRED macro series,0,FRED,True,True,True,none - free is sufficient for broad coverage
+earnings actual / estimate / surprise / report date,0,Alpha Vantage (free 25 req/day),True,False,True,free throughput (AV 25 req/day) cannot cover 100-500 tickers in reasonable time
+analyst estimates / revisions,1,Finnhub (free 60 req/min; history often premium),True,False,False,free tier limits history / PIT / throughput for broad coverage
+analyst recommendations,1,Finnhub (free recommendation trends),True,True,False,free coverage OK but point-in-time as-of dates are weak
+price target revisions,1,Finnhub (history often premium),True,False,False,free tier limits history / PIT / throughput for broad coverage
+fundamentals statements,1,"SimFin (free, DELAYED) / EODHD / FMP",True,False,False,SimFin free is DELAYED (not clean real-time PIT); paid bundle for recent data
+ratios / quality / value / growth features,1,derived from fundamentals (SimFin/EODHD/FMP),True,False,False,free tier limits history / PIT / throughput for broad coverage
+news sentiment,2,"Alpha Vantage NEWS_SENTIMENT (free, limited)",True,False,False,free tier limits history / PIT / throughput for broad coverage
+earnings transcripts,3,(none),False,False,False,no free source for this family
+options implied volatility / skew,3,(none),False,False,False,no free source for this family
+short interest / borrow,2,limited free (bi-monthly exchange short interest),True,False,False,free tier limits history / PIT / throughput for broad coverage
+insider transactions,2,Finnhub / SEC EDGAR (free),True,True,True,none - free is sufficient for broad coverage
+13F institutional ownership,2,"SEC EDGAR 13F (free, 45-day lag)",True,True,True,none - free is sufficient for broad coverage

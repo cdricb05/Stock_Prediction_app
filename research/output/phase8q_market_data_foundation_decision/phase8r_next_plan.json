@@ -1,0 +1,25 @@
+{
+  "phase": "8-R",
+  "title": "Evaluate the cheapest broad earnings/fundamentals bundle (EODHD test-first)",
+  "depends_on_decision": "MIXED_FREE_PLUS_PAID_CORE_STACK",
+  "objective": "Run a bounded, key-gated evaluation of the cheapest paid broad bundle (EODHD first, FMP Premium fallback) against the vendor criteria - coverage across 100-500 tickers, history depth, point-in-time dates, API limits, cost, license, bulk download - to confirm it solves broad earnings+fundamentals PIT coverage before committing budget. Keep FRED for macro and the OHLCV cache for prices. Defer all Tier-2/3 alt-data.",
+  "test_first_provider": "EODHD",
+  "test_first_env_var": "EODHD_API_KEY",
+  "fallback_provider": "FMP (Premium)",
+  "fmp_ultimate_rejected": true,
+  "do_not_run_more_free_micro_hunts_for_broad_earnings": true,
+  "deferred_families": [
+    "news sentiment",
+    "earnings transcripts",
+    "options implied volatility / skew",
+    "short interest / borrow",
+    "insider transactions",
+    "13F institutional ownership"
+  ],
+  "next_command": "$env:EODHD_API_KEY = '<PASTE_EODHD_API_KEY_HERE>'; python research/run_phase8r_broad_bundle_evaluation.py --live   (bounded EODHD coverage/PIT/cost evaluation; FMP Premium fallback; Ultimate rejected)",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "committed": false
+}
