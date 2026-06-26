@@ -1,0 +1,2 @@
+ticker,has_data,row_count,first_reported_date,last_reported_date,has_actual_eps,has_estimated_eps,has_surprise,point_in_time_safe
+ABT,True,121,1996-04-08,2026-04-16,True,True,True,True

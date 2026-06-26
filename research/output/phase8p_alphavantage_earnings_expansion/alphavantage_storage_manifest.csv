@@ -1,0 +1,2 @@
+ticker,raw_file,normalized_rows,in_normalized_csv,gitignored,committed
+ABT,research/data/alphavantage/raw/earnings/EARNINGS_ABT.json,121,True,True,False

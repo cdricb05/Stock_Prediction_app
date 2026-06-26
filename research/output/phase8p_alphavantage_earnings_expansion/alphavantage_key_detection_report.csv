@@ -1,0 +1,2 @@
+env_var,provider,key_present,value_read,note
+ALPHAVANTAGE_API_KEY,Alpha Vantage,True,False,"presence-only; value never read, printed, or written to disk"

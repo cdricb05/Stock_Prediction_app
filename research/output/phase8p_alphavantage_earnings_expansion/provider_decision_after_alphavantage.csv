@@ -1,0 +1,4 @@
+provider,role,env_var,key_present,solves_earnings,still_needed_for,decision
+FMP (current plan),earnings (partial) - 8/20 only,FMP_API_KEY,True,False,broad earnings coverage,READY_FOR_NEXT_ALPHAVANTAGE_BATCH
+Alpha Vantage,earnings actual/estimate/surprise (primary),ALPHAVANTAGE_API_KEY,True,False,,READY_FOR_NEXT_ALPHAVANTAGE_BATCH
+Finnhub,analyst estimates/recommendations/price targets (later),FINNHUB_API_KEY,False,False,analyst families (NOT solved by Alpha Vantage),NEEDS_SECOND_PROVIDER_FOR_ANALYST_DATA

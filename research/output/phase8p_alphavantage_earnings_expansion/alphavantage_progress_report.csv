@@ -1,0 +1,4 @@
+ticker,priority,status,quarterly_rows,endpoint_redacted,note
+ABT,1_fmp_blocked,OK,121,https://www.alphavantage.co/query?function=EARNINGS&symbol=ABT&<API_KEY_REDACTED>,quarterly earnings rows present
+ACN,1_fmp_blocked,RATE_LIMITED,0,https://www.alphavantage.co/query?function=EARNINGS&symbol=ACN&<API_KEY_REDACTED>,provider returned a information envelope (rate-limit/throttle)
+ADI,1_fmp_blocked,RATE_LIMITED,0,https://www.alphavantage.co/query?function=EARNINGS&symbol=ADI&<API_KEY_REDACTED>,provider returned a information envelope (rate-limit/throttle)

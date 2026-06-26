@@ -1,0 +1,3 @@
+ticker,status,http_status,note,endpoint_redacted
+ACN,RATE_LIMITED,200,provider returned a information envelope (rate-limit/throttle),https://www.alphavantage.co/query?function=EARNINGS&symbol=ACN&<API_KEY_REDACTED>
+ADI,RATE_LIMITED,200,provider returned a information envelope (rate-limit/throttle),https://www.alphavantage.co/query?function=EARNINGS&symbol=ADI&<API_KEY_REDACTED>

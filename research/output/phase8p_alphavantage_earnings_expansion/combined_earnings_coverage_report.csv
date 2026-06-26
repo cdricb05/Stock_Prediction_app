@@ -1,0 +1,10 @@
+ticker,source,fmp_covered,alphavantage_covered
+AAPL,fmp,True,False
+ABBV,fmp,True,False
+ABT,alphavantage,False,True
+ADBE,fmp,True,False
+AMD,fmp,True,False
+AMZN,fmp,True,False
+JPM,fmp,True,False
+MSFT,fmp,True,False
+NVDA,fmp,True,False

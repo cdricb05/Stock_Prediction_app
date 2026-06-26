@@ -1,0 +1,27 @@
+{
+  "phase": "8-Q",
+  "title": "Earnings-Surprise Signal Scoring (or next Alpha Vantage batch / Finnhub)",
+  "depends_on_decision": "READY_FOR_NEXT_ALPHAVANTAGE_BATCH",
+  "signal_readiness_decision": "READY_FOR_NEXT_ALPHAVANTAGE_BATCH",
+  "objective": "If READY_FOR_PROVIDER_EXPANDED_SIGNAL_SCORING: score the three earnings-surprise signal families on the combined FMP + Alpha Vantage point-in-time earnings panel (no fabricated alpha). If READY_FOR_NEXT_ALPHAVANTAGE_BATCH: collect the next bounded Alpha Vantage batch (free tier resets daily, 25 req/day). If NEEDS_SECOND_PROVIDER_FOR_ANALYST_DATA: add Finnhub for the analyst families.",
+  "combined_covered_count": 9,
+  "min_tickers_to_score": 20,
+  "threshold_reached": false,
+  "still_missing_tickers": [
+    "ACN",
+    "ADI",
+    "ADP",
+    "AMAT",
+    "AMGN",
+    "AON",
+    "APD",
+    "APH"
+  ],
+  "next_command": "python research/run_phase8p_alphavantage_earnings_expansion.py --live --max-tickers 25   (resume after the free-tier daily reset; skip_existing on)",
+  "do_not_default_to_fmp_ultimate": true,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "committed": false
+}
