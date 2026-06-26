@@ -1,0 +1,29 @@
+step,status,detail,count
+prior,INFO,"Phase 8-T decision: MORE_ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW; promoted: surprise_magnitude, positive_surprise_asymmetry, surprise_x_quality, surprise_sector_neutral; 8-U decision: READY_FOR_NEXT_PRICE_BATCH",
+start,INFO,live=True key_present=True max_tickers=250 max_requests=1000 start=2016-01-01,
+diff,DONE,sp500=504 priced=301 scoreable_ready=300 missing_combined=294 (need_price=294 need_fund=294),294
+acquire,CHECKPOINT,50 matched-scoreable / 104 requests,50
+acquire,CHECKPOINT,100 matched-scoreable / 204 requests,100
+acquire,CHECKPOINT,150 matched-scoreable / 304 requests,150
+acquire,CHECKPOINT,200 matched-scoreable / 406 requests,200
+acquire,DONE,prices 247 / fundamentals 247 / matched-scoreable 247 / requests 500,247
+expand_panel,DONE,301 base + 247 new = 548 tickers (1345440 rows),548
+core_before,DONE,29032 usable events / 299 scoreable tickers,29032
+features,DONE,built extended signal set across earnings/fundamentals/price/regime/interaction families,34
+cycle,DONE,cycle 1 [earnings]: tested 8 scenarios (cumulative 8),8
+cycle,DONE,cycle 2 [fundamentals/valuation]: tested 11 scenarios (cumulative 19),19
+cycle,DONE,cycle 3 [price/context]: tested 6 scenarios (cumulative 25),25
+cycle,DONE,cycle 4 [regime-conditioned]: tested 5 scenarios (cumulative 30),30
+cycle,DONE,cycle 5 [earnings x cross-section]: tested 6 scenarios (cumulative 36),36
+cycle,DONE,cycle 6 [SUE/streak/accel + sector]: tested 7 scenarios (cumulative 43),43
+campaign,DONE,"6 cycles, 43 scenarios, 4 promoted, 39 rejected",4
+core_after,DONE,38725 usable events / 545 scoreable tickers,38725
+features,DONE,built extended signal set across earnings/fundamentals/price/regime/interaction families,34
+cycle,DONE,cycle 1 [earnings]: tested 8 scenarios (cumulative 8),8
+cycle,DONE,cycle 2 [fundamentals/valuation]: tested 11 scenarios (cumulative 19),19
+cycle,DONE,cycle 3 [price/context]: tested 6 scenarios (cumulative 25),25
+cycle,DONE,cycle 4 [regime-conditioned]: tested 5 scenarios (cumulative 30),30
+cycle,DONE,cycle 5 [earnings x cross-section]: tested 6 scenarios (cumulative 36),36
+cycle,DONE,cycle 6 [SUE/streak/accel + sector]: tested 7 scenarios (cumulative 43),43
+campaign,DONE,"6 cycles, 43 scenarios, 0 promoted, 43 rejected",0
+decision,DONE,EXPANDED_UNIVERSE_WEAKENS_ALPHA,

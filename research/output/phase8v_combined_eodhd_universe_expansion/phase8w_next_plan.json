@@ -1,0 +1,11 @@
+{
+  "phase": "8-W",
+  "title": "Carry the expanded-universe alpha verdict to preview-only review",
+  "depends_on_decision": "EXPANDED_UNIVERSE_WEAKENS_ALPHA",
+  "next_command": "Review research/output/phase8v_combined_eodhd_universe_expansion/before_after_alpha_comparison.csv, then carry the expanded-universe verdict into the Paper Trader daily-review cockpit as PREVIEW-ONLY ranking ideas (manual review; no orders).",
+  "missing_combined_names": 294,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "committed": false
+}

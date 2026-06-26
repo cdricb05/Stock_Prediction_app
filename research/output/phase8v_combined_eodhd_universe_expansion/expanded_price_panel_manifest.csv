@@ -1,0 +1,9 @@
+metric,value
+base_price_csv,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv
+base_tickers,301
+new_tickers,247
+total_tickers,548
+new_price_rows,630639
+panel_rows,1345440
+expanded_panel,research/data/eodhd/normalized/eod_prices/expanded_price_panel.csv
+is_expanded,True

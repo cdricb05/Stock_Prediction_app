@@ -1,0 +1,2 @@
+normalized_file,rows,distinct_tickers,gitignored
+research/data/eodhd/normalized/earnings.csv,55133,547,True

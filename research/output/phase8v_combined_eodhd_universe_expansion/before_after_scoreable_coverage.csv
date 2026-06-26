@@ -1,0 +1,5 @@
+metric,before,after,delta
+scoreable_tickers,299,545,246
+usable_pit_events,29032,38725,9693
+sectors,12,12,0
+promoted_signals,4,0,-4
