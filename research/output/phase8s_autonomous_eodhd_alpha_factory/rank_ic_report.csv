@@ -1,0 +1,11 @@
+scenario,horizon,mean_ic,ic_std,n_months,ic_t,ic_p,bh_significant
+earnings_surprise,21,0.0442,0.17,120,2.85,0.0044,True
+sue_standardized,21,0.0366,0.183,120,2.19,0.0283,True
+surprise_x_rates_regime,21,0.0381,0.1734,45,1.46,0.1448,False
+surprise_sector_neutral,21,0.0514,0.1903,120,2.96,0.0031,True
+surprise_x_quality,21,-0.047,0.1738,120,-2.96,0.0031,True
+accel_x_momentum,21,0.0139,0.1957,119,0.77,0.4392,False
+beat_streak,21,0.0289,0.1785,120,1.78,0.0759,False
+quality_filtered_surprise,21,0.0187,0.2466,107,0.78,0.4337,False
+rev_growth,21,0.0135,0.2091,120,0.71,0.4801,False
+regime_gated_sue,21,0.0219,0.2014,96,1.06,0.2884,False

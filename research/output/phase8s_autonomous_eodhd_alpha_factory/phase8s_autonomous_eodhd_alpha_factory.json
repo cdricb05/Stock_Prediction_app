@@ -1,0 +1,218 @@
+{
+  "phase": "8-S",
+  "objective": "Autonomously acquire EODHD earnings/fundamentals for the priced research universe, build a point-in-time panel, join price/macro/sector, test all relevant cross-sectional earnings scenarios with proper validation, and produce one terminal alpha decision. Preview-only; no orders.",
+  "provider": "EODHD",
+  "api_key_env_var": "EODHD_API_KEY",
+  "phase8r_decision": "EODHD_ACCEPT_AS_CORE_PROVIDER",
+  "eodhd_accepted_as_core_provider": true,
+  "eodhd_key_present": true,
+  "api_key_logged": false,
+  "mode": "live_acquire_and_score",
+  "as_of": "2026-06-26",
+  "bounded_limits": {
+    "max_tickers": 500,
+    "max_requests": 5000,
+    "checkpoint_every": 50
+  },
+  "universe_priced_tickers": 301,
+  "universe_targeted_for_acquisition": 269,
+  "acquisition": {
+    "executed": true,
+    "requests_made": 269,
+    "tickers_acquired_this_run": 268,
+    "stopped_early": false,
+    "stop_reason": ""
+  },
+  "eodhd_coverage": {
+    "earnings_tickers": 300,
+    "fundamentals_tickers": 298,
+    "scoreable_tickers": 299
+  },
+  "point_in_time": {
+    "events_raw": 29359,
+    "events_with_realized_eps": 29068,
+    "usable_events": 29032,
+    "scoreable_tickers": 299,
+    "date_min": "2016-06-23",
+    "date_max": "2026-05-20",
+    "sectors": 12
+  },
+  "scenarios_tested": 10,
+  "scenarios": [
+    {
+      "scenario": "earnings_surprise",
+      "mean_ic": 0.0442,
+      "ic_t": 2.85,
+      "ic_p": 0.0044,
+      "bh_significant": true,
+      "mean_spread": 0.0096,
+      "promoted": false
+    },
+    {
+      "scenario": "sue_standardized",
+      "mean_ic": 0.0366,
+      "ic_t": 2.19,
+      "ic_p": 0.0283,
+      "bh_significant": true,
+      "mean_spread": 0.0031,
+      "promoted": true
+    },
+    {
+      "scenario": "surprise_x_rates_regime",
+      "mean_ic": 0.0381,
+      "ic_t": 1.46,
+      "ic_p": 0.1448,
+      "bh_significant": false,
+      "mean_spread": 0.007,
+      "promoted": false
+    },
+    {
+      "scenario": "surprise_sector_neutral",
+      "mean_ic": 0.0514,
+      "ic_t": 2.96,
+      "ic_p": 0.0031,
+      "bh_significant": true,
+      "mean_spread": 0.0109,
+      "promoted": true
+    },
+    {
+      "scenario": "surprise_x_quality",
+      "mean_ic": -0.047,
+      "ic_t": -2.96,
+      "ic_p": 0.0031,
+      "bh_significant": true,
+      "mean_spread": -0.0094,
+      "promoted": false
+    },
+    {
+      "scenario": "accel_x_momentum",
+      "mean_ic": 0.0139,
+      "ic_t": 0.77,
+      "ic_p": 0.4392,
+      "bh_significant": false,
+      "mean_spread": 0.0051,
+      "promoted": false
+    },
+    {
+      "scenario": "beat_streak",
+      "mean_ic": 0.0289,
+      "ic_t": 1.78,
+      "ic_p": 0.0759,
+      "bh_significant": false,
+      "mean_spread": 0.0003,
+      "promoted": false
+    },
+    {
+      "scenario": "quality_filtered_surprise",
+      "mean_ic": 0.0187,
+      "ic_t": 0.78,
+      "ic_p": 0.4337,
+      "bh_significant": false,
+      "mean_spread": 0.002,
+      "promoted": false
+    },
+    {
+      "scenario": "rev_growth",
+      "mean_ic": 0.0135,
+      "ic_t": 0.71,
+      "ic_p": 0.4801,
+      "bh_significant": false,
+      "mean_spread": 0.0049,
+      "promoted": false
+    },
+    {
+      "scenario": "regime_gated_sue",
+      "mean_ic": 0.0219,
+      "ic_t": 1.06,
+      "ic_p": 0.2884,
+      "bh_significant": false,
+      "mean_spread": 0.002,
+      "promoted": false
+    }
+  ],
+  "best_scenario": "surprise_x_quality",
+  "promoted_signals": [
+    "sue_standardized",
+    "surprise_sector_neutral"
+  ],
+  "rejected_signals": [
+    "earnings_surprise",
+    "surprise_x_rates_regime",
+    "surprise_x_quality",
+    "accel_x_momentum",
+    "beat_streak",
+    "quality_filtered_surprise",
+    "rev_growth",
+    "regime_gated_sue"
+  ],
+  "alpha_found": true,
+  "decision": "ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+    "READY_FOR_MORE_EODHD_ACQUISITION",
+    "NO_ALPHA_FOUND_AFTER_FULL_EODHD_SWEEP",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR"
+  ],
+  "decision_rationale": "2 signal(s) cleared every evidence gate (rank IC, t-stat, BH multiple-testing, quantile spread hit-rate, net-of-cost, sector/regime robustness): sue_standardized, surprise_sector_neutral. Surface as preview-only ranking signals for manual Paper Trader review - no orders.",
+  "evidence_gates": {
+    "min_abs_ic": 0.03,
+    "min_abs_t": 2.0,
+    "bh_q": 0.1,
+    "min_spread_hit_rate": 0.55,
+    "cost_bps": 10.0,
+    "max_sector_share": 0.6,
+    "min_events": 150,
+    "min_months": 10
+  },
+  "blockers": "",
+  "recommended_next_command": "Review research/output/phase8s_autonomous_eodhd_alpha_factory/promoted_alpha_signals.csv, then surface the promoted signal(s) as PREVIEW-ONLY ranking ideas in the Paper Trader daily-review cockpit (manual review; no orders).",
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 26,
+  "raw_dir_gitignored": "research/data/eodhd",
+  "outputs": {
+    "report": "research/output/phase8s_autonomous_eodhd_alpha_factory/phase8s_autonomous_eodhd_alpha_factory.json",
+    "run_log": "research/output/phase8s_autonomous_eodhd_alpha_factory/autonomous_run_log.csv",
+    "universe": "research/output/phase8s_autonomous_eodhd_alpha_factory/acquisition_universe.csv",
+    "acq_progress": "research/output/phase8s_autonomous_eodhd_alpha_factory/eodhd_acquisition_progress.csv",
+    "raw_manifest": "research/output/phase8s_autonomous_eodhd_alpha_factory/eodhd_raw_storage_manifest.csv",
+    "norm_manifest": "research/output/phase8s_autonomous_eodhd_alpha_factory/eodhd_normalized_storage_manifest.csv",
+    "family_coverage": "research/output/phase8s_autonomous_eodhd_alpha_factory/eodhd_family_coverage_summary.csv",
+    "ticker_coverage": "research/output/phase8s_autonomous_eodhd_alpha_factory/eodhd_ticker_coverage_panel.csv",
+    "earnings_schema": "research/output/phase8s_autonomous_eodhd_alpha_factory/earnings_events_schema_report.csv",
+    "fundamentals_schema": "research/output/phase8s_autonomous_eodhd_alpha_factory/fundamentals_schema_report.csv",
+    "pit_audit": "research/output/phase8s_autonomous_eodhd_alpha_factory/point_in_time_audit.csv",
+    "join_report": "research/output/phase8s_autonomous_eodhd_alpha_factory/price_macro_sector_join_report.csv",
+    "feature_catalog": "research/output/phase8s_autonomous_eodhd_alpha_factory/feature_catalog.csv",
+    "scenario_plan": "research/output/phase8s_autonomous_eodhd_alpha_factory/scenario_test_plan.csv",
+    "scoreboard": "research/output/phase8s_autonomous_eodhd_alpha_factory/scenario_scoreboard.csv",
+    "rank_ic": "research/output/phase8s_autonomous_eodhd_alpha_factory/rank_ic_report.csv",
+    "decile_spread": "research/output/phase8s_autonomous_eodhd_alpha_factory/decile_spread_report.csv",
+    "hit_rate": "research/output/phase8s_autonomous_eodhd_alpha_factory/hit_rate_report.csv",
+    "tcost": "research/output/phase8s_autonomous_eodhd_alpha_factory/transaction_cost_sensitivity.csv",
+    "turnover": "research/output/phase8s_autonomous_eodhd_alpha_factory/turnover_report.csv",
+    "sector_conc": "research/output/phase8s_autonomous_eodhd_alpha_factory/sector_concentration_report.csv",
+    "regime_split": "research/output/phase8s_autonomous_eodhd_alpha_factory/regime_split_report.csv",
+    "multiple_testing": "research/output/phase8s_autonomous_eodhd_alpha_factory/multiple_testing_report.csv",
+    "promoted": "research/output/phase8s_autonomous_eodhd_alpha_factory/promoted_alpha_signals.csv",
+    "rejected": "research/output/phase8s_autonomous_eodhd_alpha_factory/rejected_alpha_signals.csv",
+    "final_decision": "research/output/phase8s_autonomous_eodhd_alpha_factory/final_research_decision.json",
+    "next_plan": "research/output/phase8s_autonomous_eodhd_alpha_factory/phase8t_next_plan.json",
+    "secret_audit": "research/output/phase8s_autonomous_eodhd_alpha_factory/secret_safety_audit.csv"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": true,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "deployed": false,
+  "data_fabricated": false,
+  "no_alpha_fabricated": true,
+  "raw_paid_data_in_artifacts": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

@@ -1,0 +1,30 @@
+{
+  "phase": "8-S",
+  "decision": "ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+    "READY_FOR_MORE_EODHD_ACQUISITION",
+    "NO_ALPHA_FOUND_AFTER_FULL_EODHD_SWEEP",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR"
+  ],
+  "rationale": "2 signal(s) cleared every evidence gate (rank IC, t-stat, BH multiple-testing, quantile spread hit-rate, net-of-cost, sector/regime robustness): sue_standardized, surprise_sector_neutral. Surface as preview-only ranking signals for manual Paper Trader review - no orders.",
+  "alpha_found": true,
+  "promoted_signals": [
+    "sue_standardized",
+    "surprise_sector_neutral"
+  ],
+  "best_scenario": "surprise_x_quality",
+  "best_scenario_ic": -0.047,
+  "best_scenario_ic_t": -2.96,
+  "scoreable_tickers": 299,
+  "usable_events": 29032,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "committed": false
+}

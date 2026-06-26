@@ -1,0 +1,11 @@
+scenario,signal,sector_neutral,regime_filter,hypothesis
+earnings_surprise,surprise_pct,False,,positive EPS surprise -> positive drift
+sue_standardized,sue,False,,standardized unexpected earnings -> drift (PEAD)
+surprise_x_rates_regime,surprise_pct,False,high_rates,surprise drift conditioned on high-rate regime
+surprise_sector_neutral,surprise_pct,True,,within-sector surprise ranking -> drift
+surprise_x_quality,surprise_pct_x_roa,False,,surprise gated by ROA quality
+accel_x_momentum,accel_x_mom,False,,earnings acceleration confirmed by price momentum
+beat_streak,beat_streak,False,,repeated beats -> continued drift
+quality_filtered_surprise,surprise_pct,False,high_quality,surprise only among high-ROA names
+rev_growth,rev_growth,True,,fundamental revenue growth -> drift
+regime_gated_sue,sue,False,easy_regime,SUE only in supportive (steep-curve) regime

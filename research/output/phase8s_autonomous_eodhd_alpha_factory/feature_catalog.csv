@@ -1,0 +1,21 @@
+feature,family,definition,pit_basis
+surprise,earnings,eps_actual - eps_estimate,report_date
+surprise_pct,earnings,EODHD surprisePercent,report_date
+sue,earnings,surprise / rolling std of last 8 lagged surprises,report_date
+magnitude_bucket,earnings,surprise_pct binned (big_miss..big_beat),report_date
+beat,earnings,1 if surprise>0,report_date
+beat_streak,earnings,consecutive prior beats incl. current,report_date
+eps_yoy_growth,earnings,(eps_t - eps_t-4)/|eps_t-4|,report_date
+eps_accel,earnings,change in eps_yoy_growth vs prior quarter,report_date
+mom_pre_21,price,market-relative 21d return into the event,entry_date
+rev_growth,fundamentals,YoY revenue growth,filing_date<=report_date
+ni_growth,fundamentals,YoY net-income growth,filing_date<=report_date
+margin,fundamentals,net_income/total_revenue,filing_date<=report_date
+margin_chg,fundamentals,YoY change in margin,filing_date<=report_date
+debt_assets,fundamentals,debt/total_assets,filing_date<=report_date
+cash_assets,fundamentals,cash/total_assets,filing_date<=report_date
+fcf_margin,fundamentals,free_cash_flow/revenue,filing_date<=report_date
+roa,fundamentals,net_income/total_assets,filing_date<=report_date
+rates_10y,regime,FRED DGS10 as-of report_date,report_date
+rates_2s10s,regime,DGS10-DGS2 slope,report_date
+oil_z / dollar_z,regime,1y z-score of WTI / broad dollar,report_date

@@ -1,0 +1,11 @@
+scenario,gross_spread,avg_turnover,net_5bps,net_10bps,net_20bps
+earnings_surprise,0.0096,0.9907,0.0086,0.0076,0.0056
+sue_standardized,0.0031,0.9908,0.0021,0.0011,-0.0009
+surprise_x_rates_regime,0.007,0.9992,0.006,0.005,0.003
+surprise_sector_neutral,0.0109,0.9907,0.0099,0.0089,0.007
+surprise_x_quality,-0.0094,0.9905,-0.0104,-0.0114,-0.0134
+accel_x_momentum,0.0051,0.9996,0.0041,0.0031,0.0011
+beat_streak,0.0003,0.9901,-0.0007,-0.0016,-0.0036
+quality_filtered_surprise,0.002,0.9871,0.0011,0.0001,-0.0019
+rev_growth,0.0049,0.9933,0.0039,0.0029,0.0009
+regime_gated_sue,0.002,0.9885,0.001,0.0,-0.002

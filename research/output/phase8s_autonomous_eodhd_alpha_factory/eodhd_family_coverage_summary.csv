@@ -1,0 +1,6 @@
+family,tickers_present,tickers_with_data,tickers_scoreable,pit_note
+earnings_history,300,300,299,report_date PIT-safe
+fundamentals_statements,298,298,299,filing_date PIT-safe
+earnings_calendar,0,0,0,0 rows on this EODHD plan (reportDate used instead)
+analyst_estimates,300,0,0,NOT PIT-safe (revised) - excluded from scoring
+analyst_ratings,300,0,0,NOT PIT-safe (snapshot) - excluded from scoring

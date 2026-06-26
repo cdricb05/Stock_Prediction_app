@@ -1,0 +1,11 @@
+scenario,top_sector,top_sector_share,hhi
+earnings_surprise,Unknown,0.6035,0.3882
+sue_standardized,Unknown,0.4252,0.2311
+surprise_x_rates_regime,Unknown,0.5908,0.3749
+surprise_sector_neutral,Unknown,0.5512,0.3339
+surprise_x_quality,Unknown,0.6369,0.4219
+accel_x_momentum,Unknown,0.6244,0.4124
+beat_streak,Unknown,0.3979,0.2213
+quality_filtered_surprise,Unknown,0.5127,0.3046
+rev_growth,Unknown,0.3,0.1668
+regime_gated_sue,Unknown,0.4201,0.2278

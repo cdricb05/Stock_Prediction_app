@@ -1,0 +1,16 @@
+# Phase 8-R - LOCAL EODHD data. DO NOT COMMIT.
+#
+# research/run_phase8r_broad_bundle_evaluation.py --live writes EODHD payloads here:
+#   raw/        verbatim provider JSON responses
+#   normalized/ flattened point-in-time earnings CSVs derived from the responses
+#
+# These are license-restricted provider responses and must never enter Git. Only
+# coverage / decision metadata (row counts, date spans, redacted URLs, file paths - never
+# the payloads, never the API key) is written to the committed artifacts under
+# research/output/phase8r_broad_bundle_evaluation/.
+raw/
+normalized/
+
+# Belt-and-braces: ignore everything here EXCEPT this .gitignore.
+*
+!.gitignore

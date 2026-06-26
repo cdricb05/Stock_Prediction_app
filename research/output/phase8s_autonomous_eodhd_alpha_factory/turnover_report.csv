@@ -1,0 +1,11 @@
+scenario,avg_top_quintile_turnover,interpretation
+earnings_surprise,0.9907,fraction of top-quintile names replaced month-over-month
+sue_standardized,0.9908,fraction of top-quintile names replaced month-over-month
+surprise_x_rates_regime,0.9992,fraction of top-quintile names replaced month-over-month
+surprise_sector_neutral,0.9907,fraction of top-quintile names replaced month-over-month
+surprise_x_quality,0.9905,fraction of top-quintile names replaced month-over-month
+accel_x_momentum,0.9996,fraction of top-quintile names replaced month-over-month
+beat_streak,0.9901,fraction of top-quintile names replaced month-over-month
+quality_filtered_surprise,0.9871,fraction of top-quintile names replaced month-over-month
+rev_growth,0.9933,fraction of top-quintile names replaced month-over-month
+regime_gated_sue,0.9885,fraction of top-quintile names replaced month-over-month

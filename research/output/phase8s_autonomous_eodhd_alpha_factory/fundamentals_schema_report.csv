@@ -1,0 +1,13 @@
+column,dtype,non_null,description
+ticker,str,36375,
+fiscal_date,datetime64[us],36375,
+filing_date,datetime64[us],35726,PIT availability date
+total_revenue,float64,35986,
+net_income,float64,36164,
+gross_profit,float64,35805,
+operating_income,float64,36170,
+total_assets,float64,33750,
+total_liab,float64,33580,
+short_long_debt,float64,33092,
+cash,float64,33208,
+free_cash_flow,float64,31577,

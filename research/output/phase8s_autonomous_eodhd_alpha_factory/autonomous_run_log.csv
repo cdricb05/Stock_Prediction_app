@@ -1,0 +1,13 @@
+step,status,detail,count
+prior,INFO,Phase 8-R decision read: EODHD_ACCEPT_AS_CORE_PROVIDER,
+start,INFO,live=True key_present=True max_tickers=500 max_requests=5000,
+universe,DONE,301 priced tickers; 269 targeted for acquisition,301
+acquire,CHECKPOINT,50 acquired / 50 requests,50
+acquire,CHECKPOINT,100 acquired / 100 requests,100
+acquire,CHECKPOINT,150 acquired / 150 requests,150
+acquire,CHECKPOINT,200 acquired / 200 requests,200
+acquire,CHECKPOINT,250 acquired / 251 requests,250
+acquire,DONE,acquired 268 / requests 269,268
+panels,DONE,29032 usable events / 299 tickers,29032
+score,DONE,"10 scenarios, 2 promoted, 8 rejected",2
+decision,DONE,ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW,

@@ -1,0 +1,11 @@
+scenario,event_hit_rate,month_spread_hit_rate
+earnings_surprise,0.5036,0.65
+sue_standardized,0.5056,0.5833
+surprise_x_rates_regime,0.5065,0.6444
+surprise_sector_neutral,0.4853,0.6417
+surprise_x_quality,0.488,0.65
+accel_x_momentum,0.5156,0.4874
+beat_streak,0.497,0.5917
+quality_filtered_surprise,0.5222,0.5701
+rev_growth,0.4875,0.5333
+regime_gated_sue,0.5052,0.5729

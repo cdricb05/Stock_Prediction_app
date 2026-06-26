@@ -1,0 +1,9 @@
+scenario,signal,mean_ic,ic_t,n_events,reject_reason
+earnings_surprise,surprise_pct,0.0442,2.85,27279,sector-concentrated (Unknown 60%)
+surprise_x_rates_regime,surprise_pct,0.0381,1.46,13776,|ic_t| below 2.0; fails Benjamini-Hochberg q=0.10; not robust across regimes
+surprise_x_quality,surprise_pct_x_roa,-0.047,-2.96,26839,sector-concentrated (Unknown 64%)
+accel_x_momentum,accel_x_mom,0.0139,0.77,10932,|mean_ic| below 0.03; |ic_t| below 2.0; fails Benjamini-Hochberg q=0.10; spread hit-rate below 0.55; sector-concentrated (Unknown 62%)
+beat_streak,beat_streak,0.0289,1.78,29032,|mean_ic| below 0.03; |ic_t| below 2.0; fails Benjamini-Hochberg q=0.10; does not survive 10 bps cost
+quality_filtered_surprise,surprise_pct,0.0187,0.78,13553,|mean_ic| below 0.03; |ic_t| below 2.0; fails Benjamini-Hochberg q=0.10
+rev_growth,rev_growth,0.0135,0.71,20379,|mean_ic| below 0.03; |ic_t| below 2.0; fails Benjamini-Hochberg q=0.10; spread hit-rate below 0.55
+regime_gated_sue,sue,0.0219,1.06,22532,|mean_ic| below 0.03; |ic_t| below 2.0; fails Benjamini-Hochberg q=0.10; not robust across regimes

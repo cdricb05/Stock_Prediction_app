@@ -1,0 +1,8 @@
+metric,value
+events_raw,29359
+events_with_realized_eps,29068
+events_usable,29032
+tickers_usable,299
+date_min,2016-06-23
+date_max,2026-05-20
+sectors,12

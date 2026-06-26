@@ -1,0 +1,11 @@
+scenario,ic_p,bonferroni_p,bh_q,bh_significant
+earnings_surprise,0.0044,0.0441,0.1,True
+sue_standardized,0.0283,0.2829,0.1,True
+surprise_x_rates_regime,0.1448,1.0,0.1,False
+surprise_sector_neutral,0.0031,0.031,0.1,True
+surprise_x_quality,0.0031,0.0306,0.1,True
+accel_x_momentum,0.4392,1.0,0.1,False
+beat_streak,0.0759,0.7585,0.1,False
+quality_filtered_surprise,0.4337,1.0,0.1,False
+rev_growth,0.4801,1.0,0.1,False
+regime_gated_sue,0.2884,1.0,0.1,False
