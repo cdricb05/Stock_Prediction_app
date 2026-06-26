@@ -1,0 +1,4 @@
+provider,family,env_var,key_present,probe_enabled,endpoint_redacted,doc,note
+Alpha Vantage,earnings_surprises,ALPHAVANTAGE_API_KEY,False,False,https://www.alphavantage.co/query?function=EARNINGS&symbol=AAPL&<API_KEY_REDACTED>,alphavantage.co/documentation : EARNINGS (quarterly EPS actual/estimate),probe runs only with --live AND ALPHAVANTAGE_API_KEY present (or an injected transport in tests)
+Finnhub,analyst_recommendations,FINNHUB_API_KEY,False,False,https://finnhub.io/api/v1/stock/recommendation?symbol=AAPL&<API_KEY_REDACTED>,finnhub.io/docs/api : /stock/recommendation (buy/hold/sell trends),probe runs only with --live AND FINNHUB_API_KEY present (or an injected transport in tests)
+EODHD,earnings_calendar,EODHD_API_KEY,False,False,https://eodhd.com/api/calendar/earnings?fmt=json&<API_KEY_REDACTED>,eodhd.com/financial-apis : /calendar/earnings,probe runs only with --live AND EODHD_API_KEY present (or an injected transport in tests)

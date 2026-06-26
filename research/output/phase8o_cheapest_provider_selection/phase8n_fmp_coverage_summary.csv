@@ -1,0 +1,7 @@
+critical_family,entitlement,coverage,min_tickers_to_score,block_fraction,block_pattern,broadly_blocked
+earnings_surprises,PARTIAL,8,20,0.75,SYSTEMATIC,True
+earnings_calendar,PARTIAL,8,20,0.6429,SYSTEMATIC,True
+analyst_estimates,PARTIAL,8,20,0.6429,SYSTEMATIC,True
+analyst_recommendations,PARTIAL,8,20,0.6429,SYSTEMATIC,True
+analyst_price_targets,PARTIAL,8,20,0.6429,SYSTEMATIC,True
+ratings_grades_consensus,PARTIAL,8,20,0.6429,SYSTEMATIC,True

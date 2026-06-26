@@ -1,0 +1,3 @@
+provider,family_probed,env_var,key_present,probed,http_status,status,rows,note,endpoint_redacted
+Alpha Vantage,earnings_surprises,ALPHAVANTAGE_API_KEY,False,False,,NOT_PROBED_NO_KEY,0,no ALPHAVANTAGE_API_KEY in this session; cannot probe,https://www.alphavantage.co/query?function=EARNINGS&symbol=AAPL&<API_KEY_REDACTED>
+Finnhub,analyst_recommendations,FINNHUB_API_KEY,False,False,,NOT_PROBED_NO_KEY,0,no FINNHUB_API_KEY in this session; cannot probe,https://finnhub.io/api/v1/stock/recommendation?symbol=AAPL&<API_KEY_REDACTED>

@@ -1,0 +1,48 @@
+{
+  "phase": "8-O",
+  "decision": "BLOCKED_MISSING_ALTERNATIVE_PROVIDER_KEY",
+  "decision_allowed_values": [
+    "ALPHA_VANTAGE_FIRST",
+    "FINNHUB_FIRST",
+    "EODHD_FIRST",
+    "FMP_UPGRADE_REQUIRED",
+    "MIXED_PROVIDER_STRATEGY_REQUIRED",
+    "BLOCKED_MISSING_ALTERNATIVE_PROVIDER_KEY",
+    "NO_PROVIDER_CAN_SOLVE_CHEAPLY",
+    "ERROR"
+  ],
+  "decision_is_terminal": true,
+  "gate_reason": "no alternative-provider key is present in the environment; set Alpha Vantage (ALPHAVANTAGE_API_KEY) first, then re-run --live to probe.",
+  "recommended_strategy": "MIXED_PROVIDER_STRATEGY_REQUIRED",
+  "fmp_coverage_conclusion": "Current FMP plan is INSUFFICIENT for broad signal research: all six critical families are entitlement-PARTIAL (Phase 8-N: ~8/20 tickers, most attempts 402-blocked). FMP_PLAN_COVERAGE_INSUFFICIENT",
+  "cheapest_provider_to_try_first": "Alpha Vantage",
+  "first_provider_env_var": "ALPHAVANTAGE_API_KEY",
+  "first_provider_unlocks": [
+    "earnings_surprises",
+    "earnings_calendar"
+  ],
+  "second_provider_only_if_needed": "Finnhub",
+  "second_provider_env_var": "FINNHUB_API_KEY",
+  "second_provider_unlocks": [
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets",
+    "ratings_grades_consensus"
+  ],
+  "fmp_upgrade_justified": false,
+  "fmp_upgrade_reason": "NOT justified: every blocked family has a cheaper (free-tier) alternative - Alpha Vantage for earnings, Finnhub for analyst data. An FMP Premium upgrade (~$69/mo) is the fallback only if that free combo proves insufficient on coverage/history/PIT.",
+  "fmp_ultimate_rejected": true,
+  "fmp_ultimate_reason": "Explicitly NOT justified: no evidence requires the Ultimate tier; the six critical families are each covered by a cheaper source, so paying for Ultimate would buy entitlement that free/low-cost providers already supply.",
+  "env_vars_needed": [
+    "ALPHAVANTAGE_API_KEY",
+    "FINNHUB_API_KEY"
+  ],
+  "exact_next_command": "$env:ALPHAVANTAGE_API_KEY = '<PASTE_ALPHAVANTAGE_API_KEY_HERE>'; python research/run_phase8o_cheapest_provider_selection.py --live   (probe Alpha Vantage first; then set FINNHUB_API_KEY for the analyst families)",
+  "any_probe_executed": false,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "deployed": false,
+  "committed": false
+}

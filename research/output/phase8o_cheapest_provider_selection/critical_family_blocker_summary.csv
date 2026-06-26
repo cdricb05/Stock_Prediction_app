@@ -1,0 +1,7 @@
+critical_family,blocked_on_fmp,why_blocked,recommended_unlock_provider,unlock_key_present
+earnings_surprises,True,entitlement PARTIAL on current FMP plan; coverage 8/20; 75% of attempts 402-blocked (pattern SYSTEMATIC),Alpha Vantage,False
+earnings_calendar,True,entitlement PARTIAL on current FMP plan; coverage 8/20; 64% of attempts 402-blocked (pattern SYSTEMATIC),Alpha Vantage,False
+analyst_estimates,True,entitlement PARTIAL on current FMP plan; coverage 8/20; 64% of attempts 402-blocked (pattern SYSTEMATIC),Finnhub,False
+analyst_recommendations,True,entitlement PARTIAL on current FMP plan; coverage 8/20; 64% of attempts 402-blocked (pattern SYSTEMATIC),Finnhub,False
+analyst_price_targets,True,entitlement PARTIAL on current FMP plan; coverage 8/20; 64% of attempts 402-blocked (pattern SYSTEMATIC),Finnhub,False
+ratings_grades_consensus,True,entitlement PARTIAL on current FMP plan; coverage 8/20; 64% of attempts 402-blocked (pattern SYSTEMATIC),Finnhub,False

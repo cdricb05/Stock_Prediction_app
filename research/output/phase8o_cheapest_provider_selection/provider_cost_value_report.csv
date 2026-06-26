@@ -1,0 +1,6 @@
+provider,env_var,approx_monthly_cost,critical_families_covered,covers_count,value_note
+FMP (current plan),FMP_API_KEY,$0 (already held),earnings_surprises;earnings_calendar;analyst_estimates;analyst_recommendations;analyst_price_targets;ratings_grades_consensus,6,current plan - entitlement PARTIAL on every critical family (Phase 8-N)
+FMP (upgrade tier),FMP_API_KEY,~$69/mo (Premium),earnings_surprises;earnings_calendar;analyst_estimates;analyst_recommendations;analyst_price_targets;ratings_grades_consensus,6,covers all six from one key but most expensive; Ultimate NOT justified
+Alpha Vantage,ALPHAVANTAGE_API_KEY,$0 (free 25 req/day) or ~$50/mo,earnings_surprises;earnings_calendar,2,best value for EARNINGS (free tier covers the marquee surprise family)
+Finnhub,FINNHUB_API_KEY,$0 (free 60 req/min) or ~$50/mo,earnings_surprises;earnings_calendar;analyst_estimates;analyst_recommendations;analyst_price_targets;ratings_grades_consensus,6,best value for the analyst families (free recommendation trends)
+EODHD,EODHD_API_KEY,~$20-$80/mo,earnings_surprises;earnings_calendar;analyst_estimates;analyst_recommendations;analyst_price_targets;ratings_grades_consensus,6,mid-priced single bundle; covers earnings + fundamentals if mapped

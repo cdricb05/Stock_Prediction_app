@@ -1,0 +1,6 @@
+env_var,provider,key_present,value_read,critical_families_served,note
+FMP_API_KEY,FMP (current plan),False,False,analyst_estimates;analyst_price_targets;analyst_recommendations;earnings_calendar;earnings_surprises;ratings_grades_consensus,presence-only; value never read or printed
+FMP_API_KEY,FMP (upgrade tier),False,False,analyst_estimates;analyst_price_targets;analyst_recommendations;earnings_calendar;earnings_surprises;ratings_grades_consensus,presence-only; value never read or printed
+ALPHAVANTAGE_API_KEY,Alpha Vantage,False,False,earnings_calendar;earnings_surprises,presence-only; value never read or printed
+FINNHUB_API_KEY,Finnhub,False,False,analyst_estimates;analyst_price_targets;analyst_recommendations;earnings_calendar;earnings_surprises;ratings_grades_consensus,presence-only; value never read or printed
+EODHD_API_KEY,EODHD,False,False,analyst_estimates;analyst_price_targets;analyst_recommendations;earnings_calendar;earnings_surprises;ratings_grades_consensus,presence-only; value never read or printed

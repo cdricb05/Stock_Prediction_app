@@ -1,0 +1,26 @@
+{
+  "phase": "8-P",
+  "title": "Alternative-Provider Controlled Earnings/Analyst Backfill",
+  "depends_on_decision": "BLOCKED_MISSING_ALTERNATIVE_PROVIDER_KEY",
+  "objective": "Activate the cheapest provider named here (Alpha Vantage first then Finnhub), add a secret-safe stdlib adapter mirroring research/providers/fmp_client.py, run a bounded point-in-time backfill of the blocked critical families, and re-score the six signal hypotheses once coverage reaches the 20-ticker minimum (no fabricated alpha).",
+  "next_command": "$env:ALPHAVANTAGE_API_KEY = '<PASTE_ALPHAVANTAGE_API_KEY_HERE>'; python research/run_phase8o_cheapest_provider_selection.py --live   (probe Alpha Vantage first; then set FINNHUB_API_KEY for the analyst families)",
+  "blocked_families": [
+    "earnings_surprises",
+    "earnings_calendar",
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets",
+    "ratings_grades_consensus"
+  ],
+  "provider_order": [
+    "Alpha Vantage",
+    "Finnhub"
+  ],
+  "do_not_default_to_fmp_ultimate": true,
+  "min_tickers_to_score": 20,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "committed": false
+}

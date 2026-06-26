@@ -1,0 +1,7 @@
+signal_id,signal_name,required_family,blocked_on_fmp,unlock_provider,unlock_key_present,unlock_status
+S8N-EARNSURP-RATES,positive_earnings_surprise x rates_sensitivity,earnings_surprises,True,Alpha Vantage,False,UNLOCK_VIA_ALPHA_NEEDS_KEY
+S8N-EARNSURP-SECTOR,positive_earnings_surprise x sector_leadership,earnings_surprises,True,Alpha Vantage,False,UNLOCK_VIA_ALPHA_NEEDS_KEY
+S8N-ESTREV-RATES,analyst_estimate_revision x sensitivity,analyst_estimates,True,Finnhub,False,UNLOCK_VIA_FINNHUB_NEEDS_KEY
+S8N-RECCHG-SECTOR,analyst_recommendation_change x sector_leadership,analyst_recommendations,True,Finnhub,False,UNLOCK_VIA_FINNHUB_NEEDS_KEY
+S8N-PTREV-SENS,price_target_revision x sensitivity_cohort,analyst_price_targets,True,Finnhub,False,UNLOCK_VIA_FINNHUB_NEEDS_KEY
+S8N-GRADES-SENS,ratings_grades_consensus x sensitivity_cohort,ratings_grades_consensus,True,Finnhub,False,UNLOCK_VIA_FINNHUB_NEEDS_KEY

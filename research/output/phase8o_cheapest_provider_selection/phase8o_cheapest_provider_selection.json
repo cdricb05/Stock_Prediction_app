@@ -1,0 +1,115 @@
+{
+  "phase": "8-O",
+  "objective": "Find and name the cheapest data-source path that gives enough coverage for the critical alpha families after Phase 8-N proved the current FMP plan insufficient; probe only providers whose key is already present.",
+  "mode": "offline_decision",
+  "live_requested": false,
+  "phase8n_found": true,
+  "phase8n_dir": "research/output/phase8n_fmp_critical_data_backfill_signal_expansion",
+  "phase8n_fmp_decision": "FMP_PLAN_COVERAGE_INSUFFICIENT",
+  "phase8n_fmp_upgrade_decision": "UPGRADE_NOT_RECOMMENDED_USE_ALTERNATIVE",
+  "min_tickers_to_score": 20,
+  "critical_family_coverage": {
+    "earnings_surprises": 8,
+    "earnings_calendar": 8,
+    "analyst_estimates": 8,
+    "analyst_recommendations": 8,
+    "analyst_price_targets": 8,
+    "ratings_grades_consensus": 8
+  },
+  "critical_family_entitlement": {
+    "earnings_surprises": "PARTIAL",
+    "earnings_calendar": "PARTIAL",
+    "analyst_estimates": "PARTIAL",
+    "analyst_recommendations": "PARTIAL",
+    "analyst_price_targets": "PARTIAL",
+    "ratings_grades_consensus": "PARTIAL"
+  },
+  "blocked_families": [
+    "earnings_surprises",
+    "earnings_calendar",
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets",
+    "ratings_grades_consensus"
+  ],
+  "blocked_earnings_families": [
+    "earnings_surprises",
+    "earnings_calendar"
+  ],
+  "blocked_analyst_families": [
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets",
+    "ratings_grades_consensus"
+  ],
+  "providers_compared": [
+    "FMP (current plan)",
+    "FMP (upgrade tier)",
+    "Alpha Vantage",
+    "Finnhub",
+    "EODHD"
+  ],
+  "provider_key_inventory": {
+    "FMP_API_KEY": false,
+    "ALPHAVANTAGE_API_KEY": false,
+    "FINNHUB_API_KEY": false,
+    "EODHD_API_KEY": false
+  },
+  "providers_needed": [
+    "Alpha Vantage",
+    "Finnhub"
+  ],
+  "recommended_strategy": "MIXED_PROVIDER_STRATEGY_REQUIRED",
+  "decision": "BLOCKED_MISSING_ALTERNATIVE_PROVIDER_KEY",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "ALPHA_VANTAGE_FIRST",
+    "FINNHUB_FIRST",
+    "EODHD_FIRST",
+    "FMP_UPGRADE_REQUIRED",
+    "MIXED_PROVIDER_STRATEGY_REQUIRED",
+    "BLOCKED_MISSING_ALTERNATIVE_PROVIDER_KEY",
+    "NO_PROVIDER_CAN_SOLVE_CHEAPLY",
+    "ERROR"
+  ],
+  "gate_reason": "no alternative-provider key is present in the environment; set Alpha Vantage (ALPHAVANTAGE_API_KEY) first, then re-run --live to probe.",
+  "cheapest_provider_to_try_first": "Alpha Vantage",
+  "second_provider_only_if_needed": "Finnhub",
+  "fmp_upgrade_justified": false,
+  "fmp_ultimate_rejected": true,
+  "env_vars_needed": [
+    "ALPHAVANTAGE_API_KEY",
+    "FINNHUB_API_KEY"
+  ],
+  "any_probe_executed": false,
+  "recommended_next_command": "$env:ALPHAVANTAGE_API_KEY = '<PASTE_ALPHAVANTAGE_API_KEY_HERE>'; python research/run_phase8o_cheapest_provider_selection.py --live   (probe Alpha Vantage first; then set FINNHUB_API_KEY for the analyst families)",
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 13,
+  "outputs": {
+    "report": "research/output/phase8o_cheapest_provider_selection/phase8o_cheapest_provider_selection.json",
+    "fmp_coverage": "research/output/phase8o_cheapest_provider_selection/phase8n_fmp_coverage_summary.csv",
+    "blocker_summary": "research/output/phase8o_cheapest_provider_selection/critical_family_blocker_summary.csv",
+    "decision_matrix": "research/output/phase8o_cheapest_provider_selection/provider_decision_matrix.csv",
+    "ranking": "research/output/phase8o_cheapest_provider_selection/cheapest_viable_provider_ranking.csv",
+    "key_inventory": "research/output/phase8o_cheapest_provider_selection/provider_key_inventory.csv",
+    "probe_plan": "research/output/phase8o_cheapest_provider_selection/provider_probe_plan.csv",
+    "probe_results": "research/output/phase8o_cheapest_provider_selection/provider_probe_results.csv",
+    "cost_value": "research/output/phase8o_cheapest_provider_selection/provider_cost_value_report.csv",
+    "env_setup": "research/output/phase8o_cheapest_provider_selection/provider_env_var_setup_commands.ps1",
+    "acq_decision": "research/output/phase8o_cheapest_provider_selection/provider_acquisition_decision.json",
+    "signal_unlock": "research/output/phase8o_cheapest_provider_selection/signal_family_unlock_map.csv",
+    "next_plan": "research/output/phase8o_cheapest_provider_selection/phase8p_next_plan.json"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "deployed": false,
+  "data_fabricated": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

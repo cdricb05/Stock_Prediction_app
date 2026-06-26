@@ -1,0 +1,31 @@
+provider,data_family,current_key_env_var,key_present,expected_coverage,cost_tier_if_known,supports_historical_data,supports_point_in_time_backtest,supports_sufficient_history,endpoint_mapping_status,recommended_for_family
+FMP (current plan),earnings_surprises,FMP_API_KEY,False,partial,current,yes,yes,partial,mapped_in_repo,False
+FMP (upgrade tier),earnings_surprises,FMP_API_KEY,False,full,~$69/mo,yes,yes,yes,mapped_in_repo,False
+Alpha Vantage,earnings_surprises,ALPHAVANTAGE_API_KEY,False,broad,$0 free / ~$50,yes,yes,yes,documented_not_mapped,True
+Finnhub,earnings_surprises,FINNHUB_API_KEY,False,broad,$0 free / ~$50,yes,yes,partial,documented_not_mapped,False
+EODHD,earnings_surprises,EODHD_API_KEY,False,broad,~$20-$80/mo,yes,yes,yes,documented_not_mapped,False
+FMP (current plan),earnings_calendar,FMP_API_KEY,False,partial,current,yes,yes,partial,mapped_in_repo,False
+FMP (upgrade tier),earnings_calendar,FMP_API_KEY,False,full,~$69/mo,yes,yes,yes,mapped_in_repo,False
+Alpha Vantage,earnings_calendar,ALPHAVANTAGE_API_KEY,False,broad,$0 free / ~$50,yes,yes,yes,documented_not_mapped,True
+Finnhub,earnings_calendar,FINNHUB_API_KEY,False,broad,$0 free / ~$50,yes,yes,partial,documented_not_mapped,False
+EODHD,earnings_calendar,EODHD_API_KEY,False,broad,~$20-$80/mo,yes,yes,yes,documented_not_mapped,False
+FMP (current plan),analyst_estimates,FMP_API_KEY,False,partial,current,yes,partial,partial,mapped_in_repo,False
+FMP (upgrade tier),analyst_estimates,FMP_API_KEY,False,full,~$69/mo,yes,yes,yes,mapped_in_repo,False
+Alpha Vantage,analyst_estimates,ALPHAVANTAGE_API_KEY,False,none,n/a,no,no,no,no_mapping,False
+Finnhub,analyst_estimates,FINNHUB_API_KEY,False,partial,$0 free / ~$50,yes,partial,partial,documented_not_mapped,True
+EODHD,analyst_estimates,EODHD_API_KEY,False,broad,~$20-$80/mo,yes,partial,yes,documented_not_mapped,False
+FMP (current plan),analyst_recommendations,FMP_API_KEY,False,partial,current,yes,yes,partial,mapped_in_repo,False
+FMP (upgrade tier),analyst_recommendations,FMP_API_KEY,False,full,~$69/mo,yes,yes,yes,mapped_in_repo,False
+Alpha Vantage,analyst_recommendations,ALPHAVANTAGE_API_KEY,False,none,n/a,no,no,no,no_mapping,False
+Finnhub,analyst_recommendations,FINNHUB_API_KEY,False,broad,$0 free / ~$50,yes,yes,partial,documented_not_mapped,True
+EODHD,analyst_recommendations,EODHD_API_KEY,False,partial,~$20-$80/mo,partial,partial,partial,documented_not_mapped,False
+FMP (current plan),analyst_price_targets,FMP_API_KEY,False,partial,current,yes,yes,partial,mapped_in_repo,False
+FMP (upgrade tier),analyst_price_targets,FMP_API_KEY,False,full,~$69/mo,yes,yes,yes,mapped_in_repo,False
+Alpha Vantage,analyst_price_targets,ALPHAVANTAGE_API_KEY,False,none,n/a,no,no,no,no_mapping,False
+Finnhub,analyst_price_targets,FINNHUB_API_KEY,False,broad,$0 free / ~$50 (history premium),yes,yes,partial,documented_not_mapped,True
+EODHD,analyst_price_targets,EODHD_API_KEY,False,partial,~$20-$80/mo,partial,partial,partial,documented_not_mapped,False
+FMP (current plan),ratings_grades_consensus,FMP_API_KEY,False,partial,current,yes,yes,partial,mapped_in_repo,False
+FMP (upgrade tier),ratings_grades_consensus,FMP_API_KEY,False,full,~$69/mo,yes,yes,yes,mapped_in_repo,False
+Alpha Vantage,ratings_grades_consensus,ALPHAVANTAGE_API_KEY,False,none,n/a,no,no,no,no_mapping,False
+Finnhub,ratings_grades_consensus,FINNHUB_API_KEY,False,partial,$0 free / ~$50,yes,yes,partial,documented_not_mapped,True
+EODHD,ratings_grades_consensus,EODHD_API_KEY,False,partial,~$20-$80/mo,partial,partial,partial,documented_not_mapped,False
