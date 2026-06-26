@@ -1,0 +1,5 @@
+scenario,family,signal,mean_ic,ic_t,mean_spread,spread_hit_rate,net_spread_25bps,subperiod_stable,beats_placebo,n_events,n_months,new_vs_phase8s
+surprise_magnitude,earnings,magnitude_score,0.0411,2.68,0.0066,0.6083,0.0016,True,False,29032,120,True
+positive_surprise_asymmetry,earnings,surprise_pos,0.0488,3.08,0.0051,0.5917,0.0002,True,True,28654,120,True
+surprise_x_quality,interaction,surprise_x_quality,0.047,2.97,0.0103,0.65,0.0054,True,False,26839,120,True
+surprise_sector_neutral,earnings,surprise_pct,0.0514,2.96,0.0108,0.6417,0.0058,True,True,27279,120,False

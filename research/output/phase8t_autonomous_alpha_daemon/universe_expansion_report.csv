@@ -1,0 +1,9 @@
+source,kind,tickers,has_local_prices,used_as_universe,note
+D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv,local_ohlcv_cache,301,True,True,phase7i broad priced universe - the current scoring ceiling
+D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv,scoreable_intersection,299,True,True,priced names with >=1 usable point-in-time earnings event
+D:/Stock_Prediction_app_data/phase7k_survivorship_data_foundation/wikipedia/list_of_sp500_companies.html,name_universe_only,523,False,False,S&P-500 constituent NAME list (Wikipedia) - no local OHLCV; EOD price acquisition required before these become scoreable
+D:/Stock_Prediction_app_data/phase7k_survivorship_data_foundation/sec_submissions,sec_submissions,13,False,False,raw SEC submission JSON (filing metadata) - not a price universe
+D:/Stock_Prediction_app_data/phase7k_survivorship_data_foundation/prices,broader_price_universe_probe,0,False,False,probed for a broader 500/1000/3000-name local price cache
+D:/Stock_Prediction_app_data/phase7j_broad_universe_signal_retest/prices,broader_price_universe_probe,0,False,False,probed for a broader 500/1000/3000-name local price cache
+D:/Stock_Prediction_app_data/research_panels,broader_price_universe_probe,0,False,False,probed for a broader 500/1000/3000-name local price cache
+expansion_plan,decision,301,False,False,No broader local OHLCV cache exists beyond the 301-name phase7i priced universe. Expansion requires a BOUNDED EODHD EOD-price acquisition for the S&P-500 name list (523 names) before those tickers can be scored. This is the gated next action - NOT an unbounded full-market download.

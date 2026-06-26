@@ -1,0 +1,9 @@
+check,result,detail
+report_date_not_before_fiscal_end,False,every announcement date is on/after its fiscal period end
+drop_future_announcements,True,dropped 287 events announced after as_of=2026-06-26
+require_realized_eps_actual,True,dropped 3 events with no realized eps_actual (unreported)
+fundamentals_asof_no_lookahead,True,fundamentals joined where filing_date <= report_date (as-of merge)
+macro_asof_no_lookahead,True,macro regime joined as-of report_date (backward)
+require_forward_prices,True,dropped 36 events lacking 21-day forward prices (entry strictly after announcement)
+entry_after_announcement,True,entry price = first cache close strictly after report_date; no announcement-day leak
+usable_events_present,True,29032 usable point-in-time earnings events across 299 tickers

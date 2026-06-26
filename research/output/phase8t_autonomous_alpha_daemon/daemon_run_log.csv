@@ -1,0 +1,16 @@
+step,status,detail,count
+prior,INFO,"Phase 8-S decision: ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW; promoted: sue_standardized, surprise_sector_neutral",
+start,INFO,live=True key_present=True max_tickers=500 max_requests=5000 max_cycles=8,
+universe,DONE,301 priced tickers; 1 targeted for refresh/repair,301
+acquire,DONE,acquired 0 / requests 1,0
+panels,DONE,29032 usable events / 299 tickers,29032
+diagnose,DONE,"301 priced, 299 scoreable, 2 unscoreable",2
+features,DONE,built extended signal set across earnings/fundamentals/price/regime/interaction families,34
+cycle,DONE,cycle 1 [earnings]: tested 8 scenarios (cumulative 8),8
+cycle,DONE,cycle 2 [fundamentals/valuation]: tested 11 scenarios (cumulative 19),19
+cycle,DONE,cycle 3 [price/context]: tested 6 scenarios (cumulative 25),25
+cycle,DONE,cycle 4 [regime-conditioned]: tested 5 scenarios (cumulative 30),30
+cycle,DONE,cycle 5 [earnings x cross-section]: tested 6 scenarios (cumulative 36),36
+cycle,DONE,cycle 6 [SUE/streak/accel + sector]: tested 7 scenarios (cumulative 43),43
+campaign,DONE,"6 cycles, 43 scenarios, 4 promoted, 39 rejected",4
+decision,DONE,MORE_ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW,

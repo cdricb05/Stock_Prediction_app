@@ -1,0 +1,42 @@
+{
+  "phase": "8-T",
+  "decision": "MORE_ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+    "MORE_ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+    "NO_ALPHA_FOUND_AFTER_EXHAUSTIVE_EODHD_CAMPAIGN",
+    "READY_FOR_NEXT_AUTONOMOUS_CYCLE",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR"
+  ],
+  "rationale": "4 signal(s) cleared every robustness gate (signed rank IC, t-stat, BH multiple-testing, quintile-spread hit-rate, net-of-25bps cost, sector/regime/subperiod robustness, placebo): surprise_magnitude, positive_surprise_asymmetry, surprise_x_quality, surprise_sector_neutral. 3 are NEW beyond the Phase 8-S pair. Surface as preview-only ranking signals for manual Paper Trader review - no orders.",
+  "alpha_found": true,
+  "additional_alpha_found": true,
+  "promoted_signals": [
+    "surprise_magnitude",
+    "positive_surprise_asymmetry",
+    "surprise_x_quality",
+    "surprise_sector_neutral"
+  ],
+  "new_signals_vs_phase8s": [
+    "surprise_magnitude",
+    "positive_surprise_asymmetry",
+    "surprise_x_quality"
+  ],
+  "best_scenario": "positive_surprise_asymmetry",
+  "best_scenario_ic": 0.0488,
+  "best_scenario_ic_t": 3.08,
+  "scoreable_tickers": 299,
+  "usable_events": 29032,
+  "cycles_run": 6,
+  "scenarios_tested": 43,
+  "preview_specs": 4,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "committed": false
+}

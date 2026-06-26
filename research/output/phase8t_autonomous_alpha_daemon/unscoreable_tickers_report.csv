@@ -1,0 +1,3 @@
+ticker,in_price_cache,has_earnings,has_fundamentals,scoreable,reason
+SNHIY,True,True,True,False,earnings + fundamentals present but no PIT-usable event (no quarter with a realized EPS whose announcement maps to a forward price window in the cache)
+SPY,True,False,False,False,no EODHD earnings acquired (fundamentals request returned no earnings history)

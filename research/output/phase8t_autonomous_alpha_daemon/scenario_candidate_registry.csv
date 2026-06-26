@@ -1,0 +1,44 @@
+cycle,family,scenario,signal,sector_neutral,regime_filter,exploratory,hypothesis,status
+1,earnings,earnings_surprise,surprise_pct,False,,False,raw EPS surprise -> post-earnings drift,rejected
+1,earnings,sue_standardized,sue,False,,False,standardized unexpected earnings -> drift (PEAD),rejected
+1,earnings,surprise_magnitude,magnitude_score,False,,False,bucketed surprise magnitude -> monotone drift,promoted
+1,earnings,positive_surprise_asymmetry,surprise_pos,False,,False,only positive surprises carry drift,promoted
+1,earnings,earnings_momentum,earnings_momentum,False,,False,YoY EPS growth momentum -> drift,rejected
+1,earnings,earnings_acceleration,earnings_accel,False,,False,acceleration in EPS growth -> drift,rejected
+1,earnings,beat_streak,beat_streak,False,,False,repeated consecutive beats -> continued drift,rejected
+1,earnings,surprise_fade,surprise_fade,False,,True,CHALLENGE: surprise reverses/fades (expect failure),rejected
+2,fundamentals,revenue_growth,rev_growth,True,,False,within-sector revenue growth -> drift,rejected
+2,fundamentals,earnings_growth,ni_growth,True,,False,within-sector net-income growth -> drift,rejected
+2,fundamentals,gross_margin,gross_margin,True,,False,high gross margin quality -> drift,rejected
+2,fundamentals,operating_margin,op_margin,True,,False,high operating margin quality -> drift,rejected
+2,fundamentals,fcf_margin,fcf_margin,True,,False,free-cash-flow margin quality -> drift,rejected
+2,fundamentals,roa_quality,roa,True,,False,return-on-assets quality -> drift,rejected
+2,fundamentals,low_leverage,low_debt,True,,False,low debt/assets (balance-sheet safety) -> drift,rejected
+2,fundamentals,quality_composite,quality_composite,True,,False,composite profitability/quality -> drift,rejected
+2,fundamentals,balance_sheet_strength,bs_strength,True,,False,"cash-rich, low-debt balance sheet -> drift",rejected
+2,fundamentals,quality_improvement,quality_improvement,True,,False,improving ROA + gross margin -> drift,rejected
+2,valuation,earnings_yield_value,earnings_yield,True,,False,cheap earnings yield -> drift,rejected
+3,price,price_momentum_21,mom_pre_21,False,,False,market-relative 21d momentum -> continuation,rejected
+3,price,price_momentum_63,mom_pre_63,False,,False,market-relative 63d momentum -> continuation,rejected
+3,price,low_volatility,low_vol,False,,False,low realized volatility -> better risk-adjusted drift,rejected
+3,price,low_beta,low_beta,False,,False,low market beta -> defensive drift,rejected
+3,price,liquidity,liquidity,False,,True,CHALLENGE: dollar-volume liquidity as a return signal,rejected
+3,price,sector_leadership,mom_pre_21,True,,False,within-sector momentum leadership -> drift,rejected
+4,regime,surprise_high_rates,surprise_pct,False,high_rates,False,surprise drift in the high-rate regime,rejected
+4,regime,surprise_easy_curve,surprise_pct,False,easy_regime,False,surprise drift when the curve is non-inverted,rejected
+4,regime,surprise_drawdown,surprise_pct,False,market_drawdown,False,surprise drift during market drawdowns,rejected
+4,regime,surprise_high_oil,surprise_pct,False,high_oil,True,surprise drift in the high-oil regime,rejected
+4,regime,sue_easy_curve,sue,False,easy_regime,False,SUE drift in supportive (steep-curve) regime,rejected
+5,interaction,surprise_x_quality,surprise_x_quality,False,,False,surprise confirmed by ROA quality,promoted
+5,interaction,surprise_x_qualimp,surprise_x_qualimp,False,,False,surprise confirmed by improving quality,rejected
+5,interaction,surprise_x_margin_exp,surprise_x_margin_exp,False,,False,surprise confirmed by margin expansion,rejected
+5,interaction,surprise_x_valuation,surprise_x_valuation,False,,False,surprise in cheap names,rejected
+5,interaction,surprise_x_momentum,surprise_x_mom,False,,False,surprise confirmed by price momentum,rejected
+5,interaction,surprise_x_lowvol,surprise_x_lowvol,False,,False,surprise concentrated in low-vol names,rejected
+6,interaction,sue_x_quality,sue_x_quality,False,,False,SUE confirmed by quality,rejected
+6,interaction,sue_x_momentum,sue_x_mom,False,,False,SUE confirmed by momentum,rejected
+6,interaction,beats_x_momentum,beats_x_mom,False,,False,beat streak confirmed by momentum,rejected
+6,interaction,accel_x_quality,accel_x_quality,False,,False,earnings acceleration confirmed by quality,rejected
+6,interaction,accel_x_momentum,accel_x_mom2,False,,False,earnings acceleration confirmed by 63d momentum,rejected
+6,earnings,surprise_sector_neutral,surprise_pct,True,,False,within-sector surprise ranking -> drift,promoted
+6,earnings,sue_sector_neutral,sue,True,,False,within-sector SUE ranking -> drift,rejected

@@ -1,0 +1,7 @@
+cycle,family,scenarios_tested_this_cycle,scenarios_tested_cumulative,candidates_remaining
+1,earnings,8,8,35
+2,fundamentals/valuation,11,19,24
+3,price/context,6,25,18
+4,regime-conditioned,5,30,13
+5,earnings x cross-section,6,36,7
+6,SUE/streak/accel + sector,7,43,0
