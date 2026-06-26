@@ -1,0 +1,10 @@
+question,why_it_matters
+"Does one EODHD subscription cover earnings, fundamentals, AND analyst data for the full S&P 500 (ideally 1000+ US tickers), not just a sample?",one key for 100-500+ tickers avoids stitching multiple providers
+How many years of quarterly earnings actual/estimate/surprise history are included per ticker?,backtests need >= 8-10y of history
+Do earnings records carry the original report/announcement date (reportDate) so a backtest only sees data available at the time?,PIT report dates are mandatory to avoid look-ahead bias
+Do fundamentals statements include the SEC filing_date (not just the fiscal period end)?,filing_date is the point-in-time availability date for fundamentals
+"Are analyst estimates/price-targets available with historical as-of dates, or only the current snapshot?",without as-of history the analyst families are not PIT-safe (the current analyst-ratings response is a snapshot only)
+"What are the per-minute and per-day request limits, and is there a bulk/EOD fundamentals feed to pull the universe in one job?",AV free (25/day) was unusable for broad coverage; we need a full refresh in <1 day
+"What is the exact monthly cost for the tier that meets the above, and is there a cheaper tier still covering earnings + fundamentals?",favor the cheapest tier covering the required families; reject over-provisioned tiers
+Do the license terms permit caching/storing normalized data locally for research (we never redistribute or commit payloads)?,we cache locally under gitignored trees; storage rights must be explicit
+"How quickly is data updated after an earnings release (real-time, T+1, or delayed)?",delayed fundamentals are unusable as a clean real-time PIT signal source

@@ -1,0 +1,10 @@
+axis,score,evidence
+data_family_breadth,strong_expected,single bundle covers earnings + fundamentals + analyst (4 families) + earnings calendar; documented in 8-Q paid matrix
+coverage_100_500_tickers,measured frac=1.00 over 32 probed tickers,"bounded probe prioritizes FMP-blocked + current universe; target is 500, min gate 20"
+history_depth,earnings rows>=24 or span>=8y required for depth,per-ticker depth recorded in probe results (historical_depth_sufficient)
+point_in_time_safety,earnings reportDate + fundamentals filing_date = PIT-safe; analyst snapshot NOT PIT,PIT readiness per family in eodhd_point_in_time_readiness.csv
+update_frequency,real_time_expected,EODHD updates fundamentals/earnings near real-time (unlike delayed SimFin) - confirm via procurement question
+schema_stability,documented_stable_expected,documented JSON schema; in-repo adapter maps earnings history / financial statements / analyst ratings
+bulk_batch_support,yes_expected,fundamentals bulk endpoint avoids 500 throttled calls (vs AV 25/day)
+api_request_limits,requests_made=64 within max_requests=100 this run,bounded run; confirm daily/minute caps and bulk allowance via procurement
+estimated_cost_tier,~$20-$80/mo,from 8-Q paid matrix only (no new quote collected); cheapest broad bundle

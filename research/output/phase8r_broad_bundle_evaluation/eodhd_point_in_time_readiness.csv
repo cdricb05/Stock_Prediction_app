@@ -1,0 +1,6 @@
+endpoint_family,point_in_time_basis,pit_safe_design,tickers_point_in_time_safe,tickers_attempted
+earnings_history,reportDate (earnings announcement date) = PIT-safe,True,32,32
+earnings_calendar,report_date (calendar) = PIT-safe,True,0,32
+fundamentals_statements,filing_date (SEC filing) = PIT-safe when present,True,32,32
+analyst_estimates,estimate trend is revised; no clean as-of history = NOT PIT-safe,False,0,32
+analyst_ratings,current recommendation/target snapshot only = NOT PIT-safe,False,0,32

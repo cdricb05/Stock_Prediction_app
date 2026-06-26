@@ -1,0 +1,4 @@
+provider,role,monthly_cost,covers_broad_earnings,point_in_time,decision,rationale
+EODHD,core earnings/fundamentals/analyst bundle (test-first),~$20-$80/mo,True,True,EODHD_ACCEPT_AS_CORE_PROVIDER,"EODHD delivered backtest-usable, point-in-time earnings coverage for 100% of the probed tickers (>= 80% accept gate); accept it as the core data provider."
+FMP Premium,fallback if EODHD fails,~$69/mo,yes (documented),yes,ON_STANDBY,evaluate only if EODHD rejected; adapter already mapped in-repo
+FMP Ultimate,rejected,most expensive,yes (over-provisioned),yes,REJECTED,no evidence requires the Ultimate tier (8-O/8-Q)

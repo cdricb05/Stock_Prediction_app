@@ -1,0 +1,6 @@
+endpoint_family,tickers_attempted,tickers_with_data,tickers_point_in_time_safe,tickers_backtest_usable,coverage_fraction
+earnings_history,32,32,32,32,1.0
+earnings_calendar,32,0,0,0,0.0
+fundamentals_statements,32,32,32,32,1.0
+analyst_estimates,32,32,0,0,1.0
+analyst_ratings,32,32,0,0,1.0

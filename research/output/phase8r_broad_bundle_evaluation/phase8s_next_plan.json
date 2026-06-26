@@ -1,0 +1,17 @@
+{
+  "phase": "8-S",
+  "title": "Build the EODHD adapter + broad point-in-time earnings panel",
+  "depends_on_decision": "EODHD_ACCEPT_AS_CORE_PROVIDER",
+  "fmp_premium_fallback_recommended": false,
+  "fmp_ultimate_rejected": true,
+  "objective": "EODHD met the accept gate: build the in-repo adapter and ingest a broad PIT earnings panel (bounded, gitignored), then resume earnings-surprise signal scoring.",
+  "test_first_provider": "EODHD",
+  "fallback_provider": "FMP Premium (plan-only until upgrade)",
+  "do_not_run_full_sp500_backfill": true,
+  "next_command": "python research/run_phase8s_eodhd_broad_earnings_panel.py --live   (build the EODHD adapter + broad PIT earnings panel, then resume signal scoring)",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "committed": false
+}

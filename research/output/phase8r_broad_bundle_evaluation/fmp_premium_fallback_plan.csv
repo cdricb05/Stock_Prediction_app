@@ -1,0 +1,7 @@
+item,value,detail
+trigger_condition,ON_STANDBY,evaluate FMP Premium ONLY if EODHD is rejected on coverage/PIT/history/plan-block
+provider,FMP Premium,adapter already mapped in-repo (8-N); ~$69/mo
+families_covered,earnings + fundamentals + analyst (6 critical),same critical families EODHD targets; live only if user upgrades FMP access
+evaluation_mode,PLAN_ONLY_UNTIL_UPGRADE,do NOT run FMP Premium live unless the user explicitly provides upgraded access
+fmp_ultimate,REJECTED,8-O/8-Q: no evidence requires the Ultimate tier; not evaluated
+next_command_if_triggered,$env:FMP_API_KEY = '<UPGRADED_FMP_PREMIUM_KEY>'; python research/run_phase8r_broad_bundle_evaluation.py --live --provider fmp_premium,"fallback path; bounded, same coverage/PIT criteria"
