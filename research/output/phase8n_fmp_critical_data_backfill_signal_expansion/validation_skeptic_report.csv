@@ -1,0 +1,6 @@
+check,verdict,detail
+sample_size_adequate,FAIL,0/6 signal(s) meet the 20-ticker minimum to score; below that nothing is scored
+no_alpha_without_coverage,PASS,no signal is marked CONFIRMED/PROMISING unless coverage >= minimum AND a real scoring result was supplied (no fabricated alpha)
+single_name_concentration,WATCH,universe=17; cross-sectional cohorts need breadth before any score is trusted
+look_ahead_pit_safety,PASS,normalization keeps the announcement/published availability date; as-of joins only
+overfitting_risk_taken,NONE,0 signal(s) currently carry an alpha verdict

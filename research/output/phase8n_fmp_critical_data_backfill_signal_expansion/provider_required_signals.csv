@@ -1,0 +1,7 @@
+signal_id,name,required_family,required_family_status,tickers_covered,n_universe,verdict,detail
+S8N-EARNSURP-RATES,positive_earnings_surprise x rates_sensitivity,earnings_surprises,COLLECTED,8,17,INSUFFICIENT_COVERAGE,coverage 8/17 ticker(s) < 20 required to score; collect next FMP batch
+S8N-EARNSURP-SECTOR,positive_earnings_surprise x sector_leadership,earnings_surprises,COLLECTED,8,17,INSUFFICIENT_COVERAGE,coverage 8/17 ticker(s) < 20 required to score; collect next FMP batch
+S8N-ESTREV-RATES,analyst_estimate_revision x sensitivity,analyst_estimates,COLLECTED,8,17,INSUFFICIENT_COVERAGE,coverage 8/17 ticker(s) < 20 required to score; collect next FMP batch
+S8N-RECCHG-SECTOR,analyst_recommendation_change x sector_leadership,analyst_recommendations,COLLECTED,8,17,INSUFFICIENT_COVERAGE,coverage 8/17 ticker(s) < 20 required to score; collect next FMP batch
+S8N-PTREV-SENS,price_target_revision x sensitivity_cohort,analyst_price_targets,COLLECTED,8,17,INSUFFICIENT_COVERAGE,coverage 8/17 ticker(s) < 20 required to score; collect next FMP batch
+S8N-GRADES-SENS,ratings_grades_consensus x sensitivity_cohort,ratings_grades_consensus,COLLECTED,8,17,INSUFFICIENT_COVERAGE,coverage 8/17 ticker(s) < 20 required to score; collect next FMP batch

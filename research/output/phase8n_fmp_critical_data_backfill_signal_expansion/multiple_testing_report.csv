@@ -1,0 +1,5 @@
+item,value,detail
+hypotheses_defined,6,the six provider-expanded signals
+hypotheses_scored_for_alpha,0,only signals with sufficient coverage AND a wired scorer are alpha-scored
+multiple_testing_method,Benjamini-Hochberg (planned),applied at scoring time; with 0 alpha-scored signals there is nothing to correct yet (no selection has occurred)
+family_wise_selection_taken,False,no signal was selected on a fabricated score

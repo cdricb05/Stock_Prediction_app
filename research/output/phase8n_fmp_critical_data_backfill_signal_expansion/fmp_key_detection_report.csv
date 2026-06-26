@@ -1,0 +1,6 @@
+check,value,detail
+api_key_env_var,FMP_API_KEY,the only source of the key
+api_key_present,True,read from environment only; never printed
+live_requested,True,whether --live was passed
+acquisition_executed,True,true if a transport was injected (tests) or --live AND key present
+mode,live_backfill,offline mode normalizes existing cache only

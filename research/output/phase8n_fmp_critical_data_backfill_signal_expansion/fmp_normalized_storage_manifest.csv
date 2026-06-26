@@ -1,0 +1,7 @@
+path,endpoint_family,gitignored,committed,exists,normalized_rows
+research/data/fmp/normalized/earnings_surprises.csv,earnings_surprises,yes,no,yes,1112
+research/data/fmp/normalized/earnings_calendar.csv,earnings_calendar,yes,no,yes,1112
+research/data/fmp/normalized/analyst_estimates.csv,analyst_estimates,yes,no,yes,80
+research/data/fmp/normalized/analyst_recommendations.csv,analyst_recommendations,yes,no,yes,7534
+research/data/fmp/normalized/analyst_price_targets.csv,analyst_price_targets,yes,no,yes,8
+research/data/fmp/normalized/ratings_grades_consensus.csv,ratings_grades_consensus,yes,no,yes,8

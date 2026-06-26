@@ -1,0 +1,1 @@
+trade_idea_id,signal_id,name,required_data_families,validation_status,tickers_covered,whether_trade_ready,reason_not_trade_ready,next_validation_step

@@ -1,0 +1,7 @@
+path,endpoint_family,gitignored,committed,file_count,tickers
+research/data/fmp/raw/earnings_surprises,earnings_surprises,yes,no,8,AAPL.json;ABBV.json;ADBE.json;AMD.json;AMZN.json;JPM.json;MSFT.json;NVDA.json
+research/data/fmp/raw/earnings_calendar,earnings_calendar,yes,no,8,AAPL.json;ABBV.json;ADBE.json;AMD.json;AMZN.json;JPM.json;MSFT.json;NVDA.json
+research/data/fmp/raw/analyst_estimates,analyst_estimates,yes,no,8,AAPL.json;ABBV.json;ADBE.json;AMD.json;AMZN.json;JPM.json;MSFT.json;NVDA.json
+research/data/fmp/raw/analyst_recommendations,analyst_recommendations,yes,no,8,AAPL.json;ABBV.json;ADBE.json;AMD.json;AMZN.json;JPM.json;MSFT.json;NVDA.json
+research/data/fmp/raw/analyst_price_targets,analyst_price_targets,yes,no,8,AAPL.json;ABBV.json;ADBE.json;AMD.json;AMZN.json;JPM.json;MSFT.json;NVDA.json
+research/data/fmp/raw/ratings_grades_consensus,ratings_grades_consensus,yes,no,8,AAPL.json;ABBV.json;ADBE.json;AMD.json;AMZN.json;JPM.json;MSFT.json;NVDA.json

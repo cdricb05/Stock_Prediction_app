@@ -1,0 +1,17 @@
+ticker,source_family,n_events,first_event_date,last_event_date,has_actual_eps_field,has_estimate_eps_field
+AAPL,earnings_surprises,164,1985-09-30,2026-07-30,True,True
+MSFT,earnings_surprises,164,1985-09-30,2026-07-29,True,True
+NVDA,earnings_surprises,109,1999-05-18,2026-08-26,True,True
+ABBV,earnings_surprises,62,2011-03-31,2026-07-30,True,True
+ADBE,earnings_surprises,163,1986-02-28,2026-09-10,True,True
+AMD,earnings_surprises,164,1985-09-30,2026-08-04,True,True
+AMZN,earnings_surprises,122,1996-03-31,2026-07-30,True,True
+JPM,earnings_surprises,164,1985-09-30,2026-07-14,True,True
+AAPL,earnings_calendar,164,1985-09-30,2026-07-30,True,True
+MSFT,earnings_calendar,164,1985-09-30,2026-07-29,True,True
+NVDA,earnings_calendar,109,1999-05-18,2026-08-26,True,True
+ABBV,earnings_calendar,62,2011-03-31,2026-07-30,True,True
+ADBE,earnings_calendar,163,1986-02-28,2026-09-10,True,True
+AMD,earnings_calendar,164,1985-09-30,2026-08-04,True,True
+AMZN,earnings_calendar,122,1996-03-31,2026-07-30,True,True
+JPM,earnings_calendar,164,1985-09-30,2026-07-14,True,True

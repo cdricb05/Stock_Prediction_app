@@ -1,0 +1,7 @@
+endpoint_family,critical,attempted,blocked_402_403,block_fraction,pattern,sample_blocked_tickers,interpretation
+earnings_surprises,True,12,9,0.75,SYSTEMATIC,ABT;ACN;ADI;ADP;AMAT;AMGN;AON;APD;APH,most attempts 402/403-blocked - this family is short on the current plan
+earnings_calendar,True,14,9,0.6429,SYSTEMATIC,ABT;ACN;ADI;ADP;AMAT;AMGN;AON;APD;APH,most attempts 402/403-blocked - this family is short on the current plan
+analyst_estimates,True,14,9,0.6429,SYSTEMATIC,ABT;ACN;ADI;ADP;AMAT;AMGN;AON;APD;APH,most attempts 402/403-blocked - this family is short on the current plan
+analyst_recommendations,True,14,9,0.6429,SYSTEMATIC,ABT;ACN;ADI;ADP;AMAT;AMGN;AON;APD;APH,most attempts 402/403-blocked - this family is short on the current plan
+analyst_price_targets,True,14,9,0.6429,SYSTEMATIC,ABT;ACN;ADI;ADP;AMAT;AMGN;AON;APD;APH,most attempts 402/403-blocked - this family is short on the current plan
+ratings_grades_consensus,True,14,9,0.6429,SYSTEMATIC,ABT;ACN;ADI;ADP;AMAT;AMGN;AON;APD;APH,most attempts 402/403-blocked - this family is short on the current plan

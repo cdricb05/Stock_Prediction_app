@@ -1,0 +1,73 @@
+{
+  "phase": "8-N",
+  "decision": "FMP_PLAN_COVERAGE_INSUFFICIENT",
+  "decision_allowed_values": [
+    "PROVIDER_EXPANDED_CONFIRMED_ALPHA_FOUND",
+    "PROVIDER_EXPANDED_PROMISING_ALPHA_FOUND",
+    "READY_FOR_NEXT_FMP_BATCH",
+    "NEEDS_MORE_FMP_COVERAGE",
+    "BLOCKED_MISSING_FMP_KEY",
+    "PROVIDER_EXPANSION_REJECTED",
+    "ERROR",
+    "READY_FOR_PROVIDER_EXPANDED_SIGNAL_SCORING",
+    "FMP_PLAN_COVERAGE_INSUFFICIENT",
+    "MIXED_FMP_COVERAGE_NEEDS_ALTERNATIVE_EARNINGS_SOURCE"
+  ],
+  "decision_is_terminal": true,
+  "depends_on_phase8m": "CURRENT_FMP_ACCESS_SUFFICIENT_FOR_CRITICAL_FAMILIES",
+  "mode": "live_backfill",
+  "api_key_present": true,
+  "universe_size": 17,
+  "universe_source": "current_collected_universe",
+  "critical_family_status": {
+    "earnings_surprises": "COLLECTED",
+    "earnings_calendar": "COLLECTED",
+    "analyst_estimates": "COLLECTED",
+    "analyst_recommendations": "COLLECTED",
+    "analyst_price_targets": "COLLECTED",
+    "ratings_grades_consensus": "COLLECTED"
+  },
+  "critical_family_coverage": {
+    "earnings_surprises": 8,
+    "earnings_calendar": 8,
+    "analyst_estimates": 8,
+    "analyst_recommendations": 8,
+    "analyst_price_targets": 8,
+    "ratings_grades_consensus": 8
+  },
+  "critical_family_entitlement": {
+    "earnings_surprises": "PARTIAL",
+    "earnings_calendar": "PARTIAL",
+    "analyst_estimates": "PARTIAL",
+    "analyst_recommendations": "PARTIAL",
+    "analyst_price_targets": "PARTIAL",
+    "ratings_grades_consensus": "PARTIAL"
+  },
+  "min_tickers_to_score": 20,
+  "families_ready_to_score": [],
+  "missing_blocked_families": [
+    "earnings_surprises",
+    "earnings_calendar",
+    "analyst_estimates",
+    "analyst_recommendations",
+    "analyst_price_targets",
+    "ratings_grades_consensus"
+  ],
+  "provider_upgrade_decision": "UPGRADE_NOT_RECOMMENDED_USE_ALTERNATIVE",
+  "cheaper_provider_alternatives_recommended": true,
+  "stopped_early": false,
+  "stop_reason": "",
+  "continue_on_subscription_block": true,
+  "confirmed_signals": [],
+  "promising_signals": [],
+  "trade_ready": false,
+  "next_fmp_batch_required": false,
+  "no_alpha_fabricated": true,
+  "exact_next_command": "Most critical families are 402-blocked on the current FMP plan; see fmp_cheaper_provider_alternative_report.csv and fmp_provider_upgrade_decision.csv - activate the cheapest provider that solves each missing family (do NOT default to an FMP Ultimate upgrade).",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "deployed": false,
+  "committed": false
+}

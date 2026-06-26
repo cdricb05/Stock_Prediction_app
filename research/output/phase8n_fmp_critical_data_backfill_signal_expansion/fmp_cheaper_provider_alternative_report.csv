@@ -1,0 +1,16 @@
+missing_family,candidate_provider,plan_tier,approx_monthly_cost,covers_family,locally_mapped,notes,recommended
+earnings_surprises,Alpha Vantage,free / Premium,free (25 req/day) or ~$50/mo,yes,AV adapter referenced in repo,cheapest route to EPS actual-vs-estimate surprise (cheapest source that solves the specific missing family is preferred),True
+earnings_surprises,Finnhub,free / ~$50,free (60 req/min) or ~$50/mo,yes,no,fallback if no Alpha Vantage key (cheapest source that solves the specific missing family is preferred),False
+earnings_surprises,EODHD,All-World/Fundamentals,~$20-$80/mo,yes,only if already mapped (not confirmed in repo),use only if an EODHD mapping already exists (cheapest source that solves the specific missing family is preferred),False
+earnings_surprises,FMP upgrade,Starter/Premium,~$22-$69/mo,likely,yes (this adapter),only if no cheaper source supplies EPS surprise PIT (cheapest source that solves the specific missing family is preferred),False
+earnings_calendar,Alpha Vantage,free / Premium,free (25 req/day) or ~$50/mo,yes,AV adapter referenced in repo,cheapest earnings-date calendar (cheapest source that solves the specific missing family is preferred),True
+earnings_calendar,Finnhub,free / ~$50,free (60 req/min) or ~$50/mo,yes,no,fallback (cheapest source that solves the specific missing family is preferred),False
+earnings_calendar,FMP upgrade,Starter/Premium,~$22-$69/mo,likely,yes (this adapter),only if alternatives fail (cheapest source that solves the specific missing family is preferred),False
+analyst_estimates,Finnhub,free / ~$50,free (60 req/min) or ~$50/mo,partial (consensus/estimates),no,cheapest analyst-estimate proxy (cheapest source that solves the specific missing family is preferred),True
+analyst_estimates,FMP upgrade,Premium,~$69/mo,yes,yes (this adapter),richest forward consensus; only if Finnhub is insufficient (cheapest source that solves the specific missing family is preferred),False
+analyst_recommendations,Finnhub,free / ~$50,free (60 req/min) or ~$50/mo,yes,no,cheapest buy/hold/sell trend source (cheapest source that solves the specific missing family is preferred),True
+analyst_recommendations,FMP upgrade,Premium,~$69/mo,yes,yes (this adapter),per-analyst grade changes; only if Finnhub trends are too coarse (cheapest source that solves the specific missing family is preferred),False
+analyst_price_targets,Finnhub,free / ~$50,free (60 req/min) or ~$50/mo,yes,no,cheapest price-target source (cheapest source that solves the specific missing family is preferred),True
+analyst_price_targets,FMP upgrade,Premium,~$69/mo,yes,yes (this adapter),only if Finnhub targets are insufficient (cheapest source that solves the specific missing family is preferred),False
+ratings_grades_consensus,Finnhub,free / ~$50,free (60 req/min) or ~$50/mo,partial (consensus),no,consensus proxy (cheapest source that solves the specific missing family is preferred),True
+ratings_grades_consensus,FMP upgrade,Premium,~$69/mo,yes,yes (this adapter),explicit consensus grades; only if the proxy is insufficient (cheapest source that solves the specific missing family is preferred),False

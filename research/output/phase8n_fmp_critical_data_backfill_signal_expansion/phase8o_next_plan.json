@@ -1,0 +1,19 @@
+{
+  "phase": "8-O",
+  "title": "Provider-Expanded Signal Confirmation / Next FMP Batch",
+  "depends_on_decision": "FMP_PLAN_COVERAGE_INSUFFICIENT",
+  "objective": "If the next FMP batch is required, collect the next bounded set of tickers for the critical families and re-score; if a signal is confirmed/promising, run walk-forward + tail-repair confirmation and promote it into the trade-idea registry.",
+  "next_command": "Most critical families are 402-blocked on the current FMP plan; see fmp_cheaper_provider_alternative_report.csv and fmp_provider_upgrade_decision.csv - activate the cheapest provider that solves each missing family (do NOT default to an FMP Ultimate upgrade).",
+  "bounded_limits": {
+    "max_tickers": 25,
+    "max_endpoint_families": 6,
+    "max_requests": 150,
+    "skip_existing": true
+  },
+  "min_tickers_to_score": 20,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "committed": false
+}

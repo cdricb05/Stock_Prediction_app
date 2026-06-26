@@ -1,0 +1,8 @@
+endpoint_family,entitlement,coverage,recommended_action,rationale
+earnings_surprises,PARTIAL,8,USE_ALTERNATIVE,entitlement PARTIAL; cheaper alternative (Alpha Vantage) covers this family - do not upgrade FMP for it
+earnings_calendar,PARTIAL,8,USE_ALTERNATIVE,entitlement PARTIAL; cheaper alternative (Alpha Vantage) covers this family - do not upgrade FMP for it
+analyst_estimates,PARTIAL,8,USE_ALTERNATIVE,entitlement PARTIAL; cheaper alternative (Finnhub) covers this family - do not upgrade FMP for it
+analyst_recommendations,PARTIAL,8,USE_ALTERNATIVE,entitlement PARTIAL; cheaper alternative (Finnhub) covers this family - do not upgrade FMP for it
+analyst_price_targets,PARTIAL,8,USE_ALTERNATIVE,entitlement PARTIAL; cheaper alternative (Finnhub) covers this family - do not upgrade FMP for it
+ratings_grades_consensus,PARTIAL,8,USE_ALTERNATIVE,entitlement PARTIAL; cheaper alternative (Finnhub) covers this family - do not upgrade FMP for it
+__overall__,,,UPGRADE_NOT_RECOMMENDED_USE_ALTERNATIVE,"6 critical family(ies) are 402/403-blocked, but each has a cheaper non-FMP alternative (Alpha Vantage / Finnhub); activate those rather than upgrading FMP (Ultimate tier NOT justified)"

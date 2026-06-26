@@ -1,0 +1,7 @@
+endpoint_family,critical,attempted,collected,cached,empty,blocked_402_403,auth_401,rate_429,endpoint_error,coverage,entitlement,ready_to_score,broadly_blocked
+earnings_surprises,True,12,3,5,0,9,0,0,0,8,PARTIAL,False,True
+earnings_calendar,True,14,5,3,0,9,0,0,0,8,PARTIAL,False,True
+analyst_estimates,True,14,5,3,0,9,0,0,0,8,PARTIAL,False,True
+analyst_recommendations,True,14,5,3,0,9,0,0,0,8,PARTIAL,False,True
+analyst_price_targets,True,14,5,3,0,9,0,0,0,8,PARTIAL,False,True
+ratings_grades_consensus,True,14,5,3,0,9,0,0,0,8,PARTIAL,False,True
