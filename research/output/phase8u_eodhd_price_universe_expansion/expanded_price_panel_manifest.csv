@@ -1,0 +1,7 @@
+metric,value
+base_price_csv,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv
+base_tickers,301
+new_tickers,0
+total_tickers,301
+expanded_panel,D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv
+is_expanded,False

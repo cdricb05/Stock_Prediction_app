@@ -1,0 +1,121 @@
+{
+  "phase": "8-U",
+  "objective": "Bounded EODHD EOD-price universe expansion: parse the S&P-500 list, diff against the local price cache, acquire prices for the missing names, build an expanded price panel, rerun the Phase 8-T scoring core, and compare the promoted alpha before vs after. Preview-only; no orders.",
+  "provider": "EODHD",
+  "api_key_env_var": "EODHD_API_KEY",
+  "builds_on_phase8t_decision": "MORE_ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW",
+  "phase8t_promoted": [
+    "surprise_magnitude",
+    "positive_surprise_asymmetry",
+    "surprise_x_quality",
+    "surprise_sector_neutral"
+  ],
+  "eodhd_key_present": false,
+  "api_key_logged": false,
+  "mode": "offline_rerun_cached",
+  "as_of": "2026-06-26",
+  "start_date": "2016-01-01",
+  "bounded_limits": {
+    "max_tickers": 250,
+    "max_requests": 500,
+    "max_cycles": 8,
+    "skip_existing": true,
+    "checkpoint_every": 50
+  },
+  "universe": {
+    "sp500_name_list": 504,
+    "priced_tickers": 301,
+    "missing_price_tickers": 294,
+    "missing_with_earnings_cache": 0,
+    "missing_need_earnings_too": 294
+  },
+  "acquisition": {
+    "executed": false,
+    "requests_made": 0,
+    "prices_acquired": 0,
+    "stopped_early": false,
+    "stop_reason": "no live key (offline rerun on cached prices)"
+  },
+  "expanded_panel": {
+    "base_price_csv": "D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv",
+    "base_tickers": 301,
+    "new_tickers": 0,
+    "total_tickers": 301,
+    "expanded_panel": "D:/Stock_Prediction_app_data/phase7i_broad_universe/prices/phase7i_broad_price_history_free.csv",
+    "is_expanded": false
+  },
+  "before": {
+    "scoreable_tickers": 299,
+    "usable_events": 29032,
+    "promoted_signals": [
+      "surprise_magnitude",
+      "positive_surprise_asymmetry",
+      "surprise_x_quality",
+      "surprise_sector_neutral"
+    ]
+  },
+  "after": {
+    "scoreable_tickers": 299,
+    "usable_events": 29032,
+    "promoted_signals": [
+      "surprise_magnitude",
+      "positive_surprise_asymmetry",
+      "surprise_x_quality",
+      "surprise_sector_neutral"
+    ]
+  },
+  "scoreable_delta": 0,
+  "surprise_sector_neutral_survives": true,
+  "surprise_x_quality_survives": true,
+  "new_alpha_on_expanded_universe": [],
+  "new_alpha_found": false,
+  "scenarios_tested": 43,
+  "decision": "READY_FOR_NEXT_PRICE_BATCH",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "EXPANDED_UNIVERSE_ALPHA_CONFIRMED",
+    "EXPANDED_UNIVERSE_WEAKENS_ALPHA",
+    "READY_FOR_NEXT_PRICE_BATCH",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR"
+  ],
+  "decision_rationale": "Price expansion did not enlarge the scoreable cross-section (still 299 tickers): no EOD prices were acquired this run (offline, or all missing names already cached); set EODHD_API_KEY and re-run --live to fetch the bounded next price batch. 294 S&P-500 name(s) remain without local prices. The honest next batch must acquire EOD prices AND EODHD fundamentals for the same new names before the universe can be scored wider. Preview-only, no orders.",
+  "blockers": "",
+  "recommended_next_command": "$env:EODHD_API_KEY = '<PAID_EODHD_KEY>'; python research/run_phase8u_eodhd_price_universe_expansion.py --live --max-tickers 250 --max-requests 500 --start-date 2016-01-01   (acquire the bounded next price batch; pair with an 8-S fundamentals top-up for the same 294 names so they become scoreable)",
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 15,
+  "raw_dir_gitignored": "research/data/eodhd",
+  "outputs": {
+    "report": "research/output/phase8u_eodhd_price_universe_expansion/phase8u_eodhd_price_universe_expansion.json",
+    "run_log": "research/output/phase8u_eodhd_price_universe_expansion/phase8u_run_log.csv",
+    "sp500_extraction": "research/output/phase8u_eodhd_price_universe_expansion/sp500_name_list_extraction.csv",
+    "existing_coverage": "research/output/phase8u_eodhd_price_universe_expansion/existing_price_coverage.csv",
+    "missing_tickers": "research/output/phase8u_eodhd_price_universe_expansion/missing_price_tickers.csv",
+    "acq_progress": "research/output/phase8u_eodhd_price_universe_expansion/price_acquisition_progress.csv",
+    "raw_manifest": "research/output/phase8u_eodhd_price_universe_expansion/raw_price_storage_manifest.csv",
+    "norm_manifest": "research/output/phase8u_eodhd_price_universe_expansion/normalized_price_storage_manifest.csv",
+    "panel_manifest": "research/output/phase8u_eodhd_price_universe_expansion/expanded_price_panel_manifest.csv",
+    "ba_coverage": "research/output/phase8u_eodhd_price_universe_expansion/before_after_scoreable_coverage.csv",
+    "ba_alpha": "research/output/phase8u_eodhd_price_universe_expansion/before_after_alpha_comparison.csv",
+    "scoreboard": "research/output/phase8u_eodhd_price_universe_expansion/expanded_universe_scenario_scoreboard.csv",
+    "promoted": "research/output/phase8u_eodhd_price_universe_expansion/expanded_universe_promoted_signals.csv",
+    "rejected": "research/output/phase8u_eodhd_price_universe_expansion/expanded_universe_rejected_signals.csv",
+    "robustness_delta": "research/output/phase8u_eodhd_price_universe_expansion/robustness_delta_report.csv",
+    "next_plan": "research/output/phase8u_eodhd_price_universe_expansion/phase8v_next_plan.json",
+    "secret_audit": "research/output/phase8u_eodhd_price_universe_expansion/secret_safety_audit.csv"
+  },
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "deployed": false,
+  "data_fabricated": false,
+  "alpha_fabricated": false,
+  "raw_paid_data_in_artifacts": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

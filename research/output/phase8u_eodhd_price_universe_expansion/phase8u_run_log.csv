@@ -1,0 +1,17 @@
+step,status,detail,count
+prior,INFO,"Phase 8-T decision: MORE_ALPHA_FOUND_READY_FOR_PAPER_TRADER_REVIEW; promoted: surprise_magnitude, positive_surprise_asymmetry, surprise_x_quality, surprise_sector_neutral",
+start,INFO,live=False key_present=False max_tickers=250 max_requests=500 start=2016-01-01,
+diff,DONE,sp500=504 priced=301 missing=294 (of which 0 already have earnings),294
+acquire_eod,SKIP,no live key (offline rerun on cached prices),0
+expand_panel,SKIP,no new prices acquired; base cache is the panel,301
+core_before,DONE,29032 usable events / 299 scoreable tickers,29032
+features,DONE,built extended signal set across earnings/fundamentals/price/regime/interaction families,34
+cycle,DONE,cycle 1 [earnings]: tested 8 scenarios (cumulative 8),8
+cycle,DONE,cycle 2 [fundamentals/valuation]: tested 11 scenarios (cumulative 19),19
+cycle,DONE,cycle 3 [price/context]: tested 6 scenarios (cumulative 25),25
+cycle,DONE,cycle 4 [regime-conditioned]: tested 5 scenarios (cumulative 30),30
+cycle,DONE,cycle 5 [earnings x cross-section]: tested 6 scenarios (cumulative 36),36
+cycle,DONE,cycle 6 [SUE/streak/accel + sector]: tested 7 scenarios (cumulative 43),43
+campaign,DONE,"6 cycles, 43 scenarios, 4 promoted, 39 rejected",4
+core_after,REUSE,expanded panel == base; AFTER reuses BEFORE,
+decision,DONE,READY_FOR_NEXT_PRICE_BATCH,

@@ -1,0 +1,11 @@
+{
+  "phase": "8-V",
+  "title": "Acquire the next bounded price+fundamentals batch, then re-test",
+  "depends_on_decision": "READY_FOR_NEXT_PRICE_BATCH",
+  "next_command": "$env:EODHD_API_KEY = '<PAID_EODHD_KEY>'; python research/run_phase8u_eodhd_price_universe_expansion.py --live --max-tickers 250 --max-requests 500 --start-date 2016-01-01   (acquire the bounded next price batch; pair with an 8-S fundamentals top-up for the same 294 names so they become scoreable)",
+  "missing_price_names": 294,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "committed": false
+}
