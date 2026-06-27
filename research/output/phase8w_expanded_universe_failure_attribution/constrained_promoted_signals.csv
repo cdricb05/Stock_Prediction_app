@@ -1,0 +1,5 @@
+variant,signal,sector_constrained,mean_ic,ic_t,mean_spread,net_spread_25bps,net_spread_50bps,spread_hit_rate,subperiod_stable,n_events,n_months,rationale
+old_cohort_only,surprise_pct,False,0.0514,2.96,0.0108,0.0058,0.0009,0.6417,True,27279,120,within-sector surprise drift restricted to the original 299-ticker cohort
+high_liquidity_only,surprise_pct,False,0.0386,2.27,0.008,0.003,-0.002,0.5917,True,18973,120,surprise drift among the most-tradable (top-half dollar-volume) names
+top_sector_only,surprise_pct,True,0.0961,2.46,0.0154,0.0106,0.0058,0.6081,True,2672,74,surprise drift inside the single best-contributing sector (Information Technology)
+sector_neutral_within_old_cohort,surprise_pct,False,0.0514,2.96,0.0108,0.0058,0.0009,0.6417,True,27279,120,sector-neutral surprise ranking inside the original cohort only

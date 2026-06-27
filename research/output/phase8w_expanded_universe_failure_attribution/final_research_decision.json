@@ -1,0 +1,71 @@
+{
+  "phase": "8-W",
+  "decision": "CONSTRAINED_ALPHA_SURVIVES",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "CONSTRAINED_ALPHA_SURVIVES",
+    "ALPHA_REJECTED_AFTER_EXPANSION",
+    "NEEDS_ADDITIONAL_DIAGNOSTIC",
+    "ERROR"
+  ],
+  "rationale": "A constrained alpha SURVIVES the expansion: 4 variant(s) clear the full 8-T promotion gate (25bps cost, positive spread, subperiod stability, BH q=0.10): high_liquidity_only, old_cohort_only, sector_neutral_within_old_cohort, top_sector_only. The newly-acquired cohort carries materially weaker post-earnings drift than the original cohort (focus signal surprise_sector_neutral: old-cohort IC 0.0514 vs new-cohort IC -0.0076), so pooling the two halves DILUTES the combined IC (0.0202). The expansion did not break the signal in the original names - it added low-information names that average it down. These are CONSTRAINED/exploratory reads (restricted cross-section), not unconditional alpha - preview-only, no orders.",
+  "main_reason_alpha_weakened": "The newly-acquired cohort carries materially weaker post-earnings drift than the original cohort (focus signal surprise_sector_neutral: old-cohort IC 0.0514 vs new-cohort IC -0.0076), so pooling the two halves DILUTES the combined IC (0.0202). The expansion did not break the signal in the original names - it added low-information names that average it down.",
+  "primary_focus_signal": "surprise_sector_neutral",
+  "focus_cohort_performance": {
+    "old_cohort": {
+      "mean_ic": 0.0514,
+      "ic_t": 2.96,
+      "n_events": 27279,
+      "net_spread_25bps": 0.0058
+    },
+    "new_cohort": {
+      "mean_ic": -0.0076,
+      "ic_t": -0.41,
+      "n_events": 9583,
+      "net_spread_25bps": -0.007
+    },
+    "combined": {
+      "mean_ic": 0.0202,
+      "ic_t": 1.43,
+      "n_events": 36862,
+      "net_spread_25bps": -0.0025
+    }
+  },
+  "surprise_x_quality_cohort_performance": {
+    "old_cohort": {
+      "mean_ic": 0.0471,
+      "ic_t": 2.99,
+      "n_events": 26839,
+      "net_spread_25bps": 0.005
+    },
+    "new_cohort": {
+      "mean_ic": -0.0065,
+      "ic_t": -0.35,
+      "n_events": 9581,
+      "net_spread_25bps": -0.0074
+    },
+    "combined": {
+      "mean_ic": 0.0249,
+      "ic_t": 1.78,
+      "n_events": 36420,
+      "net_spread_25bps": -0.002
+    }
+  },
+  "constrained_alpha_survives": true,
+  "constrained_promoted_variants": [
+    "high_liquidity_only",
+    "old_cohort_only",
+    "sector_neutral_within_old_cohort",
+    "top_sector_only"
+  ],
+  "weak_sectors": [
+    "Consumer Staples",
+    "Energy",
+    "Health Care",
+    "Unknown"
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "committed": false
+}

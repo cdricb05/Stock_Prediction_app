@@ -1,0 +1,11 @@
+{
+  "phase": "8-X",
+  "title": "Preview the surviving constrained alpha (manual review)",
+  "depends_on_decision": "CONSTRAINED_ALPHA_SURVIVES",
+  "next_command": "Carry the surviving CONSTRAINED variant(s) into the Paper Trader daily-review cockpit as PREVIEW-ONLY ranking ideas, clearly labelled constrained/exploratory (manual review; no orders). Re-validate on the next data refresh before any reliance.",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "paper_trader_touched": false,
+  "committed": false
+}

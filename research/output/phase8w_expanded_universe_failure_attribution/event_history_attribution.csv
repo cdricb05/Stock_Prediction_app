@@ -1,0 +1,4 @@
+dimension,bucket,range,n_events,n_tickers,new_cohort_share,mean_ic,ic_t,net_spread_25bps,subperiod_stable
+event_count,lt8,0..8,16,6,0.25,,,,False
+event_count,8to15,8..16,57,5,0.4386,,,,False
+event_count,ge16,16..999,38652,534,0.25,0.0198,1.4,-0.0026,False

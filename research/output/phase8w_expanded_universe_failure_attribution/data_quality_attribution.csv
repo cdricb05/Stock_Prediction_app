@@ -1,0 +1,5 @@
+dimension,segment,n_events,n_tickers,new_cohort_share,mean_ic,ic_t,net_spread_25bps,subperiod_stable
+data_quality,sue_available,35916,539,0.2652,0.0208,1.52,-0.0023,False
+data_quality,sue_missing,2809,322,0.0602,0.0138,0.13,-0.0178,False
+data_quality,fundamentals_present,38142,539,0.2527,0.0218,1.54,-0.0022,False
+data_quality,fundamentals_absent,583,58,0.0909,-0.1369,-2.85,-0.0078,False

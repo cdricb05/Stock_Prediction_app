@@ -1,0 +1,5 @@
+dimension,bucket,range,n_events,n_tickers,new_cohort_share,mean_ic,ic_t,net_spread_25bps,subperiod_stable
+liquidity_proxy,Q1,31675.75..141853532.49,9682,172,0.4439,0.0309,1.57,0.0,False
+liquidity_proxy,Q2,141853532.49..262652344.1,9681,144,0.3315,0.0016,0.08,-0.0015,False
+liquidity_proxy,Q3,262652344.1..516626926.68,9681,124,0.1822,0.0161,0.67,-0.0019,True
+liquidity_proxy,Q4,516626926.68..28760408778.32,9681,108,0.0436,0.0472,2.25,0.0104,True

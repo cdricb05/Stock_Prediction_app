@@ -1,0 +1,138 @@
+{
+  "phase": "8-W",
+  "objective": "Attribute why the Phase 8-T earnings-surprise alpha weakened after the 8-V expansion (299 -> 545 scoreable tickers) and decide whether a robust constrained alpha survives. Preview-only; no orders; no data acquisition.",
+  "builds_on_phase8v_decision": "EXPANDED_UNIVERSE_WEAKENS_ALPHA",
+  "phase8v_before_promoted": [
+    "surprise_magnitude",
+    "positive_surprise_asymmetry",
+    "surprise_x_quality",
+    "surprise_sector_neutral"
+  ],
+  "phase8v_after_promoted": [],
+  "as_of": "2026-06-26",
+  "universe": {
+    "scoreable_tickers": 545,
+    "usable_events": 38725,
+    "old_cohort_tickers": 299,
+    "new_cohort_tickers": 246,
+    "old_cohort_events": 29032,
+    "new_cohort_events": 9693,
+    "newly_scoreable_from_8v": 246
+  },
+  "focus_cohort_performance": {
+    "old_cohort": {
+      "mean_ic": 0.0514,
+      "ic_t": 2.96,
+      "n_events": 27279,
+      "net_spread_25bps": 0.0058
+    },
+    "new_cohort": {
+      "mean_ic": -0.0076,
+      "ic_t": -0.41,
+      "n_events": 9583,
+      "net_spread_25bps": -0.007
+    },
+    "combined": {
+      "mean_ic": 0.0202,
+      "ic_t": 1.43,
+      "n_events": 36862,
+      "net_spread_25bps": -0.0025
+    }
+  },
+  "surprise_x_quality_cohort_performance": {
+    "old_cohort": {
+      "mean_ic": 0.0471,
+      "ic_t": 2.99,
+      "n_events": 26839,
+      "net_spread_25bps": 0.005
+    },
+    "new_cohort": {
+      "mean_ic": -0.0065,
+      "ic_t": -0.35,
+      "n_events": 9581,
+      "net_spread_25bps": -0.0074
+    },
+    "combined": {
+      "mean_ic": 0.0249,
+      "ic_t": 1.78,
+      "n_events": 36420,
+      "net_spread_25bps": -0.002
+    }
+  },
+  "weak_sectors": [
+    "Consumer Staples",
+    "Energy",
+    "Health Care",
+    "Unknown"
+  ],
+  "constrained_variants_tested": 9,
+  "constrained_alpha_survives": true,
+  "constrained_promoted_variants": [
+    "high_liquidity_only",
+    "old_cohort_only",
+    "sector_neutral_within_old_cohort",
+    "top_sector_only"
+  ],
+  "constrained_rejected_count": 5,
+  "main_reason_alpha_weakened": "The newly-acquired cohort carries materially weaker post-earnings drift than the original cohort (focus signal surprise_sector_neutral: old-cohort IC 0.0514 vs new-cohort IC -0.0076), so pooling the two halves DILUTES the combined IC (0.0202). The expansion did not break the signal in the original names - it added low-information names that average it down.",
+  "decision": "CONSTRAINED_ALPHA_SURVIVES",
+  "decision_is_terminal": true,
+  "allowed_decisions": [
+    "CONSTRAINED_ALPHA_SURVIVES",
+    "ALPHA_REJECTED_AFTER_EXPANSION",
+    "NEEDS_ADDITIONAL_DIAGNOSTIC",
+    "ERROR"
+  ],
+  "decision_rationale": "A constrained alpha SURVIVES the expansion: 4 variant(s) clear the full 8-T promotion gate (25bps cost, positive spread, subperiod stability, BH q=0.10): high_liquidity_only, old_cohort_only, sector_neutral_within_old_cohort, top_sector_only. The newly-acquired cohort carries materially weaker post-earnings drift than the original cohort (focus signal surprise_sector_neutral: old-cohort IC 0.0514 vs new-cohort IC -0.0076), so pooling the two halves DILUTES the combined IC (0.0202). The expansion did not break the signal in the original names - it added low-information names that average it down. These are CONSTRAINED/exploratory reads (restricted cross-section), not unconditional alpha - preview-only, no orders.",
+  "recommended_next_command": "Carry the surviving CONSTRAINED variant(s) into the Paper Trader daily-review cockpit as PREVIEW-ONLY ranking ideas, clearly labelled constrained/exploratory (manual review; no orders). Re-validate on the next data refresh before any reliance.",
+  "secret_safety_leak_scan_clean": true,
+  "secret_safety_files_scanned": 15,
+  "outputs": {
+    "report": "research/output/phase8w_expanded_universe_failure_attribution/phase8w_expanded_universe_failure_attribution.json",
+    "run_log": "research/output/phase8w_expanded_universe_failure_attribution/phase8w_run_log.csv",
+    "cohort_perf": "research/output/phase8w_expanded_universe_failure_attribution/cohort_performance_comparison.csv",
+    "old_vs_new": "research/output/phase8w_expanded_universe_failure_attribution/old_vs_new_signal_attribution.csv",
+    "sector_attr": "research/output/phase8w_expanded_universe_failure_attribution/sector_attribution.csv",
+    "liquidity_attr": "research/output/phase8w_expanded_universe_failure_attribution/liquidity_bucket_attribution.csv",
+    "event_history_attr": "research/output/phase8w_expanded_universe_failure_attribution/event_history_attribution.csv",
+    "subperiod_attr": "research/output/phase8w_expanded_universe_failure_attribution/subperiod_attribution.csv",
+    "data_quality_attr": "research/output/phase8w_expanded_universe_failure_attribution/data_quality_attribution.csv",
+    "variant_scoreboard": "research/output/phase8w_expanded_universe_failure_attribution/constrained_variant_scoreboard.csv",
+    "variant_promoted": "research/output/phase8w_expanded_universe_failure_attribution/constrained_promoted_signals.csv",
+    "variant_rejected": "research/output/phase8w_expanded_universe_failure_attribution/constrained_rejected_signals.csv",
+    "final_decision": "research/output/phase8w_expanded_universe_failure_attribution/final_research_decision.json",
+    "next_plan": "research/output/phase8w_expanded_universe_failure_attribution/phase8x_next_plan.json",
+    "secret_audit": "research/output/phase8w_expanded_universe_failure_attribution/secret_safety_audit.csv"
+  },
+  "required_artifacts": [
+    "phase8w_expanded_universe_failure_attribution.json",
+    "cohort_performance_comparison.csv",
+    "old_vs_new_signal_attribution.csv",
+    "sector_attribution.csv",
+    "liquidity_bucket_attribution.csv",
+    "event_history_attribution.csv",
+    "subperiod_attribution.csv",
+    "data_quality_attribution.csv",
+    "constrained_variant_scoreboard.csv",
+    "constrained_promoted_signals.csv",
+    "constrained_rejected_signals.csv",
+    "final_research_decision.json",
+    "phase8x_next_plan.json",
+    "secret_safety_audit.csv"
+  ],
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "production_replacement": false,
+  "network_used": false,
+  "data_acquired": false,
+  "paper_trader_touched": false,
+  "gcp_touched": false,
+  "deployed": false,
+  "data_fabricated": false,
+  "alpha_fabricated": false,
+  "raw_paid_data_in_artifacts": false,
+  "wrote_to_d_drive": false,
+  "committed": false
+}

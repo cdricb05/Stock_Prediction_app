@@ -1,0 +1,10 @@
+variant,signal,sector_constrained,n_events,n_months,mean_ic,ic_t,bh_significant,mean_spread,spread_hit_rate,net_spread_25bps,net_spread_50bps,subperiod_stable,beats_placebo,promoted,rationale
+old_cohort_only,surprise_pct,False,27279,120,0.0514,2.96,True,0.0108,0.6417,0.0058,0.0009,True,False,True,within-sector surprise drift restricted to the original 299-ticker cohort
+high_liquidity_only,surprise_pct,False,18973,120,0.0386,2.27,True,0.008,0.5917,0.003,-0.002,True,False,True,surprise drift among the most-tradable (top-half dollar-volume) names
+top_sector_only,surprise_pct,True,2672,74,0.0961,2.46,True,0.0154,0.6081,0.0106,0.0058,True,False,True,surprise drift inside the single best-contributing sector (Information Technology)
+sector_neutral_within_old_cohort,surprise_pct,False,27279,120,0.0514,2.96,True,0.0108,0.6417,0.0058,0.0009,True,False,True,sector-neutral surprise ranking inside the original cohort only
+quality_gated_surprise,surprise_x_quality,False,36420,120,0.0249,1.78,False,0.0029,0.6333,-0.002,-0.007,True,True,False,surprise confirmed by ROA quality (surprise_x_quality) on the full expanded universe
+large_surprise_only,surprise_pct,False,28870,120,0.0284,1.9,False,0.0038,0.625,-0.0012,-0.0062,False,True,False,within-sector surprise drift among large-magnitude surprises only
+post_2020_only,surprise_pct,False,13685,77,0.0187,1.01,False,0.0031,0.6753,-0.0019,-0.0069,False,False,False,within-sector surprise drift on the post-2020 subperiod only
+exclude_weak_sectors,surprise_pct,False,9947,102,0.0264,1.13,False,0.0074,0.5882,0.0024,-0.0025,True,True,False,"within-sector surprise drift after dropping IC-dilutive sectors: Consumer Staples, Energy, Health Care, Unknown"
+require_min_event_history,surprise_pct,False,36829,120,0.0202,1.43,False,0.0024,0.6417,-0.0026,-0.0075,False,False,False,within-sector surprise drift among names with >=12 cached earnings events

@@ -1,0 +1,8 @@
+scenario,family,ic_old,ic_new,ic_combined,ic_old_minus_new,t_old,t_new,t_combined,net25_old,net25_new,net25_combined,n_events_old,n_events_new,diluted_by_new_cohort
+surprise_sector_neutral,earnings,0.0514,-0.0076,0.0202,0.059,2.96,-0.41,1.43,0.0058,-0.007,-0.0025,27279,9583,True
+surprise_x_quality,interaction,0.0471,-0.0065,0.0249,0.0536,2.99,-0.35,1.78,0.005,-0.0074,-0.002,26839,9581,True
+positive_surprise_asymmetry,earnings,0.0488,-0.0088,0.0246,0.0576,3.08,-0.49,1.82,0.0002,-0.0066,-0.0021,28654,9672,True
+surprise_magnitude,earnings,0.0411,-0.0085,0.0181,0.0496,2.68,-0.46,1.34,0.0016,-0.0071,-0.0018,29032,9693,True
+earnings_acceleration,earnings,0.0371,0.012,0.0255,0.0251,2.57,0.73,2.24,-0.0013,-0.0003,0.0003,27424,9596,True
+balance_sheet_strength,fundamentals,0.0158,0.024,0.0289,-0.0082,0.84,1.25,1.97,-0.0034,0.0004,0.0041,28367,9595,False
+quality_composite,fundamentals,0.0165,0.0178,0.022,-0.0013,1.01,0.99,1.97,-0.0058,-0.002,-0.0012,27585,9593,False

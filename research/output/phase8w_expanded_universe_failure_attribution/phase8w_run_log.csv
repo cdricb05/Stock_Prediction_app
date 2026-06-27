@@ -1,0 +1,8 @@
+step,status,detail,count
+read_8v,DONE,8-V decision=EXPANDED_UNIVERSE_WEAKENS_ALPHA; before-promoted=4; after-promoted=0; newly-scoreable=246,246
+features,DONE,built extended signal set across earnings/fundamentals/price/regime/interaction families,34
+build_ev,DONE,38725 usable events / 545 scoreable tickers,38725
+cohort,DONE,old=29032 events/299 tickers; new=9693 events/246 tickers,246
+attribute,DONE,"weak sectors: Consumer Staples, Energy, Health Care, Unknown",4
+constrained,DONE,"9 variants -> 4 promoted, 5 rejected",4
+decision,DONE,CONSTRAINED_ALPHA_SURVIVES,
