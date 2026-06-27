@@ -1,0 +1,7 @@
+family,priority,status,best_entitlement,selected_provider,feature,orthogonal_to,cheapest_unlock
+analyst_estimate_revisions,1,NOT_ACCESSIBLE,MISSING_KEY,,est_rev_breadth,realized earnings surprise (this is the PRE-report estimate drift),Finnhub free tier (revenue/eps estimates) or FMP Premium
+analyst_recommendation_changes,2,NOT_ACCESSIBLE,MISSING_KEY,,rec_change_net,accounting fundamentals / realized earnings,Finnhub free recommendation trends
+price_target_revisions,3,NOT_ACCESSIBLE,MISSING_KEY,,pt_revision,historical price momentum / reversal,"Finnhub price target (free), FMP price-target consensus"
+short_interest,4,NOT_ACCESSIBLE,MISSING_KEY,,short_interest_ratio,"fundamentals + price (positioning, not value)","FMP short-interest (premium) or FINRA biweekly (free, needs an adapter)"
+options_iv_skew,5,NOT_ACCESSIBLE,ENDPOINT_NOT_FOUND,,iv_skew,all realized earnings/fundamentals/price (forward-looking risk),no cheap source - ORATS / CBOE / Polygon options are paid specialist data
+news_social_sentiment,6,NOT_ACCESSIBLE,MISSING_KEY,,news_sentiment,the quarterly earnings cadence / accounting fundamentals,Alpha Vantage NEWS_SENTIMENT (free tier) or EODHD sentiment

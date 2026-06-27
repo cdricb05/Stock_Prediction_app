@@ -1,0 +1,3 @@
+feature,family,description,orthogonal_to,duplicates_existing_eodhd,events_covered
+news_sentiment,news_social_sentiment,"aggregated news/social sentiment score (trailing window) - event flow between earnings, orthogonal to the quarterly earnings cadence",the quarterly earnings cadence / accounting fundamentals,NO (orthogonal to EODHD earnings/fundamentals/price),0
+news_sentiment_x_surprise,news_social_sentiment,cross-family interaction (new x realized surprise),the quarterly earnings cadence / accounting fundamentals,NO (orthogonal to EODHD earnings/fundamentals/price),0

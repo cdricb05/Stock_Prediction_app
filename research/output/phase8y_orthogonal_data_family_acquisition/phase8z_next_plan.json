@@ -1,0 +1,14 @@
+{
+  "phase": "8-Z",
+  "title": "Acquire the next bounded orthogonal batch",
+  "depends_on_decision": "READY_FOR_NEXT_ORTHOGONAL_BATCH",
+  "next_command": "python research/run_phase8y_orthogonal_data_family_acquisition.py --max-tickers 500   (acquire the next bounded batch for news_social_sentiment; skip_existing keeps it incremental)",
+  "selected_data_family": "news_social_sentiment",
+  "recommended_provider_purchase": null,
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "paper_trader_touched": false,
+  "committed": false
+}

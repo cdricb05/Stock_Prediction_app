@@ -1,0 +1,3 @@
+data_family,family_type,hypotheses_tested,best_ic_t,any_strong_broad_alpha,events_or_coverage,family_exhausted_no_strong_alpha
+news_social_sentiment,new_orthogonal,4,-0.28,False,0,False
+eodhd_earnings_fundamentals_price,prior_8X,,2.24,False,38725,True

@@ -1,0 +1,2 @@
+name,kind,family,weighting,sector_neutral,n_events,n_months,mean_ic,ic_t,ic_p,bh_significant,mean_spread,spread_hit_rate,net_spread_25bps,net_spread_50bps,subperiod_stable,ic_old,ic_new,top_sector_share,status
+orthogonal_blend__ic_weighted,model,model,ic_weighted,True,17072,96,-0.0042,-0.28,0.7772,False,-0.0027,0.5729,-0.0077,-0.0127,False,0.0286,-0.0379,0.8019,rejected

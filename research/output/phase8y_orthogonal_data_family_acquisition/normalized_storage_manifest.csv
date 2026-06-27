@@ -1,0 +1,2 @@
+family,feature,normalized_path,rows,tickers,gitignored
+news_social_sentiment,news_sentiment,research/data/eodhd/normalized/news_social_sentiment/news_sentiment.csv,9703,498,True
