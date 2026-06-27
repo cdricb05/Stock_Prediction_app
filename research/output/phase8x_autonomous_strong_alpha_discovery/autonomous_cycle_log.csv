@@ -1,0 +1,11 @@
+cycle,tested_this_cycle,cumulative_tested,note
+1,8,8,strong=0 constrained=0
+2,12,20,strong=0 constrained=0
+3,10,30,strong=0 constrained=0
+4,5,35,strong=0 constrained=0
+5,6,41,strong=0 constrained=0
+6,7,48,strong=0 constrained=0
+7,3,51,strong=0 constrained=0
+8,3,54,strong=0 constrained=0
+9,3,57,strong=0 constrained=0
+10,3,60,strong=0 constrained=0

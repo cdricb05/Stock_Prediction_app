@@ -1,0 +1,13 @@
+{
+  "phase": "8-Y",
+  "title": "Acquire a new orthogonal data family (current families exhausted)",
+  "depends_on_decision": "NEEDS_NEW_DATA_FAMILY",
+  "next_command": "Phase 8-Y: acquire a NEW orthogonal data family (analyst_estimate_revisions + short_interest + options_implied_vol_skew + news_social_sentiment) under the same bounded, secret-safe, gitignored-payload discipline, then re-run the discovery campaign. Do NOT productize the constrained earnings-surprise signal.",
+  "recommended_new_data_family": "analyst_estimate_revisions + short_interest + options_implied_vol_skew + news_social_sentiment",
+  "preview_only": true,
+  "orders_enabled": false,
+  "automation_enabled": false,
+  "broker_execution_enabled": false,
+  "paper_trader_touched": false,
+  "committed": false
+}

@@ -1,0 +1,13 @@
+name,kind,family,weighting,sector_neutral,n_events,n_months,mean_ic,ic_t,ic_p,bh_significant,mean_spread,spread_hit_rate,net_spread_25bps,net_spread_50bps,subperiod_stable,ic_old,ic_new,top_sector_share,status
+earnings_blend__equal,model,model,equal,False,17072,96,0.0079,0.48,0.63,False,-0.0,0.4271,-0.005,-0.01,True,0.0328,-0.0313,0.7757,rejected
+earnings_blend__ic_sign,model,model,ic_sign,False,17072,96,-0.0289,-1.88,0.0599,False,-0.0034,0.4792,-0.0084,-0.0134,False,-0.0035,-0.0628,0.7958,rejected
+earnings_blend__ic_weighted,model,model,ic_weighted,False,17072,96,-0.0256,-1.6,0.1089,False,-0.0041,0.5,-0.0091,-0.0141,False,0.0057,-0.0628,0.7862,rejected
+quality_blend__equal,model,model,equal,False,17072,96,0.0199,1.18,0.2382,False,0.0033,0.6354,-0.0017,-0.0067,True,0.0125,-0.0,0.6904,rejected
+quality_blend__ic_sign,model,model,ic_sign,False,17072,96,0.0011,0.06,0.9482,False,-0.0004,0.4479,-0.0054,-0.0104,False,-0.0077,-0.0165,0.7137,rejected
+quality_blend__ic_weighted,model,model,ic_weighted,False,17072,96,0.0041,0.23,0.8183,False,0.0009,0.5729,-0.0041,-0.0091,False,-0.0023,-0.0012,0.7058,rejected
+value_price_blend__equal,model,model,equal,False,17072,96,0.0042,0.2,0.8433,False,-0.0059,0.4583,-0.0108,-0.0158,False,0.0038,-0.0133,0.7579,rejected
+value_price_blend__ic_sign,model,model,ic_sign,False,17072,96,-0.0116,-0.52,0.6054,False,-0.004,0.5417,-0.009,-0.014,False,-0.0053,-0.0205,0.7801,rejected
+value_price_blend__ic_weighted,model,model,ic_weighted,False,17072,96,-0.0054,-0.23,0.8183,False,-0.0004,0.5,-0.0054,-0.0104,False,-0.0125,0.0033,0.7862,rejected
+kitchen_sink_blend__equal,model,model,equal,True,17072,96,0.0137,0.77,0.4403,False,-0.0042,0.4479,-0.0092,-0.0142,True,0.0322,-0.0187,0.8188,rejected
+kitchen_sink_blend__ic_sign,model,model,ic_sign,True,17072,96,-0.0128,-0.66,0.5089,False,-0.0024,0.4792,-0.0074,-0.0123,False,-0.0142,-0.0458,0.8235,rejected
+kitchen_sink_blend__ic_weighted,model,model,ic_weighted,True,17072,96,-0.0093,-0.44,0.6609,False,-0.0053,0.4688,-0.0103,-0.0153,False,-0.0147,-0.0235,0.8206,rejected

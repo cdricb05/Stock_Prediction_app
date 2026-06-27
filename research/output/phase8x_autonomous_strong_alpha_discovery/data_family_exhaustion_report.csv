@@ -1,0 +1,8 @@
+alpha_family,hypotheses_tested,best_ic_t,best_ic_t_constrained_or_strong,best_hypothesis,any_strong_broad_alpha,family_exhausted_no_strong_alpha
+cross_factor_interactions,11,1.78,,surprise_x_quality,False,True
+earnings_surprise_and_drift,10,2.24,,earnings_acceleration,False,True
+fundamentals_quality_and_improvement,11,1.97,,quality_composite,False,True
+macro_regime_conditioned,5,1.58,,surprise_easy_curve,False,True
+price_momentum_reversal_lowvol_beta_liquidity,10,0.61,,price_momentum_21,False,True
+transparent_factor_ensembles,12,1.18,,quality_blend__equal,False,True
+valuation,1,0.46,,earnings_yield_value,False,True

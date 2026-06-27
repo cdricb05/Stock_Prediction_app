@@ -1,0 +1,17 @@
+step,status,detail,count
+read_prior,DONE,8-V=EXPANDED_UNIVERSE_WEAKENS_ALPHA (newly-scoreable=246); 8-W=CONSTRAINED_ALPHA_SURVIVES (constrained variants=4),246
+features,DONE,built extended signal set across earnings/fundamentals/price/regime/interaction families,34
+build_ev,DONE,38725 usable events / 545 scoreable tickers,38725
+universe,DONE,545 scoreable tickers / 38725 events (old 29032 / new 9693),545
+cycle,DONE,cycle 1: +8 tested (cum 8); strong=0 constrained=0,8
+cycle,DONE,cycle 2: +12 tested (cum 20); strong=0 constrained=0,20
+cycle,DONE,cycle 3: +10 tested (cum 30); strong=0 constrained=0,30
+cycle,DONE,cycle 4: +5 tested (cum 35); strong=0 constrained=0,35
+cycle,DONE,cycle 5: +6 tested (cum 41); strong=0 constrained=0,41
+cycle,DONE,cycle 6: +7 tested (cum 48); strong=0 constrained=0,48
+cycle,DONE,cycle 7: +3 tested (cum 51); strong=0 constrained=0,51
+cycle,DONE,cycle 8: +3 tested (cum 54); strong=0 constrained=0,54
+cycle,DONE,cycle 9: +3 tested (cum 57); strong=0 constrained=0,57
+cycle,DONE,cycle 10: +3 tested (cum 60); strong=0 constrained=0,60
+decision,DONE,NEEDS_NEW_DATA_FAMILY,
+artifacts,DONE,wrote 19 required artifacts,
