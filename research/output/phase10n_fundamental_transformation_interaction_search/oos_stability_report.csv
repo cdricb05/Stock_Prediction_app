@@ -1,0 +1,17 @@
+variant_id,oos_pooled_ic,oos_frac_windows_positive,n_quarters,classification
+baseline_composite_sn,0.02994,0.5,40,BASELINE
+altcomp_signed_log,0.03069,0.5,40,NO_IMPROVEMENT
+altcomp_rank,0.03849,0.625,40,REJECT_OVERFIT
+altcomp_snrank,0.03729,0.6875,40,NO_IMPROVEMENT
+base70_cash_roa_rank_30,0.03226,0.5625,40,NO_IMPROVEMENT
+base60_cash_roa_rank_40,0.03053,0.625,40,REJECT_COST_KILLED
+base50_cash_roa_rank_50,0.03091,0.5625,40,NO_IMPROVEMENT
+base70_gross_prof_snrank_30,0.02194,0.4375,40,REJECT_OVERFIT
+base60_gross_prof_snrank_40,0.01867,0.4375,40,REJECT_OVERFIT
+base50_gross_prof_snrank_50,0.01546,0.4375,40,REJECT_OVERFIT
+base70_fcf_delta_30,0.03514,0.6875,40,REJECT_OVERFIT
+base60_fcf_delta_40,0.0354,0.75,40,REJECT_OVERFIT
+base50_fcf_delta_50,0.03456,0.8125,40,REJECT_OVERFIT
+base70_accruals_x_leverage_30,0.02645,0.4375,40,NO_IMPROVEMENT
+base60_accruals_x_leverage_40,0.02527,0.4375,40,NO_IMPROVEMENT
+base50_accruals_x_leverage_50,0.02185,0.4375,40,NO_IMPROVEMENT

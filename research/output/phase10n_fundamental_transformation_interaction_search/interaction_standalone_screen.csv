@@ -1,0 +1,5 @@
+interaction_id,economic_rationale,ic_mean,ic_t,both_cohorts_pos,both_subperiods_pos,top_sector_share,eligible,reject_reason
+quality_x_value,high cash-quality AND cheap (value) -> stronger forward return,-0.01296,-0.97822,False,False,0.72776,False,interaction oriented 63d IC not positive
+profitability_x_investment,profitable AND capital-disciplined (oriented low asset growth) -> stronger return,0.00755,0.58883,False,True,0.66478,False,cohort sign-unstable
+accruals_x_leverage,clean accruals (oriented) AND low leverage (oriented) -> safer quality -> stronger,0.01874,1.42103,True,True,0.66496,True,
+fcf_x_value,high FCF/assets AND cheap (value) -> stronger forward return,-0.0151,-1.28835,False,False,0.7059,False,interaction oriented 63d IC not positive

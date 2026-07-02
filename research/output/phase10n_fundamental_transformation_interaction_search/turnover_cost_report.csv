@@ -1,0 +1,17 @@
+variant_id,quarterly_turnover,quarterly_net_25bps,quarterly_net_50bps,classification
+baseline_composite_sn,0.61151,0.00401,0.00095,BASELINE
+altcomp_signed_log,0.60981,0.00384,0.00079,NO_IMPROVEMENT
+altcomp_rank,0.619,0.0043,0.0012,REJECT_OVERFIT
+altcomp_snrank,0.60062,0.00347,0.00047,NO_IMPROVEMENT
+base70_cash_roa_rank_30,0.57482,0.0013,-0.00157,NO_IMPROVEMENT
+base60_cash_roa_rank_40,0.56227,-0.00026,-0.00307,REJECT_COST_KILLED
+base50_cash_roa_rank_50,0.5452,0.00065,-0.00207,NO_IMPROVEMENT
+base70_gross_prof_snrank_30,0.47614,0.00709,0.00471,REJECT_OVERFIT
+base60_gross_prof_snrank_40,0.42696,0.00437,0.00224,REJECT_OVERFIT
+base50_gross_prof_snrank_50,0.38366,0.00405,0.00213,REJECT_OVERFIT
+base70_fcf_delta_30,0.61985,0.00515,0.00205,REJECT_OVERFIT
+base60_fcf_delta_40,0.6253,0.00663,0.0035,REJECT_OVERFIT
+base50_fcf_delta_50,0.63122,0.00868,0.00553,REJECT_OVERFIT
+base70_accruals_x_leverage_30,0.6,0.0035,0.0005,NO_IMPROVEMENT
+base60_accruals_x_leverage_40,0.59612,0.00376,0.00078,NO_IMPROVEMENT
+base50_accruals_x_leverage_50,0.58511,0.00318,0.00026,NO_IMPROVEMENT

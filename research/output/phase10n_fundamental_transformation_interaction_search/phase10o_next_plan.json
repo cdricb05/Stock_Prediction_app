@@ -1,0 +1,18 @@
+{
+  "phase": "10-O",
+  "from_decision": "REJECT_TRANSFORM_OVERFIT",
+  "next_step": "Phase 10-O: regime and conditional alpha gating - test whether the modest baseline (or a 10-M/10-N candidate) is meaningfully stronger under simple pre-declared owned/local regimes (market trend, volatility, rate/oil/dollar macro from local FRED CSVs, liquidity, sector dispersion). Simple median/tertile thresholds only; no live macro API; no new data.",
+  "exact_next_command": "python research/run_phase10o_regime_conditional_alpha_gating.py",
+  "constraints": [
+    "owned/local data only",
+    "no live API",
+    "no providers",
+    "no ML/optimiser",
+    "paper-only",
+    "no orders",
+    "no automation",
+    "no deploy",
+    "no commit",
+    "no push"
+  ]
+}

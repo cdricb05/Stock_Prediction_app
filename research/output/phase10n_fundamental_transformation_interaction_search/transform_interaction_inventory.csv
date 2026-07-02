@@ -1,0 +1,11 @@
+candidate,kind,definition,allowed_transform_or_interaction
+altcomp_signed_log,transform,composite with signed-log legs,signed-log
+altcomp_rank,transform,composite with within-month rank legs,rank
+altcomp_snrank,transform,composite with sector-neutral rank legs,sector-neutral rank
+cash_roa_rank,transform,rank of cash-return-on-assets (3rd leg),rank
+gross_prof_snrank,transform,sector-neutral rank of gross profitability (3rd leg),sector-neutral rank
+fcf_delta,transform,yoy change in fcf/assets (3rd leg),yoy delta
+quality_x_value,interaction,cash_return_on_assets x earnings_yield,quality x value
+profitability_x_investment,interaction,gross_profitability x (-asset_growth),profitability x investment
+accruals_x_leverage,interaction,(-operating_accruals) x (-debt_to_assets),accruals x leverage
+fcf_x_value,interaction,fcf_to_assets x earnings_yield,FCF x value

@@ -1,0 +1,17 @@
+variant_id,both_cohorts_positive,both_subperiods_positive,classification
+baseline_composite_sn,True,True,BASELINE
+altcomp_signed_log,True,True,NO_IMPROVEMENT
+altcomp_rank,True,True,REJECT_OVERFIT
+altcomp_snrank,True,True,NO_IMPROVEMENT
+base70_cash_roa_rank_30,True,True,NO_IMPROVEMENT
+base60_cash_roa_rank_40,True,True,REJECT_COST_KILLED
+base50_cash_roa_rank_50,True,True,NO_IMPROVEMENT
+base70_gross_prof_snrank_30,True,True,REJECT_OVERFIT
+base60_gross_prof_snrank_40,True,True,REJECT_OVERFIT
+base50_gross_prof_snrank_50,True,True,REJECT_OVERFIT
+base70_fcf_delta_30,True,True,REJECT_OVERFIT
+base60_fcf_delta_40,True,True,REJECT_OVERFIT
+base50_fcf_delta_50,True,True,REJECT_OVERFIT
+base70_accruals_x_leverage_30,True,True,NO_IMPROVEMENT
+base60_accruals_x_leverage_40,True,True,NO_IMPROVEMENT
+base50_accruals_x_leverage_50,True,True,NO_IMPROVEMENT
