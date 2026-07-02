@@ -1,0 +1,23 @@
+column,maps_from,dtype,note
+as_of_date,constant AS_OF,date,"data-vintage snapshot the panel was reconstructed at; all fundamentals attached point-in-time (available_date <= rebalance_date, no lookahead)"
+rebalance_date,ev.entry_date,date,per-observation scoring / entry date; the cross-section (month/quarter) axis for all IC and backtest computations
+ticker,ev.ticker,str,issuer symbol (Norgate survivorship-free universe)
+sector,ev.sector,str,GICS-style sector; 'Unknown' where owned metadata is unmapped
+cohort,ev.cohort,str,'old' (original ~299) vs 'new' (8-V expanded) scoreable cohort
+is_new_cohort,ev.cohort == 'new',bool,boolean form of cohort
+liquidity_proxy,ev.liquidity_proxy,float,dollar-volume liquidity proxy
+fcf_to_assets,ev.fcf_to_assets,float,raw point-in-time fundamental level (un-oriented)
+operating_accruals,ev.operating_accruals,float,raw point-in-time fundamental level (un-oriented)
+fcf_to_assets_raw,within_month_z(o_fcf_to_assets),float,within-month z of the ORIENTED (+1) non-sector-neutral fcf leg; additive building block of composite_raw
+operating_accruals_raw,within_month_z(o_operating_accruals),float,"within-month z of the ORIENTED (-1, Sloan-negated) non-sector-neutral accruals leg; additive building block of composite_raw"
+fcf_to_assets_sector_neutral_z,within_month_z(o_fcf_to_assets__sn),float,within-month z of the oriented + within-month x sector de-meaned fcf leg; additive building block of composite_sn
+operating_accruals_sector_neutral_z,within_month_z(o_operating_accruals__sn),float,within-month z of the oriented + within-month x sector de-meaned accruals leg; additive building block of composite_sn
+operating_accruals_oriented_sector_neutral_z,within_month_z(o_operating_accruals__sn),float,"identical to operating_accruals_sector_neutral_z: the pipeline's sector-neutral accruals leg is oriented (-1) BEFORE the within-month x sector de-mean, so the oriented and sector-neutral z coincide by construction"
+composite_sn,ev.comp_sn,float,sector-neutral equal-weight composite = fcf_to_assets_sector_neutral_z + operating_accruals_sector_neutral_z; the honest 10-D baseline for the sector-neutral book
+composite_raw,ev.comp_raw,float,raw equal-weight composite = fcf_to_assets_raw + operating_accruals_raw; DIAGNOSTIC only (not the champion for a sector-neutral book)
+forward_63d_return,ev.fwd_exc_63,float,forward 63-trading-day (quarterly) benchmark-excess return from rebalance_date
+forward_63d_return_start_date,ev.entry_date,date,== rebalance_date
+forward_63d_return_end_date,(not persisted upstream),date,the exact calendar END date of the 63-trading-day window is not persisted by the 10-C/10-D builder (only the realized 63d excess return is); requires the per-ticker trading calendar and is not needed for reweighting / IC tests
+has_forward_return,ev.fwd_exc_63 notna,bool,whether a forward 63d return is present
+source_phase,constant,str,10-B(normalized legs) + 10-C(panel) + 10-D(composite)
+data_quality_flag,derived,str,OK | OK_UNKNOWN_SECTOR | MISSING_COMPOSITE | MISSING_FWD_RETURN

@@ -1,0 +1,10 @@
+signal_a,signal_b,spearman_rho,n_events,note
+fcf_to_assets,operating_accruals,0.55655,38404,candidate-pair orthogonality
+fcf_to_assets,surprise_pct,0.04458,36637,vs established style factor
+fcf_to_assets,mom_pre_63,0.05522,20398,vs established style factor
+fcf_to_assets,quality_composite,0.44277,37178,vs established style factor
+fcf_to_assets,earnings_yield,-0.15753,36796,vs established style factor
+operating_accruals,surprise_pct,0.00892,36768,vs established style factor
+operating_accruals,mom_pre_63,0.03788,20441,vs established style factor
+operating_accruals,quality_composite,0.16194,37178,vs established style factor
+operating_accruals,earnings_yield,-0.07707,36989,vs established style factor

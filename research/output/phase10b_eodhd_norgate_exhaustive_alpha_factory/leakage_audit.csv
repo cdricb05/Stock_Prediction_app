@@ -1,0 +1,18 @@
+check,status,detail
+as_of_join_direction,PASS,backward only: feature attached iff available_date <= entry_date (y8.attach_orthogonal_feature / z8.feature_factory)
+future_dated_records_dropped,PASS,normalizer drops available_date > as_of (2026-06-26)
+snapshot_only_excluded,PASS,snapshot-only sections (Highlights/Valuation/SharesStats/AnalystRatings/Earnings.Trend/ESG) are recorded but NEVER fed to the historical factory
+forward_return_label,PASS,"fwd_exc_{1,5,21,63} computed strictly after entry_date (8-S forward-return engine)"
+conservative_filing_lag,PASS,fundamentals rows with no filing_date use fiscal-end + 90-day conservative availability lag
+pit_records_dropped_future_dated,PASS,46 future-dated records dropped at normalization
+normalized_span_eodhd_earnings_surprise,PASS,span 1972-07-31..2026-06-25 vs last event 2026-05-22
+normalized_span_eodhd_eps_growth_yoy,PASS,span 1991-06-30..2026-06-25 vs last event 2026-05-22
+normalized_span_eodhd_revenue_growth_yoy,PASS,span 1986-05-31..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_gross_profitability,PASS,span 1985-08-31..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_operating_accruals,PASS,span 1987-11-30..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_asset_growth,PASS,span 1986-05-31..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_net_share_issuance,PASS,span 1986-05-31..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_leverage_change,PASS,span 1986-05-31..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_fcf_to_assets,PASS,span 1987-11-30..2026-06-24 vs last event 2026-05-22
+normalized_span_eodhd_dividend_growth,PASS,span 2010-04-01..2026-06-25 vs last event 2026-05-22
+normalized_span_eodhd_news_sentiment,PASS,span 2016-01-02..2026-06-26 vs last event 2026-05-22

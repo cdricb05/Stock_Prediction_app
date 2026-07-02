@@ -1,0 +1,5 @@
+signal,monthly_event_turnover,quarterly_turnover,n_event_months,n_quarters
+composite_raw,0.99326,0.59891,120,40
+composite_sn,0.99353,0.61151,120,40
+fcf_to_assets,0.99414,0.46615,120,40
+operating_accruals,0.99261,0.61579,120,40

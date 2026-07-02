@@ -1,0 +1,9 @@
+family,signal,horizon_days,n_months,n_events,mean_ic,ic_t,note
+short_interest_days_to_cover,short_interest_ratio,1,101,17496,0.0105,0.793,
+short_interest_days_to_cover,short_interest_ratio,5,101,17496,0.00085,0.073,
+short_interest_days_to_cover,short_interest_ratio,21,101,17496,-0.00366,-0.262,primary
+short_interest_days_to_cover,short_interest_ratio,63,99,17008,-0.00632,-0.394,
+short_interest_days_to_cover,short_interest_ratio__z,1,101,17496,0.0105,0.793,
+short_interest_days_to_cover,short_interest_ratio__z,5,101,17496,0.00085,0.073,
+short_interest_days_to_cover,short_interest_ratio__z,21,101,17496,-0.00366,-0.262,primary
+short_interest_days_to_cover,short_interest_ratio__z,63,99,17008,-0.00632,-0.394,

@@ -1,0 +1,4 @@
+family,priority,paid_unlock,missing_specialist_keys
+analyst_estimate_revisions,1,"FMP Premium analyst-estimates, or Intrinio/Zacks estimate-revision history",Intrinio(INTRINIO_API_KEY)
+price_target_revisions,2,"FMP Premium price-target, or Benzinga / Intrinio analyst price targets",Intrinio(INTRINIO_API_KEY); Benzinga(BENZINGA_API_KEY)
+options_iv_skew_put_call,4,"ORATS / Intrinio options feed, or Polygon Options Starter (historical chains)",ORATS(ORATS_API_KEY); Intrinio(INTRINIO_API_KEY)

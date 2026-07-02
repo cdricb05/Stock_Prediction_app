@@ -1,0 +1,2 @@
+family,provider,feature,normalized_path,rows,tickers,fields,gitignored
+short_interest_days_to_cover,Polygon,short_interest_ratio,research/data/polygon/normalized/short_interest_days_to_cover/short_interest_ratio.csv,5450,545,ticker|available_date|short_interest_ratio|short_interest|days_to_cover|avg_daily_volume,True

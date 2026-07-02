@@ -1,0 +1,562 @@
+scenario,family,signal,sector_neutral,regime_filter,exploratory,hypothesis
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_earnings_surprise) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_earnings_surprise) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_earnings_surprise) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_earnings_surprise) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_earnings_surprise) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_earnings_surprise) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_earnings_surprise) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_earnings_surprise) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_earnings_surprise) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_earnings_surprise) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_earnings_surprise) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_earnings_surprise) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_earnings_surprise) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_earnings_surprise) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_earnings_surprise) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_earnings_surprise) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_earnings_surprise) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_earnings_surprise) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_earnings_surprise) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_earnings_surprise) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_earnings_surprise) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_eps_growth_yoy) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_eps_growth_yoy) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_eps_growth_yoy) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_eps_growth_yoy) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_eps_growth_yoy) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_eps_growth_yoy) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_eps_growth_yoy) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_eps_growth_yoy) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_eps_growth_yoy) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_eps_growth_yoy) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_eps_growth_yoy) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_eps_growth_yoy) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_eps_growth_yoy) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_eps_growth_yoy) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_eps_growth_yoy) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_eps_growth_yoy) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_eps_growth_yoy) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_eps_growth_yoy) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_eps_growth_yoy) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_eps_growth_yoy) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_eps_growth_yoy) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_revenue_growth_yoy) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_revenue_growth_yoy) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_revenue_growth_yoy) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_revenue_growth_yoy) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_revenue_growth_yoy) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_revenue_growth_yoy) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_revenue_growth_yoy) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_revenue_growth_yoy) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_revenue_growth_yoy) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_revenue_growth_yoy) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_revenue_growth_yoy) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_revenue_growth_yoy) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_revenue_growth_yoy) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_revenue_growth_yoy) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_revenue_growth_yoy) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_revenue_growth_yoy) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_revenue_growth_yoy) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_revenue_growth_yoy) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_revenue_growth_yoy) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_revenue_growth_yoy) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_revenue_growth_yoy) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_gross_profitability) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_gross_profitability) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_gross_profitability) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_gross_profitability) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_gross_profitability) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_gross_profitability) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_gross_profitability) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_gross_profitability) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_gross_profitability) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_gross_profitability) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_gross_profitability) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_gross_profitability) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_gross_profitability) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_gross_profitability) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_gross_profitability) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_gross_profitability) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_gross_profitability) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_gross_profitability) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_gross_profitability) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_gross_profitability) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_gross_profitability) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_operating_accruals) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_operating_accruals) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_operating_accruals) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_operating_accruals) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_operating_accruals) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_operating_accruals) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_operating_accruals) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_operating_accruals) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_operating_accruals) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_operating_accruals) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_operating_accruals) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_operating_accruals) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_operating_accruals) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_operating_accruals) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_operating_accruals) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_operating_accruals) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_operating_accruals) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_operating_accruals) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_operating_accruals) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_operating_accruals) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_operating_accruals) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_asset_growth) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_asset_growth) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_asset_growth) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_asset_growth) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_asset_growth) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_asset_growth) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_asset_growth) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_asset_growth) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_asset_growth) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_asset_growth) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_asset_growth) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_asset_growth) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_asset_growth) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_asset_growth) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_asset_growth) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_asset_growth) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_asset_growth) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_asset_growth) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_asset_growth) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_asset_growth) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_asset_growth) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_net_share_issuance) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_net_share_issuance) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_net_share_issuance) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_net_share_issuance) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_net_share_issuance) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_net_share_issuance) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_net_share_issuance) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_net_share_issuance) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_net_share_issuance) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_net_share_issuance) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_net_share_issuance) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_net_share_issuance) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_net_share_issuance) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_net_share_issuance) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_net_share_issuance) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_net_share_issuance) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_net_share_issuance) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_net_share_issuance) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_net_share_issuance) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_net_share_issuance) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_net_share_issuance) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_leverage_change) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_leverage_change) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_leverage_change) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_leverage_change) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_leverage_change) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_leverage_change) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_leverage_change) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_leverage_change) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_leverage_change) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_leverage_change) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_leverage_change) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_leverage_change) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_leverage_change) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_leverage_change) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_leverage_change) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_leverage_change) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_leverage_change) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_leverage_change) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_leverage_change) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_leverage_change) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_leverage_change) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_fcf_to_assets) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_fcf_to_assets) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_fcf_to_assets) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_fcf_to_assets) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_fcf_to_assets) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_fcf_to_assets) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_fcf_to_assets) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_fcf_to_assets) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_fcf_to_assets) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_fcf_to_assets) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_fcf_to_assets) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_fcf_to_assets) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_fcf_to_assets) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_fcf_to_assets) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_fcf_to_assets) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_fcf_to_assets) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_fcf_to_assets) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_fcf_to_assets) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_fcf_to_assets) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_fcf_to_assets) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_fcf_to_assets) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_dividend_growth) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_dividend_growth) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_dividend_growth) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_dividend_growth) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_dividend_growth) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_dividend_growth) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_dividend_growth) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_dividend_growth) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_dividend_growth) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_dividend_growth) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_dividend_growth) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_dividend_growth) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_dividend_growth) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_dividend_growth) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_dividend_growth) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_dividend_growth) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_dividend_growth) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_dividend_growth) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_dividend_growth) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_dividend_growth) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_dividend_growth) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+f_level_raw,orthogonal,f_level,False,,False,f_level (eodhd_news_sentiment) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (eodhd_news_sentiment) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (eodhd_news_sentiment) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (eodhd_news_sentiment) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (eodhd_news_sentiment) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (eodhd_news_sentiment) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (eodhd_news_sentiment) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (eodhd_news_sentiment) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (eodhd_news_sentiment) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (eodhd_news_sentiment) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (eodhd_news_sentiment) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (eodhd_news_sentiment) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (eodhd_news_sentiment) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (eodhd_news_sentiment) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (eodhd_news_sentiment) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (eodhd_news_sentiment) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (eodhd_news_sentiment) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (eodhd_news_sentiment) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (eodhd_news_sentiment) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (eodhd_news_sentiment) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (eodhd_news_sentiment) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+ix_earnings_surprise_x_eps_growth_yoy,interaction,ix_earnings_surprise_x_eps_growth_yoy,False,,False,cross-family interaction earnings_surprise x eps_growth_yoy
+ix_earnings_surprise_x_rev_growth_yoy,interaction,ix_earnings_surprise_x_rev_growth_yoy,False,,False,cross-family interaction earnings_surprise x rev_growth_yoy
+ix_earnings_surprise_x_gross_profitability,interaction,ix_earnings_surprise_x_gross_profitability,False,,False,cross-family interaction earnings_surprise x gross_profitability
+ix_earnings_surprise_x_operating_accruals,interaction,ix_earnings_surprise_x_operating_accruals,False,,False,cross-family interaction earnings_surprise x operating_accruals
+ix_earnings_surprise_x_asset_growth,interaction,ix_earnings_surprise_x_asset_growth,False,,False,cross-family interaction earnings_surprise x asset_growth
+ix_earnings_surprise_x_net_share_issuance,interaction,ix_earnings_surprise_x_net_share_issuance,False,,False,cross-family interaction earnings_surprise x net_share_issuance
+ix_earnings_surprise_x_leverage_change,interaction,ix_earnings_surprise_x_leverage_change,False,,False,cross-family interaction earnings_surprise x leverage_change
+ix_earnings_surprise_x_fcf_to_assets,interaction,ix_earnings_surprise_x_fcf_to_assets,False,,False,cross-family interaction earnings_surprise x fcf_to_assets
+ix_earnings_surprise_x_dividend_growth,interaction,ix_earnings_surprise_x_dividend_growth,False,,False,cross-family interaction earnings_surprise x dividend_growth
+ix_earnings_surprise_x_news_sentiment,interaction,ix_earnings_surprise_x_news_sentiment,False,,False,cross-family interaction earnings_surprise x news_sentiment
+ix_eps_growth_yoy_x_rev_growth_yoy,interaction,ix_eps_growth_yoy_x_rev_growth_yoy,False,,False,cross-family interaction eps_growth_yoy x rev_growth_yoy
+ix_eps_growth_yoy_x_gross_profitability,interaction,ix_eps_growth_yoy_x_gross_profitability,False,,False,cross-family interaction eps_growth_yoy x gross_profitability
+ix_eps_growth_yoy_x_operating_accruals,interaction,ix_eps_growth_yoy_x_operating_accruals,False,,False,cross-family interaction eps_growth_yoy x operating_accruals
+ix_eps_growth_yoy_x_asset_growth,interaction,ix_eps_growth_yoy_x_asset_growth,False,,False,cross-family interaction eps_growth_yoy x asset_growth
+ix_eps_growth_yoy_x_net_share_issuance,interaction,ix_eps_growth_yoy_x_net_share_issuance,False,,False,cross-family interaction eps_growth_yoy x net_share_issuance
+ix_eps_growth_yoy_x_leverage_change,interaction,ix_eps_growth_yoy_x_leverage_change,False,,False,cross-family interaction eps_growth_yoy x leverage_change
+ix_eps_growth_yoy_x_fcf_to_assets,interaction,ix_eps_growth_yoy_x_fcf_to_assets,False,,False,cross-family interaction eps_growth_yoy x fcf_to_assets
+ix_eps_growth_yoy_x_dividend_growth,interaction,ix_eps_growth_yoy_x_dividend_growth,False,,False,cross-family interaction eps_growth_yoy x dividend_growth
+ix_eps_growth_yoy_x_news_sentiment,interaction,ix_eps_growth_yoy_x_news_sentiment,False,,False,cross-family interaction eps_growth_yoy x news_sentiment
+ix_rev_growth_yoy_x_gross_profitability,interaction,ix_rev_growth_yoy_x_gross_profitability,False,,False,cross-family interaction rev_growth_yoy x gross_profitability
+ix_rev_growth_yoy_x_operating_accruals,interaction,ix_rev_growth_yoy_x_operating_accruals,False,,False,cross-family interaction rev_growth_yoy x operating_accruals
+ix_rev_growth_yoy_x_asset_growth,interaction,ix_rev_growth_yoy_x_asset_growth,False,,False,cross-family interaction rev_growth_yoy x asset_growth
+ix_rev_growth_yoy_x_net_share_issuance,interaction,ix_rev_growth_yoy_x_net_share_issuance,False,,False,cross-family interaction rev_growth_yoy x net_share_issuance
+ix_rev_growth_yoy_x_leverage_change,interaction,ix_rev_growth_yoy_x_leverage_change,False,,False,cross-family interaction rev_growth_yoy x leverage_change
+ix_rev_growth_yoy_x_fcf_to_assets,interaction,ix_rev_growth_yoy_x_fcf_to_assets,False,,False,cross-family interaction rev_growth_yoy x fcf_to_assets
+ix_rev_growth_yoy_x_dividend_growth,interaction,ix_rev_growth_yoy_x_dividend_growth,False,,False,cross-family interaction rev_growth_yoy x dividend_growth
+ix_rev_growth_yoy_x_news_sentiment,interaction,ix_rev_growth_yoy_x_news_sentiment,False,,False,cross-family interaction rev_growth_yoy x news_sentiment
+ix_gross_profitability_x_operating_accruals,interaction,ix_gross_profitability_x_operating_accruals,False,,False,cross-family interaction gross_profitability x operating_accruals
+ix_gross_profitability_x_asset_growth,interaction,ix_gross_profitability_x_asset_growth,False,,False,cross-family interaction gross_profitability x asset_growth
+ix_gross_profitability_x_net_share_issuance,interaction,ix_gross_profitability_x_net_share_issuance,False,,False,cross-family interaction gross_profitability x net_share_issuance
+ix_gross_profitability_x_leverage_change,interaction,ix_gross_profitability_x_leverage_change,False,,False,cross-family interaction gross_profitability x leverage_change
+ix_gross_profitability_x_fcf_to_assets,interaction,ix_gross_profitability_x_fcf_to_assets,False,,False,cross-family interaction gross_profitability x fcf_to_assets
+ix_gross_profitability_x_dividend_growth,interaction,ix_gross_profitability_x_dividend_growth,False,,False,cross-family interaction gross_profitability x dividend_growth
+ix_gross_profitability_x_news_sentiment,interaction,ix_gross_profitability_x_news_sentiment,False,,False,cross-family interaction gross_profitability x news_sentiment
+ix_operating_accruals_x_asset_growth,interaction,ix_operating_accruals_x_asset_growth,False,,False,cross-family interaction operating_accruals x asset_growth
+ix_operating_accruals_x_net_share_issuance,interaction,ix_operating_accruals_x_net_share_issuance,False,,False,cross-family interaction operating_accruals x net_share_issuance
+ix_operating_accruals_x_leverage_change,interaction,ix_operating_accruals_x_leverage_change,False,,False,cross-family interaction operating_accruals x leverage_change
+ix_operating_accruals_x_fcf_to_assets,interaction,ix_operating_accruals_x_fcf_to_assets,False,,False,cross-family interaction operating_accruals x fcf_to_assets
+ix_operating_accruals_x_dividend_growth,interaction,ix_operating_accruals_x_dividend_growth,False,,False,cross-family interaction operating_accruals x dividend_growth
+ix_operating_accruals_x_news_sentiment,interaction,ix_operating_accruals_x_news_sentiment,False,,False,cross-family interaction operating_accruals x news_sentiment
+ix_asset_growth_x_net_share_issuance,interaction,ix_asset_growth_x_net_share_issuance,False,,False,cross-family interaction asset_growth x net_share_issuance
+ix_asset_growth_x_leverage_change,interaction,ix_asset_growth_x_leverage_change,False,,False,cross-family interaction asset_growth x leverage_change
+ix_asset_growth_x_fcf_to_assets,interaction,ix_asset_growth_x_fcf_to_assets,False,,False,cross-family interaction asset_growth x fcf_to_assets
+ix_asset_growth_x_dividend_growth,interaction,ix_asset_growth_x_dividend_growth,False,,False,cross-family interaction asset_growth x dividend_growth
+ix_asset_growth_x_news_sentiment,interaction,ix_asset_growth_x_news_sentiment,False,,False,cross-family interaction asset_growth x news_sentiment
+ix_net_share_issuance_x_leverage_change,interaction,ix_net_share_issuance_x_leverage_change,False,,False,cross-family interaction net_share_issuance x leverage_change
+ix_net_share_issuance_x_fcf_to_assets,interaction,ix_net_share_issuance_x_fcf_to_assets,False,,False,cross-family interaction net_share_issuance x fcf_to_assets
+ix_net_share_issuance_x_dividend_growth,interaction,ix_net_share_issuance_x_dividend_growth,False,,False,cross-family interaction net_share_issuance x dividend_growth
+ix_net_share_issuance_x_news_sentiment,interaction,ix_net_share_issuance_x_news_sentiment,False,,False,cross-family interaction net_share_issuance x news_sentiment
+ix_leverage_change_x_fcf_to_assets,interaction,ix_leverage_change_x_fcf_to_assets,False,,False,cross-family interaction leverage_change x fcf_to_assets
+ix_leverage_change_x_dividend_growth,interaction,ix_leverage_change_x_dividend_growth,False,,False,cross-family interaction leverage_change x dividend_growth
+ix_leverage_change_x_news_sentiment,interaction,ix_leverage_change_x_news_sentiment,False,,False,cross-family interaction leverage_change x news_sentiment
+ix_fcf_to_assets_x_dividend_growth,interaction,ix_fcf_to_assets_x_dividend_growth,False,,False,cross-family interaction fcf_to_assets x dividend_growth
+ix_fcf_to_assets_x_news_sentiment,interaction,ix_fcf_to_assets_x_news_sentiment,False,,False,cross-family interaction fcf_to_assets x news_sentiment
+ix_dividend_growth_x_news_sentiment,interaction,ix_dividend_growth_x_news_sentiment,False,,False,cross-family interaction dividend_growth x news_sentiment
+ix_earnings_surprise_x_surprise,interaction,ix_earnings_surprise_x_surprise,False,,False,earnings_surprise conditioned on surprise
+ix_earnings_surprise_x_momentum,interaction,ix_earnings_surprise_x_momentum,False,,False,earnings_surprise conditioned on momentum
+ix_earnings_surprise_x_quality,interaction,ix_earnings_surprise_x_quality,False,,False,earnings_surprise conditioned on quality
+ix_earnings_surprise_x_value,interaction,ix_earnings_surprise_x_value,False,,False,earnings_surprise conditioned on value
+ix_eps_growth_yoy_x_surprise,interaction,ix_eps_growth_yoy_x_surprise,False,,False,eps_growth_yoy conditioned on surprise
+ix_eps_growth_yoy_x_momentum,interaction,ix_eps_growth_yoy_x_momentum,False,,False,eps_growth_yoy conditioned on momentum
+ix_eps_growth_yoy_x_quality,interaction,ix_eps_growth_yoy_x_quality,False,,False,eps_growth_yoy conditioned on quality
+ix_eps_growth_yoy_x_value,interaction,ix_eps_growth_yoy_x_value,False,,False,eps_growth_yoy conditioned on value
+ix_rev_growth_yoy_x_surprise,interaction,ix_rev_growth_yoy_x_surprise,False,,False,rev_growth_yoy conditioned on surprise
+ix_rev_growth_yoy_x_momentum,interaction,ix_rev_growth_yoy_x_momentum,False,,False,rev_growth_yoy conditioned on momentum
+ix_rev_growth_yoy_x_quality,interaction,ix_rev_growth_yoy_x_quality,False,,False,rev_growth_yoy conditioned on quality
+ix_rev_growth_yoy_x_value,interaction,ix_rev_growth_yoy_x_value,False,,False,rev_growth_yoy conditioned on value
+ix_gross_profitability_x_surprise,interaction,ix_gross_profitability_x_surprise,False,,False,gross_profitability conditioned on surprise
+ix_gross_profitability_x_momentum,interaction,ix_gross_profitability_x_momentum,False,,False,gross_profitability conditioned on momentum
+ix_gross_profitability_x_quality,interaction,ix_gross_profitability_x_quality,False,,False,gross_profitability conditioned on quality
+ix_gross_profitability_x_value,interaction,ix_gross_profitability_x_value,False,,False,gross_profitability conditioned on value
+ix_operating_accruals_x_surprise,interaction,ix_operating_accruals_x_surprise,False,,False,operating_accruals conditioned on surprise
+ix_operating_accruals_x_momentum,interaction,ix_operating_accruals_x_momentum,False,,False,operating_accruals conditioned on momentum
+ix_operating_accruals_x_quality,interaction,ix_operating_accruals_x_quality,False,,False,operating_accruals conditioned on quality
+ix_operating_accruals_x_value,interaction,ix_operating_accruals_x_value,False,,False,operating_accruals conditioned on value
+ix_asset_growth_x_surprise,interaction,ix_asset_growth_x_surprise,False,,False,asset_growth conditioned on surprise
+ix_asset_growth_x_momentum,interaction,ix_asset_growth_x_momentum,False,,False,asset_growth conditioned on momentum
+ix_asset_growth_x_quality,interaction,ix_asset_growth_x_quality,False,,False,asset_growth conditioned on quality
+ix_asset_growth_x_value,interaction,ix_asset_growth_x_value,False,,False,asset_growth conditioned on value
+ix_net_share_issuance_x_surprise,interaction,ix_net_share_issuance_x_surprise,False,,False,net_share_issuance conditioned on surprise
+ix_net_share_issuance_x_momentum,interaction,ix_net_share_issuance_x_momentum,False,,False,net_share_issuance conditioned on momentum
+ix_net_share_issuance_x_quality,interaction,ix_net_share_issuance_x_quality,False,,False,net_share_issuance conditioned on quality
+ix_net_share_issuance_x_value,interaction,ix_net_share_issuance_x_value,False,,False,net_share_issuance conditioned on value
+ix_leverage_change_x_surprise,interaction,ix_leverage_change_x_surprise,False,,False,leverage_change conditioned on surprise
+ix_leverage_change_x_momentum,interaction,ix_leverage_change_x_momentum,False,,False,leverage_change conditioned on momentum
+ix_leverage_change_x_quality,interaction,ix_leverage_change_x_quality,False,,False,leverage_change conditioned on quality
+ix_leverage_change_x_value,interaction,ix_leverage_change_x_value,False,,False,leverage_change conditioned on value
+ix_fcf_to_assets_x_surprise,interaction,ix_fcf_to_assets_x_surprise,False,,False,fcf_to_assets conditioned on surprise
+ix_fcf_to_assets_x_momentum,interaction,ix_fcf_to_assets_x_momentum,False,,False,fcf_to_assets conditioned on momentum
+ix_fcf_to_assets_x_quality,interaction,ix_fcf_to_assets_x_quality,False,,False,fcf_to_assets conditioned on quality
+ix_fcf_to_assets_x_value,interaction,ix_fcf_to_assets_x_value,False,,False,fcf_to_assets conditioned on value
+ix_dividend_growth_x_surprise,interaction,ix_dividend_growth_x_surprise,False,,False,dividend_growth conditioned on surprise
+ix_dividend_growth_x_momentum,interaction,ix_dividend_growth_x_momentum,False,,False,dividend_growth conditioned on momentum
+ix_dividend_growth_x_quality,interaction,ix_dividend_growth_x_quality,False,,False,dividend_growth conditioned on quality
+ix_dividend_growth_x_value,interaction,ix_dividend_growth_x_value,False,,False,dividend_growth conditioned on value
+ix_news_sentiment_x_surprise,interaction,ix_news_sentiment_x_surprise,False,,False,news_sentiment conditioned on surprise
+ix_news_sentiment_x_momentum,interaction,ix_news_sentiment_x_momentum,False,,False,news_sentiment conditioned on momentum
+ix_news_sentiment_x_quality,interaction,ix_news_sentiment_x_quality,False,,False,news_sentiment conditioned on quality
+ix_news_sentiment_x_value,interaction,ix_news_sentiment_x_value,False,,False,news_sentiment conditioned on value

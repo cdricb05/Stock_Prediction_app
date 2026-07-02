@@ -1,0 +1,17 @@
+{
+  "phase": "10-D",
+  "from_decision": "QUALITY_ALPHA_REJECTED_NOT_COST_ROBUST",
+  "confirmed": [],
+  "monitor": [],
+  "next_step": "Phase 10-D: the two quality leads (fcf_to_assets, operating_accruals) are out-of-sample real and cohort-stable but fail 25bps cost at MONTHLY (21d) rebalancing (~99% earnings-event-panel turnover, largely structural - names rotate by report date); BOTH survive 25bps and 50bps at the 63d QUARTERLY horizon. Build a QUARTERLY-rebalanced, low-turnover transparent quality COMPOSITE (fcf_to_assets long + operating_accruals short, equal-risk, sector-neutral) and re-run THIS strict OOS + cost battery at the 63d horizon. No new data purchase; owned EODHD/Norgate data only.",
+  "exact_next_command": "review research/output/phase10c_eodhd_quality_oos_validation/transaction_cost_report.csv then build + validate the 63d quarterly quality composite",
+  "constraints": [
+    "no new provider purchase without explicit user opt-in",
+    "paper-only",
+    "no orders",
+    "no automation",
+    "no deploy",
+    "no commit",
+    "no push"
+  ]
+}

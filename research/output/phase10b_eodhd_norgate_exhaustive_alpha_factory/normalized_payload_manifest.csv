@@ -1,0 +1,12 @@
+family,feature,normalized_path,rows,tickers,fields,gitignored
+eodhd_earnings_surprise,earnings_surprise,research/data/eodhd/normalized/eodhd_earnings_surprise/earnings_surprise.csv,52046,541,ticker|available_date|earnings_surprise,True
+eodhd_eps_growth_yoy,eps_growth_yoy,research/data/eodhd/normalized/eodhd_eps_growth_yoy/eps_growth_yoy.csv,50847,539,ticker|available_date|eps_growth_yoy,True
+eodhd_revenue_growth_yoy,rev_growth_yoy,research/data/eodhd/normalized/eodhd_revenue_growth_yoy/rev_growth_yoy.csv,64914,543,ticker|available_date|rev_growth_yoy,True
+eodhd_gross_profitability,gross_profitability,research/data/eodhd/normalized/eodhd_gross_profitability/gross_profitability.csv,62853,545,ticker|available_date|gross_profitability,True
+eodhd_operating_accruals,operating_accruals,research/data/eodhd/normalized/eodhd_operating_accruals/operating_accruals.csv,60978,542,ticker|available_date|operating_accruals,True
+eodhd_asset_growth,asset_growth,research/data/eodhd/normalized/eodhd_asset_growth/asset_growth.csv,60810,542,ticker|available_date|asset_growth,True
+eodhd_net_share_issuance,net_share_issuance,research/data/eodhd/normalized/eodhd_net_share_issuance/net_share_issuance.csv,64578,543,ticker|available_date|net_share_issuance,True
+eodhd_leverage_change,leverage_change,research/data/eodhd/normalized/eodhd_leverage_change/leverage_change.csv,59961,540,ticker|available_date|leverage_change,True
+eodhd_fcf_to_assets,fcf_to_assets,research/data/eodhd/normalized/eodhd_fcf_to_assets/fcf_to_assets.csv,59931,544,ticker|available_date|fcf_to_assets,True
+eodhd_dividend_growth,dividend_growth,research/data/eodhd/normalized/eodhd_dividend_growth/dividend_growth.csv,23977,451,ticker|available_date|dividend_growth,True
+eodhd_news_sentiment,news_sentiment,research/data/eodhd/normalized/eodhd_news_sentiment/news_sentiment.csv,514153,545,ticker|available_date|news_sentiment,True

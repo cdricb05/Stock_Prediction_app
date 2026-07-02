@@ -1,0 +1,12 @@
+family,additive,norm_rows,coverage_events,join_direction,diagnosis
+eodhd_earnings_surprise,False,52046,38237,available_date <= entry_date,covered
+eodhd_eps_growth_yoy,False,50847,38473,available_date <= entry_date,covered
+eodhd_revenue_growth_yoy,False,64914,38597,available_date <= entry_date,covered
+eodhd_gross_profitability,True,62853,38512,available_date <= entry_date,covered
+eodhd_operating_accruals,True,60978,38610,available_date <= entry_date,covered
+eodhd_asset_growth,True,60810,38533,available_date <= entry_date,covered
+eodhd_net_share_issuance,True,64578,38465,available_date <= entry_date,covered
+eodhd_leverage_change,True,59961,38404,available_date <= entry_date,covered
+eodhd_fcf_to_assets,True,59931,38408,available_date <= entry_date,covered
+eodhd_dividend_growth,True,23977,32647,available_date <= entry_date,covered
+eodhd_news_sentiment,False,514153,29280,available_date <= entry_date,covered

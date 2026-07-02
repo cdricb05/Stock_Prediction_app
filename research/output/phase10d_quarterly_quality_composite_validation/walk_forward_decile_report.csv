@@ -1,0 +1,5 @@
+signal,oos_mean_decile_spread,oos_top_decile_ret,oos_bottom_decile_ret,oos_decile_hit_rate,n_oos_months
+composite_raw,0.00392,0.01277,0.00885,0.5,94
+composite_sn,0.00077,0.01587,0.0151,0.55319,94
+fcf_to_assets,0.00321,0.01264,0.00943,0.55319,94
+operating_accruals,0.00753,0.01702,0.00948,0.48936,94

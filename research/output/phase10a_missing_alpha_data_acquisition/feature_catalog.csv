@@ -1,0 +1,27 @@
+feature_col,family,transform,description,orthogonal_to,coverage
+f_level,short_interest_days_to_cover,short_interest_ratio,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),17496
+f_chg1,short_interest_days_to_cover,short_interest_ratio,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_accel,short_interest_days_to_cover,short_interest_ratio,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),17350
+f_lag1,short_interest_days_to_cover,short_interest_ratio,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rmean_5,short_interest_days_to_cover,short_interest_ratio,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rstd_5,short_interest_days_to_cover,short_interest_ratio,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rchg_5,short_interest_days_to_cover,short_interest_ratio,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rmean_21,short_interest_days_to_cover,short_interest_ratio,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rstd_21,short_interest_days_to_cover,short_interest_ratio,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rchg_21,short_interest_days_to_cover,short_interest_ratio,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rmean_63,short_interest_days_to_cover,short_interest_ratio,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rstd_63,short_interest_days_to_cover,short_interest_ratio,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_rchg_63,short_interest_days_to_cover,short_interest_ratio,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),17472
+f_z,short_interest_days_to_cover,short_interest_ratio,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),17496
+f_sector_z,short_interest_days_to_cover,short_interest_ratio,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),17247
+f_rank,short_interest_days_to_cover,short_interest_ratio,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),17496
+f_winz,short_interest_days_to_cover,short_interest_ratio,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),17496
+f_x_surprise,short_interest_days_to_cover,short_interest_ratio,cross-family interaction: short_interest_ratio x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),17209
+f_x_quality,short_interest_days_to_cover,short_interest_ratio,cross-family interaction: short_interest_ratio x quality,NO (orthogonal to EODHD earnings/fundamentals/price),17116
+f_x_value,short_interest_days_to_cover,short_interest_ratio,cross-family interaction: short_interest_ratio x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),17437
+f_x_mom,short_interest_days_to_cover,short_interest_ratio,cross-family interaction: short_interest_ratio x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),17288
+ix_short_interest_ratio_x_surprise,interaction,short_interest_ratio_x_surprise,short_interest_ratio conditioned on surprise,short_interest_ratio x surprise_pct,17209
+ix_short_interest_ratio_x_momentum,interaction,short_interest_ratio_x_momentum,short_interest_ratio conditioned on momentum,short_interest_ratio x mom_pre_63,17288
+ix_short_interest_ratio_x_quality,interaction,short_interest_ratio_x_quality,short_interest_ratio conditioned on quality,short_interest_ratio x quality_composite,17116
+ix_short_interest_ratio_x_value,interaction,short_interest_ratio_x_value,short_interest_ratio conditioned on value,short_interest_ratio x earnings_yield,17437
+ix_short_interest_ratio_x_liquidity,interaction,short_interest_ratio_x_liquidity,short_interest_ratio conditioned on liquidity,short_interest_ratio x liquidity,0

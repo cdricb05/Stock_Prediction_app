@@ -1,0 +1,5 @@
+signal,old_ic,old_ic_t,old_n_events,new_ic,new_ic_t,new_n_events,both_cohorts_positive
+composite_raw,0.03208,1.51227,28452,0.04281,2.16747,9465,True
+composite_sn,0.0189,1.0262,28452,0.04422,2.23206,9465,True
+fcf_to_assets,0.03714,1.64538,28455,0.03065,1.56553,9465,True
+operating_accruals,0.03429,1.79989,28658,0.03285,1.72303,9465,True

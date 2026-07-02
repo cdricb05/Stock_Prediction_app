@@ -1,0 +1,485 @@
+ticker,review_label,sector,unknown_sector,low_liquidity,missing_leg,extreme_score,cohort,is_new_cohort,in_concentrated_sector
+EXPE,LONG,Unknown,True,False,False,True,new,True,False
+EA,LONG,Unknown,True,False,False,True,new,True,False
+JPM,LONG,Financials,False,False,False,True,old,False,False
+BKNG,LONG,Consumer Discretionary,False,False,False,True,old,False,False
+STX,LONG,Unknown,True,False,False,True,old,False,False
+LYV,LONG,Unknown,True,False,False,True,new,True,False
+LULU,LONG,Unknown,True,False,False,True,new,True,False
+APP,LONG,Unknown,True,False,False,True,old,False,False
+RELX,LONG,Unknown,True,True,False,True,old,False,False
+FOX,LONG,Unknown,True,True,False,True,new,True,False
+FOXA,LONG,Unknown,True,False,False,True,new,True,False
+SNDK,LONG,Unknown,True,False,False,False,old,False,False
+EXE,LONG,Unknown,True,False,False,False,new,True,False
+EQT,LONG,Unknown,True,False,False,False,new,True,False
+ABNB,LONG,Unknown,True,False,False,False,old,False,False
+NOW,LONG,Information Technology,False,False,False,False,old,False,False
+CHRW,LONG,Unknown,True,False,False,False,new,True,False
+PM,LONG,Consumer Staples,False,False,False,False,old,False,False
+DXCM,LONG,Unknown,True,False,False,False,new,True,False
+RACE,LONG,Unknown,True,True,False,False,old,False,False
+DPZ,LONG,Unknown,True,False,False,False,new,True,False
+SHOP,LONG,Unknown,True,False,False,False,old,False,False
+NVR,LONG,Unknown,True,True,False,False,new,True,False
+ANET,LONG,Unknown,True,False,False,False,old,False,False
+FICO,LONG,Unknown,True,False,False,False,new,True,False
+LVS,LONG,Unknown,True,False,False,False,new,True,False
+MCO,LONG,Financials,False,False,False,False,old,False,False
+VRT,LONG,Unknown,True,False,False,False,old,False,False
+IVZ,LONG,Unknown,True,True,False,False,new,True,False
+IP,LONG,Unknown,True,False,False,False,new,True,False
+EBAY,LONG,Unknown,True,False,False,False,new,True,False
+FAST,LONG,Unknown,True,False,False,False,new,True,False
+NFLX,LONG,Communication Services,False,False,False,False,old,False,False
+SPOT,LONG,Unknown,True,False,False,False,old,False,False
+LUV,LONG,Unknown,True,False,False,False,new,True,False
+HDB,LONG,Unknown,True,True,False,False,old,False,False
+UPS,LONG,Industrials,False,False,False,False,old,False,False
+SMERY,LONG,Unknown,True,True,False,False,old,False,False
+GDDY,LONG,Unknown,True,True,False,False,new,True,False
+DDOG,LONG,Unknown,True,False,False,False,old,False,False
+BUD,LONG,Unknown,True,True,False,False,old,False,False
+CMG,LONG,Consumer Discretionary,False,False,False,False,new,True,False
+CNC,LONG,Unknown,True,False,False,False,new,True,False
+PLTR,LONG,Unknown,True,False,False,False,old,False,False
+GEV,LONG,Unknown,True,False,False,False,old,False,False
+GNRC,LONG,Unknown,True,False,False,False,new,True,False
+GD,LONG,Industrials,False,False,False,False,old,False,False
+NEM,LONG,Unknown,True,False,False,False,old,False,False
+GWW,LONG,Unknown,True,False,False,False,old,False,False
+ODFL,LONG,Unknown,True,False,False,False,new,True,False
+EXPD,LONG,Unknown,True,True,False,False,new,True,False
+AVY,LONG,Unknown,True,True,False,False,new,True,False
+ALGN,LONG,Unknown,True,False,False,False,new,True,False
+FANG,LONG,Unknown,True,False,False,False,new,True,False
+HAS,LONG,Unknown,True,True,False,False,new,True,False
+RMD,LONG,Unknown,True,False,False,False,new,True,False
+RIO,LONG,Unknown,True,False,False,False,old,False,False
+ADP,LONG,Industrials,False,False,False,False,old,False,False
+URI,LONG,Unknown,True,False,False,False,old,False,False
+SCCO,LONG,Unknown,True,True,False,False,old,False,False
+JBHT,LONG,Unknown,True,True,False,False,new,True,False
+HAL,LONG,Unknown,True,False,False,False,new,True,False
+INCY,LONG,Unknown,True,False,False,False,new,True,False
+TER,LONG,Unknown,True,False,False,False,old,False,False
+IT,LONG,Unknown,True,False,False,False,new,True,False
+SNA,LONG,Unknown,True,True,False,False,new,True,False
+DVN,LONG,Unknown,True,False,False,False,new,True,False
+NBIS,LONG,Unknown,True,False,False,False,old,False,False
+GRMN,LONG,Unknown,True,True,False,False,new,True,False
+EW,LONG,Unknown,True,False,False,False,new,True,False
+ECL,LONG,Unknown,True,False,False,False,old,False,False
+UBER,LONG,Industrials,False,False,False,False,old,False,False
+SYK,LONG,Health Care,False,False,False,False,old,False,False
+TXN,LONG,Information Technology,False,False,False,False,old,False,False
+FTNT,LONG,Unknown,True,False,False,False,old,False,False
+HLT,LONG,Unknown,True,False,False,False,old,False,False
+ABBV,LONG,Health Care,False,False,False,False,old,False,False
+DAL,LONG,Unknown,True,False,False,False,new,True,False
+WM,LONG,Industrials,False,False,False,False,old,False,False
+VRTX,LONG,Health Care,False,False,False,False,old,False,False
+IDXX,LONG,Unknown,True,False,False,False,new,True,False
+MCK,LONG,Unknown,True,False,False,False,old,False,False
+HTHIY,LONG,Unknown,True,True,False,False,old,False,False
+CDNS,LONG,Information Technology,False,False,False,False,old,False,False
+HST,LONG,Unknown,True,False,False,False,new,True,False
+PKG,LONG,Unknown,True,True,False,False,new,True,False
+HOOD,LONG,Unknown,True,False,False,False,old,False,False
+UNP,LONG,Industrials,False,False,False,False,old,False,False
+XYZ,LONG,Unknown,True,False,False,False,new,True,False
+CCI,LONG,Unknown,True,False,False,False,new,True,False
+GEN,LONG,Unknown,True,False,False,False,new,True,False
+CAG,LONG,Unknown,True,False,False,False,new,True,False
+CAH,LONG,Unknown,True,False,False,False,new,True,False
+ITW,LONG,Industrials,False,False,False,False,old,False,False
+CTAS,LONG,Unknown,True,False,False,False,old,False,False
+MNST,LONG,Unknown,True,False,False,False,old,False,False
+AAPL,LONG,Information Technology,False,False,False,False,old,False,False
+SONY,HOLD,Unknown,True,True,False,False,old,False,False
+RCL,HOLD,Unknown,True,False,False,False,old,False,False
+NWS,HOLD,Unknown,True,True,False,False,new,True,False
+NWSA,HOLD,Unknown,True,True,False,False,new,True,False
+OTIS,HOLD,Unknown,True,False,False,False,new,True,False
+MELI,HOLD,Unknown,True,False,False,False,old,False,False
+LH,HOLD,Unknown,True,False,False,False,new,True,False
+ELV,HOLD,Health Care,False,False,False,False,old,False,False
+B,HOLD,Unknown,True,False,False,False,old,False,False
+GILD,HOLD,Health Care,False,False,False,False,old,False,False
+JKHY,HOLD,Unknown,True,True,False,False,new,True,False
+META,HOLD,Communication Services,False,False,False,False,old,False,False
+PSA,HOLD,Unknown,True,False,False,False,new,True,False
+KEYS,HOLD,Unknown,True,False,False,False,old,False,False
+DOW,HOLD,Unknown,True,False,False,False,new,True,False
+APD,HOLD,Materials,False,False,False,False,old,False,False
+IBM,HOLD,Information Technology,False,False,False,False,old,False,False
+MA,HOLD,Financials,False,False,False,False,old,False,False
+GLW,HOLD,Unknown,True,False,False,False,old,False,False
+ROL,HOLD,Unknown,True,True,False,False,new,True,False
+LYG,HOLD,Unknown,True,True,False,False,old,False,False
+ALL,HOLD,Unknown,True,False,False,False,new,True,False
+NOK,HOLD,Unknown,True,False,False,False,old,False,False
+CMCSA,HOLD,Unknown,True,False,False,False,old,False,False
+SMFG,HOLD,Unknown,True,True,False,False,old,False,False
+FIX,HOLD,Unknown,True,True,False,False,old,False,False
+ABT,HOLD,Health Care,False,False,False,False,old,False,False
+NET,HOLD,Unknown,True,False,False,False,old,False,False
+DB,HOLD,Unknown,True,True,False,False,old,False,False
+MCHP,HOLD,Unknown,True,False,False,False,new,True,False
+TECH,HOLD,Unknown,True,False,False,False,new,True,False
+APH,HOLD,Information Technology,False,False,False,False,old,False,False
+ESS,HOLD,Unknown,True,True,False,False,new,True,False
+BIIB,HOLD,Unknown,True,False,False,False,new,True,False
+DASH,HOLD,Unknown,True,False,False,False,old,False,False
+RSG,HOLD,Unknown,True,False,False,False,old,False,False
+FCX,HOLD,Unknown,True,False,False,False,old,False,False
+KO,HOLD,Consumer Staples,False,False,False,False,old,False,False
+ON,HOLD,Unknown,True,False,False,False,new,True,False
+CYATY,HOLD,Unknown,True,True,False,False,old,False,False
+BTI,HOLD,Unknown,True,True,False,False,old,False,False
+AMD,HOLD,Information Technology,False,False,False,False,old,False,False
+NDSN,HOLD,Unknown,True,True,False,False,new,True,False
+CHTR,HOLD,Unknown,True,False,False,False,new,True,False
+KMI,HOLD,Unknown,True,False,False,False,old,False,False
+DHI,HOLD,Unknown,True,False,False,False,new,True,False
+ISRG,HOLD,Health Care,False,False,False,False,old,False,False
+MUFG,HOLD,Unknown,True,True,False,False,old,False,False
+TMUS,HOLD,Unknown,True,False,False,False,old,False,False
+CAT,HOLD,Industrials,False,False,False,False,old,False,False
+PODD,HOLD,Unknown,True,True,False,False,new,True,False
+MO,HOLD,Consumer Staples,False,False,False,False,old,False,False
+NDAQ,HOLD,Unknown,True,False,False,False,new,True,False
+ALAB,HOLD,Unknown,True,False,False,False,old,False,False
+CB,HOLD,Financials,False,False,False,False,old,False,False
+TMO,HOLD,Health Care,False,False,False,False,old,False,False
+AOS,HOLD,Unknown,True,True,False,False,new,True,False
+EOG,HOLD,Energy,False,False,False,False,old,False,False
+BR,HOLD,Unknown,True,True,False,False,new,True,False
+STM,HOLD,Unknown,True,True,False,False,old,False,False
+NVS,HOLD,Unknown,True,False,False,False,old,False,False
+MSCI,HOLD,Unknown,True,False,False,False,new,True,False
+DLR,HOLD,Unknown,True,False,False,False,old,False,False
+TEL,HOLD,Unknown,True,False,False,False,old,False,False
+PCAR,HOLD,Unknown,True,False,False,False,old,False,False
+CSX,HOLD,Unknown,True,False,False,False,old,False,False
+CVX,HOLD,Energy,False,False,False,False,old,False,False
+EL,HOLD,Unknown,True,False,False,False,new,True,False
+PLD,HOLD,Real Estate,False,False,False,False,old,False,False
+EPD,HOLD,Unknown,True,True,False,False,old,False,False
+MSFT,HOLD,Information Technology,False,False,False,False,old,False,False
+JNJ,HOLD,Health Care,False,False,False,False,old,False,False
+CPT,HOLD,Unknown,True,True,False,False,new,True,False
+PGR,HOLD,Unknown,True,False,False,False,old,False,False
+BDX,HOLD,Unknown,True,False,False,False,new,True,False
+DECK,HOLD,Unknown,True,False,False,False,new,True,False
+CSGP,HOLD,Unknown,True,False,False,False,new,True,False
+CINF,HOLD,Unknown,True,True,False,False,new,True,False
+EQNR,HOLD,Unknown,True,True,False,False,old,False,False
+C,HOLD,Financials,False,False,False,False,old,False,False
+AIZ,HOLD,Unknown,True,True,False,False,new,True,False
+AMT,HOLD,Unknown,True,False,False,False,old,False,False
+AKAM,HOLD,Unknown,True,False,False,False,new,True,False
+STE,HOLD,Unknown,True,True,False,False,new,True,False
+AME,HOLD,Unknown,True,False,False,False,new,True,False
+IQV,HOLD,Unknown,True,False,False,False,new,True,False
+ARES,HOLD,Unknown,True,True,False,False,new,True,False
+T,HOLD,Communication Services,False,False,False,False,old,False,False
+CNQ,HOLD,Unknown,True,True,False,False,old,False,False
+GE,HOLD,Industrials,False,False,False,False,old,False,False
+KMB,HOLD,Unknown,True,False,False,False,new,True,False
+COIN,HOLD,Unknown,True,False,False,False,new,True,False
+HSY,HOLD,Unknown,True,False,False,False,new,True,False
+ACGL,HOLD,Unknown,True,True,False,False,new,True,False
+COF,HOLD,Unknown,True,False,False,False,old,False,False
+STZ,HOLD,Unknown,True,False,False,False,new,True,False
+AVB,HOLD,Unknown,True,False,False,False,new,True,False
+FTV,HOLD,Unknown,True,False,False,False,new,True,False
+MCD,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+VZ,HOLD,Communication Services,False,False,False,False,old,False,False
+ITUB,HOLD,Unknown,True,True,False,False,old,False,False
+MGM,HOLD,Unknown,True,False,False,False,new,True,False
+WBD,HOLD,Unknown,True,False,False,False,old,False,False
+HUM,HOLD,Unknown,True,False,False,False,new,True,False
+SPG,HOLD,Unknown,True,False,False,False,old,False,False
+TT,HOLD,Unknown,True,False,False,False,old,False,False
+MSI,HOLD,Unknown,True,False,False,False,old,False,False
+PYPL,HOLD,Financials,False,False,False,False,new,True,False
+MAR,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+SO,HOLD,Utilities,False,False,False,False,old,False,False
+SAN,HOLD,Unknown,True,True,False,False,old,False,False
+INVH,HOLD,Unknown,True,True,False,False,new,True,False
+DIS,HOLD,Communication Services,False,False,False,False,old,False,False
+NEE,HOLD,Utilities,False,False,False,False,old,False,False
+SHW,HOLD,Materials,False,False,False,False,old,False,False
+SLB,HOLD,Energy,False,False,False,False,old,False,False
+MTD,HOLD,Unknown,True,False,False,False,new,True,False
+PH,HOLD,Industrials,False,False,False,False,old,False,False
+DUK,HOLD,Utilities,False,False,False,False,old,False,False
+FFIV,HOLD,Unknown,True,True,False,False,new,True,False
+FLEX,HOLD,Unknown,True,False,False,False,new,True,False
+TRV,HOLD,Unknown,True,False,False,False,old,False,False
+RTX,HOLD,Industrials,False,False,False,False,old,False,False
+VLO,HOLD,Unknown,True,False,False,False,old,False,False
+ROK,HOLD,Unknown,True,False,False,False,new,True,False
+RVTY,HOLD,Unknown,True,True,False,False,new,True,False
+PBR,HOLD,Unknown,True,False,False,False,old,False,False
+COP,HOLD,Energy,False,False,False,False,old,False,False
+LITE,HOLD,Unknown,True,False,False,False,old,False,False
+HD,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+REGN,HOLD,Health Care,False,False,False,False,old,False,False
+DVA,HOLD,Unknown,True,True,False,False,new,True,False
+AXP,HOLD,Financials,False,False,False,False,old,False,False
+AMGN,HOLD,Health Care,False,False,False,False,old,False,False
+BXP,HOLD,Unknown,True,True,False,False,new,True,False
+O,HOLD,Unknown,True,False,False,False,old,False,False
+AJG,HOLD,Unknown,True,False,False,False,new,True,False
+DHR,HOLD,Unknown,True,False,False,False,old,False,False
+ICE,HOLD,Financials,False,False,False,False,old,False,False
+EFX,HOLD,Unknown,True,False,False,False,new,True,False
+CVS,HOLD,Health Care,False,False,False,False,old,False,False
+ASX,HOLD,Unknown,True,True,False,False,old,False,False
+CNI,HOLD,Unknown,True,True,False,False,old,False,False
+ALB,HOLD,Unknown,True,False,False,False,new,True,False
+SU,HOLD,Unknown,True,False,False,False,old,False,False
+PG,HOLD,Consumer Staples,False,False,False,False,old,False,False
+EXR,HOLD,Unknown,True,False,False,False,new,True,False
+TRP,HOLD,Unknown,True,True,False,False,old,False,False
+CDW,HOLD,Unknown,True,False,False,False,new,True,False
+SPGI,HOLD,Financials,False,False,False,False,old,False,False
+JCI,HOLD,Unknown,True,False,False,False,old,False,False
+IBKR,HOLD,Unknown,True,True,False,False,old,False,False
+ES,HOLD,Unknown,True,False,False,False,new,True,False
+WMB,HOLD,Unknown,True,False,False,False,old,False,False
+BLDR,HOLD,Unknown,True,True,False,False,new,True,False
+KIM,HOLD,Unknown,True,True,False,False,new,True,False
+BAX,HOLD,Unknown,True,False,False,False,new,True,False
+HWM,HOLD,Unknown,True,False,False,False,old,False,False
+FRT,HOLD,Unknown,True,True,False,False,new,True,False
+MDLN,HOLD,Unknown,True,False,False,False,old,False,False
+HIG,HOLD,Unknown,True,False,False,False,new,True,False
+BCS,HOLD,Unknown,True,True,False,False,old,False,False
+SBAC,HOLD,Unknown,True,False,False,False,new,True,False
+EQIX,HOLD,Real Estate,False,False,False,False,old,False,False
+LDOS,HOLD,Unknown,True,True,False,False,new,True,False
+GL,HOLD,Unknown,True,True,False,False,new,True,False
+NUE,HOLD,Unknown,True,False,False,False,old,False,False
+EQR,HOLD,Unknown,True,False,False,False,new,True,False
+SNY,HOLD,Unknown,True,True,False,False,old,False,False
+BABA,HOLD,Unknown,True,False,False,False,old,False,False
+AEE,HOLD,Unknown,True,True,False,False,new,True,False
+DOC,HOLD,Unknown,True,True,False,False,new,True,False
+AZN,HOLD,Unknown,True,False,False,False,old,False,False
+FDS,HOLD,Unknown,True,True,False,False,new,True,False
+KVUE,HOLD,Unknown,True,False,False,False,new,True,False
+PWR,HOLD,Unknown,True,False,False,False,old,False,False
+RL,HOLD,Unknown,True,False,False,False,new,True,False
+EMR,HOLD,Industrials,False,False,False,False,old,False,False
+NXPI,HOLD,Unknown,True,False,False,False,old,False,False
+SATS,HOLD,Unknown,True,True,False,False,new,True,False
+GPN,HOLD,Unknown,True,False,False,False,new,True,False
+DGX,HOLD,Unknown,True,False,False,False,new,True,False
+MRK,HOLD,Health Care,False,False,False,False,old,False,False
+KHC,HOLD,Unknown,True,False,False,False,new,True,False
+USB,HOLD,Financials,False,False,False,False,old,False,False
+CME,HOLD,Financials,False,False,False,False,old,False,False
+APO,HOLD,Unknown,True,False,False,False,old,False,False
+ROP,HOLD,Information Technology,False,False,False,False,new,True,False
+CL,HOLD,Consumer Staples,False,False,False,False,old,False,False
+BE,HOLD,Unknown,True,False,False,False,old,False,False
+HCA,HOLD,Health Care,False,False,False,False,old,False,False
+CHD,HOLD,Unknown,True,False,False,False,new,True,False
+TSLA,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+ARM,HOLD,Unknown,True,False,False,False,old,False,False
+COR,HOLD,Unknown,True,False,False,False,new,True,False
+MPC,HOLD,Unknown,True,False,False,False,old,False,False
+IEX,HOLD,Unknown,True,True,False,False,new,True,False
+PFE,HOLD,Health Care,False,False,False,False,old,False,False
+DD,HOLD,Unknown,True,True,False,False,new,True,False
+CF,HOLD,Unknown,True,False,False,False,new,True,False
+AEM,HOLD,Unknown,True,False,False,False,old,False,False
+IR,HOLD,Unknown,True,False,False,False,new,True,False
+EIX,HOLD,Unknown,True,False,False,False,new,True,False
+NWG,HOLD,Unknown,True,True,False,False,old,False,False
+PFG,HOLD,Unknown,True,True,False,False,new,True,False
+MRNA,HOLD,Unknown,True,False,False,False,new,True,False
+SAP,HOLD,Unknown,True,False,False,False,old,False,False
+KKR,HOLD,Unknown,True,False,False,False,old,False,False
+IFF,HOLD,Unknown,True,False,False,False,new,True,False
+VALE,HOLD,Unknown,True,False,False,False,old,False,False
+DTE,HOLD,Unknown,True,False,False,False,new,True,False
+APA,HOLD,Unknown,True,False,False,False,new,True,False
+NCLH,HOLD,Unknown,True,False,False,False,new,True,False
+TFC,HOLD,Unknown,True,False,False,False,old,False,False
+MMM,HOLD,Unknown,True,False,False,False,old,False,False
+WFC,HOLD,Financials,False,False,False,False,old,False,False
+ALLE,HOLD,Unknown,True,True,False,False,new,True,False
+XOM,HOLD,Energy,False,False,False,False,old,False,False
+CRL,HOLD,Unknown,True,True,False,False,new,True,False
+MFC,HOLD,Unknown,True,True,False,False,old,False,False
+MET,HOLD,Unknown,True,False,False,False,new,True,False
+LLY,HOLD,Health Care,False,False,False,False,old,False,False
+GM,HOLD,Unknown,True,False,False,False,old,False,False
+AMAT,HOLD,Information Technology,False,False,False,False,old,False,False
+PCG,HOLD,Unknown,True,False,False,False,new,True,False
+HSBC,HOLD,Unknown,True,True,False,False,old,False,False
+BBVA,HOLD,Unknown,True,True,False,False,old,False,False
+TRGP,HOLD,Unknown,True,False,False,False,old,False,False
+LNT,HOLD,Unknown,True,True,False,False,new,True,False
+DOV,HOLD,Unknown,True,False,False,False,new,True,False
+STLD,HOLD,Unknown,True,False,False,False,new,True,False
+STT,HOLD,Unknown,True,False,False,False,new,True,False
+AES,HOLD,Unknown,True,True,False,False,new,True,False
+ENB,HOLD,Unknown,True,True,False,False,old,False,False
+AON,HOLD,Financials,False,False,False,False,old,False,False
+KEY,HOLD,Unknown,True,False,False,False,new,True,False
+HBAN,HOLD,Unknown,True,False,False,False,new,True,False
+SHEL,HOLD,Unknown,True,False,False,False,old,False,False
+PNC,HOLD,Financials,False,False,False,False,old,False,False
+FITB,HOLD,Unknown,True,False,False,False,new,True,False
+MFG,HOLD,Unknown,True,True,False,False,old,False,False
+PTC,HOLD,Unknown,True,True,False,False,new,True,False
+PSKY,HOLD,Unknown,True,False,False,False,new,True,False
+UBS,HOLD,Unknown,True,True,False,False,old,False,False
+EXC,HOLD,Unknown,True,False,False,False,new,True,False
+FISV,HOLD,Unknown,True,False,False,False,new,True,False
+MAA,HOLD,Unknown,True,True,False,False,new,True,False
+BAM,HOLD,Unknown,True,True,False,False,old,False,False
+OKE,HOLD,Unknown,True,False,False,False,new,True,False
+PRU,HOLD,Unknown,True,False,False,False,new,True,False
+ET,HOLD,Unknown,True,False,False,False,old,False,False
+BA,HOLD,Industrials,False,False,False,False,old,False,False
+IMO,HOLD,Unknown,True,True,False,False,old,False,False
+IRM,HOLD,Unknown,True,True,False,False,new,True,False
+CI,HOLD,Health Care,False,False,False,False,old,False,False
+WELL,HOLD,Unknown,True,False,False,False,old,False,False
+AMX,HOLD,Unknown,True,True,False,False,old,False,False
+SRE,HOLD,Unknown,True,False,False,False,old,False,False
+PEG,HOLD,Unknown,True,False,False,False,new,True,False
+KDP,HOLD,Unknown,True,False,False,False,new,True,False
+IFNNY,HOLD,Unknown,True,True,False,False,old,False,False
+CMS,HOLD,Unknown,True,False,False,False,new,True,False
+ETR,HOLD,Unknown,True,False,False,False,new,True,False
+Q,HOLD,Unknown,True,False,False,False,new,True,False
+BRO,HOLD,Unknown,True,True,False,False,new,True,False
+LIN,HOLD,Materials,False,False,False,False,old,False,False
+MTB,HOLD,Unknown,True,False,False,False,new,True,False
+CP,HOLD,Unknown,True,False,False,False,old,False,False
+SWKS,HOLD,Unknown,True,False,False,False,new,True,False
+LRCX,HOLD,Unknown,True,False,False,False,old,False,False
+NTRS,HOLD,Unknown,True,True,False,False,new,True,False
+MPWR,HOLD,Unknown,True,False,False,False,old,False,False
+MS,HOLD,Financials,False,False,False,False,old,False,False
+GSK,HOLD,Unknown,True,False,False,False,old,False,False
+GEHC,HOLD,Unknown,True,False,False,False,new,True,False
+AIG,HOLD,Unknown,True,False,False,False,new,True,False
+AMCR,HOLD,Unknown,True,True,False,False,new,True,False
+ADM,HOLD,Unknown,True,False,False,False,new,True,False
+ATO,HOLD,Unknown,True,True,False,False,new,True,False
+ARE,HOLD,Unknown,True,True,False,False,new,True,False
+AEP,HOLD,Unknown,True,False,False,False,old,False,False
+CARR,HOLD,Unknown,True,False,False,False,new,True,False
+PNW,HOLD,Unknown,True,True,False,False,new,True,False
+SW,HOLD,Unknown,True,True,False,False,new,True,False
+REG,HOLD,Unknown,True,True,False,False,new,True,False
+CSCO,HOLD,Information Technology,False,False,False,False,old,False,False
+EVRG,HOLD,Unknown,True,True,False,False,new,True,False
+HUBB,HOLD,Unknown,True,True,False,False,new,True,False
+V,HOLD,Financials,False,False,False,False,old,False,False
+SCHW,SHORT,Financials,False,False,False,False,old,False,False
+CMI,SHORT,Unknown,True,False,False,False,old,False,False
+ORLY,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+E,SHORT,Unknown,True,True,False,False,old,False,False
+L,SHORT,Unknown,True,True,False,False,new,True,False
+ERIE,SHORT,Unknown,True,True,False,False,new,True,False
+ING,SHORT,Unknown,True,True,False,False,old,False,False
+PPL,SHORT,Unknown,True,False,False,False,new,True,False
+CFG,SHORT,Unknown,True,False,False,False,new,True,False
+ETN,SHORT,Industrials,False,False,False,False,old,False,False
+TM,SHORT,Unknown,True,True,False,False,old,False,False
+BP,SHORT,Unknown,True,False,False,False,old,False,False
+INTC,SHORT,Information Technology,False,False,False,False,old,False,False
+BN,SHORT,Unknown,True,True,False,False,old,False,False
+NSC,SHORT,Unknown,True,False,False,False,old,False,False
+AWK,SHORT,Unknown,True,False,False,False,new,True,False
+BKR,SHORT,Unknown,True,False,False,False,old,False,False
+BMY,SHORT,Health Care,False,False,False,False,old,False,False
+NI,SHORT,Unknown,True,True,False,False,new,True,False
+MDLZ,SHORT,Consumer Staples,False,False,False,False,old,False,False
+AFL,SHORT,Unknown,True,False,False,False,old,False,False
+RJF,SHORT,Unknown,True,False,False,False,new,True,False
+RF,SHORT,Unknown,True,False,False,False,new,True,False
+UNH,SHORT,Health Care,False,False,False,False,old,False,False
+GPC,SHORT,Unknown,True,True,False,False,new,True,False
+F,SHORT,Unknown,True,False,False,False,old,False,False
+D,SHORT,Unknown,True,False,False,False,old,False,False
+BAC,SHORT,Financials,False,False,False,False,old,False,False
+TAP,SHORT,Unknown,True,True,False,False,new,True,False
+CPRT,SHORT,Unknown,True,False,False,False,new,True,False
+CTSH,SHORT,Unknown,True,False,False,False,new,True,False
+IBN,SHORT,Unknown,True,True,False,False,old,False,False
+TTE,SHORT,Unknown,True,True,False,False,old,False,False
+NRG,SHORT,Unknown,True,False,False,False,new,True,False
+LHX,SHORT,Unknown,True,False,False,False,new,True,False
+CPAY,SHORT,Unknown,True,False,False,False,new,True,False
+BEN,SHORT,Unknown,True,True,False,False,new,True,False
+CEG,SHORT,Unknown,True,False,False,False,old,False,False
+TDG,SHORT,Industrials,False,False,False,False,old,False,False
+BNY,SHORT,Unknown,True,False,False,False,old,False,False
+LMT,SHORT,Industrials,False,False,False,False,old,False,False
+ED,SHORT,Unknown,True,False,False,False,new,True,False
+CBOE,SHORT,Unknown,True,True,False,False,new,True,False
+GS,SHORT,Financials,False,False,False,False,old,False,False
+FIS,SHORT,Unknown,True,False,False,False,new,True,False
+KLAC,SHORT,Information Technology,False,False,False,False,old,False,False
+MOS,SHORT,Unknown,True,False,False,False,new,True,False
+NVO,SHORT,Unknown,True,False,False,False,old,False,False
+EG,SHORT,Unknown,True,True,False,False,new,True,False
+LYB,SHORT,Unknown,True,False,False,False,new,True,False
+CNP,SHORT,Unknown,True,False,False,False,new,True,False
+APTV,SHORT,Unknown,True,False,False,False,new,True,False
+CRH,SHORT,Unknown,True,False,False,False,old,False,False
+RKLB,SHORT,Unknown,True,False,False,False,old,False,False
+GOOG,SHORT,Communication Services,False,False,False,False,new,True,False
+GOOGL,SHORT,Communication Services,False,False,False,False,old,False,False
+CVNA,SHORT,Unknown,True,False,False,False,old,False,False
+HON,SHORT,Industrials,False,False,False,False,old,False,False
+PHM,SHORT,Unknown,True,False,False,False,new,True,False
+HSIC,SHORT,Unknown,True,True,False,False,new,True,False
+OXY,SHORT,Unknown,True,False,False,False,new,True,False
+NKE,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+BLK,SHORT,Financials,False,False,False,False,old,False,False
+FE,SHORT,Unknown,True,False,False,False,new,True,False
+SOLV,SHORT,Unknown,True,True,False,False,new,True,False
+BX,SHORT,Unknown,True,False,False,False,old,False,False
+PPG,SHORT,Unknown,True,False,False,False,new,True,False
+AXON,SHORT,Unknown,True,False,False,False,new,True,False
+COHR,SHORT,Unknown,True,False,False,False,old,False,False
+SBUX,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+BG,SHORT,Unknown,True,True,False,False,new,True,False
+NU,SHORT,Unknown,True,False,False,False,old,False,False
+OMC,SHORT,Unknown,True,False,False,False,new,True,False
+BSX,SHORT,Health Care,False,False,False,False,old,False,False
+PEP,SHORT,Consumer Staples,False,False,False,False,old,False,False
+LII,SHORT,Unknown,True,True,False,False,new,True,False
+AMP,SHORT,Unknown,True,False,False,False,new,True,False
+EME,SHORT,Unknown,True,True,False,False,new,True,False
+SWK,SHORT,Unknown,True,False,False,False,new,True,False
+MRSH,SHORT,Unknown,True,False,False,False,old,False,False
+MLM,SHORT,Unknown,True,False,False,False,new,True,False
+PNR,SHORT,Unknown,True,True,False,False,new,True,False
+FSLR,SHORT,Unknown,True,False,False,False,new,True,False
+AMZN,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+CLX,SHORT,Unknown,True,False,False,False,new,True,False
+J,SHORT,Unknown,True,True,False,False,new,True,False
+HII,SHORT,Unknown,True,True,False,False,new,True,False
+WDC,SHORT,Unknown,True,False,False,False,old,False,False
+MKC,SHORT,Unknown,True,False,False,False,new,True,False
+PSX,SHORT,Unknown,True,False,False,False,old,False,False
+CBRE,SHORT,Unknown,True,False,False,False,new,True,False
+BALL,SHORT,Unknown,True,False,False,False,new,True,False
+NOC,SHORT,Industrials,False,False,False,True,old,False,False
+MAS,SHORT,Unknown,True,True,False,True,new,True,False
+QCOM,SHORT,Information Technology,False,False,False,True,old,False,False
+CTVA,SHORT,Unknown,True,False,False,True,new,True,False
+ASML,SHORT,Unknown,True,False,False,True,old,False,False
+MGCLY,DROPPED,,,,True,,,,

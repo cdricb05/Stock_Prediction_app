@@ -1,0 +1,5 @@
+section,date_field,rows,first_date,last_date,fields
+Earnings::History,reportDate,131,1993-12-31,2026-07-30,reportDate|epsActual|epsEstimate|surprisePercent
+Financials::Income_Statement::quarterly,filing_date,163,1985-09-30,2026-05-01,filing_date|totalRevenue|netIncome|totalAssets|totalCashFromOperatingActivities|freeCashFlow|commonStockSharesOutstanding
+Financials::Balance_Sheet::quarterly,filing_date,163,1985-09-30,2026-05-01,filing_date|totalRevenue|netIncome|totalAssets|totalCashFromOperatingActivities|freeCashFlow|commonStockSharesOutstanding
+Financials::Cash_Flow::quarterly,filing_date,163,1985-09-30,2026-05-01,filing_date|totalRevenue|netIncome|totalAssets|totalCashFromOperatingActivities|freeCashFlow|commonStockSharesOutstanding

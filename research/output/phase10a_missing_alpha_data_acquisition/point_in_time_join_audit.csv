@@ -1,0 +1,5 @@
+family,norm_rows,coverage_events,join_direction,diagnosis
+analyst_estimate_revisions,0,0,available_date <= entry_date,0 normalized rows for analyst_estimate_revisions - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)
+price_target_revisions,0,0,available_date <= entry_date,0 normalized rows for price_target_revisions - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)
+short_interest_days_to_cover,5450,17496,available_date <= entry_date,covered
+options_iv_skew_put_call,0,0,available_date <= entry_date,0 normalized rows for options_iv_skew_put_call - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)

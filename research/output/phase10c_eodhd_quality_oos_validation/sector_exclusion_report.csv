@@ -1,0 +1,53 @@
+feature,variant,scope,metric_a,top_sector,metric_b,sign_holds,n_events
+fcf_to_assets,raw,FULL,0.50247,Unknown,0.31234,True,
+fcf_to_assets,raw,exclude:Communication Services,0.02685,,1.56848,True,37765
+fcf_to_assets,raw,exclude:Consumer Discretionary,0.02432,,1.41318,True,37098
+fcf_to_assets,raw,exclude:Consumer Staples,0.02909,,1.69595,True,37393
+fcf_to_assets,raw,exclude:Energy,0.02562,,1.50339,True,37795
+fcf_to_assets,raw,exclude:Financials,0.02786,,1.641,True,36229
+fcf_to_assets,raw,exclude:Health Care,0.02619,,1.52245,True,36003
+fcf_to_assets,raw,exclude:Industrials,0.02693,,1.54347,True,36109
+fcf_to_assets,raw,exclude:Information Technology,0.02399,,1.3335,True,35661
+fcf_to_assets,raw,exclude:Materials,0.02592,,1.51769,True,38034
+fcf_to_assets,raw,exclude:Real Estate,0.02589,,1.51068,True,38192
+fcf_to_assets,raw,exclude:Unknown,0.02682,,1.22096,True,14164
+fcf_to_assets,raw,exclude:Utilities,0.02614,,1.52227,True,38045
+fcf_to_assets,sector_neutral,FULL,0.59738,Unknown,0.37944,True,
+fcf_to_assets,sector_neutral,exclude:Communication Services,0.02448,,1.56091,True,37765
+fcf_to_assets,sector_neutral,exclude:Consumer Discretionary,0.02178,,1.37556,True,37098
+fcf_to_assets,sector_neutral,exclude:Consumer Staples,0.02358,,1.48801,True,37393
+fcf_to_assets,sector_neutral,exclude:Energy,0.02404,,1.53718,True,37795
+fcf_to_assets,sector_neutral,exclude:Financials,0.02355,,1.51571,True,36229
+fcf_to_assets,sector_neutral,exclude:Health Care,0.02354,,1.49809,True,36003
+fcf_to_assets,sector_neutral,exclude:Industrials,0.02353,,1.48199,True,36109
+fcf_to_assets,sector_neutral,exclude:Information Technology,0.02968,,1.71362,True,35661
+fcf_to_assets,sector_neutral,exclude:Materials,0.02331,,1.49133,True,38034
+fcf_to_assets,sector_neutral,exclude:Real Estate,0.02336,,1.49719,True,38192
+fcf_to_assets,sector_neutral,exclude:Unknown,0.02284,,1.03979,True,14164
+fcf_to_assets,sector_neutral,exclude:Utilities,0.02343,,1.50086,True,38045
+operating_accruals,raw,FULL,0.6337,Unknown,0.42947,False,
+operating_accruals,raw,exclude:Communication Services,0.01186,,0.87798,True,37967
+operating_accruals,raw,exclude:Consumer Discretionary,0.01141,,0.85198,True,37300
+operating_accruals,raw,exclude:Consumer Staples,0.01393,,1.03111,True,37595
+operating_accruals,raw,exclude:Energy,0.01225,,0.90241,True,37997
+operating_accruals,raw,exclude:Financials,0.01257,,0.92824,True,36431
+operating_accruals,raw,exclude:Health Care,0.00998,,0.72752,True,36205
+operating_accruals,raw,exclude:Industrials,0.01172,,0.85242,True,36311
+operating_accruals,raw,exclude:Information Technology,0.01275,,0.87973,True,35863
+operating_accruals,raw,exclude:Materials,0.01105,,0.8156,True,38236
+operating_accruals,raw,exclude:Real Estate,0.01105,,0.8148,True,38394
+operating_accruals,raw,exclude:Unknown,-0.00525,,-0.25585,False,14164
+operating_accruals,raw,exclude:Utilities,0.01093,,0.80606,True,38247
+operating_accruals,sector_neutral,FULL,0.62324,Unknown,0.41058,True,
+operating_accruals,sector_neutral,exclude:Communication Services,0.01728,,1.30852,True,37967
+operating_accruals,sector_neutral,exclude:Consumer Discretionary,0.0153,,1.14796,True,37300
+operating_accruals,sector_neutral,exclude:Consumer Staples,0.01632,,1.23086,True,37595
+operating_accruals,sector_neutral,exclude:Energy,0.01617,,1.22161,True,37997
+operating_accruals,sector_neutral,exclude:Financials,0.01484,,1.12222,True,36431
+operating_accruals,sector_neutral,exclude:Health Care,0.0151,,1.1327,True,36205
+operating_accruals,sector_neutral,exclude:Industrials,0.01612,,1.20468,True,36311
+operating_accruals,sector_neutral,exclude:Information Technology,0.02161,,1.49696,True,35863
+operating_accruals,sector_neutral,exclude:Materials,0.01596,,1.20604,True,38236
+operating_accruals,sector_neutral,exclude:Real Estate,0.01586,,1.20048,True,38394
+operating_accruals,sector_neutral,exclude:Unknown,0.00718,,0.37836,True,14164
+operating_accruals,sector_neutral,exclude:Utilities,0.01604,,1.21406,True,38247

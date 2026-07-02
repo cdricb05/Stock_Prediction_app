@@ -1,0 +1,11 @@
+{
+  "as_of": "2026-06-26",
+  "max_tickers": 545,
+  "total_requests": 2725,
+  "acquired_by_family": {
+    "analyst_estimate_revisions": 0,
+    "price_target_revisions": 0,
+    "short_interest_days_to_cover": 2725,
+    "options_iv_skew_put_call": 0
+  }
+}

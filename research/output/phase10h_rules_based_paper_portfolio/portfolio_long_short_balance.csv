@@ -1,0 +1,2 @@
+n_long,n_short,long_gross_pct,short_gross_pct,net_pct,gross_pct,weighting,sides_balanced,note
+25,25,100.0,100.0,0.0,200.0,EQUAL,True,"dollar-neutral paper book; net 0%, gross 200%"

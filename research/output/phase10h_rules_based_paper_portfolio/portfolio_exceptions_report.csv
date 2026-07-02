@@ -1,0 +1,57 @@
+side,ticker,sector,comp_sn,comp_sn_z,exception_type,detail,action
+LONG,EXPE,Consumer Discretionary,8.76583,5.1216,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,JPM,Financials,7.09546,4.1455,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,BKNG,Consumer Discretionary,7.05134,4.1197,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,EA,Communication Services,6.06291,3.5421,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,STX,Information Technology,5.36829,3.1362,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,RELX,Industrials,4.75745,2.7793,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,CHRW,Industrials,3.26801,1.9089,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,IVZ,Financials,2.95738,1.7274,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,SMERY,Industrials,2.69831,1.576,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,HDB,Financials,2.65284,1.5494,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,BUD,Consumer Staples,2.52467,1.4745,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,EXPD,Industrials,2.26836,1.3247,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,NVR,Consumer Discretionary,2.24164,1.3091,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,FOX,Communication Services,2.11552,1.2354,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,RACE,Consumer Discretionary,2.01395,1.176,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,GNRC,Industrials,1.92188,1.1222,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,GDDY,Information Technology,1.91769,1.1198,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,JKHY,Financials,1.66814,0.974,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,JBHT,Industrials,1.59606,0.9318,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,SNA,Industrials,1.49285,0.8715,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,SMFG,Financials,1.44879,0.8458,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,AVY,Materials,1.33899,0.7816,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,SCCO,Materials,1.23795,0.7226,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,IT,Information Technology,1.21754,0.7106,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,LYG,Financials,1.18016,0.6888,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,MUFG,Financials,1.1468,0.6693,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+LONG,DB,Financials,1.0757,0.6278,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,ASML,Information Technology,-8.80095,-5.1438,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,CTVA,Materials,-5.62798,-3.2896,extreme_score_flagged,"|comp_sn_z| >= 3.0 (extreme score held out, not auto-included)",HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,MAS,Industrials,-4.69864,-2.7466,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,CBRE,Real Estate,-3.77285,-2.2056,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,HII,Industrials,-3.70721,-2.1672,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,J,Industrials,-3.64319,-2.1298,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,PNR,Industrials,-3.2025,-1.8723,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,EME,Industrials,-2.71108,-1.5851,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,TM,Consumer Discretionary,-2.66774,-1.5598,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,LII,Industrials,-2.56019,-1.4969,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,SOLV,Health Care,-2.2828,-1.3348,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,HSIC,Health Care,-2.16764,-1.2675,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,BG,Consumer Staples,-2.07734,-1.2148,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,NWS,Communication Services,-2.0275,-1.1856,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,NWSA,Communication Services,-2.0275,-1.1856,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,GPC,Consumer Discretionary,-2.00968,-1.1752,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,RL,Consumer Discretionary,-1.84533,-1.0792,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,TTE,Energy,-1.738,-1.0165,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,TAP,Consumer Staples,-1.41955,-0.8304,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,IFNNY,Information Technology,-1.40444,-0.8216,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,GSK,Health Care,-1.36697,-0.7997,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,EG,Financials,-1.3559,-0.7932,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,E,Energy,-1.34968,-0.7896,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,PTC,Information Technology,-1.31988,-0.7721,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,CBOE,Financials,-1.14942,-0.6725,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,STLD,Materials,-1.13492,-0.6641,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,BEN,Financials,-1.10655,-0.6475,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,IBN,Financials,-1.06575,-0.6236,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION
+SHORT,CNP,Utilities,-1.04965,-0.6142,bottom_quartile_liquidity,liquidity below the 25th-percentile threshold,HELD_OUT_NEEDS_RULE_EXCEPTION

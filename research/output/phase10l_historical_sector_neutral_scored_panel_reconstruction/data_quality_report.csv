@@ -1,0 +1,8 @@
+check,value,note
+additive_reconstruction_ok,True,z-legs sum to the composites
+composite_sn_max_abs_reconstruction_error,0.0,max|z_fcf_sn + z_acc_sn - composite_sn|
+composite_raw_max_abs_reconstruction_error,0.0,max|z_fcf_raw + z_acc_raw - composite_raw|
+flag_MISSING_COMPOSITE,321,data_quality_flag row count
+flag_MISSING_FWD_RETURN,487,data_quality_flag row count
+flag_OK,14055,data_quality_flag row count
+flag_OK_UNKNOWN_SECTOR,23862,data_quality_flag row count

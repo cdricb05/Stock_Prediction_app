@@ -1,0 +1,152 @@
+{
+  "phase": "10-F-A",
+  "as_of": "2026-06-26",
+  "decision": "SECTOR_MAPPING_REPAIRED_READY_FOR_HUMAN_REVIEW",
+  "decision_rationale": "owned-metadata sector repair cut the Unknown-sector book share from 78% to 0% with no new single-sector concentration breach; the reranked sector-neutral quarterly composite book is ready for a human approve/reject review (paper-only; NO orders; NO automation)",
+  "allowed_decisions": [
+    "SECTOR_MAPPING_REPAIRED_READY_FOR_HUMAN_REVIEW",
+    "SECTOR_MAPPING_PARTIALLY_REPAIRED_REVIEW_WITH_CAVEAT",
+    "SECTOR_MAPPING_NOT_REPAIRABLE_WITH_OWNED_DATA",
+    "PAPER_REVIEW_REJECTED_AFTER_SECTOR_REPAIR",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR_WITH_REPRO_COMMAND"
+  ],
+  "forbidden_decisions": [
+    "LIVE_TRADING_READY",
+    "ORDER_READY",
+    "AUTOMATION_READY",
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "MISSING_KEY",
+    "NO_DATA",
+    "NEEDS_PROVIDER",
+    "EMPTY_PAYLOAD",
+    "ERROR"
+  ],
+  "objective": "repair the Unknown sector labels of the 10-E quarterly quality book using ONLY owned/local metadata, rebuild the sector-neutral composite, and rerank the 2026Q2 paper-review book - NOT alpha search, NOT provider search, NOT orders, NOT automation, NOT a Paper Trader integration",
+  "performs_network": false,
+  "offline": true,
+  "uses_owned_data_only": true,
+  "performs_provider_acquisition": false,
+  "eodhd_key_visible": true,
+  "eodhd_key_required": false,
+  "creates_paper_trader_signals": false,
+  "creates_trade_decisions": false,
+  "creates_orders": false,
+  "creates_automation": false,
+  "wrote_to_paper_trader": false,
+  "live_trading": false,
+  "broker_connected": false,
+  "deploy": false,
+  "fabricated_sectors": false,
+  "sector_labels_point_in_time": false,
+  "sector_labels_note": "repaired sector labels are CURRENT-as-of company classifications used ONLY as a static neutralisation grouping (sector is not a return feature); same non-PIT basis as the existing curated map",
+  "composite_source": "imported verbatim from Phase 10-D build_composite; sector-neutral legs recomputed AFTER applying repaired sectors; no re-definition",
+  "composite_legs": [
+    "fcf_to_assets",
+    "operating_accruals"
+  ],
+  "leg_families": [
+    "eodhd_fcf_to_assets",
+    "eodhd_operating_accruals"
+  ],
+  "optimised_weights": false,
+  "sign_flipping": false,
+  "default_review_score": "comp_sn",
+  "default_review_score_is_sector_neutral": true,
+  "sector_neutral_composite_rebuilt": true,
+  "primary_horizon_days": 63,
+  "owned_sources_attempted": [
+    "norgate_local_symbol_metadata",
+    "eodhd_raw_fundamentals(General.GicSector)",
+    "eodhd_raw_fundamentals(General.Sector->GICS_crosswalk)",
+    "eodhd_normalized_fundamentals_metadata",
+    "prior_repo_curated_sector_map(phase2k)",
+    "cached_eodhd_company_profile(General_block)"
+  ],
+  "latest_quarter": "2026Q2",
+  "latest_quarter_universe_names": 484,
+  "latest_quarter_scoreable_names": 483,
+  "repair": {
+    "n_unknown_attempted": 418,
+    "n_repaired": 418,
+    "n_still_unknown": 0
+  },
+  "book": {
+    "n_long": 97,
+    "n_short": 97,
+    "n_hold": 289
+  },
+  "unknown_sector_book_share_before": 0.7784,
+  "unknown_sector_book_share_after": 0.0,
+  "sector_exposure_after": {
+    "unknown_book_share": 0.0,
+    "unknown_long_share": 0.0,
+    "n_unknown_book": 0,
+    "top_long_sector": "Industrials",
+    "top_long_sector_share": 0.1959,
+    "high_concentration": false
+  },
+  "book_change_counts": {
+    "entered_long": 14,
+    "exited_long": 14,
+    "entered_short": 25,
+    "exited_short": 25,
+    "stayed_long": 83,
+    "stayed_short": 72
+  },
+  "liquidity": {
+    "low_liq_threshold": 125523727.3279,
+    "n_low_liq_book": 41
+  },
+  "safety_badges": [
+    "PAPER REVIEW ONLY",
+    "NO ORDERS",
+    "NO AUTOMATION",
+    "HUMAN APPROVAL REQUIRED",
+    "NO LIVE TRADING",
+    "NO BROKER",
+    "CREATES NO TRADE DECISIONS",
+    "MANUAL REVIEW"
+  ],
+  "secret_safety_leak_scan_clean": true,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "required_artifacts": [
+    "phase10f_owned_sector_mapping_repair.json",
+    "unknown_sector_repair_attempts.csv",
+    "repaired_sector_mapping.csv",
+    "unrepaired_unknown_sector_names.csv",
+    "sector_mapping_source_audit.csv",
+    "before_after_sector_exposure.csv",
+    "before_after_unknown_sector_exposure.csv",
+    "reranked_paper_review_candidate_list.csv",
+    "reranked_paper_review_long_short_book.csv",
+    "long_short_book_change_report.csv",
+    "rank_movement_report.csv",
+    "sector_neutral_score_rebuild_audit.csv",
+    "repaired_book_risk_flags.csv",
+    "phase10g_next_plan.json",
+    "secret_safety_audit.csv"
+  ],
+  "exact_next_command": "review research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_long_short_book.csv",
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "owned/local metadata only",
+    "no new provider purchase",
+    "no FMP/AlphaVantage/Polygon/Finnhub/Norgate-API",
+    "composite imported from 10-D; sector-neutral legs recomputed; no optimisation; no sign-flip",
+    "no Paper Trader writes",
+    "no GCP",
+    "NO orders",
+    "NO automation",
+    "NO live trading",
+    "NO broker",
+    "no deploy",
+    "no package install",
+    "no full regression",
+    "no commit",
+    "no push",
+    "no key printed/written",
+    "no fabricated sectors"
+  ]
+}

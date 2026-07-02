@@ -1,0 +1,14 @@
+section,kind,n_entries,pit_usable,sample_ticker
+General,dict,37,False,AAPL
+Highlights,dict,25,False,AAPL
+Valuation,dict,7,False,AAPL
+SharesStats,dict,9,False,AAPL
+Technicals,dict,9,False,AAPL
+SplitsDividends,dict,8,False,AAPL
+AnalystRatings,dict,7,False,AAPL
+Holders,dict,2,False,AAPL
+InsiderTransactions,dict,0,False,AAPL
+ESGScores,dict,12,False,AAPL
+outstandingShares,dict,2,True,AAPL
+Earnings,dict,3,True,AAPL
+Financials,dict,3,True,AAPL

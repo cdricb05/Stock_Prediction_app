@@ -1,0 +1,37 @@
+{
+  "from_phase": "10-B",
+  "decision": "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+  "next_phase": "10-C",
+  "exact_next_commands": [
+    {
+      "action": "review_promoted_strong_alpha",
+      "family": "orthogonal",
+      "command": "review research/output/phase10b_eodhd_norgate_exhaustive_alpha_factory/strong_alpha_candidates.csv then productize paper-only"
+    }
+  ],
+  "eodhd_families": [
+    "eodhd_earnings_surprise",
+    "eodhd_eps_growth_yoy",
+    "eodhd_revenue_growth_yoy",
+    "eodhd_gross_profitability",
+    "eodhd_operating_accruals",
+    "eodhd_asset_growth",
+    "eodhd_net_share_issuance",
+    "eodhd_leverage_change",
+    "eodhd_fcf_to_assets",
+    "eodhd_dividend_growth",
+    "eodhd_news_sentiment"
+  ],
+  "strong_candidates": [
+    "f_accel_sn"
+  ],
+  "missing_data_after_eodhd_norgate": [
+    "analyst_estimate_revision_history",
+    "price_target_revision_history",
+    "options_iv_skew_put_call",
+    "intraday_technical_tick_data"
+  ],
+  "next_steps": [
+    "Productize the promoted strong EODHD signal (paper-only, manual-review, NO orders/automation)."
+  ]
+}

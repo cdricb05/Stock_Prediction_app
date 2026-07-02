@@ -1,0 +1,7 @@
+metric,baseline_value,champion_value,delta,fcf_only_raw,accruals_only_raw
+quarterly_net_25bps,0.00401,0.00401,0.0,0.00542,0.0053
+quarterly_net_50bps,0.00095,0.00095,0.0,0.00309,0.00222
+ic_t_63d,2.665,2.665,0.0,2.535,3.075
+quarterly_turnover,0.6115,0.6115,0.0,0.4661,0.6158
+oos_frac_windows_positive,0.5,0.5,0.0,0.375,0.688
+top_sector_share,0.6262,0.6262,0.0,0.4995,0.6316

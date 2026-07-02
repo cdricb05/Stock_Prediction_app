@@ -1,0 +1,13 @@
+sector,before_n_universe,after_n_universe,before_n_long,after_n_long,before_n_short,after_n_short,before_n_book,after_n_book
+Communication Services,7,21,1,6,2,8,3,14
+Consumer Discretionary,10,38,2,10,4,16,6,26
+Consumer Staples,7,24,1,6,2,5,3,11
+Energy,5,33,0,6,0,6,0,12
+Financials,20,89,2,11,4,13,6,24
+Health Care,20,55,3,10,3,8,6,18
+Industrials,18,76,7,19,5,17,12,36
+Information Technology,14,61,4,18,3,15,7,33
+Materials,3,30,0,7,0,6,0,13
+Real Estate,2,27,0,3,0,1,0,4
+Unknown,374,0,77,0,74,0,151,0
+Utilities,3,29,0,1,0,2,0,3

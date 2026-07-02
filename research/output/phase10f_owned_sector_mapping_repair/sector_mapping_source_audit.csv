@@ -1,0 +1,7 @@
+source_family,available,taxonomy,point_in_time,n_attempted,n_hit,note
+norgate_local_symbol_metadata,False,n/a,n/a,418,0,no local Norgate sector dump on disk; would require the Norgate SDK/DB (out of offline scope)
+eodhd_raw_fundamentals(General.GicSector),True,"GICS (11 buckets, == curated map)",current-as-of (not PIT),418,413,owned research/data/eodhd/raw/fundamentals/*.json General.GicSector; 547 tickers cached
+eodhd_raw_fundamentals(General.Sector->GICS_crosswalk),True,Morningstar->GICS crosswalk,current-as-of (not PIT),418,5,fallback when General.GicSector blank; documented 1:1 crosswalk; no guessing
+eodhd_normalized_fundamentals_metadata,True,n/a,n/a,418,0,normalized EODHD families are time-series features only; no sector classification
+prior_repo_curated_sector_map(phase2k),True,GICS,current-as-of (not PIT),418,0,owned curated phase2k map (128 tickers); Unknown names are by definition absent from it
+cached_eodhd_company_profile(General_block),True,GICS,current-as-of (not PIT),418,0,the EODHD General block IS the cached company profile (same data as the GicSector source)

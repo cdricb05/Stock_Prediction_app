@@ -1,0 +1,15 @@
+rule_id,rule,parameter,value,rationale
+1,ranking,score,comp_sn,rank within side by the 10-D sector-neutral composite
+2,book_size,max_per_side,25,up to 25 longs and 25 shorts
+3,liquidity_filter,exclude_below_pctile,25.0,drop bottom-quartile liquidity (threshold liquidity_proxy=135025175.6)
+4,sector_filter,drop_missing_sector,True,exclude names with a missing/Unknown sector
+5,input_filter,require,fcf_to_assets+operating_accruals,exclude names missing a required composite input
+6,sector_cap,max_pct_per_side,25.0,cap each sector at 25% of each side (= 6 names per sector per side)
+7,long_weighting,scheme,EQUAL,equal-weight the long side
+8,short_weighting,scheme,EQUAL,equal-weight the short side
+9,gross_exposure,long/short_pct,100.0/100.0,"100% long / 100% short in paper terms (net 0%, gross 200%)"
+10,rebalance,cadence,QUARTERLY,quarterly rebalance
+11,weights,optimised,False,no optimised weights
+12,approval_model,per_ticker_approval,False,"approve the RULES + exceptions, not 194 tickers"
+13,extreme_handling,flag_threshold_abs_z,3.0,flag extreme-score names and HOLD them out (do not auto-include)
+14,underfill,behaviour,smaller_valid_book,"if <25 per side pass filters, produce the smaller book and explain why"

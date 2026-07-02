@@ -1,0 +1,22 @@
+{
+  "phase": "10-J (planned)",
+  "title": "Paper tracker price refresh + first realized quarterly review",
+  "depends_on": "PAPER_POSITION_TRACKER_READY_PENDING_PRICE_REFRESH",
+  "steps": [
+    "when owned local EOD prices extend PAST the inception date, re-run this tracker to mark the book (entry/current adjusted_close, side-signed)",
+    "fill paper_expected_vs_realized_template.csv: realized quarterly net spread vs the 10-D expected net-25bps benchmark",
+    "at the 2026-09-30 rebalance, snapshot realized vs expected and re-run the 10-H rules to form the next quarter's paper book - still NO orders/automation/broker/live/deploy"
+  ],
+  "still_forbidden": [
+    "orders",
+    "automation",
+    "broker",
+    "live trading",
+    "deploy",
+    "Paper Trader writes",
+    "new data purchase",
+    "live market API"
+  ],
+  "mtm_status": "PENDING_PRICE_REFRESH",
+  "exact_next_command": "review research/output/phase10i_paper_position_tracker/paper_tracker_status.csv"
+}

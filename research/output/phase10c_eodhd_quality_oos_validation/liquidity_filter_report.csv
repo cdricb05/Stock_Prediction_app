@@ -1,0 +1,5 @@
+feature,variant,full_ic,full_ic_t,high_liq_ic,high_liq_ic_t,high_liq_n_events,low_liq_ic,low_liq_ic_t,high_liq_positive
+fcf_to_assets,raw,0.02589,1.51555,0.02824,1.53119,19435,0.02133,1.18453,True
+fcf_to_assets,sector_neutral,0.02347,1.50461,0.02716,1.52467,19435,0.02042,1.13986,True
+operating_accruals,raw,0.01099,0.81142,-0.00644,-0.40734,19435,0.02985,1.75148,False
+operating_accruals,sector_neutral,0.01585,1.20126,-0.00116,-0.07833,19435,0.02961,1.72828,False

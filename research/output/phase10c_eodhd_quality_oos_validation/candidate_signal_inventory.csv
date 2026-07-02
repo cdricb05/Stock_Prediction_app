@@ -1,0 +1,3 @@
+family,feature,orientation,normalized_path,panel_coverage_events,panel_coverage_tickers,my_ic_t_21d,phase10b_raw_ic_t_21d,phase10b_oriented_ic_t_21d,reproduction,anomaly
+eodhd_fcf_to_assets,fcf_to_assets,1,research/data/eodhd/normalized/eodhd_fcf_to_assets/fcf_to_assets.csv,38408,543,1.51555,1.516,1.516,MATCH,cash-flow quality (Novy-Marx / FCF): higher free-cash-flow/assets -> higher forward excess return
+eodhd_operating_accruals,operating_accruals,-1,research/data/eodhd/normalized/eodhd_operating_accruals/operating_accruals.csv,38610,542,0.81142,-0.811,0.811,MATCH,"Sloan accruals anomaly: HIGHER operating accruals -> LOWER forward excess return (short high-accrual names), so the oriented signal is the NEGATED accrual"

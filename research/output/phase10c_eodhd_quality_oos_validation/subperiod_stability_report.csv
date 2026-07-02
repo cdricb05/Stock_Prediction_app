@@ -1,0 +1,5 @@
+feature,variant,pre2020_ic,pre2020_ic_t,pre2020_n_months,post2020_ic,post2020_ic_t,post2020_n_months,both_subperiods_positive
+fcf_to_assets,raw,0.02371,0.81853,43,0.0271,1.27345,77,True
+fcf_to_assets,sector_neutral,0.01897,0.70003,43,0.02599,1.35649,77,True
+operating_accruals,raw,0.00684,0.3019,43,0.0133,0.78288,77,True
+operating_accruals,sector_neutral,0.015,0.66678,43,0.01633,0.99596,77,True

@@ -1,0 +1,3 @@
+feature,orientation,verdict,ready_for_paper_review,ic_21d,ic_t_21d,best_horizon_ic_t,net_25bps,net_50bps,both_cohorts_pos,both_subperiods_pos,sector_robust,oos_pooled_ic,horizons_positive,recommended_action
+fcf_to_assets,1,REJECTED_NOT_COST_ROBUST,NO,0.02589,1.51555,3.06277,-0.00267,-0.00764,True,True,True,0.02784,4,DO NOT TRADE: rejected (REJECTED_NOT_COST_ROBUST)
+operating_accruals,-1,REJECTED_NOT_COST_ROBUST,NO,0.01099,0.81142,3.07451,-0.00162,-0.00658,True,True,False,0.01534,4,DO NOT TRADE: rejected (REJECTED_NOT_COST_ROBUST)

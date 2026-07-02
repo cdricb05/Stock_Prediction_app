@@ -1,0 +1,17 @@
+signal,horizon_days,horizon_label,mean_ic,ic_t,ic_p,n_months,n_events,note
+composite_raw,1,1d,0.04017,2.47911,0.01317,120,38404,
+composite_raw,5,1w(5d),0.03708,2.73625,0.00621,120,38404,
+composite_raw,21,1mo(21d),0.02508,1.64836,0.09928,120,38404,
+composite_raw,63,"1q(63d, primary)",0.04537,3.07398,0.00211,118,37917,primary
+composite_sn,1,1d,0.04132,2.84671,0.00442,120,38404,
+composite_sn,5,1w(5d),0.04366,3.19488,0.0014,120,38404,
+composite_sn,21,1mo(21d),0.02546,1.888,0.05903,120,38404,
+composite_sn,63,"1q(63d, primary)",0.03494,2.66461,0.00771,118,37917,primary
+fcf_to_assets,1,1d,0.05249,3.06277,0.00219,120,38408,
+fcf_to_assets,5,1w(5d),0.03617,2.56316,0.01037,120,38408,
+fcf_to_assets,21,1mo(21d),0.02589,1.51555,0.12963,120,38408,
+fcf_to_assets,63,"1q(63d, primary)",0.04228,2.53455,0.01126,118,37920,primary
+operating_accruals,1,1d,0.02331,1.51213,0.1305,120,38610,
+operating_accruals,5,1w(5d),0.03026,2.40153,0.01633,120,38610,
+operating_accruals,21,1mo(21d),0.01099,0.81142,0.41713,120,38610,
+operating_accruals,63,"1q(63d, primary)",0.04113,3.07451,0.00211,118,38123,primary

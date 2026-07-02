@@ -1,0 +1,2 @@
+action,family,command
+review_promoted_strong_alpha,orthogonal,review research/output/phase10b_eodhd_norgate_exhaustive_alpha_factory/strong_alpha_candidates.csv then productize paper-only

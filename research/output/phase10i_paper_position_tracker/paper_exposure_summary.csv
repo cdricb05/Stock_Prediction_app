@@ -1,0 +1,10 @@
+metric,value
+n_holdings,50
+n_long,25
+n_short,25
+long_gross_pct,100.0
+short_gross_pct,100.0
+net_pct,0.0
+gross_pct,200.0
+largest_name_weight_pct,4.0
+weighting,EQUAL

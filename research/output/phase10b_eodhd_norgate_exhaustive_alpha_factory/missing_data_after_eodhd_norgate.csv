@@ -1,0 +1,5 @@
+missing_mechanism,why,exact_paid_fix
+analyst_estimate_revision_history,EODHD AnalystRatings / Earnings.Trend are current snapshots - no dated as-of history of EPS/revenue estimate revisions (PIT-unsafe for a revision-drift signal),"Intrinio/Zacks estimate-revision history, or FMP Premium analyst-estimates (only if the user chooses to add a non-EODHD estimate feed)"
+price_target_revision_history,EODHD WallStreetTargetPrice / AnalystRatings.TargetPrice are current snapshots - no dated history of target changes,Benzinga / Intrinio analyst price-target history
+options_iv_skew_put_call,the EODHD options endpoint returned 404/not-entitled under the Fundamentals feed,"EODHD Options add-on, or ORATS / Polygon Options Starter (historical chains)"
+intraday_technical_tick_data,the Fundamentals feed does not include the intraday/technical/tick API,EODHD Technical/Intraday add-on (only if an intraday signal is pursued)

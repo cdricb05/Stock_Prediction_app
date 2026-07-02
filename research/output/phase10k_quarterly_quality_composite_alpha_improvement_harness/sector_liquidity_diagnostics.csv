@@ -1,0 +1,4 @@
+variant_id,n_long_filled,n_short_filled,n_liquidity_excluded,n_extreme_excluded,top_sector_share_long,top_sector_share_short,top_sector_long,top_sector_short
+liq_p25_cap25_extreme3,25,25,49,13,0.2,0.2,Information Technology,Consumer Discretionary
+liq_p50_stricter,25,25,97,13,0.24,0.24,Information Technology,Consumer Discretionary
+sector_cap_20_stricter,25,25,49,13,0.2,0.2,Information Technology,Consumer Discretionary

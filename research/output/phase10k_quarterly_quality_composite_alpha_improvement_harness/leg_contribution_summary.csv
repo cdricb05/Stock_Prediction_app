@@ -1,0 +1,4 @@
+leg,signal,role,basis,ic_t_63d,quarterly_net_25bps,quarterly_gross_spread,oos_frac_windows_positive,top_sector_share,note
+long_leg,fcf_to_assets,long,raw standalone,2.535,0.00542,0.00775,0.375,0.4995,weak standalone OOS (frac-positive below the 0.6 gate); its main value in the composite is diversification -- it pulls sector concentration down.
+short_leg,operating_accruals,short,raw standalone,3.075,0.0053,0.00838,0.688,0.6316,"highest t-stat and best OOS of the two legs -- the short (accruals) leg carries most of the composite's robustness, but alone it breaches the sector concentration gate."
+composite_sn,composite_sn,long/short,sector-neutral,2.665,0.00401,0.00707,0.5,0.6262,the confirmed baseline; combines the legs so OOS sits between them and concentration is lower than accruals-alone.

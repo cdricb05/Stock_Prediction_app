@@ -1,0 +1,17 @@
+feature,variant,horizon_days,gross_quintile_spread,avg_turnover,net_10bps,net_25bps,net_50bps,survives_25bps,survives_50bps
+fcf_to_assets,raw,1,0.00222,0.99414,0.00023,-0.00275,-0.00772,False,False
+fcf_to_assets,raw,5,0.00143,0.99414,-0.00056,-0.00354,-0.00851,False,False
+fcf_to_assets,raw,21,0.0023,0.99414,0.00031,-0.00267,-0.00764,False,False
+fcf_to_assets,raw,63,0.01124,0.99404,0.00925,0.00627,0.0013,True,True
+fcf_to_assets,sector_neutral,1,0.00184,0.99427,-0.00015,-0.00313,-0.0081,False,False
+fcf_to_assets,sector_neutral,5,0.00119,0.99427,-0.0008,-0.00378,-0.00876,False,False
+fcf_to_assets,sector_neutral,21,0.00191,0.99427,-8e-05,-0.00306,-0.00803,False,False
+fcf_to_assets,sector_neutral,63,0.00796,0.99418,0.00597,0.00299,-0.00198,True,False
+operating_accruals,raw,1,0.00054,0.99261,-0.00145,-0.00442,-0.00939,False,False
+operating_accruals,raw,5,0.00222,0.99261,0.00023,-0.00275,-0.00771,False,False
+operating_accruals,raw,21,0.00335,0.99261,0.00136,-0.00162,-0.00658,False,False
+operating_accruals,raw,63,0.01579,0.99249,0.0138,0.01083,0.00586,True,True
+operating_accruals,sector_neutral,1,0.00074,0.9932,-0.00124,-0.00422,-0.00919,False,False
+operating_accruals,sector_neutral,5,0.00262,0.9932,0.00064,-0.00234,-0.00731,False,False
+operating_accruals,sector_neutral,21,0.00325,0.9932,0.00127,-0.00171,-0.00668,False,False
+operating_accruals,sector_neutral,63,0.0117,0.99308,0.00972,0.00674,0.00177,True,True

@@ -1,0 +1,9 @@
+badge,meaning
+PAPER REVIEW ONLY,This package is for human review only - it is not a tradeable instruction.
+NO ORDERS,"No orders are created, staged, or sent anywhere by this harness."
+NO AUTOMATION,Nothing is automated; every position is human approve/reject gated.
+HUMAN APPROVAL REQUIRED,A human must individually approve or reject each candidate.
+NO LIVE TRADING,"Paper-only; no live capital, no broker, no execution."
+NO BROKER,No broker connection exists or is configured by this phase.
+CREATES NO TRADE DECISIONS,No Paper Trader signals or trade decisions are written.
+MANUAL REVIEW,"Quarterly rebalance is a manual, reviewed decision - never scheduled execution."

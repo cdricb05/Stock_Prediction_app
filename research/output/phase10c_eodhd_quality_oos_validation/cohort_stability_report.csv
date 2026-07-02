@@ -1,0 +1,5 @@
+feature,variant,old_ic,old_ic_t,old_n_events,new_ic,new_ic_t,new_n_events,both_cohorts_positive
+fcf_to_assets,raw,0.0267,1.3079,28715,0.02032,1.05579,9693,True
+fcf_to_assets,sector_neutral,0.02584,1.26973,28715,0.02103,1.08714,9693,True
+operating_accruals,raw,0.00511,0.2992,28917,0.0198,1.14153,9693,True
+operating_accruals,sector_neutral,0.02501,1.51809,28917,0.02031,1.16372,9693,True

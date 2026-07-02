@@ -1,0 +1,20 @@
+{
+  "phase": "10-I (planned)",
+  "title": "Human rule-approval gate + paper-only position tracker",
+  "depends_on": "RULES_BASED_PAPER_PORTFOLIO_READY_WITH_EXCEPTIONS",
+  "steps": [
+    "human signs off rule_approval_checklist.csv (book size, liquidity, sector cap, equal weighting, quarterly cadence, paper-only, no orders/automation)",
+    "human resolves portfolio_exceptions_report.csv (optionally add back held-out extreme/liquidity/sector-cap names via explicit exception)",
+    "on approval, build a PAPER-ONLY position tracker for the selected book (mark-to-market quarterly; realised vs expected net-25bps) - still NO orders/automation"
+  ],
+  "still_forbidden": [
+    "orders",
+    "automation",
+    "broker",
+    "live trading",
+    "deploy",
+    "Paper Trader writes",
+    "new data purchase"
+  ],
+  "exact_next_command": "review research/output/phase10h_rules_based_paper_portfolio/rule_approval_checklist.csv"
+}

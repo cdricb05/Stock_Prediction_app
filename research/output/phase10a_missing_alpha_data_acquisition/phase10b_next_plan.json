@@ -1,0 +1,32 @@
+{
+  "from_phase": "10-A",
+  "decision": "ACCESSIBLE_MISSING_ALPHA_DATA_EXHAUSTED_NO_STRONG_ALPHA",
+  "next_phase": "10-B",
+  "exact_next_commands": [
+    {
+      "action": "purchase_provider_for_blocked_family",
+      "family": "analyst_estimate_revisions",
+      "command": "subscribe + set the key for: FMP Premium analyst-estimates, or Intrinio/Zacks estimate-revision history, then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+    },
+    {
+      "action": "purchase_provider_for_blocked_family",
+      "family": "price_target_revisions",
+      "command": "subscribe + set the key for: FMP Premium price-target, or Benzinga / Intrinio analyst price targets, then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+    },
+    {
+      "action": "purchase_provider_for_blocked_family",
+      "family": "options_iv_skew_put_call",
+      "command": "subscribe + set the key for: ORATS / Intrinio options feed, or Polygon Options Starter (historical chains), then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+    }
+  ],
+  "missing_alpha_families": [
+    "analyst_estimate_revisions",
+    "price_target_revisions",
+    "short_interest_days_to_cover",
+    "options_iv_skew_put_call"
+  ],
+  "strong_candidates": [],
+  "next_steps": [
+    "Acquire the next bounded missing-alpha batch / upgrade the exact paid provider recorded in provider_purchase_required.csv, then re-run the broad 8-X gate + horizon sweep."
+  ]
+}

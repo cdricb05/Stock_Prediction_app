@@ -1,0 +1,484 @@
+ticker,review_label,sector,unknown_sector,low_liquidity,missing_leg,extreme_score,cohort,is_new_cohort,in_concentrated_sector
+EXPE,LONG,Consumer Discretionary,False,False,False,True,new,True,False
+JPM,LONG,Financials,False,False,False,True,old,False,False
+BKNG,LONG,Consumer Discretionary,False,False,False,True,old,False,False
+EA,LONG,Communication Services,False,False,False,True,new,True,False
+STX,LONG,Information Technology,False,False,False,True,old,False,False
+APP,LONG,Information Technology,False,False,False,True,old,False,False
+RELX,LONG,Industrials,False,True,False,True,old,False,False
+LULU,LONG,Consumer Discretionary,False,False,False,True,new,True,False
+IP,LONG,Materials,False,False,False,False,new,True,False
+PM,LONG,Consumer Staples,False,False,False,False,old,False,False
+NOW,LONG,Information Technology,False,False,False,False,old,False,False
+SNDK,LONG,Information Technology,False,False,False,False,old,False,False
+DXCM,LONG,Health Care,False,False,False,False,new,True,False
+EXE,LONG,Energy,False,False,False,False,new,True,False
+CHRW,LONG,Industrials,False,False,False,False,new,True,False
+EQT,LONG,Energy,False,False,False,False,new,True,False
+LYV,LONG,Communication Services,False,False,False,False,new,True,False
+IVZ,LONG,Financials,False,True,False,False,new,True,False
+MCO,LONG,Financials,False,False,False,False,old,False,False
+GEV,LONG,Utilities,False,False,False,False,old,False,False
+SHOP,LONG,Information Technology,False,False,False,False,old,False,False
+SLB,LONG,Energy,False,False,False,False,old,False,False
+APD,LONG,Materials,False,False,False,False,old,False,False
+SMERY,LONG,Industrials,False,True,False,False,old,False,False
+HDB,LONG,Financials,False,True,False,False,old,False,False
+CMG,LONG,Consumer Discretionary,False,False,False,False,new,True,False
+ANET,LONG,Information Technology,False,False,False,False,old,False,False
+VRT,LONG,Industrials,False,False,False,False,old,False,False
+BUD,LONG,Consumer Staples,False,True,False,False,old,False,False
+NFLX,LONG,Communication Services,False,False,False,False,old,False,False
+DPZ,LONG,Consumer Discretionary,False,False,False,False,new,True,False
+FICO,LONG,Information Technology,False,False,False,False,new,True,False
+FAST,LONG,Industrials,False,False,False,False,new,True,False
+GWW,LONG,Industrials,False,False,False,False,old,False,False
+ABNB,LONG,Consumer Discretionary,False,False,False,False,old,False,False
+EXPD,LONG,Industrials,False,True,False,False,new,True,False
+NVR,LONG,Consumer Discretionary,False,True,False,False,new,True,False
+B,LONG,Materials,False,False,False,False,old,False,False
+LUV,LONG,Industrials,False,False,False,False,new,True,False
+SPOT,LONG,Communication Services,False,False,False,False,old,False,False
+UBER,LONG,Industrials,False,False,False,False,old,False,False
+FOX,LONG,Communication Services,False,True,False,False,new,True,False
+FOXA,LONG,Communication Services,False,False,False,False,new,True,False
+FANG,LONG,Energy,False,False,False,False,new,True,False
+LVS,LONG,Consumer Discretionary,False,False,False,False,new,True,False
+RACE,LONG,Consumer Discretionary,False,True,False,False,old,False,False
+GNRC,LONG,Industrials,False,False,False,False,new,True,False
+GDDY,LONG,Information Technology,False,True,False,False,new,True,False
+TXN,LONG,Information Technology,False,False,False,False,old,False,False
+DDOG,LONG,Information Technology,False,False,False,False,old,False,False
+PLTR,LONG,Information Technology,False,False,False,False,old,False,False
+DVN,LONG,Energy,False,False,False,False,new,True,False
+RMD,LONG,Health Care,False,False,False,False,new,True,False
+EBAY,LONG,Consumer Discretionary,False,False,False,False,new,True,False
+ODFL,LONG,Industrials,False,False,False,False,new,True,False
+MO,LONG,Consumer Staples,False,False,False,False,old,False,False
+ITW,LONG,Industrials,False,False,False,False,old,False,False
+CNC,LONG,Health Care,False,False,False,False,new,True,False
+JKHY,LONG,Financials,False,True,False,False,new,True,False
+CDNS,LONG,Information Technology,False,False,False,False,old,False,False
+URI,LONG,Industrials,False,False,False,False,old,False,False
+JBHT,LONG,Industrials,False,True,False,False,new,True,False
+UPS,LONG,Industrials,False,False,False,False,old,False,False
+HOOD,LONG,Financials,False,False,False,False,old,False,False
+SYK,LONG,Health Care,False,False,False,False,old,False,False
+SNA,LONG,Industrials,False,True,False,False,new,True,False
+XYZ,LONG,Industrials,False,False,False,False,new,True,False
+ABBV,LONG,Health Care,False,False,False,False,old,False,False
+SMFG,LONG,Financials,False,True,False,False,old,False,False
+NEM,LONG,Materials,False,False,False,False,old,False,False
+CCI,LONG,Real Estate,False,False,False,False,new,True,False
+HAL,LONG,Energy,False,False,False,False,new,True,False
+HST,LONG,Real Estate,False,False,False,False,new,True,False
+CAG,LONG,Consumer Staples,False,False,False,False,new,True,False
+VRTX,LONG,Health Care,False,False,False,False,old,False,False
+IDXX,LONG,Health Care,False,False,False,False,new,True,False
+ALGN,LONG,Health Care,False,False,False,False,new,True,False
+AVY,LONG,Materials,False,True,False,False,new,True,False
+GD,LONG,Industrials,False,False,False,False,old,False,False
+MNST,LONG,Consumer Staples,False,False,False,False,old,False,False
+MCK,LONG,Health Care,False,False,False,False,old,False,False
+RIO,LONG,Materials,False,False,False,False,old,False,False
+KO,LONG,Consumer Staples,False,False,False,False,old,False,False
+IBM,LONG,Information Technology,False,False,False,False,old,False,False
+DAL,LONG,Industrials,False,False,False,False,new,True,False
+SCCO,LONG,Materials,False,True,False,False,old,False,False
+TER,LONG,Information Technology,False,False,False,False,old,False,False
+IT,LONG,Information Technology,False,False,False,False,new,True,False
+PSA,LONG,Real Estate,False,False,False,False,new,True,False
+INCY,LONG,Health Care,False,False,False,False,new,True,False
+NBIS,LONG,Information Technology,False,False,False,False,old,False,False
+LYG,LONG,Financials,False,True,False,False,old,False,False
+ALL,LONG,Financials,False,False,False,False,new,True,False
+MUFG,LONG,Financials,False,True,False,False,old,False,False
+APH,LONG,Information Technology,False,False,False,False,old,False,False
+AAPL,LONG,Information Technology,False,False,False,False,old,False,False
+DB,LONG,Financials,False,True,False,False,old,False,False
+CAH,HOLD,Health Care,False,False,False,False,new,True,False
+ADP,HOLD,Industrials,False,False,False,False,old,False,False
+ELV,HOLD,Health Care,False,False,False,False,old,False,False
+EW,HOLD,Health Care,False,False,False,False,new,True,False
+FTNT,HOLD,Information Technology,False,False,False,False,old,False,False
+MA,HOLD,Financials,False,False,False,False,old,False,False
+ECL,HOLD,Materials,False,False,False,False,old,False,False
+CTAS,HOLD,Industrials,False,False,False,False,old,False,False
+META,HOLD,Communication Services,False,False,False,False,old,False,False
+CAT,HOLD,Industrials,False,False,False,False,old,False,False
+ESS,HOLD,Real Estate,False,True,False,False,new,True,False
+RSG,HOLD,Industrials,False,False,False,False,old,False,False
+ALB,HOLD,Materials,False,False,False,False,new,True,False
+LH,HOLD,Health Care,False,False,False,False,new,True,False
+GILD,HOLD,Health Care,False,False,False,False,old,False,False
+OTIS,HOLD,Industrials,False,False,False,False,new,True,False
+NDSN,HOLD,Industrials,False,True,False,False,new,True,False
+EOG,HOLD,Energy,False,False,False,False,old,False,False
+BTI,HOLD,Consumer Staples,False,True,False,False,old,False,False
+AIZ,HOLD,Financials,False,True,False,False,new,True,False
+LIN,HOLD,Materials,False,False,False,False,old,False,False
+HTHIY,HOLD,Information Technology,False,True,False,False,old,False,False
+CVX,HOLD,Energy,False,False,False,False,old,False,False
+ABT,HOLD,Health Care,False,False,False,False,old,False,False
+GRMN,HOLD,Consumer Discretionary,False,True,False,False,new,True,False
+NDAQ,HOLD,Financials,False,False,False,False,new,True,False
+ES,HOLD,Utilities,False,False,False,False,new,True,False
+MSCI,HOLD,Financials,False,False,False,False,new,True,False
+CL,HOLD,Consumer Staples,False,False,False,False,old,False,False
+COIN,HOLD,Financials,False,False,False,False,new,True,False
+ITUB,HOLD,Financials,False,True,False,False,old,False,False
+MSFT,HOLD,Information Technology,False,False,False,False,old,False,False
+ROL,HOLD,Industrials,False,True,False,False,new,True,False
+AEE,HOLD,Utilities,False,True,False,False,new,True,False
+PKG,HOLD,Materials,False,True,False,False,new,True,False
+GEN,HOLD,Information Technology,False,False,False,False,new,True,False
+HLT,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+DLR,HOLD,Real Estate,False,False,False,False,old,False,False
+WM,HOLD,Industrials,False,False,False,False,old,False,False
+AOS,HOLD,Industrials,False,True,False,False,new,True,False
+PGR,HOLD,Financials,False,False,False,False,old,False,False
+BR,HOLD,Industrials,False,True,False,False,new,True,False
+FIX,HOLD,Industrials,False,True,False,False,old,False,False
+TECH,HOLD,Health Care,False,False,False,False,new,True,False
+CINF,HOLD,Financials,False,True,False,False,new,True,False
+DD,HOLD,Materials,False,True,False,False,new,True,False
+CF,HOLD,Materials,False,False,False,False,new,True,False
+AEM,HOLD,Materials,False,False,False,False,old,False,False
+ISRG,HOLD,Health Care,False,False,False,False,old,False,False
+CPT,HOLD,Real Estate,False,True,False,False,new,True,False
+CSGP,HOLD,Real Estate,False,False,False,False,new,True,False
+IFF,HOLD,Materials,False,False,False,False,new,True,False
+ARES,HOLD,Financials,False,True,False,False,new,True,False
+AMD,HOLD,Information Technology,False,False,False,False,old,False,False
+CB,HOLD,Financials,False,False,False,False,old,False,False
+HAS,HOLD,Consumer Discretionary,False,True,False,False,new,True,False
+CMCSA,HOLD,Communication Services,False,False,False,False,old,False,False
+ACGL,HOLD,Financials,False,True,False,False,new,True,False
+AMT,HOLD,Real Estate,False,False,False,False,old,False,False
+CYATY,HOLD,Industrials,False,True,False,False,old,False,False
+PH,HOLD,Industrials,False,False,False,False,old,False,False
+COF,HOLD,Financials,False,False,False,False,old,False,False
+UNP,HOLD,Industrials,False,False,False,False,old,False,False
+TMO,HOLD,Health Care,False,False,False,False,old,False,False
+AJG,HOLD,Financials,False,False,False,False,new,True,False
+EL,HOLD,Consumer Staples,False,False,False,False,new,True,False
+DTE,HOLD,Utilities,False,False,False,False,new,True,False
+AME,HOLD,Industrials,False,False,False,False,new,True,False
+KEYS,HOLD,Information Technology,False,False,False,False,old,False,False
+PG,HOLD,Consumer Staples,False,False,False,False,old,False,False
+AVB,HOLD,Real Estate,False,False,False,False,new,True,False
+KMB,HOLD,Consumer Staples,False,False,False,False,new,True,False
+SAN,HOLD,Financials,False,True,False,False,old,False,False
+DOW,HOLD,Materials,False,False,False,False,new,True,False
+EQNR,HOLD,Energy,False,True,False,False,old,False,False
+STZ,HOLD,Consumer Staples,False,False,False,False,new,True,False
+JNJ,HOLD,Health Care,False,False,False,False,old,False,False
+FTV,HOLD,Industrials,False,False,False,False,new,True,False
+GLW,HOLD,Information Technology,False,False,False,False,old,False,False
+C,HOLD,Financials,False,False,False,False,old,False,False
+LNT,HOLD,Utilities,False,True,False,False,new,True,False
+PODD,HOLD,Health Care,False,True,False,False,new,True,False
+AES,HOLD,Utilities,False,True,False,False,new,True,False
+TRV,HOLD,Financials,False,False,False,False,old,False,False
+COP,HOLD,Energy,False,False,False,False,old,False,False
+NOK,HOLD,Information Technology,False,False,False,False,old,False,False
+INVH,HOLD,Real Estate,False,True,False,False,new,True,False
+CNQ,HOLD,Energy,False,True,False,False,old,False,False
+TT,HOLD,Industrials,False,False,False,False,old,False,False
+CHTR,HOLD,Communication Services,False,False,False,False,new,True,False
+NET,HOLD,Information Technology,False,False,False,False,old,False,False
+EXC,HOLD,Utilities,False,False,False,False,new,True,False
+KMI,HOLD,Energy,False,False,False,False,old,False,False
+PCAR,HOLD,Industrials,False,False,False,False,old,False,False
+MCHP,HOLD,Information Technology,False,False,False,False,new,True,False
+CSX,HOLD,Industrials,False,False,False,False,old,False,False
+HSY,HOLD,Consumer Staples,False,False,False,False,new,True,False
+T,HOLD,Communication Services,False,False,False,False,old,False,False
+EIX,HOLD,Utilities,False,False,False,False,new,True,False
+TMUS,HOLD,Communication Services,False,False,False,False,old,False,False
+GPN,HOLD,Financials,False,False,False,False,new,True,False
+SRE,HOLD,Utilities,False,False,False,False,old,False,False
+PEG,HOLD,Utilities,False,False,False,False,new,True,False
+BIIB,HOLD,Health Care,False,False,False,False,new,True,False
+APO,HOLD,Financials,False,False,False,False,old,False,False
+FCX,HOLD,Materials,False,False,False,False,old,False,False
+PYPL,HOLD,Financials,False,False,False,False,new,True,False
+AMCR,HOLD,Materials,False,True,False,False,new,True,False
+VZ,HOLD,Communication Services,False,False,False,False,old,False,False
+BXP,HOLD,Real Estate,False,True,False,False,new,True,False
+BDX,HOLD,Health Care,False,False,False,False,new,True,False
+IBKR,HOLD,Financials,False,True,False,False,old,False,False
+ON,HOLD,Information Technology,False,False,False,False,new,True,False
+ROK,HOLD,Industrials,False,False,False,False,new,True,False
+SPG,HOLD,Real Estate,False,False,False,False,old,False,False
+HIG,HOLD,Financials,False,False,False,False,new,True,False
+EMR,HOLD,Industrials,False,False,False,False,old,False,False
+EXR,HOLD,Real Estate,False,False,False,False,new,True,False
+BCS,HOLD,Financials,False,True,False,False,old,False,False
+GL,HOLD,Financials,False,True,False,False,new,True,False
+NWG,HOLD,Financials,False,True,False,False,old,False,False
+SW,HOLD,Materials,False,True,False,False,new,True,False
+PCG,HOLD,Utilities,False,False,False,False,new,True,False
+STE,HOLD,Health Care,False,True,False,False,new,True,False
+KKR,HOLD,Financials,False,False,False,False,old,False,False
+IQV,HOLD,Health Care,False,False,False,False,new,True,False
+FDS,HOLD,Financials,False,True,False,False,new,True,False
+SBAC,HOLD,Real Estate,False,False,False,False,new,True,False
+VLO,HOLD,Energy,False,False,False,False,old,False,False
+ATO,HOLD,Utilities,False,True,False,False,new,True,False
+ROP,HOLD,Information Technology,False,False,False,False,new,True,False
+EQR,HOLD,Real Estate,False,False,False,False,new,True,False
+EPD,HOLD,Energy,False,True,False,False,old,False,False
+AXP,HOLD,Financials,False,False,False,False,old,False,False
+PBR,HOLD,Energy,False,False,False,False,old,False,False
+AEP,HOLD,Utilities,False,False,False,False,old,False,False
+JCI,HOLD,Industrials,False,False,False,False,old,False,False
+TSLA,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+PNW,HOLD,Utilities,False,True,False,False,new,True,False
+BLDR,HOLD,Industrials,False,True,False,False,new,True,False
+MFC,HOLD,Financials,False,True,False,False,old,False,False
+ICE,HOLD,Financials,False,False,False,False,old,False,False
+MET,HOLD,Financials,False,False,False,False,new,True,False
+HWM,HOLD,Industrials,False,False,False,False,old,False,False
+REGN,HOLD,Health Care,False,False,False,False,old,False,False
+HSBC,HOLD,Financials,False,True,False,False,old,False,False
+SPGI,HOLD,Financials,False,False,False,False,old,False,False
+EVRG,HOLD,Utilities,False,True,False,False,new,True,False
+TEL,HOLD,Information Technology,False,False,False,False,old,False,False
+STM,HOLD,Information Technology,False,True,False,False,old,False,False
+O,HOLD,Real Estate,False,False,False,False,old,False,False
+CMS,HOLD,Utilities,False,False,False,False,new,True,False
+ALAB,HOLD,Information Technology,False,False,False,False,old,False,False
+NVS,HOLD,Health Care,False,False,False,False,old,False,False
+SU,HOLD,Energy,False,False,False,False,old,False,False
+ETR,HOLD,Utilities,False,False,False,False,new,True,False
+PFG,HOLD,Financials,False,True,False,False,new,True,False
+PPL,HOLD,Utilities,False,False,False,False,new,True,False
+TRP,HOLD,Energy,False,True,False,False,old,False,False
+MTD,HOLD,Health Care,False,False,False,False,new,True,False
+MFG,HOLD,Financials,False,True,False,False,old,False,False
+PWR,HOLD,Industrials,False,False,False,False,old,False,False
+WMB,HOLD,Energy,False,False,False,False,old,False,False
+FISV,HOLD,Financials,False,False,False,False,new,True,False
+BAM,HOLD,Financials,False,True,False,False,old,False,False
+PRU,HOLD,Financials,False,False,False,False,new,True,False
+TFC,HOLD,Financials,False,False,False,False,old,False,False
+PLD,HOLD,Real Estate,False,False,False,False,old,False,False
+KIM,HOLD,Real Estate,False,True,False,False,new,True,False
+NEE,HOLD,Utilities,False,False,False,False,old,False,False
+XOM,HOLD,Energy,False,False,False,False,old,False,False
+FRT,HOLD,Real Estate,False,True,False,False,new,True,False
+DHI,HOLD,Consumer Discretionary,False,False,False,False,new,True,False
+RVTY,HOLD,Health Care,False,True,False,False,new,True,False
+SO,HOLD,Utilities,False,False,False,False,old,False,False
+NI,HOLD,Utilities,False,True,False,False,new,True,False
+EFX,HOLD,Industrials,False,False,False,False,new,True,False
+BBVA,HOLD,Financials,False,True,False,False,old,False,False
+AMGN,HOLD,Health Care,False,False,False,False,old,False,False
+DVA,HOLD,Health Care,False,True,False,False,new,True,False
+STT,HOLD,Financials,False,False,False,False,new,True,False
+USB,HOLD,Financials,False,False,False,False,old,False,False
+CME,HOLD,Financials,False,False,False,False,old,False,False
+DOC,HOLD,Real Estate,False,True,False,False,new,True,False
+SONY,HOLD,Consumer Discretionary,False,True,False,False,old,False,False
+CNI,HOLD,Industrials,False,True,False,False,old,False,False
+KVUE,HOLD,Consumer Staples,False,False,False,False,new,True,False
+KEY,HOLD,Financials,False,False,False,False,new,True,False
+DUK,HOLD,Utilities,False,False,False,False,old,False,False
+HBAN,HOLD,Financials,False,False,False,False,new,True,False
+FITB,HOLD,Financials,False,False,False,False,new,True,False
+CVS,HOLD,Health Care,False,False,False,False,old,False,False
+RCL,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+AKAM,HOLD,Information Technology,False,False,False,False,new,True,False
+UBS,HOLD,Financials,False,True,False,False,old,False,False
+KHC,HOLD,Consumer Staples,False,False,False,False,new,True,False
+HCA,HOLD,Health Care,False,False,False,False,old,False,False
+AIG,HOLD,Financials,False,False,False,False,new,True,False
+MELI,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+D,HOLD,Utilities,False,False,False,False,old,False,False
+CHD,HOLD,Consumer Staples,False,False,False,False,new,True,False
+MPC,HOLD,Energy,False,False,False,False,old,False,False
+BAX,HOLD,Health Care,False,False,False,False,new,True,False
+MDLN,HOLD,Health Care,False,False,False,False,old,False,False
+HUM,HOLD,Health Care,False,False,False,False,new,True,False
+MAA,HOLD,Real Estate,False,True,False,False,new,True,False
+BRO,HOLD,Financials,False,True,False,False,new,True,False
+WELL,HOLD,Real Estate,False,False,False,False,old,False,False
+WFC,HOLD,Financials,False,False,False,False,old,False,False
+AWK,HOLD,Utilities,False,False,False,False,new,True,False
+MTB,HOLD,Financials,False,False,False,False,new,True,False
+FFIV,HOLD,Information Technology,False,True,False,False,new,True,False
+NTRS,HOLD,Financials,False,True,False,False,new,True,False
+APA,HOLD,Energy,False,False,False,False,new,True,False
+MSI,HOLD,Information Technology,False,False,False,False,old,False,False
+BE,HOLD,Industrials,False,False,False,False,old,False,False
+GE,HOLD,Industrials,False,False,False,False,old,False,False
+KDP,HOLD,Consumer Staples,False,False,False,False,new,True,False
+L,HOLD,Financials,False,True,False,False,new,True,False
+ING,HOLD,Financials,False,True,False,False,old,False,False
+NRG,HOLD,Utilities,False,False,False,False,new,True,False
+MRK,HOLD,Health Care,False,False,False,False,old,False,False
+PNC,HOLD,Financials,False,False,False,False,old,False,False
+IEX,HOLD,Industrials,False,True,False,False,new,True,False
+IR,HOLD,Industrials,False,False,False,False,new,True,False
+TRGP,HOLD,Energy,False,False,False,False,old,False,False
+FLEX,HOLD,Information Technology,False,False,False,False,new,True,False
+ORLY,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+AON,HOLD,Financials,False,False,False,False,old,False,False
+MDLZ,HOLD,Consumer Staples,False,False,False,False,old,False,False
+ENB,HOLD,Energy,False,True,False,False,old,False,False
+BN,HOLD,Financials,False,True,False,False,old,False,False
+CEG,HOLD,Utilities,False,False,False,False,old,False,False
+ARE,HOLD,Real Estate,False,True,False,False,new,True,False
+COR,HOLD,Health Care,False,False,False,False,new,True,False
+DHR,HOLD,Health Care,False,False,False,False,old,False,False
+SHEL,HOLD,Energy,False,False,False,False,old,False,False
+PFE,HOLD,Health Care,False,False,False,False,old,False,False
+ASX,HOLD,Information Technology,False,True,False,False,old,False,False
+ERIE,HOLD,Financials,False,True,False,False,new,True,False
+LITE,HOLD,Information Technology,False,False,False,False,old,False,False
+MOS,HOLD,Materials,False,False,False,False,new,True,False
+MMM,HOLD,Industrials,False,False,False,False,old,False,False
+ALLE,HOLD,Industrials,False,True,False,False,new,True,False
+MGM,HOLD,Consumer Discretionary,False,False,False,False,new,True,False
+MRNA,HOLD,Health Care,False,False,False,False,new,True,False
+ETN,HOLD,Industrials,False,False,False,False,old,False,False
+ET,HOLD,Energy,False,False,False,False,old,False,False
+IMO,HOLD,Energy,False,True,False,False,old,False,False
+CFG,HOLD,Financials,False,False,False,False,new,True,False
+ED,HOLD,Utilities,False,False,False,False,new,True,False
+REG,HOLD,Real Estate,False,True,False,False,new,True,False
+INTC,HOLD,Information Technology,False,False,False,False,old,False,False
+DASH,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+RTX,HOLD,Industrials,False,False,False,False,old,False,False
+DOV,HOLD,Industrials,False,False,False,False,new,True,False
+IRM,HOLD,Real Estate,False,True,False,False,new,True,False
+LYB,HOLD,Materials,False,False,False,False,new,True,False
+MS,HOLD,Financials,False,False,False,False,old,False,False
+CRH,HOLD,Materials,False,False,False,False,old,False,False
+CDW,HOLD,Information Technology,False,False,False,False,new,True,False
+SNY,HOLD,Health Care,False,True,False,False,old,False,False
+AMAT,HOLD,Information Technology,False,False,False,False,old,False,False
+CRL,HOLD,Health Care,False,True,False,False,new,True,False
+LLY,HOLD,Health Care,False,False,False,False,old,False,False
+NUE,HOLD,Materials,False,False,False,False,old,False,False
+NXPI,HOLD,Information Technology,False,False,False,False,old,False,False
+EQIX,HOLD,Real Estate,False,False,False,False,old,False,False
+AZN,HOLD,Health Care,False,False,False,False,old,False,False
+CARR,HOLD,Industrials,False,False,False,False,new,True,False
+AFL,HOLD,Financials,False,False,False,False,old,False,False
+LDOS,HOLD,Information Technology,False,True,False,False,new,True,False
+RJF,HOLD,Financials,False,False,False,False,new,True,False
+RF,HOLD,Financials,False,False,False,False,new,True,False
+DGX,HOLD,Health Care,False,False,False,False,new,True,False
+V,HOLD,Financials,False,False,False,False,old,False,False
+HUBB,HOLD,Industrials,False,True,False,False,new,True,False
+ADM,HOLD,Consumer Staples,False,False,False,False,new,True,False
+SCHW,HOLD,Financials,False,False,False,False,old,False,False
+CMI,HOLD,Industrials,False,False,False,False,old,False,False
+CI,HOLD,Health Care,False,False,False,False,old,False,False
+SATS,HOLD,Information Technology,False,True,False,False,new,True,False
+SAP,HOLD,Information Technology,False,False,False,False,old,False,False
+CP,HOLD,Industrials,False,False,False,False,old,False,False
+MCD,HOLD,Consumer Discretionary,False,False,False,False,old,False,False
+CPAY,HOLD,Financials,False,False,False,False,new,True,False
+OKE,HOLD,Energy,False,False,False,False,new,True,False
+AMX,HOLD,Communication Services,False,True,False,False,old,False,False
+VALE,HOLD,Materials,False,False,False,False,old,False,False
+ARM,SHORT,Information Technology,False,False,False,False,old,False,False
+CNP,SHORT,Utilities,False,False,False,False,new,True,False
+IBN,SHORT,Financials,False,True,False,False,old,False,False
+MAR,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+BEN,SHORT,Financials,False,True,False,False,new,True,False
+STLD,SHORT,Materials,False,False,False,False,new,True,False
+CBOE,SHORT,Financials,False,True,False,False,new,True,False
+DECK,SHORT,Consumer Discretionary,False,False,False,False,new,True,False
+FIS,SHORT,Financials,False,False,False,False,new,True,False
+UNH,SHORT,Health Care,False,False,False,False,old,False,False
+TDG,SHORT,Industrials,False,False,False,False,old,False,False
+KLAC,SHORT,Information Technology,False,False,False,False,old,False,False
+BNY,SHORT,Financials,False,False,False,False,old,False,False
+CSCO,SHORT,Information Technology,False,False,False,False,old,False,False
+BAC,SHORT,Financials,False,False,False,False,old,False,False
+HD,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+FE,SHORT,Utilities,False,False,False,False,new,True,False
+NSC,SHORT,Industrials,False,False,False,False,old,False,False
+LRCX,SHORT,Information Technology,False,False,False,False,old,False,False
+CPRT,SHORT,Industrials,False,False,False,False,new,True,False
+PTC,SHORT,Information Technology,False,True,False,False,new,True,False
+E,SHORT,Energy,False,True,False,False,old,False,False
+EG,SHORT,Financials,False,True,False,False,new,True,False
+GM,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+GSK,SHORT,Health Care,False,False,False,False,old,False,False
+GEHC,SHORT,Health Care,False,False,False,False,new,True,False
+BP,SHORT,Energy,False,False,False,False,old,False,False
+LHX,SHORT,Industrials,False,False,False,False,new,True,False
+IFNNY,SHORT,Information Technology,False,True,False,False,old,False,False
+TAP,SHORT,Consumer Staples,False,True,False,False,new,True,False
+BMY,SHORT,Health Care,False,False,False,False,old,False,False
+Q,SHORT,Information Technology,False,False,False,False,new,True,False
+BA,SHORT,Industrials,False,False,False,False,old,False,False
+NKE,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+BKR,SHORT,Energy,False,False,False,False,old,False,False
+GS,SHORT,Financials,False,False,False,False,old,False,False
+SWKS,SHORT,Information Technology,False,False,False,False,new,True,False
+MPWR,SHORT,Information Technology,False,False,False,False,old,False,False
+BX,SHORT,Financials,False,False,False,False,old,False,False
+GOOG,SHORT,Communication Services,False,False,False,False,new,True,False
+GOOGL,SHORT,Communication Services,False,False,False,False,old,False,False
+RKLB,SHORT,Industrials,False,False,False,False,old,False,False
+TTE,SHORT,Energy,False,True,False,False,old,False,False
+SBUX,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+BLK,SHORT,Financials,False,False,False,False,old,False,False
+BABA,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+PEP,SHORT,Consumer Staples,False,False,False,False,old,False,False
+RL,SHORT,Consumer Discretionary,False,False,False,False,new,True,False
+CTSH,SHORT,Information Technology,False,False,False,False,new,True,False
+OXY,SHORT,Energy,False,False,False,False,new,True,False
+NU,SHORT,Financials,False,False,False,False,old,False,False
+NVO,SHORT,Health Care,False,False,False,False,old,False,False
+GPC,SHORT,Consumer Discretionary,False,True,False,False,new,True,False
+F,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+NWS,SHORT,Communication Services,False,True,False,False,new,True,False
+NWSA,SHORT,Communication Services,False,True,False,False,new,True,False
+AXON,SHORT,Industrials,False,False,False,False,new,True,False
+BG,SHORT,Consumer Staples,False,True,False,False,new,True,False
+NCLH,SHORT,Consumer Discretionary,False,False,False,False,new,True,False
+AMP,SHORT,Financials,False,False,False,False,new,True,False
+SHW,SHORT,Materials,False,False,False,False,old,False,False
+HSIC,SHORT,Health Care,False,True,False,False,new,True,False
+MLM,SHORT,Materials,False,False,False,False,new,True,False
+DIS,SHORT,Communication Services,False,False,False,False,old,False,False
+LMT,SHORT,Industrials,False,False,False,False,old,False,False
+SOLV,SHORT,Health Care,False,True,False,False,new,True,False
+BSX,SHORT,Health Care,False,False,False,False,old,False,False
+PPG,SHORT,Materials,False,False,False,False,new,True,False
+HON,SHORT,Industrials,False,False,False,False,old,False,False
+CVNA,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+LII,SHORT,Industrials,False,True,False,False,new,True,False
+PHM,SHORT,Consumer Discretionary,False,False,False,False,new,True,False
+MRSH,SHORT,Financials,False,False,False,False,old,False,False
+OMC,SHORT,Communication Services,False,False,False,False,new,True,False
+TM,SHORT,Consumer Discretionary,False,True,False,False,old,False,False
+EME,SHORT,Industrials,False,True,False,False,new,True,False
+AMZN,SHORT,Consumer Discretionary,False,False,False,False,old,False,False
+COHR,SHORT,Information Technology,False,False,False,False,old,False,False
+SWK,SHORT,Industrials,False,False,False,False,new,True,False
+WBD,SHORT,Communication Services,False,False,False,False,old,False,False
+PNR,SHORT,Industrials,False,True,False,False,new,True,False
+APTV,SHORT,Consumer Discretionary,False,False,False,False,new,True,False
+BALL,SHORT,Materials,False,False,False,False,new,True,False
+MKC,SHORT,Consumer Staples,False,False,False,False,new,True,False
+CLX,SHORT,Consumer Staples,False,False,False,False,new,True,False
+J,SHORT,Industrials,False,True,False,False,new,True,False
+HII,SHORT,Industrials,False,True,False,False,new,True,False
+CBRE,SHORT,Real Estate,False,False,False,False,new,True,False
+PSKY,SHORT,Communication Services,False,False,False,False,new,True,False
+FSLR,SHORT,Information Technology,False,False,False,False,new,True,False
+PSX,SHORT,Energy,False,False,False,False,old,False,False
+QCOM,SHORT,Information Technology,False,False,False,False,old,False,False
+WDC,SHORT,Information Technology,False,False,False,True,old,False,False
+MAS,SHORT,Industrials,False,True,False,True,new,True,False
+NOC,SHORT,Industrials,False,False,False,True,old,False,False
+CTVA,SHORT,Materials,False,False,False,True,new,True,False
+ASML,SHORT,Information Technology,False,False,False,True,old,False,False

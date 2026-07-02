@@ -1,0 +1,7 @@
+step,what_to_confirm,how_to_verify,status
+1. confirm data freshness,The leg availability dates are current and precede each entry date.,inspect paper_review_candidate_list.csv: avail_fcf_to_assets / avail_operating_accruals columns,PENDING_HUMAN
+2. confirm no leakage,Every leg value is point-in-time (available_date <= entry_date).,PIT as-of join is enforced upstream; spot-check avail dates < entry/quarter end,PENDING_HUMAN
+3. confirm sector exposure,Sector exposure is acceptable and the Unknown bucket is understood.,review paper_review_sector_exposure.csv + paper_review_unknown_sector_audit.csv,PENDING_HUMAN
+4. confirm liquidity,No low-liquidity name is sized beyond the paper book's comfort.,review paper_review_liquidity_report.csv (low_liquidity flags),PENDING_HUMAN
+5. confirm no order automation,No orders / automation / broker exist anywhere in this package.,review paper_review_safety_badges.csv; this harness writes metadata only,PENDING_HUMAN
+6. manually approve/reject each candidate,A human signs off on every long/short name.,annotate paper_review_long_short_book.csv per row; nothing proceeds without explicit approval,PENDING_HUMAN

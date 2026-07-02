@@ -1,0 +1,675 @@
+{
+  "phase": "10-L-A",
+  "phase_name": "Historical Sector-Neutral Scored Panel Reconstruction",
+  "decision": "PANEL_RECONSTRUCTION_READY",
+  "decision_rationale": "the frozen panel reproduces the 10-D composite_sn baseline within all tolerances (IC t / net-25bps / net-50bps / turnover), preserves the modest/boundary positive-net25 conclusion, and its stored z-legs additively reconstruct both composites - ready for a Phase 10-L-B reweighting harness",
+  "allowed_decisions": [
+    "PANEL_RECONSTRUCTION_READY",
+    "PANEL_RECONSTRUCTION_PARTIAL",
+    "PANEL_RECONSTRUCTION_FAILED",
+    "NEEDS_PHASE_INPUT_REPAIR"
+  ],
+  "objective": "reconstruct and PERSIST the historical per-(month, ticker) sector-neutral scored panel that 10-D builds in memory but never saves, then reproduce the frozen 10-D composite_sn baseline from the persisted file - a data-lineage / reproducibility phase, NOT an alpha search, NOT a new champion",
+  "offline": true,
+  "performs_network": false,
+  "eodhd_key_visible": true,
+  "eodhd_key_required": false,
+  "input_inventory": [
+    {
+      "path": "research/run_phase10b_eodhd_norgate_exhaustive_alpha_factory.py",
+      "kind": "prior_script",
+      "exists": true,
+      "size_bytes": 95792
+    },
+    {
+      "path": "research/run_phase10c_eodhd_quality_oos_validation.py",
+      "kind": "prior_script",
+      "exists": true,
+      "size_bytes": 60513
+    },
+    {
+      "path": "research/run_phase10d_quarterly_quality_composite_validation.py",
+      "kind": "prior_script",
+      "exists": true,
+      "size_bytes": 49089
+    },
+    {
+      "path": "research/run_phase10k_quarterly_quality_composite_alpha_improvement_harness.py",
+      "kind": "prior_script",
+      "exists": true,
+      "size_bytes": 51975
+    },
+    {
+      "path": "research/data/eodhd/normalized/eod_prices/expanded_price_panel.csv",
+      "kind": "owned_local_data",
+      "exists": true,
+      "size_bytes": 63294120
+    },
+    {
+      "path": "research/data/eodhd/normalized/eodhd_fcf_to_assets/fcf_to_assets.csv",
+      "kind": "owned_local_data",
+      "exists": true,
+      "size_bytes": 1513343
+    },
+    {
+      "path": "research/data/eodhd/normalized/eodhd_operating_accruals/operating_accruals.csv",
+      "kind": "owned_local_data",
+      "exists": true,
+      "size_bytes": 1569987
+    },
+    {
+      "path": "research/output/phase10d_quarterly_quality_composite_validation/phase10d_quarterly_quality_composite_validation.json",
+      "kind": "frozen_10d_report",
+      "exists": true,
+      "size_bytes": 7664
+    }
+  ],
+  "reconstructed_panel": {
+    "path": "research/output/phase10l_historical_sector_neutral_scored_panel_reconstruction/historical_sector_neutral_scored_panel.csv",
+    "n_rows": 38725,
+    "n_columns": 22,
+    "n_tickers": 545,
+    "composite_coverage_both_legs": 38404,
+    "columns": [
+      "as_of_date",
+      "rebalance_date",
+      "ticker",
+      "sector",
+      "cohort",
+      "is_new_cohort",
+      "liquidity_proxy",
+      "fcf_to_assets",
+      "operating_accruals",
+      "fcf_to_assets_raw",
+      "operating_accruals_raw",
+      "fcf_to_assets_sector_neutral_z",
+      "operating_accruals_sector_neutral_z",
+      "operating_accruals_oriented_sector_neutral_z",
+      "composite_sn",
+      "composite_raw",
+      "forward_63d_return",
+      "forward_63d_return_start_date",
+      "forward_63d_return_end_date",
+      "has_forward_return",
+      "source_phase",
+      "data_quality_flag"
+    ],
+    "data_quality_flag_counts": {
+      "OK_UNKNOWN_SECTOR": 23862,
+      "OK": 14055,
+      "MISSING_FWD_RETURN": 487,
+      "MISSING_COMPOSITE": 321
+    },
+    "additive_self_check": {
+      "composite_raw_max_abs_reconstruction_error": 0.0,
+      "composite_raw_rows_checked": 38404,
+      "composite_sn_max_abs_reconstruction_error": 0.0,
+      "composite_sn_rows_checked": 38404,
+      "additive_reconstruction_ok": true
+    }
+  },
+  "panel_schema": [
+    {
+      "column": "as_of_date",
+      "maps_from": "constant AS_OF",
+      "dtype": "date",
+      "note": "data-vintage snapshot the panel was reconstructed at; all fundamentals attached point-in-time (available_date <= rebalance_date, no lookahead)"
+    },
+    {
+      "column": "rebalance_date",
+      "maps_from": "ev.entry_date",
+      "dtype": "date",
+      "note": "per-observation scoring / entry date; the cross-section (month/quarter) axis for all IC and backtest computations"
+    },
+    {
+      "column": "ticker",
+      "maps_from": "ev.ticker",
+      "dtype": "str",
+      "note": "issuer symbol (Norgate survivorship-free universe)"
+    },
+    {
+      "column": "sector",
+      "maps_from": "ev.sector",
+      "dtype": "str",
+      "note": "GICS-style sector; 'Unknown' where owned metadata is unmapped"
+    },
+    {
+      "column": "cohort",
+      "maps_from": "ev.cohort",
+      "dtype": "str",
+      "note": "'old' (original ~299) vs 'new' (8-V expanded) scoreable cohort"
+    },
+    {
+      "column": "is_new_cohort",
+      "maps_from": "ev.cohort == 'new'",
+      "dtype": "bool",
+      "note": "boolean form of cohort"
+    },
+    {
+      "column": "liquidity_proxy",
+      "maps_from": "ev.liquidity_proxy",
+      "dtype": "float",
+      "note": "dollar-volume liquidity proxy"
+    },
+    {
+      "column": "fcf_to_assets",
+      "maps_from": "ev.fcf_to_assets",
+      "dtype": "float",
+      "note": "raw point-in-time fundamental level (un-oriented)"
+    },
+    {
+      "column": "operating_accruals",
+      "maps_from": "ev.operating_accruals",
+      "dtype": "float",
+      "note": "raw point-in-time fundamental level (un-oriented)"
+    },
+    {
+      "column": "fcf_to_assets_raw",
+      "maps_from": "within_month_z(o_fcf_to_assets)",
+      "dtype": "float",
+      "note": "within-month z of the ORIENTED (+1) non-sector-neutral fcf leg; additive building block of composite_raw"
+    },
+    {
+      "column": "operating_accruals_raw",
+      "maps_from": "within_month_z(o_operating_accruals)",
+      "dtype": "float",
+      "note": "within-month z of the ORIENTED (-1, Sloan-negated) non-sector-neutral accruals leg; additive building block of composite_raw"
+    },
+    {
+      "column": "fcf_to_assets_sector_neutral_z",
+      "maps_from": "within_month_z(o_fcf_to_assets__sn)",
+      "dtype": "float",
+      "note": "within-month z of the oriented + within-month x sector de-meaned fcf leg; additive building block of composite_sn"
+    },
+    {
+      "column": "operating_accruals_sector_neutral_z",
+      "maps_from": "within_month_z(o_operating_accruals__sn)",
+      "dtype": "float",
+      "note": "within-month z of the oriented + within-month x sector de-meaned accruals leg; additive building block of composite_sn"
+    },
+    {
+      "column": "operating_accruals_oriented_sector_neutral_z",
+      "maps_from": "within_month_z(o_operating_accruals__sn)",
+      "dtype": "float",
+      "note": "identical to operating_accruals_sector_neutral_z: the pipeline's sector-neutral accruals leg is oriented (-1) BEFORE the within-month x sector de-mean, so the oriented and sector-neutral z coincide by construction"
+    },
+    {
+      "column": "composite_sn",
+      "maps_from": "ev.comp_sn",
+      "dtype": "float",
+      "note": "sector-neutral equal-weight composite = fcf_to_assets_sector_neutral_z + operating_accruals_sector_neutral_z; the honest 10-D baseline for the sector-neutral book"
+    },
+    {
+      "column": "composite_raw",
+      "maps_from": "ev.comp_raw",
+      "dtype": "float",
+      "note": "raw equal-weight composite = fcf_to_assets_raw + operating_accruals_raw; DIAGNOSTIC only (not the champion for a sector-neutral book)"
+    },
+    {
+      "column": "forward_63d_return",
+      "maps_from": "ev.fwd_exc_63",
+      "dtype": "float",
+      "note": "forward 63-trading-day (quarterly) benchmark-excess return from rebalance_date"
+    },
+    {
+      "column": "forward_63d_return_start_date",
+      "maps_from": "ev.entry_date",
+      "dtype": "date",
+      "note": "== rebalance_date"
+    },
+    {
+      "column": "forward_63d_return_end_date",
+      "maps_from": "(not persisted upstream)",
+      "dtype": "date",
+      "note": "the exact calendar END date of the 63-trading-day window is not persisted by the 10-C/10-D builder (only the realized 63d excess return is); requires the per-ticker trading calendar and is not needed for reweighting / IC tests"
+    },
+    {
+      "column": "has_forward_return",
+      "maps_from": "ev.fwd_exc_63 notna",
+      "dtype": "bool",
+      "note": "whether a forward 63d return is present"
+    },
+    {
+      "column": "source_phase",
+      "maps_from": "constant",
+      "dtype": "str",
+      "note": "10-B(normalized legs) + 10-C(panel) + 10-D(composite)"
+    },
+    {
+      "column": "data_quality_flag",
+      "maps_from": "derived",
+      "dtype": "str",
+      "note": "OK | OK_UNKNOWN_SECTOR | MISSING_COMPOSITE | MISSING_FWD_RETURN"
+    }
+  ],
+  "panel_coverage_summary": {
+    "n_rows": 38725,
+    "n_tickers": 545,
+    "composite_coverage_both_legs": 38404,
+    "composite_sn_non_null": 38404,
+    "forward_63d_return_non_null": 38237,
+    "scoreable_rows_comp_sn_and_fwd": 37917,
+    "rebalance_date_min": "2016-06-23",
+    "rebalance_date_max": "2026-05-22",
+    "n_months": 120,
+    "n_sectors": 12,
+    "unknown_sector_rows": 24561,
+    "cohort_old_rows": 29032,
+    "cohort_new_rows": 9693,
+    "rows_year_2016": 18593,
+    "rows_year_2017": 2078,
+    "rows_year_2018": 2026,
+    "rows_year_2019": 2087,
+    "rows_year_2020": 2086,
+    "rows_year_2021": 2131,
+    "rows_year_2022": 2211,
+    "rows_year_2023": 2128,
+    "rows_year_2024": 2197,
+    "rows_year_2025": 2171,
+    "rows_year_2026": 1017
+  },
+  "phase10d_frozen_baseline": {
+    "honest_baseline_signal": "composite_sn",
+    "diagnostic_only_signal": "composite_raw",
+    "horizon_days": 63,
+    "horizon_label": "quarterly (63d)",
+    "long_leg": "fcf_to_assets (oriented +1)",
+    "short_leg": "operating_accruals (oriented -1)",
+    "weighting": "equal-weight (1.0 / 1.0 on within-month z legs; no optimisation, no sign-flip)",
+    "composite_sn": {
+      "ic_63d": 0.03494,
+      "ic_t_63d": 2.665,
+      "quarterly_gross_spread": 0.00707,
+      "quarterly_spread_t": 1.352,
+      "quarterly_turnover": 0.6115,
+      "quarterly_net_25bps": 0.00401,
+      "quarterly_net_50bps": 0.00095,
+      "top_sector_share": 0.6262,
+      "oos_pooled_ic": 0.02956,
+      "oos_ic_t": 1.505,
+      "oos_frac_windows_positive": 0.5,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "high_liquidity_positive": true
+    },
+    "composite_raw_diagnostic": {
+      "ic_63d": 0.04537,
+      "ic_t_63d": 3.074,
+      "quarterly_gross_spread": 0.00948,
+      "quarterly_spread_t": 1.719,
+      "quarterly_turnover": 0.5989,
+      "quarterly_net_25bps": 0.00648,
+      "quarterly_net_50bps": 0.00349,
+      "top_sector_share": 0.577,
+      "oos_pooled_ic": 0.03638,
+      "oos_ic_t": 1.534,
+      "oos_frac_windows_positive": 0.625,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "high_liquidity_positive": true
+    },
+    "source": "research/output/phase10d_quarterly_quality_composite_validation/phase10d_quarterly_quality_composite_validation.json",
+    "characterisation": "MODEST / BOUNDARY: net-of-cost quarterly edge is small (net-25bps ~+0.00401, net-50bps ~+0.00095), IC t sits below the 3.0 strong bar; the short accruals leg carries the robustness, the long fcf leg diversifies - must not be oversold"
+  },
+  "phase10d_reproduction_check": {
+    "reconstructed_composite_sn": {
+      "ic_63d": 0.03494129179052818,
+      "ic_t_63d": 2.664611429349803,
+      "quarterly_gross_spread": 0.007067295785960831,
+      "quarterly_spread_t": 1.3517134625782279,
+      "quarterly_turnover": 0.6115149350418869,
+      "quarterly_net_25bps": 0.004009721110751396,
+      "quarterly_net_50bps": 0.0009521464355419611,
+      "top_sector_share": 0.6262001841378403,
+      "oos_pooled_ic": 0.029554137210904368,
+      "oos_ic_t": 1.5048808764884705,
+      "oos_frac_windows_positive": 0.5
+    },
+    "reconstructed_composite_raw_diagnostic": {
+      "ic_63d": 0.045372984196228365,
+      "ic_t_63d": 3.073977131913222,
+      "quarterly_gross_spread": 0.009476417015646601,
+      "quarterly_spread_t": 1.719431854498252,
+      "quarterly_turnover": 0.5989139054760734,
+      "quarterly_net_25bps": 0.006481847488266234,
+      "quarterly_net_50bps": 0.003487277960885867,
+      "top_sector_share": 0.5770090753649875,
+      "oos_pooled_ic": 0.03637897765091075,
+      "oos_ic_t": 1.5339203884202681,
+      "oos_frac_windows_positive": 0.625
+    },
+    "tolerances": {
+      "ic_t": 0.25,
+      "net_25bps": 0.0015,
+      "net_50bps": 0.0015,
+      "turnover": 0.1
+    },
+    "rows": [
+      {
+        "metric": "ic_t_63d",
+        "frozen": 2.665,
+        "reconstructed": 2.664611429349803,
+        "abs_diff": 0.0003885706501969288,
+        "tolerance": 0.25,
+        "is_gate": true,
+        "within_tolerance": true
+      },
+      {
+        "metric": "quarterly_net_25bps",
+        "frozen": 0.00401,
+        "reconstructed": 0.004009721110751396,
+        "abs_diff": 2.788892486038294e-07,
+        "tolerance": 0.0015,
+        "is_gate": true,
+        "within_tolerance": true
+      },
+      {
+        "metric": "quarterly_net_50bps",
+        "frozen": 0.00095,
+        "reconstructed": 0.0009521464355419611,
+        "abs_diff": 2.1464355419610745e-06,
+        "tolerance": 0.0015,
+        "is_gate": true,
+        "within_tolerance": true
+      },
+      {
+        "metric": "quarterly_turnover",
+        "frozen": 0.6115,
+        "reconstructed": 0.6115149350418869,
+        "abs_diff": 1.4935041886876554e-05,
+        "tolerance": 0.1,
+        "is_gate": true,
+        "within_tolerance": true
+      },
+      {
+        "metric": "ic_63d",
+        "frozen": 0.03494,
+        "reconstructed": 0.03494129179052818,
+        "abs_diff": 1.2917905281781272e-06,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      },
+      {
+        "metric": "quarterly_gross_spread",
+        "frozen": 0.00707,
+        "reconstructed": 0.007067295785960831,
+        "abs_diff": 2.7042140391692754e-06,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      },
+      {
+        "metric": "quarterly_spread_t",
+        "frozen": 1.352,
+        "reconstructed": 1.3517134625782279,
+        "abs_diff": 0.00028653742177220387,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      },
+      {
+        "metric": "top_sector_share",
+        "frozen": 0.6262,
+        "reconstructed": 0.6262001841378403,
+        "abs_diff": 1.8413784030890668e-07,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      },
+      {
+        "metric": "oos_pooled_ic",
+        "frozen": 0.02956,
+        "reconstructed": 0.029554137210904368,
+        "abs_diff": 5.862789095631427e-06,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      },
+      {
+        "metric": "oos_ic_t",
+        "frozen": 1.505,
+        "reconstructed": 1.5048808764884705,
+        "abs_diff": 0.00011912351152942868,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      },
+      {
+        "metric": "oos_frac_windows_positive",
+        "frozen": 0.5,
+        "reconstructed": 0.5,
+        "abs_diff": 0.0,
+        "tolerance": "",
+        "is_gate": false,
+        "within_tolerance": true
+      }
+    ],
+    "summary": {
+      "gates_total": 4,
+      "gates_passed": 4,
+      "all_gates_pass": true,
+      "direction_modest_boundary_positive_net25": true
+    }
+  },
+  "missing_fields_report": [
+    {
+      "column": "as_of_date",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "rebalance_date",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "ticker",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "sector",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "cohort",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "is_new_cohort",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "liquidity_proxy",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "fcf_to_assets",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38408,
+      "rows_total": 38725,
+      "reason": "38408/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "operating_accruals",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38610,
+      "rows_total": 38725,
+      "reason": "38610/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "fcf_to_assets_raw",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38408,
+      "rows_total": 38725,
+      "reason": "38408/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "operating_accruals_raw",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38610,
+      "rows_total": 38725,
+      "reason": "38610/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "fcf_to_assets_sector_neutral_z",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38408,
+      "rows_total": 38725,
+      "reason": "38408/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "operating_accruals_sector_neutral_z",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38610,
+      "rows_total": 38725,
+      "reason": "38610/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "operating_accruals_oriented_sector_neutral_z",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38610,
+      "rows_total": 38725,
+      "reason": "38610/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "composite_sn",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38404,
+      "rows_total": 38725,
+      "reason": "38404/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "composite_raw",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38404,
+      "rows_total": 38725,
+      "reason": "38404/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "forward_63d_return",
+      "status": "PARTIAL_COVERAGE",
+      "rows_populated": 38237,
+      "rows_total": 38725,
+      "reason": "38237/38725 rows populated (rest lack the underlying fundamental/return)"
+    },
+    {
+      "column": "forward_63d_return_start_date",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "forward_63d_return_end_date",
+      "status": "BLANK_OPTIONAL",
+      "rows_populated": 0,
+      "rows_total": 38725,
+      "reason": "not persisted by the 10-C/10-D builder; non-blocking - not needed for reweighting / IC reproduction"
+    },
+    {
+      "column": "has_forward_return",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "source_phase",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    },
+    {
+      "column": "data_quality_flag",
+      "status": "FULL",
+      "rows_populated": 38725,
+      "rows_total": 38725,
+      "reason": "reconstructed for all rows"
+    }
+  ],
+  "data_quality_report": {
+    "additive_self_check": {
+      "composite_raw_max_abs_reconstruction_error": 0.0,
+      "composite_raw_rows_checked": 38404,
+      "composite_sn_max_abs_reconstruction_error": 0.0,
+      "composite_sn_rows_checked": 38404,
+      "additive_reconstruction_ok": true
+    },
+    "data_quality_flag_counts": {
+      "OK_UNKNOWN_SECTOR": 23862,
+      "OK": 14055,
+      "MISSING_FWD_RETURN": 487,
+      "MISSING_COMPOSITE": 321
+    },
+    "reproduction_gates_passed": 4,
+    "reproduction_gates_total": 4
+  },
+  "implementation_limits": [
+    "This phase does NOT search for new alpha, test new factors, or declare a new champion; it is a data-lineage / reproducibility phase only.",
+    "The panel is reconstructed at a single data vintage (as_of 2026-06-26); as_of_date is that vintage, not a per-row point-in-time stamp (PIT is guaranteed by the builder: available_date <= rebalance_date).",
+    "forward_63d_return_end_date is not persisted upstream (only the realized 63d excess return is); it is left blank and is not needed for reweighting / IC reproduction.",
+    "sector is current-as-of the owned metadata (a share of rows remain 'Unknown'); grouping is not strictly point-in-time sector membership.",
+    "The alpha remains MODEST / BOUNDARY and is not a prediction oracle; this phase does not change that."
+  ],
+  "next_recommended_phase": {
+    "phase": "10-L-B",
+    "from_decision": "PANEL_RECONSTRUCTION_READY",
+    "next_step": "Phase 10-L-B: run the 10-K narrow-improvement harness AGAINST this frozen historical panel - honestly backtest interior leg re-weightings (60/40, 40/60, 70/30, 30/70) and robustness transforms (z-cap, winsorize) on the persisted per-(month, ticker) z-legs + forward 63d returns, with the same strict sector-neutral cost/turnover/OOS gates. Still offline, owned-data-only, paper-only, NO orders, NO automation, NO broker, NO deploy.",
+    "exact_next_command": "review research/output/phase10l_historical_sector_neutral_scored_panel_reconstruction/historical_sector_neutral_scored_panel.csv   then build run_phase10lb_*.py against it",
+    "constraints": [
+      "owned data only; no new purchase",
+      "paper-only",
+      "no orders",
+      "no automation",
+      "no broker",
+      "no deploy",
+      "no commit",
+      "no push"
+    ]
+  },
+  "constraints_honored": [
+    "offline (no network / no key / no provider probe)",
+    "owned / local data only",
+    "no new purchase",
+    "no Paper Trader writes",
+    "no orders",
+    "no automation",
+    "no broker",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "no full regression (targeted tests only)",
+    "no commit",
+    "no push"
+  ],
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true
+  }
+}

@@ -1,0 +1,342 @@
+feature_col,family,transform,description,orthogonal_to,coverage
+f_level,eodhd_earnings_surprise,earnings_surprise,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38237
+f_chg1,eodhd_earnings_surprise,earnings_surprise,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_accel,eodhd_earnings_surprise,earnings_surprise,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38042
+f_lag1,eodhd_earnings_surprise,earnings_surprise,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rmean_5,eodhd_earnings_surprise,earnings_surprise,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rstd_5,eodhd_earnings_surprise,earnings_surprise,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rchg_5,eodhd_earnings_surprise,earnings_surprise,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rmean_21,eodhd_earnings_surprise,earnings_surprise,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rstd_21,eodhd_earnings_surprise,earnings_surprise,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rchg_21,eodhd_earnings_surprise,earnings_surprise,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rmean_63,eodhd_earnings_surprise,earnings_surprise,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rstd_63,eodhd_earnings_surprise,earnings_surprise,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_rchg_63,eodhd_earnings_surprise,earnings_surprise,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38159
+f_z,eodhd_earnings_surprise,earnings_surprise,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38237
+f_sector_z,eodhd_earnings_surprise,earnings_surprise,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),37949
+f_rank,eodhd_earnings_surprise,earnings_surprise,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38237
+f_winz,eodhd_earnings_surprise,earnings_surprise,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38237
+f_x_surprise,eodhd_earnings_surprise,earnings_surprise,cross-family interaction: earnings_surprise x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36862
+f_x_quality,eodhd_earnings_surprise,earnings_surprise,cross-family interaction: earnings_surprise x quality,NO (orthogonal to EODHD earnings/fundamentals/price),36826
+f_x_value,eodhd_earnings_surprise,earnings_surprise,cross-family interaction: earnings_surprise x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36689
+f_x_mom,eodhd_earnings_surprise,earnings_surprise,cross-family interaction: earnings_surprise x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20304
+f_level,eodhd_eps_growth_yoy,eps_growth_yoy,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38473
+f_chg1,eodhd_eps_growth_yoy,eps_growth_yoy,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_accel,eodhd_eps_growth_yoy,eps_growth_yoy,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38324
+f_lag1,eodhd_eps_growth_yoy,eps_growth_yoy,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rmean_5,eodhd_eps_growth_yoy,eps_growth_yoy,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rstd_5,eodhd_eps_growth_yoy,eps_growth_yoy,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rchg_5,eodhd_eps_growth_yoy,eps_growth_yoy,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rmean_21,eodhd_eps_growth_yoy,eps_growth_yoy,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rstd_21,eodhd_eps_growth_yoy,eps_growth_yoy,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rchg_21,eodhd_eps_growth_yoy,eps_growth_yoy,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rmean_63,eodhd_eps_growth_yoy,eps_growth_yoy,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rstd_63,eodhd_eps_growth_yoy,eps_growth_yoy,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_rchg_63,eodhd_eps_growth_yoy,eps_growth_yoy,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38398
+f_z,eodhd_eps_growth_yoy,eps_growth_yoy,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38473
+f_sector_z,eodhd_eps_growth_yoy,eps_growth_yoy,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38187
+f_rank,eodhd_eps_growth_yoy,eps_growth_yoy,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38473
+f_winz,eodhd_eps_growth_yoy,eps_growth_yoy,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38473
+f_x_surprise,eodhd_eps_growth_yoy,eps_growth_yoy,cross-family interaction: eps_growth_yoy x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36685
+f_x_quality,eodhd_eps_growth_yoy,eps_growth_yoy,cross-family interaction: eps_growth_yoy x quality,NO (orthogonal to EODHD earnings/fundamentals/price),36963
+f_x_value,eodhd_eps_growth_yoy,eps_growth_yoy,cross-family interaction: eps_growth_yoy x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36977
+f_x_mom,eodhd_eps_growth_yoy,eps_growth_yoy,cross-family interaction: eps_growth_yoy x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20330
+f_level,eodhd_revenue_growth_yoy,rev_growth_yoy,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38597
+f_chg1,eodhd_revenue_growth_yoy,rev_growth_yoy,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_accel,eodhd_revenue_growth_yoy,rev_growth_yoy,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38545
+f_lag1,eodhd_revenue_growth_yoy,rev_growth_yoy,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rmean_5,eodhd_revenue_growth_yoy,rev_growth_yoy,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rstd_5,eodhd_revenue_growth_yoy,rev_growth_yoy,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rchg_5,eodhd_revenue_growth_yoy,rev_growth_yoy,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rmean_21,eodhd_revenue_growth_yoy,rev_growth_yoy,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rstd_21,eodhd_revenue_growth_yoy,rev_growth_yoy,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rchg_21,eodhd_revenue_growth_yoy,rev_growth_yoy,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rmean_63,eodhd_revenue_growth_yoy,rev_growth_yoy,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rstd_63,eodhd_revenue_growth_yoy,rev_growth_yoy,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_rchg_63,eodhd_revenue_growth_yoy,rev_growth_yoy,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38569
+f_z,eodhd_revenue_growth_yoy,rev_growth_yoy,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38597
+f_sector_z,eodhd_revenue_growth_yoy,rev_growth_yoy,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38311
+f_rank,eodhd_revenue_growth_yoy,rev_growth_yoy,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38597
+f_winz,eodhd_revenue_growth_yoy,rev_growth_yoy,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38597
+f_x_surprise,eodhd_revenue_growth_yoy,rev_growth_yoy,cross-family interaction: rev_growth_yoy x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36763
+f_x_quality,eodhd_revenue_growth_yoy,rev_growth_yoy,cross-family interaction: rev_growth_yoy x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37166
+f_x_value,eodhd_revenue_growth_yoy,rev_growth_yoy,cross-family interaction: rev_growth_yoy x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36984
+f_x_mom,eodhd_revenue_growth_yoy,rev_growth_yoy,cross-family interaction: rev_growth_yoy x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20436
+f_level,eodhd_gross_profitability,gross_profitability,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38512
+f_chg1,eodhd_gross_profitability,gross_profitability,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_accel,eodhd_gross_profitability,gross_profitability,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38466
+f_lag1,eodhd_gross_profitability,gross_profitability,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rmean_5,eodhd_gross_profitability,gross_profitability,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rstd_5,eodhd_gross_profitability,gross_profitability,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rchg_5,eodhd_gross_profitability,gross_profitability,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rmean_21,eodhd_gross_profitability,gross_profitability,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rstd_21,eodhd_gross_profitability,gross_profitability,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rchg_21,eodhd_gross_profitability,gross_profitability,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rmean_63,eodhd_gross_profitability,gross_profitability,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rstd_63,eodhd_gross_profitability,gross_profitability,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_rchg_63,eodhd_gross_profitability,gross_profitability,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38499
+f_z,eodhd_gross_profitability,gross_profitability,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38512
+f_sector_z,eodhd_gross_profitability,gross_profitability,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38226
+f_rank,eodhd_gross_profitability,gross_profitability,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38512
+f_winz,eodhd_gross_profitability,gross_profitability,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38512
+f_x_surprise,eodhd_gross_profitability,gross_profitability,cross-family interaction: gross_profitability x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36705
+f_x_quality,eodhd_gross_profitability,gross_profitability,cross-family interaction: gross_profitability x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37178
+f_x_value,eodhd_gross_profitability,gross_profitability,cross-family interaction: gross_profitability x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36895
+f_x_mom,eodhd_gross_profitability,gross_profitability,cross-family interaction: gross_profitability x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20443
+f_level,eodhd_operating_accruals,operating_accruals,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38610
+f_chg1,eodhd_operating_accruals,operating_accruals,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_accel,eodhd_operating_accruals,operating_accruals,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38568
+f_lag1,eodhd_operating_accruals,operating_accruals,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rmean_5,eodhd_operating_accruals,operating_accruals,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rstd_5,eodhd_operating_accruals,operating_accruals,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rchg_5,eodhd_operating_accruals,operating_accruals,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rmean_21,eodhd_operating_accruals,operating_accruals,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rstd_21,eodhd_operating_accruals,operating_accruals,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rchg_21,eodhd_operating_accruals,operating_accruals,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rmean_63,eodhd_operating_accruals,operating_accruals,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rstd_63,eodhd_operating_accruals,operating_accruals,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_rchg_63,eodhd_operating_accruals,operating_accruals,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38596
+f_z,eodhd_operating_accruals,operating_accruals,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38610
+f_sector_z,eodhd_operating_accruals,operating_accruals,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38324
+f_rank,eodhd_operating_accruals,operating_accruals,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38610
+f_winz,eodhd_operating_accruals,operating_accruals,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38610
+f_x_surprise,eodhd_operating_accruals,operating_accruals,cross-family interaction: operating_accruals x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36768
+f_x_quality,eodhd_operating_accruals,operating_accruals,cross-family interaction: operating_accruals x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37178
+f_x_value,eodhd_operating_accruals,operating_accruals,cross-family interaction: operating_accruals x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36989
+f_x_mom,eodhd_operating_accruals,operating_accruals,cross-family interaction: operating_accruals x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20441
+f_level,eodhd_asset_growth,asset_growth,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38533
+f_chg1,eodhd_asset_growth,asset_growth,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_accel,eodhd_asset_growth,asset_growth,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38431
+f_lag1,eodhd_asset_growth,asset_growth,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rmean_5,eodhd_asset_growth,asset_growth,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rstd_5,eodhd_asset_growth,asset_growth,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rchg_5,eodhd_asset_growth,asset_growth,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rmean_21,eodhd_asset_growth,asset_growth,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rstd_21,eodhd_asset_growth,asset_growth,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rchg_21,eodhd_asset_growth,asset_growth,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rmean_63,eodhd_asset_growth,asset_growth,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rstd_63,eodhd_asset_growth,asset_growth,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_rchg_63,eodhd_asset_growth,asset_growth,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38464
+f_z,eodhd_asset_growth,asset_growth,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38533
+f_sector_z,eodhd_asset_growth,asset_growth,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38247
+f_rank,eodhd_asset_growth,asset_growth,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38533
+f_winz,eodhd_asset_growth,asset_growth,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38533
+f_x_surprise,eodhd_asset_growth,asset_growth,cross-family interaction: asset_growth x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36715
+f_x_quality,eodhd_asset_growth,asset_growth,cross-family interaction: asset_growth x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37122
+f_x_value,eodhd_asset_growth,asset_growth,cross-family interaction: asset_growth x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36952
+f_x_mom,eodhd_asset_growth,asset_growth,cross-family interaction: asset_growth x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20421
+f_level,eodhd_net_share_issuance,net_share_issuance,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38465
+f_chg1,eodhd_net_share_issuance,net_share_issuance,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_accel,eodhd_net_share_issuance,net_share_issuance,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38392
+f_lag1,eodhd_net_share_issuance,net_share_issuance,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rmean_5,eodhd_net_share_issuance,net_share_issuance,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rstd_5,eodhd_net_share_issuance,net_share_issuance,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rchg_5,eodhd_net_share_issuance,net_share_issuance,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rmean_21,eodhd_net_share_issuance,net_share_issuance,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rstd_21,eodhd_net_share_issuance,net_share_issuance,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rchg_21,eodhd_net_share_issuance,net_share_issuance,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rmean_63,eodhd_net_share_issuance,net_share_issuance,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rstd_63,eodhd_net_share_issuance,net_share_issuance,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_rchg_63,eodhd_net_share_issuance,net_share_issuance,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38424
+f_z,eodhd_net_share_issuance,net_share_issuance,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38465
+f_sector_z,eodhd_net_share_issuance,net_share_issuance,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38179
+f_rank,eodhd_net_share_issuance,net_share_issuance,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38465
+f_winz,eodhd_net_share_issuance,net_share_issuance,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38465
+f_x_surprise,eodhd_net_share_issuance,net_share_issuance,cross-family interaction: net_share_issuance x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36676
+f_x_quality,eodhd_net_share_issuance,net_share_issuance,cross-family interaction: net_share_issuance x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37171
+f_x_value,eodhd_net_share_issuance,net_share_issuance,cross-family interaction: net_share_issuance x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36856
+f_x_mom,eodhd_net_share_issuance,net_share_issuance,cross-family interaction: net_share_issuance x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20405
+f_level,eodhd_leverage_change,leverage_change,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38404
+f_chg1,eodhd_leverage_change,leverage_change,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_accel,eodhd_leverage_change,leverage_change,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38301
+f_lag1,eodhd_leverage_change,leverage_change,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rmean_5,eodhd_leverage_change,leverage_change,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rstd_5,eodhd_leverage_change,leverage_change,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rchg_5,eodhd_leverage_change,leverage_change,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rmean_21,eodhd_leverage_change,leverage_change,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rstd_21,eodhd_leverage_change,leverage_change,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rchg_21,eodhd_leverage_change,leverage_change,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rmean_63,eodhd_leverage_change,leverage_change,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rstd_63,eodhd_leverage_change,leverage_change,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_rchg_63,eodhd_leverage_change,leverage_change,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38332
+f_z,eodhd_leverage_change,leverage_change,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38404
+f_sector_z,eodhd_leverage_change,leverage_change,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38118
+f_rank,eodhd_leverage_change,leverage_change,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38404
+f_winz,eodhd_leverage_change,leverage_change,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38404
+f_x_surprise,eodhd_leverage_change,leverage_change,cross-family interaction: leverage_change x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36639
+f_x_quality,eodhd_leverage_change,leverage_change,cross-family interaction: leverage_change x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37121
+f_x_value,eodhd_leverage_change,leverage_change,cross-family interaction: leverage_change x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36834
+f_x_mom,eodhd_leverage_change,leverage_change,cross-family interaction: leverage_change x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20395
+f_level,eodhd_fcf_to_assets,fcf_to_assets,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),38408
+f_chg1,eodhd_fcf_to_assets,fcf_to_assets,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_accel,eodhd_fcf_to_assets,fcf_to_assets,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),38351
+f_lag1,eodhd_fcf_to_assets,fcf_to_assets,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rmean_5,eodhd_fcf_to_assets,fcf_to_assets,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rstd_5,eodhd_fcf_to_assets,fcf_to_assets,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rchg_5,eodhd_fcf_to_assets,fcf_to_assets,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rmean_21,eodhd_fcf_to_assets,fcf_to_assets,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rstd_21,eodhd_fcf_to_assets,fcf_to_assets,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rchg_21,eodhd_fcf_to_assets,fcf_to_assets,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rmean_63,eodhd_fcf_to_assets,fcf_to_assets,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rstd_63,eodhd_fcf_to_assets,fcf_to_assets,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_rchg_63,eodhd_fcf_to_assets,fcf_to_assets,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),38382
+f_z,eodhd_fcf_to_assets,fcf_to_assets,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38408
+f_sector_z,eodhd_fcf_to_assets,fcf_to_assets,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),38122
+f_rank,eodhd_fcf_to_assets,fcf_to_assets,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),38408
+f_winz,eodhd_fcf_to_assets,fcf_to_assets,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),38408
+f_x_surprise,eodhd_fcf_to_assets,fcf_to_assets,cross-family interaction: fcf_to_assets x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),36637
+f_x_quality,eodhd_fcf_to_assets,fcf_to_assets,cross-family interaction: fcf_to_assets x quality,NO (orthogonal to EODHD earnings/fundamentals/price),37178
+f_x_value,eodhd_fcf_to_assets,fcf_to_assets,cross-family interaction: fcf_to_assets x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),36796
+f_x_mom,eodhd_fcf_to_assets,fcf_to_assets,cross-family interaction: fcf_to_assets x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),20398
+f_level,eodhd_dividend_growth,dividend_growth,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),32647
+f_chg1,eodhd_dividend_growth,dividend_growth,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_accel,eodhd_dividend_growth,dividend_growth,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),32186
+f_lag1,eodhd_dividend_growth,dividend_growth,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rmean_5,eodhd_dividend_growth,dividend_growth,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rstd_5,eodhd_dividend_growth,dividend_growth,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rchg_5,eodhd_dividend_growth,dividend_growth,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rmean_21,eodhd_dividend_growth,dividend_growth,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rstd_21,eodhd_dividend_growth,dividend_growth,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rchg_21,eodhd_dividend_growth,dividend_growth,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rmean_63,eodhd_dividend_growth,dividend_growth,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rstd_63,eodhd_dividend_growth,dividend_growth,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_rchg_63,eodhd_dividend_growth,dividend_growth,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),32498
+f_z,eodhd_dividend_growth,dividend_growth,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),32647
+f_sector_z,eodhd_dividend_growth,dividend_growth,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),32324
+f_rank,eodhd_dividend_growth,dividend_growth,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),32647
+f_winz,eodhd_dividend_growth,dividend_growth,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),32647
+f_x_surprise,eodhd_dividend_growth,dividend_growth,cross-family interaction: dividend_growth x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),31107
+f_x_quality,eodhd_dividend_growth,dividend_growth,cross-family interaction: dividend_growth x quality,NO (orthogonal to EODHD earnings/fundamentals/price),31349
+f_x_value,eodhd_dividend_growth,dividend_growth,cross-family interaction: dividend_growth x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),31438
+f_x_mom,eodhd_dividend_growth,dividend_growth,cross-family interaction: dividend_growth x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),16821
+f_level,eodhd_news_sentiment,news_sentiment,raw point-in-time level,NO (orthogonal to EODHD earnings/fundamentals/price),29280
+f_chg1,eodhd_news_sentiment,news_sentiment,1-step change,NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_accel,eodhd_news_sentiment,news_sentiment,acceleration (change of change),NO (orthogonal to EODHD earnings/fundamentals/price),25293
+f_lag1,eodhd_news_sentiment,news_sentiment,1-step lagged level,NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rmean_5,eodhd_news_sentiment,news_sentiment,5-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rstd_5,eodhd_news_sentiment,news_sentiment,5-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rchg_5,eodhd_news_sentiment,news_sentiment,5-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rmean_21,eodhd_news_sentiment,news_sentiment,21-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rstd_21,eodhd_news_sentiment,news_sentiment,21-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rchg_21,eodhd_news_sentiment,news_sentiment,21-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rmean_63,eodhd_news_sentiment,news_sentiment,63-obs rolling mean,NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rstd_63,eodhd_news_sentiment,news_sentiment,63-obs rolling volatility (stability),NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_rchg_63,eodhd_news_sentiment,news_sentiment,63-obs rolling change (level minus mean),NO (orthogonal to EODHD earnings/fundamentals/price),26651
+f_z,eodhd_news_sentiment,news_sentiment,within-month cross-sectional z-score,NO (orthogonal to EODHD earnings/fundamentals/price),29280
+f_sector_z,eodhd_news_sentiment,news_sentiment,sector-neutral within-month z-score,NO (orthogonal to EODHD earnings/fundamentals/price),28907
+f_rank,eodhd_news_sentiment,news_sentiment,within-month rank percentile,NO (orthogonal to EODHD earnings/fundamentals/price),29280
+f_winz,eodhd_news_sentiment,news_sentiment,winsorized (1/99 pct) within-month level,NO (orthogonal to EODHD earnings/fundamentals/price),29280
+f_x_surprise,eodhd_news_sentiment,news_sentiment,cross-family interaction: news_sentiment x earnings surprise,NO (orthogonal to EODHD earnings/fundamentals/price),28247
+f_x_quality,eodhd_news_sentiment,news_sentiment,cross-family interaction: news_sentiment x quality,NO (orthogonal to EODHD earnings/fundamentals/price),28368
+f_x_value,eodhd_news_sentiment,news_sentiment,cross-family interaction: news_sentiment x value (earnings yield),NO (orthogonal to EODHD earnings/fundamentals/price),28344
+f_x_mom,eodhd_news_sentiment,news_sentiment,cross-family interaction: news_sentiment x 63d price momentum,NO (orthogonal to EODHD earnings/fundamentals/price),19180
+ix_earnings_surprise_x_eps_growth_yoy,interaction,earnings_surprise_x_eps_growth_yoy,cross-family interaction earnings_surprise x eps_growth_yoy,earnings_surprise x eps_growth_yoy,38046
+ix_earnings_surprise_x_rev_growth_yoy,interaction,earnings_surprise_x_rev_growth_yoy,cross-family interaction earnings_surprise x rev_growth_yoy,earnings_surprise x rev_growth_yoy,38129
+ix_earnings_surprise_x_gross_profitability,interaction,earnings_surprise_x_gross_profitability,cross-family interaction earnings_surprise x gross_profitability,earnings_surprise x gross_profitability,38033
+ix_earnings_surprise_x_operating_accruals,interaction,earnings_surprise_x_operating_accruals,cross-family interaction earnings_surprise x operating_accruals,earnings_surprise x operating_accruals,38134
+ix_earnings_surprise_x_asset_growth,interaction,earnings_surprise_x_asset_growth,cross-family interaction earnings_surprise x asset_growth,earnings_surprise x asset_growth,38075
+ix_earnings_surprise_x_net_share_issuance,interaction,earnings_surprise_x_net_share_issuance,cross-family interaction earnings_surprise x net_share_issuance,earnings_surprise x net_share_issuance,37993
+ix_earnings_surprise_x_leverage_change,interaction,earnings_surprise_x_leverage_change,cross-family interaction earnings_surprise x leverage_change,earnings_surprise x leverage_change,37950
+ix_earnings_surprise_x_fcf_to_assets,interaction,earnings_surprise_x_fcf_to_assets,cross-family interaction earnings_surprise x fcf_to_assets,earnings_surprise x fcf_to_assets,37928
+ix_earnings_surprise_x_dividend_growth,interaction,earnings_surprise_x_dividend_growth,cross-family interaction earnings_surprise x dividend_growth,earnings_surprise x dividend_growth,32249
+ix_earnings_surprise_x_news_sentiment,interaction,earnings_surprise_x_news_sentiment,cross-family interaction earnings_surprise x news_sentiment,earnings_surprise x news_sentiment,29048
+ix_eps_growth_yoy_x_rev_growth_yoy,interaction,eps_growth_yoy_x_rev_growth_yoy,cross-family interaction eps_growth_yoy x rev_growth_yoy,eps_growth_yoy x rev_growth_yoy,38377
+ix_eps_growth_yoy_x_gross_profitability,interaction,eps_growth_yoy_x_gross_profitability,cross-family interaction eps_growth_yoy x gross_profitability,eps_growth_yoy x gross_profitability,38280
+ix_eps_growth_yoy_x_operating_accruals,interaction,eps_growth_yoy_x_operating_accruals,cross-family interaction eps_growth_yoy x operating_accruals,eps_growth_yoy x operating_accruals,38381
+ix_eps_growth_yoy_x_asset_growth,interaction,eps_growth_yoy_x_asset_growth,cross-family interaction eps_growth_yoy x asset_growth,eps_growth_yoy x asset_growth,38346
+ix_eps_growth_yoy_x_net_share_issuance,interaction,eps_growth_yoy_x_net_share_issuance,cross-family interaction eps_growth_yoy x net_share_issuance,eps_growth_yoy x net_share_issuance,38242
+ix_eps_growth_yoy_x_leverage_change,interaction,eps_growth_yoy_x_leverage_change,cross-family interaction eps_growth_yoy x leverage_change,eps_growth_yoy x leverage_change,38223
+ix_eps_growth_yoy_x_fcf_to_assets,interaction,eps_growth_yoy_x_fcf_to_assets,cross-family interaction eps_growth_yoy x fcf_to_assets,eps_growth_yoy x fcf_to_assets,38175
+ix_eps_growth_yoy_x_dividend_growth,interaction,eps_growth_yoy_x_dividend_growth,cross-family interaction eps_growth_yoy x dividend_growth,eps_growth_yoy x dividend_growth,32625
+ix_eps_growth_yoy_x_news_sentiment,interaction,eps_growth_yoy_x_news_sentiment,cross-family interaction eps_growth_yoy x news_sentiment,eps_growth_yoy x news_sentiment,29125
+ix_rev_growth_yoy_x_gross_profitability,interaction,rev_growth_yoy_x_gross_profitability,cross-family interaction rev_growth_yoy x gross_profitability,rev_growth_yoy x gross_profitability,38496
+ix_rev_growth_yoy_x_operating_accruals,interaction,rev_growth_yoy_x_operating_accruals,cross-family interaction rev_growth_yoy x operating_accruals,rev_growth_yoy x operating_accruals,38593
+ix_rev_growth_yoy_x_asset_growth,interaction,rev_growth_yoy_x_asset_growth,cross-family interaction rev_growth_yoy x asset_growth,rev_growth_yoy x asset_growth,38528
+ix_rev_growth_yoy_x_net_share_issuance,interaction,rev_growth_yoy_x_net_share_issuance,cross-family interaction rev_growth_yoy x net_share_issuance,rev_growth_yoy x net_share_issuance,38460
+ix_rev_growth_yoy_x_leverage_change,interaction,rev_growth_yoy_x_leverage_change,cross-family interaction rev_growth_yoy x leverage_change,rev_growth_yoy x leverage_change,38399
+ix_rev_growth_yoy_x_fcf_to_assets,interaction,rev_growth_yoy_x_fcf_to_assets,cross-family interaction rev_growth_yoy x fcf_to_assets,rev_growth_yoy x fcf_to_assets,38391
+ix_rev_growth_yoy_x_dividend_growth,interaction,rev_growth_yoy_x_dividend_growth,cross-family interaction rev_growth_yoy x dividend_growth,rev_growth_yoy x dividend_growth,32535
+ix_rev_growth_yoy_x_news_sentiment,interaction,rev_growth_yoy_x_news_sentiment,cross-family interaction rev_growth_yoy x news_sentiment,rev_growth_yoy x news_sentiment,29276
+ix_gross_profitability_x_operating_accruals,interaction,gross_profitability_x_operating_accruals,cross-family interaction gross_profitability x operating_accruals,gross_profitability x operating_accruals,38508
+ix_gross_profitability_x_asset_growth,interaction,gross_profitability_x_asset_growth,cross-family interaction gross_profitability x asset_growth,gross_profitability x asset_growth,38432
+ix_gross_profitability_x_net_share_issuance,interaction,gross_profitability_x_net_share_issuance,cross-family interaction gross_profitability x net_share_issuance,gross_profitability x net_share_issuance,38465
+ix_gross_profitability_x_leverage_change,interaction,gross_profitability_x_leverage_change,cross-family interaction gross_profitability x leverage_change,gross_profitability x leverage_change,38404
+ix_gross_profitability_x_fcf_to_assets,interaction,gross_profitability_x_fcf_to_assets,cross-family interaction gross_profitability x fcf_to_assets,gross_profitability x fcf_to_assets,38407
+ix_gross_profitability_x_dividend_growth,interaction,gross_profitability_x_dividend_growth,cross-family interaction gross_profitability x dividend_growth,gross_profitability x dividend_growth,32436
+ix_gross_profitability_x_news_sentiment,interaction,gross_profitability_x_news_sentiment,cross-family interaction gross_profitability x news_sentiment,gross_profitability x news_sentiment,29277
+ix_operating_accruals_x_asset_growth,interaction,operating_accruals_x_asset_growth,cross-family interaction operating_accruals x asset_growth,operating_accruals x asset_growth,38529
+ix_operating_accruals_x_net_share_issuance,interaction,operating_accruals_x_net_share_issuance,cross-family interaction operating_accruals x net_share_issuance,operating_accruals x net_share_issuance,38461
+ix_operating_accruals_x_leverage_change,interaction,operating_accruals_x_leverage_change,cross-family interaction operating_accruals x leverage_change,operating_accruals x leverage_change,38404
+ix_operating_accruals_x_fcf_to_assets,interaction,operating_accruals_x_fcf_to_assets,cross-family interaction operating_accruals x fcf_to_assets,operating_accruals x fcf_to_assets,38404
+ix_operating_accruals_x_dividend_growth,interaction,operating_accruals_x_dividend_growth,cross-family interaction operating_accruals x dividend_growth,operating_accruals x dividend_growth,32537
+ix_operating_accruals_x_news_sentiment,interaction,operating_accruals_x_news_sentiment,cross-family interaction operating_accruals x news_sentiment,operating_accruals x news_sentiment,29277
+ix_asset_growth_x_net_share_issuance,interaction,asset_growth_x_net_share_issuance,cross-family interaction asset_growth x net_share_issuance,asset_growth x net_share_issuance,38396
+ix_asset_growth_x_leverage_change,interaction,asset_growth_x_leverage_change,cross-family interaction asset_growth x leverage_change,asset_growth x leverage_change,38404
+ix_asset_growth_x_fcf_to_assets,interaction,asset_growth_x_fcf_to_assets,cross-family interaction asset_growth x fcf_to_assets,asset_growth x fcf_to_assets,38327
+ix_asset_growth_x_dividend_growth,interaction,asset_growth_x_dividend_growth,cross-family interaction asset_growth x dividend_growth,asset_growth x dividend_growth,32532
+ix_asset_growth_x_news_sentiment,interaction,asset_growth_x_news_sentiment,cross-family interaction asset_growth x news_sentiment,asset_growth x news_sentiment,29218
+ix_net_share_issuance_x_leverage_change,interaction,net_share_issuance_x_leverage_change,cross-family interaction net_share_issuance x leverage_change,net_share_issuance x leverage_change,38390
+ix_net_share_issuance_x_fcf_to_assets,interaction,net_share_issuance_x_fcf_to_assets,cross-family interaction net_share_issuance x fcf_to_assets,net_share_issuance x fcf_to_assets,38390
+ix_net_share_issuance_x_dividend_growth,interaction,net_share_issuance_x_dividend_growth,cross-family interaction net_share_issuance x dividend_growth,net_share_issuance x dividend_growth,32398
+ix_net_share_issuance_x_news_sentiment,interaction,net_share_issuance_x_news_sentiment,cross-family interaction net_share_issuance x news_sentiment,net_share_issuance x news_sentiment,29241
+ix_leverage_change_x_fcf_to_assets,interaction,leverage_change_x_fcf_to_assets,cross-family interaction leverage_change x fcf_to_assets,leverage_change x fcf_to_assets,38321
+ix_leverage_change_x_dividend_growth,interaction,leverage_change_x_dividend_growth,cross-family interaction leverage_change x dividend_growth,leverage_change x dividend_growth,32409
+ix_leverage_change_x_news_sentiment,interaction,leverage_change_x_news_sentiment,cross-family interaction leverage_change x news_sentiment,leverage_change x news_sentiment,29195
+ix_fcf_to_assets_x_dividend_growth,interaction,fcf_to_assets_x_dividend_growth,cross-family interaction fcf_to_assets x dividend_growth,fcf_to_assets x dividend_growth,32331
+ix_fcf_to_assets_x_news_sentiment,interaction,fcf_to_assets_x_news_sentiment,cross-family interaction fcf_to_assets x news_sentiment,fcf_to_assets x news_sentiment,29201
+ix_dividend_growth_x_news_sentiment,interaction,dividend_growth_x_news_sentiment,cross-family interaction dividend_growth x news_sentiment,dividend_growth x news_sentiment,24311
+ix_earnings_surprise_x_surprise,interaction,earnings_surprise_x_surprise,earnings_surprise conditioned on surprise,earnings_surprise x surprise_pct,36862
+ix_earnings_surprise_x_momentum,interaction,earnings_surprise_x_momentum,earnings_surprise conditioned on momentum,earnings_surprise x mom_pre_63,20304
+ix_earnings_surprise_x_quality,interaction,earnings_surprise_x_quality,earnings_surprise conditioned on quality,earnings_surprise x quality_composite,36826
+ix_earnings_surprise_x_value,interaction,earnings_surprise_x_value,earnings_surprise conditioned on value,earnings_surprise x earnings_yield,36689
+ix_earnings_surprise_x_liquidity,interaction,earnings_surprise_x_liquidity,earnings_surprise conditioned on liquidity,earnings_surprise x liquidity,0
+ix_eps_growth_yoy_x_surprise,interaction,eps_growth_yoy_x_surprise,eps_growth_yoy conditioned on surprise,eps_growth_yoy x surprise_pct,36685
+ix_eps_growth_yoy_x_momentum,interaction,eps_growth_yoy_x_momentum,eps_growth_yoy conditioned on momentum,eps_growth_yoy x mom_pre_63,20330
+ix_eps_growth_yoy_x_quality,interaction,eps_growth_yoy_x_quality,eps_growth_yoy conditioned on quality,eps_growth_yoy x quality_composite,36963
+ix_eps_growth_yoy_x_value,interaction,eps_growth_yoy_x_value,eps_growth_yoy conditioned on value,eps_growth_yoy x earnings_yield,36977
+ix_eps_growth_yoy_x_liquidity,interaction,eps_growth_yoy_x_liquidity,eps_growth_yoy conditioned on liquidity,eps_growth_yoy x liquidity,0
+ix_rev_growth_yoy_x_surprise,interaction,rev_growth_yoy_x_surprise,rev_growth_yoy conditioned on surprise,rev_growth_yoy x surprise_pct,36763
+ix_rev_growth_yoy_x_momentum,interaction,rev_growth_yoy_x_momentum,rev_growth_yoy conditioned on momentum,rev_growth_yoy x mom_pre_63,20436
+ix_rev_growth_yoy_x_quality,interaction,rev_growth_yoy_x_quality,rev_growth_yoy conditioned on quality,rev_growth_yoy x quality_composite,37166
+ix_rev_growth_yoy_x_value,interaction,rev_growth_yoy_x_value,rev_growth_yoy conditioned on value,rev_growth_yoy x earnings_yield,36984
+ix_rev_growth_yoy_x_liquidity,interaction,rev_growth_yoy_x_liquidity,rev_growth_yoy conditioned on liquidity,rev_growth_yoy x liquidity,0
+ix_gross_profitability_x_surprise,interaction,gross_profitability_x_surprise,gross_profitability conditioned on surprise,gross_profitability x surprise_pct,36705
+ix_gross_profitability_x_momentum,interaction,gross_profitability_x_momentum,gross_profitability conditioned on momentum,gross_profitability x mom_pre_63,20443
+ix_gross_profitability_x_quality,interaction,gross_profitability_x_quality,gross_profitability conditioned on quality,gross_profitability x quality_composite,37178
+ix_gross_profitability_x_value,interaction,gross_profitability_x_value,gross_profitability conditioned on value,gross_profitability x earnings_yield,36895
+ix_gross_profitability_x_liquidity,interaction,gross_profitability_x_liquidity,gross_profitability conditioned on liquidity,gross_profitability x liquidity,0
+ix_operating_accruals_x_surprise,interaction,operating_accruals_x_surprise,operating_accruals conditioned on surprise,operating_accruals x surprise_pct,36768
+ix_operating_accruals_x_momentum,interaction,operating_accruals_x_momentum,operating_accruals conditioned on momentum,operating_accruals x mom_pre_63,20441
+ix_operating_accruals_x_quality,interaction,operating_accruals_x_quality,operating_accruals conditioned on quality,operating_accruals x quality_composite,37178
+ix_operating_accruals_x_value,interaction,operating_accruals_x_value,operating_accruals conditioned on value,operating_accruals x earnings_yield,36989
+ix_operating_accruals_x_liquidity,interaction,operating_accruals_x_liquidity,operating_accruals conditioned on liquidity,operating_accruals x liquidity,0
+ix_asset_growth_x_surprise,interaction,asset_growth_x_surprise,asset_growth conditioned on surprise,asset_growth x surprise_pct,36715
+ix_asset_growth_x_momentum,interaction,asset_growth_x_momentum,asset_growth conditioned on momentum,asset_growth x mom_pre_63,20421
+ix_asset_growth_x_quality,interaction,asset_growth_x_quality,asset_growth conditioned on quality,asset_growth x quality_composite,37122
+ix_asset_growth_x_value,interaction,asset_growth_x_value,asset_growth conditioned on value,asset_growth x earnings_yield,36952
+ix_asset_growth_x_liquidity,interaction,asset_growth_x_liquidity,asset_growth conditioned on liquidity,asset_growth x liquidity,0
+ix_net_share_issuance_x_surprise,interaction,net_share_issuance_x_surprise,net_share_issuance conditioned on surprise,net_share_issuance x surprise_pct,36676
+ix_net_share_issuance_x_momentum,interaction,net_share_issuance_x_momentum,net_share_issuance conditioned on momentum,net_share_issuance x mom_pre_63,20405
+ix_net_share_issuance_x_quality,interaction,net_share_issuance_x_quality,net_share_issuance conditioned on quality,net_share_issuance x quality_composite,37171
+ix_net_share_issuance_x_value,interaction,net_share_issuance_x_value,net_share_issuance conditioned on value,net_share_issuance x earnings_yield,36856
+ix_net_share_issuance_x_liquidity,interaction,net_share_issuance_x_liquidity,net_share_issuance conditioned on liquidity,net_share_issuance x liquidity,0
+ix_leverage_change_x_surprise,interaction,leverage_change_x_surprise,leverage_change conditioned on surprise,leverage_change x surprise_pct,36639
+ix_leverage_change_x_momentum,interaction,leverage_change_x_momentum,leverage_change conditioned on momentum,leverage_change x mom_pre_63,20395
+ix_leverage_change_x_quality,interaction,leverage_change_x_quality,leverage_change conditioned on quality,leverage_change x quality_composite,37121
+ix_leverage_change_x_value,interaction,leverage_change_x_value,leverage_change conditioned on value,leverage_change x earnings_yield,36834
+ix_leverage_change_x_liquidity,interaction,leverage_change_x_liquidity,leverage_change conditioned on liquidity,leverage_change x liquidity,0
+ix_fcf_to_assets_x_surprise,interaction,fcf_to_assets_x_surprise,fcf_to_assets conditioned on surprise,fcf_to_assets x surprise_pct,36637
+ix_fcf_to_assets_x_momentum,interaction,fcf_to_assets_x_momentum,fcf_to_assets conditioned on momentum,fcf_to_assets x mom_pre_63,20398
+ix_fcf_to_assets_x_quality,interaction,fcf_to_assets_x_quality,fcf_to_assets conditioned on quality,fcf_to_assets x quality_composite,37178
+ix_fcf_to_assets_x_value,interaction,fcf_to_assets_x_value,fcf_to_assets conditioned on value,fcf_to_assets x earnings_yield,36796
+ix_fcf_to_assets_x_liquidity,interaction,fcf_to_assets_x_liquidity,fcf_to_assets conditioned on liquidity,fcf_to_assets x liquidity,0
+ix_dividend_growth_x_surprise,interaction,dividend_growth_x_surprise,dividend_growth conditioned on surprise,dividend_growth x surprise_pct,31107
+ix_dividend_growth_x_momentum,interaction,dividend_growth_x_momentum,dividend_growth conditioned on momentum,dividend_growth x mom_pre_63,16821
+ix_dividend_growth_x_quality,interaction,dividend_growth_x_quality,dividend_growth conditioned on quality,dividend_growth x quality_composite,31349
+ix_dividend_growth_x_value,interaction,dividend_growth_x_value,dividend_growth conditioned on value,dividend_growth x earnings_yield,31438
+ix_dividend_growth_x_liquidity,interaction,dividend_growth_x_liquidity,dividend_growth conditioned on liquidity,dividend_growth x liquidity,0
+ix_news_sentiment_x_surprise,interaction,news_sentiment_x_surprise,news_sentiment conditioned on surprise,news_sentiment x surprise_pct,28247
+ix_news_sentiment_x_momentum,interaction,news_sentiment_x_momentum,news_sentiment conditioned on momentum,news_sentiment x mom_pre_63,19180
+ix_news_sentiment_x_quality,interaction,news_sentiment_x_quality,news_sentiment conditioned on quality,news_sentiment x quality_composite,28368
+ix_news_sentiment_x_value,interaction,news_sentiment_x_value,news_sentiment conditioned on value,news_sentiment x earnings_yield,28344
+ix_news_sentiment_x_liquidity,interaction,news_sentiment_x_liquidity,news_sentiment conditioned on liquidity,news_sentiment x liquidity,0

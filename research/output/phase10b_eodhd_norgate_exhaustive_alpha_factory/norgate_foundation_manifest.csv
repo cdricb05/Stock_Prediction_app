@@ -1,0 +1,12 @@
+check,value,detail
+norgatedata_importable_in_shell,True,find_spec('norgatedata') is not None (no feed connection attempted)
+persisted_panel_loaded,True,D:/Stock_Prediction_app_data/research_panels/phase8a_norgate_sample
+panel_last_month,2026-06-30,monthly_close_total_return.csv last index
+months_stale_vs_as_of,0,reuse if <= 9 months
+current_enough_to_reuse,True,REUSE_EXISTING_PANEL
+active_plus_delisted_support,True,701 delisted of 1363 tickers (survivorship-free)
+index_membership_history_pit,True,membership_panel.csv point-in-time members
+sector_industry_classification,True,metadata.gics_sector present (sector controls / neutralization)
+liquidity_control_available,True,monthly_dollar_volume.csv (liquidity gate / proxy)
+norgate_panel_rebuild_can_run_now,True,python research/run_phase8a_autonomous_norgate_research_engine.py --rebuild
+exact_rebuild_command,python research/run_phase8a_autonomous_norgate_research_engine.py --rebuild,

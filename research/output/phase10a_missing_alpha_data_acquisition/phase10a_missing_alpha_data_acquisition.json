@@ -1,0 +1,229 @@
+{
+  "phase": "10-A",
+  "as_of": "2026-06-26",
+  "decision": "ACCESSIBLE_MISSING_ALPHA_DATA_EXHAUSTED_NO_STRONG_ALPHA",
+  "decision_rationale": "Full broad 8-X gate + 1/5/21/63d horizon sweep run with NO strong alpha. Fully tested over the whole 545-ticker survivorship-free universe: short_interest_days_to_cover -> no strong alpha (best below t>=3.0). Rate-limit-capped (partial universe, NOT exhausted - resume/upgrade to finish): (none). Entitlement-blocked, need a paid feed: analyst_estimate_revisions, options_iv_skew_put_call, price_target_revisions, short_interest_days_to_cover.",
+  "exact_next_command": "subscribe + set the key for: FMP Premium analyst-estimates, or Intrinio/Zacks estimate-revision history, then re-run run_phase10a_missing_alpha_data_acquisition.py --live",
+  "live_mode": true,
+  "allowed_decisions": [
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "MISSING_ALPHA_DATA_ACQUIRED_READY_FOR_NEXT_BATCH",
+    "ACCESSIBLE_MISSING_ALPHA_DATA_EXHAUSTED_NO_STRONG_ALPHA",
+    "ALL_TARGET_FAMILIES_BLOCKED_BY_ENTITLEMENT",
+    "PROVIDER_KEYS_REQUIRED_WITH_EXACT_ACTIONS",
+    "EXACT_PAID_PROVIDER_REQUIRED_TO_CONTINUE",
+    "KEY_ENV_NOT_VISIBLE_RESTART_CLAUDE_CODE",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR_WITH_REPRO_COMMAND"
+  ],
+  "key_visibility_preflight_ok": true,
+  "key_visibility_missing_required": [],
+  "required_visible_keys": [
+    "EODHD_API_KEY",
+    "FINNHUB_API_KEY",
+    "FMP_API_KEY",
+    "ALPHAVANTAGE_API_KEY",
+    "NASDAQ_DATA_LINK_API_KEY",
+    "POLYGON_API_KEY",
+    "TIINGO_API_KEY",
+    "FRED_API_KEY"
+  ],
+  "optional_missing_keys": [
+    "ORATS_API_KEY",
+    "INTRINIO_API_KEY",
+    "BENZINGA_API_KEY"
+  ],
+  "norgate_foundation": {
+    "usable_now": true,
+    "reuse_or_rebuild": "REUSE_EXISTING_PANEL",
+    "last_panel_month": "2026-06-30",
+    "rebuild_can_run_now": true,
+    "rebuild_command": "python research/run_phase8a_autonomous_norgate_research_engine.py --rebuild"
+  },
+  "data_families_acquired": [
+    "short_interest_days_to_cover"
+  ],
+  "data_families_blocked": [
+    "analyst_estimate_revisions",
+    "options_iv_skew_put_call",
+    "price_target_revisions"
+  ],
+  "entitlement_blocked_detail": [
+    {
+      "family": "analyst_estimate_revisions",
+      "provider": "FMP",
+      "endpoint": "https://financialmodelingprep.com/api/v3/analyst-estimates/AAPL?<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "analyst_estimate_revisions",
+      "provider": "Finnhub",
+      "endpoint": "https://finnhub.io/api/v1/stock/eps-estimate?symbol=AAPL&freq=quarterly&<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "price_target_revisions",
+      "provider": "FMP",
+      "endpoint": "https://financialmodelingprep.com/api/v4/price-target?symbol=AAPL&<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "price_target_revisions",
+      "provider": "Finnhub",
+      "endpoint": "https://finnhub.io/api/v1/stock/price-target?symbol=AAPL&<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "price_target_revisions",
+      "provider": "Polygon",
+      "endpoint": "https://api.polygon.io/benzinga/v1/analyst-insights?ticker=AAPL&<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "short_interest_days_to_cover",
+      "provider": "Nasdaq Data Link",
+      "endpoint": "https://data.nasdaq.com/api/v3/datasets/FINRA/FNSQ_AAPL.json?<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "short_interest_days_to_cover",
+      "provider": "FMP",
+      "endpoint": "https://financialmodelingprep.com/api/v4/short_interest?symbol=AAPL&<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    },
+    {
+      "family": "options_iv_skew_put_call",
+      "provider": "Polygon",
+      "endpoint": "https://api.polygon.io/v3/snapshot/options/AAPL?limit=250&<API_KEY_REDACTED>",
+      "http_status": 403,
+      "entitlement": "ENTITLEMENT_BLOCKED"
+    }
+  ],
+  "provider_purchase_required": [
+    {
+      "family": "analyst_estimate_revisions",
+      "paid_unlock": "FMP Premium analyst-estimates, or Intrinio/Zacks estimate-revision history"
+    },
+    {
+      "family": "price_target_revisions",
+      "paid_unlock": "FMP Premium price-target, or Benzinga / Intrinio analyst price targets"
+    },
+    {
+      "family": "options_iv_skew_put_call",
+      "paid_unlock": "ORATS / Intrinio options feed, or Polygon Options Starter (historical chains)"
+    }
+  ],
+  "requests_by_provider": {
+    "(none)": 0,
+    "Polygon": 2725
+  },
+  "tickers_by_provider": {
+    "(none)": 0,
+    "Polygon": 2725
+  },
+  "total_requests": 2725,
+  "request_ceiling": 8000,
+  "normalized_rows_by_family": {
+    "analyst_estimate_revisions": 0,
+    "price_target_revisions": 0,
+    "short_interest_days_to_cover": 5450,
+    "options_iv_skew_put_call": 0
+  },
+  "feature_coverage_by_family": {
+    "analyst_estimate_revisions": 0,
+    "price_target_revisions": 0,
+    "short_interest_days_to_cover": 17496,
+    "options_iv_skew_put_call": 0
+  },
+  "feature_coverage_diagnosis": {
+    "analyst_estimate_revisions": "0 normalized rows for analyst_estimate_revisions - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)",
+    "price_target_revisions": "0 normalized rows for price_target_revisions - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)",
+    "short_interest_days_to_cover": "covered",
+    "options_iv_skew_put_call": "0 normalized rows for options_iv_skew_put_call - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)"
+  },
+  "horizons_tested": [
+    1,
+    5,
+    21,
+    63
+  ],
+  "scoreable_tickers": 545,
+  "scoreable_events": 38725,
+  "universe_size": 545,
+  "max_tickers": 545,
+  "scenarios_tested": 46,
+  "models_tested": 2,
+  "strong_alpha_found": false,
+  "n_strong": 0,
+  "n_constrained": 0,
+  "n_rejected": 48,
+  "best_candidate": "f_accel_sn",
+  "best_candidate_t_stat": 1.02,
+  "best_candidate_family": "orthogonal",
+  "best_candidate_accept_reject": "REJECTED_BELOW_GATE",
+  "exhausted_data_families": [
+    "cross_factor_interactions",
+    "orthogonal",
+    "transparent_factor_ensembles"
+  ],
+  "panel_present": true,
+  "secret_safety_leak_scan_clean": true,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "required_artifacts": [
+    "phase10a_missing_alpha_data_acquisition.json",
+    "key_visibility_preflight.csv",
+    "provider_family_attempts.csv",
+    "entitlement_blockers.csv",
+    "missing_keys_exact_actions.csv",
+    "provider_purchase_required.csv",
+    "acquisition_progress.csv",
+    "raw_payload_manifest.csv",
+    "normalized_payload_manifest.csv",
+    "pit_normalization_audit.csv",
+    "point_in_time_join_audit.csv",
+    "usable_missing_alpha_families.csv",
+    "unusable_missing_alpha_families.csv",
+    "feature_coverage_report.csv",
+    "feature_catalog.csv",
+    "scenario_registry.csv",
+    "scenario_scoreboard.csv",
+    "model_registry.csv",
+    "model_scoreboard.csv",
+    "horizon_sweep_report.csv",
+    "strong_alpha_candidates.csv",
+    "rejected_hypotheses.csv",
+    "transaction_cost_report.csv",
+    "cohort_stability_report.csv",
+    "subperiod_stability_report.csv",
+    "sector_concentration_report.csv",
+    "leakage_audit.csv",
+    "exact_next_commands.csv",
+    "phase10b_next_plan.json",
+    "secret_safety_audit.csv"
+  ],
+  "exact_next_commands": [
+    {
+      "action": "purchase_provider_for_blocked_family",
+      "family": "analyst_estimate_revisions",
+      "command": "subscribe + set the key for: FMP Premium analyst-estimates, or Intrinio/Zacks estimate-revision history, then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+    },
+    {
+      "action": "purchase_provider_for_blocked_family",
+      "family": "price_target_revisions",
+      "command": "subscribe + set the key for: FMP Premium price-target, or Benzinga / Intrinio analyst price targets, then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+    },
+    {
+      "action": "purchase_provider_for_blocked_family",
+      "family": "options_iv_skew_put_call",
+      "command": "subscribe + set the key for: ORATS / Intrinio options feed, or Polygon Options Starter (historical chains), then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+    }
+  ]
+}

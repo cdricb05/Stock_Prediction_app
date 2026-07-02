@@ -1,0 +1,23 @@
+column,status,rows_populated,rows_total,reason
+as_of_date,FULL,38725,38725,reconstructed for all rows
+rebalance_date,FULL,38725,38725,reconstructed for all rows
+ticker,FULL,38725,38725,reconstructed for all rows
+sector,FULL,38725,38725,reconstructed for all rows
+cohort,FULL,38725,38725,reconstructed for all rows
+is_new_cohort,FULL,38725,38725,reconstructed for all rows
+liquidity_proxy,FULL,38725,38725,reconstructed for all rows
+fcf_to_assets,PARTIAL_COVERAGE,38408,38725,38408/38725 rows populated (rest lack the underlying fundamental/return)
+operating_accruals,PARTIAL_COVERAGE,38610,38725,38610/38725 rows populated (rest lack the underlying fundamental/return)
+fcf_to_assets_raw,PARTIAL_COVERAGE,38408,38725,38408/38725 rows populated (rest lack the underlying fundamental/return)
+operating_accruals_raw,PARTIAL_COVERAGE,38610,38725,38610/38725 rows populated (rest lack the underlying fundamental/return)
+fcf_to_assets_sector_neutral_z,PARTIAL_COVERAGE,38408,38725,38408/38725 rows populated (rest lack the underlying fundamental/return)
+operating_accruals_sector_neutral_z,PARTIAL_COVERAGE,38610,38725,38610/38725 rows populated (rest lack the underlying fundamental/return)
+operating_accruals_oriented_sector_neutral_z,PARTIAL_COVERAGE,38610,38725,38610/38725 rows populated (rest lack the underlying fundamental/return)
+composite_sn,PARTIAL_COVERAGE,38404,38725,38404/38725 rows populated (rest lack the underlying fundamental/return)
+composite_raw,PARTIAL_COVERAGE,38404,38725,38404/38725 rows populated (rest lack the underlying fundamental/return)
+forward_63d_return,PARTIAL_COVERAGE,38237,38725,38237/38725 rows populated (rest lack the underlying fundamental/return)
+forward_63d_return_start_date,FULL,38725,38725,reconstructed for all rows
+forward_63d_return_end_date,BLANK_OPTIONAL,0,38725,not persisted by the 10-C/10-D builder; non-blocking - not needed for reweighting / IC reproduction
+has_forward_return,FULL,38725,38725,reconstructed for all rows
+source_phase,FULL,38725,38725,reconstructed for all rows
+data_quality_flag,FULL,38725,38725,reconstructed for all rows

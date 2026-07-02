@@ -1,0 +1,142 @@
+{
+  "phase": "10-E",
+  "as_of": "2026-06-26",
+  "decision": "PAPER_REVIEW_PACKAGE_READY_WITH_SECTOR_MAPPING_CAVEAT",
+  "decision_rationale": "the paper-review package reconstructs cleanly, but 78% of the book sits in the unmapped 'Unknown' sector bucket - review against the SECTOR-NEUTRAL composite and improve owned sector mapping before sizing (the documented 10-D caveat)",
+  "allowed_decisions": [
+    "PAPER_REVIEW_PACKAGE_READY",
+    "PAPER_REVIEW_PACKAGE_READY_WITH_SECTOR_MAPPING_CAVEAT",
+    "PAPER_REVIEW_BLOCKED_BY_MISSING_COMPOSITE_INPUTS",
+    "PAPER_REVIEW_REJECTED_AFTER_POSITION_RECONSTRUCTION",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR_WITH_REPRO_COMMAND"
+  ],
+  "forbidden_decisions": [
+    "LIVE_TRADING_READY",
+    "ORDER_READY",
+    "AUTOMATION_READY",
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "MISSING_KEY",
+    "NO_DATA",
+    "NEEDS_PROVIDER",
+    "EMPTY_PAYLOAD",
+    "ERROR"
+  ],
+  "objective": "build a PAPER-ONLY human review package for the quarterly SECTOR-NEUTRAL quality composite (fcf_to_assets long + operating_accruals short) - NOT alpha search, NOT provider search, NOT orders, NOT automation, NOT a Paper Trader integration",
+  "performs_network": false,
+  "offline": true,
+  "eodhd_key_visible": true,
+  "eodhd_key_required": false,
+  "creates_paper_trader_signals": false,
+  "creates_trade_decisions": false,
+  "creates_orders": false,
+  "creates_automation": false,
+  "wrote_to_paper_trader": false,
+  "live_trading": false,
+  "broker_connected": false,
+  "deploy": false,
+  "composite_source": "imported verbatim from Phase 10-D (run_phase10d_quarterly_quality_composite_validation.build_composite); no re-definition",
+  "composite_legs": [
+    "fcf_to_assets",
+    "operating_accruals"
+  ],
+  "leg_families": [
+    "eodhd_fcf_to_assets",
+    "eodhd_operating_accruals"
+  ],
+  "composite_weighting": "equal (fixed 1.0/1.0 on within-month z legs; no optimisation, no sign-flip)",
+  "optimised_weights": false,
+  "sign_flipping": false,
+  "default_review_score": "comp_sn",
+  "default_review_score_is_sector_neutral": true,
+  "primary_horizon_days": 63,
+  "phase10d_provenance": {
+    "available": true,
+    "verdict": "CONFIRMED",
+    "ic_t_63d": 3.074,
+    "quarterly_net_25bps": 0.00648,
+    "quarterly_net_50bps": 0.00349,
+    "quarterly_turnover": 0.5989,
+    "ready_for_paper_review": true
+  },
+  "panel_events": 38725,
+  "panel_tickers": 545,
+  "composite_coverage_events": 38404,
+  "latest_quarter": "2026Q2",
+  "prior_quarter": "2026Q1",
+  "latest_quarter_universe_names": 484,
+  "latest_quarter_scoreable_names": 483,
+  "book": {
+    "n_long": 97,
+    "n_short": 97,
+    "n_hold": 289
+  },
+  "sector_exposure": {
+    "unknown_book_share": 0.7784,
+    "unknown_long_share": 0.7938,
+    "n_unknown_book": 151,
+    "top_long_sector": "Industrials",
+    "top_long_sector_share": 0.0722,
+    "high_concentration": false
+  },
+  "liquidity": {
+    "low_liq_threshold": 125523727.3279,
+    "median_liq": 220518043.81,
+    "n_low_liq_book": 41,
+    "low_liq_pctile": 0.25
+  },
+  "estimated_turnover_vs_prior_quarter": {
+    "long_turnover": 0.6701,
+    "short_turnover": 0.732,
+    "book_turnover": 0.701,
+    "note": ""
+  },
+  "safety_badges": [
+    "PAPER REVIEW ONLY",
+    "NO ORDERS",
+    "NO AUTOMATION",
+    "HUMAN APPROVAL REQUIRED",
+    "NO LIVE TRADING",
+    "NO BROKER",
+    "CREATES NO TRADE DECISIONS",
+    "MANUAL REVIEW"
+  ],
+  "secret_safety_leak_scan_clean": true,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "required_artifacts": [
+    "phase10e_quarterly_quality_paper_review_harness.json",
+    "paper_review_candidate_list.csv",
+    "paper_review_long_short_book.csv",
+    "paper_review_score_explainability.csv",
+    "paper_review_sector_exposure.csv",
+    "paper_review_liquidity_report.csv",
+    "paper_review_unknown_sector_audit.csv",
+    "quarterly_rebalance_calendar.csv",
+    "paper_review_turnover_estimate.csv",
+    "paper_review_risk_flags.csv",
+    "paper_review_human_checklist.csv",
+    "paper_review_safety_badges.csv",
+    "phase10f_next_plan.json",
+    "secret_safety_audit.csv"
+  ],
+  "exact_next_command": "review research/output/phase10e_quarterly_quality_paper_review_harness/paper_review_long_short_book.csv",
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "only fcf_to_assets + operating_accruals used",
+    "composite imported from 10-D; no re-definition; no optimisation; no sign-flip",
+    "no FMP/AlphaVantage/Polygon/Finnhub",
+    "no Paper Trader writes",
+    "no GCP",
+    "NO orders",
+    "NO automation",
+    "NO live trading",
+    "NO broker",
+    "no deploy",
+    "no package install",
+    "no full regression",
+    "no commit",
+    "no push",
+    "no key printed/written"
+  ]
+}

@@ -1,0 +1,4 @@
+family,feature,orientation,normalized_path,panel_coverage_events,panel_coverage_tickers,source
+eodhd_fcf_to_assets,fcf_to_assets,1,research/data/eodhd/normalized/eodhd_fcf_to_assets/fcf_to_assets.csv,38408,543,owned EODHD/Norgate (Phase 10-B normalized; PIT)
+eodhd_operating_accruals,operating_accruals,-1,research/data/eodhd/normalized/eodhd_operating_accruals/operating_accruals.csv,38610,542,owned EODHD/Norgate (Phase 10-B normalized; PIT)
+__composite__,comp_raw (both legs),,,38404,,intersection of legs

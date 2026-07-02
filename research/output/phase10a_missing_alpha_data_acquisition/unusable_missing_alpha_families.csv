@@ -1,0 +1,4 @@
+family,feature,norm_rows,coverage_events,reason
+analyst_estimate_revisions,est_eps_revision,0,0,0 normalized rows for analyst_estimate_revisions - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)
+price_target_revisions,pt_revision,0,0,0 normalized rows for price_target_revisions - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)
+options_iv_skew_put_call,put_call_oi_ratio,0,0,0 normalized rows for options_iv_skew_put_call - acquire the feed (verified provider) or patch the normalizer (NOT data exhaustion)

@@ -1,0 +1,145 @@
+side,ticker,sector,comp_sn,comp_sn_z,liquidity_proxy,primary_reason,flag_missing_sector,flag_missing_input,flag_low_liquidity,flag_extreme_score,flag_sector_cap,was_eligible
+LONG,EXPE,Consumer Discretionary,8.76583,5.1216,319234945.76,extreme_score_flagged,False,False,False,True,False,False
+LONG,JPM,Financials,7.09546,4.1455,1614580632.37,extreme_score_flagged,False,False,False,True,False,False
+LONG,BKNG,Consumer Discretionary,7.05134,4.1197,883946761.93,extreme_score_flagged,False,False,False,True,False,False
+LONG,EA,Communication Services,6.06291,3.5421,356483975.59,extreme_score_flagged,False,False,False,True,False,False
+LONG,STX,Information Technology,5.36829,3.1362,305711234.37,extreme_score_flagged,False,False,False,True,False,False
+LONG,RELX,Industrials,4.75745,2.7793,24333084.99,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,CHRW,Industrials,3.26801,1.9089,134570694.32,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,IVZ,Financials,2.95738,1.7274,95898438.01,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,SMERY,Industrials,2.69831,1.576,7023039.78,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,HDB,Financials,2.65284,1.5494,108366327.59,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,BUD,Consumer Staples,2.52467,1.4745,122397413.78,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,EXPD,Industrials,2.26836,1.3247,117393215.55,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,NVR,Consumer Discretionary,2.24164,1.3091,109382583.51,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,LUV,Industrials,2.18606,1.2766,309487527.53,below_selection_cutoff,False,False,False,False,False,True
+LONG,SPOT,Communication Services,2.14635,1.2534,528189104.88,below_selection_cutoff,False,False,False,False,False,True
+LONG,UBER,Industrials,2.14002,1.2497,1144371239.27,below_selection_cutoff,False,False,False,False,False,True
+LONG,FOXA,Communication Services,2.11552,1.2354,150817976.1,below_selection_cutoff,False,False,False,False,False,True
+LONG,FOX,Communication Services,2.11552,1.2354,50208974.53,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,FANG,Energy,2.09873,1.2256,247907728.78,below_selection_cutoff,False,False,False,False,False,True
+LONG,LVS,Consumer Discretionary,2.0319,1.1865,270985182.6,below_selection_cutoff,False,False,False,False,False,True
+LONG,RACE,Consumer Discretionary,2.01395,1.176,93826808.25,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,GNRC,Industrials,1.92188,1.1222,125625861.01,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,GDDY,Information Technology,1.91769,1.1198,122420743.27,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,TXN,Information Technology,1.89524,1.1067,749828388.64,below_selection_cutoff,False,False,False,False,False,True
+LONG,DDOG,Information Technology,1.89419,1.1061,488871765.25,below_selection_cutoff,False,False,False,False,False,True
+LONG,PLTR,Information Technology,1.85238,1.0816,3201525631.14,below_selection_cutoff,False,False,False,False,False,True
+LONG,DVN,Energy,1.84865,1.0794,335139375.54,below_selection_cutoff,False,False,False,False,False,True
+LONG,RMD,Health Care,1.84309,1.0762,135901199.41,below_selection_cutoff,False,False,False,False,False,True
+LONG,EBAY,Consumer Discretionary,1.80721,1.0552,364968426.48,below_selection_cutoff,False,False,False,False,False,True
+LONG,ODFL,Industrials,1.78629,1.043,327279121.13,below_selection_cutoff,False,False,False,False,False,True
+LONG,MO,Consumer Staples,1.7104,0.9987,319967134.64,below_selection_cutoff,False,False,False,False,False,True
+LONG,ITW,Industrials,1.70821,0.9974,211104910.16,below_selection_cutoff,False,False,False,False,False,True
+LONG,CNC,Health Care,1.70422,0.995,293901918.73,below_selection_cutoff,False,False,False,False,False,True
+LONG,JKHY,Financials,1.66814,0.974,82117957.09,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,CDNS,Information Technology,1.66452,0.9718,280341195.77,below_selection_cutoff,False,False,False,False,False,True
+LONG,URI,Industrials,1.62859,0.9508,269902414.51,below_selection_cutoff,False,False,False,False,False,True
+LONG,JBHT,Industrials,1.59606,0.9318,124187393.99,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,UPS,Industrials,1.57261,0.9181,419546582.79,below_selection_cutoff,False,False,False,False,False,True
+LONG,HOOD,Financials,1.57246,0.9181,1095181252.01,below_selection_cutoff,False,False,False,False,False,True
+LONG,SYK,Health Care,1.4954,0.873,326609661.47,below_selection_cutoff,False,False,False,False,False,True
+LONG,SNA,Industrials,1.49285,0.8715,90222869.54,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,XYZ,Industrials,1.48556,0.8673,859760671.19,below_selection_cutoff,False,False,False,False,False,True
+LONG,ABBV,Health Care,1.47085,0.8587,711331046.81,below_selection_cutoff,False,False,False,False,False,True
+LONG,SMFG,Financials,1.44879,0.8458,15779865.67,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,NEM,Materials,1.44687,0.8447,383433846.1,below_selection_cutoff,False,False,False,False,False,True
+LONG,CCI,Real Estate,1.43939,0.8403,286754497.67,below_selection_cutoff,False,False,False,False,False,True
+LONG,HAL,Energy,1.40897,0.8225,329616790.9,below_selection_cutoff,False,False,False,False,False,True
+LONG,HST,Real Estate,1.40551,0.8205,137963806.01,below_selection_cutoff,False,False,False,False,False,True
+LONG,CAG,Consumer Staples,1.36382,0.7961,150930119.65,below_selection_cutoff,False,False,False,False,False,True
+LONG,VRTX,Health Care,1.35983,0.7938,403766019.07,below_selection_cutoff,False,False,False,False,False,True
+LONG,IDXX,Health Care,1.3453,0.7853,190059477.03,below_selection_cutoff,False,False,False,False,False,True
+LONG,ALGN,Health Care,1.3425,0.7837,238689219.89,below_selection_cutoff,False,False,False,False,False,True
+LONG,AVY,Materials,1.33899,0.7816,85376431.03,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,GD,Industrials,1.3121,0.7659,256370060.31,below_selection_cutoff,False,False,False,False,False,True
+LONG,MNST,Consumer Staples,1.29485,0.7558,236069285.09,below_selection_cutoff,False,False,False,False,False,True
+LONG,MCK,Health Care,1.29384,0.7552,342493152.87,below_selection_cutoff,False,False,False,False,False,True
+LONG,RIO,Materials,1.27144,0.7421,137204265.02,below_selection_cutoff,False,False,False,False,False,True
+LONG,KO,Consumer Staples,1.25719,0.7338,718095005.77,below_selection_cutoff,False,False,False,False,False,True
+LONG,IBM,Information Technology,1.24415,0.7262,672251607.45,below_selection_cutoff,False,False,False,False,False,True
+LONG,DAL,Industrials,1.23866,0.723,488197019.72,below_selection_cutoff,False,False,False,False,False,True
+LONG,SCCO,Materials,1.23795,0.7226,74326616.86,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,TER,Information Technology,1.23432,0.7205,224910182.75,below_selection_cutoff,False,False,False,False,False,True
+LONG,IT,Information Technology,1.21754,0.7106,134733167.67,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,PSA,Real Estate,1.20622,0.704,223824473.74,below_selection_cutoff,False,False,False,False,False,True
+LONG,INCY,Health Care,1.20088,0.7009,139363045.39,below_selection_cutoff,False,False,False,False,False,True
+LONG,NBIS,Information Technology,1.18845,0.6936,1308909597.8,below_selection_cutoff,False,False,False,False,False,True
+LONG,LYG,Financials,1.18016,0.6888,25442168.72,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,ALL,Financials,1.16849,0.682,222329898.7,below_selection_cutoff,False,False,False,False,False,True
+LONG,MUFG,Financials,1.1468,0.6693,21112561.48,bottom_quartile_liquidity,False,False,True,False,False,False
+LONG,APH,Information Technology,1.1442,0.6678,292833541.81,below_selection_cutoff,False,False,False,False,False,True
+LONG,AAPL,Information Technology,1.08857,0.6353,9706746175.48,below_selection_cutoff,False,False,False,False,False,True
+LONG,DB,Financials,1.0757,0.6278,54810598.5,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,ASML,Information Technology,-8.80095,-5.1438,633881800.53,extreme_score_flagged,False,False,False,True,False,False
+SHORT,CTVA,Materials,-5.62798,-3.2896,193732931.55,extreme_score_flagged,False,False,False,True,False,False
+SHORT,MAS,Industrials,-4.69864,-2.7466,125421593.64,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,CBRE,Real Estate,-3.77285,-2.2056,133441799.38,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,HII,Industrials,-3.70721,-2.1672,86383841.47,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,J,Industrials,-3.64319,-2.1298,82196842.05,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,PNR,Industrials,-3.2025,-1.8723,93758988.67,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,EME,Industrials,-2.71108,-1.5851,79006263.17,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,TM,Consumer Discretionary,-2.66774,-1.5598,38922415.22,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,LII,Industrials,-2.56019,-1.4969,106165446.21,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,SOLV,Health Care,-2.2828,-1.3348,92560308.86,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,HSIC,Health Care,-2.16764,-1.2675,106370167.48,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,AMP,Financials,-2.09235,-1.2235,171057305.51,below_selection_cutoff,False,False,False,False,False,True
+SHORT,NCLH,Consumer Discretionary,-2.08557,-1.2196,267531558.06,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BG,Consumer Staples,-2.07734,-1.2148,113196015.46,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,AXON,Industrials,-2.06308,-1.2064,138263360.85,below_selection_cutoff,False,False,False,False,False,True
+SHORT,NWS,Communication Services,-2.0275,-1.1856,15875190.15,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,NWSA,Communication Services,-2.0275,-1.1856,55493461.21,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,F,Consumer Discretionary,-2.02515,-1.1843,553827128.58,below_selection_cutoff,False,False,False,False,False,True
+SHORT,GPC,Consumer Discretionary,-2.00968,-1.1752,110323725.58,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,NVO,Health Care,-1.99062,-1.1641,255099912.31,below_selection_cutoff,False,False,False,False,False,True
+SHORT,NU,Financials,-1.93473,-1.1314,389687222.54,below_selection_cutoff,False,False,False,False,False,True
+SHORT,OXY,Energy,-1.93028,-1.1288,571947748.83,below_selection_cutoff,False,False,False,False,False,True
+SHORT,CTSH,Information Technology,-1.85863,-1.087,269007411.97,below_selection_cutoff,False,False,False,False,False,True
+SHORT,RL,Consumer Discretionary,-1.84533,-1.0792,133717185.83,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,PEP,Consumer Staples,-1.82792,-1.069,660458379.77,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BABA,Consumer Discretionary,-1.7991,-1.0522,2545600991.26,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BLK,Financials,-1.77685,-1.0392,408843867.85,below_selection_cutoff,False,False,False,False,False,True
+SHORT,SBUX,Consumer Discretionary,-1.75186,-1.0246,649704650.83,below_selection_cutoff,False,False,False,False,False,True
+SHORT,TTE,Energy,-1.738,-1.0165,79104350.06,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,RKLB,Industrials,-1.70703,-0.9984,378992840.62,below_selection_cutoff,False,False,False,False,False,True
+SHORT,GOOG,Communication Services,-1.69543,-0.9916,28760408778.32,below_selection_cutoff,False,False,False,False,False,True
+SHORT,GOOGL,Communication Services,-1.69543,-0.9916,3758556190.09,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BX,Financials,-1.59146,-0.9308,325715571.65,below_selection_cutoff,False,False,False,False,False,True
+SHORT,MPWR,Information Technology,-1.50948,-0.8829,225677515.84,below_selection_cutoff,False,False,False,False,False,True
+SHORT,SWKS,Information Technology,-1.48785,-0.8703,228109920.51,below_selection_cutoff,False,False,False,False,False,True
+SHORT,GS,Financials,-1.48781,-0.8703,851186925.14,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BKR,Energy,-1.45293,-0.8499,192894279.49,below_selection_cutoff,False,False,False,False,False,True
+SHORT,NKE,Consumer Discretionary,-1.43178,-0.8375,736784832.03,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BA,Industrials,-1.43085,-0.837,1882103599.93,below_selection_cutoff,False,False,False,False,False,True
+SHORT,Q,Information Technology,-1.42891,-0.8359,255530889.76,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BMY,Health Care,-1.42366,-0.8328,567344516.14,below_selection_cutoff,False,False,False,False,False,True
+SHORT,TAP,Consumer Staples,-1.41955,-0.8304,120472766.1,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,IFNNY,Information Technology,-1.40444,-0.8216,7583612.72,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,LHX,Industrials,-1.40004,-0.819,221418959.28,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BP,Energy,-1.39092,-0.8137,240867244.33,below_selection_cutoff,False,False,False,False,False,True
+SHORT,GEHC,Health Care,-1.37847,-0.8064,257612043.7,below_selection_cutoff,False,False,False,False,False,True
+SHORT,GSK,Health Care,-1.36697,-0.7997,133674895.92,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,GM,Consumer Discretionary,-1.36545,-0.7988,550639543.76,below_selection_cutoff,False,False,False,False,False,True
+SHORT,EG,Financials,-1.3559,-0.7932,92919800.84,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,E,Energy,-1.34968,-0.7896,7814921.4,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,PTC,Information Technology,-1.31988,-0.7721,101768099.36,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,CPRT,Industrials,-1.29118,-0.7554,374757415.87,below_selection_cutoff,False,False,False,False,False,True
+SHORT,LRCX,Information Technology,-1.27388,-0.7453,752943472.18,below_selection_cutoff,False,False,False,False,False,True
+SHORT,NSC,Industrials,-1.25319,-0.7332,274892312.25,below_selection_cutoff,False,False,False,False,False,True
+SHORT,FE,Utilities,-1.25118,-0.732,162135052.47,below_selection_cutoff,False,False,False,False,False,True
+SHORT,HD,Consumer Discretionary,-1.24905,-0.7307,984999545.63,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BAC,Financials,-1.2468,-0.7294,1561296962.57,below_selection_cutoff,False,False,False,False,False,True
+SHORT,CSCO,Information Technology,-1.23015,-0.7197,937403516.43,below_selection_cutoff,False,False,False,False,False,True
+SHORT,BNY,Financials,-1.2025,-0.7035,232481474.42,below_selection_cutoff,False,False,False,False,False,True
+SHORT,KLAC,Information Technology,-1.18337,-0.6924,457598531.54,below_selection_cutoff,False,False,False,False,False,True
+SHORT,TDG,Industrials,-1.18238,-0.6918,196735225.71,below_selection_cutoff,False,False,False,False,False,True
+SHORT,UNH,Health Care,-1.17967,-0.6902,1469841488.18,below_selection_cutoff,False,False,False,False,False,True
+SHORT,FIS,Financials,-1.1734,-0.6865,309641734.35,below_selection_cutoff,False,False,False,False,False,True
+SHORT,DECK,Consumer Discretionary,-1.1666,-0.6826,643114738.3,below_selection_cutoff,False,False,False,False,False,True
+SHORT,CBOE,Financials,-1.14942,-0.6725,112804329.66,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,STLD,Materials,-1.13492,-0.6641,132798995.72,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,BEN,Financials,-1.10655,-0.6475,99150523.33,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,MAR,Consumer Discretionary,-1.0857,-0.6353,320705269.43,below_selection_cutoff,False,False,False,False,False,True
+SHORT,IBN,Financials,-1.06575,-0.6236,113348113.45,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,CNP,Utilities,-1.04965,-0.6142,133932446.55,bottom_quartile_liquidity,False,False,True,False,False,False
+SHORT,ARM,Information Technology,-1.04243,-0.61,1121432655.26,below_selection_cutoff,False,False,False,False,False,True

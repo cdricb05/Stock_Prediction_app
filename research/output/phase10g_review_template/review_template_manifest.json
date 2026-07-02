@@ -1,0 +1,154 @@
+{
+  "phase": "10-G (review template)",
+  "decision": "REVIEW_TEMPLATE_READY_FOR_HUMAN_REVIEW",
+  "allowed_decisions": [
+    "REVIEW_TEMPLATE_READY_FOR_HUMAN_REVIEW",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR_WITH_REPRO_COMMAND"
+  ],
+  "forbidden_decisions": [
+    "LIVE_TRADING_READY",
+    "ORDER_READY",
+    "AUTOMATION_READY",
+    "AUTO_APPROVED",
+    "AUTO_APPROVED_READY",
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "MISSING_KEY",
+    "NO_DATA",
+    "NEEDS_PROVIDER",
+    "EMPTY_PAYLOAD",
+    "ERROR"
+  ],
+  "purpose": "human approve/reject review template for the 10-F-A repaired long/short book; every candidate defaults to NEEDS_REVIEW; no auto-approval; no Paper Trader writes; no orders; no automation",
+  "source_book": "research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_long_short_book.csv",
+  "template_csv": "research/output/phase10g_review_template/repaired_book_review_template.csv",
+  "n_candidates": 194,
+  "n_long": 97,
+  "n_short": 97,
+  "default_decision": "NEEDS_REVIEW",
+  "n_needs_review": 194,
+  "all_default_needs_review": true,
+  "allowed_human_decisions": [
+    "NEEDS_REVIEW",
+    "APPROVE",
+    "REJECT",
+    "HOLD_FOR_MORE_INFO"
+  ],
+  "auto_approval": false,
+  "n_approved_at_generation": 0,
+  "order_action_all": "NO_ORDER",
+  "review_status_all": "PAPER_REVIEW_ONLY",
+  "performs_network": false,
+  "offline": true,
+  "uses_owned_data_only": true,
+  "performs_provider_acquisition": false,
+  "fabricated_candidates": false,
+  "creates_paper_trader_signals": false,
+  "creates_trade_decisions": false,
+  "creates_orders": false,
+  "creates_automation": false,
+  "wrote_to_paper_trader": false,
+  "live_trading": false,
+  "broker_connected": false,
+  "deploy": false,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "safety_badges": [
+    [
+      "PAPER REVIEW ONLY",
+      "This package is for human review only - it is not a tradeable instruction."
+    ],
+    [
+      "NO ORDERS",
+      "No orders are created, staged, or sent anywhere by this harness."
+    ],
+    [
+      "NO AUTOMATION",
+      "Nothing is automated; every position is human approve/reject gated."
+    ],
+    [
+      "HUMAN APPROVAL REQUIRED",
+      "A human must individually approve or reject each candidate."
+    ],
+    [
+      "NO LIVE TRADING",
+      "Paper-only; no live capital, no broker, no execution."
+    ],
+    [
+      "NO BROKER",
+      "No broker connection exists or is configured by this phase."
+    ],
+    [
+      "CREATES NO TRADE DECISIONS",
+      "No Paper Trader signals or trade decisions are written."
+    ],
+    [
+      "MANUAL REVIEW",
+      "Quarterly rebalance is a manual, reviewed decision - never scheduled execution."
+    ],
+    "NO AUTO-APPROVAL"
+  ],
+  "template_columns": [
+    "side",
+    "rank_sn",
+    "ticker",
+    "sector",
+    "sector_repaired",
+    "sector_is_unknown",
+    "comp_sn",
+    "comp_raw",
+    "cohort",
+    "liquidity_proxy",
+    "before_review_label",
+    "review_decision",
+    "reviewer",
+    "reviewed_at",
+    "conviction",
+    "reviewer_notes",
+    "approved",
+    "order_action",
+    "review_status"
+  ],
+  "column_legend": {
+    "side": "LONG or SHORT - the book side this candidate sits on (read-only).",
+    "rank_sn": "Sector-neutral rank within the side (read-only).",
+    "ticker": "Candidate ticker (read-only).",
+    "sector": "Repaired GICS sector used for sector-neutral scoring (read-only).",
+    "sector_repaired": "True if Phase 10-F-A repaired this name's sector from owned metadata (read-only).",
+    "sector_is_unknown": "True only if the sector is still Unknown after repair (read-only; expected False).",
+    "comp_sn": "Sector-neutral composite score = the review score (read-only).",
+    "comp_raw": "Raw (sector-independent) composite score, for sanity (read-only).",
+    "cohort": "old/new cohort the name belongs to (read-only).",
+    "liquidity_proxy": "Dollar-liquidity proxy (read-only).",
+    "before_review_label": "Side label from the 10-E book before the 10-F-A rerank (read-only).",
+    "review_decision": "HUMAN-EDITABLE. Ships NEEDS_REVIEW for every row. Set to one of NEEDS_REVIEW / APPROVE / REJECT / HOLD_FOR_MORE_INFO.",
+    "reviewer": "HUMAN-EDITABLE. Who reviewed (blank on generation).",
+    "reviewed_at": "HUMAN-EDITABLE. Review date (blank on generation).",
+    "conviction": "HUMAN-EDITABLE. Optional conviction note, e.g. HIGH/MED/LOW (blank on generation).",
+    "reviewer_notes": "HUMAN-EDITABLE. Free-text rationale (blank on generation).",
+    "approved": "FALSE for every row at generation. The template never pre-approves anything.",
+    "order_action": "NO_ORDER for every row. This template never implies or creates an order.",
+    "review_status": "PAPER_REVIEW_ONLY for every row."
+  },
+  "next_step_for_human": "open repaired_book_review_template.csv, set review_decision per row (APPROVE / REJECT / HOLD_FOR_MORE_INFO); nothing downstream changes until a human acts in a separately-gated step",
+  "exact_next_command": "review research/output/phase10g_review_template/repaired_book_review_template.csv",
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "reads only the owned 10-F-A repaired book",
+    "every candidate defaults to NEEDS_REVIEW",
+    "NO auto-approval",
+    "no Paper Trader writes",
+    "NO orders",
+    "NO automation",
+    "NO live trading",
+    "NO broker",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "no full regression",
+    "no fabricated candidates",
+    "no key printed/written",
+    "no commit",
+    "no push"
+  ]
+}

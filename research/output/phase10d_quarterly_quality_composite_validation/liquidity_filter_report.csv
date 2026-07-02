@@ -1,0 +1,5 @@
+signal,full_ic,full_ic_t,high_liq_ic,high_liq_ic_t,high_liq_n_events,low_liq_ic,low_liq_ic_t,high_liq_positive
+composite_raw,0.04537,3.07398,0.04569,2.39744,19234,0.03358,1.98845,True
+composite_sn,0.03494,2.66461,0.03462,2.14675,19234,0.03361,1.9914,True
+fcf_to_assets,0.04228,2.53455,0.04419,2.27599,19234,0.02106,1.14041,True
+operating_accruals,0.04113,3.07451,0.03614,1.97848,19234,0.03511,2.12181,True

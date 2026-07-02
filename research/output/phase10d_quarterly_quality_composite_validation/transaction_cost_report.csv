@@ -1,0 +1,13 @@
+signal,model,gross_spread,turnover,net_10bps,net_25bps,net_50bps
+composite_raw,event_panel_21d,0.00416,0.99326,0.00217,-0.00081,-0.00577
+composite_raw,event_panel_63d,0.00622,0.99315,0.00423,0.00125,-0.00371
+composite_raw,quarterly_63d,0.00948,0.59891,0.00828,0.00648,0.00349
+composite_sn,event_panel_21d,0.00289,0.99353,0.0009,-0.00208,-0.00705
+composite_sn,event_panel_63d,0.00707,0.99342,0.00508,0.0021,-0.00286
+composite_sn,quarterly_63d,0.00707,0.61151,0.00584,0.00401,0.00095
+fcf_to_assets,event_panel_21d,0.0023,0.99414,0.00031,-0.00267,-0.00764
+fcf_to_assets,event_panel_63d,0.01124,0.99404,0.00925,0.00627,0.0013
+fcf_to_assets,quarterly_63d,0.00775,0.46615,0.00682,0.00542,0.00309
+operating_accruals,event_panel_21d,0.00335,0.99261,0.00136,-0.00162,-0.00658
+operating_accruals,event_panel_63d,0.01579,0.99249,0.0138,0.01083,0.00586
+operating_accruals,quarterly_63d,0.00838,0.61579,0.00715,0.0053,0.00222

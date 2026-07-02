@@ -1,0 +1,20 @@
+side,sector,n_names,weight_pct
+LONG,Information Technology,6,24.0
+LONG,Consumer Discretionary,4,16.0
+LONG,Energy,3,12.0
+LONG,Industrials,3,12.0
+LONG,Materials,3,12.0
+LONG,Communication Services,2,8.0
+LONG,Consumer Staples,1,4.0
+LONG,Financials,1,4.0
+LONG,Health Care,1,4.0
+LONG,Utilities,1,4.0
+SHORT,Communication Services,4,16.0
+SHORT,Consumer Discretionary,4,16.0
+SHORT,Industrials,4,16.0
+SHORT,Information Technology,4,16.0
+SHORT,Materials,4,16.0
+SHORT,Consumer Staples,2,8.0
+SHORT,Energy,1,4.0
+SHORT,Financials,1,4.0
+SHORT,Health Care,1,4.0

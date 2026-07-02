@@ -1,0 +1,13 @@
+sector,n_in_universe,n_long,n_short,n_book,long_share,book_share
+Communication Services,7,1,2,3,0.01031,0.01546
+Consumer Discretionary,10,2,4,6,0.02062,0.03093
+Consumer Staples,7,1,2,3,0.01031,0.01546
+Energy,5,0,0,0,0.0,0.0
+Financials,20,2,4,6,0.02062,0.03093
+Health Care,20,3,3,6,0.03093,0.03093
+Industrials,18,7,5,12,0.07216,0.06186
+Information Technology,14,4,3,7,0.04124,0.03608
+Materials,3,0,0,0,0.0,0.0
+Real Estate,2,0,0,0,0.0,0.0
+Unknown,374,77,74,151,0.79381,0.77835
+Utilities,3,0,0,0,0.0,0.0

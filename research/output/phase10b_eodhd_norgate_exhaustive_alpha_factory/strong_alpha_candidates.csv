@@ -1,0 +1,2 @@
+name,kind,family,weighting,sector_neutral,n_events,n_months,mean_ic,ic_t,ic_p,bh_significant,mean_spread,spread_hit_rate,net_spread_25bps,net_spread_50bps,subperiod_stable,ic_old,ic_new,top_sector_share,status,all_strong_gate_checks_passed
+f_accel_sn,scenario,orthogonal,,True,38324,120,0.0436,3.91,0.0001,True,0.0092,0.6417,0.0042,-0.0008,True,0.0654,0.0054,0.4979,strong,True

@@ -1,0 +1,23 @@
+scenario,family,signals,weighting,sector_neutral,hypothesis
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base
+orthogonal_blend__ic_weighted,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,ic_weighted,True,walk-forward ic_weighted ensemble adding f_z to a 4-factor base
+orthogonal_blend__equal,model,f_z+surprise_pct+sue+quality_composite+mom_pre_63,equal,True,walk-forward equal ensemble adding f_z to a 4-factor base

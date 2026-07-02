@@ -1,0 +1,11 @@
+family,priority,provider,env_var,key_present,entitlement,http_status,rows,endpoint_redacted,note
+analyst_estimate_revisions,1,FMP,FMP_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://financialmodelingprep.com/api/v3/analyst-estimates/AAPL?<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+analyst_estimate_revisions,1,Finnhub,FINNHUB_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://finnhub.io/api/v1/stock/eps-estimate?symbol=AAPL&freq=quarterly&<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+analyst_estimate_revisions,1,Alpha Vantage,ALPHAVANTAGE_API_KEY,True,RATE_LIMITED,200,0,https://www.alphavantage.co/query?function=EARNINGS&symbol=AAPL&<API_KEY_REDACTED>,provider returned a information envelope (rate-limit/entitlement)
+price_target_revisions,2,FMP,FMP_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://financialmodelingprep.com/api/v4/price-target?symbol=AAPL&<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+price_target_revisions,2,Finnhub,FINNHUB_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://finnhub.io/api/v1/stock/price-target?symbol=AAPL&<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+price_target_revisions,2,Polygon,POLYGON_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://api.polygon.io/benzinga/v1/analyst-insights?ticker=AAPL&<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+short_interest_days_to_cover,3,Nasdaq Data Link,NASDAQ_DATA_LINK_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://data.nasdaq.com/api/v3/datasets/FINRA/FNSQ_AAPL.json?<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+short_interest_days_to_cover,3,Polygon,POLYGON_API_KEY,True,ACCESS_VERIFIED,200,10,https://api.polygon.io/stocks/v1/short-interest?ticker=AAPL&<API_KEY_REDACTED>,dict payload
+short_interest_days_to_cover,3,FMP,FMP_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://financialmodelingprep.com/api/v4/short_interest?symbol=AAPL&<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)
+options_iv_skew_put_call,4,Polygon,POLYGON_API_KEY,True,ENTITLEMENT_BLOCKED,403,0,https://api.polygon.io/v3/snapshot/options/AAPL?limit=250&<API_KEY_REDACTED>,HTTP 403 subscription/entitlement block (http_error)

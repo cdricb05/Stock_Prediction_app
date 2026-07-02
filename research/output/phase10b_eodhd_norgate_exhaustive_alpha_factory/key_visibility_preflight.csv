@@ -1,0 +1,3 @@
+env_var,required,role,visibility
+EODHD_API_KEY,True,EODHD paid feed (primary),PRESENT
+FMP_API_KEY,False,context only - IGNORED as a research source,PRESENT

@@ -1,0 +1,15 @@
+{
+  "phase": "10-E",
+  "from_decision": "QUARTERLY_QUALITY_COMPOSITE_CONFIRMED_READY_FOR_PAPER_REVIEW",
+  "next_step": "Phase 10-E: build a PAPER-ONLY review harness for the quarterly quality composite (quarterly rebalance, sector-neutral book, cost budget <25bps) with a human approve/reject gate. No orders, no automation, no deploy.",
+  "exact_next_command": "review research/output/phase10d_quarterly_quality_composite_validation/paper_review_candidate_package.csv",
+  "constraints": [
+    "owned data only; no new purchase without explicit user opt-in",
+    "paper-only",
+    "no orders",
+    "no automation",
+    "no deploy",
+    "no commit",
+    "no push"
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "phase": "10-H",
+  "decision": "RULES_BASED_PAPER_PORTFOLIO_READY_WITH_EXCEPTIONS",
+  "decision_rationale": "rules produced a 25/25 paper book with 56 rule-exception(s) (extreme/liquidity/sector-cap/missing) for human review",
+  "allowed_decisions": [
+    "RULES_BASED_PAPER_PORTFOLIO_READY_FOR_RULE_APPROVAL",
+    "RULES_BASED_PAPER_PORTFOLIO_READY_WITH_EXCEPTIONS",
+    "RULES_BASED_PAPER_PORTFOLIO_BLOCKED_TOO_FEW_CANDIDATES",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR_WITH_REPRO_COMMAND"
+  ],
+  "forbidden_decisions": [
+    "LIVE_TRADING_READY",
+    "ORDER_READY",
+    "AUTOMATION_READY",
+    "PAPER_TRADER_READY",
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "MISSING_KEY",
+    "NO_DATA",
+    "NEEDS_PROVIDER",
+    "EMPTY_PAYLOAD",
+    "ERROR"
+  ],
+  "objective": "build a first paper-only long/short portfolio from the 10-F-A repaired book using transparent rules, so the user reviews the rules and exceptions, not 194 tickers",
+  "source_book": "research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_long_short_book.csv",
+  "source_candidate_list": "research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_candidate_list.csv",
+  "source_risk_flags": "research/output/phase10f_owned_sector_mapping_repair/repaired_book_risk_flags.csv",
+  "as_of": "2026-06-26",
+  "latest_quarter": "2026Q2",
+  "n_universe_long_short": 194,
+  "n_long": 25,
+  "n_short": 25,
+  "target_per_side": 25,
+  "excluded_count": 144,
+  "rank_score": "comp_sn",
+  "weighting": "EQUAL",
+  "optimised_weights": false,
+  "per_ticker_approval_required": false,
+  "long_weight_each": 0.04,
+  "short_weight_each": 0.04,
+  "liquidity_filter": {
+    "exclude_pctile": 25.0,
+    "threshold": 135025175.6,
+    "n_excluded_long": 22,
+    "n_excluded_short": 27,
+    "n_excluded_total": 49,
+    "applied": true
+  },
+  "sector_cap": {
+    "max_pct_per_side": 25.0,
+    "max_names_per_sector": 6,
+    "applied": true
+  },
+  "largest_sector_share": 24.0,
+  "top_long_sector": "Information Technology",
+  "top_long_sector_share": 24.0,
+  "top_short_sector": "Communication Services",
+  "top_short_sector_share": 16.0,
+  "sector_cap_respected": true,
+  "exceptions_total": 56,
+  "exceptions_by_type": {
+    "missing_sector": 0,
+    "missing_composite_input": 0,
+    "bottom_quartile_liquidity": 49,
+    "extreme_score_flagged": 7,
+    "sector_cap": 0
+  },
+  "extreme_score_threshold_abs_z": 3.0,
+  "long_gross_pct": 100.0,
+  "short_gross_pct": 100.0,
+  "net_pct": 0.0,
+  "gross_pct": 200.0,
+  "sides_balanced": true,
+  "rebalance_cadence": "QUARTERLY",
+  "expected_rebalance_date": "2026-09-30",
+  "holding_period_days": 96,
+  "performs_network": false,
+  "offline": true,
+  "uses_owned_data_only": true,
+  "performs_provider_acquisition": false,
+  "creates_paper_trader_signals": false,
+  "creates_trade_decisions": false,
+  "creates_orders": false,
+  "creates_automation": false,
+  "wrote_to_paper_trader": false,
+  "live_trading": false,
+  "broker_connected": false,
+  "deploy": false,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "order_action_all": "NO_ORDER",
+  "review_status_all": "PAPER_REVIEW_ONLY",
+  "safety_badges": [
+    [
+      "PAPER REVIEW ONLY",
+      "This package is for human review only - it is not a tradeable instruction."
+    ],
+    [
+      "NO ORDERS",
+      "No orders are created, staged, or sent anywhere by this harness."
+    ],
+    [
+      "NO AUTOMATION",
+      "Nothing is automated; every position is human approve/reject gated."
+    ],
+    [
+      "HUMAN APPROVAL REQUIRED",
+      "A human must individually approve or reject each candidate."
+    ],
+    [
+      "NO LIVE TRADING",
+      "Paper-only; no live capital, no broker, no execution."
+    ],
+    [
+      "NO BROKER",
+      "No broker connection exists or is configured by this phase."
+    ],
+    [
+      "CREATES NO TRADE DECISIONS",
+      "No Paper Trader signals or trade decisions are written."
+    ],
+    [
+      "MANUAL REVIEW",
+      "Quarterly rebalance is a manual, reviewed decision - never scheduled execution."
+    ],
+    "RULES-BASED",
+    "NO PER-TICKER APPROVAL"
+  ],
+  "required_artifacts": [
+    "phase10h_rules_based_paper_portfolio.json",
+    "selected_paper_portfolio.csv",
+    "selected_long_book.csv",
+    "selected_short_book.csv",
+    "excluded_candidates.csv",
+    "portfolio_construction_rules.csv",
+    "portfolio_sector_exposure.csv",
+    "portfolio_liquidity_summary.csv",
+    "portfolio_long_short_balance.csv",
+    "portfolio_exceptions_report.csv",
+    "rule_approval_checklist.csv",
+    "phase10i_next_plan.json",
+    "secret_safety_audit.csv"
+  ],
+  "exact_next_command": "review research/output/phase10h_rules_based_paper_portfolio/rule_approval_checklist.csv",
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "reads only owned 10-F-A artifacts",
+    "no new provider purchase",
+    "rules-based (no per-ticker approval)",
+    "no optimised weights",
+    "no Paper Trader writes",
+    "no Paper Trader signals",
+    "no trade decisions",
+    "NO orders",
+    "NO automation",
+    "NO broker",
+    "NO live trading",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "no full regression",
+    "no key printed/written",
+    "no commit",
+    "no push"
+  ],
+  "secret_safety_leak_scan_clean": true
+}

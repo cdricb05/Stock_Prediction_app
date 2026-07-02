@@ -1,0 +1,15 @@
+name,section,pit,entitlement,http_status,rows,endpoint_redacted,note
+fundamentals,Fundamentals (all sections),True,ACCESS_VERIFIED,200,13,https://eodhd.com/api/fundamentals/AAPL.US?fmt=json&<API_KEY_REDACTED>,workhorse: General/Highlights/Valuation/SharesStats/Earnings/Financials in one call | dict payload
+eod_prices,EOD historical prices,True,ACCESS_VERIFIED,200,2635,https://eodhd.com/api/eod/AAPL.US?fmt=json&from=2016-01-01&<API_KEY_REDACTED>,daily OHLCV + adjusted_close | list payload
+calendar_earnings,Calendar::Earnings,True,ACCESS_VERIFIED,200,4,https://eodhd.com/api/calendar/earnings?fmt=json&symbols=AAPL.US&<API_KEY_REDACTED>,report_date PIT earnings calendar | dict payload
+calendar_trends,Calendar::Trends,False,ACCESS_VERIFIED,200,4,https://eodhd.com/api/calendar/trends?fmt=json&symbols=AAPL.US&<API_KEY_REDACTED>,analyst estimate trend (revised; weak as-of) | dict payload
+news,News,True,ACCESS_VERIFIED,200,5,https://eodhd.com/api/news?s=AAPL.US&limit=5&fmt=json&<API_KEY_REDACTED>,per-article news with sentiment polarity (date PIT) | list payload
+sentiments,News::Sentiment,True,ACCESS_VERIFIED,200,1,https://eodhd.com/api/sentiments?s=AAPL.US&fmt=json&<API_KEY_REDACTED>,daily aggregated normalized sentiment + article count | dict payload
+insider_tx,InsiderTransactions / SEC Form 4,True,ACCESS_VERIFIED,200,0,https://eodhd.com/api/insider-transactions?code=AAPL.US&limit=10&fmt=json&<API_KEY_REDACTED>,Form-4 transactions (transactionDate PIT) | list payload
+dividends,SplitsDividends::Dividends,True,ACCESS_VERIFIED,200,56,https://eodhd.com/api/div/AAPL.US?fmt=json&from=2010-01-01&<API_KEY_REDACTED>,dividend history (declarationDate PIT) | list payload
+splits,SplitsDividends::Splits,True,ACCESS_VERIFIED,200,5,https://eodhd.com/api/splits/AAPL.US?fmt=json&<API_KEY_REDACTED>,split history (date PIT) | list payload
+macro_indicator,Macro indicators,True,ACCESS_VERIFIED,200,65,https://eodhd.com/api/macro-indicator/USA?indicator=inflation_consumer_prices_annual&fmt=json&<API_KEY_REDACTED>,country macro time series | list payload
+index_constituents,Index constituents,True,ACCESS_VERIFIED,200,3,https://eodhd.com/api/fundamentals/GSPC.INDX?fmt=json&<API_KEY_REDACTED>,GSPC.INDX Components + HistoricalTickerComponents | dict payload
+exchange_symbols,Exchange symbol list,False,ACCESS_VERIFIED,200,51648,https://eodhd.com/api/exchange-symbol-list/US?fmt=json&<API_KEY_REDACTED>,US listing universe (Norgate is the survivorship foundation) | list payload
+bulk_fundamentals,Bulk fundamentals,False,ENTITLEMENT_BLOCKED,403,0,https://eodhd.com/api/bulk-fundamentals/US?symbols=AAPL&fmt=json&<API_KEY_REDACTED>,NOT used as primary even if entitled (loses fields/history vs single-symbol) | HTTP 403 entitlement-blocked
+options,Options,False,NOT_FOUND,404,0,https://eodhd.com/api/options/AAPL.US?fmt=json&<API_KEY_REDACTED>,options IV/skew/put-call (NOT assumed under the Fundamentals feed) | HTTP 404 not found / not entitled

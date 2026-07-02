@@ -1,0 +1,6 @@
+leg_feature,leg_family_or_role,orientation,weight,transform,composite,note
+fcf_to_assets,eodhd_fcf_to_assets,1,1.0,within-month z of oriented level,comp_raw,cash-flow quality: higher FCF/assets -> higher forward excess return
+fcf_to_assets,eodhd_fcf_to_assets,1,1.0,"within month x sector demean, then within-month z",comp_sn,cash-flow quality: higher FCF/assets -> higher forward excess return
+operating_accruals,eodhd_operating_accruals,-1,1.0,within-month z of oriented level,comp_raw,Sloan accruals: higher accruals -> lower forward excess return (oriented = negated)
+operating_accruals,eodhd_operating_accruals,-1,1.0,"within month x sector demean, then within-month z",comp_sn,Sloan accruals: higher accruals -> lower forward excess return (oriented = negated)
+__composite__,equal-weight sum,,"equal (fixed 1.0/1.0 on within-month z legs; no optimisation, no sign-flip)",no optimisation,comp_raw + comp_sn,z-scoring each leg within month equalises variance (equal-risk in signal space); no local risk-model inputs -> no optimised weights

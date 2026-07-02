@@ -1,0 +1,10 @@
+{
+  "as_of": "2026-06-26",
+  "max_tickers": 545,
+  "total_requests": 545,
+  "acquired_by_endpoint": {
+    "fundamentals": 0,
+    "sentiments": 0,
+    "dividends": 545
+  }
+}

@@ -1,0 +1,47 @@
+scenario,family,signal,sector_neutral,regime_filter,exploratory,hypothesis
+f_level_raw,orthogonal,f_level,False,,False,f_level (short_interest_days_to_cover) raw cross-section
+f_level_sn,orthogonal,f_level,True,,False,f_level sector-neutral
+f_chg1_raw,orthogonal,f_chg1,False,,False,f_chg1 (short_interest_days_to_cover) raw cross-section
+f_chg1_sn,orthogonal,f_chg1,True,,False,f_chg1 sector-neutral
+f_accel_raw,orthogonal,f_accel,False,,False,f_accel (short_interest_days_to_cover) raw cross-section
+f_accel_sn,orthogonal,f_accel,True,,False,f_accel sector-neutral
+f_lag1_raw,orthogonal,f_lag1,False,,False,f_lag1 (short_interest_days_to_cover) raw cross-section
+f_lag1_sn,orthogonal,f_lag1,True,,False,f_lag1 sector-neutral
+f_rmean_5_raw,orthogonal,f_rmean_5,False,,False,f_rmean_5 (short_interest_days_to_cover) raw cross-section
+f_rmean_5_sn,orthogonal,f_rmean_5,True,,False,f_rmean_5 sector-neutral
+f_rstd_5_raw,orthogonal,f_rstd_5,False,,False,f_rstd_5 (short_interest_days_to_cover) raw cross-section
+f_rstd_5_sn,orthogonal,f_rstd_5,True,,False,f_rstd_5 sector-neutral
+f_rchg_5_raw,orthogonal,f_rchg_5,False,,False,f_rchg_5 (short_interest_days_to_cover) raw cross-section
+f_rchg_5_sn,orthogonal,f_rchg_5,True,,False,f_rchg_5 sector-neutral
+f_rmean_21_raw,orthogonal,f_rmean_21,False,,False,f_rmean_21 (short_interest_days_to_cover) raw cross-section
+f_rmean_21_sn,orthogonal,f_rmean_21,True,,False,f_rmean_21 sector-neutral
+f_rstd_21_raw,orthogonal,f_rstd_21,False,,False,f_rstd_21 (short_interest_days_to_cover) raw cross-section
+f_rstd_21_sn,orthogonal,f_rstd_21,True,,False,f_rstd_21 sector-neutral
+f_rchg_21_raw,orthogonal,f_rchg_21,False,,False,f_rchg_21 (short_interest_days_to_cover) raw cross-section
+f_rchg_21_sn,orthogonal,f_rchg_21,True,,False,f_rchg_21 sector-neutral
+f_rmean_63_raw,orthogonal,f_rmean_63,False,,False,f_rmean_63 (short_interest_days_to_cover) raw cross-section
+f_rmean_63_sn,orthogonal,f_rmean_63,True,,False,f_rmean_63 sector-neutral
+f_rstd_63_raw,orthogonal,f_rstd_63,False,,False,f_rstd_63 (short_interest_days_to_cover) raw cross-section
+f_rstd_63_sn,orthogonal,f_rstd_63,True,,False,f_rstd_63 sector-neutral
+f_rchg_63_raw,orthogonal,f_rchg_63,False,,False,f_rchg_63 (short_interest_days_to_cover) raw cross-section
+f_rchg_63_sn,orthogonal,f_rchg_63,True,,False,f_rchg_63 sector-neutral
+f_z_raw,orthogonal,f_z,False,,False,f_z (short_interest_days_to_cover) raw cross-section
+f_z_sn,orthogonal,f_z,True,,False,f_z sector-neutral
+f_sector_z_raw,orthogonal,f_sector_z,False,,False,f_sector_z (short_interest_days_to_cover) raw cross-section
+f_sector_z_sn,orthogonal,f_sector_z,True,,False,f_sector_z sector-neutral
+f_rank_raw,orthogonal,f_rank,False,,False,f_rank (short_interest_days_to_cover) raw cross-section
+f_rank_sn,orthogonal,f_rank,True,,False,f_rank sector-neutral
+f_winz_raw,orthogonal,f_winz,False,,False,f_winz (short_interest_days_to_cover) raw cross-section
+f_winz_sn,orthogonal,f_winz,True,,False,f_winz sector-neutral
+f_x_surprise_raw,orthogonal,f_x_surprise,False,,False,f_x_surprise (short_interest_days_to_cover) raw cross-section
+f_x_surprise_sn,orthogonal,f_x_surprise,True,,False,f_x_surprise sector-neutral
+f_x_quality_raw,orthogonal,f_x_quality,False,,False,f_x_quality (short_interest_days_to_cover) raw cross-section
+f_x_quality_sn,orthogonal,f_x_quality,True,,False,f_x_quality sector-neutral
+f_x_value_raw,orthogonal,f_x_value,False,,False,f_x_value (short_interest_days_to_cover) raw cross-section
+f_x_value_sn,orthogonal,f_x_value,True,,False,f_x_value sector-neutral
+f_x_mom_raw,orthogonal,f_x_mom,False,,False,f_x_mom (short_interest_days_to_cover) raw cross-section
+f_x_mom_sn,orthogonal,f_x_mom,True,,False,f_x_mom sector-neutral
+ix_short_interest_ratio_x_surprise,interaction,ix_short_interest_ratio_x_surprise,False,,False,short_interest_ratio conditioned on surprise
+ix_short_interest_ratio_x_momentum,interaction,ix_short_interest_ratio_x_momentum,False,,False,short_interest_ratio conditioned on momentum
+ix_short_interest_ratio_x_quality,interaction,ix_short_interest_ratio_x_quality,False,,False,short_interest_ratio conditioned on quality
+ix_short_interest_ratio_x_value,interaction,ix_short_interest_ratio_x_value,False,,False,short_interest_ratio conditioned on value

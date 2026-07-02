@@ -1,0 +1,971 @@
+{
+  "phase": "10-K",
+  "phase_name": "Quarterly Quality Composite Alpha Improvement Harness",
+  "as_of": "2026-06-26",
+  "decision": "BASELINE_REMAINS_CHAMPION",
+  "decision_rationale": "No enhancement clears the strict bar on honest evidence. The interior weight variants (60/40, 40/60, 70/30, 30/70) and the historical robustness transforms are INSUFFICIENT_INPUTS -- the frozen 10-D/10-F/10-H outputs hold only summary stats for four fixed signals plus the latest 2026Q2 cross-section, not the historical scored panel with forward returns needed to re-backtest them. The only backtestable endpoints are the two single legs, both on the RAW (non-sector-neutral) basis and each failing an SN gate on its own terms: fcf_to_assets is OOS-unstable (frac-positive 0.375 < 0.6 gate) and operating_accruals is over-concentrated (top-sector 0.6316 > 0.6 gate). Packaging filters reshape the current book but cannot demonstrate net-of-cost alpha improvement from a single cross-section. Baseline stays champion (skeptical default upheld).",
+  "allowed_decisions": [
+    "ENHANCED_ALPHA_READY_FOR_PAPER_RULES",
+    "BASELINE_REMAINS_CHAMPION",
+    "NEEDS_PHASE_INPUT_REPAIR",
+    "NEEDS_MORE_OWNED_DATA",
+    "REJECT_ENHANCEMENT_OVERFIT"
+  ],
+  "input_inventory": {
+    "files": [
+      {
+        "label": "phase10d_json",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/phase10d_quarterly_quality_composite_validation.json",
+        "found": true,
+        "required": true,
+        "key_fields": [
+          "signal_results",
+          "acceptance_thresholds"
+        ]
+      },
+      {
+        "label": "phase10d_standalone_vs_composite",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/standalone_vs_composite_comparison.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      },
+      {
+        "label": "phase10d_transaction_cost",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/transaction_cost_report.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      },
+      {
+        "label": "phase10d_turnover",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/turnover_report.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      },
+      {
+        "label": "phase10d_monthly_vs_quarterly",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/monthly_vs_quarterly_cost_diagnostic.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      },
+      {
+        "label": "phase10d_subperiod",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/subperiod_stability_report.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      },
+      {
+        "label": "phase10d_cohort",
+        "path": "research/output/phase10d_quarterly_quality_composite_validation/cohort_stability_report.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      },
+      {
+        "label": "phase10f_long_short_book",
+        "path": "research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_long_short_book.csv",
+        "found": true,
+        "required": true,
+        "key_fields": [
+          "side",
+          "comp_sn",
+          "sector",
+          "liquidity_proxy"
+        ]
+      },
+      {
+        "label": "phase10f_candidate_list",
+        "path": "research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_candidate_list.csv",
+        "found": true,
+        "required": false,
+        "key_fields": [
+          "fcf_to_assets",
+          "operating_accruals",
+          "comp_sn_z"
+        ]
+      },
+      {
+        "label": "phase10f_risk_flags",
+        "path": "research/output/phase10f_owned_sector_mapping_repair/repaired_book_risk_flags.csv",
+        "found": true,
+        "required": false,
+        "key_fields": [
+          "extreme_score",
+          "low_liquidity"
+        ]
+      },
+      {
+        "label": "phase10h_json",
+        "path": "research/output/phase10h_rules_based_paper_portfolio/phase10h_rules_based_paper_portfolio.json",
+        "found": true,
+        "required": true,
+        "key_fields": [
+          "n_long",
+          "n_short",
+          "liquidity_filter",
+          "sector_cap"
+        ]
+      },
+      {
+        "label": "phase10h_selected_portfolio",
+        "path": "research/output/phase10h_rules_based_paper_portfolio/selected_paper_portfolio.csv",
+        "found": true,
+        "required": true,
+        "key_fields": [
+          "side",
+          "ticker",
+          "comp_sn"
+        ]
+      },
+      {
+        "label": "phase10h_rules",
+        "path": "research/output/phase10h_rules_based_paper_portfolio/portfolio_construction_rules.csv",
+        "found": true,
+        "required": false,
+        "key_fields": []
+      }
+    ],
+    "missing_required": [],
+    "notes": [
+      "No historical per-(month,ticker) sector-neutral scored panel with forward 63d returns exists in the frozen 10-D/10-F/10-H outputs; arbitrary re-weight and historical robustness transforms therefore cannot be re-backtested here."
+    ]
+  },
+  "baseline": {
+    "signal_family": "quality",
+    "horizon_days": 63,
+    "horizon_label": "quarterly / 63d",
+    "portfolio_style": "equal-weight long/short",
+    "ranking": "sector-neutral",
+    "honest_comparator": "composite_sn",
+    "long_signal": "fcf_to_assets",
+    "short_signal": "operating_accruals",
+    "composite_weighting": "equal (fixed 1.0/1.0 on within-month z legs; no optimisation, no sign-flip)",
+    "optimised_weights": false,
+    "ic_mean_63d": 0.03494,
+    "ic_t_63d": 2.665,
+    "quarterly_gross_spread": 0.00707,
+    "quarterly_net_25bps": 0.00401,
+    "quarterly_net_50bps": 0.00095,
+    "quarterly_turnover": 0.6115,
+    "oos_pooled_ic": 0.02956,
+    "oos_frac_windows_positive": 0.5,
+    "top_sector_share": 0.6262,
+    "both_cohorts_positive": true,
+    "both_subperiods_positive": true,
+    "acceptance_thresholds": {
+      "confirmed_min_ic_t_63d": 3.0,
+      "monitor_min_ic_t_63d": 2.0,
+      "max_sector_share": 0.6,
+      "min_oos_window_frac": 0.6
+    },
+    "composite_raw_diagnostic_only": {
+      "note": "composite_raw is stronger on paper but is NOT the honest comparator for a sector-neutral paper book; reported as diagnostic context only.",
+      "quarterly_net_25bps": 0.00648,
+      "ic_t_63d": 3.074
+    },
+    "caveat": "modest / boundary alpha; the short (operating_accruals) leg carries much of the result; must not be oversold."
+  },
+  "variants_tested": [
+    {
+      "variant_id": "w_50_50_equal",
+      "group": "weighting",
+      "description": "50/50 equal weight on within-month z legs (== Phase 10-D baseline composite_sn)",
+      "basis": "backtested_sn",
+      "metrics": {
+        "basis": "backtested_sn",
+        "ic_mean_63d": 0.03494,
+        "ic_t_63d": 2.665,
+        "quarterly_gross_spread": 0.00707,
+        "quarterly_net_25bps": 0.00401,
+        "quarterly_net_50bps": 0.00095,
+        "quarterly_turnover": 0.6115,
+        "oos_pooled_ic": 0.02956,
+        "oos_frac_windows_positive": 0.5,
+        "top_sector_share": 0.6262,
+        "both_cohorts_positive": true,
+        "both_subperiods_positive": true
+      },
+      "is_baseline": true,
+      "classification": "PASS_STRICT",
+      "reject_reason": "confirmed baseline configuration"
+    },
+    {
+      "variant_id": "w_60_40",
+      "group": "weighting",
+      "description": "60% fcf_to_assets / 40% operating_accruals",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_book_diag": {
+          "weight_fcf": 0.6,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 18,
+          "overlap_short_vs_baseline": 18,
+          "top_sector_share_long": 0.24,
+          "top_sector_share_short": 0.24,
+          "n_extreme_flagged": 9
+        }
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available."
+    },
+    {
+      "variant_id": "w_40_60",
+      "group": "weighting",
+      "description": "40% fcf_to_assets / 60% operating_accruals",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_book_diag": {
+          "weight_fcf": 0.4,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 18,
+          "overlap_short_vs_baseline": 18,
+          "top_sector_share_long": 0.24,
+          "top_sector_share_short": 0.2,
+          "n_extreme_flagged": 8
+        }
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available."
+    },
+    {
+      "variant_id": "w_70_30",
+      "group": "weighting",
+      "description": "70% fcf_to_assets / 30% operating_accruals",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_book_diag": {
+          "weight_fcf": 0.7,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 17,
+          "overlap_short_vs_baseline": 17,
+          "top_sector_share_long": 0.2,
+          "top_sector_share_short": 0.24,
+          "n_extreme_flagged": 9
+        }
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available."
+    },
+    {
+      "variant_id": "w_30_70",
+      "group": "weighting",
+      "description": "30% fcf_to_assets / 70% operating_accruals",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_book_diag": {
+          "weight_fcf": 0.3,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 15,
+          "overlap_short_vs_baseline": 17,
+          "top_sector_share_long": 0.24,
+          "top_sector_share_short": 0.2,
+          "n_extreme_flagged": 9
+        }
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available."
+    },
+    {
+      "variant_id": "w_fcf_only_100_0",
+      "group": "weighting",
+      "description": "fcf_to_assets only (100/0) -- long-leg standalone",
+      "basis": "backtested_raw_diagnostic",
+      "metrics": {
+        "basis": "backtested_raw_diagnostic",
+        "ic_mean_63d": 0.04228,
+        "ic_t_63d": 2.535,
+        "quarterly_gross_spread": 0.00775,
+        "quarterly_net_25bps": 0.00542,
+        "quarterly_net_50bps": 0.00309,
+        "quarterly_turnover": 0.4661,
+        "oos_pooled_ic": 0.03441,
+        "oos_frac_windows_positive": 0.375,
+        "top_sector_share": 0.4995,
+        "both_cohorts_positive": true,
+        "both_subperiods_positive": true
+      },
+      "classification": "REJECT_UNSTABLE",
+      "reject_reason": "OOS frac-positive 0.375 < min_oos_window_frac gate 0.6"
+    },
+    {
+      "variant_id": "w_accruals_only_0_100",
+      "group": "weighting",
+      "description": "operating_accruals only (0/100) -- short-leg standalone",
+      "basis": "backtested_raw_diagnostic",
+      "metrics": {
+        "basis": "backtested_raw_diagnostic",
+        "ic_mean_63d": 0.04113,
+        "ic_t_63d": 3.075,
+        "quarterly_gross_spread": 0.00838,
+        "quarterly_net_25bps": 0.0053,
+        "quarterly_net_50bps": 0.00222,
+        "quarterly_turnover": 0.6158,
+        "oos_pooled_ic": 0.03725,
+        "oos_frac_windows_positive": 0.688,
+        "top_sector_share": 0.6316,
+        "both_cohorts_positive": true,
+        "both_subperiods_positive": true
+      },
+      "classification": "REJECT_CONCENTRATION",
+      "reject_reason": "top-sector share 0.6316 > max_sector_share gate 0.6"
+    },
+    {
+      "variant_id": "zcap_abs_3_0",
+      "group": "robustness_transform",
+      "description": "z-score cap at |z|=3.0",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_names_affected": 7,
+        "cross_section_universe_scored": 483
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "tail-capping / winsorizing only changes returns if applied across the full history; the frozen outputs expose only the latest cross-section, so the return effect cannot be measured."
+    },
+    {
+      "variant_id": "zcap_abs_2_5",
+      "group": "robustness_transform",
+      "description": "z-score cap at |z|=2.5",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_names_affected": 13,
+        "cross_section_universe_scored": 483
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "tail-capping / winsorizing only changes returns if applied across the full history; the frozen outputs expose only the latest cross-section, so the return effect cannot be measured."
+    },
+    {
+      "variant_id": "winsorize_score",
+      "group": "robustness_transform",
+      "description": "winsorize composite score (tail compression)",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (no historical scored panel)",
+        "cross_section_names_affected": 7,
+        "cross_section_universe_scored": 483
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "tail-capping / winsorizing only changes returns if applied across the full history; the frozen outputs expose only the latest cross-section, so the return effect cannot be measured."
+    },
+    {
+      "variant_id": "liq_p25_cap25_extreme3",
+      "group": "packaging",
+      "description": "liquidity p25 + 25%/side sector cap + hold out |z|>=3 (== Phase 10-H rules)",
+      "basis": "backtested_sn",
+      "metrics": {
+        "basis": "backtested_sn",
+        "ic_mean_63d": 0.03494,
+        "ic_t_63d": 2.665,
+        "quarterly_gross_spread": 0.00707,
+        "quarterly_net_25bps": 0.00401,
+        "quarterly_net_50bps": 0.00095,
+        "quarterly_turnover": 0.6115,
+        "oos_pooled_ic": 0.02956,
+        "oos_frac_windows_positive": 0.5,
+        "top_sector_share": 0.6262,
+        "both_cohorts_positive": true,
+        "both_subperiods_positive": true,
+        "book_diag": {
+          "book_n_long": 25,
+          "book_n_short": 25,
+          "book_top_sector_share_long": 0.2,
+          "book_top_sector_share_short": 0.2,
+          "n_liquidity_excluded": 49,
+          "n_extreme_excluded": 13
+        }
+      },
+      "classification": "PASS_STRICT",
+      "reject_reason": "baseline packaging (the confirmed 10-H rule set)",
+      "is_baseline_packaging": true
+    },
+    {
+      "variant_id": "liq_p50_stricter",
+      "group": "packaging",
+      "description": "stricter liquidity p50 filter (else baseline rules)",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (single cross-section)",
+        "book_diag": {
+          "book_n_long": 25,
+          "book_n_short": 25,
+          "book_top_sector_share_long": 0.24,
+          "book_top_sector_share_short": 0.24,
+          "n_liquidity_excluded": 97,
+          "n_extreme_excluded": 13
+        }
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "book reshape is computable, but the net-of-cost alpha effect cannot be shown from a single cross-section."
+    },
+    {
+      "variant_id": "sector_cap_20_stricter",
+      "group": "packaging",
+      "description": "stricter 20%/side sector cap (else baseline rules)",
+      "basis": "cross_section_only",
+      "metrics": {
+        "return_metrics": "INSUFFICIENT_INPUTS (single cross-section)",
+        "book_diag": {
+          "book_n_long": 25,
+          "book_n_short": 25,
+          "book_top_sector_share_long": 0.2,
+          "book_top_sector_share_short": 0.2,
+          "n_liquidity_excluded": 49,
+          "n_extreme_excluded": 13
+        }
+      },
+      "classification": "INSUFFICIENT_INPUTS",
+      "reject_reason": "book reshape is computable, but the net-of-cost alpha effect cannot be shown from a single cross-section."
+    }
+  ],
+  "champion": {
+    "champion": "baseline_composite_sn_equal_weight",
+    "is_baseline": true,
+    "reason": "no variant produced sufficient sector-neutral backtested evidence to unseat the equal-weight sector-neutral composite.",
+    "metrics": {
+      "ic_t_63d": 2.665,
+      "quarterly_net_25bps": 0.00401,
+      "quarterly_net_50bps": 0.00095,
+      "quarterly_turnover": 0.6115,
+      "oos_frac_windows_positive": 0.5,
+      "top_sector_share": 0.6262
+    }
+  },
+  "baseline_vs_champion": {
+    "champion_is_baseline": true,
+    "rows": [
+      {
+        "metric": "quarterly_net_25bps",
+        "baseline_value": 0.00401,
+        "champion_value": 0.00401,
+        "delta": 0.0
+      },
+      {
+        "metric": "quarterly_net_50bps",
+        "baseline_value": 0.00095,
+        "champion_value": 0.00095,
+        "delta": 0.0
+      },
+      {
+        "metric": "ic_t_63d",
+        "baseline_value": 2.665,
+        "champion_value": 2.665,
+        "delta": 0.0
+      },
+      {
+        "metric": "quarterly_turnover",
+        "baseline_value": 0.6115,
+        "champion_value": 0.6115,
+        "delta": 0.0
+      },
+      {
+        "metric": "oos_frac_windows_positive",
+        "baseline_value": 0.5,
+        "champion_value": 0.5,
+        "delta": 0.0
+      },
+      {
+        "metric": "top_sector_share",
+        "baseline_value": 0.6262,
+        "champion_value": 0.6262,
+        "delta": 0.0
+      }
+    ],
+    "note": "champion == baseline; no enhancement justified on honest evidence.",
+    "raw_single_leg_context": {
+      "fcf_only_net25": 0.00542,
+      "accruals_only_net25": 0.0053,
+      "warning": "single-leg figures are RAW-basis, not comparable to the sector-neutral book."
+    }
+  },
+  "leg_contribution_summary": {
+    "long_leg": {
+      "signal": "fcf_to_assets",
+      "role": "long",
+      "basis": "raw standalone",
+      "ic_t_63d": 2.535,
+      "quarterly_net_25bps": 0.00542,
+      "quarterly_gross_spread": 0.00775,
+      "oos_frac_windows_positive": 0.375,
+      "top_sector_share": 0.4995,
+      "note": "weak standalone OOS (frac-positive below the 0.6 gate); its main value in the composite is diversification -- it pulls sector concentration down."
+    },
+    "short_leg": {
+      "signal": "operating_accruals",
+      "role": "short",
+      "basis": "raw standalone",
+      "ic_t_63d": 3.075,
+      "quarterly_net_25bps": 0.0053,
+      "quarterly_gross_spread": 0.00838,
+      "oos_frac_windows_positive": 0.688,
+      "top_sector_share": 0.6316,
+      "note": "highest t-stat and best OOS of the two legs -- the short (accruals) leg carries most of the composite's robustness, but alone it breaches the sector concentration gate."
+    },
+    "composite_sn": {
+      "signal": "composite_sn",
+      "role": "long/short",
+      "basis": "sector-neutral",
+      "ic_t_63d": 2.665,
+      "quarterly_net_25bps": 0.00401,
+      "quarterly_gross_spread": 0.00707,
+      "oos_frac_windows_positive": 0.5,
+      "top_sector_share": 0.6262,
+      "note": "the confirmed baseline; combines the legs so OOS sits between them and concentration is lower than accruals-alone."
+    },
+    "attribution": "improvement/robustness is carried by the SHORT (operating_accruals) leg; the LONG (fcf_to_assets) leg contributes diversification and lower sector concentration rather than standalone alpha."
+  },
+  "turnover_cost_summary": {
+    "note": "monthly event-panel horizons are cost-killed (name rotation); the quarterly_63d model is the decision model and survives 25bps and 50bps.",
+    "rows": [
+      {
+        "signal": "composite_raw",
+        "model": "event_panel_21d",
+        "gross_spread": 0.00416,
+        "turnover": 0.99326,
+        "net_25bps": -0.00081,
+        "net_50bps": -0.00577
+      },
+      {
+        "signal": "composite_raw",
+        "model": "event_panel_63d",
+        "gross_spread": 0.00622,
+        "turnover": 0.99315,
+        "net_25bps": 0.00125,
+        "net_50bps": -0.00371
+      },
+      {
+        "signal": "composite_raw",
+        "model": "quarterly_63d",
+        "gross_spread": 0.00948,
+        "turnover": 0.59891,
+        "net_25bps": 0.00648,
+        "net_50bps": 0.00349
+      },
+      {
+        "signal": "composite_sn",
+        "model": "event_panel_21d",
+        "gross_spread": 0.00289,
+        "turnover": 0.99353,
+        "net_25bps": -0.00208,
+        "net_50bps": -0.00705
+      },
+      {
+        "signal": "composite_sn",
+        "model": "event_panel_63d",
+        "gross_spread": 0.00707,
+        "turnover": 0.99342,
+        "net_25bps": 0.0021,
+        "net_50bps": -0.00286
+      },
+      {
+        "signal": "composite_sn",
+        "model": "quarterly_63d",
+        "gross_spread": 0.00707,
+        "turnover": 0.61151,
+        "net_25bps": 0.00401,
+        "net_50bps": 0.00095
+      },
+      {
+        "signal": "fcf_to_assets",
+        "model": "event_panel_21d",
+        "gross_spread": 0.0023,
+        "turnover": 0.99414,
+        "net_25bps": -0.00267,
+        "net_50bps": -0.00764
+      },
+      {
+        "signal": "fcf_to_assets",
+        "model": "event_panel_63d",
+        "gross_spread": 0.01124,
+        "turnover": 0.99404,
+        "net_25bps": 0.00627,
+        "net_50bps": 0.0013
+      },
+      {
+        "signal": "fcf_to_assets",
+        "model": "quarterly_63d",
+        "gross_spread": 0.00775,
+        "turnover": 0.46615,
+        "net_25bps": 0.00542,
+        "net_50bps": 0.00309
+      },
+      {
+        "signal": "operating_accruals",
+        "model": "event_panel_21d",
+        "gross_spread": 0.00335,
+        "turnover": 0.99261,
+        "net_25bps": -0.00162,
+        "net_50bps": -0.00658
+      },
+      {
+        "signal": "operating_accruals",
+        "model": "event_panel_63d",
+        "gross_spread": 0.01579,
+        "turnover": 0.99249,
+        "net_25bps": 0.01083,
+        "net_50bps": 0.00586
+      },
+      {
+        "signal": "operating_accruals",
+        "model": "quarterly_63d",
+        "gross_spread": 0.00838,
+        "turnover": 0.61579,
+        "net_25bps": 0.0053,
+        "net_50bps": 0.00222
+      }
+    ],
+    "baseline_quarterly_turnover": 0.6115
+  },
+  "sector_liquidity_diagnostics": {
+    "reproduced_p25_liquidity_threshold": 135025175.6,
+    "frozen_10h_p25_liquidity_threshold": 135025175.6,
+    "computed_p50_liquidity_threshold": 256337291.18,
+    "sector_cap_baseline_names_per_side": 6,
+    "sector_cap_stricter_names_per_side": 5,
+    "packaging_books": {
+      "baseline_p25_cap25": {
+        "n_long_filled": 25,
+        "n_short_filled": 25,
+        "long_tickers": [
+          "IP",
+          "PM",
+          "NOW",
+          "SNDK",
+          "DXCM",
+          "EXE",
+          "EQT",
+          "LYV",
+          "MCO",
+          "GEV",
+          "SHOP",
+          "SLB",
+          "APD",
+          "CMG",
+          "ANET",
+          "VRT",
+          "NFLX",
+          "DPZ",
+          "FICO",
+          "FAST",
+          "GWW",
+          "ABNB",
+          "B",
+          "LUV",
+          "SPOT"
+        ],
+        "short_tickers": [
+          "QCOM",
+          "PSX",
+          "FSLR",
+          "PSKY",
+          "CLX",
+          "MKC",
+          "BALL",
+          "APTV",
+          "WBD",
+          "SWK",
+          "COHR",
+          "AMZN",
+          "OMC",
+          "MRSH",
+          "PHM",
+          "CVNA",
+          "HON",
+          "PPG",
+          "BSX",
+          "LMT",
+          "DIS",
+          "MLM",
+          "SHW",
+          "AMP",
+          "NCLH"
+        ],
+        "n_liquidity_excluded": 49,
+        "n_extreme_excluded": 13,
+        "top_sector_share_long": 0.2,
+        "top_sector_long": "Information Technology",
+        "top_sector_share_short": 0.2,
+        "top_sector_short": "Consumer Discretionary"
+      },
+      "liq_p50": {
+        "n_long_filled": 25,
+        "n_short_filled": 25,
+        "long_tickers": [
+          "PM",
+          "NOW",
+          "SNDK",
+          "DXCM",
+          "GEV",
+          "SHOP",
+          "SLB",
+          "CMG",
+          "ANET",
+          "VRT",
+          "NFLX",
+          "FAST",
+          "ABNB",
+          "B",
+          "LUV",
+          "SPOT",
+          "UBER",
+          "LVS",
+          "TXN",
+          "DDOG",
+          "DVN",
+          "EBAY",
+          "ODFL",
+          "MO",
+          "CNC"
+        ],
+        "short_tickers": [
+          "QCOM",
+          "FSLR",
+          "PSKY",
+          "WBD",
+          "AMZN",
+          "CVNA",
+          "HON",
+          "BSX",
+          "LMT",
+          "DIS",
+          "SHW",
+          "NCLH",
+          "F",
+          "NU",
+          "OXY",
+          "CTSH",
+          "PEP",
+          "BABA",
+          "BLK",
+          "SBUX",
+          "RKLB",
+          "GOOG",
+          "GOOGL",
+          "BX",
+          "GS"
+        ],
+        "n_liquidity_excluded": 97,
+        "n_extreme_excluded": 13,
+        "top_sector_share_long": 0.24,
+        "top_sector_long": "Information Technology",
+        "top_sector_share_short": 0.24,
+        "top_sector_short": "Consumer Discretionary"
+      },
+      "sector_cap_20": {
+        "n_long_filled": 25,
+        "n_short_filled": 25,
+        "long_tickers": [
+          "IP",
+          "PM",
+          "NOW",
+          "SNDK",
+          "DXCM",
+          "EXE",
+          "EQT",
+          "LYV",
+          "MCO",
+          "GEV",
+          "SHOP",
+          "SLB",
+          "APD",
+          "CMG",
+          "ANET",
+          "VRT",
+          "NFLX",
+          "DPZ",
+          "FICO",
+          "FAST",
+          "GWW",
+          "ABNB",
+          "B",
+          "LUV",
+          "SPOT"
+        ],
+        "short_tickers": [
+          "QCOM",
+          "PSX",
+          "FSLR",
+          "PSKY",
+          "CLX",
+          "MKC",
+          "BALL",
+          "APTV",
+          "WBD",
+          "SWK",
+          "COHR",
+          "AMZN",
+          "OMC",
+          "MRSH",
+          "PHM",
+          "CVNA",
+          "HON",
+          "PPG",
+          "BSX",
+          "LMT",
+          "DIS",
+          "MLM",
+          "SHW",
+          "AMP",
+          "NCLH"
+        ],
+        "n_liquidity_excluded": 49,
+        "n_extreme_excluded": 13,
+        "top_sector_share_long": 0.2,
+        "top_sector_long": "Information Technology",
+        "top_sector_share_short": 0.2,
+        "top_sector_short": "Consumer Discretionary"
+      }
+    },
+    "reweight_cross_section": {
+      "n_used": 483,
+      "per_weight": {
+        "w_60_40": {
+          "weight_fcf": 0.6,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 18,
+          "overlap_short_vs_baseline": 18,
+          "top_sector_share_long": 0.24,
+          "top_sector_share_short": 0.24,
+          "n_extreme_flagged": 9
+        },
+        "w_40_60": {
+          "weight_fcf": 0.4,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 18,
+          "overlap_short_vs_baseline": 18,
+          "top_sector_share_long": 0.24,
+          "top_sector_share_short": 0.2,
+          "n_extreme_flagged": 8
+        },
+        "w_70_30": {
+          "weight_fcf": 0.7,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 17,
+          "overlap_short_vs_baseline": 17,
+          "top_sector_share_long": 0.2,
+          "top_sector_share_short": 0.24,
+          "n_extreme_flagged": 9
+        },
+        "w_30_70": {
+          "weight_fcf": 0.3,
+          "n_long": 25,
+          "n_short": 25,
+          "overlap_long_vs_baseline": 15,
+          "overlap_short_vs_baseline": 17,
+          "top_sector_share_long": 0.24,
+          "top_sector_share_short": 0.2,
+          "n_extreme_flagged": 9
+        }
+      },
+      "reconstruction_rank_corr": 0.9591,
+      "reconstruction_note": "APPROXIMATE single 2026Q2 cross-section; diagnostic only, not a backtest; excluded from champion decision."
+    },
+    "max_sector_share_gate": 0.6,
+    "min_oos_window_frac_gate": 0.6
+  },
+  "rejected_variants": [
+    {
+      "variant_id": "w_60_40",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "w_40_60",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "w_70_30",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "w_30_70",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "cannot re-backtest arbitrary leg weighting: frozen outputs lack the historical per-(month,ticker) scored panel with forward 63d returns; only a single approximate cross-section is available.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "w_fcf_only_100_0",
+      "classification": "REJECT_UNSTABLE",
+      "reason": "OOS frac-positive 0.375 < min_oos_window_frac gate 0.6",
+      "evidence": "net25=0.00542 ic_t=2.535 oos=0.375 top_sector=0.4995"
+    },
+    {
+      "variant_id": "w_accruals_only_0_100",
+      "classification": "REJECT_CONCENTRATION",
+      "reason": "top-sector share 0.6316 > max_sector_share gate 0.6",
+      "evidence": "net25=0.0053 ic_t=3.075 oos=0.688 top_sector=0.6316"
+    },
+    {
+      "variant_id": "zcap_abs_3_0",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "tail-capping / winsorizing only changes returns if applied across the full history; the frozen outputs expose only the latest cross-section, so the return effect cannot be measured.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "zcap_abs_2_5",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "tail-capping / winsorizing only changes returns if applied across the full history; the frozen outputs expose only the latest cross-section, so the return effect cannot be measured.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "winsorize_score",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "tail-capping / winsorizing only changes returns if applied across the full history; the frozen outputs expose only the latest cross-section, so the return effect cannot be measured.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "liq_p50_stricter",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "book reshape is computable, but the net-of-cost alpha effect cannot be shown from a single cross-section.",
+      "evidence": "cross-section only; no backtested return metrics"
+    },
+    {
+      "variant_id": "sector_cap_20_stricter",
+      "classification": "INSUFFICIENT_INPUTS",
+      "reason": "book reshape is computable, but the net-of-cost alpha effect cannot be shown from a single cross-section.",
+      "evidence": "cross-section only; no backtested return metrics"
+    }
+  ],
+  "implementation_limits": [
+    "No historical per-(month,ticker) sector-neutral scored panel with forward 63d returns is present in the frozen 10-D/10-F/10-H outputs, so arbitrary leg re-weightings and historical robustness transforms cannot be honestly re-backtested (reported INSUFFICIENT_INPUTS).",
+    "The two backtestable single legs are on the raw (non-sector-neutral) basis; a sector-neutral single-leg backtest is not available, so they are diagnostic context only.",
+    "Weight-variant cross-section books are an APPROXIMATE single-2026Q2-snapshot reconstruction (sector-demean + within-snapshot z of raw legs); rank-correlation vs the frozen comp_sn ordering is reported as a fidelity check. They do not measure alpha.",
+    "Packaging-filter books are faithful (use frozen comp_sn) but are one cross-section and cannot establish net-of-cost alpha improvement.",
+    "This phase does NOT solve the Phase 10-I price-refresh / mark-to-market block (owned local prices end at 2026-06-26), does NOT hand-review 194 tickers, does NOT probe providers, and creates no orders / no automation."
+  ],
+  "next_recommended_phase": {
+    "phase": "10-L",
+    "title": "Persist the historical sector-neutral scored panel for honest reweight backtests",
+    "why": "To test 60/40..30/70 weightings and z-cap/winsorize transforms honestly, persist the per-(month,ticker) sector-neutral z-legs (z_fcf_sn, z_accruals_oriented_sn) and forward 63d returns from the owned 10-B/10-C engine into a frozen artifact, then re-run this harness against that panel -- still offline, owned-data-only, no orders, no automation, no broker, no deploy."
+  },
+  "safety": {
+    "paper_only": true,
+    "uses_owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true,
+    "secret_leak_scan_clean": true
+  }
+}

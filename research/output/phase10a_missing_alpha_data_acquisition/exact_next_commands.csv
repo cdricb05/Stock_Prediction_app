@@ -1,0 +1,4 @@
+action,family,command
+purchase_provider_for_blocked_family,analyst_estimate_revisions,"subscribe + set the key for: FMP Premium analyst-estimates, or Intrinio/Zacks estimate-revision history, then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+purchase_provider_for_blocked_family,price_target_revisions,"subscribe + set the key for: FMP Premium price-target, or Benzinga / Intrinio analyst price targets, then re-run run_phase10a_missing_alpha_data_acquisition.py --live"
+purchase_provider_for_blocked_family,options_iv_skew_put_call,"subscribe + set the key for: ORATS / Intrinio options feed, or Polygon Options Starter (historical chains), then re-run run_phase10a_missing_alpha_data_acquisition.py --live"

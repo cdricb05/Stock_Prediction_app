@@ -1,0 +1,10 @@
+family,provider,endpoint_redacted,http_status,entitlement,blocker
+analyst_estimate_revisions,FMP,https://financialmodelingprep.com/api/v3/analyst-estimates/AAPL?<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+analyst_estimate_revisions,Finnhub,https://finnhub.io/api/v1/stock/eps-estimate?symbol=AAPL&freq=quarterly&<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+analyst_estimate_revisions,Alpha Vantage,https://www.alphavantage.co/query?function=EARNINGS&symbol=AAPL&<API_KEY_REDACTED>,200,RATE_LIMITED,provider returned a information envelope (rate-limit/entitlement)
+price_target_revisions,FMP,https://financialmodelingprep.com/api/v4/price-target?symbol=AAPL&<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+price_target_revisions,Finnhub,https://finnhub.io/api/v1/stock/price-target?symbol=AAPL&<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+price_target_revisions,Polygon,https://api.polygon.io/benzinga/v1/analyst-insights?ticker=AAPL&<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+short_interest_days_to_cover,Nasdaq Data Link,https://data.nasdaq.com/api/v3/datasets/FINRA/FNSQ_AAPL.json?<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+short_interest_days_to_cover,FMP,https://financialmodelingprep.com/api/v4/short_interest?symbol=AAPL&<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)
+options_iv_skew_put_call,Polygon,https://api.polygon.io/v3/snapshot/options/AAPL?limit=250&<API_KEY_REDACTED>,403,ENTITLEMENT_BLOCKED,HTTP 403 subscription/entitlement block (http_error)

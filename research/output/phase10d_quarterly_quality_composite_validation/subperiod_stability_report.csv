@@ -1,0 +1,5 @@
+signal,pre2020_ic,pre2020_ic_t,pre2020_n_months,post2020_ic,post2020_ic_t,post2020_n_months,both_subperiods_positive
+composite_raw,0.05929,2.9121,43,0.03739,1.85874,75,True
+composite_sn,0.04383,2.27821,43,0.02984,1.70517,75,True
+fcf_to_assets,0.05442,2.12443,43,0.03533,1.61749,75,True
+operating_accruals,0.04032,2.36809,43,0.04159,2.22061,75,True

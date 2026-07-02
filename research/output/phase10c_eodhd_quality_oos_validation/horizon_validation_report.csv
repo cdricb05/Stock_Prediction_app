@@ -1,0 +1,17 @@
+feature,variant,horizon_days,horizon_label,oriented_mean_ic,ic_t,ic_p,n_months,n_events,net_spread_25bps,oriented_positive,note
+fcf_to_assets,raw,1,1d,0.05249,3.06277,0.00219,120,38408,-0.00275,True,
+fcf_to_assets,raw,5,1w(5d),0.03617,2.56316,0.01037,120,38408,-0.00354,True,
+fcf_to_assets,raw,21,"1mo(21d, primary)",0.02589,1.51555,0.12963,120,38408,-0.00267,True,primary
+fcf_to_assets,raw,63,1q(63d),0.04228,2.53455,0.01126,118,37920,0.00627,True,
+fcf_to_assets,sector_neutral,1,1d,0.0495,3.42138,0.00062,120,38408,-0.00313,True,
+fcf_to_assets,sector_neutral,5,1w(5d),0.03662,2.54931,0.01079,120,38408,-0.00378,True,
+fcf_to_assets,sector_neutral,21,"1mo(21d, primary)",0.02347,1.50461,0.13242,120,38408,-0.00306,True,primary
+fcf_to_assets,sector_neutral,63,1q(63d),0.03462,2.38176,0.01723,118,37920,0.00299,True,
+operating_accruals,raw,1,1d,0.02331,1.51213,0.1305,120,38610,-0.00442,True,
+operating_accruals,raw,5,1w(5d),0.03026,2.40153,0.01633,120,38610,-0.00275,True,
+operating_accruals,raw,21,"1mo(21d, primary)",0.01099,0.81142,0.41713,120,38610,-0.00162,True,primary
+operating_accruals,raw,63,1q(63d),0.04113,3.07451,0.00211,118,38123,0.01083,True,
+operating_accruals,sector_neutral,1,1d,0.02244,1.57701,0.11479,120,38610,-0.00422,True,
+operating_accruals,sector_neutral,5,1w(5d),0.03437,2.81319,0.00491,120,38610,-0.00234,True,
+operating_accruals,sector_neutral,21,"1mo(21d, primary)",0.01585,1.20126,0.22965,120,38610,-0.00171,True,primary
+operating_accruals,sector_neutral,63,1q(63d),0.03472,2.65082,0.00803,118,38123,0.00674,True,

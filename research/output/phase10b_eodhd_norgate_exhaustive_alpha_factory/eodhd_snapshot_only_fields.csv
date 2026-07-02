@@ -1,0 +1,13 @@
+section,present,reason,fields
+General,True,current-value snapshot - no usable dated history (PIT-unsafe),Code|Type|Name|Exchange|CurrencyCode|CurrencyName|CurrencySymbol|CountryName|CountryISO|OpenFigi|ISIN|LEI
+Highlights,True,current-value snapshot - no usable dated history (PIT-unsafe),MarketCapitalization|MarketCapitalizationMln|EBITDA|PERatio|PEGRatio|WallStreetTargetPrice|BookValue|DividendShare|DividendYield|EarningsShare|EPSEstimateCurrentYear|EPSEstimateNextYear
+Valuation,True,current-value snapshot - no usable dated history (PIT-unsafe),TrailingPE|ForwardPE|PriceSalesTTM|PriceBookMRQ|EnterpriseValue|EnterpriseValueRevenue|EnterpriseValueEbitda
+SharesStats,True,current-value snapshot - no usable dated history (PIT-unsafe),SharesOutstanding|SharesFloat|PercentInsiders|PercentInstitutions|SharesShort|SharesShortPriorMonth|ShortRatio|ShortPercentOutstanding|ShortPercentFloat
+Technicals,True,current-value snapshot - no usable dated history (PIT-unsafe),Beta|52WeekHigh|52WeekLow|50DayMA|200DayMA|SharesShort|SharesShortPriorMonth|ShortRatio|ShortPercent
+SplitsDividends,True,current-value snapshot - no usable dated history (PIT-unsafe),ForwardAnnualDividendRate|ForwardAnnualDividendYield|PayoutRatio|DividendDate|ExDividendDate|LastSplitFactor|LastSplitDate|NumberDividendsByYear
+AnalystRatings,True,current-value snapshot - no usable dated history (PIT-unsafe),Rating|TargetPrice|StrongBuy|Buy|Hold|Sell|StrongSell
+Holders,True,current-value snapshot - no usable dated history (PIT-unsafe),Institutions|Funds
+InsiderTransactions,True,current-value snapshot - no usable dated history (PIT-unsafe),
+ESGScores,True,current-value snapshot - no usable dated history (PIT-unsafe),Disclaimer|RatingDate|TotalEsg|TotalEsgPercentile|EnvironmentScore|EnvironmentScorePercentile|SocialScore|SocialScorePercentile|GovernanceScore|GovernanceScorePercentile|ControversyLevel|ActivitiesInvolvement
+Earnings::Trend,True,current-value snapshot - no usable dated history (PIT-unsafe),2027-09-30|2026-09-30|2026-06-30|2026-03-31|2025-12-31|2025-09-30|2025-06-30|2025-03-31|2024-12-31|2024-09-30|2024-06-30|2024-03-31
+Earnings::Annual,True,current-value snapshot - no usable dated history (PIT-unsafe),2026-03-31|2025-09-30|2024-09-30|2023-09-30|2022-09-30|2021-09-30|2020-09-30|2019-09-30|2018-09-30|2017-09-30|2016-09-30|2015-09-30

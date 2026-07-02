@@ -1,0 +1,20 @@
+side,sector,n_names,weight_pct,sector_cap_pct,within_cap
+LONG,Information Technology,6,24.0,25.0,True
+LONG,Consumer Discretionary,4,16.0,25.0,True
+LONG,Energy,3,12.0,25.0,True
+LONG,Industrials,3,12.0,25.0,True
+LONG,Materials,3,12.0,25.0,True
+LONG,Communication Services,2,8.0,25.0,True
+LONG,Consumer Staples,1,4.0,25.0,True
+LONG,Financials,1,4.0,25.0,True
+LONG,Health Care,1,4.0,25.0,True
+LONG,Utilities,1,4.0,25.0,True
+SHORT,Communication Services,4,16.0,25.0,True
+SHORT,Consumer Discretionary,4,16.0,25.0,True
+SHORT,Industrials,4,16.0,25.0,True
+SHORT,Information Technology,4,16.0,25.0,True
+SHORT,Materials,4,16.0,25.0,True
+SHORT,Consumer Staples,2,8.0,25.0,True
+SHORT,Energy,1,4.0,25.0,True
+SHORT,Financials,1,4.0,25.0,True
+SHORT,Health Care,1,4.0,25.0,True

@@ -1,0 +1,222 @@
+{
+  "phase": "10-B",
+  "as_of": "2026-06-26",
+  "decision": "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+  "decision_rationale": "Promoted 1 strong EODHD+Norgate candidate(s) clearing the full broad 8-X gate (t>=3.0, BH-significant, net-of-25bps positive, both cohorts + both pre/post-2020 halves positive, sector-diversified). Best: f_accel_sn (t=3.91).",
+  "exact_next_command": "review research/output/phase10b_eodhd_norgate_exhaustive_alpha_factory/strong_alpha_candidates.csv then productize paper-only",
+  "live_mode": true,
+  "allowed_decisions": [
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "EODHD_NORGATE_READY_FOR_NEXT_BATCH",
+    "EODHD_NORGATE_EXHAUSTED_NO_STRONG_ALPHA",
+    "EODHD_ENTITLEMENT_LIMITATION_WITH_EXACT_FIX",
+    "EODHD_USEFUL_BUT_OPTIONS_ADDON_RECOMMENDED",
+    "EODHD_USEFUL_BUT_ESTIMATE_TARGET_PROVIDER_NEEDED",
+    "EODHD_NOT_SUFFICIENT_CANCEL_OR_DOWNGRADE",
+    "HARD_BLOCKER_REQUIRES_USER_ACTION",
+    "ERROR_WITH_REPRO_COMMAND"
+  ],
+  "eodhd_key_visible": true,
+  "key_visibility_missing_required": [],
+  "fmp_role": "present-but-ignored (not a research source)",
+  "norgate_foundation": {
+    "usable_now": true,
+    "reuse_or_rebuild": "REUSE_EXISTING_PANEL",
+    "last_panel_month": "2026-06-30",
+    "rebuild_can_run_now": true,
+    "rebuild_command": "python research/run_phase8a_autonomous_norgate_research_engine.py --rebuild",
+    "keep": true
+  },
+  "eodhd_sections_accessible": [
+    "Calendar::Earnings",
+    "Calendar::Trends",
+    "EOD historical prices",
+    "Exchange symbol list",
+    "Fundamentals (all sections)",
+    "Index constituents",
+    "InsiderTransactions / SEC Form 4",
+    "Macro indicators",
+    "News",
+    "News::Sentiment",
+    "SplitsDividends::Dividends",
+    "SplitsDividends::Splits"
+  ],
+  "eodhd_sections_blocked": [
+    "Bulk fundamentals (ENTITLEMENT_BLOCKED)",
+    "Options (NOT_FOUND)"
+  ],
+  "eodhd_pit_usable_families": [
+    "eodhd_earnings_surprise",
+    "eodhd_eps_growth_yoy",
+    "eodhd_revenue_growth_yoy",
+    "eodhd_gross_profitability",
+    "eodhd_operating_accruals",
+    "eodhd_asset_growth",
+    "eodhd_net_share_issuance",
+    "eodhd_leverage_change",
+    "eodhd_fcf_to_assets",
+    "eodhd_dividend_growth",
+    "eodhd_news_sentiment"
+  ],
+  "eodhd_snapshot_only_sections": [
+    "General",
+    "Highlights",
+    "Valuation",
+    "SharesStats",
+    "Technicals",
+    "SplitsDividends",
+    "AnalystRatings",
+    "Holders",
+    "InsiderTransactions",
+    "ESGScores",
+    "Earnings::Trend",
+    "Earnings::Annual"
+  ],
+  "requests_total": 545,
+  "request_ceiling": 10000,
+  "requests_by_endpoint": {
+    "fundamentals": 0,
+    "sentiments": 0,
+    "dividends": 545
+  },
+  "acquired_by_endpoint": {
+    "fundamentals": 0,
+    "sentiments": 0,
+    "dividends": 545
+  },
+  "normalized_rows_by_family": {
+    "eodhd_earnings_surprise": 52046,
+    "eodhd_eps_growth_yoy": 50847,
+    "eodhd_revenue_growth_yoy": 64914,
+    "eodhd_gross_profitability": 62853,
+    "eodhd_operating_accruals": 60978,
+    "eodhd_asset_growth": 60810,
+    "eodhd_net_share_issuance": 64578,
+    "eodhd_leverage_change": 59961,
+    "eodhd_fcf_to_assets": 59931,
+    "eodhd_dividend_growth": 23977,
+    "eodhd_news_sentiment": 514153
+  },
+  "feature_coverage_by_family": {
+    "eodhd_earnings_surprise": 38237,
+    "eodhd_eps_growth_yoy": 38473,
+    "eodhd_revenue_growth_yoy": 38597,
+    "eodhd_gross_profitability": 38512,
+    "eodhd_operating_accruals": 38610,
+    "eodhd_asset_growth": 38533,
+    "eodhd_net_share_issuance": 38465,
+    "eodhd_leverage_change": 38404,
+    "eodhd_fcf_to_assets": 38408,
+    "eodhd_dividend_growth": 32647,
+    "eodhd_news_sentiment": 29280
+  },
+  "feature_coverage_diagnosis": {
+    "eodhd_earnings_surprise": "covered",
+    "eodhd_eps_growth_yoy": "covered",
+    "eodhd_revenue_growth_yoy": "covered",
+    "eodhd_gross_profitability": "covered",
+    "eodhd_operating_accruals": "covered",
+    "eodhd_asset_growth": "covered",
+    "eodhd_net_share_issuance": "covered",
+    "eodhd_leverage_change": "covered",
+    "eodhd_fcf_to_assets": "covered",
+    "eodhd_dividend_growth": "covered",
+    "eodhd_news_sentiment": "covered"
+  },
+  "horizons_tested": [
+    1,
+    5,
+    21,
+    63
+  ],
+  "scoreable_tickers": 545,
+  "scoreable_events": 38725,
+  "universe_size": 545,
+  "max_tickers": 545,
+  "scenarios_tested": 561,
+  "models_tested": 22,
+  "strong_alpha_found": true,
+  "n_strong": 1,
+  "n_constrained": 0,
+  "n_rejected": 582,
+  "best_candidate": "f_accel_sn",
+  "best_candidate_t_stat": 3.91,
+  "best_candidate_family": "orthogonal",
+  "best_candidate_accept_reject": "ACCEPTED_STRONG",
+  "exhausted_data_families": [
+    "cross_factor_interactions",
+    "transparent_factor_ensembles"
+  ],
+  "eodhd_keep_upgrade_cancel": {
+    "verdict": "KEEP",
+    "rationale": "EODHD produced a promoted strong-alpha signal on the Norgate survivorship-free panel - keep the subscription and productize (paper-only)."
+  },
+  "norgate_keep": true,
+  "missing_data_after_eodhd_norgate": [
+    {
+      "missing_mechanism": "analyst_estimate_revision_history",
+      "why": "EODHD AnalystRatings / Earnings.Trend are current snapshots - no dated as-of history of EPS/revenue estimate revisions (PIT-unsafe for a revision-drift signal)",
+      "exact_paid_fix": "Intrinio/Zacks estimate-revision history, or FMP Premium analyst-estimates (only if the user chooses to add a non-EODHD estimate feed)"
+    },
+    {
+      "missing_mechanism": "price_target_revision_history",
+      "why": "EODHD WallStreetTargetPrice / AnalystRatings.TargetPrice are current snapshots - no dated history of target changes",
+      "exact_paid_fix": "Benzinga / Intrinio analyst price-target history"
+    },
+    {
+      "missing_mechanism": "options_iv_skew_put_call",
+      "why": "the EODHD options endpoint returned 404/not-entitled under the Fundamentals feed",
+      "exact_paid_fix": "EODHD Options add-on, or ORATS / Polygon Options Starter (historical chains)"
+    },
+    {
+      "missing_mechanism": "intraday_technical_tick_data",
+      "why": "the Fundamentals feed does not include the intraday/technical/tick API",
+      "exact_paid_fix": "EODHD Technical/Intraday add-on (only if an intraday signal is pursued)"
+    }
+  ],
+  "panel_present": true,
+  "secret_safety_leak_scan_clean": true,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "required_artifacts": [
+    "phase10b_eodhd_norgate_exhaustive_alpha_factory.json",
+    "key_visibility_preflight.csv",
+    "eodhd_entitlement_audit.csv",
+    "eodhd_section_inventory.csv",
+    "eodhd_field_inventory.csv",
+    "eodhd_snapshot_only_fields.csv",
+    "eodhd_pit_usable_fields.csv",
+    "acquisition_progress.csv",
+    "raw_payload_manifest.csv",
+    "normalized_payload_manifest.csv",
+    "pit_normalization_audit.csv",
+    "point_in_time_join_audit.csv",
+    "norgate_foundation_manifest.csv",
+    "feature_catalog.csv",
+    "feature_coverage_report.csv",
+    "scenario_registry.csv",
+    "scenario_scoreboard.csv",
+    "model_registry.csv",
+    "model_scoreboard.csv",
+    "horizon_sweep_report.csv",
+    "strong_alpha_candidates.csv",
+    "rejected_hypotheses.csv",
+    "transaction_cost_report.csv",
+    "cohort_stability_report.csv",
+    "subperiod_stability_report.csv",
+    "sector_concentration_report.csv",
+    "leakage_audit.csv",
+    "eodhd_keep_upgrade_cancel_decision.csv",
+    "missing_data_after_eodhd_norgate.csv",
+    "exact_next_commands.csv",
+    "phase10c_next_plan.json",
+    "secret_safety_audit.csv"
+  ],
+  "exact_next_commands": [
+    {
+      "action": "review_promoted_strong_alpha",
+      "family": "orthogonal",
+      "command": "review research/output/phase10b_eodhd_norgate_exhaustive_alpha_factory/strong_alpha_candidates.csv then productize paper-only"
+    }
+  ]
+}

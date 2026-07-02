@@ -1,0 +1,20 @@
+{
+  "phase": "10-G",
+  "from_decision": "SECTOR_MAPPING_REPAIRED_READY_FOR_HUMAN_REVIEW",
+  "after_unknown_book_share": 0.0,
+  "n_sectors_repaired": 418,
+  "next_step": "Phase 10-G: run the HUMAN approve/reject gate over reranked_paper_review_long_short_book.csv (the now sector-mapped, reranked sector-neutral quarterly book). On approval, build a PAPER-ONLY position tracker (mark-to-market each quarter; realised vs expected net-25bps) - still NO orders, NO automation, NO broker, NO live trading, NO deploy. Optionally fold the repaired labels back into the panel sector source so future runs are mapped by default. No new data purchase.",
+  "exact_next_command": "review research/output/phase10f_owned_sector_mapping_repair/reranked_paper_review_long_short_book.csv",
+  "constraints": [
+    "owned data only; no new purchase without explicit user opt-in",
+    "paper-only",
+    "NO orders",
+    "NO automation",
+    "NO live trading",
+    "NO broker",
+    "no deploy",
+    "no Paper Trader writes",
+    "no commit",
+    "no push"
+  ]
+}

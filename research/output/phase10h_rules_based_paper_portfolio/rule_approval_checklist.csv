@@ -1,0 +1,8 @@
+item,description,current_setting,status
+approve_book_size,Approve up to 25 long / 25 short,25/25,NEEDS_APPROVAL
+approve_liquidity_filter,Approve excluding bottom-quartile liquidity names,below p25 liquidity_proxy,NEEDS_APPROVAL
+approve_sector_cap,Approve capping each sector per side,25% of side,NEEDS_APPROVAL
+approve_equal_weighting,Approve equal weighting on both sides (no optimisation),EQUAL,NEEDS_APPROVAL
+approve_quarterly_cadence,Approve quarterly rebalance cadence,QUARTERLY,NEEDS_APPROVAL
+confirm_paper_only,"Confirm this is paper-only (no broker, no live trading)",PAPER_ONLY,NEEDS_APPROVAL
+confirm_no_orders_automation,Confirm no orders and no automation are created,NONE,NEEDS_APPROVAL

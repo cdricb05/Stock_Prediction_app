@@ -1,0 +1,7 @@
+item,before,after,note
+sector_neutral_composite_rebuilt,False,True,comp_sn legs recomputed via within-month x sector de-mean over the repaired sector labels
+comp_raw_changed,n/a,False,comp_raw is sector-independent and is unchanged by the repair (sanity check)
+mapped_tickers_in_panel,127,545,tickers with a real (non-Unknown) sector => far more names neutralised within their TRUE sector instead of one giant Unknown bucket
+distinct_mapped_sector_labels,11,11,count of distinct GICS sector labels in use (the curated map already spans all 11)
+composite_coverage_events,38404,38404,both-legs covered events (unchanged)
+unknown_book_share,0.77835,0.0,Unknown share of the reconstructed long/short book

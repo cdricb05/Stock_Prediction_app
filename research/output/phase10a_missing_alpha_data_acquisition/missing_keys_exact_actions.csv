@@ -1,0 +1,4 @@
+provider,env_var,key_present,families_unlocked,exact_action
+ORATS,ORATS_API_KEY,False,options_iv_skew_put_call,"ORATS Data API (one-minute / EOD options, IV surface + skew) - subscribe at orats.com/data-api, then set $env:ORATS_API_KEY"
+Intrinio,INTRINIO_API_KEY,False,analyst_estimate_revisions|price_target_revisions|short_interest_days_to_cover|options_iv_skew_put_call,"Intrinio (Zacks estimates / options price feed) - subscribe at intrinio.com, then set $env:INTRINIO_API_KEY"
+Benzinga,BENZINGA_API_KEY,False,price_target_revisions,"Benzinga analyst ratings / price-target API - subscribe at benzinga.com/apis, then set $env:BENZINGA_API_KEY"

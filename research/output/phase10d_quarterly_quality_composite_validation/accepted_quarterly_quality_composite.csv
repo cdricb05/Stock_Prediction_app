@@ -1,0 +1,2 @@
+signal,verdict,ic_63d,ic_t_63d,quarterly_net_25bps,quarterly_net_50bps,quarterly_turnover,both_cohorts_pos,both_subperiods_pos,sector_robust,reason
+composite_raw,CONFIRMED,0.04537,3.07398,0.00648,0.00349,0.59891,True,True,True,"quarterly composite clears the strict bar at 63d: IC t>=3.0, survives 25bps AND 50bps at quarterly turnover, OOS-positive, both cohorts +, both subperiods +, sector-robust, sector-neutral edge intact, high-liquidity +"

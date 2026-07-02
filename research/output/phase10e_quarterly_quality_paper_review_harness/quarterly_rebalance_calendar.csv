@@ -1,0 +1,6 @@
+quarter,quarter_start,quarter_end,nominal_review_date,status,note
+2026Q2,2026-04-01,2026-06-30,2026-07-01,CURRENT_REVIEW,manual human review + approve/reject; NO automated execution
+2026Q3,2026-07-01,2026-09-30,2026-10-01,SCHEDULED_MANUAL_REVIEW,manual human review + approve/reject; NO automated execution
+2026Q4,2026-10-01,2026-12-31,2027-01-01,SCHEDULED_MANUAL_REVIEW,manual human review + approve/reject; NO automated execution
+2027Q1,2027-01-01,2027-03-31,2027-04-01,SCHEDULED_MANUAL_REVIEW,manual human review + approve/reject; NO automated execution
+2027Q2,2027-04-01,2027-06-30,2027-07-01,SCHEDULED_MANUAL_REVIEW,manual human review + approve/reject; NO automated execution

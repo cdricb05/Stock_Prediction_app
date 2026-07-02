@@ -1,0 +1,12 @@
+metric,frozen_value,reconstructed_value,abs_diff,tolerance,is_gate,within_tolerance
+ic_t_63d,2.665,2.664611429349803,0.00038857,0.25,True,True
+quarterly_net_25bps,0.00401,0.004009721110751396,2.8e-07,0.0015,True,True
+quarterly_net_50bps,0.00095,0.0009521464355419611,2.15e-06,0.0015,True,True
+quarterly_turnover,0.6115,0.6115149350418869,1.494e-05,0.1,True,True
+ic_63d,0.03494,0.03494129179052818,1.29e-06,,False,True
+quarterly_gross_spread,0.00707,0.007067295785960831,2.7e-06,,False,True
+quarterly_spread_t,1.352,1.3517134625782279,0.00028654,,False,True
+top_sector_share,0.6262,0.6262001841378403,1.8e-07,,False,True
+oos_pooled_ic,0.02956,0.029554137210904368,5.86e-06,,False,True
+oos_ic_t,1.505,1.5048808764884705,0.00011912,,False,True
+oos_frac_windows_positive,0.5,0.5,0.0,,False,True

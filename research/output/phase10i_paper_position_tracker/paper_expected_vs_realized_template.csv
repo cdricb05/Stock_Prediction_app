@@ -1,0 +1,6 @@
+metric,expected,realized,unit,status,note
+quarterly_net_25bps_spread,0.00401,PENDING,return_fraction,PENDING_PRICE_REFRESH,expected from Phase 10-D confirmed composite (full-rank quintile L/S; approximate for 25/25)
+quarterly_net_50bps_spread,0.00095,PENDING,return_fraction,PENDING_PRICE_REFRESH,expected from Phase 10-D confirmed composite
+composite_ic_t_63d,2.665,N/A,t_stat,INFORMATIONAL,diagnostic from Phase 10-D; not a paper-book realized stat
+realized_paper_return_to_date,N/A,PENDING,return_fraction,PENDING_PRICE_REFRESH,marked off owned local prices only; no live market data
+holding_period_days_elapsed,N/A,PENDING,days,PENDING_PRICE_REFRESH,local latest price date minus inception

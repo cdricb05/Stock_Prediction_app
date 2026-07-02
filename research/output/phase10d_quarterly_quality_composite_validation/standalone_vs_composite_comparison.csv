@@ -1,0 +1,4 @@
+signal,ic_63d,ic_t_63d,oos_pooled_ic,oos_frac_pos,quarterly_gross_spread,quarterly_turnover,quarterly_net_25bps,quarterly_net_50bps
+composite_raw,0.04537,3.07398,0.03638,0.625,0.00948,0.59891,0.00648,0.00349
+fcf_to_assets,0.04228,2.53455,0.03441,0.375,0.00775,0.46615,0.00542,0.00309
+operating_accruals,0.04113,3.07451,0.03725,0.6875,0.00838,0.61579,0.0053,0.00222

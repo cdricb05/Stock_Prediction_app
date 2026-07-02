@@ -1,0 +1,5 @@
+metric,before,after,delta
+unknown_book_share,0.77835,0.0,-0.77835
+unknown_long_share,0.79381,0.0,-0.79381
+n_unknown_book,151,0,-151
+top_long_sector_share(mapped),0.07216,0.19588,
