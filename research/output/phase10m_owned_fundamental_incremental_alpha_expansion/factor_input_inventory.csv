@@ -1,0 +1,9 @@
+feature,family,group,orientation,source,recon_formula,normalized_path,coverage_events,coverage_tickers,standalone_ic_t,eligible
+gross_profitability,eodhd_gross_profitability,profitability,1,norm,,research/data/eodhd/normalized/eodhd_gross_profitability/gross_profitability.csv,38512,543,0.86346,False
+return_on_assets,eodhd_return_on_assets,profitability,1,recon,net_income/total_assets,research/output/phase10m_owned_fundamental_incremental_alpha_expansion/reconstructed_factors/return_on_assets.csv,38614,543,-0.07163,False
+operating_margin,eodhd_operating_margin,profitability,1,recon,operating_income/total_revenue,research/output/phase10m_owned_fundamental_incremental_alpha_expansion/reconstructed_factors/operating_margin.csv,38696,543,-1.16427,False
+cash_return_on_assets,eodhd_cash_return_on_assets,profitability,1,recon,cfo/total_assets,research/output/phase10m_owned_fundamental_incremental_alpha_expansion/reconstructed_factors/cash_return_on_assets.csv,38610,542,2.43554,True
+asset_growth,eodhd_asset_growth,investment,-1,norm,,research/data/eodhd/normalized/eodhd_asset_growth/asset_growth.csv,38533,542,-0.2853,False
+net_share_issuance,eodhd_net_share_issuance,investment,-1,norm,,research/data/eodhd/normalized/eodhd_net_share_issuance/net_share_issuance.csv,38465,543,0.4626,False
+leverage_change,eodhd_leverage_change,leverage,-1,norm,,research/data/eodhd/normalized/eodhd_leverage_change/leverage_change.csv,38404,540,-0.77191,False
+debt_to_assets,eodhd_debt_to_assets,leverage,-1,recon,total_debt/total_assets,research/output/phase10m_owned_fundamental_incremental_alpha_expansion/reconstructed_factors/debt_to_assets.csv,38483,541,0.1627,False

@@ -1,0 +1,489 @@
+{
+  "phase": "10-M",
+  "phase_name": "Owned Fundamental Incremental Alpha Expansion",
+  "as_of": "2026-06-26",
+  "decision": "BASELINE_REMAINS_CHAMPION",
+  "decision_rationale": "every eligible owned fundamental factor, blended at the allowed weights, failed to beat the matched-baseline net-25bps (or was cost-killed); adding a third owned quality/investment/leverage leg does not improve the two-leg composite - the baseline remains champion.",
+  "allowed_decisions": [
+    "INCREMENTAL_ALPHA_READY_FOR_PAPER_RULES",
+    "BASELINE_REMAINS_CHAMPION",
+    "REJECT_INCREMENTAL_OVERFIT",
+    "NEEDS_FACTOR_INPUT_REPAIR",
+    "NEEDS_MORE_OWNED_DATA"
+  ],
+  "objective": "test whether a THIRD owned EODHD fundamental factor (profitability / investment / leverage) adds incremental alpha to the frozen 10-D composite_sn baseline at 63d - NOT reweighting (10-L-B exhausted), NOT a broad alpha search, NOT new providers",
+  "offline": true,
+  "performs_network": false,
+  "eodhd_key_visible": true,
+  "eodhd_key_required": false,
+  "primary_horizon_days": 63,
+  "scoreable_events": 38725,
+  "scoreable_tickers": 545,
+  "input_inventory": [
+    {
+      "feature": "gross_profitability",
+      "family": "eodhd_gross_profitability",
+      "group": "profitability",
+      "orientation": 1,
+      "source": "norm",
+      "recon_formula": "",
+      "coverage_events": 38512,
+      "coverage_tickers": 543,
+      "standalone_ic_t": 0.86346,
+      "eligible": false
+    },
+    {
+      "feature": "return_on_assets",
+      "family": "eodhd_return_on_assets",
+      "group": "profitability",
+      "orientation": 1,
+      "source": "recon",
+      "recon_formula": "net_income/total_assets",
+      "coverage_events": 38614,
+      "coverage_tickers": 543,
+      "standalone_ic_t": -0.07163,
+      "eligible": false
+    },
+    {
+      "feature": "operating_margin",
+      "family": "eodhd_operating_margin",
+      "group": "profitability",
+      "orientation": 1,
+      "source": "recon",
+      "recon_formula": "operating_income/total_revenue",
+      "coverage_events": 38696,
+      "coverage_tickers": 543,
+      "standalone_ic_t": -1.16427,
+      "eligible": false
+    },
+    {
+      "feature": "cash_return_on_assets",
+      "family": "eodhd_cash_return_on_assets",
+      "group": "profitability",
+      "orientation": 1,
+      "source": "recon",
+      "recon_formula": "cfo/total_assets",
+      "coverage_events": 38610,
+      "coverage_tickers": 542,
+      "standalone_ic_t": 2.43554,
+      "eligible": true
+    },
+    {
+      "feature": "asset_growth",
+      "family": "eodhd_asset_growth",
+      "group": "investment",
+      "orientation": -1,
+      "source": "norm",
+      "recon_formula": "",
+      "coverage_events": 38533,
+      "coverage_tickers": 542,
+      "standalone_ic_t": -0.2853,
+      "eligible": false
+    },
+    {
+      "feature": "net_share_issuance",
+      "family": "eodhd_net_share_issuance",
+      "group": "investment",
+      "orientation": -1,
+      "source": "norm",
+      "recon_formula": "",
+      "coverage_events": 38465,
+      "coverage_tickers": 543,
+      "standalone_ic_t": 0.4626,
+      "eligible": false
+    },
+    {
+      "feature": "leverage_change",
+      "family": "eodhd_leverage_change",
+      "group": "leverage",
+      "orientation": -1,
+      "source": "norm",
+      "recon_formula": "",
+      "coverage_events": 38404,
+      "coverage_tickers": 540,
+      "standalone_ic_t": -0.77191,
+      "eligible": false
+    },
+    {
+      "feature": "debt_to_assets",
+      "family": "eodhd_debt_to_assets",
+      "group": "leverage",
+      "orientation": -1,
+      "source": "recon",
+      "recon_formula": "total_debt/total_assets",
+      "coverage_events": 38483,
+      "coverage_tickers": 541,
+      "standalone_ic_t": 0.1627,
+      "eligible": false
+    }
+  ],
+  "baseline": {
+    "signal": "composite_sn",
+    "weighting": "equal (fcf+ / accruals-), sector-neutral",
+    "ic_t_63d": 2.665,
+    "quarterly_net_25bps": 0.00401,
+    "quarterly_net_50bps": 0.00095,
+    "quarterly_turnover": 0.6115,
+    "oos_frac_windows_positive": 0.5,
+    "top_sector_share": 0.6262,
+    "alpha_character": "modest / boundary (63d IC t < 3.0 strong bar; not oversold)"
+  },
+  "phase10d_baseline_reproduction": {
+    "got": {
+      "ic_t": 2.66461,
+      "net_25bps": 0.00401,
+      "net_50bps": 0.00095,
+      "turnover": 0.61151
+    },
+    "frozen": {
+      "ic_t": 2.665,
+      "net_25bps": 0.00401,
+      "net_50bps": 0.00095,
+      "turnover": 0.6115
+    },
+    "deltas": {
+      "ic_t": 0.000389,
+      "net_25bps": 0.0,
+      "net_50bps": 2e-06,
+      "turnover": 1.5e-05
+    },
+    "reproduces_within_tolerance": true,
+    "tolerances": {
+      "ic_t": 0.25,
+      "net_25bps": 0.0015,
+      "net_50bps": 0.0015,
+      "turnover": 0.1
+    }
+  },
+  "n_candidate_factors": 8,
+  "n_eligible_factors": 1,
+  "eligible_factors": [
+    "cash_return_on_assets"
+  ],
+  "standalone_screen": [
+    {
+      "feature": "gross_profitability",
+      "group": "profitability",
+      "orientation": 1,
+      "coverage": 38512,
+      "ic_mean": 0.01688,
+      "ic_t": 0.863,
+      "both_cohorts_pos": true,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented IC sign disagrees across pre/post-2020 (sign-unstable)"
+    },
+    {
+      "feature": "return_on_assets",
+      "group": "profitability",
+      "orientation": 1,
+      "coverage": 38614,
+      "ic_mean": -0.00127,
+      "ic_t": -0.072,
+      "both_cohorts_pos": false,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.00127"
+    },
+    {
+      "feature": "operating_margin",
+      "group": "profitability",
+      "orientation": 1,
+      "coverage": 38696,
+      "ic_mean": -0.01983,
+      "ic_t": -1.164,
+      "both_cohorts_pos": false,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.01983"
+    },
+    {
+      "feature": "cash_return_on_assets",
+      "group": "profitability",
+      "orientation": 1,
+      "coverage": 38610,
+      "ic_mean": 0.03891,
+      "ic_t": 2.436,
+      "both_cohorts_pos": true,
+      "both_subperiods_pos": true,
+      "eligible": true,
+      "reject_reason": ""
+    },
+    {
+      "feature": "asset_growth",
+      "group": "investment",
+      "orientation": -1,
+      "coverage": 38533,
+      "ic_mean": -0.00502,
+      "ic_t": -0.285,
+      "both_cohorts_pos": false,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.00502"
+    },
+    {
+      "feature": "net_share_issuance",
+      "group": "investment",
+      "orientation": -1,
+      "coverage": 38465,
+      "ic_mean": 0.00723,
+      "ic_t": 0.463,
+      "both_cohorts_pos": false,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented IC sign disagrees across old/new cohorts (sign-unstable)"
+    },
+    {
+      "feature": "leverage_change",
+      "group": "leverage",
+      "orientation": -1,
+      "coverage": 38404,
+      "ic_mean": -0.01091,
+      "ic_t": -0.772,
+      "both_cohorts_pos": false,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.01091"
+    },
+    {
+      "feature": "debt_to_assets",
+      "group": "leverage",
+      "orientation": -1,
+      "coverage": 38483,
+      "ic_mean": 0.00258,
+      "ic_t": 0.163,
+      "both_cohorts_pos": true,
+      "both_subperiods_pos": false,
+      "eligible": false,
+      "reject_reason": "oriented IC sign disagrees across pre/post-2020 (sign-unstable)"
+    }
+  ],
+  "n_variants": 3,
+  "variants_tested": [
+    {
+      "variant_id": "baseline_composite_sn",
+      "group": "baseline",
+      "legs": "composite_sn",
+      "weights": "100",
+      "ic_t": 2.66461,
+      "quarterly_net_25bps": 0.00401,
+      "quarterly_net_50bps": 0.00095,
+      "quarterly_turnover": 0.61151,
+      "oos_frac_windows_positive": 0.5,
+      "top_sector_share": 0.6262,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "BASELINE",
+      "reject_reason": "frozen 10-D equal-weight sector-neutral composite (fcf+/acc-)"
+    },
+    {
+      "variant_id": "base70_cash_return_on_assets_30",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "70/30",
+      "ic_t": 2.75967,
+      "quarterly_net_25bps": 0.00272,
+      "quarterly_net_50bps": -0.00021,
+      "quarterly_turnover": 0.5855,
+      "oos_frac_windows_positive": 0.5,
+      "top_sector_share": 0.62147,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00272)"
+    },
+    {
+      "variant_id": "base60_cash_return_on_assets_40",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "60/40",
+      "ic_t": 2.8422,
+      "quarterly_net_25bps": 0.00186,
+      "quarterly_net_50bps": -0.00101,
+      "quarterly_turnover": 0.57423,
+      "oos_frac_windows_positive": 0.625,
+      "top_sector_share": 0.62147,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00186)"
+    },
+    {
+      "variant_id": "base50_cash_return_on_assets_50",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "50/50",
+      "ic_t": 2.85083,
+      "quarterly_net_25bps": 0.00232,
+      "quarterly_net_50bps": -0.00049,
+      "quarterly_turnover": 0.56162,
+      "oos_frac_windows_positive": 0.625,
+      "top_sector_share": 0.6212,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00232)"
+    }
+  ],
+  "candidates_tested": [
+    {
+      "variant_id": "base70_cash_return_on_assets_30",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "70/30",
+      "ic_t": 2.75967,
+      "quarterly_net_25bps": 0.00272,
+      "quarterly_net_50bps": -0.00021,
+      "quarterly_turnover": 0.5855,
+      "oos_frac_windows_positive": 0.5,
+      "top_sector_share": 0.62147,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00272)"
+    },
+    {
+      "variant_id": "base60_cash_return_on_assets_40",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "60/40",
+      "ic_t": 2.8422,
+      "quarterly_net_25bps": 0.00186,
+      "quarterly_net_50bps": -0.00101,
+      "quarterly_turnover": 0.57423,
+      "oos_frac_windows_positive": 0.625,
+      "top_sector_share": 0.62147,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00186)"
+    },
+    {
+      "variant_id": "base50_cash_return_on_assets_50",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "50/50",
+      "ic_t": 2.85083,
+      "quarterly_net_25bps": 0.00232,
+      "quarterly_net_50bps": -0.00049,
+      "quarterly_turnover": 0.56162,
+      "oos_frac_windows_positive": 0.625,
+      "top_sector_share": 0.6212,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00232)"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "variant_id": "base70_cash_return_on_assets_30",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "70/30",
+      "ic_t": 2.75967,
+      "quarterly_net_25bps": 0.00272,
+      "quarterly_net_50bps": -0.00021,
+      "quarterly_turnover": 0.5855,
+      "oos_frac_windows_positive": 0.5,
+      "top_sector_share": 0.62147,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00272)"
+    },
+    {
+      "variant_id": "base60_cash_return_on_assets_40",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "60/40",
+      "ic_t": 2.8422,
+      "quarterly_net_25bps": 0.00186,
+      "quarterly_net_50bps": -0.00101,
+      "quarterly_turnover": 0.57423,
+      "oos_frac_windows_positive": 0.625,
+      "top_sector_share": 0.62147,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00186)"
+    },
+    {
+      "variant_id": "base50_cash_return_on_assets_50",
+      "group": "single:profitability",
+      "legs": "composite_sn+cash_return_on_assets",
+      "weights": "50/50",
+      "ic_t": 2.85083,
+      "quarterly_net_25bps": 0.00232,
+      "quarterly_net_50bps": -0.00049,
+      "quarterly_turnover": 0.56162,
+      "oos_frac_windows_positive": 0.625,
+      "top_sector_share": 0.6212,
+      "both_cohorts_positive": true,
+      "both_subperiods_positive": true,
+      "classification": "NO_IMPROVEMENT",
+      "reject_reason": "does not beat matched-baseline net-25bps 0.00401 (variant 0.00232)"
+    }
+  ],
+  "champion": {
+    "champion": "baseline_composite_sn",
+    "baseline_remains_champion": true,
+    "ic_t_63d": 2.665,
+    "quarterly_net_25bps": 0.00401,
+    "quarterly_net_50bps": 0.00095
+  },
+  "baseline_vs_champion": {
+    "baseline_net_25bps": 0.00401,
+    "champion_net_25bps": 0.00401,
+    "improvement": 0.0
+  },
+  "oos_stability_summary": {
+    "baseline_oos_frac_pos": 0.5,
+    "note": "walk-forward 24/6/6 months, pure held-out, equal weighting, no sign refit"
+  },
+  "cohort_stability_summary": {
+    "note": "old vs new cohort + pre/post-2020 sign checked per variant; a variant that turns a cohort or subperiod negative cannot be a champion"
+  },
+  "sector_concentration_summary": {
+    "baseline_top_sector_share": 0.6262,
+    "note": "relative gate (variant top-sector share must not exceed matched baseline); the sector-neutral book runs ~0.63 due to the known Unknown-sector mapping caveat"
+  },
+  "turnover_cost_summary": {
+    "baseline_turnover": 0.6115,
+    "cost_model": "quarterly long-short book; net(bps)=mean_spread-(bps/1e4)*turnover*2.0"
+  },
+  "n_overfit_variants": 0,
+  "implementation_limits": [
+    "value / yield factors (earnings_yield, book_to_market, fcf_yield) and multi-year stability factors are NOT reconstructed here: they require a PIT market-cap / equity price join or long history not in the current filing-date line-item extraction - deferred (a value leg is the clearest owned-data gap and a candidate for a dedicated reconstruction phase)",
+    "reconstructed factors reuse b10._fund_quarters filing-date availability (90-day fallback lag when filing_date is absent); same PIT rule as the baseline legs",
+    "candidate set is pre-declared (8 factors, 3 families) to avoid multiple-testing inflation; this is not a broad alpha search",
+    "no weight optimisation: only the allowed 70/30, 60/40, 50/50 and 60/20/20, 50/25/25 blends"
+  ],
+  "next_recommended_phase": "10-N",
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true
+  },
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "owned/local data only",
+    "no new factor family beyond owned fundamentals",
+    "no broad alpha search",
+    "no weight optimisation",
+    "no Paper Trader writes",
+    "no orders",
+    "no automation",
+    "no broker",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "no full regression",
+    "no commit",
+    "no push"
+  ]
+}

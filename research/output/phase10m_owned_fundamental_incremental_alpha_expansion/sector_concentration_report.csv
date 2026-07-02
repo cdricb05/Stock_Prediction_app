@@ -1,0 +1,5 @@
+variant_id,top_sector_share,matched_baseline_top_sector_share,classification
+baseline_composite_sn,0.6262,,BASELINE
+base70_cash_return_on_assets_30,0.62147,0.6262,NO_IMPROVEMENT
+base60_cash_return_on_assets_40,0.62147,0.6262,NO_IMPROVEMENT
+base50_cash_return_on_assets_50,0.6212,0.6262,NO_IMPROVEMENT

@@ -1,0 +1,17 @@
+{
+  "phase": "10-N",
+  "from_decision": "BASELINE_REMAINS_CHAMPION",
+  "next_step": "Phase 10-N: fundamental transformation and quality-value interaction search over the owned factors (signed-log / rank / sector-neutral rank / deltas + quality x value, profitability x investment, accruals x leverage, FCF x value interactions), same strict 63d relative gates. No new factors, no providers, no live API, no orders, no automation.",
+  "exact_next_command": "python research/run_phase10n_fundamental_transformation_interaction_search.py",
+  "constraints": [
+    "owned/local data only",
+    "no live API",
+    "no providers",
+    "paper-only",
+    "no orders",
+    "no automation",
+    "no deploy",
+    "no commit",
+    "no push"
+  ]
+}

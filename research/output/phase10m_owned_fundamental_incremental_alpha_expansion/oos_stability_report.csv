@@ -1,0 +1,5 @@
+variant_id,oos_pooled_ic,oos_frac_windows_positive,n_quarters,classification
+baseline_composite_sn,0.02994,0.5,40,BASELINE
+base70_cash_return_on_assets_30,0.03165,0.5,40,NO_IMPROVEMENT
+base60_cash_return_on_assets_40,0.03348,0.625,40,NO_IMPROVEMENT
+base50_cash_return_on_assets_50,0.03346,0.625,40,NO_IMPROVEMENT

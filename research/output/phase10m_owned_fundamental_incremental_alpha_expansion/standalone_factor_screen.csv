@@ -1,0 +1,9 @@
+feature,group,orientation,source,coverage,tickers,ic_mean,ic_t,old_ic,new_ic,pre2020_ic,post2020_ic,both_cohorts_pos,both_subperiods_pos,top_sector_share,eligible,reject_reason
+gross_profitability,profitability,1,norm,38512,543,0.01688,0.86346,0.01191,0.01923,0.06311,-0.00962,True,False,0.48971,False,oriented IC sign disagrees across pre/post-2020 (sign-unstable)
+return_on_assets,profitability,1,recon,38614,543,-0.00127,-0.07163,0.0019,-0.00859,0.02517,-0.01643,False,False,0.47025,False,oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.00127
+operating_margin,profitability,1,recon,38696,543,-0.01983,-1.16427,-0.01289,-0.05635,-0.00943,-0.02579,False,False,0.5477,False,oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.01983
+cash_return_on_assets,profitability,1,recon,38610,542,0.03891,2.43554,0.03047,0.02677,0.05348,0.03055,True,True,0.50451,True,
+asset_growth,investment,-1,norm,38533,542,-0.00502,-0.2853,0.01196,-0.02196,-0.04585,0.0184,False,False,0.65348,False,oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.00502
+net_share_issuance,investment,-1,norm,38465,543,0.00723,0.4626,-0.001,0.03498,-0.00506,0.01427,False,False,0.59911,False,oriented IC sign disagrees across old/new cohorts (sign-unstable)
+leverage_change,leverage,-1,norm,38404,540,-0.01091,-0.77191,-0.01427,-0.00917,-0.04255,0.00723,False,False,0.63339,False,oriented 63d IC not positive (wrong-signed vs the a-priori anomaly): mean_ic=-0.01091
+debt_to_assets,leverage,-1,recon,38483,541,0.00258,0.1627,0.00087,0.00246,-0.04237,0.02835,True,False,0.73113,False,oriented IC sign disagrees across pre/post-2020 (sign-unstable)

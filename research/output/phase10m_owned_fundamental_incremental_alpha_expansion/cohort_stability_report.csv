@@ -1,0 +1,5 @@
+variant_id,both_cohorts_positive,both_subperiods_positive,classification
+baseline_composite_sn,True,True,BASELINE
+base70_cash_return_on_assets_30,True,True,NO_IMPROVEMENT
+base60_cash_return_on_assets_40,True,True,NO_IMPROVEMENT
+base50_cash_return_on_assets_50,True,True,NO_IMPROVEMENT
