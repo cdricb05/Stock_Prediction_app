@@ -1,0 +1,18 @@
+variant_id,group,classification,reason,net25,ic_t,oos_frac_windows_positive,top_sector_share
+w_60_40,weighting,REJECT_OVERFIT,net-25bps improves in-sample but fails the strict test: sector concentration worsens,0.004115,2.794,0.5,0.6292
+w_40_60,weighting,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.002319); baseline stands,0.002319,2.751,0.688,0.62
+w_70_30,weighting,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.003892); baseline stands,0.003892,2.768,0.5,0.6246
+w_30_70,weighting,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.003076); baseline stands,0.003076,2.699,0.688,0.6226
+w_fcf_only_100_0,weighting,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.002262); baseline stands,0.002262,2.382,0.5,0.5948
+w_accruals_only_0_100,weighting,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.002716); baseline stands,0.002716,2.644,0.75,0.621
+zcap_abs_3_0,robustness_transform,REJECT_OVERFIT,net-25bps improves in-sample but fails the strict test: sector concentration worsens,0.004275,2.654,0.5,0.6265
+zcap_abs_2_5,robustness_transform,REJECT_OVERFIT,net-25bps improves in-sample but fails the strict test: sector concentration worsens,0.004209,2.658,0.5,0.6265
+winsorize_1_99,robustness_transform,REJECT_OVERFIT,net-25bps improves in-sample but fails the strict test: sector concentration worsens,0.004195,2.648,0.5,0.6263
+winsorize_5_95,robustness_transform,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.002611); baseline stands,0.002611,2.696,0.5,0.6195
+liq_p25_baseline,liquidity_filter,NO_IMPROVEMENT,does not beat the baseline net-25bps 0.00401 (variant 0.003181); baseline stands,0.003181,1.994,0.5,0.5394
+liq_p50_stricter,liquidity_filter,REJECT_COST_KILLED,quarterly net-25bps -0.00139 <= 0 (cost-killed),-0.00139,1.389,0.625,0.4137
+sector_cap_25_baseline,sector_cap,REJECT_COST_KILLED,quarterly net-25bps -0.002796 <= 0 (cost-killed),-0.002796,2.665,0.5,0.6262
+sector_cap_20_stricter,sector_cap,REJECT_COST_KILLED,quarterly net-25bps -0.001513 <= 0 (cost-killed),-0.001513,2.665,0.5,0.6262
+best_weight_plus_zcap_3_0,combination,REJECT_OVERFIT,net-25bps improves in-sample but fails the strict test: sector concentration worsens,0.004287,2.775,0.5,0.6292
+best_weight_plus_liq_p50,combination,REJECT_COST_KILLED,quarterly net-25bps -0.002087 <= 0 (cost-killed),-0.002087,1.511,0.625,0.4173
+best_weight_plus_sector_cap_20,combination,REJECT_COST_KILLED,quarterly net-25bps -0.002313 <= 0 (cost-killed),-0.002313,2.794,0.5,0.6292
