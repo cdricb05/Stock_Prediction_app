@@ -1,0 +1,16 @@
+{
+  "phase": "10-Q",
+  "from_decision": "REJECT_REGIME_OVERFIT",
+  "next_step": "Phase 10-Q: owned data exhausted for stronger alpha (reweighting 10-L-B, incremental factors 10-M, transforms/interactions 10-N, and regimes 10-O all failed to beat the baseline out-of-sample). Write the final honest research decision: package the modest baseline for paper review, or pause pending new owned data (a PIT-normalized value leg is the clearest gap).",
+  "exact_next_command": "python research/run_phase10q_owned_data_exhaustion_research_decision.py",
+  "constraints": [
+    "owned/local only",
+    "no live API",
+    "paper-only",
+    "no orders",
+    "no automation",
+    "no deploy",
+    "no commit",
+    "no push"
+  ]
+}

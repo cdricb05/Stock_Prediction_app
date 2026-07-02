@@ -1,0 +1,12 @@
+regime_id,kind,column,state1,state0
+easy_regime,flag,easy_regime,risk-on / easy market,risk-off / hard market
+high_rates,flag,high_rates,high rates,low rates
+market_drawdown,flag,market_drawdown,market drawdown,no drawdown
+high_oil,flag,high_oil,high oil,low oil
+strong_dollar,flag,strong_dollar,strong dollar,weak dollar
+rates_10y_level,median,rates_10y,above-median 10y,below-median 10y
+curve_2s10s,median,rates_2s10s,steep curve,flat/inverted curve
+oil_momentum,median,oil_z,high oil momentum,low oil momentum
+market_vol,median,vol_63,high market vol,low market vol
+return_dispersion,median,mom_pre_63,high dispersion,low dispersion
+market_liquidity,median,liquidity_proxy,high liquidity,low liquidity

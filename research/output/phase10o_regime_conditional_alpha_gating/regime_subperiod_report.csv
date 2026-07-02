@@ -1,0 +1,12 @@
+regime,favourable_state,pre2020_net25,pre2020_nq,post2020_net25,post2020_nq,classification
+easy_regime,risk-off / hard market,,0,0.01443,9,REJECT_TINY_SAMPLE
+high_rates,low rates,0.00472,14,0.00873,11,REJECT_REGIME_OVERFIT
+market_drawdown,no drawdown,0.00522,15,0.00395,20,NO_IMPROVEMENT
+high_oil,low oil,-0.00891,3,0.00734,14,NO_IMPROVEMENT
+strong_dollar,strong dollar,-0.00324,10,0.01011,13,NO_IMPROVEMENT
+rates_10y_level,below-median 10y,0.00132,11,0.01206,10,REJECT_REGIME_OVERFIT
+curve_2s10s,flat/inverted curve,0.00066,6,0.01261,15,REJECT_REGIME_OVERFIT
+oil_momentum,low oil momentum,-0.00147,7,0.00734,14,NO_IMPROVEMENT
+market_vol,low market vol,0.00399,12,0.01904,9,REJECT_REGIME_OVERFIT
+return_dispersion,low dispersion,0.00522,15,0.00993,6,REJECT_REGIME_OVERFIT
+market_liquidity,low liquidity,0.00472,14,0.02276,7,REJECT_REGIME_OVERFIT

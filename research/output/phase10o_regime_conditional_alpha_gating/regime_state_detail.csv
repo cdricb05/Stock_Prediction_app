@@ -1,0 +1,12 @@
+regime,state1_desc,state1_net25,state1_ic_t,state1_nq,state1_nevents,state0_desc,state0_net25,state0_ic_t,state0_nq,state0_nevents
+easy_regime,risk-on / easy market,0.00098,1.67301,31,33526,risk-off / hard market,0.01443,2.68393,9,4878
+high_rates,high rates,-0.00021,0.75253,15,25395,low rates,0.00652,2.8457,25,13009
+market_drawdown,market drawdown,0.00064,1.59705,5,2722,no drawdown,0.00452,2.20566,35,35682
+high_oil,high oil,0.00346,2.3123,23,29252,low oil,0.00454,1.46774,17,9152
+strong_dollar,strong dollar,0.00435,2.03269,23,12273,weak dollar,0.0034,1.71397,17,26131
+rates_10y_level,above-median 10y,0.00122,1.41617,19,27432,below-median 10y,0.00647,2.3146,21,10972
+curve_2s10s,steep curve,-0.00183,1.11625,19,27227,flat/inverted curve,0.00924,2.62524,21,11177
+oil_momentum,high oil momentum,0.0034,2.04357,19,27165,low oil momentum,0.00445,1.77282,21,11239
+market_vol,high market vol,-0.0034,1.41672,19,10611,low market vol,0.01049,2.37074,21,27793
+return_dispersion,high dispersion,0.00092,1.42971,19,10727,low dispersion,0.00661,2.48675,21,27677
+market_liquidity,high liquidity,-0.00363,0.49985,19,26931,low liquidity,0.01078,3.2177,21,11473
