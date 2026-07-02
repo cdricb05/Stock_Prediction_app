@@ -1,0 +1,5 @@
+new_data_family,why,access
+Analyst estimate-revision history,highest-priority orthogonal alpha family (post-earnings drift / revisions momentum),paid feed (e.g. EODHD estimates entitlement or a revisions provider)
+"Short interest / days-to-cover (full universe, historical)",short-side crowding / squeeze signal,paid or entitlement-limited (Polygon full-universe failed in 10-A)
+Options-implied vol / skew,forward-looking risk + informed-flow signal,paid feed
+Richer sentiment / alternative data,quality-orthogonal soft information,paid feed

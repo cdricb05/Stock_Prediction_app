@@ -1,0 +1,259 @@
+{
+  "phase": "10-Q",
+  "phase_name": "Owned Data Exhaustion And Research Decision",
+  "decision": "PACKAGE_MODEST_BASELINE_FOR_PAPER_REVIEW",
+  "decision_rationale": "the modest / boundary 10-D quality composite is the ONLY usable owned-data alpha; reweighting (10-L-B), incremental fundamentals (10-M), transforms/interactions (10-N) and regimes (10-O) all failed to beat it out-of-sample. Carry the modest baseline forward for PAPER review (it already passed the strict 10-D gate and is packaged in 10-E -> 10-I); a genuinely STRONGER alpha needs new orthogonal data (analyst revisions / short interest / options / richer sentiment - paid), so do NOT keep mining the exhausted owned fundamentals + regimes.",
+  "allowed_decisions": [
+    "PACKAGE_MODEST_BASELINE_FOR_PAPER_REVIEW",
+    "PAUSE_ALPHA_RESEARCH_NEEDS_NEW_DATA",
+    "NEEDS_DATA_REFRESH_BEFORE_DECISION"
+  ],
+  "objective": "final honest owned-data-exhaustion research decision after the 10-L-B / 10-M / 10-N / 10-O improvement queue - synthesis only, no new fitting",
+  "offline": true,
+  "performs_network": false,
+  "eodhd_key_visible": true,
+  "eodhd_key_required": false,
+  "input_inventory": [
+    {
+      "phase": "10-L-B",
+      "avenue": "two-factor reweighting / z-cap / winsorize / liquidity / sector-cap",
+      "decision": null,
+      "report": "phase10l_quality_composite_reweighting_robustness_backtest/phase10l_quality_composite_reweighting_robustness_backtest.json"
+    },
+    {
+      "phase": "10-M",
+      "avenue": "incremental owned fundamental factors (profitability/investment/leverage)",
+      "decision": null,
+      "report": "phase10m_owned_fundamental_incremental_alpha_expansion/phase10m_owned_fundamental_incremental_alpha_expansion.json"
+    },
+    {
+      "phase": "10-N",
+      "avenue": "nonlinear transforms + quality/value/leverage interactions",
+      "decision": null,
+      "report": "phase10n_fundamental_transformation_interaction_search/phase10n_fundamental_transformation_interaction_search.json"
+    },
+    {
+      "phase": "10-O",
+      "avenue": "regime / conditional gating (macro / vol / dispersion / liquidity)",
+      "decision": null,
+      "report": "phase10o_regime_conditional_alpha_gating/phase10o_regime_conditional_alpha_gating.json"
+    }
+  ],
+  "baseline": {
+    "signal": "composite_sn",
+    "weighting": "equal (fcf+ / accruals-), sector-neutral, 63d quarterly",
+    "ic_t_63d": 2.665,
+    "quarterly_net_25bps": 0.00401,
+    "quarterly_net_50bps": 0.00095,
+    "quarterly_turnover": 0.6115,
+    "oos_frac_windows_positive": 0.5,
+    "top_sector_share": 0.6262,
+    "alpha_character": "REAL but MODEST / boundary (below the 3.0 strong bar; not oversold; accruals short leg carries most robustness)",
+    "paper_status": "confirmed at 10-D; already packaged for paper review (10-E -> 10-I sector-neutral 25L/25S rules + paper position tracker)"
+  },
+  "candidates_tested": [
+    {
+      "phase": "10-L-B",
+      "avenue": "two-factor reweighting / z-cap / winsorize / liquidity / sector-cap",
+      "decision": "REJECT_REWEIGHTING_OVERFIT",
+      "champion": "baseline_composite_sn_equal_weight",
+      "found_stronger_alpha": false
+    },
+    {
+      "phase": "10-M",
+      "avenue": "incremental owned fundamental factors (profitability/investment/leverage)",
+      "decision": "BASELINE_REMAINS_CHAMPION",
+      "champion": "baseline_composite_sn",
+      "found_stronger_alpha": false
+    },
+    {
+      "phase": "10-N",
+      "avenue": "nonlinear transforms + quality/value/leverage interactions",
+      "decision": "REJECT_TRANSFORM_OVERFIT",
+      "champion": "baseline_composite_sn",
+      "found_stronger_alpha": false
+    },
+    {
+      "phase": "10-O",
+      "avenue": "regime / conditional gating (macro / vol / dispersion / liquidity)",
+      "decision": "REJECT_REGIME_OVERFIT",
+      "champion": "baseline_composite_sn",
+      "found_stronger_alpha": false
+    }
+  ],
+  "variants_tested": [
+    {
+      "phase": "10-L-B",
+      "avenue": "two-factor reweighting / z-cap / winsorize / liquidity / sector-cap",
+      "decision": "REJECT_REWEIGHTING_OVERFIT"
+    },
+    {
+      "phase": "10-M",
+      "avenue": "incremental owned fundamental factors (profitability/investment/leverage)",
+      "decision": "BASELINE_REMAINS_CHAMPION"
+    },
+    {
+      "phase": "10-N",
+      "avenue": "nonlinear transforms + quality/value/leverage interactions",
+      "decision": "REJECT_TRANSFORM_OVERFIT"
+    },
+    {
+      "phase": "10-O",
+      "avenue": "regime / conditional gating (macro / vol / dispersion / liquidity)",
+      "decision": "REJECT_REGIME_OVERFIT"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "phase": "10-L-B",
+      "avenue": "two-factor reweighting / z-cap / winsorize / liquidity / sector-cap",
+      "decision": "REJECT_REWEIGHTING_OVERFIT",
+      "why": "one or more variants (w_60_40, zcap_abs_3_0, zcap_abs_2_5, winsorize_1_99, best_weight_plus_zcap_3_0) raise the in-sample quarterly net-25bps but FAIL the strict test (a secondary criterion worse and/or the improvement not robust across cohorts/subperiods/quarters) - classic reweighting overfit. The"
+    },
+    {
+      "phase": "10-M",
+      "avenue": "incremental owned fundamental factors (profitability/investment/leverage)",
+      "decision": "BASELINE_REMAINS_CHAMPION",
+      "why": "every eligible owned fundamental factor, blended at the allowed weights, failed to beat the matched-baseline net-25bps (or was cost-killed); adding a third owned quality/investment/leverage leg does not improve the two-leg composite - the baseline remains champion."
+    },
+    {
+      "phase": "10-N",
+      "avenue": "nonlinear transforms + quality/value/leverage interactions",
+      "decision": "REJECT_TRANSFORM_OVERFIT",
+      "why": "at least one transform/interaction raised in-sample net-25bps but failed a secondary criterion (concentration / turnover / cohort or subperiod sign) - classic transform overfit; the baseline stays champion and nothing is productized."
+    },
+    {
+      "phase": "10-O",
+      "avenue": "regime / conditional gating (macro / vol / dispersion / liquidity)",
+      "decision": "REJECT_REGIME_OVERFIT",
+      "why": "one or more regimes showed a stronger favourable-state edge in-sample but it failed the strict test (one-era / subperiod sign reversal / IC-t worse) - classic regime selection overfit; the always-on baseline stays champion and no regime overlay is productized."
+    }
+  ],
+  "champion": {
+    "champion": "composite_sn (the modest 10-D baseline)",
+    "baseline_remains_champion": true,
+    "no_stronger_owned_alpha_found": true
+  },
+  "baseline_vs_champion": {
+    "note": "the champion IS the baseline; no improvement avenue beat it out-of-sample"
+  },
+  "owned_data_exhaustion": [
+    {
+      "family": "EODHD fundamentals - quality legs (fcf_to_assets, operating_accruals)",
+      "status": "EXHAUSTED (baseline)",
+      "note": "the confirmed 10-D two-leg composite; reweighting (10-L-B) does not improve it"
+    },
+    {
+      "family": "EODHD fundamentals - profitability (gross_prof, roa, op_margin, cash_roa)",
+      "status": "EXHAUSTED",
+      "note": "10-M: 7/8 wrong-signed or sign-unstable at 63d; the one eligible (cash_roa) dilutes the spread"
+    },
+    {
+      "family": "EODHD fundamentals - investment (asset_growth, net_share_issuance)",
+      "status": "EXHAUSTED",
+      "note": "10-M: wrong-signed / sign-unstable at 63d"
+    },
+    {
+      "family": "EODHD fundamentals - leverage (leverage_change, debt_to_assets)",
+      "status": "EXHAUSTED",
+      "note": "10-M: wrong-signed / sign-unstable at 63d"
+    },
+    {
+      "family": "Nonlinear transforms of owned factors (signed-log / rank / sn-rank / delta)",
+      "status": "EXHAUSTED",
+      "note": "10-N: the only full-sample winner (rank composite) is a pre-2020 relic that reverses post-2020"
+    },
+    {
+      "family": "Owned-factor interactions (quality x value, prof x invest, accruals x leverage, FCF x value)",
+      "status": "EXHAUSTED",
+      "note": "10-N: value interactions wrong-signed / insignificant at 63d; others do not beat net25"
+    },
+    {
+      "family": "Owned FRED macro + benchmark regimes (rates/oil/dollar/vol/dispersion/liquidity)",
+      "status": "EXHAUSTED",
+      "note": "10-O: apparent regime lifts are entirely post-2020; none beats the baseline in both eras"
+    },
+    {
+      "family": "PIT-reconstructed VALUE leg (earnings_yield / book_to_market from owned prices + equity)",
+      "status": "UNTESTED-AS-LEG (low-priority)",
+      "note": "the one remaining owned avenue; but 10-N value interactions were already wrong-signed at 63d, so a value leg is unlikely to help and needs a careful PIT market-cap join"
+    },
+    {
+      "family": "Owned EODHD news sentiment",
+      "status": "WEAK (8-series)",
+      "note": "explored in the 8-series; not a robust standalone quality-orthogonal alpha at 63d"
+    }
+  ],
+  "new_data_requirements": [
+    {
+      "family": "Analyst estimate-revision history",
+      "why": "highest-priority orthogonal alpha family (post-earnings drift / revisions momentum)",
+      "access": "paid feed (e.g. EODHD estimates entitlement or a revisions provider)"
+    },
+    {
+      "family": "Short interest / days-to-cover (full universe, historical)",
+      "why": "short-side crowding / squeeze signal",
+      "access": "paid or entitlement-limited (Polygon full-universe failed in 10-A)"
+    },
+    {
+      "family": "Options-implied vol / skew",
+      "why": "forward-looking risk + informed-flow signal",
+      "access": "paid feed"
+    },
+    {
+      "family": "Richer sentiment / alternative data",
+      "why": "quality-orthogonal soft information",
+      "access": "paid feed"
+    }
+  ],
+  "oos_stability_summary": {
+    "note": "every improvement avenue's apparent gain failed an OOS / subperiod-generalisation guard (10-N rank composite and 10-O regimes were all post-2020 relics)"
+  },
+  "cohort_stability_summary": {
+    "note": "the baseline is cohort- and subperiod-stable (10-D); the rejected candidates were not era-robust"
+  },
+  "sector_concentration_summary": {
+    "baseline_top_sector_share": 0.6262,
+    "note": "sector-neutral book runs ~0.63 (known Unknown-sector mapping caveat, repaired in 10-F)"
+  },
+  "turnover_cost_summary": {
+    "baseline_turnover": 0.6115,
+    "note": "quarterly rebalance; the baseline survives 25bps at 63d"
+  },
+  "implementation_limits": [
+    "synthesis phase: reads frozen prior-phase decision JSONs; builds no panel and fits nothing",
+    "the modest baseline is not a prediction oracle and is not oversold - it is a small, cost-robust, sector-neutral quality tilt suitable ONLY for paper review",
+    "a PIT-reconstructed value leg is the single remaining owned avenue but is low-priority given the 10-N wrong-signed value interactions; a stronger alpha realistically needs new paid data",
+    "no new data was acquired and no provider was probed - paid-feed acquisition requires explicit user opt-in and is out of scope for this offline autonomous run"
+  ],
+  "recommended_next_actions": [
+    "PAPER-review the modest 10-D/10-H sector-neutral 25L/25S book with the existing 10-I tracker (human gate; paper-only; no orders; no automation)",
+    "if a stronger alpha is required, obtain ONE orthogonal paid family (analyst estimate-revisions first) with explicit user opt-in, then re-run the 8-X / 10-B strong-alpha gate",
+    "optionally, a low-priority owned-data value-leg reconstruction (earnings_yield / book_to_market with a PIT market-cap join) before any purchase - expected weak per 10-N"
+  ],
+  "next_recommended_phase": "human paper review (10-I tracker) or a new-data acquisition phase on explicit user opt-in",
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true
+  },
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "owned/local data only",
+    "no new data",
+    "no Paper Trader writes",
+    "no orders",
+    "no automation",
+    "no broker",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "no full regression",
+    "no commit",
+    "no push"
+  ]
+}

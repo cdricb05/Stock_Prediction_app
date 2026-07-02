@@ -1,0 +1,10 @@
+owned_data_family,status,note
+"EODHD fundamentals - quality legs (fcf_to_assets, operating_accruals)",EXHAUSTED (baseline),the confirmed 10-D two-leg composite; reweighting (10-L-B) does not improve it
+"EODHD fundamentals - profitability (gross_prof, roa, op_margin, cash_roa)",EXHAUSTED,10-M: 7/8 wrong-signed or sign-unstable at 63d; the one eligible (cash_roa) dilutes the spread
+"EODHD fundamentals - investment (asset_growth, net_share_issuance)",EXHAUSTED,10-M: wrong-signed / sign-unstable at 63d
+"EODHD fundamentals - leverage (leverage_change, debt_to_assets)",EXHAUSTED,10-M: wrong-signed / sign-unstable at 63d
+Nonlinear transforms of owned factors (signed-log / rank / sn-rank / delta),EXHAUSTED,10-N: the only full-sample winner (rank composite) is a pre-2020 relic that reverses post-2020
+"Owned-factor interactions (quality x value, prof x invest, accruals x leverage, FCF x value)",EXHAUSTED,10-N: value interactions wrong-signed / insignificant at 63d; others do not beat net25
+Owned FRED macro + benchmark regimes (rates/oil/dollar/vol/dispersion/liquidity),EXHAUSTED,10-O: apparent regime lifts are entirely post-2020; none beats the baseline in both eras
+PIT-reconstructed VALUE leg (earnings_yield / book_to_market from owned prices + equity),UNTESTED-AS-LEG (low-priority),"the one remaining owned avenue; but 10-N value interactions were already wrong-signed at 63d, so a value leg is unlikely to help and needs a careful PIT market-cap join"
+Owned EODHD news sentiment,WEAK (8-series),explored in the 8-series; not a robust standalone quality-orthogonal alpha at 63d
