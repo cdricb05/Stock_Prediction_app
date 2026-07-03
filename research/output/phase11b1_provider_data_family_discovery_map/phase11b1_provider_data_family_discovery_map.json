@@ -21,15 +21,15 @@
     "E_news_sentiment": 3
   },
   "entitled_keys_overlay": {
-    "INTRINIO_API_KEY": false,
-    "FMP_API_KEY": true,
-    "EODHD_API_KEY": true,
-    "TIINGO_API_KEY": true,
-    "POLYGON_API_KEY": true,
     "ALPHAVANTAGE_API_KEY": true,
+    "EODHD_API_KEY": true,
+    "FINNHUB_API_KEY": true,
+    "FMP_API_KEY": true,
+    "INTRINIO_API_KEY": false,
     "NASDAQ_DATA_LINK_API_KEY": true,
     "ORATS_API_KEY": false,
-    "FINNHUB_API_KEY": true
+    "POLYGON_API_KEY": true,
+    "TIINGO_API_KEY": true
   },
   "providers": [
     {

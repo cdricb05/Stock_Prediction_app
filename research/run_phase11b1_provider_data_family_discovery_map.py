@@ -225,7 +225,7 @@ PROVIDERS = [
 
 
 def build_map():
-    present = {name: (name in os.environ) for name in set(PROVIDER_KEY_ENV.values())}
+    present = {name: (name in os.environ) for name in sorted(set(PROVIDER_KEY_ENV.values()))}
     rows = []
     for p in PROVIDERS:
         env = PROVIDER_KEY_ENV.get(p["provider"])
