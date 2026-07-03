@@ -1,0 +1,5 @@
+family,rows,unique_tickers,distinct_months,median_obs_per_ticker
+insider_sentiment_mspr,21623,292,125,76
+analyst_recommendation_change,1792,448,8,4
+analyst_estimate_revision_av,2154,23,319,111
+short_interest_days_to_cover,5450,545,102,10

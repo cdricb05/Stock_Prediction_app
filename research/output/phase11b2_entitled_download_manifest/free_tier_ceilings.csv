@@ -1,0 +1,6 @@
+provider,family,free_limit,names_collected,universe_needed,consequence
+AlphaVantage,analyst_estimate_revision,25 requests/day,23,545,full-universe collection would take ~22 days at the free cap; PIT revision history not delivered -> paid tier required for depth.
+FMP,analyst_estimates,premium-gated on current key tier,8,545,analyst estimates endpoint returns only a handful of names on this tier -> paid tier required for universe coverage.
+Finnhub,analyst_recommendation_change,recommendation-trend returns only the most recent ~4 monthly snapshots/name,448,545,broad coverage but per-name history too shallow for a walk-forward OOS test -> not backtestable (Phase 11-B0 SHALLOW_SNAPSHOT).
+Finnhub,insider_sentiment,monthly aggregate MSPR (free),292,545,broad + deep (10yr) and backtestable; tested in Phase 11-C -> NO incremental alpha.
+Polygon,short_interest,entitled key (bimonthly),545,545,full universe; family already rejected in 10-A and short-interest change re-tested in 11-C -> NO incremental alpha.

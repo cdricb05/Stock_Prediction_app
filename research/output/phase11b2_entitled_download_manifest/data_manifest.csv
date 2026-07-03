@@ -1,0 +1,9 @@
+provider,family,raw_dir,raw_files,raw_size_mb,raw_ext,normalized_csv,normalized_present,unique_tickers,distinct_months,median_obs_per_ticker
+finnhub,insider_sentiment_mspr,research/data/finnhub/raw/insider_sentiment_transactions,322,2.762,.json,research/data/finnhub/normalized/insider_sentiment_transactions/insider_mspr.csv,True,292,125,76
+finnhub,analyst_recommendation_change,research/data/finnhub/raw/analyst_recommendation_changes,452,0.276,.json,research/data/finnhub/normalized/analyst_recommendation_changes/rec_change_net.csv,True,448,8,4
+alphavantage,analyst_estimate_revision_av,research/data/alpha/raw/analyst_estimate_revisions,23,0.604,.json,research/data/alpha/normalized/analyst_estimate_revisions/est_eps_revision.csv,True,23,319,111
+fmp,analyst_estimates_fmp,research/data/fmp/raw/analyst_estimates,8,0.055,.json,,False,,,
+fmp,analyst_price_targets_fmp,research/data/fmp/raw/analyst_price_targets,8,0.004,.json,,False,,,
+fmp,ratings_grades_consensus_fmp,research/data/fmp/raw/ratings_grades_consensus,8,0.001,.json,,False,,,
+polygon,short_interest_days_to_cover,research/data/polygon/raw/short_interest_days_to_cover,545,1.092,.json,research/data/polygon/normalized/short_interest_days_to_cover/short_interest_ratio.csv,True,545,102,10
+alphavantage,earnings_av,research/data/alphavantage/raw/earnings,1,0.033,.json,,False,,,

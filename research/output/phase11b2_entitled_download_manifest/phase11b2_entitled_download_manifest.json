@@ -1,0 +1,226 @@
+{
+  "phase": "11-B2",
+  "phase_name": "Free / Currently-Entitled Data Manifest",
+  "offline": true,
+  "performs_network": false,
+  "redownloaded": false,
+  "decision": "PARTIAL_FREE_DATA_LOADED",
+  "decision_rationale": "Substantial free / currently-entitled orthogonal data is already on disk across 8 families (1367 raw files, 4.8 MB). The broad + deep members (insider sentiment, short interest) were tested in Phase 11-C and yielded NO incremental alpha; the highest-priority family (analyst estimate revisions) is capped by free-tier limits (AlphaVantage 25/day -> 23 names; FMP tier -> 8 names) and cannot be free-expanded to 545-name PIT depth. The remaining blocker is a PAID entitlement, handed to Phase 11-B4. No re-download and no live API calls were performed.",
+  "manifest": [
+    {
+      "provider": "finnhub",
+      "family": "insider_sentiment_mspr",
+      "raw_dir": "research/data/finnhub/raw/insider_sentiment_transactions",
+      "raw_files": 322,
+      "raw_size_mb": 2.762,
+      "raw_ext": ".json",
+      "normalized_csv": "research/data/finnhub/normalized/insider_sentiment_transactions/insider_mspr.csv",
+      "normalized_present": true,
+      "unique_tickers": 292,
+      "distinct_months": 125,
+      "median_obs_per_ticker": 76
+    },
+    {
+      "provider": "finnhub",
+      "family": "analyst_recommendation_change",
+      "raw_dir": "research/data/finnhub/raw/analyst_recommendation_changes",
+      "raw_files": 452,
+      "raw_size_mb": 0.276,
+      "raw_ext": ".json",
+      "normalized_csv": "research/data/finnhub/normalized/analyst_recommendation_changes/rec_change_net.csv",
+      "normalized_present": true,
+      "unique_tickers": 448,
+      "distinct_months": 8,
+      "median_obs_per_ticker": 4
+    },
+    {
+      "provider": "alphavantage",
+      "family": "analyst_estimate_revision_av",
+      "raw_dir": "research/data/alpha/raw/analyst_estimate_revisions",
+      "raw_files": 23,
+      "raw_size_mb": 0.604,
+      "raw_ext": ".json",
+      "normalized_csv": "research/data/alpha/normalized/analyst_estimate_revisions/est_eps_revision.csv",
+      "normalized_present": true,
+      "unique_tickers": 23,
+      "distinct_months": 319,
+      "median_obs_per_ticker": 111
+    },
+    {
+      "provider": "fmp",
+      "family": "analyst_estimates_fmp",
+      "raw_dir": "research/data/fmp/raw/analyst_estimates",
+      "raw_files": 8,
+      "raw_size_mb": 0.055,
+      "raw_ext": ".json",
+      "normalized_csv": "",
+      "normalized_present": false,
+      "unique_tickers": null,
+      "distinct_months": null,
+      "median_obs_per_ticker": null
+    },
+    {
+      "provider": "fmp",
+      "family": "analyst_price_targets_fmp",
+      "raw_dir": "research/data/fmp/raw/analyst_price_targets",
+      "raw_files": 8,
+      "raw_size_mb": 0.004,
+      "raw_ext": ".json",
+      "normalized_csv": "",
+      "normalized_present": false,
+      "unique_tickers": null,
+      "distinct_months": null,
+      "median_obs_per_ticker": null
+    },
+    {
+      "provider": "fmp",
+      "family": "ratings_grades_consensus_fmp",
+      "raw_dir": "research/data/fmp/raw/ratings_grades_consensus",
+      "raw_files": 8,
+      "raw_size_mb": 0.001,
+      "raw_ext": ".json",
+      "normalized_csv": "",
+      "normalized_present": false,
+      "unique_tickers": null,
+      "distinct_months": null,
+      "median_obs_per_ticker": null
+    },
+    {
+      "provider": "polygon",
+      "family": "short_interest_days_to_cover",
+      "raw_dir": "research/data/polygon/raw/short_interest_days_to_cover",
+      "raw_files": 545,
+      "raw_size_mb": 1.092,
+      "raw_ext": ".json",
+      "normalized_csv": "research/data/polygon/normalized/short_interest_days_to_cover/short_interest_ratio.csv",
+      "normalized_present": true,
+      "unique_tickers": 545,
+      "distinct_months": 102,
+      "median_obs_per_ticker": 10
+    },
+    {
+      "provider": "alphavantage",
+      "family": "earnings_av",
+      "raw_dir": "research/data/alphavantage/raw/earnings",
+      "raw_files": 1,
+      "raw_size_mb": 0.033,
+      "raw_ext": ".json",
+      "normalized_csv": "",
+      "normalized_present": false,
+      "unique_tickers": null,
+      "distinct_months": null,
+      "median_obs_per_ticker": null
+    }
+  ],
+  "coverage_summary": [
+    {
+      "family": "insider_sentiment_mspr",
+      "rows": 21623,
+      "unique_tickers": 292,
+      "distinct_months": 125,
+      "median_obs_per_ticker": 76
+    },
+    {
+      "family": "analyst_recommendation_change",
+      "rows": 1792,
+      "unique_tickers": 448,
+      "distinct_months": 8,
+      "median_obs_per_ticker": 4
+    },
+    {
+      "family": "analyst_estimate_revision_av",
+      "rows": 2154,
+      "unique_tickers": 23,
+      "distinct_months": 319,
+      "median_obs_per_ticker": 111
+    },
+    {
+      "family": "short_interest_days_to_cover",
+      "rows": 5450,
+      "unique_tickers": 545,
+      "distinct_months": 102,
+      "median_obs_per_ticker": 10
+    }
+  ],
+  "schema_summary": [
+    {
+      "family": "insider_sentiment_mspr",
+      "columns": "ticker,available_date,insider_mspr"
+    },
+    {
+      "family": "analyst_recommendation_change",
+      "columns": "ticker,available_date,rec_change_net"
+    },
+    {
+      "family": "analyst_estimate_revision_av",
+      "columns": "ticker,available_date,est_eps_revision,eps_estimate,reported_eps"
+    },
+    {
+      "family": "short_interest_days_to_cover",
+      "columns": "ticker,available_date,short_interest_ratio,short_interest,days_to_cover,avg_daily_volume"
+    }
+  ],
+  "free_tier_ceilings": [
+    {
+      "provider": "AlphaVantage",
+      "family": "analyst_estimate_revision",
+      "free_limit": "25 requests/day",
+      "names_collected": 23,
+      "universe_needed": 545,
+      "consequence": "full-universe collection would take ~22 days at the free cap; PIT revision history not delivered -> paid tier required for depth."
+    },
+    {
+      "provider": "FMP",
+      "family": "analyst_estimates",
+      "free_limit": "premium-gated on current key tier",
+      "names_collected": 8,
+      "universe_needed": 545,
+      "consequence": "analyst estimates endpoint returns only a handful of names on this tier -> paid tier required for universe coverage."
+    },
+    {
+      "provider": "Finnhub",
+      "family": "analyst_recommendation_change",
+      "free_limit": "recommendation-trend returns only the most recent ~4 monthly snapshots/name",
+      "names_collected": 448,
+      "universe_needed": 545,
+      "consequence": "broad coverage but per-name history too shallow for a walk-forward OOS test -> not backtestable (Phase 11-B0 SHALLOW_SNAPSHOT)."
+    },
+    {
+      "provider": "Finnhub",
+      "family": "insider_sentiment",
+      "free_limit": "monthly aggregate MSPR (free)",
+      "names_collected": 292,
+      "universe_needed": 545,
+      "consequence": "broad + deep (10yr) and backtestable; tested in Phase 11-C -> NO incremental alpha."
+    },
+    {
+      "provider": "Polygon",
+      "family": "short_interest",
+      "free_limit": "entitled key (bimonthly)",
+      "names_collected": 545,
+      "universe_needed": 545,
+      "consequence": "full universe; family already rejected in 10-A and short-interest change re-tested in 11-C -> NO incremental alpha."
+    }
+  ],
+  "totals": {
+    "raw_files": 1367,
+    "raw_size_mb": 4.83,
+    "families_loaded": 8
+  },
+  "credential_missing": [],
+  "download_blocked": [],
+  "next_phase": "11-B3 readiness gate, then 11-B4 paid shopping cart (analyst estimate revisions)",
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_redownload": true,
+    "no_secret_values": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true,
+    "no_gcp": true,
+    "no_payment_submitted": true
+  }
+}
