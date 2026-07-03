@@ -1,0 +1,1109 @@
+{
+  "phase": "11-A",
+  "phase_name": "Orthogonal Data Acquisition Decision Package",
+  "decision": "ANALYST_REVISIONS_FIRST",
+  "decision_rationale": "Analyst estimate revisions ranks #1 of the six orthogonal families on the weighted scorecard (composite 4.500/5). It is the most orthogonal to the fcf_to_assets / operating_accruals quality baseline (forward-looking expectation changes vs realized levels), has the strongest economic rationale and prior-phase evidence (named the #1 new-data family in 8-Y / 10-A / 10-Q), fits the 63d/quarterly horizon, has near-universal S&P 500 coverage, and is accessible via an affordable trial. Acquire it FIRST (explicit user opt-in) and validate under the Phase 11-B trial plan; reject if it fails the OOS / subperiod-net25 stability gate.",
+  "allowed_decisions": [
+    "ANALYST_REVISIONS_FIRST",
+    "SHORT_INTEREST_FIRST",
+    "OPTIONS_DATA_FIRST",
+    "SENTIMENT_DATA_FIRST",
+    "PAUSE_NO_DATA_BUDGET"
+  ],
+  "objective": "rigorous, evidence-based decision package for which paid/trial orthogonal data family to acquire FIRST to raise the chance of finding a stronger alpha - design only; no acquisition, no probe, no API, no key",
+  "offline": true,
+  "performs_network": false,
+  "eodhd_key_visible": true,
+  "eodhd_key_required": false,
+  "owned_data_search_status": "EXHAUSTED - the owned/local EODHD fundamentals + prices, FRED macro and benchmark regimes were exhausted for a stronger edge through Phase 10-Q (10-L-B / 10-M / 10-N / 10-O all failed OOS)",
+  "input_inventory": [
+    {
+      "source": "Phase 10-Q owned-data-exhaustion decision",
+      "role": "why new data is needed"
+    },
+    {
+      "source": "Phase 10-D frozen quality baseline (composite_sn)",
+      "role": "incumbent to beat"
+    },
+    {
+      "source": "Phase 8-Y / 10-A orthogonal-data notes",
+      "role": "prior evidence + vendor context"
+    },
+    {
+      "source": "candidate data-family domain knowledge",
+      "role": "scorecard inputs (no probing)"
+    }
+  ],
+  "scoring_model": {
+    "axes": [
+      "economic_rationale_strength",
+      "orthogonality_to_baseline",
+      "prior_phase_evidence",
+      "horizon_fit_63d",
+      "update_frequency_suitability",
+      "coverage_sp500",
+      "historical_depth_availability",
+      "survivorship_risk_low",
+      "cost_entitlement_accessibility",
+      "integration_simplicity",
+      "data_quality_robustness"
+    ],
+    "weights": {
+      "economic_rationale_strength": 0.12,
+      "orthogonality_to_baseline": 0.16,
+      "prior_phase_evidence": 0.12,
+      "horizon_fit_63d": 0.14,
+      "update_frequency_suitability": 0.06,
+      "coverage_sp500": 0.08,
+      "historical_depth_availability": 0.06,
+      "survivorship_risk_low": 0.06,
+      "cost_entitlement_accessibility": 0.08,
+      "integration_simplicity": 0.06,
+      "data_quality_robustness": 0.06
+    },
+    "scale": "1-5 (5 = most favourable)",
+    "min_compelling_composite": 3.0,
+    "note": "weights over-weight orthogonality, rationale, prior evidence, and 63d fit"
+  },
+  "baseline": {
+    "signal": "composite_sn",
+    "weighting": "equal (fcf+ / accruals-), sector-neutral, 63d quarterly",
+    "ic_t_63d": 2.665,
+    "quarterly_net_25bps": 0.00401,
+    "quarterly_net_50bps": 0.00095,
+    "quarterly_turnover": 0.6115,
+    "oos_frac_windows_positive": 0.5,
+    "top_sector_share": 0.6262,
+    "alpha_character": "REAL but MODEST / boundary (below the 3.0 strong bar); a new orthogonal factor must beat THIS to justify the spend"
+  },
+  "data_family_scorecard": [
+    {
+      "rank": 1,
+      "family_key": "analyst_estimate_revisions",
+      "family_name": "Analyst estimate revisions",
+      "is_primary_candidate": true,
+      "composite_score": 4.5,
+      "maps_to_decision": "ANALYST_REVISIONS_FIRST",
+      "scores": {
+        "economic_rationale_strength": 5,
+        "orthogonality_to_baseline": 5,
+        "prior_phase_evidence": 5,
+        "horizon_fit_63d": 5,
+        "update_frequency_suitability": 4,
+        "coverage_sp500": 5,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 3,
+        "cost_entitlement_accessibility": 4,
+        "integration_simplicity": 4,
+        "data_quality_robustness": 3
+      }
+    },
+    {
+      "rank": 2,
+      "family_key": "insider_transactions",
+      "family_name": "Insider transactions (Form 4)",
+      "is_primary_candidate": false,
+      "composite_score": 3.5,
+      "maps_to_decision": null,
+      "scores": {
+        "economic_rationale_strength": 3,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 3,
+        "horizon_fit_63d": 4,
+        "update_frequency_suitability": 3,
+        "coverage_sp500": 3,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 4,
+        "cost_entitlement_accessibility": 4,
+        "integration_simplicity": 3,
+        "data_quality_robustness": 3
+      }
+    },
+    {
+      "rank": 3,
+      "family_key": "short_interest_securities_lending",
+      "family_name": "Short interest / securities lending",
+      "is_primary_candidate": false,
+      "composite_score": 3.5,
+      "maps_to_decision": "SHORT_INTEREST_FIRST",
+      "scores": {
+        "economic_rationale_strength": 4,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 3,
+        "horizon_fit_63d": 3,
+        "update_frequency_suitability": 2,
+        "coverage_sp500": 5,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 4,
+        "cost_entitlement_accessibility": 3,
+        "integration_simplicity": 3,
+        "data_quality_robustness": 3
+      }
+    },
+    {
+      "rank": 4,
+      "family_key": "options_iv_skew",
+      "family_name": "Options-derived sentiment / implied-volatility skew",
+      "is_primary_candidate": false,
+      "composite_score": 3.42,
+      "maps_to_decision": "OPTIONS_DATA_FIRST",
+      "scores": {
+        "economic_rationale_strength": 4,
+        "orthogonality_to_baseline": 5,
+        "prior_phase_evidence": 3,
+        "horizon_fit_63d": 2,
+        "update_frequency_suitability": 5,
+        "coverage_sp500": 4,
+        "historical_depth_availability": 3,
+        "survivorship_risk_low": 4,
+        "cost_entitlement_accessibility": 2,
+        "integration_simplicity": 2,
+        "data_quality_robustness": 3
+      }
+    },
+    {
+      "rank": 5,
+      "family_key": "institutional_ownership_13f",
+      "family_name": "Institutional ownership / 13F changes",
+      "is_primary_candidate": false,
+      "composite_score": 3.1,
+      "maps_to_decision": null,
+      "scores": {
+        "economic_rationale_strength": 3,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 2,
+        "horizon_fit_63d": 3,
+        "update_frequency_suitability": 1,
+        "coverage_sp500": 5,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 3,
+        "cost_entitlement_accessibility": 4,
+        "integration_simplicity": 2,
+        "data_quality_robustness": 2
+      }
+    },
+    {
+      "rank": 6,
+      "family_key": "news_event_sentiment_pit",
+      "family_name": "News / event sentiment (point-in-time)",
+      "is_primary_candidate": false,
+      "composite_score": 2.98,
+      "maps_to_decision": "SENTIMENT_DATA_FIRST",
+      "scores": {
+        "economic_rationale_strength": 3,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 2,
+        "horizon_fit_63d": 2,
+        "update_frequency_suitability": 5,
+        "coverage_sp500": 4,
+        "historical_depth_availability": 3,
+        "survivorship_risk_low": 3,
+        "cost_entitlement_accessibility": 3,
+        "integration_simplicity": 2,
+        "data_quality_robustness": 2
+      }
+    }
+  ],
+  "family_evaluations": [
+    {
+      "key": "analyst_estimate_revisions",
+      "name": "Analyst estimate revisions",
+      "is_primary_candidate": true,
+      "rank": 1,
+      "composite_score": 4.5,
+      "scores": {
+        "economic_rationale_strength": 5,
+        "orthogonality_to_baseline": 5,
+        "prior_phase_evidence": 5,
+        "horizon_fit_63d": 5,
+        "update_frequency_suitability": 4,
+        "coverage_sp500": 5,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 3,
+        "cost_entitlement_accessibility": 4,
+        "integration_simplicity": 4,
+        "data_quality_robustness": 3
+      },
+      "maps_to_decision": "ANALYST_REVISIONS_FIRST",
+      "economic_rationale": "Revisions momentum / post-earnings-announcement drift: sell-side estimate changes are a slow-diffusing, well-documented predictor of subsequent returns. Prices under-react to estimate revisions, so a long-rising / short-falling revisions book earns drift over weeks to a quarter.",
+      "orthogonality_to_fcf_accruals": "HIGH. fcf_to_assets and operating_accruals are REALIZED, backward-looking fundamental LEVELS; estimate revisions are FORWARD-looking EXPECTATION CHANGES. Expected low overlap - this is the most orthogonal of the six to the quality baseline.",
+      "update_frequency": "Daily-to-weekly consensus updates; clusters around earnings and guidance.",
+      "useful_horizons": {
+        "5d": "moderate",
+        "21d": "strong",
+        "63d": "strong (primary fit)"
+      },
+      "required_pit_fields": [
+        "consensus EPS estimate (CFY / NFY / current quarter)",
+        "revenue estimate (if available)",
+        "number of analysts",
+        "upward revisions count",
+        "downward revisions count",
+        "7d / 30d / 60d estimate change",
+        "estimate dispersion",
+        "point-in-time effective date",
+        "revision timestamp (if available)"
+      ],
+      "required_historical_depth": ">= 10 years of TRUE point-in-time snapshots (2013+ to cover both the pre-2020 and post-2020 subperiod guards) - restated-latest history is NOT acceptable.",
+      "required_universe_coverage": "Near-universal for S&P 500; expect >= 95% of the 545-name expanded universe (large caps are densely covered by the sell-side).",
+      "survivorship_bias_risks": "MEDIUM. Vendors often serve restated / survivor-only consensus; must confirm PIT snapshots include names later delisted and un-restated estimates as-of each date.",
+      "cost_entitlement_risk": "MEDIUM. Affordable retail/mid options exist (EODHD estimates add-on, Zacks via Nasdaq Data Link, Finnhub); enterprise PIT (I/B/E/S, FactSet) is expensive but not required for a trial.",
+      "integration_complexity": "LOW-MEDIUM. Normalizes cleanly to ticker/available_date/value; main work is fiscal-period alignment and a genuine as-of PIT join (available_date <= entry_date).",
+      "data_quality_checks": [
+        "no look-ahead: every value carries a vendor effective/as-of date <= panel entry_date",
+        "restatement test: consensus as-of an old date is not silently the latest restated number",
+        "fiscal-period mapping (CFY vs calendar) is explicit",
+        "identifier crosswalk to Norgate permatickers has >= 90% match",
+        "num_analysts >= k filter to drop thin/stale consensus"
+      ],
+      "mvp_trial_acceptance": "oriented net-revisions factor: 63d IC t >= 2.0, both cohorts +, both subperiods +, and it adds quarterly net-25bps over composite_sn without worsening net50 / turnover / concentration."
+    },
+    {
+      "key": "insider_transactions",
+      "name": "Insider transactions (Form 4)",
+      "is_primary_candidate": false,
+      "rank": 2,
+      "composite_score": 3.5,
+      "scores": {
+        "economic_rationale_strength": 3,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 3,
+        "horizon_fit_63d": 4,
+        "update_frequency_suitability": 3,
+        "coverage_sp500": 3,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 4,
+        "cost_entitlement_accessibility": 4,
+        "integration_simplicity": 3,
+        "data_quality_robustness": 3
+      },
+      "maps_to_decision": null,
+      "economic_rationale": "Officers/directors have an information edge; net insider buying (esp. cluster buys) predicts outperformance over subsequent months.",
+      "orthogonality_to_fcf_accruals": "MEDIUM-HIGH. Behavioural/informed-trading signal; largely orthogonal to fundamental levels.",
+      "update_frequency": "Event-driven (Form 4 within ~2 business days of trade); SPARSE per name.",
+      "useful_horizons": {
+        "5d": "weak",
+        "21d": "moderate",
+        "63d": "moderate-strong"
+      },
+      "required_pit_fields": [
+        "filer role",
+        "transaction code (P/S)",
+        "shares & price",
+        "post-transaction holdings",
+        "transaction date",
+        "filing/acceptance date"
+      ],
+      "required_historical_depth": ">= 10 years (SEC EDGAR full-text is available and cheap).",
+      "required_universe_coverage": "Universal filing requirement, but SPARSE: many names have no qualifying insider trade in a given quarter, so cross-sectional coverage per rebalance is low.",
+      "survivorship_bias_risks": "LOW. EDGAR filings are permanent and dated.",
+      "cost_entitlement_risk": "LOW. EDGAR is free; cost is parsing/normalization effort.",
+      "integration_complexity": "MEDIUM. Form 4 parsing, clustering, and sparsity handling.",
+      "data_quality_checks": [
+        "10b5-1 planned-sale flagging",
+        "cluster vs single-filer aggregation",
+        "filing-date (not trade-date) used for availability",
+        "share adjustments"
+      ],
+      "mvp_trial_acceptance": "net-insider-buying factor: months with signal too sparse for a full cross-section; likely a sub-universe overlay rather than a standalone 63d book."
+    },
+    {
+      "key": "short_interest_securities_lending",
+      "name": "Short interest / securities lending",
+      "is_primary_candidate": false,
+      "rank": 3,
+      "composite_score": 3.5,
+      "scores": {
+        "economic_rationale_strength": 4,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 3,
+        "horizon_fit_63d": 3,
+        "update_frequency_suitability": 2,
+        "coverage_sp500": 5,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 4,
+        "cost_entitlement_accessibility": 3,
+        "integration_simplicity": 3,
+        "data_quality_robustness": 3
+      },
+      "maps_to_decision": "SHORT_INTEREST_FIRST",
+      "economic_rationale": "Short-side crowding: high / rising short interest and rich borrow fees proxy informed negative views (predictive of underperformance) but also squeeze risk. Days-to-cover and utilization add a positioning dimension the quality baseline lacks.",
+      "orthogonality_to_fcf_accruals": "MEDIUM-HIGH. Positioning/flow rather than fundamental level; but short interest correlates with low-quality / high-accrual names, so partial overlap with the accruals short leg.",
+      "update_frequency": "FINRA settlement short interest ~twice a month WITH a reporting lag; daily securities-lending fee/utilization only via paid feeds.",
+      "useful_horizons": {
+        "5d": "weak",
+        "21d": "moderate",
+        "63d": "moderate"
+      },
+      "required_pit_fields": [
+        "short interest shares",
+        "short interest % of float",
+        "days-to-cover",
+        "borrow fee / rebate",
+        "utilization",
+        "settlement date",
+        "publication/effective date"
+      ],
+      "required_historical_depth": ">= 10 years; borrow-fee history is shorter and paid.",
+      "required_universe_coverage": "Full for S&P 500 (FINRA); borrow-fee coverage thinner / paid.",
+      "survivorship_bias_risks": "LOW-MEDIUM. FINRA files are dated; paid SL history may be survivor-only.",
+      "cost_entitlement_risk": "MEDIUM-HIGH. FINRA short interest is free but lagged/bimonthly; real-time securities-lending fee data is expensive. Polygon full-universe short interest already FAILED the gate in 10-A.",
+      "integration_complexity": "MEDIUM. Bimonthly cadence must be forward-filled with lag; SL feeds messy.",
+      "data_quality_checks": [
+        "settlement-date vs publication-date lag applied (no look-ahead)",
+        "% of float denominator source consistent",
+        "corporate-action share adjustments",
+        "borrow-fee outliers / hard-to-borrow flags handled"
+      ],
+      "mvp_trial_acceptance": "days-to-cover / SI%float factor: 63d cost-robust L/S positive, both eras +, and adds over composite_sn - but 10-A already showed price-derived short interest is weak (best t=1.56)."
+    },
+    {
+      "key": "options_iv_skew",
+      "name": "Options-derived sentiment / implied-volatility skew",
+      "is_primary_candidate": false,
+      "rank": 4,
+      "composite_score": 3.42,
+      "scores": {
+        "economic_rationale_strength": 4,
+        "orthogonality_to_baseline": 5,
+        "prior_phase_evidence": 3,
+        "horizon_fit_63d": 2,
+        "update_frequency_suitability": 5,
+        "coverage_sp500": 4,
+        "historical_depth_availability": 3,
+        "survivorship_risk_low": 4,
+        "cost_entitlement_accessibility": 2,
+        "integration_simplicity": 2,
+        "data_quality_robustness": 3
+      },
+      "maps_to_decision": "OPTIONS_DATA_FIRST",
+      "economic_rationale": "Option-implied risk-neutral distribution: put/call skew, IV term structure, and risk reversals encode informed positioning and crash-risk pricing that precede returns and realized-vol changes.",
+      "orthogonality_to_fcf_accruals": "HIGH. Forward-looking, market-microstructure driven; essentially unrelated to realized fundamental levels - very orthogonal to the quality baseline.",
+      "update_frequency": "Intraday / daily.",
+      "useful_horizons": {
+        "5d": "strong",
+        "21d": "moderate",
+        "63d": "weak-moderate (decays fast)"
+      },
+      "required_pit_fields": [
+        "implied vol by delta/strike/expiry",
+        "25-delta put-call skew",
+        "IV term-structure slope",
+        "risk reversal",
+        "put/call open interest & volume",
+        "quote date"
+      ],
+      "required_historical_depth": ">= 10 years of clean option surfaces (expensive).",
+      "required_universe_coverage": "Good for liquid large caps; THIN for parts of the expanded S&P universe where single-name options are illiquid or absent.",
+      "survivorship_bias_risks": "MEDIUM. Surface history for delisted names often dropped.",
+      "cost_entitlement_risk": "HIGH. Historical option surfaces (ORATS, CBOE DataShop, OptionMetrics) are among the most expensive datasets - poor fit for a cheap first trial.",
+      "integration_complexity": "HIGH. Requires surface construction, greeks, expiry interpolation, liquidity filtering - the heaviest integration of the six.",
+      "data_quality_checks": [
+        "stale/crossed quotes filtered",
+        "min open-interest / volume liquidity screen",
+        "surface interpolation sanity",
+        "IV outlier clipping",
+        "corporate-action strike adjustment"
+      ],
+      "mvp_trial_acceptance": "skew factor: works best at 5-21d; must still show a cost-robust 63d edge to justify the quarterly cadence - unlikely given fast decay + heavy cost."
+    },
+    {
+      "key": "institutional_ownership_13f",
+      "name": "Institutional ownership / 13F changes",
+      "is_primary_candidate": false,
+      "rank": 5,
+      "composite_score": 3.1,
+      "scores": {
+        "economic_rationale_strength": 3,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 2,
+        "horizon_fit_63d": 3,
+        "update_frequency_suitability": 1,
+        "coverage_sp500": 5,
+        "historical_depth_availability": 4,
+        "survivorship_risk_low": 3,
+        "cost_entitlement_accessibility": 4,
+        "integration_simplicity": 2,
+        "data_quality_robustness": 2
+      },
+      "maps_to_decision": null,
+      "economic_rationale": "Smart-money accumulation: rising institutional / hedge-fund ownership can precede outperformance; concentration and breadth of holders add a positioning dimension.",
+      "orthogonality_to_fcf_accruals": "MEDIUM. Positioning; partly driven by the same fundamentals.",
+      "update_frequency": "QUARTERLY with a 45-day filing lag - the worst point-in-time timeliness.",
+      "useful_horizons": {
+        "5d": "weak",
+        "21d": "weak",
+        "63d": "weak-moderate"
+      },
+      "required_pit_fields": [
+        "holder count",
+        "shares held by institutions",
+        "% ownership",
+        "quarter-over-quarter change",
+        "report (period-end) date",
+        "filing date"
+      ],
+      "required_historical_depth": ">= 10 years (EDGAR 13F).",
+      "required_universe_coverage": "Broad, but reflects only long positions of >$100M managers.",
+      "survivorship_bias_risks": "MEDIUM. Restated/amended 13Fs; no short positions.",
+      "cost_entitlement_risk": "LOW-MEDIUM. EDGAR free; clean aggregation products are paid.",
+      "integration_complexity": "HIGH. 13F reconciliation (CUSIP mapping, amendments, double-counting) is notoriously messy; the 45-day lag severely limits PIT signal value.",
+      "data_quality_checks": [
+        "45-day filing lag enforced (no look-ahead)",
+        "amendment handling",
+        "CUSIP->ticker mapping accuracy",
+        "long-only bias acknowledged"
+      ],
+      "mvp_trial_acceptance": "ownership-change factor at 63d after enforcing the 45-day lag - the lag likely kills most tradable signal; low expected value."
+    },
+    {
+      "key": "news_event_sentiment_pit",
+      "name": "News / event sentiment (point-in-time)",
+      "is_primary_candidate": false,
+      "rank": 6,
+      "composite_score": 2.98,
+      "scores": {
+        "economic_rationale_strength": 3,
+        "orthogonality_to_baseline": 4,
+        "prior_phase_evidence": 2,
+        "horizon_fit_63d": 2,
+        "update_frequency_suitability": 5,
+        "coverage_sp500": 4,
+        "historical_depth_availability": 3,
+        "survivorship_risk_low": 3,
+        "cost_entitlement_accessibility": 3,
+        "integration_simplicity": 2,
+        "data_quality_robustness": 2
+      },
+      "maps_to_decision": "SENTIMENT_DATA_FIRST",
+      "economic_rationale": "Soft information: news-flow sentiment and event intensity capture information not yet in fundamentals; short-horizon drift after sentiment shocks.",
+      "orthogonality_to_fcf_accruals": "MEDIUM-HIGH. Text-derived; orthogonal to fundamental levels.",
+      "update_frequency": "Continuous / intraday.",
+      "useful_horizons": {
+        "5d": "strong",
+        "21d": "moderate",
+        "63d": "weak (decays fast)"
+      },
+      "required_pit_fields": [
+        "article/event timestamp",
+        "entity-mapped sentiment score",
+        "event type/novelty",
+        "source",
+        "volume of coverage",
+        "as-of ingestion date"
+      ],
+      "required_historical_depth": ">= 10 years of TRUE PIT text with timestamps - label leakage / look-ahead is the main hazard.",
+      "required_universe_coverage": "Good for large caps; noisier for thin-coverage names.",
+      "survivorship_bias_risks": "MEDIUM. Archives may drop delisted-name coverage.",
+      "cost_entitlement_risk": "MEDIUM. PIT news history + NLP scoring is a paid product.",
+      "integration_complexity": "HIGH. Entity resolution, dedup, timestamp/timezone handling, and NLP normalization.",
+      "data_quality_checks": [
+        "publication timestamp (not crawl time) used for availability",
+        "entity-mapping precision",
+        "dedup of syndicated stories",
+        "look-ahead / label-leakage audit"
+      ],
+      "mvp_trial_acceptance": "sentiment-momentum factor: strongest at 5d; must show a 63d cost-robust edge to fit quarterly cadence - the owned EODHD news sentiment was already WEAK in the 8-series."
+    }
+  ],
+  "candidates_tested": [
+    {
+      "family": "Analyst estimate revisions",
+      "key": "analyst_estimate_revisions",
+      "rank": 1,
+      "composite_score": 4.5,
+      "is_primary_candidate": true
+    },
+    {
+      "family": "Insider transactions (Form 4)",
+      "key": "insider_transactions",
+      "rank": 2,
+      "composite_score": 3.5,
+      "is_primary_candidate": false
+    },
+    {
+      "family": "Short interest / securities lending",
+      "key": "short_interest_securities_lending",
+      "rank": 3,
+      "composite_score": 3.5,
+      "is_primary_candidate": false
+    },
+    {
+      "family": "Options-derived sentiment / implied-volatility skew",
+      "key": "options_iv_skew",
+      "rank": 4,
+      "composite_score": 3.42,
+      "is_primary_candidate": false
+    },
+    {
+      "family": "Institutional ownership / 13F changes",
+      "key": "institutional_ownership_13f",
+      "rank": 5,
+      "composite_score": 3.1,
+      "is_primary_candidate": false
+    },
+    {
+      "family": "News / event sentiment (point-in-time)",
+      "key": "news_event_sentiment_pit",
+      "rank": 6,
+      "composite_score": 2.98,
+      "is_primary_candidate": false
+    }
+  ],
+  "variants_tested": [
+    {
+      "family": "Analyst estimate revisions",
+      "rank": 1,
+      "composite_score": 4.5
+    },
+    {
+      "family": "Insider transactions (Form 4)",
+      "rank": 2,
+      "composite_score": 3.5
+    },
+    {
+      "family": "Short interest / securities lending",
+      "rank": 3,
+      "composite_score": 3.5
+    },
+    {
+      "family": "Options-derived sentiment / implied-volatility skew",
+      "rank": 4,
+      "composite_score": 3.42
+    },
+    {
+      "family": "Institutional ownership / 13F changes",
+      "rank": 5,
+      "composite_score": 3.1
+    },
+    {
+      "family": "News / event sentiment (point-in-time)",
+      "rank": 6,
+      "composite_score": 2.98
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "family": "Insider transactions (Form 4)",
+      "key": "insider_transactions",
+      "rank": 2,
+      "composite_score": 3.5,
+      "why": "deferred behind the #1 pick - lower scorecard composite (weaker orthogonality/horizon-fit/evidence/accessibility)"
+    },
+    {
+      "family": "Short interest / securities lending",
+      "key": "short_interest_securities_lending",
+      "rank": 3,
+      "composite_score": 3.5,
+      "why": "deferred behind the #1 pick - lower scorecard composite (weaker orthogonality/horizon-fit/evidence/accessibility)"
+    },
+    {
+      "family": "Options-derived sentiment / implied-volatility skew",
+      "key": "options_iv_skew",
+      "rank": 4,
+      "composite_score": 3.42,
+      "why": "deferred behind the #1 pick - lower scorecard composite (weaker orthogonality/horizon-fit/evidence/accessibility)"
+    },
+    {
+      "family": "Institutional ownership / 13F changes",
+      "key": "institutional_ownership_13f",
+      "rank": 5,
+      "composite_score": 3.1,
+      "why": "deferred behind the #1 pick - lower scorecard composite (weaker orthogonality/horizon-fit/evidence/accessibility)"
+    },
+    {
+      "family": "News / event sentiment (point-in-time)",
+      "key": "news_event_sentiment_pit",
+      "rank": 6,
+      "composite_score": 2.98,
+      "why": "deferred behind the #1 pick - lower scorecard composite (weaker orthogonality/horizon-fit/evidence/accessibility)"
+    }
+  ],
+  "champion": {
+    "recommended_first_acquisition": "Analyst estimate revisions",
+    "family_key": "analyst_estimate_revisions",
+    "composite_score": 4.5,
+    "maps_to_decision": "ANALYST_REVISIONS_FIRST",
+    "is_new_orthogonal_paid_data": true,
+    "requires_explicit_user_opt_in": true,
+    "no_stronger_owned_alpha_found": true
+  },
+  "baseline_vs_champion": {
+    "note": "the 'champion' here is a DATA-ACQUISITION recommendation, not a fitted alpha; the modest composite_sn baseline remains the only usable alpha until a Phase 11-B trial proves a new orthogonal factor beats it out-of-sample"
+  },
+  "recommended_data_family": "Analyst estimate revisions",
+  "analyst_revisions_required_fields": [
+    {
+      "field_key": "eps_estimate_cfy",
+      "field_label": "Current fiscal year EPS estimate",
+      "category": "consensus_level",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "mean consensus for the current fiscal year"
+    },
+    {
+      "field_key": "eps_estimate_nfy",
+      "field_label": "Next fiscal year EPS estimate",
+      "category": "consensus_level",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "mean consensus for the next fiscal year"
+    },
+    {
+      "field_key": "eps_estimate_quarter",
+      "field_label": "Quarterly EPS estimate",
+      "category": "consensus_level",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "current-quarter consensus; anchors post-earnings drift"
+    },
+    {
+      "field_key": "revenue_estimate",
+      "field_label": "Revenue estimate (if available)",
+      "category": "consensus_level",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "preferred",
+      "notes": "sales consensus; enables revisions on a second line item"
+    },
+    {
+      "field_key": "num_analysts",
+      "field_label": "Number of analysts",
+      "category": "coverage",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "coverage count; normalizer for revision diffusion and dispersion"
+    },
+    {
+      "field_key": "up_revisions_count",
+      "field_label": "Upward revisions count",
+      "category": "revision_flow",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "e.g. estimates raised in last 30d; core numerator of net-revisions"
+    },
+    {
+      "field_key": "down_revisions_count",
+      "field_label": "Downward revisions count",
+      "category": "revision_flow",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "estimates cut in last 30d; core denominator of net-revisions"
+    },
+    {
+      "field_key": "estimate_change_7d",
+      "field_label": "7-day estimate change",
+      "category": "revision_momentum",
+      "pit_required": "yes",
+      "cadence": "daily",
+      "priority": "required",
+      "notes": "short-window consensus change"
+    },
+    {
+      "field_key": "estimate_change_30d",
+      "field_label": "30-day estimate change",
+      "category": "revision_momentum",
+      "pit_required": "yes",
+      "cadence": "daily",
+      "priority": "required",
+      "notes": "primary revision-momentum window"
+    },
+    {
+      "field_key": "estimate_change_60d",
+      "field_label": "60-day estimate change",
+      "category": "revision_momentum",
+      "pit_required": "yes",
+      "cadence": "daily",
+      "priority": "required",
+      "notes": "aligns with the 63d primary horizon"
+    },
+    {
+      "field_key": "consensus_estimate_level",
+      "field_label": "Consensus estimate level",
+      "category": "consensus_level",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "required",
+      "notes": "mean estimate level; base for percentage revisions"
+    },
+    {
+      "field_key": "estimate_dispersion",
+      "field_label": "Estimate dispersion",
+      "category": "uncertainty",
+      "pit_required": "yes",
+      "cadence": "daily-weekly",
+      "priority": "preferred",
+      "notes": "stdev/coeff-of-variation of estimates; conditions signal strength"
+    },
+    {
+      "field_key": "recommendation_changes",
+      "field_label": "Recommendation changes (if available)",
+      "category": "rating_flow",
+      "pit_required": "yes",
+      "cadence": "event",
+      "priority": "optional",
+      "notes": "up/downgrades; secondary confirming signal"
+    },
+    {
+      "field_key": "price_target_changes",
+      "field_label": "Price target changes (if available)",
+      "category": "target_flow",
+      "pit_required": "yes",
+      "cadence": "event",
+      "priority": "optional",
+      "notes": "target revisions; secondary confirming signal"
+    },
+    {
+      "field_key": "pit_effective_date",
+      "field_label": "Point-in-time effective date",
+      "category": "pit_key",
+      "pit_required": "yes",
+      "cadence": "per-observation",
+      "priority": "required",
+      "notes": "THE as-of join key: available_date <= panel entry_date"
+    },
+    {
+      "field_key": "revision_timestamp",
+      "field_label": "Announcement / revision timestamp (if available)",
+      "category": "pit_key",
+      "pit_required": "yes",
+      "cadence": "per-event",
+      "priority": "preferred",
+      "notes": "intraday timestamp; same-day treated as available next session"
+    }
+  ],
+  "vendor_candidates": [
+    {
+      "vendor": "EODHD (Fundamentals Earnings::Trend / Calendar)",
+      "data_family": "analyst_estimate_revisions",
+      "pit_history_assumed": "partial-current-snapshot; PIT history = paid add-on (assumed)",
+      "cost_tier": "low-mid",
+      "retail_accessible": "yes",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "owned base vendor; recommended primary trial; owned JSONs may already carry Earnings::Trend revisions fields - check at zero cost (11-B STEP 0)"
+    },
+    {
+      "vendor": "Zacks (via Nasdaq Data Link EE)",
+      "data_family": "analyst_estimate_revisions",
+      "pit_history_assumed": "yes (assumed)",
+      "cost_tier": "mid",
+      "retail_accessible": "yes",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "revisions-focused; classic academic estimate-revisions source"
+    },
+    {
+      "vendor": "Finnhub",
+      "data_family": "analyst_estimate_revisions",
+      "pit_history_assumed": "partial (assumed)",
+      "cost_tier": "free-low",
+      "retail_accessible": "yes",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "mentioned in 8-Y; estimate/revision endpoints; verify PIT depth in a trial"
+    },
+    {
+      "vendor": "AlphaVantage (EARNINGS_ESTIMATES)",
+      "data_family": "analyst_estimate_revisions",
+      "pit_history_assumed": "shallow (assumed)",
+      "cost_tier": "free",
+      "retail_accessible": "yes",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "rate-limited (10-A); likely too shallow for a 10-year PIT history"
+    },
+    {
+      "vendor": "LSEG / Refinitiv I/B/E/S",
+      "data_family": "analyst_estimate_revisions",
+      "pit_history_assumed": "yes (gold-standard PIT)",
+      "cost_tier": "enterprise-high",
+      "retail_accessible": "no",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "best PIT estimates history; likely out of budget for a first trial"
+    },
+    {
+      "vendor": "FactSet Estimates",
+      "data_family": "analyst_estimate_revisions",
+      "pit_history_assumed": "yes",
+      "cost_tier": "enterprise-high",
+      "retail_accessible": "no",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "enterprise-grade; expensive"
+    },
+    {
+      "vendor": "Polygon",
+      "data_family": "short_interest_securities_lending",
+      "pit_history_assumed": "partial",
+      "cost_tier": "mid",
+      "retail_accessible": "yes",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "full-universe short interest already FAILED the 10-A gate (best t=1.56)"
+    },
+    {
+      "vendor": "ORATS / CBOE DataShop / OptionMetrics",
+      "data_family": "options_iv_skew",
+      "pit_history_assumed": "yes",
+      "cost_tier": "high",
+      "retail_accessible": "limited",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "historical option surfaces are among the most expensive datasets"
+    },
+    {
+      "vendor": "SEC EDGAR (Form 4 / 13F)",
+      "data_family": "insider_transactions/institutional_ownership_13f",
+      "pit_history_assumed": "yes (native filings)",
+      "cost_tier": "free",
+      "retail_accessible": "yes",
+      "requires_user_opt_in": "yes",
+      "no_probe_performed": true,
+      "notes": "free but parsing-heavy; 13F carries a 45-day lag that limits PIT value"
+    }
+  ],
+  "phase11b_test_plan": [
+    "STEP 0 (zero-cost pre-check): inspect the OWNED EODHD raw fundamentals JSONs for an Earnings::Trend block (epsTrend / epsRevisions up/down) to gauge field shape and vendor conventions BEFORE any purchase - a current snapshot only, NOT usable as history, but confirms mapping and format for free.",
+    "STEP 1: ingest ONE provider trial / export as a local offline file (no live API, no key) into research/data/analyst_revisions/raw/.",
+    "STEP 2: normalize to ticker/available_date/value CSVs under research/data/analyst_revisions/normalized/<field>.csv (one file per revision field).",
+    "STEP 3: align point-in-time to the existing 545-name earnings panel via an as-of join (available_date <= entry_date) - reuse the y8 orthogonal-feature attach pattern; zero look-ahead.",
+    "STEP 4: build revision-momentum factors: net_revisions=(up-down)/num_analysts, standardized estimate_change_30d/60d, and a diffusion/breadth score.",
+    "STEP 5: sector-neutral rank each factor (within-month z, then sector demean).",
+    "STEP 6: test at 5d, 21d and 63d horizons (primary = 63d/quarterly).",
+    "STEP 7: test STANDALONE (oriented IC, cohort/subperiod signs).",
+    "STEP 8: test INCREMENTAL to composite_sn (does the blended book raise quarterly net-25bps at 63d without worsening net50 / turnover / concentration?).",
+    "STEP 9: test COST-ADJUSTED long/short (quintile spread net-10/25/50bps at 63d).",
+    "STEP 10: REJECT if no OOS stability - walk-forward pooled OOS IC must be positive, frac windows positive >= baseline, and the improvement must survive the subperiod-net25 generalization guard (favourable in BOTH pre-2020 and post-2020). Do NOT spin a single-period or single-sector result."
+  ],
+  "phase11b_acceptance_criteria": [
+    {
+      "criterion_id": "AC1_ingest_mapping",
+      "phase11b_step": "STEP 1-2",
+      "metric": "trial tickers mapped to panel permatickers",
+      "pass_threshold": ">= 90% mapped",
+      "reject_condition": "reject/fix crosswalk if < 90%"
+    },
+    {
+      "criterion_id": "AC2_normalize_integrity",
+      "phase11b_step": "STEP 2",
+      "metric": "duplicate (ticker, available_date) rows; date monotonicity",
+      "pass_threshold": "0 duplicates; dates monotone",
+      "reject_condition": "reject if duplicates or unordered dates"
+    },
+    {
+      "criterion_id": "AC3_pit_no_lookahead",
+      "phase11b_step": "STEP 3",
+      "metric": "rows with available_date > entry_date",
+      "pass_threshold": "0 look-ahead rows; panel-event coverage >= 60%",
+      "reject_condition": "reject if any look-ahead or coverage < 60%"
+    },
+    {
+      "criterion_id": "AC4_factor_nondegenerate",
+      "phase11b_step": "STEP 4-5",
+      "metric": "months with cross-sectional std > 0",
+      "pass_threshold": ">= 90% of months non-degenerate",
+      "reject_condition": "reject if factor is mostly constant"
+    },
+    {
+      "criterion_id": "AC5_standalone_63d",
+      "phase11b_step": "STEP 6-7",
+      "metric": "oriented 63d IC t; cohort & subperiod signs",
+      "pass_threshold": "IC t >= 2.0 AND both cohorts + AND both subperiods +",
+      "reject_condition": "reject if IC insignificant or sign-unstable"
+    },
+    {
+      "criterion_id": "AC6_incremental_net25",
+      "phase11b_step": "STEP 8",
+      "metric": "blended composite quarterly net-25bps vs composite_sn @63d",
+      "pass_threshold": "net25 > baseline by a clear margin; net50 not worse; turnover <= 1.10x",
+      "reject_condition": "reject if it does not beat net25 or degrades net50/turnover"
+    },
+    {
+      "criterion_id": "AC7_cost_robust_ls",
+      "phase11b_step": "STEP 9",
+      "metric": "quintile L/S net-25bps and net-50bps @63d",
+      "pass_threshold": "net25 > 0 AND net50 >= 0",
+      "reject_condition": "reject if cost-killed"
+    },
+    {
+      "criterion_id": "AC8_oos_stability",
+      "phase11b_step": "STEP 10",
+      "metric": "walk-forward pooled OOS IC; frac windows +; subperiod-net25 guard",
+      "pass_threshold": "pooled OOS IC > 0 AND frac >= baseline AND favourable in BOTH eras",
+      "reject_condition": "REJECT_NO_OOS_STABILITY if any fails - do not spin"
+    },
+    {
+      "criterion_id": "AC9_concentration",
+      "phase11b_step": "STEP 8-9",
+      "metric": "top-sector share of the blended book",
+      "pass_threshold": "not worse than composite_sn baseline",
+      "reject_condition": "reject if concentration materially worse"
+    },
+    {
+      "criterion_id": "AC10_no_overfit_guard",
+      "phase11b_step": "STEP 4-10",
+      "metric": "number of pre-registered revision-factor variants",
+      "pass_threshold": "pre-registered factor list; subperiod guard applied to every candidate",
+      "reject_condition": "reject any post-hoc winner that fails the subperiod-net25 generalization guard"
+    }
+  ],
+  "integration_risk_register": [
+    {
+      "risk_id": "R1_pit_lookahead",
+      "risk": "Look-ahead leakage from using restated-latest instead of as-of values",
+      "severity": "HIGH",
+      "likelihood": "MEDIUM",
+      "mitigation": "use only the vendor effective/as-of date; never the latest restated number",
+      "phase_to_address": "11-B STEP 3"
+    },
+    {
+      "risk_id": "R2_restatement_survivorship",
+      "risk": "Vendor consensus history is survivor-only / silently restated",
+      "severity": "HIGH",
+      "likelihood": "MEDIUM",
+      "mitigation": "require true PIT snapshots incl. delisted names; run a restatement test",
+      "phase_to_address": "11-B STEP 1"
+    },
+    {
+      "risk_id": "R3_fiscal_period_map",
+      "risk": "CFY/NFY/quarter fiscal periods mis-aligned to calendar",
+      "severity": "MEDIUM",
+      "likelihood": "MEDIUM",
+      "mitigation": "map fiscal-period-end dates explicitly per name",
+      "phase_to_address": "11-B STEP 2"
+    },
+    {
+      "risk_id": "R4_identifier_crosswalk",
+      "risk": "Vendor ticker/CUSIP vs Norgate permaticker mismatch",
+      "severity": "MEDIUM",
+      "likelihood": "MEDIUM",
+      "mitigation": "build and measure a crosswalk; require >= 90% match",
+      "phase_to_address": "11-B STEP 1"
+    },
+    {
+      "risk_id": "R5_currency_adr_scaling",
+      "risk": "Currency / ADR EPS scaling inconsistencies",
+      "severity": "LOW",
+      "likelihood": "LOW",
+      "mitigation": "normalize currency per listing; verify ADR ratios",
+      "phase_to_address": "11-B STEP 2"
+    },
+    {
+      "risk_id": "R6_coverage_gaps",
+      "risk": "Thin coverage in the expanded S&P universe",
+      "severity": "MEDIUM",
+      "likelihood": "LOW",
+      "mitigation": "measure coverage; restrict the test universe if too thin",
+      "phase_to_address": "11-B STEP 3"
+    },
+    {
+      "risk_id": "R7_corporate_actions",
+      "risk": "Splits distort per-share estimate history",
+      "severity": "MEDIUM",
+      "likelihood": "MEDIUM",
+      "mitigation": "use split-adjusted estimates; reconcile to price adjustments",
+      "phase_to_address": "11-B STEP 2"
+    },
+    {
+      "risk_id": "R8_entitlement_trial_expiry",
+      "risk": "Trial entitlement lapses mid-test",
+      "severity": "MEDIUM",
+      "likelihood": "MEDIUM",
+      "mitigation": "one bounded export snapshotted locally; no dependence on a live feed",
+      "phase_to_address": "11-B STEP 1"
+    },
+    {
+      "risk_id": "R9_timestamp_timezone",
+      "risk": "Revision timestamp timezone / same-day ordering ambiguity",
+      "severity": "LOW",
+      "likelihood": "MEDIUM",
+      "mitigation": "treat same-day revisions as available next session",
+      "phase_to_address": "11-B STEP 3"
+    },
+    {
+      "risk_id": "R10_cost_overrun",
+      "risk": "Spend exceeds the trial budget",
+      "severity": "MEDIUM",
+      "likelihood": "LOW",
+      "mitigation": "bounded trial + EXPLICIT user opt-in before any purchase",
+      "phase_to_address": "pre-11-B"
+    },
+    {
+      "risk_id": "R11_stale_consensus_noise",
+      "risk": "Thin/stale consensus adds noise",
+      "severity": "LOW",
+      "likelihood": "MEDIUM",
+      "mitigation": "require num_analysts >= k; drop thin names",
+      "phase_to_address": "11-B STEP 4"
+    },
+    {
+      "risk_id": "R12_variant_overfit",
+      "risk": "Overfitting via many revision-factor variants",
+      "severity": "HIGH",
+      "likelihood": "MEDIUM",
+      "mitigation": "pre-register the factor list; apply the subperiod-net25 guard to each",
+      "phase_to_address": "11-B STEP 10"
+    }
+  ],
+  "oos_stability_summary": {
+    "note": "no fitting performed in 11-A; OOS stability is the Phase 11-B gate (AC8): walk-forward pooled OOS IC positive, frac windows positive >= baseline, and the improvement must survive the subperiod-net25 generalization guard (favourable in BOTH eras)"
+  },
+  "cohort_stability_summary": {
+    "note": "Phase 11-B requires both earnings cohorts and both pre/post-2020 subperiods positive before any new factor is productized (AC5)"
+  },
+  "sector_concentration_summary": {
+    "baseline_top_sector_share": 0.6262,
+    "note": "Phase 11-B AC9 requires the blended book's top-sector share not to worsen vs baseline"
+  },
+  "turnover_cost_summary": {
+    "baseline_turnover": 0.6115,
+    "note": "revision factors update daily-weekly but a 63d/quarterly rebalance keeps turnover bounded; Phase 11-B AC6/AC7 require net25>0 and net50>=0 after 25/50bps costs"
+  },
+  "implementation_limits": [
+    "design/decision phase only: no panel built, nothing fitted, no data acquired",
+    "no provider was probed and no API was called - vendor rows are DESIGN ASSUMPTIONS from prior-phase notes, flagged no_probe_performed=true and requires_user_opt_in=true",
+    "actual acquisition of any paid/trial feed requires EXPLICIT user opt-in and is out of scope",
+    "scores are expert-judgement priors, not measured alpha; the Phase 11-B trial is the real test",
+    "a zero-cost pre-check of the owned EODHD Earnings::Trend snapshot (11-B STEP 0) is recommended before any purchase to confirm field shape - but it is a current snapshot, NOT usable history"
+  ],
+  "recommended_next_actions": [
+    "acquire the #1 family (Analyst estimate revisions) as a bounded trial/export on EXPLICIT user opt-in, then run Phase 11-B",
+    "before purchase (zero cost): inspect the owned EODHD fundamentals Earnings::Trend block to confirm revision-field shape and identifier mapping",
+    "in parallel, keep the modest 10-D/10-H book in PAPER review via the 10-I tracker (human gate; no orders; no automation)"
+  ],
+  "next_recommended_phase": "Phase 11-B - Analyst Estimate Revisions Trial Ingestion And Alpha Test (on explicit user opt-in to a bounded data trial)",
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true
+  },
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "no API calls",
+    "no provider probing",
+    "owned-data search already exhausted (10-Q)",
+    "no new data acquired",
+    "no Paper Trader writes",
+    "no orders",
+    "no automation",
+    "no broker",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "no full regression",
+    "commit only phase11a files if tests pass",
+    "no push"
+  ]
+}

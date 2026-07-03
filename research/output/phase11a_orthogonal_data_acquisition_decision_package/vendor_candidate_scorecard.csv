@@ -1,0 +1,10 @@
+vendor,data_family,pit_history_assumed,cost_tier,retail_accessible,requires_user_opt_in,no_probe_performed,notes
+EODHD (Fundamentals Earnings::Trend / Calendar),analyst_estimate_revisions,partial-current-snapshot; PIT history = paid add-on (assumed),low-mid,yes,yes,true,owned base vendor; recommended primary trial; owned JSONs may already carry Earnings::Trend revisions fields - check at zero cost (11-B STEP 0)
+Zacks (via Nasdaq Data Link EE),analyst_estimate_revisions,yes (assumed),mid,yes,yes,true,revisions-focused; classic academic estimate-revisions source
+Finnhub,analyst_estimate_revisions,partial (assumed),free-low,yes,yes,true,mentioned in 8-Y; estimate/revision endpoints; verify PIT depth in a trial
+AlphaVantage (EARNINGS_ESTIMATES),analyst_estimate_revisions,shallow (assumed),free,yes,yes,true,rate-limited (10-A); likely too shallow for a 10-year PIT history
+LSEG / Refinitiv I/B/E/S,analyst_estimate_revisions,yes (gold-standard PIT),enterprise-high,no,yes,true,best PIT estimates history; likely out of budget for a first trial
+FactSet Estimates,analyst_estimate_revisions,yes,enterprise-high,no,yes,true,enterprise-grade; expensive
+Polygon,short_interest_securities_lending,partial,mid,yes,yes,true,full-universe short interest already FAILED the 10-A gate (best t=1.56)
+ORATS / CBOE DataShop / OptionMetrics,options_iv_skew,yes,high,limited,yes,true,historical option surfaces are among the most expensive datasets
+SEC EDGAR (Form 4 / 13F),insider_transactions/institutional_ownership_13f,yes (native filings),free,yes,yes,true,free but parsing-heavy; 13F carries a 45-day lag that limits PIT value

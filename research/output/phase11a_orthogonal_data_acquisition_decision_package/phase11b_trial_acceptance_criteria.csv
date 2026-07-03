@@ -1,0 +1,11 @@
+criterion_id,phase11b_step,metric,pass_threshold,reject_condition
+AC1_ingest_mapping,STEP 1-2,trial tickers mapped to panel permatickers,>= 90% mapped,reject/fix crosswalk if < 90%
+AC2_normalize_integrity,STEP 2,"duplicate (ticker, available_date) rows; date monotonicity",0 duplicates; dates monotone,reject if duplicates or unordered dates
+AC3_pit_no_lookahead,STEP 3,rows with available_date > entry_date,0 look-ahead rows; panel-event coverage >= 60%,reject if any look-ahead or coverage < 60%
+AC4_factor_nondegenerate,STEP 4-5,months with cross-sectional std > 0,>= 90% of months non-degenerate,reject if factor is mostly constant
+AC5_standalone_63d,STEP 6-7,oriented 63d IC t; cohort & subperiod signs,IC t >= 2.0 AND both cohorts + AND both subperiods +,reject if IC insignificant or sign-unstable
+AC6_incremental_net25,STEP 8,blended composite quarterly net-25bps vs composite_sn @63d,net25 > baseline by a clear margin; net50 not worse; turnover <= 1.10x,reject if it does not beat net25 or degrades net50/turnover
+AC7_cost_robust_ls,STEP 9,quintile L/S net-25bps and net-50bps @63d,net25 > 0 AND net50 >= 0,reject if cost-killed
+AC8_oos_stability,STEP 10,walk-forward pooled OOS IC; frac windows +; subperiod-net25 guard,pooled OOS IC > 0 AND frac >= baseline AND favourable in BOTH eras,REJECT_NO_OOS_STABILITY if any fails - do not spin
+AC9_concentration,STEP 8-9,top-sector share of the blended book,not worse than composite_sn baseline,reject if concentration materially worse
+AC10_no_overfit_guard,STEP 4-10,number of pre-registered revision-factor variants,pre-registered factor list; subperiod guard applied to every candidate,reject any post-hoc winner that fails the subperiod-net25 generalization guard

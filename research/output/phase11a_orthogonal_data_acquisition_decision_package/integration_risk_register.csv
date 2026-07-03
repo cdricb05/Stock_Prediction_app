@@ -1,0 +1,13 @@
+risk_id,risk,severity,likelihood,mitigation,phase_to_address
+R1_pit_lookahead,Look-ahead leakage from using restated-latest instead of as-of values,HIGH,MEDIUM,use only the vendor effective/as-of date; never the latest restated number,11-B STEP 3
+R2_restatement_survivorship,Vendor consensus history is survivor-only / silently restated,HIGH,MEDIUM,require true PIT snapshots incl. delisted names; run a restatement test,11-B STEP 1
+R3_fiscal_period_map,CFY/NFY/quarter fiscal periods mis-aligned to calendar,MEDIUM,MEDIUM,map fiscal-period-end dates explicitly per name,11-B STEP 2
+R4_identifier_crosswalk,Vendor ticker/CUSIP vs Norgate permaticker mismatch,MEDIUM,MEDIUM,build and measure a crosswalk; require >= 90% match,11-B STEP 1
+R5_currency_adr_scaling,Currency / ADR EPS scaling inconsistencies,LOW,LOW,normalize currency per listing; verify ADR ratios,11-B STEP 2
+R6_coverage_gaps,Thin coverage in the expanded S&P universe,MEDIUM,LOW,measure coverage; restrict the test universe if too thin,11-B STEP 3
+R7_corporate_actions,Splits distort per-share estimate history,MEDIUM,MEDIUM,use split-adjusted estimates; reconcile to price adjustments,11-B STEP 2
+R8_entitlement_trial_expiry,Trial entitlement lapses mid-test,MEDIUM,MEDIUM,one bounded export snapshotted locally; no dependence on a live feed,11-B STEP 1
+R9_timestamp_timezone,Revision timestamp timezone / same-day ordering ambiguity,LOW,MEDIUM,treat same-day revisions as available next session,11-B STEP 3
+R10_cost_overrun,Spend exceeds the trial budget,MEDIUM,LOW,bounded trial + EXPLICIT user opt-in before any purchase,pre-11-B
+R11_stale_consensus_noise,Thin/stale consensus adds noise,LOW,MEDIUM,require num_analysts >= k; drop thin names,11-B STEP 4
+R12_variant_overfit,Overfitting via many revision-factor variants,HIGH,MEDIUM,pre-register the factor list; apply the subperiod-net25 guard to each,11-B STEP 10
