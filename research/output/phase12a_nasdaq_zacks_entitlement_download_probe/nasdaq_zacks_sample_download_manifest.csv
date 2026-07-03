@@ -1,0 +1,9 @@
+code,raw_sample_path,sample_rows,n_columns
+ZACKS/EE,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EE.json,5,20
+ZACKS/LTG,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_LTG.json,5,13
+ZACKS/MT,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_MT.json,5,27
+ZACKS/EEH,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EEH.json,5,20
+ZACKS/EET,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EET.json,5,31
+ZACKS/EREV,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EREV.json,5,21
+ZACKS/SEH,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_SEH.json,5,20
+ZACKS/SE,research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_SE.json,5,31

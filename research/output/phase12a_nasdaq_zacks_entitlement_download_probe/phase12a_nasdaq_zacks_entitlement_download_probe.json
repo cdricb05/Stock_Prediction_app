@@ -1,0 +1,185 @@
+{
+  "accessible_tables": [
+    "ZACKS/EE",
+    "ZACKS/LTG",
+    "ZACKS/MT",
+    "ZACKS/EEH",
+    "ZACKS/EET",
+    "ZACKS/EREV",
+    "ZACKS/SEH",
+    "ZACKS/SE"
+  ],
+  "api_key_env_used": "NASDAQ_DATA_LINK_API_KEY",
+  "api_key_value_printed": false,
+  "blocked_tables": [],
+  "candidate_tables": [
+    "ZACKS/EE",
+    "ZACKS/LTG",
+    "ZACKS/MT",
+    "ZACKS/EEH",
+    "ZACKS/EET",
+    "ZACKS/EREV",
+    "ZACKS/SEH",
+    "ZACKS/ZEEH",
+    "ZACKS/SE",
+    "ZACKS/EPRR"
+  ],
+  "coverage_summary": {
+    "accessible": 8,
+    "blocked_403": 0,
+    "candidate_tables": 10,
+    "coverage_probe_n": 18,
+    "full_access": 0,
+    "sample_only": 4
+  },
+  "data_families_attempted": [
+    "analyst_estimate_revisions",
+    "earnings_estimates",
+    "sales_estimates",
+    "long_term_growth"
+  ],
+  "decision": "NASDAQ_ZACKS_NEEDS_CONTACT_SALES_OR_TRIAL",
+  "decision_rationale": "The Zacks estimate-history schema is a perfect fit (obs_date + estimate + revision fields) in ZACKS/EEH, ZACKS/EREV, ZACKS/SE, but the free key returns only Nasdaq's PREMIUM SAMPLE (a curated handful of tickers and a single year of history) - insufficient universe/history for a backtest. A paid subscription or product trial is required to unlock the full data.",
+  "files_downloaded": [
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EE.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_LTG.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_MT.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EEH.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EET.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_EREV.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_SEH.json",
+    "research/data/nasdaq_zacks/estimates/raw/sample/ZACKS_SE.json"
+  ],
+  "free_tier_is_sample": true,
+  "full_access_tables": [],
+  "generated_utc": "2026-07-03T21:10:01Z",
+  "n_live_calls": 138,
+  "next_action": [
+    {
+      "action": "Subscribe to / trial the Zacks estimate-history product on Nasdaq Data Link",
+      "blocking": "yes",
+      "detail": "The free key confirmed the ideal schema in ZACKS/EEH, ZACKS/EREV, ZACKS/SE but serves only a SAMPLE (curated tickers, single year). The Zacks North American Earnings Estimates product page on data.nasdaq.com exposes a self-serve 'Trial This Product' / subscribe button; that unlocks the full ZACKS/EEH + ZACKS/EREV history for the 545 universe. 403-blocked: (none 403).",
+      "provider": "nasdaq_data_link_zacks",
+      "step": 1
+    },
+    {
+      "action": "Confirm the paid tier covers ZACKS/EEH (EPS history) + ZACKS/EREV (revisions)",
+      "blocking": "yes",
+      "detail": "EEH gives obs_date + eps_mean/high/low/std/cnt + rev_up/rev_down; EREV gives analyst-level new/prior estimate with revision dates. Both are needed for a net-revisions-momentum factor at 63d.",
+      "provider": "nasdaq_data_link_zacks",
+      "step": 2
+    },
+    {
+      "action": "Alternate provider if Nasdaq trial unavailable: Intrinio Zacks",
+      "blocking": "yes",
+      "detail": "Intrinio exposes Zacks estimate-trend / revision history via clean REST with a self-serve trial; comparable PIT depth.",
+      "provider": "intrinio_zacks",
+      "step": 3
+    },
+    {
+      "action": "Owned-key fallback: FMP Premium analyst-estimates upgrade (11-B4 rank-1)",
+      "blocking": "yes",
+      "detail": "FMP_API_KEY already present; a tier upgrade unlocks estimate history for a first revisions screen without a new signup.",
+      "provider": "fmp_premium",
+      "step": 4
+    }
+  ],
+  "next_phase": "user_opt_in_paid_zacks_trial",
+  "normalized_data_paths": [],
+  "offline_replay": true,
+  "paid_sources": [
+    {
+      "owned_key": true,
+      "product": "Zacks EEH+EREV history",
+      "provider": "nasdaq_data_link_zacks",
+      "status": "trial_or_subscription_required"
+    },
+    {
+      "owned_key": false,
+      "product": "Zacks estimate trend/revisions",
+      "provider": "intrinio_zacks",
+      "status": "alternate_provider"
+    },
+    {
+      "owned_key": true,
+      "product": "analyst estimates + history",
+      "provider": "fmp_premium",
+      "status": "owned_key_upgrade"
+    }
+  ],
+  "phase": "12-A",
+  "phase12b_full_download": {
+    "reason": "decision=NASDAQ_ZACKS_NEEDS_CONTACT_SALES_OR_TRIAL",
+    "started": false
+  },
+  "phase_name": "nasdaq_zacks_entitlement_and_historical_estimates_download_probe",
+  "providers_attempted": [
+    "nasdaq_data_link_zacks"
+  ],
+  "quality_summary": {
+    "any_full_access_backtestable": false
+  },
+  "raw_data_paths": [
+    "research/data/nasdaq_zacks/estimates/raw/sample"
+  ],
+  "safety": {
+    "network_scope": "nasdaq_data_link_tables_api_read_only",
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true,
+    "no_gcp": true,
+    "no_orders": true,
+    "no_paper_trader_writes": true,
+    "no_push": true,
+    "no_secret_printed": true,
+    "paper_only": true
+  },
+  "sample_only_tables": [
+    "ZACKS/EEH",
+    "ZACKS/EREV",
+    "ZACKS/SEH",
+    "ZACKS/SE"
+  ],
+  "schema_class_by_table": {
+    "ZACKS/EE": "CURRENT_SNAPSHOT_ONLY",
+    "ZACKS/EEH": "REVISION_HISTORY",
+    "ZACKS/EET": "CURRENT_SNAPSHOT_ONLY",
+    "ZACKS/EPRR": "NOT_BACKTESTABLE",
+    "ZACKS/EREV": "REVISION_HISTORY",
+    "ZACKS/LTG": "CURRENT_SNAPSHOT_ONLY",
+    "ZACKS/MT": "MASTER_REFERENCE",
+    "ZACKS/SE": "REVISION_HISTORY",
+    "ZACKS/SEH": "HISTORICAL_POINT_IN_TIME",
+    "ZACKS/ZEEH": "NOT_BACKTESTABLE"
+  },
+  "schema_summary": {
+    "concepts_checked": [
+      "ticker",
+      "observation_or_effective_date",
+      "fiscal_period",
+      "eps_consensus_estimate",
+      "revenue_or_sales_estimate",
+      "analyst_count",
+      "estimate_high_low_std",
+      "upward_revision_count",
+      "downward_revision_count",
+      "prior_estimate",
+      "new_estimate",
+      "broker_or_analyst"
+    ],
+    "pit_tables": [
+      "ZACKS/EEH",
+      "ZACKS/EREV",
+      "ZACKS/SEH",
+      "ZACKS/SE"
+    ],
+    "schema_inventory_rows": 183
+  },
+  "smoke_tickers": [
+    "AAPL",
+    "MSFT",
+    "JPM",
+    "XOM",
+    "MOS"
+  ]
+}
