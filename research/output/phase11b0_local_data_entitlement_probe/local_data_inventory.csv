@@ -1,0 +1,6 @@
+family_key,provider,orthogonality,prior_status,raw_files,raw_size_mb,normalized_present,unique_tickers,distinct_months,median_obs_per_ticker,min_date,max_date,classification
+insider_sentiment_mspr,finnhub,HIGH,NEW_NEVER_TESTED,322,2.762,True,292,125,76,2016-02-02,2026-06-02,BACKTESTABLE
+analyst_recommendation_change,finnhub,MEDIUM_HIGH,NEW_NEVER_TESTED,452,0.276,True,448,8,4,2022-10-01,2026-06-01,SHALLOW_SNAPSHOT
+analyst_estimate_revision_av,alphavantage,HIGH,PHASE_11A_TOP_RANKED_FAMILY,23,0.604,True,23,319,111,1996-04-09,2026-06-18,TOO_SPARSE
+analyst_estimates_fmp,fmp,HIGH,PHASE_11A_TOP_RANKED_FAMILY,8,0.055,False,0,0,0,,,TOO_SPARSE
+short_interest_days_to_cover,polygon,MEDIUM,FAMILY_REJECTED_10A,545,1.092,True,545,102,10,2017-12-29,2026-06-15,SHALLOW_SNAPSHOT

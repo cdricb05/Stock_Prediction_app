@@ -1,0 +1,6 @@
+family_key,classification,prior_status,unique_tickers,median_obs_per_ticker,distinct_months,ready_for_alpha_test
+insider_sentiment_mspr,BACKTESTABLE,NEW_NEVER_TESTED,292,76,125,True
+analyst_recommendation_change,SHALLOW_SNAPSHOT,NEW_NEVER_TESTED,448,4,8,False
+analyst_estimate_revision_av,TOO_SPARSE,PHASE_11A_TOP_RANKED_FAMILY,23,111,319,False
+analyst_estimates_fmp,TOO_SPARSE,PHASE_11A_TOP_RANKED_FAMILY,0,0,0,False
+short_interest_days_to_cover,SHALLOW_SNAPSHOT,FAMILY_REJECTED_10A,545,10,102,False
