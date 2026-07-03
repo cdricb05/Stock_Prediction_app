@@ -1,0 +1,9 @@
+criterion_id,rule
+RC1_ingest_pit,reject if the feed lacks a usable pit_effective_date / revision_timestamp for a zero-look-ahead as-of join
+RC2_coverage,reject if universe coverage < ~90% of the 545-name panel or median per-name history < 24 months
+RC3_standalone,reject if the sector-neutral revision-momentum factor has no positive 63d IC with |t| that clears the same bar the quality legs did
+RC4_incremental,reject if composite_sn + w*revision does not beat composite_sn net-25bps under the 11-C strict relative test
+RC5_cost,reject if the edge is turnover cost-killed at 25/50 bps
+RC6_oos,reject if walk-forward pooled OOS IC is not positive with frac-windows-positive >= baseline
+RC7_subperiod_net25,reject unless the net-25bps improvement over baseline survives in BOTH pre-2020 and post-2020 (the 10-N/10-O/11-C subperiod guard)
+RC8_no_overfit,reject post-hoc winners: no single-quarter / single-sector driver; both cohorts positive; concentration not worse than baseline

@@ -1,0 +1,210 @@
+{
+  "phase": "11-B4",
+  "phase_name": "Paid-Data Acquisition Shopping Cart",
+  "offline": true,
+  "performs_network": false,
+  "no_payment_submitted": true,
+  "no_signup_performed": true,
+  "decision": "ACTION_REQUIRED_ANALYST_REVISIONS_TRIAL",
+  "decision_rationale": "Free / currently-entitled orthogonal data does not beat composite_sn (11-C) and the priority family is paid-gated (11-B3). The first bounded paid trial should be ANALYST ESTIMATE REVISIONS: rank-1 = FMP Premium upgrade (owned key -> lowest friction, ~$22-70/mo); rank-2 = Nasdaq Data Link Zacks / Intrinio for PIT-grade revision history. Requires explicit user opt-in; no payment/signup performed here.",
+  "recommended_family": "analyst_estimate_revisions",
+  "required_fields": [
+    "eps_estimate_cfy",
+    "eps_estimate_nfy",
+    "eps_estimate_quarter",
+    "revenue_estimate",
+    "num_analysts",
+    "up_revisions_count",
+    "down_revisions_count",
+    "estimate_change_7d",
+    "estimate_change_30d",
+    "estimate_change_60d",
+    "consensus_estimate_level",
+    "estimate_dispersion",
+    "recommendation_changes",
+    "price_target_changes",
+    "pit_effective_date",
+    "revision_timestamp"
+  ],
+  "cart": [
+    {
+      "rank": 1,
+      "tier": "must_try_first",
+      "provider": "FMP (Financial Modeling Prep) Premium tier",
+      "family": "analyst_estimate_revisions",
+      "dataset": "Analyst Estimates + Historical + Ratings/Targets",
+      "owned_key_env": "FMP_API_KEY",
+      "expected_cost": "~$22-70/mo (~$264-840/yr)",
+      "quote_required": false,
+      "free_trial": true,
+      "delivery": "REST API / CSV",
+      "min_download_scope": "S&P 500 + expanded (~545 names), monthly snapshots 2010-2026",
+      "expected_rows": "~650k-1M",
+      "expected_storage": "<1 GB",
+      "historical_depth_needed": ">=10yr",
+      "reason": "Owned key already present -> lowest-friction paid path; upgrading the tier unlocks universe-wide analyst estimates + history + revisions to run the first bounded screen.",
+      "alpha_test_enabled": "net-revisions momentum (up-down)/n + 30/60d estimate change, sector-neutral, 63d incremental to composite_sn",
+      "caveat": "PIT / revision-timestamp fidelity weaker than Zacks; acceptable for a first screen, escalate to rank 2 if promising-but-PIT-fragile.",
+      "signup_steps": "Upgrade the existing FMP account to a paid tier; reuse FMP_API_KEY; pull /api/v3/analyst-estimates + /stable/analyst-estimates historical."
+    },
+    {
+      "rank": 2,
+      "tier": "second_choice",
+      "provider": "Nasdaq Data Link - Zacks (ZACKS/EE + ZACKS/ER)",
+      "family": "analyst_estimate_revisions",
+      "dataset": "Zacks Earnings Estimates + Estimate Revisions History",
+      "owned_key_env": "NASDAQ_DATA_LINK_API_KEY",
+      "expected_cost": "~$1-3k/yr (subscription; quote)",
+      "quote_required": true,
+      "free_trial": true,
+      "delivery": "API / CSV / bulk export",
+      "min_download_scope": "S&P 500 + expanded (~545 names), daily/monthly PIT revisions 2005-2026",
+      "expected_rows": "~5-15M",
+      "expected_storage": "~2-6 GB",
+      "historical_depth_needed": ">=15yr",
+      "reason": "Best point-in-time revision history at an affordable (non-enterprise) price; owned Nasdaq Data Link key reduces signup. Gold-ish PIT for the revision-timestamp fields.",
+      "alpha_test_enabled": "PIT-clean net-revisions momentum + diffusion/breadth, sector-neutral, 5d/21d/63d incremental to composite_sn with the AC8 subperiod-net25 guard",
+      "caveat": "Redistribution-restricted license; subscription quote required.",
+      "signup_steps": "Start a Nasdaq Data Link Zacks trial; reuse NASDAQ_DATA_LINK_API_KEY; pull ZACKS/EE (estimates) + ZACKS/ER (revisions) for the universe."
+    },
+    {
+      "rank": 2,
+      "tier": "second_choice",
+      "provider": "Intrinio - Zacks Estimates/Trends",
+      "family": "analyst_estimate_revisions",
+      "dataset": "Zacks EPS/Sales Estimates + Estimate Trends",
+      "owned_key_env": "INTRINIO_API_KEY",
+      "expected_cost": "~$1-3k/yr tiered",
+      "quote_required": false,
+      "free_trial": true,
+      "delivery": "REST API / CSV / bulk",
+      "min_download_scope": "S&P 500 + expanded (~545 names), PIT estimate trends 2010-2026",
+      "expected_rows": "~5-15M",
+      "expected_storage": "~2-6 GB",
+      "historical_depth_needed": ">=15yr",
+      "reason": "Alternative affordable PIT Zacks source with clean REST delivery; use if Nasdaq Data Link licensing/quote is a blocker.",
+      "alpha_test_enabled": "same as Nasdaq Data Link Zacks",
+      "caveat": "No Intrinio key present yet -> requires new signup.",
+      "signup_steps": "Create an Intrinio trial; obtain INTRINIO_API_KEY; pull Zacks estimate-trends endpoints for the universe."
+    },
+    {
+      "rank": 3,
+      "tier": "enterprise_too_expensive",
+      "provider": "LSEG I/B/E/S",
+      "family": "analyst_estimate_revisions",
+      "dataset": "I/B/E/S detail + summary estimates/revisions",
+      "owned_key_env": null,
+      "expected_cost": ">$10k/yr (enterprise; quote)",
+      "quote_required": true,
+      "free_trial": false,
+      "delivery": "enterprise feed",
+      "min_download_scope": "universe, 40yr PIT",
+      "expected_rows": ">50M",
+      "expected_storage": ">20 GB",
+      "historical_depth_needed": ">=20yr",
+      "reason": "Gold-standard PIT estimates/revisions but enterprise contract + integration cost far exceed the value of a single 63d screen. Only if a paid pilot already shows strong alpha.",
+      "alpha_test_enabled": "definitive PIT revision study",
+      "caveat": "enterprise contract; high effort.",
+      "signup_steps": "Contact LSEG sales for I/B/E/S; enterprise onboarding."
+    },
+    {
+      "rank": 4,
+      "tier": "not_recommended_now",
+      "provider": "Options IV (ORATS/OptionMetrics)",
+      "family": "options_implied_vol",
+      "dataset": "historical IV surfaces / skew",
+      "owned_key_env": null,
+      "expected_cost": "$100-600/mo (ORATS) / enterprise (OptionMetrics)",
+      "quote_required": true,
+      "free_trial": true,
+      "delivery": "API / bulk",
+      "min_download_scope": "universe daily surfaces",
+      "expected_rows": ">50M",
+      "expected_storage": ">10 GB",
+      "historical_depth_needed": ">=10yr",
+      "reason": "Deferred: options signals decay fast (best 5-21d, weak at the 63d decision horizon) and are the most expensive + highest-integration family. Revisit only after analyst revisions.",
+      "alpha_test_enabled": "IV-skew / term-structure at short horizons",
+      "caveat": "wrong horizon for the quarterly book; heavy build.",
+      "signup_steps": "n/a (deferred)."
+    },
+    {
+      "rank": 4,
+      "tier": "not_recommended_now",
+      "provider": "Short interest / 13F / news sentiment",
+      "family": "mixed",
+      "dataset": "SI (ORTEX/S&P), 13F (WhaleWisdom), news (RavenPack/Benzinga)",
+      "owned_key_env": null,
+      "expected_cost": "varies",
+      "quote_required": true,
+      "free_trial": true,
+      "delivery": "API",
+      "min_download_scope": "universe",
+      "expected_rows": "varies",
+      "expected_storage": "varies",
+      "historical_depth_needed": ">=10yr",
+      "reason": "Deferred: short interest already rejected (10-A + 11-C), 13F has a 45-day PIT lag (worst timeliness), owned EODHD news sentiment was weak in the 8-series.",
+      "alpha_test_enabled": "n/a (low prior)",
+      "caveat": "low expected value.",
+      "signup_steps": "n/a (deferred)."
+    }
+  ],
+  "owned_key_overlay": {
+    "FMP_API_KEY": true,
+    "NASDAQ_DATA_LINK_API_KEY": true,
+    "INTRINIO_API_KEY": false
+  },
+  "rejection_criteria": [
+    {
+      "criterion_id": "RC1_ingest_pit",
+      "rule": "reject if the feed lacks a usable pit_effective_date / revision_timestamp for a zero-look-ahead as-of join"
+    },
+    {
+      "criterion_id": "RC2_coverage",
+      "rule": "reject if universe coverage < ~90% of the 545-name panel or median per-name history < 24 months"
+    },
+    {
+      "criterion_id": "RC3_standalone",
+      "rule": "reject if the sector-neutral revision-momentum factor has no positive 63d IC with |t| that clears the same bar the quality legs did"
+    },
+    {
+      "criterion_id": "RC4_incremental",
+      "rule": "reject if composite_sn + w*revision does not beat composite_sn net-25bps under the 11-C strict relative test"
+    },
+    {
+      "criterion_id": "RC5_cost",
+      "rule": "reject if the edge is turnover cost-killed at 25/50 bps"
+    },
+    {
+      "criterion_id": "RC6_oos",
+      "rule": "reject if walk-forward pooled OOS IC is not positive with frac-windows-positive >= baseline"
+    },
+    {
+      "criterion_id": "RC7_subperiod_net25",
+      "rule": "reject unless the net-25bps improvement over baseline survives in BOTH pre-2020 and post-2020 (the 10-N/10-O/11-C subperiod guard)"
+    },
+    {
+      "criterion_id": "RC8_no_overfit",
+      "rule": "reject post-hoc winners: no single-quarter / single-sector driver; both cohorts positive; concentration not worse than baseline"
+    }
+  ],
+  "trial_plan_ref": "Phase 11-A AC1-AC10 + Phase 11-C strict relative beat test + subperiod-net25 guard",
+  "baseline_to_beat": {
+    "signal": "composite_sn",
+    "ic_t": 2.665,
+    "quarterly_net_25bps": 0.00401,
+    "quarterly_net_50bps": 0.00095
+  },
+  "next_phase": "On user opt-in: acquire rank-1 trial, ingest offline, run Phase 11-C-style test; else baseline composite_sn stays the paper-review candidate.",
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_payment_submitted": true,
+    "no_signup_performed": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true,
+    "no_gcp": true
+  }
+}

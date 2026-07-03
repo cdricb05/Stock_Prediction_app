@@ -1,0 +1,17 @@
+field_key,pit_required
+eps_estimate_cfy,True
+eps_estimate_nfy,True
+eps_estimate_quarter,True
+revenue_estimate,True
+num_analysts,True
+up_revisions_count,True
+down_revisions_count,True
+estimate_change_7d,True
+estimate_change_30d,True
+estimate_change_60d,True
+consensus_estimate_level,True
+estimate_dispersion,True
+recommendation_changes,True
+price_target_changes,True
+pit_effective_date,True
+revision_timestamp,True
