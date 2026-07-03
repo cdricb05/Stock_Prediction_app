@@ -1,0 +1,6 @@
+family_key,family_name,provider_count
+A_analyst_estimates_revisions,Analyst estimates / revisions,6
+B_short_interest_securities_lending,Short interest / securities lending,4
+C_options_implied_vol,Options / implied volatility / skew,4
+D_insider_ownership,Insider transactions / institutional ownership,3
+E_news_sentiment,News / event sentiment (PIT),3
