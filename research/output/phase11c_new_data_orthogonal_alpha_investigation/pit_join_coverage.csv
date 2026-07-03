@@ -1,0 +1,4 @@
+signal,scoreable_rows,unique_tickers,unique_months,min_entry_date,max_entry_date
+insider_mspr_last_sn,18221,281,118,2016-06-23,2026-03-26
+insider_mspr_3m_sn,18221,281,118,2016-06-23,2026-03-26
+short_interest_change_sn,16984,543,99,2018-01-12,2026-03-26

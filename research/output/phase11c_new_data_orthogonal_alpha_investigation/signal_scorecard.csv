@@ -1,0 +1,8 @@
+variant_id,group,classification,ic_t,quarterly_net_25bps,quarterly_net_50bps,quarterly_turnover,oos_frac_windows_positive,both_cohorts_positive,both_subperiods_positive,top_sector_share,n_quarters,improvement_survives_subperiods,reject_reason
+insider_mspr_last_sn,standalone_insider,REJECT_COST_KILLED,-0.38,-0.001363,-0.004334,0.5943,0.312,False,False,0.6885,40,,quarterly net-25bps -0.001363 <= 0 (cost-killed)
+insider_mspr_3m_sn,standalone_insider,REJECT_COST_KILLED,-0.764,-0.004079,-0.006464,0.4769,0.5,False,False,0.6037,40,,quarterly net-25bps -0.004079 <= 0 (cost-killed)
+short_interest_change_sn,standalone_short_interest,REJECT_COST_KILLED,0.972,-0.006432,-0.00753,0.2197,0.625,True,False,0.8617,33,,quarterly net-25bps -0.006432 <= 0 (cost-killed)
+blend_insider_mspr3m_w0.15,incremental_blend,REJECT_COST_KILLED,1.716,-0.001583,-0.00466,0.6154,0.438,False,True,0.5666,40,False,quarterly net-25bps -0.001583 <= 0 (cost-killed)
+blend_insider_mspr3m_w0.30,incremental_blend,NO_IMPROVEMENT,1.519,0.00124,-0.001835,0.615,0.562,False,True,0.5699,40,False,does not beat the baseline net-25bps 0.00401 (variant 0.00124); baseline stands
+blend_insider_mspr3m_w0.50,incremental_blend,REJECT_COST_KILLED,1.491,-0.001229,-0.004326,0.6193,0.625,False,True,0.5775,40,False,quarterly net-25bps -0.001229 <= 0 (cost-killed)
+blend_insider_msprlast_w0.30,incremental_blend,REJECT_COST_KILLED,1.521,-0.000982,-0.004119,0.6275,0.375,False,True,0.5713,40,False,quarterly net-25bps -0.000982 <= 0 (cost-killed)

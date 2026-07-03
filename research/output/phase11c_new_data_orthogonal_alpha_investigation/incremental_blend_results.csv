@@ -1,0 +1,5 @@
+variant_id,blend_weight,classification,quarterly_net_25bps,base_pre2020_net25,blend_pre2020_net25,base_post2020_net25,blend_post2020_net25,improvement_survives_subperiods,reject_reason
+blend_insider_mspr3m_w0.15,0.15,REJECT_COST_KILLED,-0.001583,0.005221393447990431,0.004809107824878443,0.003247794102250696,-0.005451478134117377,False,quarterly net-25bps -0.001583 <= 0 (cost-killed)
+blend_insider_mspr3m_w0.30,0.3,NO_IMPROVEMENT,0.00124,0.005221393447990431,0.0025098838224504208,0.003247794102250696,0.0004527701284665294,False,does not beat the baseline net-25bps 0.00401 (variant 0.00124); baseline stands
+blend_insider_mspr3m_w0.50,0.5,REJECT_COST_KILLED,-0.001229,0.005221393447990431,0.0032433679847919832,0.003247794102250696,-0.00394458516950009,False,quarterly net-25bps -0.001229 <= 0 (cost-killed)
+blend_insider_msprlast_w0.30,0.3,REJECT_COST_KILLED,-0.000982,0.005221393447990431,0.003425837877693247,0.003247794102250696,-0.0036552644201180776,False,quarterly net-25bps -0.000982 <= 0 (cost-killed)
