@@ -1,0 +1,6 @@
+family_key,classification,prior_status,backtestable,tested_in_11c,gate_status,unique_tickers,distinct_months,median_obs_per_ticker
+insider_sentiment_mspr,BACKTESTABLE,NEW_NEVER_TESTED,True,True,READY_TESTED_NO_ALPHA,292,125,76
+analyst_recommendation_change,SHALLOW_SNAPSHOT,NEW_NEVER_TESTED,False,False,NOT_BACKTESTABLE,448,8,4
+analyst_estimate_revision_av,TOO_SPARSE,PHASE_11A_TOP_RANKED_FAMILY,False,False,PAID_GATED,23,319,111
+analyst_estimates_fmp,TOO_SPARSE,PHASE_11A_TOP_RANKED_FAMILY,False,False,PAID_GATED,0,0,0
+short_interest_days_to_cover,SHALLOW_SNAPSHOT,FAMILY_REJECTED_10A,False,True,READY_TESTED_NO_ALPHA,545,102,10

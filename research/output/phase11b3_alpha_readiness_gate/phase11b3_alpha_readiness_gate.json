@@ -1,0 +1,92 @@
+{
+  "phase": "11-B3",
+  "phase_name": "Alpha-Readiness Gate For Newly Loaded Data",
+  "offline": true,
+  "performs_network": false,
+  "decision": "NEEDS_PAID_DATA",
+  "decision_rationale": "Every locally-backtestable family has been tested and yields NO incremental alpha over composite_sn (insider_sentiment_mspr, short_interest_days_to_cover), and the highest-priority family(s) (analyst_estimate_revision_av, analyst_estimates_fmp) are only sparse locally and paid-gated at universe depth. A stronger alpha needs NEW PAID data -> Phase 11-B4.",
+  "inputs_read": {
+    "phase11b0": true,
+    "phase11c": true,
+    "phase11c_decision": "NEW_DATA_NO_ALPHA"
+  },
+  "gate_rows": [
+    {
+      "family_key": "insider_sentiment_mspr",
+      "classification": "BACKTESTABLE",
+      "prior_status": "NEW_NEVER_TESTED",
+      "backtestable": true,
+      "tested_in_11c": true,
+      "gate_status": "READY_TESTED_NO_ALPHA",
+      "unique_tickers": 292,
+      "distinct_months": 125,
+      "median_obs_per_ticker": 76
+    },
+    {
+      "family_key": "analyst_recommendation_change",
+      "classification": "SHALLOW_SNAPSHOT",
+      "prior_status": "NEW_NEVER_TESTED",
+      "backtestable": false,
+      "tested_in_11c": false,
+      "gate_status": "NOT_BACKTESTABLE",
+      "unique_tickers": 448,
+      "distinct_months": 8,
+      "median_obs_per_ticker": 4
+    },
+    {
+      "family_key": "analyst_estimate_revision_av",
+      "classification": "TOO_SPARSE",
+      "prior_status": "PHASE_11A_TOP_RANKED_FAMILY",
+      "backtestable": false,
+      "tested_in_11c": false,
+      "gate_status": "PAID_GATED",
+      "unique_tickers": 23,
+      "distinct_months": 319,
+      "median_obs_per_ticker": 111
+    },
+    {
+      "family_key": "analyst_estimates_fmp",
+      "classification": "TOO_SPARSE",
+      "prior_status": "PHASE_11A_TOP_RANKED_FAMILY",
+      "backtestable": false,
+      "tested_in_11c": false,
+      "gate_status": "PAID_GATED",
+      "unique_tickers": 0,
+      "distinct_months": 0,
+      "median_obs_per_ticker": 0
+    },
+    {
+      "family_key": "short_interest_days_to_cover",
+      "classification": "SHALLOW_SNAPSHOT",
+      "prior_status": "FAMILY_REJECTED_10A",
+      "backtestable": false,
+      "tested_in_11c": true,
+      "gate_status": "READY_TESTED_NO_ALPHA",
+      "unique_tickers": 545,
+      "distinct_months": 102,
+      "median_obs_per_ticker": 10
+    }
+  ],
+  "ready_untested": [],
+  "tested_no_alpha": [
+    "insider_sentiment_mspr",
+    "short_interest_days_to_cover"
+  ],
+  "paid_gated": [
+    "analyst_estimate_revision_av",
+    "analyst_estimates_fmp"
+  ],
+  "baseline_remains_champion": true,
+  "next_phase": "11-B4 paid shopping cart (analyst estimate revisions)",
+  "safety": {
+    "paper_only": true,
+    "owned_local_data_only": true,
+    "no_live_api_calls": true,
+    "no_orders": true,
+    "no_automation": true,
+    "no_broker": true,
+    "no_deploy": true,
+    "no_gcp": true,
+    "no_paper_trader_writes": true
+  }
+}
