@@ -185,6 +185,30 @@ def test_no_paid_provider_calls_in_source():
     assert not hits, f"forbidden tokens present in runner: {hits}"
 
 
+def test_runner_is_self_contained_no_numpy_no_cross_phase():
+    # Phase 13-A must be pure stdlib: no numpy/pandas, and no cross-phase imports that would
+    # transitively pull numpy (the exact bug this hotfix fixes: b10 -> phase9c -> phase8b -> numpy).
+    src = RUNNER.read_text(encoding="utf-8")
+    assert "import numpy" not in src, "runner must not import numpy"
+    assert "import pandas" not in src, "runner must not import pandas"
+    assert "from research import" not in src, "runner must not import sibling research phase modules"
+    for mod in ("run_phase10b", "run_phase9c", "run_phase8b", "run_phase8s"):
+        assert f"import {mod}" not in src, f"runner still imports {mod}"
+
+
+def test_runner_import_does_not_pull_numpy():
+    # Prove at runtime, in a fresh interpreter, that loading the runner leaves numpy unloaded.
+    code = (
+        "import importlib.util, sys; "
+        "spec = importlib.util.spec_from_file_location('p13a', r'%s'); "
+        "mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); "
+        "print('NUMPY' if 'numpy' in sys.modules else 'CLEAN')" % str(RUNNER)
+    )
+    proc = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, timeout=120)
+    assert proc.returncode == 0, f"import failed: {proc.stdout}\n{proc.stderr}"
+    assert proc.stdout.strip().endswith("CLEAN"), f"runner import pulled numpy: {proc.stdout}\n{proc.stderr}"
+
+
 def test_no_secrets_printed(result):
     assert result["api_key_printed"] is False
     assert result["api_key_written_to_disk"] is False

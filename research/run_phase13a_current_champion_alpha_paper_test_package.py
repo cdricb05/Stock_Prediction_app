@@ -47,26 +47,100 @@ CONSTRAINTS HONORED
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import math
-import sys
+import os
 from datetime import date
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(_REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(_REPO_ROOT))
 
-from research import run_phase8s_autonomous_eodhd_alpha_factory as s8            # noqa: E402  io helpers
-from research import run_phase10b_eodhd_norgate_exhaustive_alpha_factory as b10  # noqa: E402  secret audit
+# --------------------------------------------------------------------------- #
+# Self-contained stdlib helpers (vendored so Phase 13-A has ZERO third-party or
+# cross-phase imports - it must run under a bare Windows Python with no numpy /
+# pandas / research package on sys.path). Behaviour matches the phase8s IO
+# helpers and the phase10b secret-audit / _finite helpers verbatim.
+# --------------------------------------------------------------------------- #
+# Only these env vars are scanned for accidental leakage (mirrors phase10b's
+# REQUIRED_VISIBLE_KEYS + CONTEXT_ONLY_KEYS). This runner never reads or uses
+# them - the audit just proves no key value landed in an output file.
+_SECRET_ENV_VARS = ("EODHD_API_KEY", "FMP_API_KEY")
 
-_write_json = s8._write_json
-_write_csv = s8._write_csv
-_read_csv_file = s8._read_csv_file
-_read_json = s8._read_json
-_rel = s8._rel
-_finite = b10._finite
+
+def _rel(path: Path) -> str:
+    try:
+        return str(Path(path).resolve().relative_to(_REPO_ROOT)).replace("\\", "/")
+    except ValueError:
+        return str(path).replace("\\", "/")
+
+
+def _write_json(path: Path, obj) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump(obj, fh, indent=2, allow_nan=False, default=str)
+        fh.write("\n")
+
+
+def _write_csv(path: Path, header: Sequence[str], rows: Sequence[Sequence]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(header)
+        for r in rows:
+            w.writerow(["" if v is None else v for v in r])
+
+
+def _read_csv_file(path: Path) -> List[Dict]:
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return list(csv.DictReader(fh))
+    except OSError:
+        return []
+
+
+def _read_json(path: Path) -> Dict:
+    try:
+        with open(path, "r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _finite(x) -> bool:
+    return x is not None and not (isinstance(x, float) and math.isnan(x))
+
+
+def _secret_safety_audit(out_dir: Path) -> Tuple[List[Dict], bool]:
+    """Scan every output file for keyed-URL markers or a live key value.
+
+    Read-only over the runner's own out_dir; never prints or stores a key.
+    """
+    markers = ["apikey=", "api_token=", "token=", "api_key=", "&apikey", "?apikey", "&token"]
+    present_values = []
+    for env in _SECRET_ENV_VARS:
+        v = os.environ.get(env)
+        if isinstance(v, str) and v.strip():
+            present_values.append(v.strip())
+    rows: List[Dict] = []
+    clean = True
+    for p in sorted(out_dir.glob("*")):
+        if not p.is_file():
+            continue
+        try:
+            text = p.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        low = text.lower()
+        marker_hit = next((m for m in markers if m in low), "")
+        value_hit = any(val in text for val in present_values)
+        file_clean = not marker_hit and not value_hit
+        clean = clean and file_clean
+        rows.append({"file": p.name, "clean": file_clean,
+                     "keyed_url_marker": marker_hit or "none", "key_value_present": value_hit})
+    return rows, clean
+
 
 PHASE = "13-A"
 PERFORMS_NETWORK = False
@@ -845,7 +919,7 @@ def run(out_dir: Optional[Path] = None, *, panel_csv: Optional[Path] = None,
     _write_json(out_dir / _ARTIFACTS["report"], report)
 
     # secret-safety audit LAST so it scans every artifact just written.
-    sec_rows, leak_clean = b10._secret_safety_audit(out_dir)
+    sec_rows, leak_clean = _secret_safety_audit(out_dir)
     _write_csv(out_dir / _ARTIFACTS["secret_audit"],
                ["file", "clean", "keyed_url_marker", "key_value_present"],
                [[r["file"], r["clean"], r["keyed_url_marker"], r["key_value_present"]] for r in sec_rows])
