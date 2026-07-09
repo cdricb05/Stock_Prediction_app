@@ -1,0 +1,11 @@
+criterion,status,value,threshold,note
+panel_loaded,PASS,True,required,frozen 10-L historical scored panel
+composite_sn_coverage,PASS,234/234,>0,valid composite_sn in the latest month cross-section
+signal_freshness,WARN,35d,"warn>30d, reject>120d",calendar days from signal date to package date (freshest owned price date)
+price_coverage_top25,WARN,14/25,full=25,owned local EOD entry prices available
+price_coverage_top50,WARN,24/50,full=50,owned local EOD entry prices available
+sector_diversification_top25,WARN,100.0%,<=30%,largest sector share in the top-25 book (Unknown-sector caveat applies)
+benchmark_spy_local,WARN,False,SPY.json present,SPY not owned locally -> benchmark falls back to equal-weight universe
+historical_ic_t_63d,PASS,2.665,>=2.0 (modest),"Phase 10-D validated t-stat; modest edge, not strong"
+historical_net25_spread,PASS,0.00401,>0,quarterly net-25bps spread (approx quintile L/S)
+OVERALL_RECOMMENDATION,GO_PAPER_ONLY_WITH_CAVEATS_NOT_LIVE,GO_PAPER_ONLY_WITH_CAVEATS_NOT_LIVE,paper only,this is a preview/paper-test recommendation ONLY; never a live-trading signal

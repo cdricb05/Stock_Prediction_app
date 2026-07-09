@@ -1,0 +1,7 @@
+issue,scope,n_names,tickers,note
+UNKNOWN_SECTOR,top50,44,EXPE;EA;LYV;LULU;APP;FOX;FOXA;SNDK;ABNB;DXCM;RACE;SHOP;ANET;IP;SMERY;GDDY;DDOG;BUD;PLTR;GWW;EXPD;FANG;HAS;RMD;IT;DVN;NBIS;FTNT;IDXX;MCK;HST;XYZ;GEN;CAH;MNST;SONY;RCL;NWS;NWSA;MELI (+4 more),sector metadata unmapped (owned-metadata gap carried from 10-F); sector-neutrality and sector caps are approximate for these names
+NO_LOCAL_PRICE,top25,11,APP;SNDK;ABNB;RACE;SHOP;ANET;SMERY;DDOG;BUD;PLTR;GWW,no owned local EOD file; entry price cannot be initialized until prices are refreshed (no provider call is made here)
+NO_LOCAL_PRICE,top50,26,APP;SNDK;ABNB;RACE;SHOP;ANET;SMERY;DDOG;BUD;PLTR;GWW;NBIS;UBER;SYK;FTNT;VRTX;MCK;ITW;MNST;AAPL;SONY;RCL;MELI;B;GILD;KEYS,no owned local EOD file; entry price cannot be initialized until prices are refreshed (no provider call is made here)
+NO_LOCAL_PRICE,bottom25,8,WDC;NU;COHR;RKLB;CRH;NVO;TDG;CEG,no owned local EOD file; entry price cannot be initialized until prices are refreshed (no provider call is made here)
+LOW_LIQUIDITY,top50,9,FOX;RACE;SMERY;EXPD;HAS;SONY;NWS;NWSA;JKHY,liquidity_proxy below universe 25th pctile (120472766.1); size down or exclude
+MISSING_COMPOSITE_LEG,universe,0,,names in the latest month with no valid composite_sn were excluded from ranking

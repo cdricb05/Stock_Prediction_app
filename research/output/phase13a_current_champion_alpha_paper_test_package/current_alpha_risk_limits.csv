@@ -1,0 +1,19 @@
+limit,value,enforcement,note
+PREVIEW ONLY,YES,HARD,candidate list only; nothing is executed
+NO ORDERS,CONFIRMED,HARD,runner creates no orders; order_action=NO_ORDER on every row
+NO BROKER,CONFIRMED,HARD,no broker connection of any kind
+MANUAL REVIEW,REQUIRED,HARD,a human must review before any action outside this tool
+NO AUTOMATION,CONFIRMED,HARD,no scheduling / no automated re-run
+NO LIVE TRADING,CONFIRMED,HARD,"this alpha is modest; paper review only, not live"
+rebalance_cadence,QUARTERLY,TARGET,re-rank at the next quarter boundary
+holding_horizon_trading_days,63,TARGET,63 trading-day hold
+next_rebalance_target,2026-08-22,TARGET,approx signal_date + one quarter (63 trading days ~ 92 calendar days)
+weighting,EQUAL_WEIGHT_LONG_ONLY,TARGET,top25 and top50 books are equal-weight
+max_position_size_top25,0.04,SUGGESTION,1/25 equal weight
+max_position_size_top50,0.02,SUGGESTION,1/50 equal weight
+hard_position_cap,0.05,SUGGESTION,never exceed 5% in a single name
+sector_concentration_warn,0.3,WARNING,flag / trim any book sector share above 30%
+liquidity_floor_proxy,120472766.1,WARNING,names below the universe 25th pctile dollar-volume proxy: size down or exclude
+no_averaging_down,ENFORCED,RULE,do not add to a losing paper position
+long_short_diagnostic,DIAGNOSTIC_ONLY,RULE,"top25 long / bottom25 short spread is a diagnostic, NOT a live book"
+no_live_trading_recommendation,CONFIRMED,RULE,nothing here is a recommendation to trade real capital

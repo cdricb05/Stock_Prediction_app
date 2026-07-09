@@ -1,0 +1,8 @@
+book,sector,n_names,weight_pct,flag
+TOP25,Unknown,25,100.0,CONCENTRATED
+TOP50,Unknown,44,88.0,CONCENTRATED
+TOP50,Health Care,3,6.0,OK
+TOP50,Industrials,2,4.0,OK
+TOP50,Information Technology,1,2.0,OK
+BOTTOM25,Unknown,24,96.0,CONCENTRATED
+BOTTOM25,Industrials,1,4.0,OK
