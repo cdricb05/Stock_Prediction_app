@@ -257,3 +257,117 @@ def test_dynamic_data_dir_is_outside_git():
     assert str(m._DEFAULT_DAILY_MARK_DIR).replace("\\", "/").startswith("D:/")
     assert "Stock_Prediction_app_push" not in str(m._DEFAULT_DAILY_MARK_DIR)
     assert "paper_trader" not in str(m._DEFAULT_DAILY_MARK_DIR)
+
+
+# --------------------------------------------------------------------------- #
+# CURRENT RUN STATUS artifact (last_run_status.json) — the process-boundary fix.
+#
+# last_run_status.json is a DISTINCT concept from the latest valid financial mark
+# (refresh_manifest.json + the four other files). It is written on EVERY completed
+# outcome so a subprocess consumer can learn what THIS run did without inferring it
+# from the preserved financial mark.
+# --------------------------------------------------------------------------- #
+_RUN_STATUS = "latest/" + m.RUN_STATUS_FILE
+_REQUIRED_RUN_STATUS_FIELDS = {
+    "refresh_result", "last_run_at", "reference_today", "mark_date_observed",
+    "previous_valid_mark_date", "new_mark_date", "blocked", "blocked_message",
+    "latest_valid_mark_available", "latest_valid_mark_date", "price_source",
+    "creates_orders", "creates_automation", "creates_broker_connection",
+    "wrote_to_paper_trader", "live_trading", "order_action_all",
+}
+
+
+def _run_status(tmp_path):
+    return json.loads((tmp_path / "latest" / m.RUN_STATUS_FILE).read_text(encoding="utf-8"))
+
+
+def test_successful_new_mark_writes_run_status(tmp_path):
+    tr = _make_transport(_full_universe_series())
+    m.refresh(PACKAGE_DIR, None, tmp_path, transport=tr, today="2026-07-15",
+              log=m._Log(verbose=False))
+    # both the financial mark AND the current-run status exist
+    assert (tmp_path / "latest" / "refresh_manifest.json").is_file()
+    assert (tmp_path / "latest" / m.RUN_STATUS_FILE).is_file()
+    st = _run_status(tmp_path)
+    assert _REQUIRED_RUN_STATUS_FIELDS.issubset(st.keys())
+    assert st["refresh_result"] == m.RES_OK
+    assert st["new_mark_date"] is True
+    assert st["blocked"] is False
+    assert st["blocked_message"] is None
+    assert st["latest_valid_mark_available"] is True
+    assert st["latest_valid_mark_date"] == "2026-07-14"
+    assert st["mark_date_observed"] == "2026-07-14"
+    # safety
+    assert st["creates_orders"] is False and st["creates_automation"] is False
+    assert st["creates_broker_connection"] is False and st["wrote_to_paper_trader"] is False
+    assert st["live_trading"] is False and st["order_action_all"] == "NO_ORDER"
+
+
+def test_same_mark_rerun_status_is_no_new_and_mark_preserved(tmp_path):
+    tr = _make_transport(_full_universe_series())
+    m.refresh(PACKAGE_DIR, None, tmp_path, transport=tr, today="2026-07-15",
+              log=m._Log(verbose=False))
+    manifest_path = tmp_path / "latest" / "refresh_manifest.json"
+    before_bytes = manifest_path.read_bytes()
+    hist_before = sorted(h.name for h in (tmp_path / "history").iterdir())
+
+    # a same-mark-date rerun
+    second = m.refresh(PACKAGE_DIR, None, tmp_path, transport=tr, today="2026-07-15",
+                       log=m._Log(verbose=False))
+    assert second["refresh_result"] == m.RES_NO_NEW
+
+    st = _run_status(tmp_path)
+    assert st["refresh_result"] == m.RES_NO_NEW
+    assert st["new_mark_date"] is False
+    assert st["blocked"] is False
+    assert st["latest_valid_mark_available"] is True
+    assert st["latest_valid_mark_date"] == "2026-07-14"
+
+    # the latest VALID financial mark is untouched: still the valid REFRESH_OK mark,
+    # same mark date, byte-identical file, and no new history directory.
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["refresh_result"] == m.RES_OK
+    assert manifest["mark_date"] == "2026-07-14"
+    assert manifest_path.read_bytes() == before_bytes
+    assert sorted(h.name for h in (tmp_path / "history").iterdir()) == hist_before == ["2026-07-14"]
+
+
+def test_blocked_after_success_preserves_valid_mark(tmp_path):
+    # 1) a good run establishes the latest valid financial mark
+    m.refresh(PACKAGE_DIR, None, tmp_path, transport=_make_transport(_full_universe_series()),
+              today="2026-07-15", log=m._Log(verbose=False))
+    manifest_path = tmp_path / "latest" / "refresh_manifest.json"
+    before_bytes = manifest_path.read_bytes()
+    hist_before = sorted(h.name for h in (tmp_path / "history").iterdir())
+
+    # 2) a subsequent run is blocked (bad key on the SPY probe)
+    blocked_tr = _make_transport(_full_universe_series(),
+                                 raise_for={m._clean_symbol("SPY"): _FakeEodhdError("invalid_key")})
+    blocked = m.refresh(PACKAGE_DIR, None, tmp_path, transport=blocked_tr, today="2026-07-15",
+                        log=m._Log(verbose=False))
+    assert blocked["refresh_result"] == m.RES_BLOCKED_KEY
+
+    st = _run_status(tmp_path)
+    assert st["refresh_result"] == m.RES_BLOCKED_KEY
+    assert st["blocked"] is True
+    assert st["blocked_message"]
+    assert st["new_mark_date"] is False
+    # the last valid financial mark is still readable + advertised
+    assert st["latest_valid_mark_available"] is True
+    assert st["latest_valid_mark_date"] == "2026-07-14"
+
+    # the financial mark files are byte/content unchanged and no history advanced
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert manifest["refresh_result"] == m.RES_OK
+    assert manifest["mark_date"] == "2026-07-14"
+    assert manifest_path.read_bytes() == before_bytes
+    assert sorted(h.name for h in (tmp_path / "history").iterdir()) == hist_before
+
+
+def test_run_status_never_contains_api_key(tmp_path, monkeypatch):
+    sentinel = "SENTINEL_KEY_SHOULD_NOT_APPEAR_1234567"
+    monkeypatch.setenv("EODHD_API_KEY", sentinel)
+    m.refresh(PACKAGE_DIR, None, tmp_path, transport=_make_transport(_full_universe_series()),
+              today="2026-07-15", log=m._Log(verbose=False))
+    text = (tmp_path / "latest" / m.RUN_STATUS_FILE).read_text(encoding="utf-8", errors="ignore")
+    assert sentinel not in text

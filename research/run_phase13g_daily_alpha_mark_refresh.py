@@ -26,10 +26,20 @@ LATEST-PRICE RULE (completed EOD only)
 OUTPUT (atomic; OUTSIDE git; env PAPER_TRADER_CURRENT_ALPHA_DAILY_MARK_DIR override)
     D:/Stock_Prediction_app_data/phase13g_daily_alpha_marks/
         latest/{daily_alpha_marks.json, daily_alpha_marks.csv, book_summaries.json,
-                benchmark_summary.json, refresh_manifest.json}
-        history/YYYY-MM-DD/{... same five ...}
+                benchmark_summary.json, refresh_manifest.json, last_run_status.json}
+        history/YYYY-MM-DD/{... same five financial-mark files ...}
     A repeated run on the same completed EOD mark date does NOT create another history
     directory or a duplicate financial observation (NO_NEW_MARK_DATE).
+
+TWO DISTINCT CONCEPTS (this is a process-boundary contract, not cosmetic)
+    * LATEST VALID FINANCIAL MARK = the five financial-mark files above. They are only
+      written/advanced when a genuinely NEW completed EOD mark is acquired. A
+      NO_NEW_MARK_DATE run and every BLOCKED_* run PRESERVE them unchanged.
+    * CURRENT RUN STATUS = latest/last_run_status.json. It is (re)written on EVERY
+      completed runner outcome (success, no-new, or blocked) and records what THIS run
+      did. A downstream consumer that launches the runner as a subprocess MUST read
+      last_run_status.json (not refresh_manifest.json) to learn the current run result,
+      because the runner's Python return value cannot cross the process boundary.
 
 REFRESH RESULT ENUM
     REFRESH_OK_NEW_MARK_DATE | NO_NEW_MARK_DATE | PARTIAL_COVERAGE | INSUFFICIENT_COVERAGE
@@ -89,6 +99,9 @@ RES_BLOCKED_PROVIDER = "BLOCKED_PROVIDER_ERROR"
 RES_BLOCKED_SCHEMA = "BLOCKED_SCHEMA_ERROR"
 _BLOCKED = {RES_BLOCKED_KEY, RES_BLOCKED_ENTITLEMENT, RES_BLOCKED_RATE,
             RES_BLOCKED_PROVIDER, RES_BLOCKED_SCHEMA}
+
+# --- current-run status artifact (distinct from the financial-mark artifacts) --- #
+RUN_STATUS_FILE = "last_run_status.json"
 
 _MARKS_CSV_HEADER = [
     "ticker", "alpha_name", "signal_date", "source_rank", "in_top25", "in_top50",
@@ -536,6 +549,58 @@ def _write_artifact_set(dst: Path, marks_payload: dict, marks_rows: list,
     _atomic_write_json(dst / "refresh_manifest.json", manifest)
 
 
+def _latest_valid_mark(mark_dir: Path) -> Tuple[bool, Optional[str]]:
+    """Inspect the persisted latest/refresh_manifest.json and return (available, date)
+    for the latest VALID financial mark. A blocked/never-marked manifest (no mark_date)
+    is not a valid mark. This is distinct from the current run's status."""
+    prev = _read_prev_manifest(mark_dir)
+    if not isinstance(prev, dict) or prev.get("blocked"):
+        return (False, None)
+    md = prev.get("mark_date")
+    return (True, md) if md else (False, None)
+
+
+def _build_run_status(*, refresh_result: str, run_at: str, ref_today: date,
+                      mark_date_observed: Optional[str],
+                      previous_valid_mark_date: Optional[str], new_mark_date: bool,
+                      blocked: bool, blocked_message: Optional[str],
+                      latest_valid_mark_available: bool,
+                      latest_valid_mark_date: Optional[str]) -> Dict[str, Any]:
+    """Build the CURRENT RUN STATUS record (latest/last_run_status.json).
+
+    This describes what THIS run did; it is NOT the latest valid financial mark. It is
+    the authoritative cross-process signal a subprocess consumer reads to decide whether
+    a fresh paper snapshot is warranted."""
+    return {
+        "phase": PHASE, "phase_part": "B", "artifact": "current_run_status",
+        "refresh_result": refresh_result,
+        "last_run_at": run_at,
+        "reference_today": ref_today.isoformat(),
+        "mark_date_observed": mark_date_observed,
+        "previous_valid_mark_date": previous_valid_mark_date,
+        "new_mark_date": bool(new_mark_date),
+        "blocked": bool(blocked),
+        "blocked_message": blocked_message,
+        "latest_valid_mark_available": bool(latest_valid_mark_available),
+        "latest_valid_mark_date": latest_valid_mark_date,
+        "price_source": PRICE_SOURCE,
+        # --- safety (this run traded nothing) ---
+        "creates_orders": False,
+        "creates_automation": False,
+        "creates_broker_connection": False,
+        "wrote_to_paper_trader": False,
+        "live_trading": False,
+        "order_action_all": "NO_ORDER",
+    }
+
+
+def _write_run_status(mark_dir: Path, status: Dict[str, Any]) -> None:
+    """Atomically persist the CURRENT RUN STATUS. Written on EVERY completed outcome so
+    the result of this run survives the subprocess boundary; it never touches the
+    financial-mark artifacts."""
+    _atomic_write_json(mark_dir / "latest" / RUN_STATUS_FILE, status)
+
+
 # --------------------------------------------------------------------------- #
 # F. Orchestration.
 # --------------------------------------------------------------------------- #
@@ -612,6 +677,15 @@ def refresh(package_dir: Path, audit_dir: Optional[Path], mark_dir: Path, *,
     prev_books = {b.get("book_size"): b for b in (prev_manifest or {}).get("book_summaries_preview", [])}
     if mark_date is not None and prev_mark_date == mark_date:
         log.step("dedup", "SKIP", "mark date %s unchanged -> NO_NEW_MARK_DATE" % mark_date)
+        # Persist the CURRENT RUN STATUS (NO_NEW); do NOT touch the financial-mark files.
+        status = _build_run_status(
+            refresh_result=RES_NO_NEW, run_at=run_at, ref_today=ref_today,
+            mark_date_observed=mark_date, previous_valid_mark_date=prev_mark_date,
+            new_mark_date=False, blocked=False, blocked_message=None,
+            latest_valid_mark_available=True, latest_valid_mark_date=prev_mark_date)
+        _write_run_status(mark_dir, status)
+        # The returned value is informational only (a NO_NEW echo of the preserved
+        # financial mark); the durable current-run signal is last_run_status.json.
         manifest = _read_json(mark_dir / "latest" / "refresh_manifest.json") or {}
         manifest = dict(manifest)
         manifest["refresh_result"] = RES_NO_NEW
@@ -657,6 +731,16 @@ def refresh(package_dir: Path, audit_dir: Optional[Path], mark_dir: Path, *,
         if not (hist / "refresh_manifest.json").is_file():
             _write_artifact_set(hist, marks_payload, marks_rows, book_summaries,
                                 benchmark, manifest)
+    # CURRENT RUN STATUS: written AFTER the financial mark so the new mark is the latest
+    # valid one. A new completed mark was acquired -> new_mark_date = True.
+    status = _build_run_status(
+        refresh_result=refresh_result, run_at=run_at, ref_today=ref_today,
+        mark_date_observed=mark_date, previous_valid_mark_date=prev_mark_date,
+        new_mark_date=bool(mark_date is not None and mark_date != prev_mark_date),
+        blocked=False, blocked_message=None,
+        latest_valid_mark_available=bool(mark_date is not None),
+        latest_valid_mark_date=mark_date)
+    _write_run_status(mark_dir, status)
     log.step("write", "DONE", "%s mark=%s" % (refresh_result, mark_date))
     return manifest
 
@@ -700,19 +784,30 @@ def _build_manifest(refresh_result, mark_date, prev_mark_date, signal_date, uni_
 def _blocked_manifest(result_enum: str, message: str, mark_dir: Path, run_at: str,
                       uni_meta: Dict[str, Any], ref_today: date, log: _Log) -> Dict[str, Any]:
     log.step("blocked", "STOP", "%s: %s" % (result_enum, message))
+    # A blocked run PRESERVES any prior valid financial mark unchanged; report it so the
+    # consumer knows the last good mark is still available.
+    lv_available, lv_date = _latest_valid_mark(mark_dir)
     manifest = {
         "phase": PHASE, "phase_part": "B", "phase_name": PHASE_NAME,
         "refresh_result": result_enum, "new_mark_date": False, "mark_date": None,
         "blocked": True, "blocked_message": message,
         "reference_today": ref_today.isoformat(),
         "alpha_name": ALPHA_NAME, "universe": uni_meta, "last_refresh_run_at": run_at,
+        "latest_valid_mark_available": lv_available, "latest_valid_mark_date": lv_date,
         "creates_orders": False, "creates_automation": False, "live_trading": False,
         "wrote_to_paper_trader": False, "api_key_printed": False, "api_key_persisted": False,
         "order_action_all": "NO_ORDER",
         "safety_badges": ["MANUAL DAILY REFRESH", "READ ONLY MARKET DATA", "PAPER TEST ONLY",
                           "NO ORDERS", "NO BROKER", "NO AUTOMATION", "NO LIVE TRADING"],
     }
-    # Blocked runs do NOT overwrite a good prior mark; they surface status only.
+    # Blocked runs do NOT overwrite the financial-mark files; they persist ONLY the
+    # CURRENT RUN STATUS with the exact blocked enum.
+    status = _build_run_status(
+        refresh_result=result_enum, run_at=run_at, ref_today=ref_today,
+        mark_date_observed=None, previous_valid_mark_date=lv_date,
+        new_mark_date=False, blocked=True, blocked_message=message,
+        latest_valid_mark_available=lv_available, latest_valid_mark_date=lv_date)
+    _write_run_status(mark_dir, status)
     return manifest
 
 

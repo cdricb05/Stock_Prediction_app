@@ -41,8 +41,8 @@ injectable via `--today` for deterministic tests). The book `mark_date` is the S
 
 ```
 latest/{daily_alpha_marks.json, daily_alpha_marks.csv, book_summaries.json,
-        benchmark_summary.json, refresh_manifest.json}
-history/YYYY-MM-DD/{... same five ...}
+        benchmark_summary.json, refresh_manifest.json, last_run_status.json}
+history/YYYY-MM-DD/{... same five financial-mark files ...}
 ```
 
 Per-ticker mark fields: `ticker, alpha_name, signal_date, source_rank, in_top25, in_top50,
@@ -71,6 +71,28 @@ benchmark_return_pct, excess_return_vs_spy_pct_points`.
 A repeated run on the **same** completed EOD mark date returns `NO_NEW_MARK_DATE` and does **not**
 create another history directory or a duplicate financial observation. A blocked run does not
 overwrite a good prior mark.
+
+## Current run status vs latest valid financial mark (process-boundary contract)
+
+The runner keeps two **distinct** concepts, because a downstream consumer launches it as a
+subprocess and the Python return value cannot cross that boundary:
+
+* **Latest valid financial mark** — the five financial-mark files (`daily_alpha_marks.*`,
+  `book_summaries.json`, `benchmark_summary.json`, `refresh_manifest.json`). They are written /
+  advanced **only** when a genuinely new completed EOD mark is acquired. A `NO_NEW_MARK_DATE` run
+  and every `BLOCKED_*` run **preserve them unchanged** (no new history directory either).
+* **Current run status** — `latest/last_run_status.json`, **(re)written atomically on every
+  completed outcome** (success, no-new, or blocked). It records what *this* run did. A subprocess
+  consumer **must** read this file (not `refresh_manifest.json`) to learn the current run result.
+
+`last_run_status.json` fields: `refresh_result, last_run_at, reference_today, mark_date_observed,
+previous_valid_mark_date, new_mark_date, blocked, blocked_message, latest_valid_mark_available,
+latest_valid_mark_date, price_source` plus the safety flags (`creates_orders`, `creates_automation`,
+`creates_broker_connection`, `wrote_to_paper_trader`, `live_trading`, `order_action_all`). On a
+`NO_NEW_MARK_DATE` run `new_mark_date=false` and `latest_valid_mark_*` point at the preserved mark;
+on a `BLOCKED_*` run `blocked=true`, `new_mark_date=false`, and `latest_valid_mark_*` point at the
+last good mark (if any). Only a run with `new_mark_date=true` (and `blocked=false`) warrants a fresh
+downstream paper snapshot.
 
 ## Run (live read-only EODHD)
 
