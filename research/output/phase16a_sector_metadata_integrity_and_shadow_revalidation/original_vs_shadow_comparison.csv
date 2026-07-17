@@ -1,0 +1,21 @@
+metric,champion,shadow,note
+resolved_sector_coverage_top25_pct,0.0,100.0,
+resolved_sector_coverage_top50_pct,12.0,100.0,
+resolved_sector_coverage_all234_pct,16.67,100.0,
+full_panel_rank_spearman,,0.891517,"champion vs shadow, all (month,ticker)"
+latest_month_rank_spearman,,0.774989,234-name cross-section
+top25_overlap,,0.88,fraction of champion Top25 retained by shadow
+top50_overlap,,0.84,
+bottom25_overlap,,0.64,
+top25_turnover,,0.12,1 - overlap
+top50_turnover,,0.16,
+ic_t_stat_63d,3.2645,2.9285,self-recompute; 10-D headline 2.665
+mean_ic_63d,0.036541,0.02926,
+mean_gross_spread,0.01366,0.012698,quintile L/S
+net25_spread,0.011174,0.010211,
+net50_spread,0.008687,0.007724,
+mean_turnover,0.9946,0.9948,
+cumulative_spread,1.611925,1.49837,
+max_drawdown,-0.250924,-0.557426,of cumulative L/S curve
+top25_largest_sector_share_pct_after,,32.0,repaired shadow Top25 concentration
+top50_largest_sector_share_pct_after,,26.0,

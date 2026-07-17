@@ -1,0 +1,10 @@
+sector,n_names,weight_pct,flag
+Materials,6,24.0,OK
+Industrials,5,20.0,OK
+Financials,3,12.0,OK
+Health Care,3,12.0,OK
+Information Technology,3,12.0,OK
+Utilities,2,8.0,OK
+Consumer Discretionary,1,4.0,OK
+Consumer Staples,1,4.0,OK
+Energy,1,4.0,OK

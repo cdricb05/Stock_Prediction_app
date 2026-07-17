@@ -1,0 +1,73 @@
+{
+  "phase": "16-A",
+  "signal_date": "2026-05-22",
+  "cross_section_month": "2026-05",
+  "champion_signal": "composite_sn",
+  "n_ranked": 234,
+  "all_234": {
+    "n_names": 234,
+    "resolved_after": 234,
+    "resolved_pct_after": 100.0,
+    "resolved_before": 39,
+    "resolved_pct_before": 16.67,
+    "unknown_after": 0,
+    "unknown_pct_after": 0.0
+  },
+  "top25": {
+    "n_names": 25,
+    "resolved_after": 25,
+    "resolved_pct_after": 100.0,
+    "resolved_before": 0,
+    "resolved_pct_before": 0.0,
+    "unknown_after": 0,
+    "unknown_pct_after": 0.0
+  },
+  "top50": {
+    "n_names": 50,
+    "resolved_after": 50,
+    "resolved_pct_after": 100.0,
+    "resolved_before": 6,
+    "resolved_pct_before": 12.0,
+    "unknown_after": 0,
+    "unknown_pct_after": 0.0
+  },
+  "bottom25": {
+    "n_names": 25,
+    "resolved_after": 25,
+    "resolved_pct_after": 100.0,
+    "resolved_before": 1,
+    "resolved_pct_before": 4.0,
+    "unknown_after": 0,
+    "unknown_pct_after": 0.0
+  },
+  "owned_sources": {
+    "eodhd_fundamentals_tickers": 547,
+    "curated_map_tickers": 128,
+    "norgate_local": false
+  },
+  "n_resolved": 234,
+  "n_unresolved": 0,
+  "resolution_confidence": {
+    "HIGH": 233,
+    "MEDIUM": 1,
+    "NONE": 0
+  },
+  "top25_exposure_after": {
+    "n_names": 25,
+    "largest_sector_share_pct": 32.0,
+    "unknown_share_pct": 0.0,
+    "n_sectors": 8
+  },
+  "top50_exposure_after": {
+    "n_names": 50,
+    "largest_sector_share_pct": 26.0,
+    "unknown_share_pct": 0.0,
+    "n_sectors": 10
+  },
+  "bottom25_exposure_after": {
+    "n_names": 25,
+    "largest_sector_share_pct": 24.0,
+    "unknown_share_pct": 0.0,
+    "n_sectors": 9
+  }
+}

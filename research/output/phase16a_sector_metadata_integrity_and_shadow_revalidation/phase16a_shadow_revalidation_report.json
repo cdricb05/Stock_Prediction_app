@@ -1,0 +1,217 @@
+{
+  "phase": "16-A",
+  "decision": "RESEARCH_REVALIDATION_REQUIRED",
+  "decision_reasons": [
+    "Repaired sectors materially change ranks: full-panel Spearman 0.8915 < 0.90."
+  ],
+  "decision_logic_declared_before_result": true,
+  "decision_logic": [
+    "GUARD: if the recompute cannot reproduce the frozen sector-neutral composite with the ORIGINAL sectors (max_abs_err > 1e-04 OR reproduction Spearman < 0.9999) -> RESEARCH_REVALIDATION_REQUIRED (data-integrity: the shadow recompute cannot be trusted).",
+    "REVALIDATE if ANY of: full-panel rank Spearman(champion, shadow) < 0.90; OR shadow IC t < 2.0 while champion IC t >= 2.0; OR shadow IC t sign flips vs champion; OR shadow net25 <= 0 while champion net25 > 0; OR a subperiod (pre-2020 / 2020+) IC or spread sign flips under the shadow that held under the champion.",
+    "KEEP only if ALL of: full-panel Spearman >= 0.98; Top25 overlap >= 0.80; Top50 overlap >= 0.80; shadow IC t >= 2.0 and same sign and within +/-25% of champion IC t; shadow net25 > 0; net50 sign matches champion; no subperiod sign flip.",
+    "KEEP_PENDING otherwise: champion-vs-shadow metrics are broadly consistent (no materiality trigger) but not tight enough to fully affirm; with only ~35/63 paper-test trading days elapsed, hold the champion and re-evaluate under repaired sectors at the next quarter boundary (do NOT auto-replace)."
+  ],
+  "allowed_decisions": [
+    "KEEP_CURRENT_CHAMPION",
+    "KEEP_CURRENT_CHAMPION_PENDING_MORE_DATA",
+    "RESEARCH_REVALIDATION_REQUIRED",
+    "BLOCKED_DATA_MISSING",
+    "BLOCKED_RUNNER_ERROR"
+  ],
+  "forbidden_decisions": [
+    "LIVE_TRADING_READY",
+    "ORDER_READY",
+    "AUTOMATION_READY",
+    "PAPER_TRADER_READY",
+    "STRONG_ALPHA_FOUND_READY_FOR_REVIEW",
+    "CHAMPION_REPLACED"
+  ],
+  "champion_signal": "composite_sn",
+  "objective": "recompute ONLY the sector-neutral transform with owned repaired sector labels and test whether the champion's validated edge survives; NOT a champion replacement",
+  "not_this_phase": [
+    "new factor",
+    "reweighting",
+    "threshold tuning",
+    "champion retune",
+    "favourable-period selection",
+    "automatic champion replacement",
+    "orders",
+    "automation",
+    "live trading"
+  ],
+  "source_panel": "research/output/phase10l_historical_sector_neutral_scored_panel_reconstruction/historical_sector_neutral_scored_panel.csv",
+  "source_fundamentals": "research/data/eodhd/raw/fundamentals",
+  "source_curated_map": "research/input/phase2k_p_sector_map_current.csv",
+  "source_phase13a": "research/output/phase13a_current_champion_alpha_paper_test_package/phase13a_current_champion_alpha_paper_test_package.json",
+  "reproduction": {
+    "max_abs_error": 0.0,
+    "rank_spearman": 0.9999996,
+    "rows_checked": 38404,
+    "reproduces_frozen_composite": true,
+    "recomputed_original_ic_t": 3.2645,
+    "note": "the recompute reproduces the frozen sector-neutral composite with the ORIGINAL sectors; only the sector grouping changes for the shadow"
+  },
+  "latest_cross_section": {
+    "month": "2026-05",
+    "n_names": 234,
+    "rank_spearman_champion_vs_shadow": 0.774989,
+    "top25_overlap": 0.88,
+    "top50_overlap": 0.84,
+    "bottom25_overlap": 0.64,
+    "top25_turnover": 0.12,
+    "top50_turnover": 0.16,
+    "shadow_top25_largest_sector_share_pct": 32.0,
+    "shadow_top50_largest_sector_share_pct": 26.0
+  },
+  "full_panel": {
+    "rank_spearman_champion_vs_shadow": 0.891517,
+    "champion": {
+      "n_months_scored": 118,
+      "n_ic_months": 118,
+      "mean_ic": 0.036541,
+      "ic_t_stat": 3.2645,
+      "mean_gross_spread": 0.01366,
+      "mean_turnover": 0.9946,
+      "net25_spread": 0.011174,
+      "net50_spread": 0.008687,
+      "cumulative_spread": 1.611925,
+      "max_drawdown": -0.250924,
+      "subperiod": {
+        "pre2020": {
+          "n_months": 43,
+          "mean_ic": 0.041646,
+          "ic_t": 2.3948,
+          "mean_spread": 0.008415
+        },
+        "post2020": {
+          "n_months": 75,
+          "mean_ic": 0.033613,
+          "ic_t": 2.3035,
+          "mean_spread": 0.016668
+        }
+      }
+    },
+    "shadow": {
+      "n_months_scored": 118,
+      "n_ic_months": 118,
+      "mean_ic": 0.02926,
+      "ic_t_stat": 2.9285,
+      "mean_gross_spread": 0.012698,
+      "mean_turnover": 0.9948,
+      "net25_spread": 0.010211,
+      "net50_spread": 0.007724,
+      "cumulative_spread": 1.49837,
+      "max_drawdown": -0.557426,
+      "subperiod": {
+        "pre2020": {
+          "n_months": 43,
+          "mean_ic": 0.033221,
+          "ic_t": 2.4452,
+          "mean_spread": 0.008568
+        },
+        "post2020": {
+          "n_months": 75,
+          "mean_ic": 0.02699,
+          "ic_t": 1.968,
+          "mean_spread": 0.015066
+        }
+      }
+    },
+    "min_names_per_month": 20,
+    "quantile": 5,
+    "cost_bps": {
+      "net25": 25,
+      "net50": 50
+    }
+  },
+  "sector_coverage_summary": {
+    "all234_before_pct": 16.67,
+    "all234_after_pct": 100.0,
+    "top25_before_pct": 0.0,
+    "top25_after_pct": 100.0,
+    "top50_before_pct": 12.0,
+    "top50_after_pct": 100.0,
+    "n_resolved": 234,
+    "n_unresolved": 0
+  },
+  "phase13a_context": {
+    "phase13a_signal_date": "2026-05-22",
+    "phase13a_price_coverage": {
+      "top25": 14,
+      "top50": 24,
+      "bottom25": 17
+    },
+    "phase13a_ic_t_63d": 2.665,
+    "phase13a_quarterly_net_25bps": 0.00401,
+    "phase13a_sector_coverage": {
+      "Unknown": 195,
+      "Health Care": 10,
+      "Industrials": 7,
+      "Energy": 4,
+      "Financials": 4,
+      "Information Technology": 4,
+      "Consumer Discretionary": 3,
+      "Consumer Staples": 2,
+      "Materials": 2,
+      "Utilities": 2,
+      "Communication Services": 1
+    }
+  },
+  "performs_network": false,
+  "offline": true,
+  "uses_owned_data_only": true,
+  "recomputed_only_sector_neutral_transform": true,
+  "added_factors": false,
+  "changed_weights": false,
+  "tuned_thresholds": false,
+  "selected_favourable_period": false,
+  "mutated_champion": false,
+  "modified_phase13a_package": false,
+  "replaced_champion": false,
+  "promotes_to_live": false,
+  "creates_paper_trader_signals": false,
+  "creates_trade_decisions": false,
+  "creates_orders": false,
+  "creates_automation": false,
+  "creates_broker_connection": false,
+  "wrote_to_paper_trader": false,
+  "live_trading": false,
+  "deploy": false,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "safety_badges": [
+    "PAPER ONLY",
+    "MANUAL REVIEW",
+    "NO BROKER EXECUTION",
+    "AUTOMATION OFF",
+    "NO LIVE ORDERS",
+    "PREVIEW ONLY",
+    "OWNED DATA ONLY",
+    "NO CHAMPION MUTATION",
+    "NO PROVIDER CALL"
+  ],
+  "exact_next_command": "review research/output/phase16a_sector_metadata_integrity_and_shadow_revalidation/phase16a_shadow_revalidation_report.json",
+  "constraints_honored": [
+    "offline (no network/key/provider probe)",
+    "owned/local data only",
+    "recompute ONLY the sector-neutral transform",
+    "no new factor",
+    "no reweight",
+    "no threshold tune",
+    "no champion mutation",
+    "did not modify/overwrite the Phase 13-A package",
+    "no Paper Trader writes",
+    "NO orders",
+    "NO automation",
+    "NO broker",
+    "NO live trading",
+    "no deploy",
+    "no GCP",
+    "no package install",
+    "pure stdlib",
+    "no commit inside runner",
+    "no push",
+    "no fabricated sectors"
+  ],
+  "secret_safety_leak_scan_clean": true
+}

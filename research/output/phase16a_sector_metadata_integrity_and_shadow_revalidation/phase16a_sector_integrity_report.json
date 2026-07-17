@@ -1,0 +1,135 @@
+{
+  "phase": "16-A",
+  "objective": "resolve the current champion universe's sector metadata from owned data only and report before/after coverage; NOT a champion change",
+  "champion_signal": "composite_sn",
+  "cross_section_month": "2026-05",
+  "n_ranked": 234,
+  "coverage": {
+    "phase": "16-A",
+    "signal_date": "2026-05-22",
+    "cross_section_month": "2026-05",
+    "champion_signal": "composite_sn",
+    "n_ranked": 234,
+    "all_234": {
+      "n_names": 234,
+      "resolved_after": 234,
+      "resolved_pct_after": 100.0,
+      "resolved_before": 39,
+      "resolved_pct_before": 16.67,
+      "unknown_after": 0,
+      "unknown_pct_after": 0.0
+    },
+    "top25": {
+      "n_names": 25,
+      "resolved_after": 25,
+      "resolved_pct_after": 100.0,
+      "resolved_before": 0,
+      "resolved_pct_before": 0.0,
+      "unknown_after": 0,
+      "unknown_pct_after": 0.0
+    },
+    "top50": {
+      "n_names": 50,
+      "resolved_after": 50,
+      "resolved_pct_after": 100.0,
+      "resolved_before": 6,
+      "resolved_pct_before": 12.0,
+      "unknown_after": 0,
+      "unknown_pct_after": 0.0
+    },
+    "bottom25": {
+      "n_names": 25,
+      "resolved_after": 25,
+      "resolved_pct_after": 100.0,
+      "resolved_before": 1,
+      "resolved_pct_before": 4.0,
+      "unknown_after": 0,
+      "unknown_pct_after": 0.0
+    },
+    "owned_sources": {
+      "eodhd_fundamentals_tickers": 547,
+      "curated_map_tickers": 128,
+      "norgate_local": false
+    },
+    "n_resolved": 234,
+    "n_unresolved": 0,
+    "resolution_confidence": {
+      "HIGH": 233,
+      "MEDIUM": 1,
+      "NONE": 0
+    },
+    "top25_exposure_after": {
+      "n_names": 25,
+      "largest_sector_share_pct": 32.0,
+      "unknown_share_pct": 0.0,
+      "n_sectors": 8
+    },
+    "top50_exposure_after": {
+      "n_names": 50,
+      "largest_sector_share_pct": 26.0,
+      "unknown_share_pct": 0.0,
+      "n_sectors": 10
+    },
+    "bottom25_exposure_after": {
+      "n_names": 25,
+      "largest_sector_share_pct": 24.0,
+      "unknown_share_pct": 0.0,
+      "n_sectors": 9
+    }
+  },
+  "sector_shadow_decision": "RESEARCH_REVALIDATION_REQUIRED",
+  "sector_shadow_reasons": [
+    "Repaired sectors materially change ranks: full-panel Spearman 0.8915 < 0.90."
+  ],
+  "owned_sources_priority": [
+    "norgate_local_symbol_metadata",
+    "eodhd_raw_fundamentals(General.GicSector)",
+    "eodhd_raw_fundamentals(General.Sector->GICS_crosswalk)",
+    "eodhd_normalized_fundamentals_metadata",
+    "prior_repo_curated_sector_map(phase2k)",
+    "cached_eodhd_company_profile(General_block)"
+  ],
+  "source_panel": "research/output/phase10l_historical_sector_neutral_scored_panel_reconstruction/historical_sector_neutral_scored_panel.csv",
+  "source_fundamentals": "research/data/eodhd/raw/fundamentals",
+  "source_curated_map": "research/input/phase2k_p_sector_map_current.csv",
+  "performs_network": false,
+  "offline": true,
+  "uses_owned_data_only": true,
+  "fabricated_sectors": false,
+  "sector_labels_point_in_time": false,
+  "mutated_champion": false,
+  "modified_phase13a_package": false,
+  "wrote_to_paper_trader": false,
+  "creates_orders": false,
+  "creates_automation": false,
+  "live_trading": false,
+  "safety_badges": [
+    "PAPER ONLY",
+    "MANUAL REVIEW",
+    "NO BROKER EXECUTION",
+    "AUTOMATION OFF",
+    "NO LIVE ORDERS",
+    "PREVIEW ONLY",
+    "OWNED DATA ONLY",
+    "NO CHAMPION MUTATION",
+    "NO PROVIDER CALL"
+  ],
+  "required_artifacts": [
+    "phase16a_sector_integrity_report.json",
+    "phase16a_shadow_revalidation_report.json",
+    "sector_metadata_resolved.csv",
+    "sector_metadata_unresolved.csv",
+    "sector_metadata_resolution_attempts.csv",
+    "sector_metadata_coverage.json",
+    "top25_sector_exposure.csv",
+    "top50_sector_exposure.csv",
+    "bottom25_sector_exposure.csv",
+    "original_vs_shadow_comparison.csv",
+    "latest_month_rank_comparison.csv",
+    "reproduction_check.csv",
+    "subperiod_stability_comparison.csv",
+    "secret_safety_audit.csv"
+  ],
+  "exact_next_command": "review research/output/phase16a_sector_metadata_integrity_and_shadow_revalidation/phase16a_sector_integrity_report.json",
+  "secret_safety_leak_scan_clean": true
+}
