@@ -1,0 +1,9 @@
+gate,value,threshold,result
+reproduction_ok,True,True,PASS
+resolved_fraction,1.0,>= 0.95,PASS
+candidate_ic_t,2.9285,>= 2.0,PASS
+candidate_net25,0.010211,> 0,PASS
+candidate_net50,0.007724,> 0,PASS
+subperiod_sign_reversal,0,0,PASS
+full_panel_spearman,0.8915,< 0.98 => distinct,DISTINCT
+DECISION,PAPER_CHALLENGER_ELIGIBLE,"one of ['PAPER_CHALLENGER_ELIGIBLE', 'KEEP_CURRENT_PAPER_CHAMPION', 'RESEARCH_REVALIDATION_FAILED', 'BLOCKED_DATA_MISSING', 'BLOCKED_RUNNER_ERROR']",PAPER_CHALLENGER_ELIGIBLE

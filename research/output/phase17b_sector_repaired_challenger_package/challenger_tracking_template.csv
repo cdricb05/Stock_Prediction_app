@@ -1,0 +1,51 @@
+ticker,side,repaired_sector,signal_date,chk_1w_return,chk_1m_return,chk_2m_return,chk_63d_return,chk_63d_bench_rel,max_drawdown,hit_win_loss,order_action
+EXPE,LONG,Consumer Discretionary,2026-05-22,,,,,,,,NO_ORDER
+EA,LONG,Communication Services,2026-05-22,,,,,,,,NO_ORDER
+APP,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+LULU,LONG,Consumer Discretionary,2026-05-22,,,,,,,,NO_ORDER
+IP,LONG,Materials,2026-05-22,,,,,,,,NO_ORDER
+SNDK,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+DXCM,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+LYV,LONG,Communication Services,2026-05-22,,,,,,,,NO_ORDER
+SHOP,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+APD,LONG,Materials,2026-05-22,,,,,,,,NO_ORDER
+SMERY,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+ANET,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+BUD,LONG,Consumer Staples,2026-05-22,,,,,,,,NO_ORDER
+GWW,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+ABNB,LONG,Consumer Discretionary,2026-05-22,,,,,,,,NO_ORDER
+EXPD,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+B,LONG,Materials,2026-05-22,,,,,,,,NO_ORDER
+UBER,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+FOX,LONG,Communication Services,2026-05-22,,,,,,,,NO_ORDER
+FOXA,LONG,Communication Services,2026-05-22,,,,,,,,NO_ORDER
+FANG,LONG,Energy,2026-05-22,,,,,,,,NO_ORDER
+RACE,LONG,Consumer Discretionary,2026-05-22,,,,,,,,NO_ORDER
+GDDY,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+DDOG,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+PLTR,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+DVN,LONG,Energy,2026-05-22,,,,,,,,NO_ORDER
+RMD,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+MO,LONG,Consumer Staples,2026-05-22,,,,,,,,NO_ORDER
+ITW,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+JKHY,LONG,Financials,2026-05-22,,,,,,,,NO_ORDER
+SYK,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+XYZ,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+SMFG,LONG,Financials,2026-05-22,,,,,,,,NO_ORDER
+HST,LONG,Real Estate,2026-05-22,,,,,,,,NO_ORDER
+VRTX,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+IDXX,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+MNST,LONG,Consumer Staples,2026-05-22,,,,,,,,NO_ORDER
+MCK,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+IT,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+NBIS,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+MUFG,LONG,Financials,2026-05-22,,,,,,,,NO_ORDER
+AAPL,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+CAH,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+FTNT,LONG,Information Technology,2026-05-22,,,,,,,,NO_ORDER
+MA,LONG,Financials,2026-05-22,,,,,,,,NO_ORDER
+CAT,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+RSG,LONG,Industrials,2026-05-22,,,,,,,,NO_ORDER
+ALB,LONG,Materials,2026-05-22,,,,,,,,NO_ORDER
+LH,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER
+GILD,LONG,Health Care,2026-05-22,,,,,,,,NO_ORDER

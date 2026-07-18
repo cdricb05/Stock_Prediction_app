@@ -1,0 +1,235 @@
+champion_rank,ticker,original_sector,repaired_sector,champion_composite_sn,repaired_composite_sn,repaired_rank,rank_delta(up=+),champion_bucket
+1,EXPE,Unknown,Consumer Discretionary,9.212906,8.76583,1,0,TOP25
+2,EA,Unknown,Communication Services,8.296191,6.062905,2,0,TOP25
+3,LYV,Unknown,Communication Services,5.536966,3.002095,8,-5,TOP25
+4,LULU,Unknown,Consumer Discretionary,5.282964,4.408899,4,0,TOP25
+5,APP,Unknown,Information Technology,5.058559,5.078696,3,2,TOP25
+6,FOX,Unknown,Communication Services,4.736872,2.115521,19,-13,TOP25
+7,FOXA,Unknown,Communication Services,4.736872,2.115521,20,-13,TOP25
+8,SNDK,Unknown,Information Technology,3.679529,3.550716,6,2,TOP25
+9,ABNB,Unknown,Consumer Discretionary,3.370824,2.287194,15,-6,TOP25
+10,DXCM,Unknown,Health Care,3.191668,3.413812,7,3,TOP25
+11,RACE,Unknown,Consumer Discretionary,3.123935,2.013946,22,-11,TOP25
+12,SHOP,Unknown,Information Technology,3.019568,2.812187,9,3,TOP25
+13,ANET,Unknown,Information Technology,2.791054,2.561036,12,1,TOP25
+14,IP,Unknown,Materials,2.56914,4.012426,5,9,TOP25
+15,SMERY,Unknown,Industrials,2.216202,2.698314,11,4,TOP25
+16,GDDY,Unknown,Information Technology,2.211403,1.91769,23,-7,TOP25
+17,DDOG,Unknown,Information Technology,2.190687,1.894192,24,-7,TOP25
+18,BUD,Unknown,Consumer Staples,2.187189,2.524666,13,5,TOP25
+19,PLTR,Unknown,Information Technology,2.151112,1.852383,25,-6,TOP25
+20,GWW,Unknown,Industrials,1.864189,2.308854,14,6,TOP25
+21,EXPD,Unknown,Industrials,1.827561,2.268359,16,5,TOP25
+22,FANG,Unknown,Energy,1.788224,2.098728,21,1,TOP25
+23,HAS,Unknown,Consumer Discretionary,1.781812,0.525581,70,-47,TOP25
+24,RMD,Unknown,Health Care,1.774803,1.84309,27,-3,TOP25
+25,IT,Unknown,Information Technology,1.580065,1.21754,39,-14,TOP25
+26,DVN,Unknown,Energy,1.562592,1.848652,26,0,TOP50
+27,NBIS,Unknown,Information Technology,1.556439,1.188448,40,-13,TOP50
+28,UBER,Industrials,Industrials,1.469494,2.140016,18,10,TOP50
+29,SYK,Health Care,Health Care,1.453124,1.495396,31,-2,TOP50
+30,FTNT,Unknown,Information Technology,1.412126,1.031774,44,-14,TOP50
+31,VRTX,Health Care,Health Care,1.330361,1.359825,35,-4,TOP50
+32,IDXX,Unknown,Health Care,1.325207,1.345304,36,-4,TOP50
+33,MCK,Unknown,Health Care,1.280081,1.293839,38,-5,TOP50
+34,HST,Unknown,Real Estate,1.199342,1.405509,34,0,TOP50
+35,XYZ,Unknown,Industrials,1.122998,1.485561,32,3,TOP50
+36,GEN,Unknown,Information Technology,1.104952,0.690244,61,-25,TOP50
+37,CAH,Unknown,Health Care,1.0796,1.071115,43,-6,TOP50
+38,ITW,Industrials,Industrials,1.079203,1.708209,29,9,TOP50
+39,MNST,Unknown,Consumer Staples,1.077143,1.294848,37,2,TOP50
+40,AAPL,Information Technology,Information Technology,1.067186,1.088566,42,-2,TOP50
+41,SONY,Unknown,Consumer Discretionary,1.048433,-0.288674,139,-98,TOP50
+42,RCL,Unknown,Consumer Discretionary,1.010851,-0.329942,143,-101,TOP50
+43,NWS,Unknown,Communication Services,1.001175,-2.027496,215,-172,TOP50
+44,NWSA,Unknown,Communication Services,1.001175,-2.027496,216,-172,TOP50
+45,MELI,Unknown,Consumer Discretionary,0.971174,-0.374141,147,-102,TOP50
+46,LH,Unknown,Health Care,0.95975,0.93814,49,-3,TOP50
+47,B,Unknown,Materials,0.950637,2.219894,17,30,TOP50
+48,GILD,Health Care,Health Care,0.936618,0.923154,50,-2,TOP50
+49,JKHY,Unknown,Financials,0.934792,1.668144,30,19,TOP50
+50,KEYS,Unknown,Information Technology,0.86443,0.423759,76,-26,TOP50
+51,APD,Materials,Materials,0.841216,2.705294,10,41,MIDDLE
+52,MA,Financials,Financials,0.803218,1.030063,45,7,MIDDLE
+53,SMFG,Unknown,Financials,0.737812,1.448795,33,20,MIDDLE
+54,NET,Unknown,Information Technology,0.716726,0.258968,85,-31,MIDDLE
+55,MCHP,Unknown,Information Technology,0.706278,0.24782,87,-32,MIDDLE
+56,TECH,Unknown,Health Care,0.701484,0.652094,64,-8,MIDDLE
+57,DASH,Unknown,Consumer Discretionary,0.655536,-0.724259,175,-118,MIDDLE
+58,RSG,Unknown,Industrials,0.648045,0.959091,47,11,MIDDLE
+59,ON,Unknown,Information Technology,0.620072,0.152074,96,-37,MIDDLE
+60,AMD,Information Technology,Information Technology,0.574541,0.540577,69,-9,MIDDLE
+61,NDSN,Unknown,Industrials,0.572547,0.875798,51,10,MIDDLE
+62,MUFG,Unknown,Financials,0.465486,1.146798,41,21,MIDDLE
+63,CAT,Industrials,Industrials,0.438644,0.997221,46,17,MIDDLE
+64,PODD,Unknown,Health Care,0.417783,0.33759,80,-16,MIDDLE
+65,MO,Consumer Staples,Consumer Staples,0.416413,1.710402,28,37,MIDDLE
+66,ALAB,Unknown,Information Technology,0.39412,-0.097234,119,-53,MIDDLE
+67,AOS,Unknown,Industrials,0.378324,0.660705,62,5,MIDDLE
+68,EOG,Energy,Energy,0.375512,0.872593,52,16,MIDDLE
+69,BR,Unknown,Industrials,0.373197,0.655032,63,6,MIDDLE
+70,CVX,Energy,Energy,0.333875,0.826039,55,15,MIDDLE
+71,EL,Unknown,Consumer Staples,0.314627,0.447848,73,-2,MIDDLE
+72,BDX,Unknown,Health Care,0.25626,0.157671,95,-23,MIDDLE
+73,DECK,Unknown,Consumer Discretionary,0.255378,-1.166598,195,-122,MIDDLE
+74,EQNR,Unknown,Energy,0.230647,0.372236,77,-3,MIDDLE
+75,AIZ,Unknown,Financials,0.19978,0.852228,53,22,MIDDLE
+76,AKAM,Unknown,Information Technology,0.185309,-0.330162,144,-68,MIDDLE
+77,STE,Unknown,Health Care,0.179443,0.07294,102,-25,MIDDLE
+78,AME,Unknown,Industrials,0.171279,0.430916,75,3,MIDDLE
+79,IQV,Unknown,Health Care,0.16454,0.056309,104,-25,MIDDLE
+80,CNQ,Unknown,Energy,0.158348,0.291997,83,-3,MIDDLE
+81,COIN,Unknown,Financials,0.137545,0.782727,58,23,MIDDLE
+82,HSY,Unknown,Consumer Staples,0.126279,0.239595,88,-6,MIDDLE
+83,FTV,Unknown,Industrials,0.098483,0.349829,78,5,MIDDLE
+84,MCD,Consumer Discretionary,Consumer Discretionary,0.097725,-1.004671,190,-106,MIDDLE
+85,ITUB,Unknown,Financials,0.077143,0.716199,59,26,MIDDLE
+86,WBD,Unknown,Communication Services,0.052211,-3.080757,225,-139,MIDDLE
+87,SPG,Unknown,Real Estate,0.04166,0.12191,98,-11,MIDDLE
+88,TT,Unknown,Industrials,0.038858,0.284039,84,4,MIDDLE
+89,MSI,Unknown,Information Technology,0.030398,-0.501346,154,-65,MIDDLE
+90,PYPL,Financials,Financials,0.027579,0.168278,93,-3,MIDDLE
+91,MAR,Consumer Discretionary,Consumer Discretionary,0.024735,-1.085699,193,-102,MIDDLE
+92,SO,Utilities,Utilities,0.022051,-0.251513,134,-42,MIDDLE
+93,DIS,Communication Services,Communication Services,0.0,-2.234759,221,-128,MIDDLE
+94,MTD,Unknown,Health Care,-0.003055,-0.128593,123,-29,MIDDLE
+95,PH,Industrials,Industrials,-0.009121,0.500806,71,24,MIDDLE
+96,DUK,Utilities,Utilities,-0.022051,-0.300495,141,-45,MIDDLE
+97,FLEX,Unknown,Information Technology,-0.053907,-0.595147,160,-63,MIDDLE
+98,VLO,Unknown,Energy,-0.076478,0.032099,105,-7,MIDDLE
+99,ROK,Unknown,Industrials,-0.09659,0.133954,97,2,MIDDLE
+100,RVTY,Unknown,Health Care,-0.105144,-0.242738,133,-33,MIDDLE
+101,PBR,Unknown,Energy,-0.111926,-0.007494,107,-6,MIDDLE
+102,COP,Energy,Energy,-0.11885,0.324005,82,20,MIDDLE
+103,LITE,Unknown,Information Technology,-0.120508,-0.669051,168,-65,MIDDLE
+104,HD,Consumer Discretionary,Consumer Discretionary,-0.12246,-1.249052,199,-95,MIDDLE
+105,DVA,Unknown,Health Care,-0.131946,-0.272486,137,-32,MIDDLE
+106,AMGN,Health Care,Health Care,-0.138766,-0.270045,136,-30,MIDDLE
+107,O,Unknown,Real Estate,-0.150374,-0.09114,118,-11,MIDDLE
+108,AJG,Unknown,Financials,-0.156785,0.456712,72,36,MIDDLE
+109,ICE,Financials,Financials,-0.158636,-0.038348,113,-4,MIDDLE
+110,CVS,Health Care,Health Care,-0.178729,-0.314463,142,-32,MIDDLE
+111,ALB,Unknown,Materials,-0.197462,0.946707,48,63,MIDDLE
+112,SU,Unknown,Energy,-0.201593,-0.106845,120,-8,MIDDLE
+113,TRP,Unknown,Energy,-0.216215,-0.123306,122,-9,MIDDLE
+114,CDW,Unknown,Information Technology,-0.21646,-0.775202,179,-65,MIDDLE
+115,JCI,Unknown,Industrials,-0.226399,-0.010347,109,6,MIDDLE
+116,ES,Unknown,Utilities,-0.233549,0.798524,56,60,MIDDLE
+117,WMB,Unknown,Energy,-0.240069,-0.149993,126,-9,MIDDLE
+118,BLDR,Unknown,Industrials,-0.244082,-0.030554,111,7,MIDDLE
+119,KIM,Unknown,Real Estate,-0.246183,-0.197272,130,-11,MIDDLE
+120,BAX,Unknown,Health Care,-0.252818,-0.406883,151,-31,MIDDLE
+121,HWM,Unknown,Industrials,-0.253705,-0.040022,115,6,MIDDLE
+122,FRT,Unknown,Real Estate,-0.25496,-0.206955,132,-10,MIDDLE
+123,MDLN,Unknown,Health Care,-0.267622,-0.423076,152,-29,MIDDLE
+124,LDOS,Unknown,Information Technology,-0.287437,-0.853742,184,-60,MIDDLE
+125,BABA,Unknown,Consumer Discretionary,-0.313478,-1.799096,210,-85,MIDDLE
+126,AEE,Unknown,Utilities,-0.320828,0.701467,60,66,MIDDLE
+127,DOC,Unknown,Real Estate,-0.324978,-0.284673,138,-11,MIDDLE
+128,KVUE,Unknown,Consumer Staples,-0.350237,-0.289152,140,-12,MIDDLE
+129,PWR,Unknown,Industrials,-0.351509,-0.14946,125,4,MIDDLE
+130,RL,Unknown,Consumer Discretionary,-0.35569,-1.845329,211,-81,MIDDLE
+131,EMR,Industrials,Industrials,-0.36262,0.108413,99,32,MIDDLE
+132,SATS,Unknown,Information Technology,-0.374038,-0.950473,189,-57,MIDDLE
+133,GPN,Unknown,Financials,-0.380196,0.208927,89,44,MIDDLE
+134,MRK,Health Care,Health Care,-0.397933,-0.55741,158,-24,MIDDLE
+135,KHC,Unknown,Consumer Staples,-0.398737,-0.343089,145,-10,MIDDLE
+136,APO,Unknown,Financials,-0.407906,0.178064,92,44,MIDDLE
+137,CL,Consumer Staples,Consumer Staples,-0.416413,0.785993,57,80,MIDDLE
+138,CHD,Unknown,Consumer Staples,-0.445678,-0.394786,149,-11,MIDDLE
+139,ARM,Unknown,Information Technology,-0.457613,-1.04243,192,-53,MIDDLE
+140,COR,Unknown,Health Care,-0.461752,-0.637914,165,-25,MIDDLE
+141,MPC,Unknown,Energy,-0.466565,-0.401104,150,-9,MIDDLE
+142,PFE,Health Care,Health Care,-0.474715,-0.64265,167,-25,MIDDLE
+143,DD,Unknown,Materials,-0.477112,0.636258,65,78,MIDDLE
+144,CF,Unknown,Materials,-0.482339,0.631097,66,78,MIDDLE
+145,AEM,Unknown,Materials,-0.48299,0.630475,67,78,MIDDLE
+146,NWG,Unknown,Financials,-0.486561,0.090754,100,46,MIDDLE
+147,MRNA,Unknown,Health Care,-0.500296,-0.684371,170,-23,MIDDLE
+148,KKR,Unknown,Financials,-0.512173,0.062609,103,45,MIDDLE
+149,IFF,Unknown,Materials,-0.548332,0.557205,68,81,MIDDLE
+150,DTE,Unknown,Utilities,-0.549551,0.447764,74,76,MIDDLE
+151,APA,Unknown,Energy,-0.555923,-0.500224,153,-2,MIDDLE
+152,NCLH,Unknown,Consumer Discretionary,-0.570609,-2.085569,218,-66,MIDDLE
+153,XOM,Energy,Energy,-0.590537,-0.19907,131,22,MIDDLE
+154,CRL,Unknown,Health Care,-0.594186,-0.785506,181,-27,MIDDLE
+155,MFC,Unknown,Financials,-0.598998,-0.033722,112,43,MIDDLE
+156,MET,Unknown,Financials,-0.603455,-0.038654,114,42,MIDDLE
+157,LLY,Health Care,Health Care,-0.60683,-0.788305,182,-25,MIDDLE
+158,AMAT,Information Technology,Information Technology,-0.619228,-0.782697,180,-22,MIDDLE
+159,HSBC,Unknown,Financials,-0.633766,-0.072283,116,43,MIDDLE
+160,TRGP,Unknown,Energy,-0.638265,-0.591812,159,1,MIDDLE
+161,LNT,Unknown,Utilities,-0.644021,0.343264,79,82,MIDDLE
+162,AES,Unknown,Utilities,-0.651539,0.334489,81,81,MIDDLE
+163,ENB,Unknown,Energy,-0.656624,-0.611838,162,1,MIDDLE
+164,AON,Financials,Financials,-0.672161,-0.607451,161,3,MIDDLE
+165,SHEL,Unknown,Energy,-0.684549,-0.642598,166,-1,MIDDLE
+166,MFG,Unknown,Financials,-0.699399,-0.145088,124,42,MIDDLE
+167,PTC,Unknown,Information Technology,-0.709435,-1.319879,201,-34,MIDDLE
+168,PSKY,Unknown,Communication Services,-0.710339,-3.925534,231,-63,MIDDLE
+169,EXC,Unknown,Utilities,-0.721213,0.257536,86,83,MIDDLE
+170,FISV,Unknown,Financials,-0.721438,-0.169504,127,43,MIDDLE
+171,BAM,Unknown,Financials,-0.725094,-0.172699,128,43,MIDDLE
+172,PRU,Unknown,Financials,-0.732064,-0.181305,129,43,MIDDLE
+173,ET,Unknown,Energy,-0.733827,-0.697506,172,1,MIDDLE
+174,IMO,Unknown,Energy,-0.740292,-0.704281,173,1,MIDDLE
+175,IRM,Unknown,Real Estate,-0.741594,-0.74738,176,-1,MIDDLE
+176,CI,Health Care,Health Care,-0.743793,-0.94111,188,-12,MIDDLE
+177,SRE,Unknown,Utilities,-0.770459,0.202939,90,87,MIDDLE
+178,PEG,Unknown,Utilities,-0.773356,0.200087,91,87,MIDDLE
+179,IFNNY,Unknown,Information Technology,-0.783288,-1.404442,203,-24,MIDDLE
+180,Q,Unknown,Information Technology,-0.805652,-1.428908,206,-26,MIDDLE
+181,LIN,Materials,Materials,-0.841216,0.838358,54,127,MIDDLE
+182,SWKS,Unknown,Information Technology,-0.858606,-1.487846,207,-25,MIDDLE
+183,MPWR,Unknown,Information Technology,-0.878972,-1.509475,208,-25,MIDDLE
+184,AIG,Unknown,Financials,-0.899844,-0.367272,146,38,MIDDLE
+185,AMCR,Unknown,Materials,-0.902833,0.164068,94,91,MIDDLE
+186,ADM,Unknown,Consumer Staples,-0.916752,-0.917709,186,0,MIDDLE
+187,ATO,Unknown,Utilities,-0.925036,0.031449,106,81,MIDDLE
+188,AEP,Unknown,Utilities,-0.961209,-0.008743,108,80,MIDDLE
+189,CARR,Unknown,Industrials,-0.962726,-0.827222,183,6,MIDDLE
+190,PNW,Unknown,Utilities,-0.97152,-0.020248,110,80,MIDDLE
+191,SW,Unknown,Materials,-0.978215,0.08012,101,90,MIDDLE
+192,CSCO,Information Technology,Information Technology,-1.022499,-1.230152,198,-6,MIDDLE
+193,EVRG,Unknown,Utilities,-1.025456,-0.080134,117,76,MIDDLE
+194,HUBB,Unknown,Industrials,-1.02724,-0.898427,185,9,MIDDLE
+195,CMI,Unknown,Industrials,-1.04469,-0.917867,187,8,MIDDLE
+196,L,Unknown,Financials,-1.056441,-0.540953,155,41,MIDDLE
+197,ING,Unknown,Financials,-1.061752,-0.54676,156,41,MIDDLE
+198,PPL,Unknown,Utilities,-1.063944,-0.122582,121,77,MIDDLE
+199,ETN,Industrials,Industrials,-1.088942,-0.697104,171,28,MIDDLE
+200,TM,Unknown,Consumer Discretionary,-1.096885,-2.667735,223,-23,MIDDLE
+201,BN,Unknown,Financials,-1.135315,-0.628829,163,38,MIDDLE
+202,BMY,Health Care,Health Care,-1.179338,-1.423665,205,-3,MIDDLE
+203,NI,Unknown,Utilities,-1.181101,-0.252381,135,68,MIDDLE
+204,D,Unknown,Utilities,-1.301705,-0.386453,148,56,MIDDLE
+205,TAP,Unknown,Consumer Staples,-1.369128,-1.419547,204,1,MIDDLE
+206,CPRT,Unknown,Industrials,-1.381618,-1.291182,200,6,MIDDLE
+207,NRG,Unknown,Utilities,-1.455473,-0.556576,157,50,MIDDLE
+208,LHX,Unknown,Industrials,-1.479376,-1.400035,202,6,MIDDLE
+209,CPAY,Unknown,Financials,-1.479434,-1.009877,191,18,MIDDLE
+210,CEG,Unknown,Utilities,-1.520899,-0.628919,164,46,BOTTOM25
+211,TDG,Industrials,Industrials,-1.526658,-1.18238,197,14,BOTTOM25
+212,ED,Unknown,Utilities,-1.593376,-0.709475,174,38,BOTTOM25
+213,CBOE,Unknown,Financials,-1.605783,-1.149422,194,19,BOTTOM25
+214,FIS,Unknown,Financials,-1.62788,-1.173395,196,18,BOTTOM25
+215,MOS,Unknown,Materials,-1.657088,-0.672634,169,46,BOTTOM25
+216,NVO,Unknown,Health Care,-1.68261,-1.990622,214,2,BOTTOM25
+217,LYB,Unknown,Materials,-1.730856,-0.754353,177,40,BOTTOM25
+218,APTV,Unknown,Consumer Discretionary,-1.739718,-3.380686,226,-8,BOTTOM25
+219,CRH,Unknown,Materials,-1.746973,-0.77247,178,41,BOTTOM25
+220,RKLB,Unknown,Industrials,-1.755347,-1.707032,209,11,BOTTOM25
+221,HSIC,Unknown,Health Care,-1.840816,-2.167642,219,2,BOTTOM25
+222,OXY,Unknown,Energy,-1.84605,-1.93028,212,10,BOTTOM25
+223,SOLV,Unknown,Health Care,-1.944392,-2.282802,222,1,BOTTOM25
+224,AXON,Unknown,Industrials,-2.077499,-2.063081,217,7,BOTTOM25
+225,COHR,Unknown,Information Technology,-2.114562,-2.88072,224,1,BOTTOM25
+226,NU,Unknown,Financials,-2.313353,-1.934734,213,13,BOTTOM25
+227,MLM,Unknown,Materials,-3.00701,-2.16781,220,7,BOTTOM25
+228,FSLR,Unknown,Information Technology,-3.133205,-4.009813,232,-4,BOTTOM25
+229,CLX,Unknown,Consumer Staples,-3.371083,-3.639068,228,1,BOTTOM25
+230,J,Unknown,Industrials,-3.501656,-3.643194,229,1,BOTTOM25
+231,HII,Unknown,Industrials,-3.559652,-3.707207,230,1,BOTTOM25
+232,WDC,Unknown,Information Technology,-3.704036,-4.637952,233,-1,BOTTOM25
+233,BALL,Unknown,Materials,-4.140619,-3.426656,227,6,BOTTOM25
+234,CTVA,Unknown,Materials,-6.125849,-5.627979,234,0,BOTTOM25

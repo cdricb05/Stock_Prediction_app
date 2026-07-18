@@ -1,0 +1,14 @@
+item,value
+source_panel,research/output/phase10l_historical_sector_neutral_scored_panel_reconstruction/historical_sector_neutral_scored_panel.csv
+source_resolved_map,research/output/phase16a_sector_metadata_integrity_and_shadow_revalidation/sector_metadata_resolved.csv
+source_eod_prices,research/data/eodhd/raw/eod_prices
+source_phase13a,research/output/phase13a_current_champion_alpha_paper_test_package/phase13a_current_champion_alpha_paper_test_package.json
+candidate_ic_t,2.9285
+candidate_net25,0.010211
+candidate_net50,0.007724
+full_spearman,0.891517
+top25_overlap,0.88
+top50_overlap,0.84
+reproduction_ok,True
+signal_date,2026-05-22
+cross_section_month,2026-05

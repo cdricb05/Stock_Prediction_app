@@ -1,0 +1,11 @@
+sector,n_names,weight_pct,flag
+Information Technology,11,22.0,OK
+Health Care,9,18.0,OK
+Industrials,8,16.0,OK
+Communication Services,4,8.0,OK
+Consumer Discretionary,4,8.0,OK
+Financials,4,8.0,OK
+Materials,4,8.0,OK
+Consumer Staples,3,6.0,OK
+Energy,2,4.0,OK
+Real Estate,1,2.0,OK

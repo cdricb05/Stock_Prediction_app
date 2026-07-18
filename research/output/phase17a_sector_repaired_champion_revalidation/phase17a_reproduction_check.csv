@@ -1,0 +1,5 @@
+check,value,threshold,status
+frozen_composite_sn_max_abs_reconstruction_error,0.0,<= 1e-04,PASS
+reproduction_rank_spearman,0.9999996,>= 0.9999,PASS
+reproduction_rows_checked,38404,>0,PASS
+reproduction_overall,True,both pass,PASS

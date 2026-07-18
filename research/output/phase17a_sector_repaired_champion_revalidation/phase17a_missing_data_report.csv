@@ -1,0 +1,11 @@
+item,value,note
+panel_rows,38725,frozen 10-L scored panel rows
+panel_months,120,distinct rebalance months
+months_scored_min20,118,>=20 names with composite+fwd
+champion_universe_names,234,latest cross-section valid composite_sn
+repaired_map_names,234,committed 16-A resolved sector map size
+repaired_universe_resolved,234,of the 234 champion names
+repaired_universe_resolved_pct,100.0,>= 95% required
+repaired_map_issues,0,non-canonical/blank labels in the committed map (0 expected)
+latest_month,2026-05,champion cross-section month
+names_with_repaired_composite_latest,234,valid repaired composite in latest month

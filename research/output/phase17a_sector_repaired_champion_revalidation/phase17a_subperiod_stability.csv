@@ -1,0 +1,3 @@
+subperiod,n_months,champion_mean_ic,repaired_mean_ic,champion_ic_t,repaired_ic_t,champion_mean_spread,repaired_mean_spread,champion_pos_month_rate,repaired_pos_month_rate,spread_sign
+pre2020,43,0.041646,0.033221,2.3948,2.4452,0.008415,0.008568,0.6047,0.6047,STABLE
+post2020,75,0.033613,0.02699,2.3035,1.968,0.016668,0.015066,0.5867,0.6267,STABLE

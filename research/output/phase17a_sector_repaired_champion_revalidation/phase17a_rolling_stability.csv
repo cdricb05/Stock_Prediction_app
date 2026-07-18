@@ -1,0 +1,9 @@
+series,window_months,who,supported,n_windows,mean_of_rolling_means,min_rolling_mean,max_rolling_mean,positive_window_rate
+ic,12,champion,True,107,0.043273,-0.064028,0.120027,0.8879
+ic,12,repaired,True,107,0.037755,-0.072487,0.092897,0.8972
+ic,24,champion,True,95,0.046868,-0.016915,0.079633,0.9579
+ic,24,repaired,True,95,0.041893,-0.024011,0.069788,0.9684
+spread,12,champion,True,107,0.016596,-0.016351,0.053113,0.8411
+spread,12,repaired,True,107,0.016899,-0.034369,0.062071,0.8037
+spread,24,champion,True,95,0.018446,-0.00764,0.036968,0.9895
+spread,24,repaired,True,95,0.01931,-0.018022,0.041628,0.9474

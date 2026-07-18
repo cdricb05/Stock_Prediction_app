@@ -1,0 +1,5 @@
+book,covered,total,coverage_pct,note
+all,120,234,51.28,owned local EODHD EOD file present
+top25,11,25,44.0,owned local EODHD EOD file present
+top50,21,50,42.0,owned local EODHD EOD file present
+bottom25,17,25,68.0,owned local EODHD EOD file present

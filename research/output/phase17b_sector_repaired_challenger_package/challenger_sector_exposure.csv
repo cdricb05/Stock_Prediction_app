@@ -1,0 +1,28 @@
+book,sector,n_names,weight_pct,flag
+TOP25,Information Technology,7,28.0,OK
+TOP25,Communication Services,4,16.0,OK
+TOP25,Consumer Discretionary,4,16.0,OK
+TOP25,Industrials,4,16.0,OK
+TOP25,Materials,3,12.0,OK
+TOP25,Consumer Staples,1,4.0,OK
+TOP25,Energy,1,4.0,OK
+TOP25,Health Care,1,4.0,OK
+TOP50,Information Technology,11,22.0,OK
+TOP50,Health Care,9,18.0,OK
+TOP50,Industrials,8,16.0,OK
+TOP50,Communication Services,4,8.0,OK
+TOP50,Consumer Discretionary,4,8.0,OK
+TOP50,Financials,4,8.0,OK
+TOP50,Materials,4,8.0,OK
+TOP50,Consumer Staples,3,6.0,OK
+TOP50,Energy,2,4.0,OK
+TOP50,Real Estate,1,2.0,OK
+BOTTOM25,Communication Services,5,20.0,OK
+BOTTOM25,Consumer Discretionary,5,20.0,OK
+BOTTOM25,Health Care,3,12.0,OK
+BOTTOM25,Industrials,3,12.0,OK
+BOTTOM25,Information Technology,3,12.0,OK
+BOTTOM25,Materials,3,12.0,OK
+BOTTOM25,Consumer Staples,1,4.0,OK
+BOTTOM25,Energy,1,4.0,OK
+BOTTOM25,Financials,1,4.0,OK

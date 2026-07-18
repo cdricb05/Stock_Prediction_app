@@ -1,0 +1,14 @@
+limit,value,enforcement,note
+PREVIEW ONLY,YES,HARD,candidate list only; nothing is executed
+NO ORDERS,CONFIRMED,HARD,order_action=NO_ORDER on every position row
+NO BROKER,CONFIRMED,HARD,no broker connection of any kind
+NO AUTOMATION,CONFIRMED,HARD,no scheduling / no automated re-run
+NO LIVE TRADING,CONFIRMED,HARD,"parallel PAPER challenger only, NOT live, NOT champion"
+MANUAL REVIEW,REQUIRED,HARD,a human must review before any action outside this tool
+parallel_challenger_only,CONFIRMED,RULE,does NOT replace the current paper champion
+weighting,EQUAL_WEIGHT_LONG_ONLY,TARGET,top25 (4%) and top50 (2%) books are equal-weight
+holding_horizon_trading_days,63,TARGET,63 trading-day hold
+rebalance_cadence,QUARTERLY,TARGET,re-rank at the next quarter boundary
+max_position_size_top25,0.04,SUGGESTION,1/25 equal weight
+max_position_size_top50,0.02,SUGGESTION,1/50 equal weight
+sector_concentration_warn,0.3,WARNING,repaired Top25 largest sector share = 28.0%

@@ -1,0 +1,8 @@
+criterion,status,value,threshold,note
+repaired_sector_coverage,PASS,234/234,full,all ranked names carry a repaired GICS sector
+reproduction_of_frozen_composite,PASS,yes,required,recompute reproduces the frozen champion exactly
+candidate_ic_t_63d,PASS,2.9285,>=2.0,repaired-sector candidate IC t-stat
+candidate_net25_spread,PASS,0.010211,>0,cost-adjusted (25bps) quintile L/S
+candidate_net50_spread,PASS,0.007724,>0,cost-adjusted (50bps) quintile L/S
+materially_differs_from_champion,PASS,0.891517,<0.98,distinct enough to run as a parallel book
+OVERALL_RECOMMENDATION,PAPER_CHALLENGER_ELIGIBLE_PAPER_ONLY_NOT_LIVE,PAPER_CHALLENGER_ELIGIBLE,paper only,parallel paper challenger only; NEVER a live-trading signal
