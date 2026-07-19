@@ -1,0 +1,9 @@
+book_key,role,ticker,sector,paper_return_pct
+champion_top25,BEST,IP,Unknown,23.8734
+champion_top25,WORST,FOXA,Unknown,-21.6943
+champion_top50,BEST,IP,Unknown,23.8734
+champion_top50,WORST,FOXA,Unknown,-21.6943
+challenger_top25,BEST,IP,Materials,23.8734
+challenger_top25,WORST,FOXA,Communication Services,-21.6943
+challenger_top50,BEST,IP,Materials,23.8734
+challenger_top50,WORST,ALB,Materials,-21.8782

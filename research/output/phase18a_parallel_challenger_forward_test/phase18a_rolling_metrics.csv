@@ -1,0 +1,5 @@
+book_key,book_id,rolling_5_return_pct_points,rolling_5_excess_pct_points,rolling_5_supported,rolling_10_return_pct_points,rolling_10_excess_pct_points,rolling_10_supported,rolling_20_return_pct_points,rolling_20_excess_pct_points,rolling_20_supported
+champion_top25,composite_sn__2026-05-22__top25,2.586,4.9727,True,-2.3316,-1.4072,True,-3.112,0.0709,True
+champion_top50,composite_sn__2026-05-22__top50,2.5451,4.9318,True,-0.4614,0.463,True,-1.0331,2.1495,True
+challenger_top25,composite_sn_repaired__2026-05-22__top25,2.296,4.6827,True,-2.6881,-1.7637,True,-2.2979,0.885,True
+challenger_top50,composite_sn_repaired__2026-05-22__top50,2.0626,4.4492,True,-1.0161,-0.0918,True,-1.8535,1.3292,True

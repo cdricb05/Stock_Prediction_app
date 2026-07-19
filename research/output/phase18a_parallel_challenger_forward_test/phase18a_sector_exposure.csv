@@ -1,0 +1,24 @@
+book_key,sector,n_names,weight_pct
+champion_top25,Unknown,25,100.0
+champion_top50,Unknown,44,88.0
+champion_top50,Health Care,3,6.0
+champion_top50,Industrials,2,4.0
+champion_top50,Information Technology,1,2.0
+challenger_top25,Information Technology,7,28.0
+challenger_top25,Communication Services,4,16.0
+challenger_top25,Consumer Discretionary,4,16.0
+challenger_top25,Industrials,4,16.0
+challenger_top25,Materials,3,12.0
+challenger_top25,Consumer Staples,1,4.0
+challenger_top25,Energy,1,4.0
+challenger_top25,Health Care,1,4.0
+challenger_top50,Information Technology,11,22.0
+challenger_top50,Health Care,9,18.0
+challenger_top50,Industrials,8,16.0
+challenger_top50,Communication Services,4,8.0
+challenger_top50,Consumer Discretionary,4,8.0
+challenger_top50,Financials,4,8.0
+challenger_top50,Materials,4,8.0
+challenger_top50,Consumer Staples,3,6.0
+challenger_top50,Energy,2,4.0
+challenger_top50,Real Estate,1,2.0

@@ -1,0 +1,6 @@
+source,path,kind
+champion_package,C:\Users\binis\Stock_Prediction_app_push\research\output\phase13a_current_champion_alpha_paper_test_package,OWNED_COMMITTED_PACKAGE
+challenger_package,C:\Users\binis\Stock_Prediction_app_push\research\output\phase17b_sector_repaired_challenger_package,OWNED_COMMITTED_PACKAGE
+revalidation_dir,C:\Users\binis\Stock_Prediction_app_push\research\output\phase17a_sector_repaired_champion_revalidation,OWNED_COMMITTED_ARTIFACT
+eod_prices_dir,C:\Users\binis\Stock_Prediction_app_push\research\data\eodhd\raw\eod_prices,OWNED_LOCAL_EOD
+spy_history_json,D:\Stock_Prediction_app_data\phase13g_daily_alpha_marks\backfill\spy_daily_history.json,OWNED_LOCAL_SPY_STRIP

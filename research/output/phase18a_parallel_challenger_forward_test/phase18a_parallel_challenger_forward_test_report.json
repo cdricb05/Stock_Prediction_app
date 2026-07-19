@@ -1,0 +1,2063 @@
+{
+  "phase": "18-A",
+  "phase_name": "Parallel Champion vs Sector-Repaired Challenger Paper Tournament",
+  "run_at": "2026-07-19T01:43:17.216085+00:00",
+  "decision": "MONITORING_MID_CYCLE",
+  "decision_reasons": [
+    "Forward window is incomplete (24 of 63 trading marks). Monitoring only - no winner is named and neither book is promoted or rejected."
+  ],
+  "allowed_decisions": [
+    "MONITORING_MID_CYCLE",
+    "CHECKPOINT_READY_FOR_REVIEW",
+    "EXTEND_PARALLEL_PAPER_TEST",
+    "KEEP_CURRENT_PAPER_CHAMPION",
+    "CHALLENGER_PAPER_PROMOTION_ELIGIBLE",
+    "REJECT_PAPER_CHALLENGER",
+    "BLOCKED_INSUFFICIENT_COVERAGE",
+    "BLOCKED_DATA_MISMATCH"
+  ],
+  "forbidden_decisions": [
+    "LIVE_TRADING_READY",
+    "PRODUCTION_READY",
+    "ORDER_READY",
+    "AUTOMATION_READY",
+    "CHAMPION_REPLACED",
+    "LIVE_CHAMPION_PROMOTED",
+    "APPROVED_FOR_LIVE_TRADING"
+  ],
+  "decision_contract": {
+    "declared_before_results": true,
+    "horizon_trading_days": 63,
+    "allowed_decisions": [
+      "MONITORING_MID_CYCLE",
+      "CHECKPOINT_READY_FOR_REVIEW",
+      "EXTEND_PARALLEL_PAPER_TEST",
+      "KEEP_CURRENT_PAPER_CHAMPION",
+      "CHALLENGER_PAPER_PROMOTION_ELIGIBLE",
+      "REJECT_PAPER_CHALLENGER",
+      "BLOCKED_INSUFFICIENT_COVERAGE",
+      "BLOCKED_DATA_MISMATCH"
+    ],
+    "forbidden_decisions": [
+      "LIVE_TRADING_READY",
+      "PRODUCTION_READY",
+      "ORDER_READY",
+      "AUTOMATION_READY",
+      "CHAMPION_REPLACED",
+      "LIVE_CHAMPION_PROMOTED",
+      "APPROVED_FOR_LIVE_TRADING"
+    ],
+    "mid_cycle_rule": "Before the full 63-trading-day horizon, ALWAYS return MONITORING_MID_CYCLE unless a data-integrity block fires. Never name a winner; never promote or reject on an incomplete period.",
+    "checkpoint_rule": "At/after the checkpoint: require sufficient common-date and ticker coverage and an aligned SPY; require the challenger to remain positive after the same round-trip cost assumption; require no material risk breach; then compare excess return, drawdown, volatility, positive-day rate and contributor concentration. CHALLENGER_PAPER_PROMOTION_ELIGIBLE means eligibility for a later explicit MANUAL paper-champion decision only - it never replaces the champion and never promotes to live trading.",
+    "min_covered_per_book": 5,
+    "cost_bps_round_trip": 50,
+    "risk_max_drawdown_pct": -35.0,
+    "risk_max_concentration_pct": 60.0,
+    "never_replaces_champion": true,
+    "never_promotes_to_live": true
+  },
+  "current_paper_champion": {
+    "signal": "composite_sn",
+    "package": "C:\\Users\\binis\\Stock_Prediction_app_push\\research\\output\\phase13a_current_champion_alpha_paper_test_package"
+  },
+  "sector_repaired_paper_challenger": {
+    "signal": "composite_sn_repaired",
+    "package": "C:\\Users\\binis\\Stock_Prediction_app_push\\research\\output\\phase17b_sector_repaired_challenger_package"
+  },
+  "frozen_books": true,
+  "reranked": false,
+  "rebalanced": false,
+  "signal_date": "2026-05-22",
+  "horizon_progress": {
+    "signal_date": "2026-05-22",
+    "horizon_trading_days": 63,
+    "elapsed_marks": 24,
+    "remaining_marks": 39,
+    "checkpoint_reached": false,
+    "latest_common_owned_eod_date": "2026-06-26",
+    "review_target_date": "2026-08-22",
+    "progress_pct": 38.1
+  },
+  "calendar": {
+    "n_marks": 24,
+    "start_date": "2026-05-22",
+    "end_date": "2026-06-26",
+    "latest_spy_date": "2026-07-15",
+    "latest_owned_eod_date": "2026-06-26",
+    "latest_common_owned_eod_date": "2026-06-26",
+    "reference_today": "2026-07-18"
+  },
+  "spy": {
+    "available": true,
+    "ticker": "SPY",
+    "price_source": "EODHD_OWNED_SPY_DAILY_STRIP(adjusted_close)",
+    "cumulative_return_pct": -1.9812,
+    "reference_date": "2026-05-22"
+  },
+  "book_summaries": {
+    "champion_top25": {
+      "book_key": "champion_top25",
+      "book_id": "composite_sn__2026-05-22__top25",
+      "signal": "composite_sn",
+      "book_size": 25,
+      "n_members": 25,
+      "n_marks": 24,
+      "start_date": "2026-05-22",
+      "end_date": "2026-06-26",
+      "cumulative_return_pct": -2.2328,
+      "spy_cumulative_return_pct": -1.9812,
+      "excess_return_vs_spy_pct_points": -0.2516,
+      "max_drawdown_pct": -8.6271,
+      "max_drawdown_peak_date": "2026-06-01",
+      "max_drawdown_trough_date": "2026-06-22",
+      "daily_volatility_pct_points": 1.297,
+      "tracking_error_pct_points": 1.525,
+      "information_ratio": -0.0072,
+      "information_ratio_valid": true,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 39.13,
+      "n_daily_observations": 23,
+      "covered_count": 14,
+      "total_count": 25,
+      "coverage_pct": 56.0,
+      "missing_count": 11,
+      "contributor_concentration_top5_pct": 69.36,
+      "best_contributor": {
+        "ticker": "IP",
+        "sector": "Unknown",
+        "paper_return_pct": 23.8734
+      },
+      "worst_contributor": {
+        "ticker": "FOXA",
+        "sector": "Unknown",
+        "paper_return_pct": -21.6943
+      },
+      "order_action_all": "NO_ORDER"
+    },
+    "champion_top50": {
+      "book_key": "champion_top50",
+      "book_id": "composite_sn__2026-05-22__top50",
+      "signal": "composite_sn",
+      "book_size": 50,
+      "n_members": 50,
+      "n_marks": 24,
+      "start_date": "2026-05-22",
+      "end_date": "2026-06-26",
+      "cumulative_return_pct": -0.1204,
+      "spy_cumulative_return_pct": -1.9812,
+      "excess_return_vs_spy_pct_points": 1.8608,
+      "max_drawdown_pct": -6.7218,
+      "max_drawdown_peak_date": "2026-06-01",
+      "max_drawdown_trough_date": "2026-06-22",
+      "daily_volatility_pct_points": 1.0921,
+      "tracking_error_pct_points": 1.3535,
+      "information_ratio": 0.0598,
+      "information_ratio_valid": true,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 43.48,
+      "n_daily_observations": 23,
+      "covered_count": 24,
+      "total_count": 50,
+      "coverage_pct": 48.0,
+      "missing_count": 26,
+      "contributor_concentration_top5_pct": 48.39,
+      "best_contributor": {
+        "ticker": "IP",
+        "sector": "Unknown",
+        "paper_return_pct": 23.8734
+      },
+      "worst_contributor": {
+        "ticker": "FOXA",
+        "sector": "Unknown",
+        "paper_return_pct": -21.6943
+      },
+      "order_action_all": "NO_ORDER"
+    },
+    "challenger_top25": {
+      "book_key": "challenger_top25",
+      "book_id": "composite_sn_repaired__2026-05-22__top25",
+      "signal": "composite_sn_repaired",
+      "book_size": 25,
+      "n_members": 25,
+      "n_marks": 24,
+      "start_date": "2026-05-22",
+      "end_date": "2026-06-26",
+      "cumulative_return_pct": -0.8657,
+      "spy_cumulative_return_pct": -1.9812,
+      "excess_return_vs_spy_pct_points": 1.1155,
+      "max_drawdown_pct": -7.9541,
+      "max_drawdown_peak_date": "2026-06-01",
+      "max_drawdown_trough_date": "2026-06-22",
+      "daily_volatility_pct_points": 1.3549,
+      "tracking_error_pct_points": 1.5484,
+      "information_ratio": 0.0313,
+      "information_ratio_valid": true,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 39.13,
+      "n_daily_observations": 23,
+      "covered_count": 11,
+      "total_count": 25,
+      "coverage_pct": 44.0,
+      "missing_count": 14,
+      "contributor_concentration_top5_pct": 77.01,
+      "best_contributor": {
+        "ticker": "IP",
+        "sector": "Materials",
+        "paper_return_pct": 23.8734
+      },
+      "worst_contributor": {
+        "ticker": "FOXA",
+        "sector": "Communication Services",
+        "paper_return_pct": -21.6943
+      },
+      "order_action_all": "NO_ORDER"
+    },
+    "challenger_top50": {
+      "book_key": "challenger_top50",
+      "book_id": "composite_sn_repaired__2026-05-22__top50",
+      "signal": "composite_sn_repaired",
+      "book_size": 50,
+      "n_members": 50,
+      "n_marks": 24,
+      "start_date": "2026-05-22",
+      "end_date": "2026-06-26",
+      "cumulative_return_pct": -0.7558,
+      "spy_cumulative_return_pct": -1.9812,
+      "excess_return_vs_spy_pct_points": 1.2254,
+      "max_drawdown_pct": -6.3393,
+      "max_drawdown_peak_date": "2026-06-01",
+      "max_drawdown_trough_date": "2026-06-22",
+      "daily_volatility_pct_points": 1.0877,
+      "tracking_error_pct_points": 1.2679,
+      "information_ratio": 0.042,
+      "information_ratio_valid": true,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 52.17,
+      "n_daily_observations": 23,
+      "covered_count": 21,
+      "total_count": 50,
+      "coverage_pct": 42.0,
+      "missing_count": 29,
+      "contributor_concentration_top5_pct": 47.13,
+      "best_contributor": {
+        "ticker": "IP",
+        "sector": "Materials",
+        "paper_return_pct": 23.8734
+      },
+      "worst_contributor": {
+        "ticker": "ALB",
+        "sector": "Materials",
+        "paper_return_pct": -21.8782
+      },
+      "order_action_all": "NO_ORDER"
+    }
+  },
+  "rolling_metrics": {
+    "champion_top25": {
+      "book_key": "champion_top25",
+      "book_id": "composite_sn__2026-05-22__top25",
+      "rolling_5_return_pct_points": 2.586,
+      "rolling_5_excess_pct_points": 4.9727,
+      "rolling_5_supported": true,
+      "rolling_10_return_pct_points": -2.3316,
+      "rolling_10_excess_pct_points": -1.4072,
+      "rolling_10_supported": true,
+      "rolling_20_return_pct_points": -3.112,
+      "rolling_20_excess_pct_points": 0.0709,
+      "rolling_20_supported": true
+    },
+    "champion_top50": {
+      "book_key": "champion_top50",
+      "book_id": "composite_sn__2026-05-22__top50",
+      "rolling_5_return_pct_points": 2.5451,
+      "rolling_5_excess_pct_points": 4.9318,
+      "rolling_5_supported": true,
+      "rolling_10_return_pct_points": -0.4614,
+      "rolling_10_excess_pct_points": 0.463,
+      "rolling_10_supported": true,
+      "rolling_20_return_pct_points": -1.0331,
+      "rolling_20_excess_pct_points": 2.1495,
+      "rolling_20_supported": true
+    },
+    "challenger_top25": {
+      "book_key": "challenger_top25",
+      "book_id": "composite_sn_repaired__2026-05-22__top25",
+      "rolling_5_return_pct_points": 2.296,
+      "rolling_5_excess_pct_points": 4.6827,
+      "rolling_5_supported": true,
+      "rolling_10_return_pct_points": -2.6881,
+      "rolling_10_excess_pct_points": -1.7637,
+      "rolling_10_supported": true,
+      "rolling_20_return_pct_points": -2.2979,
+      "rolling_20_excess_pct_points": 0.885,
+      "rolling_20_supported": true
+    },
+    "challenger_top50": {
+      "book_key": "challenger_top50",
+      "book_id": "composite_sn_repaired__2026-05-22__top50",
+      "rolling_5_return_pct_points": 2.0626,
+      "rolling_5_excess_pct_points": 4.4492,
+      "rolling_5_supported": true,
+      "rolling_10_return_pct_points": -1.0161,
+      "rolling_10_excess_pct_points": -0.0918,
+      "rolling_10_supported": true,
+      "rolling_20_return_pct_points": -1.8535,
+      "rolling_20_excess_pct_points": 1.3292,
+      "rolling_20_supported": true
+    }
+  },
+  "daily_curves": {
+    "champion_top25": {
+      "cumulative_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "cumulative_return_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "cumulative_return_pct": 0.3717
+        },
+        {
+          "mark_date": "2026-05-27",
+          "cumulative_return_pct": 0.6033
+        },
+        {
+          "mark_date": "2026-05-28",
+          "cumulative_return_pct": 0.8791
+        },
+        {
+          "mark_date": "2026-05-29",
+          "cumulative_return_pct": 0.0653
+        },
+        {
+          "mark_date": "2026-06-01",
+          "cumulative_return_pct": 2.6559
+        },
+        {
+          "mark_date": "2026-06-02",
+          "cumulative_return_pct": 0.82
+        },
+        {
+          "mark_date": "2026-06-03",
+          "cumulative_return_pct": 0.0167
+        },
+        {
+          "mark_date": "2026-06-04",
+          "cumulative_return_pct": 0.4578
+        },
+        {
+          "mark_date": "2026-06-05",
+          "cumulative_return_pct": -0.2735
+        },
+        {
+          "mark_date": "2026-06-08",
+          "cumulative_return_pct": -0.1552
+        },
+        {
+          "mark_date": "2026-06-09",
+          "cumulative_return_pct": 1.0693
+        },
+        {
+          "mark_date": "2026-06-10",
+          "cumulative_return_pct": -0.5948
+        },
+        {
+          "mark_date": "2026-06-11",
+          "cumulative_return_pct": 0.0988
+        },
+        {
+          "mark_date": "2026-06-12",
+          "cumulative_return_pct": -0.1665
+        },
+        {
+          "mark_date": "2026-06-15",
+          "cumulative_return_pct": -2.5385
+        },
+        {
+          "mark_date": "2026-06-16",
+          "cumulative_return_pct": -3.0285
+        },
+        {
+          "mark_date": "2026-06-17",
+          "cumulative_return_pct": -5.174
+        },
+        {
+          "mark_date": "2026-06-18",
+          "cumulative_return_pct": -4.8188
+        },
+        {
+          "mark_date": "2026-06-22",
+          "cumulative_return_pct": -6.2003
+        },
+        {
+          "mark_date": "2026-06-23",
+          "cumulative_return_pct": -5.903
+        },
+        {
+          "mark_date": "2026-06-24",
+          "cumulative_return_pct": -3.7725
+        },
+        {
+          "mark_date": "2026-06-25",
+          "cumulative_return_pct": -4.3007
+        },
+        {
+          "mark_date": "2026-06-26",
+          "cumulative_return_pct": -2.2328
+        }
+      ],
+      "excess_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "excess_return_vs_spy_pct_points": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "excess_return_vs_spy_pct_points": -0.2921
+        },
+        {
+          "mark_date": "2026-05-27",
+          "excess_return_vs_spy_pct_points": -0.0431
+        },
+        {
+          "mark_date": "2026-05-28",
+          "excess_return_vs_spy_pct_points": -0.3225
+        },
+        {
+          "mark_date": "2026-05-29",
+          "excess_return_vs_spy_pct_points": -1.3885
+        },
+        {
+          "mark_date": "2026-06-01",
+          "excess_return_vs_spy_pct_points": 0.9259
+        },
+        {
+          "mark_date": "2026-06-02",
+          "excess_return_vs_spy_pct_points": -1.0482
+        },
+        {
+          "mark_date": "2026-06-03",
+          "excess_return_vs_spy_pct_points": -1.1367
+        },
+        {
+          "mark_date": "2026-06-04",
+          "excess_return_vs_spy_pct_points": -1.0778
+        },
+        {
+          "mark_date": "2026-06-05",
+          "excess_return_vs_spy_pct_points": 0.8115
+        },
+        {
+          "mark_date": "2026-06-08",
+          "excess_return_vs_spy_pct_points": 0.7058
+        },
+        {
+          "mark_date": "2026-06-09",
+          "excess_return_vs_spy_pct_points": 2.2213
+        },
+        {
+          "mark_date": "2026-06-10",
+          "excess_return_vs_spy_pct_points": 2.1156
+        },
+        {
+          "mark_date": "2026-06-11",
+          "excess_return_vs_spy_pct_points": 1.1556
+        },
+        {
+          "mark_date": "2026-06-12",
+          "excess_return_vs_spy_pct_points": 0.3552
+        },
+        {
+          "mark_date": "2026-06-15",
+          "excess_return_vs_spy_pct_points": -3.7709
+        },
+        {
+          "mark_date": "2026-06-16",
+          "excess_return_vs_spy_pct_points": -3.6574
+        },
+        {
+          "mark_date": "2026-06-17",
+          "excess_return_vs_spy_pct_points": -4.5463
+        },
+        {
+          "mark_date": "2026-06-18",
+          "excess_return_vs_spy_pct_points": -5.2243
+        },
+        {
+          "mark_date": "2026-06-22",
+          "excess_return_vs_spy_pct_points": -6.2898
+        },
+        {
+          "mark_date": "2026-06-23",
+          "excess_return_vs_spy_pct_points": -4.539
+        },
+        {
+          "mark_date": "2026-06-24",
+          "excess_return_vs_spy_pct_points": -2.3628
+        },
+        {
+          "mark_date": "2026-06-25",
+          "excess_return_vs_spy_pct_points": -3.0335
+        },
+        {
+          "mark_date": "2026-06-26",
+          "excess_return_vs_spy_pct_points": -0.2516
+        }
+      ],
+      "drawdown_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-27",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-28",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-29",
+          "drawdown_pct": -0.8067
+        },
+        {
+          "mark_date": "2026-06-01",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-06-02",
+          "drawdown_pct": -1.7884
+        },
+        {
+          "mark_date": "2026-06-03",
+          "drawdown_pct": -2.5709
+        },
+        {
+          "mark_date": "2026-06-04",
+          "drawdown_pct": -2.1412
+        },
+        {
+          "mark_date": "2026-06-05",
+          "drawdown_pct": -2.8536
+        },
+        {
+          "mark_date": "2026-06-08",
+          "drawdown_pct": -2.7384
+        },
+        {
+          "mark_date": "2026-06-09",
+          "drawdown_pct": -1.5456
+        },
+        {
+          "mark_date": "2026-06-10",
+          "drawdown_pct": -3.1666
+        },
+        {
+          "mark_date": "2026-06-11",
+          "drawdown_pct": -2.4909
+        },
+        {
+          "mark_date": "2026-06-12",
+          "drawdown_pct": -2.7494
+        },
+        {
+          "mark_date": "2026-06-15",
+          "drawdown_pct": -5.06
+        },
+        {
+          "mark_date": "2026-06-16",
+          "drawdown_pct": -5.5373
+        },
+        {
+          "mark_date": "2026-06-17",
+          "drawdown_pct": -7.6273
+        },
+        {
+          "mark_date": "2026-06-18",
+          "drawdown_pct": -7.2813
+        },
+        {
+          "mark_date": "2026-06-22",
+          "drawdown_pct": -8.6271
+        },
+        {
+          "mark_date": "2026-06-23",
+          "drawdown_pct": -8.3375
+        },
+        {
+          "mark_date": "2026-06-24",
+          "drawdown_pct": -6.2621
+        },
+        {
+          "mark_date": "2026-06-25",
+          "drawdown_pct": -6.7766
+        },
+        {
+          "mark_date": "2026-06-26",
+          "drawdown_pct": -4.7622
+        }
+      ],
+      "n_marks": 24
+    },
+    "champion_top50": {
+      "cumulative_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "cumulative_return_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "cumulative_return_pct": 0.1832
+        },
+        {
+          "mark_date": "2026-05-27",
+          "cumulative_return_pct": 0.4671
+        },
+        {
+          "mark_date": "2026-05-28",
+          "cumulative_return_pct": 0.9129
+        },
+        {
+          "mark_date": "2026-05-29",
+          "cumulative_return_pct": 0.4417
+        },
+        {
+          "mark_date": "2026-06-01",
+          "cumulative_return_pct": 2.8109
+        },
+        {
+          "mark_date": "2026-06-02",
+          "cumulative_return_pct": 1.2929
+        },
+        {
+          "mark_date": "2026-06-03",
+          "cumulative_return_pct": 0.3374
+        },
+        {
+          "mark_date": "2026-06-04",
+          "cumulative_return_pct": 1.1351
+        },
+        {
+          "mark_date": "2026-06-05",
+          "cumulative_return_pct": 0.6183
+        },
+        {
+          "mark_date": "2026-06-08",
+          "cumulative_return_pct": 0.5125
+        },
+        {
+          "mark_date": "2026-06-09",
+          "cumulative_return_pct": 1.4005
+        },
+        {
+          "mark_date": "2026-06-10",
+          "cumulative_return_pct": 0.2134
+        },
+        {
+          "mark_date": "2026-06-11",
+          "cumulative_return_pct": 0.341
+        },
+        {
+          "mark_date": "2026-06-12",
+          "cumulative_return_pct": 0.3786
+        },
+        {
+          "mark_date": "2026-06-15",
+          "cumulative_return_pct": -0.6711
+        },
+        {
+          "mark_date": "2026-06-16",
+          "cumulative_return_pct": -0.8578
+        },
+        {
+          "mark_date": "2026-06-17",
+          "cumulative_return_pct": -2.8586
+        },
+        {
+          "mark_date": "2026-06-18",
+          "cumulative_return_pct": -2.6655
+        },
+        {
+          "mark_date": "2026-06-22",
+          "cumulative_return_pct": -4.0998
+        },
+        {
+          "mark_date": "2026-06-23",
+          "cumulative_return_pct": -3.6252
+        },
+        {
+          "mark_date": "2026-06-24",
+          "cumulative_return_pct": -1.8259
+        },
+        {
+          "mark_date": "2026-06-25",
+          "cumulative_return_pct": -2.1535
+        },
+        {
+          "mark_date": "2026-06-26",
+          "cumulative_return_pct": -0.1204
+        }
+      ],
+      "excess_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "excess_return_vs_spy_pct_points": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "excess_return_vs_spy_pct_points": -0.4806
+        },
+        {
+          "mark_date": "2026-05-27",
+          "excess_return_vs_spy_pct_points": -0.1793
+        },
+        {
+          "mark_date": "2026-05-28",
+          "excess_return_vs_spy_pct_points": -0.2887
+        },
+        {
+          "mark_date": "2026-05-29",
+          "excess_return_vs_spy_pct_points": -1.0121
+        },
+        {
+          "mark_date": "2026-06-01",
+          "excess_return_vs_spy_pct_points": 1.0809
+        },
+        {
+          "mark_date": "2026-06-02",
+          "excess_return_vs_spy_pct_points": -0.5753
+        },
+        {
+          "mark_date": "2026-06-03",
+          "excess_return_vs_spy_pct_points": -0.816
+        },
+        {
+          "mark_date": "2026-06-04",
+          "excess_return_vs_spy_pct_points": -0.4005
+        },
+        {
+          "mark_date": "2026-06-05",
+          "excess_return_vs_spy_pct_points": 1.7033
+        },
+        {
+          "mark_date": "2026-06-08",
+          "excess_return_vs_spy_pct_points": 1.3735
+        },
+        {
+          "mark_date": "2026-06-09",
+          "excess_return_vs_spy_pct_points": 2.5525
+        },
+        {
+          "mark_date": "2026-06-10",
+          "excess_return_vs_spy_pct_points": 2.9238
+        },
+        {
+          "mark_date": "2026-06-11",
+          "excess_return_vs_spy_pct_points": 1.3978
+        },
+        {
+          "mark_date": "2026-06-12",
+          "excess_return_vs_spy_pct_points": 0.9003
+        },
+        {
+          "mark_date": "2026-06-15",
+          "excess_return_vs_spy_pct_points": -1.9035
+        },
+        {
+          "mark_date": "2026-06-16",
+          "excess_return_vs_spy_pct_points": -1.4867
+        },
+        {
+          "mark_date": "2026-06-17",
+          "excess_return_vs_spy_pct_points": -2.2309
+        },
+        {
+          "mark_date": "2026-06-18",
+          "excess_return_vs_spy_pct_points": -3.071
+        },
+        {
+          "mark_date": "2026-06-22",
+          "excess_return_vs_spy_pct_points": -4.1893
+        },
+        {
+          "mark_date": "2026-06-23",
+          "excess_return_vs_spy_pct_points": -2.2612
+        },
+        {
+          "mark_date": "2026-06-24",
+          "excess_return_vs_spy_pct_points": -0.4162
+        },
+        {
+          "mark_date": "2026-06-25",
+          "excess_return_vs_spy_pct_points": -0.8863
+        },
+        {
+          "mark_date": "2026-06-26",
+          "excess_return_vs_spy_pct_points": 1.8608
+        }
+      ],
+      "drawdown_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-27",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-28",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-29",
+          "drawdown_pct": -0.4669
+        },
+        {
+          "mark_date": "2026-06-01",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-06-02",
+          "drawdown_pct": -1.4765
+        },
+        {
+          "mark_date": "2026-06-03",
+          "drawdown_pct": -2.4059
+        },
+        {
+          "mark_date": "2026-06-04",
+          "drawdown_pct": -1.63
+        },
+        {
+          "mark_date": "2026-06-05",
+          "drawdown_pct": -2.1327
+        },
+        {
+          "mark_date": "2026-06-08",
+          "drawdown_pct": -2.2356
+        },
+        {
+          "mark_date": "2026-06-09",
+          "drawdown_pct": -1.3718
+        },
+        {
+          "mark_date": "2026-06-10",
+          "drawdown_pct": -2.5265
+        },
+        {
+          "mark_date": "2026-06-11",
+          "drawdown_pct": -2.4024
+        },
+        {
+          "mark_date": "2026-06-12",
+          "drawdown_pct": -2.3658
+        },
+        {
+          "mark_date": "2026-06-15",
+          "drawdown_pct": -3.3868
+        },
+        {
+          "mark_date": "2026-06-16",
+          "drawdown_pct": -3.5684
+        },
+        {
+          "mark_date": "2026-06-17",
+          "drawdown_pct": -5.5145
+        },
+        {
+          "mark_date": "2026-06-18",
+          "drawdown_pct": -5.3267
+        },
+        {
+          "mark_date": "2026-06-22",
+          "drawdown_pct": -6.7218
+        },
+        {
+          "mark_date": "2026-06-23",
+          "drawdown_pct": -6.2601
+        },
+        {
+          "mark_date": "2026-06-24",
+          "drawdown_pct": -4.51
+        },
+        {
+          "mark_date": "2026-06-25",
+          "drawdown_pct": -4.8287
+        },
+        {
+          "mark_date": "2026-06-26",
+          "drawdown_pct": -2.8512
+        }
+      ],
+      "n_marks": 24
+    },
+    "challenger_top25": {
+      "cumulative_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "cumulative_return_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "cumulative_return_pct": 0.6079
+        },
+        {
+          "mark_date": "2026-05-27",
+          "cumulative_return_pct": 0.8667
+        },
+        {
+          "mark_date": "2026-05-28",
+          "cumulative_return_pct": 1.4321
+        },
+        {
+          "mark_date": "2026-05-29",
+          "cumulative_return_pct": 0.9216
+        },
+        {
+          "mark_date": "2026-06-01",
+          "cumulative_return_pct": 3.4529
+        },
+        {
+          "mark_date": "2026-06-02",
+          "cumulative_return_pct": 1.9078
+        },
+        {
+          "mark_date": "2026-06-03",
+          "cumulative_return_pct": 1.0339
+        },
+        {
+          "mark_date": "2026-06-04",
+          "cumulative_return_pct": 1.2096
+        },
+        {
+          "mark_date": "2026-06-05",
+          "cumulative_return_pct": 0.2822
+        },
+        {
+          "mark_date": "2026-06-08",
+          "cumulative_return_pct": 0.8346
+        },
+        {
+          "mark_date": "2026-06-09",
+          "cumulative_return_pct": 2.3197
+        },
+        {
+          "mark_date": "2026-06-10",
+          "cumulative_return_pct": 0.6954
+        },
+        {
+          "mark_date": "2026-06-11",
+          "cumulative_return_pct": 1.8224
+        },
+        {
+          "mark_date": "2026-06-12",
+          "cumulative_return_pct": 1.403
+        },
+        {
+          "mark_date": "2026-06-15",
+          "cumulative_return_pct": -1.3332
+        },
+        {
+          "mark_date": "2026-06-16",
+          "cumulative_return_pct": -1.9761
+        },
+        {
+          "mark_date": "2026-06-17",
+          "cumulative_return_pct": -3.7254
+        },
+        {
+          "mark_date": "2026-06-18",
+          "cumulative_return_pct": -3.1617
+        },
+        {
+          "mark_date": "2026-06-22",
+          "cumulative_return_pct": -4.7758
+        },
+        {
+          "mark_date": "2026-06-23",
+          "cumulative_return_pct": -4.5581
+        },
+        {
+          "mark_date": "2026-06-24",
+          "cumulative_return_pct": -2.1913
+        },
+        {
+          "mark_date": "2026-06-25",
+          "cumulative_return_pct": -2.9037
+        },
+        {
+          "mark_date": "2026-06-26",
+          "cumulative_return_pct": -0.8657
+        }
+      ],
+      "excess_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "excess_return_vs_spy_pct_points": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "excess_return_vs_spy_pct_points": -0.0559
+        },
+        {
+          "mark_date": "2026-05-27",
+          "excess_return_vs_spy_pct_points": 0.2203
+        },
+        {
+          "mark_date": "2026-05-28",
+          "excess_return_vs_spy_pct_points": 0.2305
+        },
+        {
+          "mark_date": "2026-05-29",
+          "excess_return_vs_spy_pct_points": -0.5322
+        },
+        {
+          "mark_date": "2026-06-01",
+          "excess_return_vs_spy_pct_points": 1.7229
+        },
+        {
+          "mark_date": "2026-06-02",
+          "excess_return_vs_spy_pct_points": 0.0396
+        },
+        {
+          "mark_date": "2026-06-03",
+          "excess_return_vs_spy_pct_points": -0.1195
+        },
+        {
+          "mark_date": "2026-06-04",
+          "excess_return_vs_spy_pct_points": -0.326
+        },
+        {
+          "mark_date": "2026-06-05",
+          "excess_return_vs_spy_pct_points": 1.3672
+        },
+        {
+          "mark_date": "2026-06-08",
+          "excess_return_vs_spy_pct_points": 1.6956
+        },
+        {
+          "mark_date": "2026-06-09",
+          "excess_return_vs_spy_pct_points": 3.4717
+        },
+        {
+          "mark_date": "2026-06-10",
+          "excess_return_vs_spy_pct_points": 3.4058
+        },
+        {
+          "mark_date": "2026-06-11",
+          "excess_return_vs_spy_pct_points": 2.8792
+        },
+        {
+          "mark_date": "2026-06-12",
+          "excess_return_vs_spy_pct_points": 1.9247
+        },
+        {
+          "mark_date": "2026-06-15",
+          "excess_return_vs_spy_pct_points": -2.5656
+        },
+        {
+          "mark_date": "2026-06-16",
+          "excess_return_vs_spy_pct_points": -2.605
+        },
+        {
+          "mark_date": "2026-06-17",
+          "excess_return_vs_spy_pct_points": -3.0977
+        },
+        {
+          "mark_date": "2026-06-18",
+          "excess_return_vs_spy_pct_points": -3.5672
+        },
+        {
+          "mark_date": "2026-06-22",
+          "excess_return_vs_spy_pct_points": -4.8653
+        },
+        {
+          "mark_date": "2026-06-23",
+          "excess_return_vs_spy_pct_points": -3.1941
+        },
+        {
+          "mark_date": "2026-06-24",
+          "excess_return_vs_spy_pct_points": -0.7816
+        },
+        {
+          "mark_date": "2026-06-25",
+          "excess_return_vs_spy_pct_points": -1.6365
+        },
+        {
+          "mark_date": "2026-06-26",
+          "excess_return_vs_spy_pct_points": 1.1155
+        }
+      ],
+      "drawdown_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-27",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-28",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-29",
+          "drawdown_pct": -0.5033
+        },
+        {
+          "mark_date": "2026-06-01",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-06-02",
+          "drawdown_pct": -1.4935
+        },
+        {
+          "mark_date": "2026-06-03",
+          "drawdown_pct": -2.3383
+        },
+        {
+          "mark_date": "2026-06-04",
+          "drawdown_pct": -2.1684
+        },
+        {
+          "mark_date": "2026-06-05",
+          "drawdown_pct": -3.0649
+        },
+        {
+          "mark_date": "2026-06-08",
+          "drawdown_pct": -2.5309
+        },
+        {
+          "mark_date": "2026-06-09",
+          "drawdown_pct": -1.0954
+        },
+        {
+          "mark_date": "2026-06-10",
+          "drawdown_pct": -2.6655
+        },
+        {
+          "mark_date": "2026-06-11",
+          "drawdown_pct": -1.5761
+        },
+        {
+          "mark_date": "2026-06-12",
+          "drawdown_pct": -1.9815
+        },
+        {
+          "mark_date": "2026-06-15",
+          "drawdown_pct": -4.6264
+        },
+        {
+          "mark_date": "2026-06-16",
+          "drawdown_pct": -5.2478
+        },
+        {
+          "mark_date": "2026-06-17",
+          "drawdown_pct": -6.9387
+        },
+        {
+          "mark_date": "2026-06-18",
+          "drawdown_pct": -6.3938
+        },
+        {
+          "mark_date": "2026-06-22",
+          "drawdown_pct": -7.9541
+        },
+        {
+          "mark_date": "2026-06-23",
+          "drawdown_pct": -7.7436
+        },
+        {
+          "mark_date": "2026-06-24",
+          "drawdown_pct": -5.4558
+        },
+        {
+          "mark_date": "2026-06-25",
+          "drawdown_pct": -6.1444
+        },
+        {
+          "mark_date": "2026-06-26",
+          "drawdown_pct": -4.1745
+        }
+      ],
+      "n_marks": 24
+    },
+    "challenger_top50": {
+      "cumulative_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "cumulative_return_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "cumulative_return_pct": 0.2129
+        },
+        {
+          "mark_date": "2026-05-27",
+          "cumulative_return_pct": 0.4863
+        },
+        {
+          "mark_date": "2026-05-28",
+          "cumulative_return_pct": 1.0978
+        },
+        {
+          "mark_date": "2026-05-29",
+          "cumulative_return_pct": 0.4963
+        },
+        {
+          "mark_date": "2026-06-01",
+          "cumulative_return_pct": 2.4342
+        },
+        {
+          "mark_date": "2026-06-02",
+          "cumulative_return_pct": 0.978
+        },
+        {
+          "mark_date": "2026-06-03",
+          "cumulative_return_pct": 0.0988
+        },
+        {
+          "mark_date": "2026-06-04",
+          "cumulative_return_pct": 0.6141
+        },
+        {
+          "mark_date": "2026-06-05",
+          "cumulative_return_pct": -0.3411
+        },
+        {
+          "mark_date": "2026-06-08",
+          "cumulative_return_pct": -0.4394
+        },
+        {
+          "mark_date": "2026-06-09",
+          "cumulative_return_pct": 0.7582
+        },
+        {
+          "mark_date": "2026-06-10",
+          "cumulative_return_pct": -0.5106
+        },
+        {
+          "mark_date": "2026-06-11",
+          "cumulative_return_pct": 0.2604
+        },
+        {
+          "mark_date": "2026-06-12",
+          "cumulative_return_pct": 0.8044
+        },
+        {
+          "mark_date": "2026-06-15",
+          "cumulative_return_pct": -0.5163
+        },
+        {
+          "mark_date": "2026-06-16",
+          "cumulative_return_pct": -0.926
+        },
+        {
+          "mark_date": "2026-06-17",
+          "cumulative_return_pct": -3.0141
+        },
+        {
+          "mark_date": "2026-06-18",
+          "cumulative_return_pct": -2.8183
+        },
+        {
+          "mark_date": "2026-06-22",
+          "cumulative_return_pct": -4.0594
+        },
+        {
+          "mark_date": "2026-06-23",
+          "cumulative_return_pct": -3.7978
+        },
+        {
+          "mark_date": "2026-06-24",
+          "cumulative_return_pct": -1.9639
+        },
+        {
+          "mark_date": "2026-06-25",
+          "cumulative_return_pct": -2.4992
+        },
+        {
+          "mark_date": "2026-06-26",
+          "cumulative_return_pct": -0.7558
+        }
+      ],
+      "excess_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "excess_return_vs_spy_pct_points": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "excess_return_vs_spy_pct_points": -0.4509
+        },
+        {
+          "mark_date": "2026-05-27",
+          "excess_return_vs_spy_pct_points": -0.1601
+        },
+        {
+          "mark_date": "2026-05-28",
+          "excess_return_vs_spy_pct_points": -0.1038
+        },
+        {
+          "mark_date": "2026-05-29",
+          "excess_return_vs_spy_pct_points": -0.9575
+        },
+        {
+          "mark_date": "2026-06-01",
+          "excess_return_vs_spy_pct_points": 0.7042
+        },
+        {
+          "mark_date": "2026-06-02",
+          "excess_return_vs_spy_pct_points": -0.8902
+        },
+        {
+          "mark_date": "2026-06-03",
+          "excess_return_vs_spy_pct_points": -1.0546
+        },
+        {
+          "mark_date": "2026-06-04",
+          "excess_return_vs_spy_pct_points": -0.9215
+        },
+        {
+          "mark_date": "2026-06-05",
+          "excess_return_vs_spy_pct_points": 0.7439
+        },
+        {
+          "mark_date": "2026-06-08",
+          "excess_return_vs_spy_pct_points": 0.4216
+        },
+        {
+          "mark_date": "2026-06-09",
+          "excess_return_vs_spy_pct_points": 1.9102
+        },
+        {
+          "mark_date": "2026-06-10",
+          "excess_return_vs_spy_pct_points": 2.1998
+        },
+        {
+          "mark_date": "2026-06-11",
+          "excess_return_vs_spy_pct_points": 1.3172
+        },
+        {
+          "mark_date": "2026-06-12",
+          "excess_return_vs_spy_pct_points": 1.3261
+        },
+        {
+          "mark_date": "2026-06-15",
+          "excess_return_vs_spy_pct_points": -1.7487
+        },
+        {
+          "mark_date": "2026-06-16",
+          "excess_return_vs_spy_pct_points": -1.5549
+        },
+        {
+          "mark_date": "2026-06-17",
+          "excess_return_vs_spy_pct_points": -2.3864
+        },
+        {
+          "mark_date": "2026-06-18",
+          "excess_return_vs_spy_pct_points": -3.2238
+        },
+        {
+          "mark_date": "2026-06-22",
+          "excess_return_vs_spy_pct_points": -4.1489
+        },
+        {
+          "mark_date": "2026-06-23",
+          "excess_return_vs_spy_pct_points": -2.4338
+        },
+        {
+          "mark_date": "2026-06-24",
+          "excess_return_vs_spy_pct_points": -0.5542
+        },
+        {
+          "mark_date": "2026-06-25",
+          "excess_return_vs_spy_pct_points": -1.232
+        },
+        {
+          "mark_date": "2026-06-26",
+          "excess_return_vs_spy_pct_points": 1.2254
+        }
+      ],
+      "drawdown_curve": [
+        {
+          "mark_date": "2026-05-22",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-26",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-27",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-28",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-05-29",
+          "drawdown_pct": -0.595
+        },
+        {
+          "mark_date": "2026-06-01",
+          "drawdown_pct": 0.0
+        },
+        {
+          "mark_date": "2026-06-02",
+          "drawdown_pct": -1.4216
+        },
+        {
+          "mark_date": "2026-06-03",
+          "drawdown_pct": -2.2799
+        },
+        {
+          "mark_date": "2026-06-04",
+          "drawdown_pct": -1.7768
+        },
+        {
+          "mark_date": "2026-06-05",
+          "drawdown_pct": -2.7093
+        },
+        {
+          "mark_date": "2026-06-08",
+          "drawdown_pct": -2.8053
+        },
+        {
+          "mark_date": "2026-06-09",
+          "drawdown_pct": -1.6362
+        },
+        {
+          "mark_date": "2026-06-10",
+          "drawdown_pct": -2.8748
+        },
+        {
+          "mark_date": "2026-06-11",
+          "drawdown_pct": -2.1221
+        },
+        {
+          "mark_date": "2026-06-12",
+          "drawdown_pct": -1.5911
+        },
+        {
+          "mark_date": "2026-06-15",
+          "drawdown_pct": -2.8804
+        },
+        {
+          "mark_date": "2026-06-16",
+          "drawdown_pct": -3.2803
+        },
+        {
+          "mark_date": "2026-06-17",
+          "drawdown_pct": -5.3188
+        },
+        {
+          "mark_date": "2026-06-18",
+          "drawdown_pct": -5.1277
+        },
+        {
+          "mark_date": "2026-06-22",
+          "drawdown_pct": -6.3393
+        },
+        {
+          "mark_date": "2026-06-23",
+          "drawdown_pct": -6.0839
+        },
+        {
+          "mark_date": "2026-06-24",
+          "drawdown_pct": -4.2936
+        },
+        {
+          "mark_date": "2026-06-25",
+          "drawdown_pct": -4.8162
+        },
+        {
+          "mark_date": "2026-06-26",
+          "drawdown_pct": -3.1142
+        }
+      ],
+      "n_marks": 24
+    },
+    "spy": [
+      {
+        "mark_date": "2026-05-22",
+        "return_since_signal_pct": 0.0
+      },
+      {
+        "mark_date": "2026-05-26",
+        "return_since_signal_pct": 0.6638
+      },
+      {
+        "mark_date": "2026-05-27",
+        "return_since_signal_pct": 0.6464
+      },
+      {
+        "mark_date": "2026-05-28",
+        "return_since_signal_pct": 1.2016
+      },
+      {
+        "mark_date": "2026-05-29",
+        "return_since_signal_pct": 1.4538
+      },
+      {
+        "mark_date": "2026-06-01",
+        "return_since_signal_pct": 1.73
+      },
+      {
+        "mark_date": "2026-06-02",
+        "return_since_signal_pct": 1.8682
+      },
+      {
+        "mark_date": "2026-06-03",
+        "return_since_signal_pct": 1.1534
+      },
+      {
+        "mark_date": "2026-06-04",
+        "return_since_signal_pct": 1.5356
+      },
+      {
+        "mark_date": "2026-06-05",
+        "return_since_signal_pct": -1.085
+      },
+      {
+        "mark_date": "2026-06-08",
+        "return_since_signal_pct": -0.861
+      },
+      {
+        "mark_date": "2026-06-09",
+        "return_since_signal_pct": -1.152
+      },
+      {
+        "mark_date": "2026-06-10",
+        "return_since_signal_pct": -2.7104
+      },
+      {
+        "mark_date": "2026-06-11",
+        "return_since_signal_pct": -1.0568
+      },
+      {
+        "mark_date": "2026-06-12",
+        "return_since_signal_pct": -0.5217
+      },
+      {
+        "mark_date": "2026-06-15",
+        "return_since_signal_pct": 1.2324
+      },
+      {
+        "mark_date": "2026-06-16",
+        "return_since_signal_pct": 0.6289
+      },
+      {
+        "mark_date": "2026-06-17",
+        "return_since_signal_pct": -0.6277
+      },
+      {
+        "mark_date": "2026-06-18",
+        "return_since_signal_pct": 0.4055
+      },
+      {
+        "mark_date": "2026-06-22",
+        "return_since_signal_pct": 0.0895
+      },
+      {
+        "mark_date": "2026-06-23",
+        "return_since_signal_pct": -1.364
+      },
+      {
+        "mark_date": "2026-06-24",
+        "return_since_signal_pct": -1.4097
+      },
+      {
+        "mark_date": "2026-06-25",
+        "return_since_signal_pct": -1.2672
+      },
+      {
+        "mark_date": "2026-06-26",
+        "return_since_signal_pct": -1.9812
+      }
+    ]
+  },
+  "sector_exposure": {
+    "champion_top25": [
+      {
+        "book_key": "champion_top25",
+        "sector": "Unknown",
+        "n_names": 25,
+        "weight_pct": 100.0
+      }
+    ],
+    "champion_top50": [
+      {
+        "book_key": "champion_top50",
+        "sector": "Unknown",
+        "n_names": 44,
+        "weight_pct": 88.0
+      },
+      {
+        "book_key": "champion_top50",
+        "sector": "Health Care",
+        "n_names": 3,
+        "weight_pct": 6.0
+      },
+      {
+        "book_key": "champion_top50",
+        "sector": "Industrials",
+        "n_names": 2,
+        "weight_pct": 4.0
+      },
+      {
+        "book_key": "champion_top50",
+        "sector": "Information Technology",
+        "n_names": 1,
+        "weight_pct": 2.0
+      }
+    ],
+    "challenger_top25": [
+      {
+        "book_key": "challenger_top25",
+        "sector": "Information Technology",
+        "n_names": 7,
+        "weight_pct": 28.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Communication Services",
+        "n_names": 4,
+        "weight_pct": 16.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Consumer Discretionary",
+        "n_names": 4,
+        "weight_pct": 16.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Industrials",
+        "n_names": 4,
+        "weight_pct": 16.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Materials",
+        "n_names": 3,
+        "weight_pct": 12.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Consumer Staples",
+        "n_names": 1,
+        "weight_pct": 4.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Energy",
+        "n_names": 1,
+        "weight_pct": 4.0
+      },
+      {
+        "book_key": "challenger_top25",
+        "sector": "Health Care",
+        "n_names": 1,
+        "weight_pct": 4.0
+      }
+    ],
+    "challenger_top50": [
+      {
+        "book_key": "challenger_top50",
+        "sector": "Information Technology",
+        "n_names": 11,
+        "weight_pct": 22.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Health Care",
+        "n_names": 9,
+        "weight_pct": 18.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Industrials",
+        "n_names": 8,
+        "weight_pct": 16.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Communication Services",
+        "n_names": 4,
+        "weight_pct": 8.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Consumer Discretionary",
+        "n_names": 4,
+        "weight_pct": 8.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Financials",
+        "n_names": 4,
+        "weight_pct": 8.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Materials",
+        "n_names": 4,
+        "weight_pct": 8.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Consumer Staples",
+        "n_names": 3,
+        "weight_pct": 6.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Energy",
+        "n_names": 2,
+        "weight_pct": 4.0
+      },
+      {
+        "book_key": "challenger_top50",
+        "sector": "Real Estate",
+        "n_names": 1,
+        "weight_pct": 2.0
+      }
+    ]
+  },
+  "top25_head_to_head": {
+    "book_size": 25,
+    "champion_book_id": "composite_sn__2026-05-22__top25",
+    "challenger_book_id": "composite_sn_repaired__2026-05-22__top25",
+    "champion": {
+      "cumulative_return_pct": -2.2328,
+      "excess_return_vs_spy_pct_points": -0.2516,
+      "max_drawdown_pct": -8.6271,
+      "daily_volatility_pct_points": 1.297,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 39.13,
+      "contributor_concentration_top5_pct": 69.36,
+      "coverage_pct": 56.0,
+      "covered_count": 14,
+      "information_ratio": -0.0072
+    },
+    "challenger": {
+      "cumulative_return_pct": -0.8657,
+      "excess_return_vs_spy_pct_points": 1.1155,
+      "max_drawdown_pct": -7.9541,
+      "daily_volatility_pct_points": 1.3549,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 39.13,
+      "contributor_concentration_top5_pct": 77.01,
+      "coverage_pct": 44.0,
+      "covered_count": 11,
+      "information_ratio": 0.0313
+    },
+    "challenger_minus_champion": {
+      "cumulative_return_pct": 1.3671,
+      "excess_return_vs_spy_pct_points": 1.3671,
+      "max_drawdown_pct": 0.673,
+      "daily_volatility_pct_points": 0.0579,
+      "positive_day_rate_pct": 0.0,
+      "days_outperforming_spy_pct": 0.0,
+      "contributor_concentration_top5_pct": 7.65,
+      "coverage_pct": -12.0,
+      "covered_count": -3.0,
+      "information_ratio": 0.0385
+    },
+    "same_date_comparison": true,
+    "n_marks": 24,
+    "order_action_all": "NO_ORDER"
+  },
+  "top50_head_to_head": {
+    "book_size": 50,
+    "champion_book_id": "composite_sn__2026-05-22__top50",
+    "challenger_book_id": "composite_sn_repaired__2026-05-22__top50",
+    "champion": {
+      "cumulative_return_pct": -0.1204,
+      "excess_return_vs_spy_pct_points": 1.8608,
+      "max_drawdown_pct": -6.7218,
+      "daily_volatility_pct_points": 1.0921,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 43.48,
+      "contributor_concentration_top5_pct": 48.39,
+      "coverage_pct": 48.0,
+      "covered_count": 24,
+      "information_ratio": 0.0598
+    },
+    "challenger": {
+      "cumulative_return_pct": -0.7558,
+      "excess_return_vs_spy_pct_points": 1.2254,
+      "max_drawdown_pct": -6.3393,
+      "daily_volatility_pct_points": 1.0877,
+      "positive_day_rate_pct": 52.17,
+      "days_outperforming_spy_pct": 52.17,
+      "contributor_concentration_top5_pct": 47.13,
+      "coverage_pct": 42.0,
+      "covered_count": 21,
+      "information_ratio": 0.042
+    },
+    "challenger_minus_champion": {
+      "cumulative_return_pct": -0.6354,
+      "excess_return_vs_spy_pct_points": -0.6354,
+      "max_drawdown_pct": 0.3825,
+      "daily_volatility_pct_points": -0.0044,
+      "positive_day_rate_pct": 0.0,
+      "days_outperforming_spy_pct": 8.69,
+      "contributor_concentration_top5_pct": -1.26,
+      "coverage_pct": -6.0,
+      "covered_count": -3.0,
+      "information_ratio": -0.0178
+    },
+    "same_date_comparison": true,
+    "n_marks": 24,
+    "order_action_all": "NO_ORDER"
+  },
+  "book_isolation": {
+    "distinct_member_lists": true,
+    "top25_top50_not_mixed": true,
+    "champion_challenger_signal_isolated": true,
+    "member_counts": {
+      "champion_top25": 25,
+      "champion_top50": 50,
+      "challenger_top25": 25,
+      "challenger_top50": 50
+    },
+    "all_isolated": true
+  },
+  "reproduction": {
+    "champion_stored_entry_cross_check": true,
+    "n_checked": 38,
+    "max_abs_error": 0.0,
+    "reproduces_stored_entries": true,
+    "note": "Owned per-ticker EOD adjusted-close at/at-or-before the signal date reproduces the Phase 13-A champion book's stored entry prices; the same owned rule then derives every book's marks."
+  },
+  "coverage_warnings": [
+    "champion_top25: 14 of 25 names have owned local prices (56% coverage) - partial-coverage paper marks only.",
+    "champion_top50: 24 of 50 names have owned local prices (48% coverage) - partial-coverage paper marks only.",
+    "challenger_top25: 11 of 25 names have owned local prices (44% coverage) - partial-coverage paper marks only.",
+    "challenger_top50: 21 of 50 names have owned local prices (42% coverage) - partial-coverage paper marks only.",
+    "Owned per-ticker EOD ends 2026-06-26 while owned SPY extends to 2026-07-15; the reconstruction is bounded to the latest COMMON owned date 2026-06-26."
+  ],
+  "risk_flags": [
+    {
+      "book_key": "champion_top25",
+      "flag": "CONCENTRATION_REVIEW",
+      "value": 69.36,
+      "limit": 60.0
+    },
+    {
+      "book_key": "challenger_top25",
+      "flag": "CONCENTRATION_REVIEW",
+      "value": 77.01,
+      "limit": 60.0
+    }
+  ],
+  "entering_leaving_inherited_from_phase17": [
+    {
+      "book": "TOP25",
+      "direction": "ENTERING",
+      "ticker": "APD",
+      "repaired_sector": "Materials",
+      "composite_sn": "2.705294"
+    },
+    {
+      "book": "TOP25",
+      "direction": "ENTERING",
+      "ticker": "B",
+      "repaired_sector": "Materials",
+      "composite_sn": "2.219894"
+    },
+    {
+      "book": "TOP25",
+      "direction": "ENTERING",
+      "ticker": "UBER",
+      "repaired_sector": "Industrials",
+      "composite_sn": "2.140016"
+    },
+    {
+      "book": "TOP25",
+      "direction": "LEAVING",
+      "ticker": "HAS",
+      "repaired_sector": "Consumer Discretionary",
+      "composite_sn": "1.781812"
+    },
+    {
+      "book": "TOP25",
+      "direction": "LEAVING",
+      "ticker": "IT",
+      "repaired_sector": "Information Technology",
+      "composite_sn": "1.580065"
+    },
+    {
+      "book": "TOP25",
+      "direction": "LEAVING",
+      "ticker": "RMD",
+      "repaired_sector": "Health Care",
+      "composite_sn": "1.774803"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "ALB",
+      "repaired_sector": "Materials",
+      "composite_sn": "0.946707"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "APD",
+      "repaired_sector": "Materials",
+      "composite_sn": "2.705294"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "CAT",
+      "repaired_sector": "Industrials",
+      "composite_sn": "0.997221"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "MA",
+      "repaired_sector": "Financials",
+      "composite_sn": "1.030063"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "MO",
+      "repaired_sector": "Consumer Staples",
+      "composite_sn": "1.710402"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "MUFG",
+      "repaired_sector": "Financials",
+      "composite_sn": "1.146798"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "RSG",
+      "repaired_sector": "Industrials",
+      "composite_sn": "0.959091"
+    },
+    {
+      "book": "TOP50",
+      "direction": "ENTERING",
+      "ticker": "SMFG",
+      "repaired_sector": "Financials",
+      "composite_sn": "1.448795"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "GEN",
+      "repaired_sector": "Information Technology",
+      "composite_sn": "1.104952"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "HAS",
+      "repaired_sector": "Consumer Discretionary",
+      "composite_sn": "1.781812"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "KEYS",
+      "repaired_sector": "Information Technology",
+      "composite_sn": "0.86443"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "MELI",
+      "repaired_sector": "Consumer Discretionary",
+      "composite_sn": "0.971174"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "NWS",
+      "repaired_sector": "Communication Services",
+      "composite_sn": "1.001175"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "NWSA",
+      "repaired_sector": "Communication Services",
+      "composite_sn": "1.001175"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "RCL",
+      "repaired_sector": "Consumer Discretionary",
+      "composite_sn": "1.010851"
+    },
+    {
+      "book": "TOP50",
+      "direction": "LEAVING",
+      "ticker": "SONY",
+      "repaired_sector": "Consumer Discretionary",
+      "composite_sn": "1.048433"
+    }
+  ],
+  "next_review_target": "2026-08-22",
+  "next_action": "Continue the parallel paper tournament. 24 of 63 trading marks elapsed; manual review target ~2026-08-22. No winner before the checkpoint.",
+  "price_source": "EODHD_LOCAL_EOD(adjusted_close, owned)",
+  "no_automatic_winner": true,
+  "champion_replaced": false,
+  "promotes_to_live": false,
+  "live_trading": false,
+  "creates_orders": false,
+  "creates_signals": false,
+  "creates_trade_decisions": false,
+  "creates_broker_connection": false,
+  "creates_automation": false,
+  "wrote_to_paper_trader": false,
+  "offline": true,
+  "uses_owned_data_only": true,
+  "performs_network": false,
+  "uses_paid_data": false,
+  "api_key_printed": false,
+  "api_key_written_to_disk": false,
+  "order_action_all": "NO_ORDER",
+  "safety_badges": [
+    "PARALLEL PAPER TOURNAMENT",
+    "FROZEN BOOKS",
+    "NO DAILY REBALANCING",
+    "PAPER TEST ONLY",
+    "NO ORDERS",
+    "NO BROKER",
+    "NO AUTOMATION",
+    "DOES NOT CREATE SIGNALS",
+    "DOES NOT CREATE TRADE DECISIONS",
+    "DOES NOT EXECUTE TRADES",
+    "DOES NOT REPLACE THE CHAMPION",
+    "NOT APPROVED FOR LIVE TRADING"
+  ]
+}

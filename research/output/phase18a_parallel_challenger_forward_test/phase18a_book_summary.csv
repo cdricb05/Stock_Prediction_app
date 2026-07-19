@@ -1,0 +1,5 @@
+book_key,signal,book_size,n_members,n_marks,start_date,end_date,cumulative_return_pct,spy_cumulative_return_pct,excess_return_vs_spy_pct_points,max_drawdown_pct,daily_volatility_pct_points,tracking_error_pct_points,information_ratio,information_ratio_valid,positive_day_rate_pct,days_outperforming_spy_pct,covered_count,total_count,coverage_pct,contributor_concentration_top5_pct,order_action_all
+champion_top25,composite_sn,25,25,24,2026-05-22,2026-06-26,-2.2328,-1.9812,-0.2516,-8.6271,1.297,1.525,-0.0072,True,52.17,39.13,14,25,56.0,69.36,NO_ORDER
+champion_top50,composite_sn,50,50,24,2026-05-22,2026-06-26,-0.1204,-1.9812,1.8608,-6.7218,1.0921,1.3535,0.0598,True,52.17,43.48,24,50,48.0,48.39,NO_ORDER
+challenger_top25,composite_sn_repaired,25,25,24,2026-05-22,2026-06-26,-0.8657,-1.9812,1.1155,-7.9541,1.3549,1.5484,0.0313,True,52.17,39.13,11,25,44.0,77.01,NO_ORDER
+challenger_top50,composite_sn_repaired,50,50,24,2026-05-22,2026-06-26,-0.7558,-1.9812,1.2254,-6.3393,1.0877,1.2679,0.042,True,52.17,52.17,21,50,42.0,47.13,NO_ORDER

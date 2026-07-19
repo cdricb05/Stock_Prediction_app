@@ -1,0 +1,15 @@
+check,value
+decision,MONITORING_MID_CYCLE
+elapsed_marks,24
+horizon_trading_days,63
+checkpoint_reached,False
+latest_common_owned_eod_date,2026-06-26
+spy_available,True
+all_books_isolated,True
+min_covered_per_book,11
+champion_top25_excess,-0.2516
+challenger_top25_excess,1.1155
+champion_top50_excess,1.8608
+challenger_top50_excess,1.2254
+champion_replaced,False
+promotes_to_live,False
