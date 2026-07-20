@@ -1,0 +1,3 @@
+family,frequency,readiness,source,note
+SHORT_REVERSAL,daily,SURVIVORSHIP_BIASED,owned daily = phase7i current-members only,no survivorship-free DAILY price panel owned; fast alpha validated at WEEKLY proxy only
+EARNINGS_REVISIONS,event,PROVIDER_ENTITLEMENT_MISSING,no owned PIT analyst revisions,requires paid PIT estimate revisions (e.g. Zacks/IBES); Phase 11/12 blocked on entitlement

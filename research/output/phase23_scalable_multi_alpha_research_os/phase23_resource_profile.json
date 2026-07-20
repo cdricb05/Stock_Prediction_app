@@ -1,0 +1,17 @@
+{
+ "max_workers": 6,
+ "mem_budget_mb": 4096,
+ "cpu_count": 8,
+ "engine_version": "p23.v3",
+ "feature_store_cache": "hit",
+ "monthly_execution": "sequential (memory-bandwidth-bound full-panel; profiled)",
+ "worker_pool_available": 6,
+ "experiment_cache_hits": 0,
+ "experiment_cache_misses": 30,
+ "effective_workers": 1,
+ "weekly_cache": "hit",
+ "ic_cache_hits": 0,
+ "ic_cache_misses": 25,
+ "peak_working_set_mb": null,
+ "wall_seconds": 213.559
+}

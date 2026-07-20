@@ -1,0 +1,19 @@
+{
+ "probed_at": "2026-07-20T15:41:50Z",
+ "network_used": false,
+ "credentials_read": false,
+ "owned": {
+  "phase8c_monthly": true,
+  "phase8d_weekly": true,
+  "champion_panel": true
+ },
+ "blocked_paid": [
+  {
+   "family": "EARNINGS_REVISIONS",
+   "provider": "Zacks/IBES-class PIT revisions",
+   "dataset": "point-in-time analyst estimate revisions",
+   "status": "NOT_OWNED",
+   "note": "Phase 11B/12A found free tiers give premium-sample only; needs contact-sales"
+  }
+ ]
+}

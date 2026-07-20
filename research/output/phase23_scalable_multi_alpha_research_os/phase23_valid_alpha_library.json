@@ -1,0 +1,171 @@
+[
+ {
+  "model": "composite_sn",
+  "family": "FUNDAMENTAL",
+  "horizon": "slow(63d)",
+  "cluster": "fundamental",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 2.93,
+   "net25": 0.0102,
+   "source": "Phase 10-D discovery + Phase 17-A committed revalidation (research commits 6aba1f0/bb0b6f9)",
+   "note": "prior committed validation; not re-searched (Phase 23 registers, never replaces)"
+  }
+ },
+ {
+  "model": "mom_6_1",
+  "family": "MOMENTUM",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 4.959,
+   "net25": 0.0296,
+   "holdout_net25": 0.04151,
+   "corr_champ": 0.1186
+  }
+ },
+ {
+  "model": "mom_6_1_sn",
+  "family": "MOMENTUM",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.091,
+   "net25": 0.01804,
+   "holdout_net25": 0.01776,
+   "corr_champ": 0.1079
+  }
+ },
+ {
+  "model": "mom_voladj",
+  "family": "MOMENTUM",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.397,
+   "net25": 0.02683,
+   "holdout_net25": 0.05119,
+   "corr_champ": 0.1111
+  }
+ },
+ {
+  "model": "mom_voladj_sn",
+  "family": "MOMENTUM",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.686,
+   "net25": 0.02245,
+   "holdout_net25": 0.04806,
+   "corr_champ": 0.1104
+  }
+ },
+ {
+  "model": "resid_mom_spy",
+  "family": "MOMENTUM",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 3.703,
+   "net25": 0.01894,
+   "holdout_net25": 0.02735,
+   "corr_champ": 0.1186
+  }
+ },
+ {
+  "model": "resid_mom_spy_sn",
+  "family": "MOMENTUM",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 3.828,
+   "net25": 0.01255,
+   "holdout_net25": 0.02627,
+   "corr_champ": 0.1137
+  }
+ },
+ {
+  "model": "trend_ma12",
+  "family": "TREND",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.169,
+   "net25": 0.0304,
+   "holdout_net25": 0.04748,
+   "corr_champ": 0.128
+  }
+ },
+ {
+  "model": "trend_ma12_sn",
+  "family": "TREND",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.376,
+   "net25": 0.02538,
+   "holdout_net25": 0.04509,
+   "corr_champ": 0.1293
+  }
+ },
+ {
+  "model": "trend_consistency",
+  "family": "TREND",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.897,
+   "net25": 0.01956,
+   "holdout_net25": 0.03328,
+   "corr_champ": 0.1044
+  }
+ },
+ {
+  "model": "trend_consistency_sn",
+  "family": "TREND",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_0",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 6.313,
+   "net25": 0.01747,
+   "holdout_net25": 0.02887,
+   "corr_champ": 0.1025
+  }
+ },
+ {
+  "model": "lowvol_12m_sn",
+  "family": "LOW_VOLATILITY",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_1",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 5.044,
+   "net25": 0.01985,
+   "holdout_net25": 0.01774,
+   "corr_champ": 0.1492
+  }
+ },
+ {
+  "model": "ivol_spy_sn",
+  "family": "LOW_VOLATILITY",
+  "horizon": "medium(63d)",
+  "cluster": "price_momentum_cluster_1",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "evidence": {
+   "ic_nw_t": 3.881,
+   "net25": 0.01278,
+   "holdout_net25": 0.00423,
+   "corr_champ": 0.1375
+  }
+ }
+]

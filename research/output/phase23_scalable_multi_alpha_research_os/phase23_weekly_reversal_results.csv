@@ -1,0 +1,7 @@
+candidate,family,frequency,signal,forward,n_weeks,mean_ic,ic_t,pos_ic_rate,gross_spread,gross_t,net25,avg_turnover,holdout_gross,holdout_t
+wk_rev_1,SHORT_REVERSAL,weekly,-ret_1,fwd_excess_5,1739,0.02517,7.272,0.591,0.00308,4.841,-0.00125,0.8651,0.00353,2.201
+wk_rev_5,SHORT_REVERSAL,weekly,-ret_5,fwd_excess_5,1739,0.02247,5.993,0.569,0.00285,3.932,-0.00143,0.8573,0.00154,0.784
+wk_rev_5_10,SHORT_REVERSAL,weekly,-ret_5,fwd_excess_10,1739,0.01903,5.176,0.544,0.00352,3.518,-0.00077,0.8573,0.00103,0.417
+wk_mom_60,SHORT_REVERSAL,weekly,+ret_60,fwd_excess_20,1739,-0.01272,-3.065,0.477,-0.00158,-0.943,-0.0029,0.2651,-0.00422,-1.118
+wk_relstr_60,SHORT_REVERSAL,weekly,+rel_str_60,fwd_excess_20,1726,-0.01282,-3.074,0.476,-0.00166,-0.985,-0.00298,0.265,-0.00407,-1.073
+wk_lowvol,SHORT_REVERSAL,weekly,-rv_20,fwd_excess_20,1739,0.004,0.776,0.504,-0.00238,-1.215,-0.0037,0.2636,-0.01243,-2.992

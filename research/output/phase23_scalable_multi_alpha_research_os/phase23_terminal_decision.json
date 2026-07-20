@@ -1,0 +1,12 @@
+{
+ "status": "MULTI_ALPHA_RESEARCH_OS_COMPLETE_DATA_GAPS",
+ "detail": "13 models, 3 clusters, coverage slow+medium; missing fast; data gaps: EARNINGS_REVISIONS(PROVIDER_ENTITLEMENT_MISSING), SHORT_REVERSAL(SURVIVORSHIP_BIASED)",
+ "coverage": "slow+medium",
+ "n_models": 13,
+ "n_clusters": 3,
+ "gap_families": [
+  "EARNINGS_REVISIONS(PROVIDER_ENTITLEMENT_MISSING)",
+  "SHORT_REVERSAL(SURVIVORSHIP_BIASED)"
+ ],
+ "target_met": false
+}

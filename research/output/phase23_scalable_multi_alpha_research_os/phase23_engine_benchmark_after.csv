@@ -1,0 +1,7 @@
+op,seconds
+feature_store_reload_warm,3.22
+row_ic (loop=production),0.394
+"row_ic (vectorized alt; slower, not used)",0.789
+decile_books (loop=production),0.477
+decile_books (vectorized alt),0.359
+weekly cache reload warm,0.105

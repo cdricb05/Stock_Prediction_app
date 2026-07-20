@@ -1,0 +1,734 @@
+[
+ {
+  "model_id": "mom_6_1",
+  "version": "p23.v3",
+  "family": "MOMENTUM",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "close[t-1]/close[t-7]-1",
+  "neutralization": "raw",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.364,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 4.959,
+   "net25": 0.0296,
+   "holdout_net25": 0.04151,
+   "corr_champ": 0.1186,
+   "adjusted_p": 2e-05
+  },
+  "reproducibility_fingerprint": "c5f6b6db36cbe52c",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "mom_6_1_sn",
+  "version": "p23.v3",
+  "family": "MOMENTUM",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "close[t-1]/close[t-7]-1",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.442,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.091,
+   "net25": 0.01804,
+   "holdout_net25": 0.01776,
+   "corr_champ": 0.1079,
+   "adjusted_p": 1e-05
+  },
+  "reproducibility_fingerprint": "b05d489b2f163e0d",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "mom_voladj",
+  "version": "p23.v3",
+  "family": "MOMENTUM",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "(close[t-1]/close[t-12]-1)/std(ret,12)",
+  "neutralization": "raw",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.312,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.397,
+   "net25": 0.02683,
+   "holdout_net25": 0.05119,
+   "corr_champ": 0.1111,
+   "adjusted_p": 0.0
+  },
+  "reproducibility_fingerprint": "0ba0a9992bed98d0",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "mom_voladj_sn",
+  "version": "p23.v3",
+  "family": "MOMENTUM",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "(close[t-1]/close[t-12]-1)/std(ret,12)",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.308,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.686,
+   "net25": 0.02245,
+   "holdout_net25": 0.04806,
+   "corr_champ": 0.1104,
+   "adjusted_p": 0.0
+  },
+  "reproducibility_fingerprint": "8352a72eef539eca",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "resid_mom_spy",
+  "version": "p23.v3",
+  "family": "MOMENTUM",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "mom_12_1 - beta*mom_spy",
+  "neutralization": "raw",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.273,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 3.703,
+   "net25": 0.01894,
+   "holdout_net25": 0.02735,
+   "corr_champ": 0.1186,
+   "adjusted_p": 0.00639
+  },
+  "reproducibility_fingerprint": "ff4a68006dd9c4d7",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "resid_mom_spy_sn",
+  "version": "p23.v3",
+  "family": "MOMENTUM",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "mom_12_1 - beta*mom_spy",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.313,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 3.828,
+   "net25": 0.01255,
+   "holdout_net25": 0.02627,
+   "corr_champ": 0.1137,
+   "adjusted_p": 0.00388
+  },
+  "reproducibility_fingerprint": "46bef8c9db6c3900",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "trend_ma12",
+  "version": "p23.v3",
+  "family": "TREND",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "close[t-1]/mean(close,12)-1",
+  "neutralization": "raw",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.319,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.169,
+   "net25": 0.0304,
+   "holdout_net25": 0.04748,
+   "corr_champ": 0.128,
+   "adjusted_p": 1e-05
+  },
+  "reproducibility_fingerprint": "70c2fdd40dad86e2",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "trend_ma12_sn",
+  "version": "p23.v3",
+  "family": "TREND",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "close[t-1]/mean(close,12)-1",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.317,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.376,
+   "net25": 0.02538,
+   "holdout_net25": 0.04509,
+   "corr_champ": 0.1293,
+   "adjusted_p": 0.0
+  },
+  "reproducibility_fingerprint": "c8060bdefeafacb1",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "trend_consistency",
+  "version": "p23.v3",
+  "family": "TREND",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "sum(sign(ret),12)",
+  "neutralization": "raw",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.287,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.897,
+   "net25": 0.01956,
+   "holdout_net25": 0.03328,
+   "corr_champ": 0.1044,
+   "adjusted_p": 0.0
+  },
+  "reproducibility_fingerprint": "2f8630b6facfa3f5",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "trend_consistency_sn",
+  "version": "p23.v3",
+  "family": "TREND",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "sum(sign(ret),12)",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.292,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 6.313,
+   "net25": 0.01747,
+   "holdout_net25": 0.02887,
+   "corr_champ": 0.1025,
+   "adjusted_p": 0.0
+  },
+  "reproducibility_fingerprint": "4d07807081fd776e",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "lowvol_12m_sn",
+  "version": "p23.v3",
+  "family": "LOW_VOLATILITY",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "-std(ret,12)",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.173,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 5.044,
+   "net25": 0.01985,
+   "holdout_net25": 0.01774,
+   "corr_champ": 0.1492,
+   "adjusted_p": 1e-05
+  },
+  "reproducibility_fingerprint": "7f69502502c4b9b6",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "ivol_spy_sn",
+  "version": "p23.v3",
+  "family": "LOW_VOLATILITY",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "formula": "-std(ret-beta*spy,12)",
+  "neutralization": "sector_neutral",
+  "required_fields": [
+   "total_return_close",
+   "membership_panel",
+   "dollar_volume",
+   "gics_sector"
+  ],
+  "universe": "Russell 3000 Current&Past (survivorship-free, PIT membership)",
+  "eligibility": "PIT index member with tradable dollar volume; >= trailing history for the signal",
+  "rebalance": "monthly",
+  "holding_horizon": "fwd_3m",
+  "ranking": "cross-sectional ascending rank of the oriented signal (higher = long)",
+  "construction": {
+   "top25": "top 25 by rank, equal weight",
+   "top50": "top 50 by rank, equal weight",
+   "long_short": "top decile minus bottom decile, equal weight"
+  },
+  "transaction_cost": "25 bps round-trip per unit one-way turnover (net25)",
+  "turnover_limit": 0.142,
+  "liquidity_requirement": "tradable dollar volume > 0 (member-month)",
+  "risk_limits": "advisory research; sector-neutral variant caps single-sector tilt",
+  "exposure_reporting": [
+   "net25",
+   "holdout_net25",
+   "corr_vs_composite_sn",
+   "regime_ic_t",
+   "cohort_ic_t"
+  ],
+  "invalidation_gates": {
+   "ic_nw_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "net25_min": 0.0,
+   "holdout_net_min": 0.0,
+   "subperiod_sign": "pre&post-2020 both >0"
+  },
+  "forward_metrics": [
+   "rank_ic",
+   "ic_nw_t",
+   "decile_spread",
+   "net25",
+   "turnover",
+   "max_drawdown"
+  ],
+  "evidence": {
+   "ic_nw_t": 3.881,
+   "net25": 0.01278,
+   "holdout_net25": 0.00423,
+   "corr_champ": 0.1375,
+   "adjusted_p": 0.00312
+  },
+  "reproducibility_fingerprint": "ffcdd92b3b0700f0",
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT; NOT APPROVED FOR LIVE TRADING"
+ },
+ {
+  "model_id": "composite_sn",
+  "version": "p23.v3",
+  "family": "FUNDAMENTAL",
+  "status": "PAPER_CHAMPION (reference)",
+  "formula": "EW(fcf_to_assets_sn, -operating_accruals_sn)",
+  "rebalance": "quarterly",
+  "holding_horizon": "forward_63d_return",
+  "note": "the existing paper champion; spec frozen in Phase 13-A; never replaced",
+  "evidence": {
+   "source": "Phase 10-D discovery + Phase 17-A committed revalidation (research commits 6aba1f0/bb0b6f9)",
+   "protocol": "quarterly (63d) sector-neutral, liquidity-screened, walk-forward + untouched holdout",
+   "ic_nw_t": 2.93,
+   "ic_t_original": 3.26,
+   "net25": 0.0102,
+   "net25_original": 0.0112,
+   "note": "EW composite of high FCF-to-assets (long) and low operating accruals (short); the paper champion, never replaced, advisory-research only."
+  },
+  "first_party_cross_check": {
+   "n_periods": 332,
+   "mean_ic": 0.02087,
+   "ic_t": 1.929,
+   "pos_ic_rate": 0.524,
+   "gross_spread": -0.00648,
+   "gross_t": -0.842,
+   "caveat": "naive per-date cross-section; under-reports vs the committed quarterly SN liquidity-screened protocol; NOT the champion's evidence"
+  },
+  "safety": "RESEARCH/PAPER ONLY; NO ORDERS; NO CHAMPION REPLACEMENT"
+ }
+]

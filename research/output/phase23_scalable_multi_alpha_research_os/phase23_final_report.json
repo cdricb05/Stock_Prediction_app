@@ -1,0 +1,381 @@
+{
+ "phase": "23",
+ "title": "Autonomous Scalable Multi-Alpha Research Operating System",
+ "generated_at": "2026-07-20T15:41:50Z",
+ "engine_version": "p23.v3",
+ "terminal": {
+  "status": "MULTI_ALPHA_RESEARCH_OS_COMPLETE_DATA_GAPS",
+  "detail": "13 models, 3 clusters, coverage slow+medium; missing fast; data gaps: EARNINGS_REVISIONS(PROVIDER_ENTITLEMENT_MISSING), SHORT_REVERSAL(SURVIVORSHIP_BIASED)",
+  "coverage": "slow+medium",
+  "n_models": 13,
+  "n_clusters": 3,
+  "gap_families": [
+   "EARNINGS_REVISIONS(PROVIDER_ENTITLEMENT_MISSING)",
+   "SHORT_REVERSAL(SURVIVORSHIP_BIASED)"
+  ],
+  "target_met": false
+ },
+ "n_models": 13,
+ "n_clusters": 3,
+ "coverage": "slow+medium",
+ "alpha_library": [
+  {
+   "model": "composite_sn",
+   "family": "FUNDAMENTAL",
+   "horizon": "slow(63d)",
+   "cluster": "fundamental",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 2.93,
+    "net25": 0.0102,
+    "source": "Phase 10-D discovery + Phase 17-A committed revalidation (research commits 6aba1f0/bb0b6f9)",
+    "note": "prior committed validation; not re-searched (Phase 23 registers, never replaces)"
+   }
+  },
+  {
+   "model": "mom_6_1",
+   "family": "MOMENTUM",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 4.959,
+    "net25": 0.0296,
+    "holdout_net25": 0.04151,
+    "corr_champ": 0.1186
+   }
+  },
+  {
+   "model": "mom_6_1_sn",
+   "family": "MOMENTUM",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.091,
+    "net25": 0.01804,
+    "holdout_net25": 0.01776,
+    "corr_champ": 0.1079
+   }
+  },
+  {
+   "model": "mom_voladj",
+   "family": "MOMENTUM",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.397,
+    "net25": 0.02683,
+    "holdout_net25": 0.05119,
+    "corr_champ": 0.1111
+   }
+  },
+  {
+   "model": "mom_voladj_sn",
+   "family": "MOMENTUM",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.686,
+    "net25": 0.02245,
+    "holdout_net25": 0.04806,
+    "corr_champ": 0.1104
+   }
+  },
+  {
+   "model": "resid_mom_spy",
+   "family": "MOMENTUM",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 3.703,
+    "net25": 0.01894,
+    "holdout_net25": 0.02735,
+    "corr_champ": 0.1186
+   }
+  },
+  {
+   "model": "resid_mom_spy_sn",
+   "family": "MOMENTUM",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 3.828,
+    "net25": 0.01255,
+    "holdout_net25": 0.02627,
+    "corr_champ": 0.1137
+   }
+  },
+  {
+   "model": "trend_ma12",
+   "family": "TREND",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.169,
+    "net25": 0.0304,
+    "holdout_net25": 0.04748,
+    "corr_champ": 0.128
+   }
+  },
+  {
+   "model": "trend_ma12_sn",
+   "family": "TREND",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.376,
+    "net25": 0.02538,
+    "holdout_net25": 0.04509,
+    "corr_champ": 0.1293
+   }
+  },
+  {
+   "model": "trend_consistency",
+   "family": "TREND",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.897,
+    "net25": 0.01956,
+    "holdout_net25": 0.03328,
+    "corr_champ": 0.1044
+   }
+  },
+  {
+   "model": "trend_consistency_sn",
+   "family": "TREND",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_0",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 6.313,
+    "net25": 0.01747,
+    "holdout_net25": 0.02887,
+    "corr_champ": 0.1025
+   }
+  },
+  {
+   "model": "lowvol_12m_sn",
+   "family": "LOW_VOLATILITY",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_1",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 5.044,
+    "net25": 0.01985,
+    "holdout_net25": 0.01774,
+    "corr_champ": 0.1492
+   }
+  },
+  {
+   "model": "ivol_spy_sn",
+   "family": "LOW_VOLATILITY",
+   "horizon": "medium(63d)",
+   "cluster": "price_momentum_cluster_1",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "evidence": {
+    "ic_nw_t": 3.881,
+    "net25": 0.01278,
+    "holdout_net25": 0.00423,
+    "corr_champ": 0.1375
+   }
+  }
+ ],
+ "independent_summary": {
+  "n_models": 13,
+  "n_clusters": 3,
+  "clusters": {
+   "fundamental": [
+    "composite_sn"
+   ],
+   "price_momentum_cluster_0": [
+    "mom_6_1",
+    "mom_6_1_sn",
+    "mom_voladj",
+    "mom_voladj_sn",
+    "resid_mom_spy",
+    "resid_mom_spy_sn",
+    "trend_ma12",
+    "trend_ma12_sn",
+    "trend_consistency",
+    "trend_consistency_sn"
+   ],
+   "price_momentum_cluster_1": [
+    "lowvol_12m_sn",
+    "ivol_spy_sn"
+   ]
+  },
+  "best_per_cluster": [
+   {
+    "cluster": "fundamental",
+    "model": "composite_sn",
+    "horizon": "slow(63d)"
+   },
+   {
+    "cluster": "price_momentum_cluster_0",
+    "model": "trend_ma12",
+    "horizon": "medium(63d)"
+   },
+   {
+    "cluster": "price_momentum_cluster_1",
+    "model": "lowvol_12m_sn",
+    "horizon": "medium(63d)"
+   }
+  ],
+  "has_slow": true,
+  "has_medium": true,
+  "has_fast": false
+ },
+ "best_momentum": "mom_6_1",
+ "slow": {
+  "candidate": "composite_sn",
+  "family": "FUNDAMENTAL",
+  "frequency": "quarterly",
+  "horizon": "forward_63d_return",
+  "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+  "authoritative_evidence": {
+   "source": "Phase 10-D discovery + Phase 17-A committed revalidation (research commits 6aba1f0/bb0b6f9)",
+   "protocol": "quarterly (63d) sector-neutral, liquidity-screened, walk-forward + untouched holdout",
+   "ic_nw_t": 2.93,
+   "ic_t_original": 3.26,
+   "net25": 0.0102,
+   "net25_original": 0.0112,
+   "note": "EW composite of high FCF-to-assets (long) and low operating accruals (short); the paper champion, never replaced, advisory-research only."
+  },
+  "first_party_recompute": {
+   "n_periods": 332,
+   "mean_ic": 0.02087,
+   "ic_t": 1.929,
+   "pos_ic_rate": 0.524,
+   "gross_spread": -0.00648,
+   "gross_t": -0.842,
+   "caveat": "naive per-date cross-section; under-reports vs the committed quarterly SN liquidity-screened protocol; NOT the champion's evidence"
+  },
+  "ic_t": 2.93,
+  "mean_ic": null,
+  "net25": 0.0102,
+  "gross_t": null,
+  "note": "existing paper champion (validated Phase 10-D/17-A); never replaced; not re-searched in Phase 23"
+ },
+ "n_monthly_experiments": 30,
+ "n_weekly_experiments": 6,
+ "n_hypotheses": 18,
+ "n_survivors": 16,
+ "n_rejected": 14,
+ "stage_timing": [
+  {
+   "stage": "LOAD_PANEL",
+   "seconds": 4.457
+  },
+  {
+   "stage": "BUILD_FEATURE_STORE",
+   "seconds": 2.622
+  },
+  {
+   "stage": "LOAD_CHAMPION",
+   "seconds": 1.748
+  },
+  {
+   "stage": "MONTHLY_CAMPAIGN",
+   "seconds": 179.037
+  },
+  {
+   "stage": "WEEKLY_CACHE",
+   "seconds": 0.103
+  },
+  {
+   "stage": "WEEKLY_CAMPAIGN",
+   "seconds": 15.243
+  },
+  {
+   "stage": "SLOW_FUNDAMENTAL",
+   "seconds": 0.778
+  },
+  {
+   "stage": "CLUSTER",
+   "seconds": 9.251
+  },
+  {
+   "stage": "ENSEMBLE",
+   "seconds": 0.319
+  }
+ ],
+ "resource": {
+  "max_workers": 6,
+  "mem_budget_mb": 4096,
+  "cpu_count": 8,
+  "engine_version": "p23.v3",
+  "feature_store_cache": "hit",
+  "monthly_execution": "sequential (memory-bandwidth-bound full-panel; profiled)",
+  "worker_pool_available": 6,
+  "experiment_cache_hits": 0,
+  "experiment_cache_misses": 30,
+  "effective_workers": 1,
+  "weekly_cache": "hit",
+  "ic_cache_hits": 0,
+  "ic_cache_misses": 25,
+  "peak_working_set_mb": null,
+  "wall_seconds": 213.559
+ },
+ "ensemble": [
+  {
+   "weight": "champ0.7_cand0.3",
+   "n_months": 118,
+   "full_gross": 0.01333,
+   "full_t": 1.14,
+   "holdout_gross": 0.00435,
+   "holdout_t": 0.206
+  },
+  {
+   "weight": "champ0.5_cand0.5",
+   "n_months": 118,
+   "full_gross": 0.01909,
+   "full_t": 1.673,
+   "holdout_gross": 0.01572,
+   "holdout_t": 0.76
+  },
+  {
+   "weight": "champ0.3_cand0.7",
+   "n_months": 118,
+   "full_gross": 0.02343,
+   "full_t": 1.976,
+   "holdout_gross": 0.02613,
+   "holdout_t": 1.272
+  },
+  {
+   "weight": "champion_only",
+   "n_months": 118,
+   "full_gross": 0.00907,
+   "full_t": 0.801,
+   "holdout_gross": 0.00189,
+   "holdout_t": 0.095
+  }
+ ],
+ "data_gaps": [
+  "EARNINGS_REVISIONS(PROVIDER_ENTITLEMENT_MISSING)",
+  "SHORT_REVERSAL(SURVIVORSHIP_BIASED)"
+ ],
+ "safety": {
+  "research_only": true,
+  "paper_only": true,
+  "creates_orders": false,
+  "touches_broker": false,
+  "writes_database": false,
+  "mutates_positions": false,
+  "writes_trading_workflow": false,
+  "replaces_champion": false,
+  "promotes_to_live": false,
+  "runs_automation": false,
+  "calls_prediction_service": false,
+  "new_paid_data": false,
+  "live_trading_status": "NOT_APPROVED_FOR_LIVE_TRADING"
+ }
+}

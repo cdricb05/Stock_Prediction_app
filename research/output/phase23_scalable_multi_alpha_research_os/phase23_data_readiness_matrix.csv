@@ -1,0 +1,10 @@
+family,frequency,source,readiness,note
+MOMENTUM,monthly,phase8c Russell3000 (survivorship-free),DATA_READY,"12,266 names, 8,520 delisted; PIT membership + TR close + dvol"
+SHORT_REVERSAL,weekly,phase8d weekly grid (survivorship-aware),DATA_READY,delisted included; ret_1/5 + precomputed fwd_excess_5/10/20
+SHORT_REVERSAL,daily,owned daily = phase7i current-members only,SURVIVORSHIP_BIASED,no survivorship-free DAILY price panel owned; fast alpha validated at WEEKLY proxy only
+TREND,monthly,phase8c Russell3000,DATA_READY,derived from TR close
+LOW_VOLATILITY,monthly,phase8c Russell3000,DATA_READY,"risk controls, not expected standalone"
+LIQUIDITY,monthly,phase8c dollar volume,DATA_READY,Amihud / dvol accel
+FUNDAMENTAL,quarterly,phase10l champion panel (owned),DATA_READY,"composite_sn quality/value; Phase 10 search exhausted, not re-run"
+EARNINGS_REVISIONS,event,no owned PIT analyst revisions,PROVIDER_ENTITLEMENT_MISSING,requires paid PIT estimate revisions (e.g. Zacks/IBES); Phase 11/12 blocked on entitlement
+MACRO_CONDITIONING,monthly,SPY trend/vol regime (owned),DATA_READY,"used as regime router only (bull/bear, high/low vol), not free parameter mining"

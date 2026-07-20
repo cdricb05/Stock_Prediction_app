@@ -1,0 +1,12 @@
+{
+ "engine_version": "p23.v3",
+ "signal_config_version": "p23.sig.v1",
+ "cache_root": "D:\\Stock_Prediction_app_data\\phase23_cache",
+ "feature_store": "hit",
+ "weekly_cache": "hit",
+ "experiment_cache_hits": 0,
+ "experiment_cache_misses": 30,
+ "ic_cache_hits": 0,
+ "ic_cache_misses": 25,
+ "effective_workers": 1
+}

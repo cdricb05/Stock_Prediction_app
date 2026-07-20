@@ -1,0 +1,45 @@
+{
+ "n_models": 13,
+ "n_clusters": 3,
+ "clusters": {
+  "fundamental": [
+   "composite_sn"
+  ],
+  "price_momentum_cluster_0": [
+   "mom_6_1",
+   "mom_6_1_sn",
+   "mom_voladj",
+   "mom_voladj_sn",
+   "resid_mom_spy",
+   "resid_mom_spy_sn",
+   "trend_ma12",
+   "trend_ma12_sn",
+   "trend_consistency",
+   "trend_consistency_sn"
+  ],
+  "price_momentum_cluster_1": [
+   "lowvol_12m_sn",
+   "ivol_spy_sn"
+  ]
+ },
+ "best_per_cluster": [
+  {
+   "cluster": "fundamental",
+   "model": "composite_sn",
+   "horizon": "slow(63d)"
+  },
+  {
+   "cluster": "price_momentum_cluster_0",
+   "model": "trend_ma12",
+   "horizon": "medium(63d)"
+  },
+  {
+   "cluster": "price_momentum_cluster_1",
+   "model": "lowvol_12m_sn",
+   "horizon": "medium(63d)"
+  }
+ ],
+ "has_slow": true,
+ "has_medium": true,
+ "has_fast": false
+}

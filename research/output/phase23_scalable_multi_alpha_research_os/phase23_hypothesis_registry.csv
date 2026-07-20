@@ -1,0 +1,19 @@
+key,family,frequency,horizon,formula,mechanism,expected,neighborhood,invalidation,relationship,signal_id
+mom_12_1,MOMENTUM,monthly,fwd_3m,close[t-1]/close[t-12]-1,Intermediate-horizon return continuation (under-reaction).,"positive IC, cost-robust","lb in {6,12}, skip=1",IC<=0 or spread_t<2,momentum cluster; orthogonal (~0.1) to composite_sn,dc786743a1fc4697
+mom_6_1,MOMENTUM,monthly,fwd_3m,close[t-1]/close[t-7]-1,6-1 momentum: intermediate continuation.,strongest momentum leg,"lb in {3,6,12}",IC<=0 or spread_t<2,Phase 22 flagship (STRONG); momentum cluster,b0a063ace81e2ff1
+mom_3_1,MOMENTUM,monthly,fwd_1m,close[t-1]/close[t-4]-1,Short intermediate continuation.,weaker; contaminated by reversal,lb=3,spread_t<2,momentum cluster,7f7af1843330623d
+mom_voladj,MOMENTUM,monthly,fwd_3m,"(close[t-1]/close[t-12]-1)/std(ret,12)",Volatility-scaled momentum (risk-adjusted trend).,momentum survives vol scaling,lb=12,spread_t<2,momentum robustness variant,bdd754f4c31396ca
+resid_mom_spy,MOMENTUM,monthly,fwd_3m,mom_12_1 - beta*mom_spy,Residual (market-neutral) momentum.,continuation net of market,beta_lb=36,spread_t<2,momentum robustness variant,9017743a9e655036
+rev_1m,SHORT_REVERSAL,monthly,fwd_1m,-(close[t]/close[t-1]-1),1-month reversal (overreaction / liquidity provision).,fragile at monthly; dominated by momentum,lb=1,subperiod sign flip,reversal cluster (monthly leg),44cfd47c7de1ab77
+wk_rev_1,SHORT_REVERSAL,weekly,fwd_excess_5,-ret_1,1-week reversal (microstructure / liquidity provision).,strong at weekly; delisted-inclusive,"lb in {1,5}",IC<=0,reversal cluster (fast leg),e6c25aa8f84a3c98
+wk_rev_5,SHORT_REVERSAL,weekly,fwd_excess_5,-ret_5,1-week (5d) reversal.,strong at weekly,"lb in {1,5}",IC<=0,reversal cluster (fast leg),f6ae3b32f568fe30
+trend_ma12,TREND,monthly,fwd_3m,"close[t-1]/mean(close,12)-1",Price above trailing MA => uptrend persistence.,correlated with momentum,lb=12,spread_t<2,trend cluster; likely collinear with momentum,07b2485f9b244619
+breakout_12,TREND,monthly,fwd_3m,"close[t-1]/max(close,12)-1",Proximity to 12m high => breakout continuation.,momentum-like,lb=12,spread_t<2,trend cluster,0bbf4dde2d5186a6
+trend_consistency,TREND,monthly,fwd_3m,"sum(sign(ret),12)",Consistency of monthly up-moves.,weak trend proxy,lb=12,spread_t<2,trend cluster,34a0dc2faf748ecd
+lowvol_12m,LOW_VOLATILITY,monthly,fwd_3m,"-std(ret,12)",Low-risk effect.,rank-IC present but spread beta-driven,lb=12,spread_t<2,risk control; Phase 22 rejected raw,01dc6402e4c2444f
+downside_vol,LOW_VOLATILITY,monthly,fwd_3m,"-downside_dev(ret,12)",Downside-risk effect.,beta-driven,lb=12,spread_t<2,risk control,d447294124a7f48e
+ivol_spy,LOW_VOLATILITY,monthly,fwd_3m,"-std(ret-beta*spy,12)",Idiosyncratic-vol (low-idio) effect.,weak / regime-fragile,beta_lb=36,spread_t<2,risk control,544a580dec917b6f
+beta_neg,LOW_VOLATILITY,monthly,fwd_3m,-beta_36,Low-beta effect (BAB).,not standalone alpha long-short,beta_lb=36,spread_t<2,risk control,e40a4951d1cc89f0
+liquidity,LIQUIDITY,monthly,fwd_3m,"-mean(|ret|/dollar_volume,12)",Amihud illiquidity screen.,inverts sector-neutral (illiquid=future delisters),lb=12,spread_t<2 or IC<0,liquidity screen; Phase 22 rejected,231b9ed161868093
+dvol_accel,LIQUIDITY,monthly,fwd_1m,"dollar_volume[t-1]/mean(dvol,6)-1",Dollar-volume acceleration (attention).,weak,lb=6,spread_t<2,volume cluster,24ffa981c08d427a
+composite_sn,FUNDAMENTAL,quarterly,forward_63d_return,"EW(fcf_to_assets_sn, -operating_accruals_sn)","Quality/value: high FCF-to-assets, low accruals.","modest, stable, slow",Phase 10 exhausted,net<=0 OOS,fundamental cluster; the champion,adca20acb6f87c8b

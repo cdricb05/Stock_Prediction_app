@@ -1,0 +1,5 @@
+op,seconds
+build_signals+forwards+masks,13.947
+row_ic (loop),0.411
+decile_books (loop),0.425
+weekly raw parse (needed cols),5.616

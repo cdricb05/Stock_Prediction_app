@@ -1,0 +1,4 @@
+cluster,n_members,members
+fundamental,1,composite_sn
+price_momentum_cluster_0,10,mom_6_1;mom_6_1_sn;mom_voladj;mom_voladj_sn;resid_mom_spy;resid_mom_spy_sn;trend_ma12;trend_ma12_sn;trend_consistency;trend_consistency_sn
+price_momentum_cluster_1,2,lowvol_12m_sn;ivol_spy_sn

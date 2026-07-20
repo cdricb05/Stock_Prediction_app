@@ -1,0 +1,62 @@
+{
+ "engine_version": "p23.v3",
+ "signal_config_version": "p23.sig.v1",
+ "pipeline_stages": [
+  "LOAD_PANEL",
+  "BUILD_FEATURE_STORE",
+  "LOAD_CHAMPION",
+  "MONTHLY_CAMPAIGN",
+  "WEEKLY_CACHE",
+  "WEEKLY_CAMPAIGN",
+  "SLOW_FUNDAMENTAL",
+  "CLUSTER",
+  "ENSEMBLE"
+ ],
+ "panel_input_sigs": [
+  {
+   "name": "monthly_close_total_return.csv",
+   "size": 19351811,
+   "mtime": 1782328521
+  },
+  {
+   "name": "membership_panel.csv",
+   "size": 21612846,
+   "mtime": 1782328532
+  },
+  {
+   "name": "monthly_dollar_volume.csv",
+   "size": 27109299,
+   "mtime": 1782328527
+  },
+  {
+   "name": "spy_monthly_total_return.csv",
+   "size": 9133,
+   "mtime": 1782328532
+  },
+  {
+   "name": "metadata.csv",
+   "size": 1045060,
+   "mtime": 1782328532
+  }
+ ],
+ "cache_root": "D:\\Stock_Prediction_app_data\\phase23_cache",
+ "numpy": "2.4.6",
+ "pandas": "3.0.3",
+ "reference_module": "research.run_phase22_autonomous_high_conviction_alpha_discovery",
+ "terminal": "MULTI_ALPHA_RESEARCH_OS_COMPLETE_DATA_GAPS",
+ "safety": {
+  "research_only": true,
+  "paper_only": true,
+  "creates_orders": false,
+  "touches_broker": false,
+  "writes_database": false,
+  "mutates_positions": false,
+  "writes_trading_workflow": false,
+  "replaces_champion": false,
+  "promotes_to_live": false,
+  "runs_automation": false,
+  "calls_prediction_service": false,
+  "new_paid_data": false,
+  "live_trading_status": "NOT_APPROVED_FOR_LIVE_TRADING"
+ }
+}
