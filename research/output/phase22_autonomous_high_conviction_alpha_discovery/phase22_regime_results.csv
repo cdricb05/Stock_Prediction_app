@@ -1,0 +1,17 @@
+candidate,horizon,regime,n_months,mean_ic,ic_t
+mom_12_1,fwd_3m,bull,303,0.0379,6.101
+mom_12_1,fwd_3m,bear,120,0.04935,2.918
+mom_12_1,fwd_3m,highvol,195,0.02473,2.042
+mom_12_1,fwd_3m,lowvol,228,0.05519,8.93
+mom_6_1,fwd_3m,bull,303,0.04455,7.918
+mom_6_1,fwd_3m,bear,125,0.02361,1.649
+mom_6_1,fwd_3m,highvol,195,0.02798,2.697
+mom_6_1,fwd_3m,lowvol,233,0.04718,7.755
+rev_1m,fwd_1m,bull,304,0.00753,1.323
+rev_1m,fwd_1m,bear,127,0.02057,1.761
+rev_1m,fwd_1m,highvol,196,0.02037,2.21
+rev_1m,fwd_1m,lowvol,235,0.00387,0.657
+lowvol_12m,fwd_3m,bull,303,0.07603,7.903
+lowvol_12m,fwd_3m,bear,120,0.04984,2.432
+lowvol_12m,fwd_3m,highvol,195,0.05292,3.393
+lowvol_12m,fwd_3m,lowvol,228,0.08202,8.155

@@ -1,0 +1,11 @@
+dimension,value
+date_range_monthly,1990-07-31..2026-06-30
+months_with_members,432
+tickers_total,12266
+tickers_delisted,8520
+survivorship_dropout_frac,0.6946
+median_members_per_month,2959
+max_members_per_month,3081
+weekly_crosscheck,"phase8d survivorship-aware, 1993..2026"
+daily_survivorship_free,ABSENT (owned daily is current-members only)
+champion_overlap_months,120

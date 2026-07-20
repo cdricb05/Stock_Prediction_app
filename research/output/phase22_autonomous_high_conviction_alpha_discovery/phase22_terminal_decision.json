@@ -1,0 +1,42 @@
+{
+ "decision": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+ "best_candidate": {
+  "candidate": "mom_6_1",
+  "neutralization": "raw"
+ },
+ "n_strong": 3,
+ "n_orthogonal": 2,
+ "rationale": "mom_6_1 (raw, fwd_3m) cleared the contract: IC t 6.646, net25 0.0296, |corr vs champion| 0.1186. Momentum is real and cost-robust on the survivorship-free universe and is orthogonal to the fundamental champion composite_sn.",
+ "next_data_recommendation": [
+  {
+   "rank": 1,
+   "family": "analyst estimate revisions (PIT)",
+   "why": "strongest orthogonal fundamental family not owned at breadth; complements price momentum + value/quality."
+  },
+  {
+   "rank": 2,
+   "family": "survivorship-free DAILY total-return prices (Norgate daily)",
+   "why": "would let the daily reversal / gap_rev family be validated survivorship-free instead of weekly-proxy."
+  },
+  {
+   "rank": 3,
+   "family": "point-in-time short interest / days-to-cover at Russell breadth",
+   "why": "crowding / squeeze signals require broad PIT coverage currently absent."
+  }
+ ],
+ "safety": {
+  "research_only": true,
+  "paper_only": true,
+  "creates_orders": false,
+  "touches_broker": false,
+  "writes_database": false,
+  "mutates_positions": false,
+  "writes_trading_workflow": false,
+  "replaces_champion": false,
+  "promotes_to_live": false,
+  "runs_automation": false,
+  "calls_prediction_service": false,
+  "new_paid_data": false,
+  "live_trading_status": "NOT_APPROVED_FOR_LIVE_TRADING"
+ }
+}

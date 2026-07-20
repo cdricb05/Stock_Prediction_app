@@ -1,0 +1,15 @@
+{
+ "source": "phase8c_russell3000 (Norgate Russell 3000 Current & Past, total-return)",
+ "n_tickers": 12266,
+ "n_delisted": 8520,
+ "survivorship_dropout_frac": 0.6946,
+ "months_with_members": 432,
+ "median_members": 2959,
+ "max_members": 3081,
+ "checks": {
+  "membership_is_pit": "members restricted to membership==1 at each month",
+  "delisted_included": true,
+  "forward_returns_use_future_only": "fwd_k = close.shift(-k)/close-1 (strictly future bars)",
+  "features_use_past_only": "trailing features use close.shift(+k) only"
+ }
+}

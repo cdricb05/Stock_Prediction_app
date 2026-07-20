@@ -1,0 +1,7 @@
+{
+ "acquisitions_performed": [],
+ "note": "No provider acquisition was required: the survivorship-free foundation needed for Phase 22 already exists in owned local artifacts (research_panels/phase8c_russell3000). Work was normalization + PIT panel construction + research on owned data only.",
+ "normalization_performed": [
+  "self-built PIT monthly panel from phase8c raw wide frames (returns, trailing features, forward returns, membership + liquidity mask)"
+ ]
+}

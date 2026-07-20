@@ -1,0 +1,7 @@
+candidate,family,primary_horizon,hypothesis,definition
+mom_12_1,MOMENTUM,fwd_3m,12-1 cross-sectional momentum: past 12m return (skip most recent month) persists.,close[t-1]/close[t-12]-1
+mom_6_1,MOMENTUM,fwd_3m,6-1 momentum: intermediate-horizon return continuation.,close[t-1]/close[t-7]-1
+mom_3_1,MOMENTUM,fwd_1m,3-1 momentum: short intermediate continuation.,close[t-1]/close[t-4]-1
+rev_1m,SHORT_REVERSAL,fwd_1m,1-month reversal: last month's return reverses (liquidity provision / overreaction).,-(close[t]/close[t-1]-1)
+lowvol_12m,LOW_VOLATILITY,fwd_3m,Low-risk effect: low trailing 12m return volatility earns higher risk-adjusted return.,"-std(monthly_return, 12)"
+liquidity,LIQUIDITY,fwd_3m,Liquidity/quality screen: illiquid names (Amihud) underperform in a survivorship-free universe.,"-mean(|ret|/dollar_volume, 12)"

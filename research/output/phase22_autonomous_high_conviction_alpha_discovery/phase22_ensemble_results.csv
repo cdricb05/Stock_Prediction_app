@@ -1,0 +1,5 @@
+weight,n_months,full_gross,full_t,holdout_gross,holdout_t
+champ0.7_cand0.3,118,0.01391,1.175,0.00579,0.268
+champ0.5_cand0.5,118,0.01906,1.639,0.02708,1.377
+champ0.3_cand0.7,118,0.01687,1.402,0.03531,1.727
+champion_only,118,0.01118,0.985,0.00073,0.037

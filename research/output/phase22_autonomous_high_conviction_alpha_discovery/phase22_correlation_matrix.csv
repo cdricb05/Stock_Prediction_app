@@ -1,0 +1,13 @@
+candidate,neutralization,vs,mean_corr,abs_mean_corr,n_months
+mom_12_1,raw,composite_sn,0.0636,0.1206,120
+mom_12_1,sector_neutral,composite_sn,0.012,0.1071,120
+mom_6_1,raw,composite_sn,0.0499,0.1186,120
+mom_6_1,sector_neutral,composite_sn,0.017,0.1079,120
+mom_3_1,raw,composite_sn,0.0442,0.1161,120
+mom_3_1,sector_neutral,composite_sn,0.0095,0.1214,120
+rev_1m,raw,composite_sn,-0.0567,0.1289,120
+rev_1m,sector_neutral,composite_sn,-0.0116,0.1155,120
+lowvol_12m,raw,composite_sn,-0.04,0.1091,120
+lowvol_12m,sector_neutral,composite_sn,0.071,0.1492,120
+liquidity,raw,composite_sn,0.0093,0.0918,120
+liquidity,sector_neutral,composite_sn,0.0916,0.1431,120

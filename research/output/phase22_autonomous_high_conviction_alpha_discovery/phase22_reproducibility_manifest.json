@@ -1,0 +1,48 @@
+{
+ "runner": "research/run_phase22_autonomous_high_conviction_alpha_discovery.py",
+ "python": "cpython (already-installed pandas+numpy; no scipy)",
+ "deterministic": true,
+ "seed": "n/a (no randomness)",
+ "inputs": {
+  "monthly_panel": "D:\\Stock_Prediction_app_data\\research_panels\\phase8c_russell3000",
+  "weekly_grid": "D:\\Stock_Prediction_app_data\\research_panels\\phase8d_daily_conditional\\weekly_observation_grid.csv",
+  "champion": "C:\\Users\\binis\\Stock_Prediction_app_push\\research\\output\\phase10l_historical_sector_neutral_scored_panel_reconstruction\\historical_sector_neutral_scored_panel.csv",
+  "daily_control": "D:\\Stock_Prediction_app_data\\phase7i_broad_universe\\prices\\phase7i_broad_price_history_free.csv",
+  "phase21_gap_rev": "D:\\Stock_Prediction_app_data\\phase21_price_alpha_factory"
+ },
+ "config": {
+  "horizons": [
+   "fwd_1m",
+   "fwd_3m",
+   "fwd_6m"
+  ],
+  "holdout_months": 60,
+  "val_months": 48,
+  "deciles": 10,
+  "cost_bps": {
+   "net25": 0.0025,
+   "net50": 0.005
+  },
+  "gate": {
+   "adj_ic_t_min": 2.0,
+   "spread_t_min": 2.0,
+   "pos_ic_rate_min": 0.55,
+   "net25_min": 0.0,
+   "net50_min_slow": 0.0,
+   "holdout_net_min": 0.0,
+   "min_indep_periods": 36,
+   "max_single_year_spread_frac": 0.4,
+   "corr_champ_pref_max": 0.7,
+   "multiple_testing_alpha": 0.05
+  },
+  "candidates": [
+   "mom_12_1",
+   "mom_6_1",
+   "mom_3_1",
+   "rev_1m",
+   "lowvol_12m",
+   "liquidity"
+  ]
+ },
+ "output_dir": "C:\\Users\\binis\\Stock_Prediction_app_push\\research\\output\\phase22_autonomous_high_conviction_alpha_discovery"
+}

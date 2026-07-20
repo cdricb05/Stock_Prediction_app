@@ -1,0 +1,9 @@
+candidate,horizon,cohort,n_months,mean_ic,ic_t
+mom_12_1,fwd_3m,large,423,0.02273,2.789
+mom_12_1,fwd_3m,small,423,0.06667,10.148
+mom_6_1,fwd_3m,large,428,0.01789,2.458
+mom_6_1,fwd_3m,small,428,0.06238,10.819
+rev_1m,fwd_1m,large,431,0.00398,0.579
+rev_1m,fwd_1m,small,431,0.01837,3.705
+lowvol_12m,fwd_3m,large,423,0.03775,3.54
+lowvol_12m,fwd_3m,small,423,0.09498,11.534

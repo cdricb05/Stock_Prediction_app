@@ -1,0 +1,11 @@
+leg,universe,signal,ic_t,detail
+current_members_daily,phase7i current-members daily (survivorship-BIASED),gap_rev (5d reversal),2.7296,net25=0.004514
+survivorship_aware_weekly,phase8d weekly (delisted included),-ret_5->fwd_excess_5,5.993,mean_ic=0.02247;pos=0.569;n_weeks=1739
+survivorship_aware_weekly,phase8d weekly (delisted included),-ret_1->fwd_excess_5,7.272,mean_ic=0.02517;pos=0.591;n_weeks=1739
+survivorship_aware_weekly,phase8d weekly (delisted included),-ret_5->fwd_excess_10,5.176,mean_ic=0.01903;pos=0.544;n_weeks=1739
+survivorship_aware_weekly,phase8d weekly (delisted included),-ret_20->fwd_excess_20,4.388,mean_ic=0.01653;pos=0.534;n_weeks=1739
+survivorship_aware_weekly,phase8d weekly (delisted included),+ret_20->fwd_excess_20,-4.388,mean_ic=-0.01653;pos=0.466;n_weeks=1739
+survivorship_aware_weekly,phase8d weekly (delisted included),-rv_20->fwd_excess_20,0.776,mean_ic=0.004;pos=0.504;n_weeks=1739
+survivorship_free_monthly,phase8c Russell 3000 monthly (survivorship-FREE),rev_1m->fwd_1m,2.151,mean_ic=0.01137;net25=0.00156
+survivorship_free_monthly,phase8c Russell 3000 monthly (survivorship-FREE),rev_1m->fwd_3m,-0.933,mean_ic=-0.00464;net25=-0.00924
+survivorship_free_monthly,phase8c Russell 3000 monthly (survivorship-FREE),rev_1m->fwd_6m,-3.158,mean_ic=-0.01498;net25=-0.022

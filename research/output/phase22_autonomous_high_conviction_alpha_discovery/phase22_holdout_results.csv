@@ -1,0 +1,13 @@
+candidate,neutralization,horizon,holdout_n_months,holdout_mean_ic,holdout_ic_t,holdout_net25,holdout_maxdd
+mom_12_1,raw,fwd_3m,57,0.07813,5.507,0.04356,-0.51488
+mom_12_1,sector_neutral,fwd_3m,57,0.05114,4.028,0.03124,-0.26304
+mom_6_1,raw,fwd_3m,57,0.07268,4.801,0.04151,-0.48914
+mom_6_1,sector_neutral,fwd_3m,57,0.03753,2.842,0.01776,-0.54253
+mom_3_1,raw,fwd_1m,59,0.02786,1.642,0.0066,-0.62663
+mom_3_1,sector_neutral,fwd_1m,59,0.02829,1.978,0.00202,-0.29294
+rev_1m,raw,fwd_1m,59,-0.03203,-2.297,-0.01536,-0.94706
+rev_1m,sector_neutral,fwd_1m,59,-0.02818,-2.412,-0.01071,-0.81052
+lowvol_12m,raw,fwd_3m,57,0.10163,4.554,0.00885,-1.83209
+lowvol_12m,sector_neutral,fwd_3m,57,0.00437,0.321,0.01774,-0.99413
+liquidity,raw,fwd_3m,57,0.06189,4.314,0.02027,-0.63119
+liquidity,sector_neutral,fwd_3m,57,-0.03863,-2.759,0.00132,-0.89528

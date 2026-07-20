@@ -1,0 +1,401 @@
+ticker,base_symbol,delist_yyyymm,gics_sector,is_delisted
+A,A,,Health Care,False
+AA,AA,,Materials,False
+AABA-201910,AABA,201910,Consumer Discretionary,True
+AAC-199601,AAC,199601,Industrials,True
+AAC-200004,AAC,200004,Financials,True
+AACC-201306,AACC,201306,Financials,True
+AACE-200610,AACE,200610,Financials,True
+AACH-202012,AACH,202012,Health Care,True
+AACI-199711,AACI,199711,Consumer Discretionary,True
+AADV-199804,AADV,199804,Financials,True
+AAH-199805,AAH,199805,Financials,True
+AAI-199908,AAI,199908,Industrials,True
+AAI-201105,AAI,201105,Industrials,True
+AAIC-202312,AAIC,202312,Financials,True
+AAIIQ,AAIIQ,,Industrials,False
+AAIIQ-200603,AAIIQ,200603,Health Care,True
+AAL,AAL,,Industrials,False
+AAL-199702,AAL,199702,Financials,True
+AALR-199707,AALR,199707,Information Technology,True
+AAMCF,AAMCF,,Real Estate,False
+AAMI,AAMI,,Financials,False
+AAMRQ-201312,AAMRQ,201312,Industrials,True
+AAN-201012,AAN,201012,Consumer Discretionary,True
+AAN-202410,AAN,202410,Consumer Discretionary,True
+AAOI,AAOI,,Information Technology,False
+AAON,AAON,,Industrials,False
+AAP,AAP,,Consumer Discretionary,False
+AAPL,AAPL,,Information Technology,False
+AARD,AARD,,Health Care,False
+AAT,AAT,,Real Estate,False
+AATI-199906,AATI,199906,Industrials,True
+AATI-201201,AATI,201201,Information Technology,True
+AATT-200002,AATT,200002,Information Technology,True
+AAV-199901,AAV,199901,Financials,True
+AAWHQ-200407,AAWHQ,200407,Industrials,True
+AAWW-202303,AAWW,202303,Industrials,True
+AB-199708,AB,199708,Financials,True
+ABAT,ABAT,,Materials,False
+ABAT-201512,ABAT,201512,Industrials,True
+ABAX-201807,ABAX,201807,Health Care,True
+ABBC-201109,ABBC,201109,Financials,True
+ABBV,ABBV,,Health Care,False
+ABBY-199506,ABBY,199506,Health Care,True
+ABCB,ABCB,,Financials,False
+ABCC-199810,ABCC,199810,UNKNOWN,True
+ABCD-201812,ABCD,201812,Consumer Discretionary,True
+ABCL,ABCL,,Health Care,False
+ABCL-200107,ABCL,200107,Financials,True
+ABCO-199905,ABCO,199905,Consumer Discretionary,True
+ABCO-201711,ABCO,201711,Industrials,True
+ABCP,ABCP,,Real Estate,False
+ABCR-200110,ABCR,200110,Industrials,True
+ABCW-201604,ABCW,201604,Financials,True
+ABCWQ-201309,ABCWQ,201309,Financials,True
+ABDN-199212,ABDN,199212,Health Care,True
+ABDR-199911,ABDR,199911,Industrials,True
+ABDS-201012,ABDS,201012,Energy,True
+ABE-199506,ABE,199506,Industrials,True
+ABEO,ABEO,,Health Care,False
+ABF-200308,ABF,200308,Industrials,True
+ABG,ABG,,Consumer Discretionary,False
+ABG-199311,ABG,199311,Industrials,True
+ABGX-200603,ABGX,200603,Health Care,True
+ABI-199908,ABI,199908,Financials,True
+ABI-200811,ABI,200811,Health Care,True
+ABII-201010,ABII,201010,Health Care,True
+ABIO-199302,ABIO,199302,Health Care,True
+ABIZQ-200204,ABIZQ,200204,Communication Services,True
+ABKFQ-201304,ABKFQ,201304,Financials,True
+ABKR-199501,ABKR,199501,Financials,True
+ABLSQ-200608,ABLSQ,200608,Health Care,True
+ABLT,ABLT,,Materials,False
+ABM,ABM,,Industrials,False
+ABMD-202212,ABMD,202212,Health Care,True
+ABN-199908,ABN,199908,Industrials,True
+ABNB,ABNB,,Consumer Discretionary,False
+ABNK-200512,ABNK,200512,UNKNOWN,True
+ABOS,ABOS,,Health Care,False
+ABOV-199909,ABOV,199909,Information Technology,True
+ABP-200002,ABP,200002,Industrials,True
+ABR,ABR,,Financials,False
+ABRX-199907,ABRX,199907,Financials,True
+ABS-200606,ABS,200606,Consumer Staples,True
+ABSC-200107,ABSC,200107,Health Care,True
+ABSI,ABSI,,Health Care,False
+ABT,ABT,,Health Care,False
+ABTC,ABTC,,Information Technology,False
+ABTC-199902,ABTC,199902,Materials,True
+ABTI-199901,ABTI,199901,Health Care,True
+ABTX-200001,ABTX,200001,Consumer Staples,True
+ABTX-202209,ABTX,202209,Financials,True
+ABUS,ABUS,,Health Care,False
+ABVT-201206,ABVT,201206,Communication Services,True
+ABWTQ-201012,ABWTQ,201012,Materials,True
+ABX,ABX,,Financials,False
+ACA,ACA,,Industrials,False
+ACA-199010,ACA,199010,Financials,True
+ACA-199703,ACA,199703,Materials,True
+ACAD,ACAD,,Health Care,False
+ACAP-201010,ACAP,201010,Financials,True
+ACAS-201701,ACAS,201701,UNKNOWN,True
+ACAT-201703,ACAT,201703,Consumer Discretionary,True
+ACBI-202202,ACBI,202202,Financials,True
+ACC-202208,ACC,202208,Real Estate,True
+ACCC-199804,ACCC,199804,Communication Services,True
+ACCD-202504,ACCD,202504,Health Care,True
+ACCL-201404,ACCL,201404,Information Technology,True
+ACCMA-199412,ACCMA,199412,Communication Services,True
+ACCO,ACCO,,Industrials,False
+ACCS-199812,ACCS,199812,Health Care,True
+ACDC,ACDC,,Energy,False
+ACDO-200508,ACDO,200508,UNKNOWN,True
+ACEE-200011,ACEE,200011,Industrials,True
+ACEL,ACEL,,Consumer Discretionary,False
+ACER-202311,ACER,202311,Health Care,True
+ACET,ACET,,Health Care,False
+ACETQ-201910,ACETQ,201910,Health Care,True
+ACF-201009,ACF,201009,Financials,True
+ACFC-201805,ACFC,201805,Financials,True
+ACFN,ACFN,,Information Technology,False
+ACGC-199201,ACGC,199201,Industrials,True
+ACGL,ACGL,,Financials,False
+ACGN-202308,ACGN,202308,Health Care,True
+ACGP,ACGP,,Financials,False
+ACH,ACH,,Health Care,False
+ACHC,ACHC,,Health Care,False
+ACHN-202001,ACHN,202001,Health Care,True
+ACHR,ACHR,,Industrials,False
+ACHV,ACHV,,Health Care,False
+ACHV-199301,ACHV,199301,Information Technology,True
+ACI,ACI,,Consumer Staples,False
+ACIA-202102,ACIA,202102,Information Technology,True
+ACIC,ACIC,,Financials,False
+ACIIQ-201610,ACIIQ,201610,Energy,True
+ACIW,ACIW,,Information Technology,False
+ACKH-200712,ACKH,200712,Industrials,True
+ACL-201104,ACL,201104,Health Care,True
+ACLA-200412,ACLA,200412,Health Care,True
+ACLB-199406,ACLB,199406,Health Care,True
+ACLE-199912,ACLE,199912,Financials,True
+ACLI-201012,ACLI,201012,Industrials,True
+ACLS,ACLS,,Information Technology,False
+ACLX-202604,ACLX,202604,Health Care,True
+ACM,ACM,,Industrials,False
+ACME-201612,ACME,201612,Communication Services,True
+ACMR,ACMR,,Information Technology,False
+ACMR-201111,ACMR,201111,Consumer Discretionary,True
+ACN,ACN,,Information Technology,False
+ACN-200011,ACN,200011,Health Care,True
+ACNB,ACNB,,Financials,False
+ACNT,ACNT,,Materials,False
+ACO-199707,ACO,199707,Financials,True
+ACO-201405,ACO,201405,Materials,True
+ACOM-199611,ACOM,199611,Consumer Discretionary,True
+ACOM-200110,ACOM,200110,Information Technology,True
+ACOM-201212,ACOM,201212,Information Technology,True
+ACORQ-202408,ACORQ,202408,Health Care,True
+ACPI-199511,ACPI,199511,Consumer Discretionary,True
+ACPIQ-201010,ACPIQ,201010,Financials,True
+ACR,ACR,,Financials,False
+ACR-199310,ACR,199310,Industrials,True
+ACR-200607,ACR,200607,Health Care,True
+ACRE,ACRE,,Financials,False
+ACRS,ACRS,,Health Care,False
+ACRTQ-200401,ACRTQ,200401,Financials,True
+ACRU-200209,ACRU,200209,Information Technology,True
+ACRV,ACRV,,Health Care,False
+ACS-201002,ACS,201002,Industrials,True
+ACSE-199509,ACSE,199509,Consumer Discretionary,True
+ACT,ACT,,Financials,False
+ACTA-201804,ACTA,201804,Information Technology,True
+ACTG,ACTG,,Financials,False
+ACTI-201012,ACTI,201012,Information Technology,True
+ACTL-201011,ACTL,201011,Information Technology,True
+ACTRQ-200310,ACTRQ,200310,Information Technology,True
+ACTU,ACTU,,Health Care,False
+ACTV-201311,ACTV,201311,Information Technology,True
+ACU,ACU,,Health Care,False
+ACUR,ACUR,,Health Care,False
+ACV-201105,ACV,201105,Consumer Staples,True
+ACVA,ACVA,,Industrials,False
+ACVC-200102,ACVC,200102,Information Technology,True
+ACW-201611,ACW,201611,Industrials,True
+ACX-200202,ACX,200202,Communication Services,True
+ACY-199411,ACY,199411,Health Care,True
+ACZ-199610,ACZ,199610,Materials,True
+AD,AD,,Communication Services,False
+AD-200703,AD,200703,Communication Services,True
+ADA-199607,ADA,199607,Consumer Discretionary,True
+ADAC-200012,ADAC,200012,UNKNOWN,True
+ADAM,ADAM,,Financials,False
+ADAPQ-201003,ADAPQ,201003,UNKNOWN,True
+ADAX-199911,ADAX,199911,Information Technology,True
+ADB-199205,ADB,199205,Energy,True
+ADBE,ADBE,,Information Technology,False
+ADBL-200803,ADBL,200803,Consumer Discretionary,True
+ADC,ADC,,Real Estate,False
+ADCT,ADCT,,Health Care,False
+ADCT-201012,ADCT,201012,Information Technology,True
+ADD-199209,ADD,199209,UNKNOWN,True
+ADDR-199612,ADDR,199612,Industrials,True
+ADEA,ADEA,,Information Technology,False
+ADELQ-200702,ADELQ,200702,Consumer Discretionary,True
+ADEP-201510,ADEP,201510,Industrials,True
+ADEX-200610,ADEX,200610,Information Technology,True
+ADFC-200001,ADFC,200001,Information Technology,True
+ADGE-201705,ADGE,201705,Utilities,True
+ADGI-201109,ADGI,201109,Industrials,True
+ADHC-199603,ADHC,199603,Health Care,True
+ADI,ADI,,Information Technology,False
+ADIA-199501,ADIA,199501,Industrials,True
+ADIC-200608,ADIC,200608,Information Technology,True
+ADIE-199112,ADIE,199112,Industrials,True
+ADL-199210,ADL,199210,Industrials,True
+ADLR-201112,ADLR,201112,Health Care,True
+ADLTQ-200312,ADLTQ,200312,Consumer Discretionary,True
+ADM,ADM,,Consumer Staples,False
+ADMA,ADMA,,Health Care,False
+ADMS-202111,ADMS,202111,Health Care,True
+ADNC-201506,ADNC,201506,Information Technology,True
+ADNH,ADNH,,Industrials,False
+ADNT,ADNT,,Consumer Discretionary,False
+ADP,ADP,,Industrials,False
+ADP-200010,ADP,200010,Industrials,True
+ADPI-201202,ADPI,201202,Health Care,True
+ADPT,ADPT,,Health Care,False
+ADPTQ-201709,ADPTQ,201709,Health Care,True
+ADRX-200611,ADRX,200611,Health Care,True
+ADSI-199810,ADSI,199810,Industrials,True
+ADSK,ADSK,,Information Technology,False
+ADSW-202010,ADSW,202010,Industrials,True
+ADT,ADT,,Consumer Discretionary,False
+ADT-201604,ADT,201604,Industrials,True
+ADTH-202406,ADTH,202406,Communication Services,True
+ADTN,ADTN,,Information Technology,False
+ADUS,ADUS,,Health Care,False
+ADV,ADV,,Communication Services,False
+ADV-200101,ADV,200101,Financials,True
+ADVBQ-201103,ADVBQ,201103,Financials,True
+ADVC-199510,ADVC,199510,Industrials,True
+ADVG-199601,ADVG,199601,Consumer Discretionary,True
+ADVM-202512,ADVM,202512,Health Care,True
+ADVNQ-201103,ADVNQ,201103,Financials,True
+ADVP-200403,ADVP,200403,Health Care,True
+ADVS-201507,ADVS,201507,Information Technology,True
+ADXS-202602,ADXS,202602,Health Care,True
+ADY-201306,ADY,201306,Consumer Staples,True
+ADZA-200704,ADZA,200704,Health Care,True
+AE-202502,AE,202502,Energy,True
+AEA-201204,AEA,201204,Financials,True
+AEC-201508,AEC,201508,Real Estate,True
+AEE,AEE,,Utilities,False
+AEE-199507,AEE,199507,Consumer Discretionary,True
+AEGN-202105,AEGN,202105,Industrials,True
+AEGR-201611,AEGR,201611,Health Care,True
+AEH-199902,AEH,199902,Health Care,True
+AEHR,AEHR,,Information Technology,False
+AEI,AEI,,Real Estate,False
+AEIC-200002,AEIC,200002,Industrials,True
+AEIS,AEIS,,Information Technology,False
+AEL-202405,AEL,202405,Financials,True
+AELNA-199602,AELNA,199602,Industrials,True
+AEMI-201110,AEMI,201110,Industrials,True
+AEN-200412,AEN,200412,Communication Services,True
+AEO,AEO,,Consumer Discretionary,False
+AEP,AEP,,Utilities,False
+AEPI-201701,AEPI,201701,Materials,True
+AERG,AERG,,Industrials,False
+AERI-202211,AERI,202211,Health Care,True
+AERL-200005,AERL,200005,Communication Services,True
+AERN,AERN,,Industrials,False
+AES,AES,,Utilities,False
+AESI,AESI,,Energy,False
+AET-201811,AET,201811,Health Care,True
+AEVA,AEVA,,Information Technology,False
+AEYE,AEYE,,Information Technology,False
+AEZ-201012,AEZ,201012,Energy,True
+AF-201709,AF,201709,Financials,True
+AFAM-201803,AFAM,201803,Health Care,True
+AFBK-199210,AFBK,199210,Financials,True
+AFC.A-199302,AFC.A,199302,Consumer Staples,True
+AFCB-199808,AFCB,199808,Financials,True
+AFCG,AFCG,,Financials,False
+AFCI-200411,AFCI,200411,Information Technology,True
+AFCO-200607,AFCO,200607,Information Technology,True
+AFCX-199911,AFCX,199911,Industrials,True
+AFE-199711,AFE,199711,Financials,True
+AFFC-199501,AFFC,199501,Financials,True
+AFFMQ-201803,AFFMQ,201803,Financials,True
+AFFX-201603,AFFX,201603,Health Care,True
+AFFY,AFFY,,UNKNOWN,False
+AFG,AFG,,Financials,False
+AFHIF-202409,AFHIF,202409,Financials,True
+AFIB,AFIB,,Health Care,False
+AFIIQ,AFIIQ,,Industrials,False
+AFIL-199709,AFIL,199709,Materials,True
+AFL,AFL,,Financials,False
+AFLX-199909,AFLX,199909,Information Technology,True
+AFM-199806,AFM,199806,Consumer Discretionary,True
+AFM-200008,AFM,200008,Consumer Discretionary,True
+AFMDQ,AFMDQ,,Health Care,False
+AFOP-201606,AFOP,201606,Information Technology,True
+AFP.A-199310,AFP.A,199310,Consumer Discretionary,True
+AFR-200804,AFR,200804,Real Estate,True
+AFRI,AFRI,,Consumer Staples,False
+AFRM,AFRM,,Financials,False
+AFS-200011,AFS,200011,Financials,True
+AFSC-200006,AFSC,200006,Financials,True
+AFSI-201811,AFSI,201811,Financials,True
+AFTQC-199402,AFTQC,199402,Consumer Discretionary,True
+AFWY-200102,AFWY,200102,Industrials,True
+AGA-200111,AGA,200111,Materials,True
+AGAM-201011,AGAM,201011,Health Care,True
+AGBGC-199901,AGBGC,199901,Industrials,True
+AGC-200108,AGC,200108,Financials,True
+AGCCQ-200605,AGCCQ,200605,Materials,True
+AGCH-200104,AGCH,200104,Industrials,True
+AGCO,AGCO,,Industrials,False
+AGD-200310,AGD,200310,Industrials,True
+AGE-200709,AGE,200709,Financials,True
+AGEN,AGEN,,Health Care,False
+AGFS-202303,AGFS,202303,Materials,True
+AGHC-202209,AGHC,202209,Health Care,True
+AGIG,AGIG,,Energy,False
+AGII-200708,AGII,200708,Financials,True
+AGIL-200707,AGIL,200707,Information Technology,True
+AGIO,AGIO,,Health Care,False
+AGIS-199909,AGIS,199909,Consumer Discretionary,True
+AGIXQ-200903,AGIXQ,200903,Health Care,True
+AGL,AGL,,Health Care,False
+AGL-200808,AGL,200808,Industrials,True
+AGLF-199812,AGLF,199812,Financials,True
+AGM,AGM,,Financials,False
+AGN-201503,AGN,201503,Health Care,True
+AGN-202005,AGN,202005,Health Care,True
+AGNC,AGNC,,Financials,False
+AGNT,AGNT,,Real Estate,False
+AGO,AGO,,Financials,False
+AGP-199901,AGP,199901,Industrials,True
+AGP-201212,AGP,201212,Health Care,True
+AGPH-199905,AGPH,199905,Health Care,True
+AGR.B-200505,AGR.B,200505,Information Technology,True
+AGR-200703,AGR,200703,Information Technology,True
+AGR-202412,AGR,202412,Utilities,True
+AGRPA-200001,AGRPA,200001,Communication Services,True
+AGRX-202408,AGRX,202408,Health Care,True
+AGS-200102,AGS,200102,UNKNOWN,True
+AGS-202506,AGS,202506,Consumer Discretionary,True
+AGTC-202211,AGTC,202211,Health Care,True
+AGTI-202405,AGTI,202405,Health Care,True
+AGX,AGX,,Industrials,False
+AGX-200104,AGX,200104,UNKNOWN,True
+AGY-200510,AGY,200510,UNKNOWN,True
+AGYS,AGYS,,Information Technology,False
+AH-200707,AH,200707,Industrials,True
+AHAG,AHAG,,UNKNOWN,False
+AHCC-199712,AHCC,199712,Health Care,True
+AHCI-201110,AHCI,201110,Health Care,True
+AHCO,AHCO,,Health Care,False
+AHE-199911,AHE,199911,Financials,True
+AHG-200810,AHG,200810,Health Care,True
+AHI.A-199404,AHI.A,199404,Health Care,True
+AHI-200507,AHI,200507,Industrials,True
+AHII-201106,AHII,201106,Health Care,True
+AHL-199910,AHL,199910,Financials,True
+AHL-201902,AHL,201902,Financials,True
+AHL-202602,AHL,202602,Financials,True
+AHLS-200308,AHLS,200308,Industrials,True
+AHM-199810,AHM,199810,Financials,True
+AHMIQ-201404,AHMIQ,201404,Financials,True
+AHNA-201102,AHNA,201102,Industrials,True
+AHOM-201010,AHOM,201010,Health Care,True
+AHPIQ-202412,AHPIQ,202412,Health Care,True
+AHR,AHR,,Real Estate,False
+AHR-199702,AHR,199702,Financials,True
+AHRT,AHRT,,Real Estate,False
+AHSI-199203,AHSI,199203,Financials,True
+AHT,AHT,,Real Estate,False
+AHTS-199307,AHTS,199307,Health Care,True
+AI,AI,,Information Technology,False
+AIC-200609,AIC,200609,Financials,True
+AICIQ-201606,AICIQ,201606,Financials,True
+AICOQ-200508,AICOQ,200508,UNKNOWN,True
+AIG,AIG,,Financials,False
+AIH-199410,AIH,199410,Financials,True
+AIH-200706,AIH,200706,Industrials,True
+AIHI-199508,AIHI,199508,Consumer Discretionary,True
+AII,AII,,Financials,False
+AILEQ,AILEQ,,Information Technology,False
+AIM,AIM,,Health Care,False
+AIMC-202303,AIMC,202303,Industrials,True
+AIMM-201312,AIMM,201312,Health Care,True
+AIMT-202010,AIMT,202010,Health Care,True
+AIN,AIN,,Industrials,False
+AINC-202407,AINC,202407,Financials,True
+AIND-200111,AIND,200111,UNKNOWN,True
+AINN-200705,AINN,200705,Information Technology,True
+AIOT,AIOT,,Information Technology,False
+AIP,AIP,,Information Technology,False
+AIPC-201007,AIPC,201007,Consumer Staples,True

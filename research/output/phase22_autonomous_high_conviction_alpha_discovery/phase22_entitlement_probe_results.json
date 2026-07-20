@@ -1,0 +1,14 @@
+{
+ "performed_live_probe": false,
+ "reason": "All required market data is already owned locally (Norgate-derived survivorship-free panels + EODHD-derived champion panel). No new provider call was necessary; no key was read/printed/written.",
+ "owned_assets_used": [
+  "phase8c_russell3000",
+  "phase8d weekly grid",
+  "phase10l champion panel",
+  "phase7i daily (control)",
+  "phase21 gap_rev leaderboard (control)"
+ ],
+ "norgate_entitlement": "owned (monthly survivorship-free panels present locally)",
+ "eodhd_entitlement": "owned (fundamental champion panel derived and present locally)",
+ "blocked": []
+}

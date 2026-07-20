@@ -1,0 +1,366 @@
+{
+ "phase": "22",
+ "built_at": "2026-07-20T03:03:29Z",
+ "terminal_decision": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+ "panel_summary": {
+  "source": "phase8c_russell3000 (Norgate Russell 3000 Current & Past, total-return)",
+  "n_tickers": 12266,
+  "n_delisted": 8520,
+  "survivorship_dropout_frac": 0.6946,
+  "date_min": "1990-07-31",
+  "date_max": "2026-06-30",
+  "n_months_with_members": 432,
+  "median_members": 2959,
+  "max_members": 3081
+ },
+ "n_trials": 36,
+ "facts": {
+  "momentum_is_real_survivorship_free": true,
+  "best_candidate": {
+   "candidate": "mom_6_1",
+   "neutralization": "raw"
+  },
+  "n_survivors": 5,
+  "n_rejected": 7,
+  "champion_present": true
+ },
+ "gap_rev_bias_repair": {
+  "current_members_daily": {
+   "universe": "phase7i current-members daily (survivorship-BIASED)",
+   "signal": "gap_rev (5d reversal)",
+   "ic_t": 2.7296,
+   "net25": 0.004514,
+   "horizon_days": 5,
+   "corr_vs_champion": -0.0298
+  },
+  "survivorship_aware_weekly": [
+   {
+    "signal": "-ret_5",
+    "forward": "fwd_excess_5",
+    "mean_ic": 0.02247,
+    "ic_t": 5.993,
+    "pos_rate": 0.569,
+    "n_weeks": 1739
+   },
+   {
+    "signal": "-ret_1",
+    "forward": "fwd_excess_5",
+    "mean_ic": 0.02517,
+    "ic_t": 7.272,
+    "pos_rate": 0.591,
+    "n_weeks": 1739
+   },
+   {
+    "signal": "-ret_5",
+    "forward": "fwd_excess_10",
+    "mean_ic": 0.01903,
+    "ic_t": 5.176,
+    "pos_rate": 0.544,
+    "n_weeks": 1739
+   },
+   {
+    "signal": "-ret_20",
+    "forward": "fwd_excess_20",
+    "mean_ic": 0.01653,
+    "ic_t": 4.388,
+    "pos_rate": 0.534,
+    "n_weeks": 1739
+   },
+   {
+    "signal": "+ret_20",
+    "forward": "fwd_excess_20",
+    "mean_ic": -0.01653,
+    "ic_t": -4.388,
+    "pos_rate": 0.466,
+    "n_weeks": 1739
+   },
+   {
+    "signal": "-rv_20",
+    "forward": "fwd_excess_20",
+    "mean_ic": 0.004,
+    "ic_t": 0.776,
+    "pos_rate": 0.504,
+    "n_weeks": 1739
+   }
+  ],
+  "survivorship_free_monthly": {
+   "universe": "phase8c Russell 3000 monthly (survivorship-FREE)",
+   "signal": "rev_1m (1-month reversal)",
+   "fwd_1m": {
+    "n_months": 431,
+    "mean_ic": 0.01137,
+    "ic_t": 2.151,
+    "ic_nw_t": 2.153,
+    "pos_ic_rate": 0.531,
+    "gross_spread": 0.00578,
+    "gross_t": 1.745,
+    "net25": 0.00156,
+    "net50": -0.00267,
+    "long_only": 0.01225,
+    "maxdd": -0.98315
+   },
+   "fwd_3m": {
+    "n_months": 429,
+    "mean_ic": -0.00464,
+    "ic_t": -0.933,
+    "ic_nw_t": -0.862,
+    "pos_ic_rate": 0.473,
+    "gross_spread": -0.00501,
+    "gross_t": -0.982,
+    "net25": -0.00924,
+    "net50": -0.01348,
+    "long_only": 0.02258,
+    "maxdd": -4.58289
+   },
+   "fwd_6m": {
+    "n_months": 426,
+    "mean_ic": -0.01498,
+    "ic_t": -3.158,
+    "ic_nw_t": -2.842,
+    "pos_ic_rate": 0.425,
+    "gross_spread": -0.01777,
+    "gross_t": -2.597,
+    "net25": -0.022,
+    "net50": -0.02623,
+    "long_only": 0.04134,
+    "maxdd": -9.98042
+   }
+  }
+ },
+ "ensemble": [
+  {
+   "weight": "champ0.7_cand0.3",
+   "n_months": 118,
+   "full_gross": 0.01391,
+   "full_t": 1.175,
+   "holdout_gross": 0.00579,
+   "holdout_t": 0.268
+  },
+  {
+   "weight": "champ0.5_cand0.5",
+   "n_months": 118,
+   "full_gross": 0.01906,
+   "full_t": 1.639,
+   "holdout_gross": 0.02708,
+   "holdout_t": 1.377
+  },
+  {
+   "weight": "champ0.3_cand0.7",
+   "n_months": 118,
+   "full_gross": 0.01687,
+   "full_t": 1.402,
+   "holdout_gross": 0.03531,
+   "holdout_t": 1.727
+  },
+  {
+   "weight": "champion_only",
+   "n_months": 118,
+   "full_gross": 0.01118,
+   "full_t": 0.985,
+   "holdout_gross": 0.00073,
+   "holdout_t": 0.037
+  }
+ ],
+ "assumptions": [
+  "Norgate total-return close is point-in-time-usable for return RATIOS; absolute levels are as-of-build.",
+  "Membership panel marks PIT index membership; cross-section restricted to members at each month.",
+  "Champion composite_sn is quarterly-staggered; monthly signal correlation treats it piecewise-constant."
+ ],
+ "caveats": [
+  "No survivorship-free DAILY panel is owned; the daily gap_rev family is validated only via a survivorship-aware WEEKLY proxy and the current-members daily control.",
+  "Low-volatility raw IC is a beta artifact (decile spread ~0; vanishes on excess-return weekly).",
+  "Illiquidity 'premium' is inverted in this universe (illiquid microcaps are future delisters); liquidity is treated as a screen, not an alpha.",
+  "Vendor-precomputed weekly features are used for cross-check only; the monthly panel is self-built with unit-tested PIT boundaries."
+ ],
+ "surviving_hypotheses": [
+  {
+   "candidate": "mom_12_1",
+   "neutralization": "raw",
+   "family": "MOMENTUM",
+   "status": "ORTHOGONAL_ALPHA_RESEARCH_ELIGIBLE",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 6.296,
+   "adj_ic_t": 4.337,
+   "pos_ic_rate": 0.664,
+   "net25": 0.02331,
+   "net50": 0.02194,
+   "avg_turnover": 0.2758,
+   "max_year_frac": 0.408,
+   "holdout_net25": 0.04356,
+   "abs_corr_vs_champion": 0.1206,
+   "adjusted_p": 0.00052
+  },
+  {
+   "candidate": "mom_12_1",
+   "neutralization": "sector_neutral",
+   "family": "MOMENTUM",
+   "status": "ORTHOGONAL_ALPHA_RESEARCH_ELIGIBLE",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 5.956,
+   "adj_ic_t": 4.157,
+   "pos_ic_rate": 0.648,
+   "net25": 0.01302,
+   "net50": 0.01119,
+   "avg_turnover": 0.3661,
+   "max_year_frac": 0.674,
+   "holdout_net25": 0.03124,
+   "abs_corr_vs_champion": 0.1071,
+   "adjusted_p": 0.00116
+  },
+  {
+   "candidate": "mom_6_1",
+   "neutralization": "raw",
+   "family": "MOMENTUM",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 6.646,
+   "adj_ic_t": 4.959,
+   "pos_ic_rate": 0.661,
+   "net25": 0.0296,
+   "net50": 0.02778,
+   "avg_turnover": 0.3637,
+   "max_year_frac": 0.25,
+   "holdout_net25": 0.04151,
+   "abs_corr_vs_champion": 0.1186,
+   "adjusted_p": 3e-05
+  },
+  {
+   "candidate": "mom_6_1",
+   "neutralization": "sector_neutral",
+   "family": "MOMENTUM",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 6.817,
+   "adj_ic_t": 5.091,
+   "pos_ic_rate": 0.65,
+   "net25": 0.01804,
+   "net50": 0.01584,
+   "avg_turnover": 0.4418,
+   "max_year_frac": 0.397,
+   "holdout_net25": 0.01776,
+   "abs_corr_vs_champion": 0.1079,
+   "adjusted_p": 1e-05
+  },
+  {
+   "candidate": "lowvol_12m",
+   "neutralization": "sector_neutral",
+   "family": "LOW_VOLATILITY",
+   "status": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 7.387,
+   "adj_ic_t": 5.044,
+   "pos_ic_rate": 0.619,
+   "net25": 0.01985,
+   "net50": 0.01899,
+   "avg_turnover": 0.173,
+   "max_year_frac": 0.307,
+   "holdout_net25": 0.01774,
+   "abs_corr_vs_champion": 0.1492,
+   "adjusted_p": 2e-05
+  }
+ ],
+ "failed_hypotheses": [
+  {
+   "candidate": "mom_3_1",
+   "neutralization": "raw",
+   "family": "MOMENTUM",
+   "primary_horizon": "fwd_1m",
+   "ic_t": 2.55,
+   "net25": 0.00312,
+   "failure_class": "NO_EDGE",
+   "reasons": "WEAK_SPREAD_T(gross_t=1.52<2.0);FAILS_MULTIPLE_TESTING(adj_p=0.3845)"
+  },
+  {
+   "candidate": "mom_3_1",
+   "neutralization": "sector_neutral",
+   "family": "MOMENTUM",
+   "primary_horizon": "fwd_1m",
+   "ic_t": 3.193,
+   "net25": 0.00066,
+   "failure_class": "NO_EDGE",
+   "reasons": "WEAK_SPREAD_T(gross_t=1.14<2.0);YEAR_CONCENTRATION(1.212>0.4)"
+  },
+  {
+   "candidate": "rev_1m",
+   "neutralization": "raw",
+   "family": "SHORT_REVERSAL",
+   "primary_horizon": "fwd_1m",
+   "ic_t": 2.151,
+   "net25": 0.00156,
+   "failure_class": "NO_EDGE",
+   "reasons": "LOW_POS_IC_RATE(0.53<0.55);WEAK_SPREAD_T(gross_t=1.75<2.0);SUBPERIOD_SIGN(pre=0.01838,post=-0.02085);HOLDOUT_NET_NOT_POSITIVE(-0.01536);YEAR_CONCENTRATION(0.682>0.4);FAILS_MULTIPLE_TESTING(adj_p=1.0)"
+  },
+  {
+   "candidate": "rev_1m",
+   "neutralization": "sector_neutral",
+   "family": "SHORT_REVERSAL",
+   "primary_horizon": "fwd_1m",
+   "ic_t": 3.681,
+   "net25": 0.00416,
+   "failure_class": "NO_EDGE",
+   "reasons": "SUBPERIOD_SIGN(pre=0.0236,post=-0.02162);HOLDOUT_NET_NOT_POSITIVE(-0.01071)"
+  },
+  {
+   "candidate": "lowvol_12m",
+   "neutralization": "raw",
+   "family": "LOW_VOLATILITY",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 7.605,
+   "net25": 0.00479,
+   "failure_class": "NO_EDGE",
+   "reasons": "WEAK_SPREAD_T(gross_t=0.64<2.0);YEAR_CONCENTRATION(1.602>0.4)"
+  },
+  {
+   "candidate": "liquidity",
+   "neutralization": "raw",
+   "family": "LIQUIDITY",
+   "primary_horizon": "fwd_3m",
+   "ic_t": 8.063,
+   "net25": 0.00382,
+   "failure_class": "NO_EDGE",
+   "reasons": "WEAK_SPREAD_T(gross_t=1.08<2.0);YEAR_CONCENTRATION(1.023>0.4)"
+  },
+  {
+   "candidate": "liquidity",
+   "neutralization": "sector_neutral",
+   "family": "LIQUIDITY",
+   "primary_horizon": "fwd_3m",
+   "ic_t": -2.237,
+   "net25": -0.00221,
+   "failure_class": "NO_EDGE",
+   "reasons": "WEAK_ADJ_IC_T(t=-1.56<2.0);NEGATIVE_OR_ZERO_IC;LOW_POS_IC_RATE(0.48<0.55);NET25_NOT_POSITIVE(-0.00221);WEAK_SPREAD_T(gross_t=-0.38<2.0);SUBPERIOD_SIGN(pre=-0.01018,post=-0.02263);YEAR_CONCENTRATION(1.319>0.4);UNSTABLE_ROLLING_IC(frac_pos=0.353);FAILS_MULTIPLE_TESTING(adj_p=1.0)"
+  }
+ ],
+ "next_data_recommendation": [
+  {
+   "rank": 1,
+   "family": "analyst estimate revisions (PIT)",
+   "why": "strongest orthogonal fundamental family not owned at breadth; complements price momentum + value/quality."
+  },
+  {
+   "rank": 2,
+   "family": "survivorship-free DAILY total-return prices (Norgate daily)",
+   "why": "would let the daily reversal / gap_rev family be validated survivorship-free instead of weekly-proxy."
+  },
+  {
+   "rank": 3,
+   "family": "point-in-time short interest / days-to-cover at Russell breadth",
+   "why": "crowding / squeeze signals require broad PIT coverage currently absent."
+  }
+ ],
+ "safety": {
+  "research_only": true,
+  "paper_only": true,
+  "creates_orders": false,
+  "touches_broker": false,
+  "writes_database": false,
+  "mutates_positions": false,
+  "writes_trading_workflow": false,
+  "replaces_champion": false,
+  "promotes_to_live": false,
+  "runs_automation": false,
+  "calls_prediction_service": false,
+  "new_paid_data": false,
+  "live_trading_status": "NOT_APPROVED_FOR_LIVE_TRADING"
+ }
+}
