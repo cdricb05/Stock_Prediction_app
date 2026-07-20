@@ -1,0 +1,7 @@
+{
+ "engine_version": "p24.v1",
+ "daily_npz": "D:\\Stock_Prediction_app_data\\phase24_cache\\daily_panel\\russell1000_cp_daily.npz",
+ "cache_root": "D:\\Stock_Prediction_app_data\\phase24_cache",
+ "feature_build": "daily features rebuilt per run (deterministic); NPZ reused",
+ "n_experiments": 23
+}

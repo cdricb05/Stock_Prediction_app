@@ -1,0 +1,7 @@
+{
+ "member_symbol_days": 6596212,
+ "n_trading_days": 6674,
+ "price_coverage_fraction": 0.5409,
+ "pit_confidence": "HIGH: close known at t, forward from t+1, PIT membership as-of t, TR adjustment.",
+ "survivorship": "Universe = Russell 1000 Current & Past (delisted retained). Membership mask is PIT/survivorship-free. A fast alpha here is capacity-relevant (large-cap liquid)."
+}

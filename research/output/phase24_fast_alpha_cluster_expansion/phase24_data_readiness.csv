@@ -1,0 +1,7 @@
+family,frequency,source,readiness,note
+SHORT_REVERSAL,daily,"Norgate Russell 1000 C&P (owned, survivorship-free)",DATA_READY,"3076 securities, 2576 delisted/removed retained; PIT membership; TOTALRETURN"
+FAST_CONTINUATION,daily,same daily panel,DATA_READY,volume-confirmed drift
+FAST_LOW_VOL,daily,same daily panel,DATA_READY,risk control
+GAP_OVERNIGHT_REVERSAL,intraday,Norgate OHLC (open) not pulled,NORMALIZATION_REQUIRED,"owned Open/High/Low available via Norgate; needs intraday execution modeling, out of daily-close scope"
+EARNINGS_TIMING_DRIFT,event,no owned PIT earnings-date/surprise panel,PROVIDER_ENTITLEMENT_MISSING,lower-turnover fast family would need paid PIT event data (Phase 11/12 blocked)
+ANALYST_REVISIONS,event,no owned PIT revisions,PROVIDER_ENTITLEMENT_MISSING,paid PIT estimate revisions; not owned

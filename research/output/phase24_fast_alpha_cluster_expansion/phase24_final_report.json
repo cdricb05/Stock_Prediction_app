@@ -1,0 +1,180 @@
+{
+ "phase": "24",
+ "title": "Autonomous Fast-Alpha and Independent-Cluster Expansion",
+ "generated_at": "2026-07-20T17:38:13Z",
+ "engine_version": "p24.v1",
+ "terminal": {
+  "status": "FAST_ALPHA_INFORMATION_REAL_BUT_COST_KILLED",
+  "detail": "survivorship-free DAILY reversal information is decisive (best IC_t 8.371) but cost-killed: break-even 2.33bps << 25bps; no holding/band/event/liquidity construction lifts net25>0 with a positive untouched holdout. Best cost-viable near-miss rev21_r21 (break-even 39.4bps) fails robustness: HOLDOUT_NET25<=0(-0.002259);WF_POS_FOLDS<4(3);CONCENTRATED_YEAR(0.784);IC_NW_T<ADJ_BAR(1.898<5.5).",
+  "best_gross_signal": "rev1_r1",
+  "best_gross_ic_t": 8.371,
+  "best_turnover": 0.8461,
+  "breakeven_bps": 2.33,
+  "next_action": "A cost-viable fast alpha in liquid large-caps is not achievable from daily-close prices alone (reversal break-even 2-16bps at fast horizons). Precise next data/construction: (1) owned intraday/overnight OHLC to test open-to-close gap reversal with explicit execution modeling; or (2) a lower-turnover fast family driven by PIT event data (earnings-timing / filing drift), which requires a paid PIT entitlement not currently owned.",
+  "n_clusters": 3
+ },
+ "daily_panel": {
+  "source": "Norgate Data (owned, local NDU v1.0.74): US Equities + US Equities Delisted",
+  "entitlement": "reachable+entitled (databases include 'US Equities Delisted'); read-only; not upgraded",
+  "watchlist": "Russell 1000 Current & Past",
+  "index": "Russell 1000",
+  "adjustment": "TOTALRETURN (splits+dividends)",
+  "start_date": "2000-01-01",
+  "first_date": "2000-01-03",
+  "last_date": "2026-07-17",
+  "n_trading_days": 6674,
+  "securities_pulled": 3076,
+  "universe_current_past": 3597,
+  "current_members": 1021,
+  "delisted_or_removed": 2576,
+  "symbols_missing": 521,
+  "member_symbol_days": 6596212,
+  "price_coverage_fraction": 0.5409,
+  "symbol_mappings": "Norgate canonical tickers (delisted retained under Current & Past watchlist)",
+  "missingness": "NaN where a symbol had no listed price on a trading day (pre-listing/post-delisting)",
+  "survivorship_caveats": "Universe = Russell 1000 Current & Past (delisted retained). Membership mask is PIT/survivorship-free. A fast alpha here is capacity-relevant (large-cap liquid).",
+  "pit_confidence": "HIGH: close known at t, forward from t+1, PIT membership as-of t, TR adjustment.",
+  "npz_path": "D:\\Stock_Prediction_app_data\\phase24_cache\\daily_panel\\russell1000_cp_daily.npz",
+  "build_seconds": 90.4
+ },
+ "n_experiments": 23,
+ "n_survivors": 0,
+ "near_miss": {
+  "candidate": "rev21_r21",
+  "family": "SHORT_REVERSAL",
+  "signal": "ret_21",
+  "sign": -1,
+  "holding_days": 21,
+  "construction": "decile",
+  "treatment": "none",
+  "n": 315,
+  "ic_t": 1.817,
+  "ic_nw_t": 1.898,
+  "pos_ic_rate": 0.505,
+  "gross": 0.006759,
+  "net25": 0.00247,
+  "net50": -0.001819,
+  "net75": -0.006107,
+  "avg_turnover": 0.8578,
+  "breakeven_bps": 39.4,
+  "holdout_net25": -0.002259,
+  "pre2020_net25": 0.002758,
+  "post2020_net25": 0.00158,
+  "wf_pos_folds": 3,
+  "max_year_frac": 0.784,
+  "maxdd_net25": -0.63936,
+  "median_book_adv": 85186419.0,
+  "status": "REJECTED",
+  "reasons": "HOLDOUT_NET25<=0(-0.002259);WF_POS_FOLDS<4(3);CONCENTRATED_YEAR(0.784);IC_NW_T<ADJ_BAR(1.898<5.5)"
+ },
+ "existing_clusters": [
+  {
+   "cluster": "fundamental_slow",
+   "model": "composite_sn",
+   "horizon": "slow(63d)",
+   "evidence": {
+    "ic_nw_t": 2.93,
+    "net25": 0.0102
+   },
+   "source": "Phase 10-D/17-A committed; cited, not re-searched"
+  },
+  {
+   "cluster": "momentum_medium",
+   "model": "mom_6_1",
+   "horizon": "medium(63d)",
+   "evidence": {
+    "ic_nw_t": 4.96,
+    "net25": 0.0296,
+    "holdout_net25": 0.0415,
+    "corr_champ": 0.12
+   },
+   "source": "Phase 22/23 committed"
+  },
+  {
+   "cluster": "lowvol_medium",
+   "model": "lowvol_12m_sn",
+   "horizon": "medium(63d)",
+   "evidence": {
+    "note": "orthogonal vs momentum but regime-fragile; thin holdout"
+   },
+   "source": "Phase 23 committed"
+  }
+ ],
+ "new_validated_clusters": [],
+ "fast_info_clusters": [
+  [
+   "rev1_r1",
+   "rev1_r1_buf05",
+   "rev1_r1_buf10",
+   "rev1_r1_highliq",
+   "rev1_r1_secneu",
+   "rev1_r1_top50",
+   "rev1_r1_top100"
+  ],
+  [
+   "rev1_r2"
+  ],
+  [
+   "rev1_r3"
+  ],
+  [
+   "rev1_r5",
+   "rev1_r5_buf10",
+   "rev1_r5_highliq_buf10"
+  ],
+  [
+   "rev1_r1_extreme"
+  ],
+  [
+   "rev5_r5"
+  ],
+  [
+   "volconf_rev_r5"
+  ]
+ ],
+ "stage_timing": [
+  {
+   "stage": "LOAD_DAILY_PANEL",
+   "seconds": 0.765
+  },
+  {
+   "stage": "BUILD_DAILY_FEATURES",
+   "seconds": 4.426
+  },
+  {
+   "stage": "FAST_CAMPAIGN",
+   "seconds": 67.339
+  },
+  {
+   "stage": "CLUSTER",
+   "seconds": 0.207
+  }
+ ],
+ "resource": {
+  "engine_version": "p24.v1",
+  "cpu_count": 8,
+  "n_experiments": 23,
+  "n_survivors": 0,
+  "peak_working_set_mb": null,
+  "wall_seconds": 72.737
+ },
+ "ensemble": {
+  "status": "NOT_APPLICABLE",
+  "note": "No fast candidate qualified; a multi-horizon ensemble requires a validated fast alpha to combine with the slow/medium clusters (Workstream G precondition unmet)."
+ },
+ "safety": {
+  "research_only": true,
+  "paper_only": true,
+  "creates_orders": false,
+  "touches_broker": false,
+  "writes_database": false,
+  "mutates_positions": false,
+  "writes_trading_workflow": false,
+  "replaces_champion": false,
+  "promotes_to_live": false,
+  "runs_automation": false,
+  "calls_prediction_service": false,
+  "new_paid_data": false,
+  "live_trading_status": "NOT_APPROVED_FOR_LIVE_TRADING"
+ }
+}

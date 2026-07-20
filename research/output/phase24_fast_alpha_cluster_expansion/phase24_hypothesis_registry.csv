@@ -1,0 +1,6 @@
+key,family,mechanism,expected,turnover_prior,relationship
+short_reversal,SHORT_REVERSAL,Cross-sectional short-horizon price reversal (liquidity provision / overreaction).,"strong gross IC, high turnover; cost-viability is the open question",HIGH (~85% per rebalance at daily),the missing fast cluster
+reversal_lowturn,SHORT_REVERSAL,Reversal held multiple days / with a no-trade band to amortise cost.,"lower turnover, but reversal edge decays within the hold",MEDIUM,turnover-reduced reversal
+event_reversal,SHORT_REVERSAL,Reversal conditioned on abnormal moves / volume surges (stronger overreaction).,"higher edge per name but noisier, possibly higher turnover",HIGH,event-conditioned reversal
+short_continuation,FAST_CONTINUATION,Very short-horizon continuation / volume-confirmed drift.,weak in liquid large-caps (reversal dominates at this horizon),MEDIUM,candidate fast-continuation cluster
+fast_lowvol,FAST_LOW_VOL,Short-window low realized volatility (defensive rotation).,"beta-driven, not a standalone LS alpha",LOW,"risk control, expected non-alpha"

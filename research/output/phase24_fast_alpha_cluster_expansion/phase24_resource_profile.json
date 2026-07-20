@@ -1,0 +1,8 @@
+{
+ "engine_version": "p24.v1",
+ "cpu_count": 8,
+ "n_experiments": 23,
+ "n_survivors": 0,
+ "peak_working_set_mb": null,
+ "wall_seconds": 72.737
+}

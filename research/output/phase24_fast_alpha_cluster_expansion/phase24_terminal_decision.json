@@ -1,0 +1,10 @@
+{
+ "status": "FAST_ALPHA_INFORMATION_REAL_BUT_COST_KILLED",
+ "detail": "survivorship-free DAILY reversal information is decisive (best IC_t 8.371) but cost-killed: break-even 2.33bps << 25bps; no holding/band/event/liquidity construction lifts net25>0 with a positive untouched holdout. Best cost-viable near-miss rev21_r21 (break-even 39.4bps) fails robustness: HOLDOUT_NET25<=0(-0.002259);WF_POS_FOLDS<4(3);CONCENTRATED_YEAR(0.784);IC_NW_T<ADJ_BAR(1.898<5.5).",
+ "best_gross_signal": "rev1_r1",
+ "best_gross_ic_t": 8.371,
+ "best_turnover": 0.8461,
+ "breakeven_bps": 2.33,
+ "next_action": "A cost-viable fast alpha in liquid large-caps is not achievable from daily-close prices alone (reversal break-even 2-16bps at fast horizons). Precise next data/construction: (1) owned intraday/overnight OHLC to test open-to-close gap reversal with explicit execution modeling; or (2) a lower-turnover fast family driven by PIT event data (earnings-timing / filing drift), which requires a paid PIT entitlement not currently owned.",
+ "n_clusters": 3
+}

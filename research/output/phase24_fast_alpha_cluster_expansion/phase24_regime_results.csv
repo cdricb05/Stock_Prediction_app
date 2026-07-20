@@ -1,0 +1,17 @@
+candidate,regime,n,net25
+rev1_r1,bull,4609,-0.003892
+rev1_r1,bear,2063,-0.003712
+rev1_r1,highvol,3120,-0.003642
+rev1_r1,lowvol,3552,-0.004006
+rev1_r5,bull,912,-0.003048
+rev1_r5,bear,421,0.000749
+rev1_r5,highvol,630,0.000122
+rev1_r5,lowvol,703,-0.003615
+rev21_r21,bull,217,-0.006234
+rev21_r21,bear,98,0.021745
+rev21_r21,highvol,150,0.00909
+rev21_r21,lowvol,165,-0.003547
+mom126_21_r21,bull,215,0.012334
+mom126_21_r21,bear,95,-0.028208
+mom126_21_r21,highvol,146,-0.015922
+mom126_21_r21,lowvol,164,0.014005

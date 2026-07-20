@@ -1,0 +1,22 @@
+{
+ "probed_at": "2026-07-20T17:38:13Z",
+ "network_used": false,
+ "credentials_read": false,
+ "norgate": {
+  "service_reachable": true,
+  "databases_include_delisted": true,
+  "package": "norgatedata==1.0.74",
+  "installed_or_upgraded": false,
+  "read_only": true,
+  "note": "owned local Norgate Data Director; used read-only; NOT installed/upgraded"
+ },
+ "owned_daily_panel": true,
+ "blocked_paid": [
+  {
+   "family": "EARNINGS_TIMING/ANALYST_REVISIONS",
+   "provider": "Zacks/IBES-class PIT event data",
+   "status": "NOT_OWNED",
+   "note": "a lower-turnover fast family would need paid PIT event data"
+  }
+ ]
+}

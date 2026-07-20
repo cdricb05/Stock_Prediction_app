@@ -1,0 +1,4 @@
+family,frequency,readiness,source,note
+GAP_OVERNIGHT_REVERSAL,intraday,NORMALIZATION_REQUIRED,Norgate OHLC (open) not pulled,"owned Open/High/Low available via Norgate; needs intraday execution modeling, out of daily-close scope"
+EARNINGS_TIMING_DRIFT,event,PROVIDER_ENTITLEMENT_MISSING,no owned PIT earnings-date/surprise panel,lower-turnover fast family would need paid PIT event data (Phase 11/12 blocked)
+ANALYST_REVISIONS,event,PROVIDER_ENTITLEMENT_MISSING,no owned PIT revisions,paid PIT estimate revisions; not owned
