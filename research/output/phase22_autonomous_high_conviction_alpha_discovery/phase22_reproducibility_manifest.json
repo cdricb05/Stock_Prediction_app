@@ -3,6 +3,24 @@
  "python": "cpython (already-installed pandas+numpy; no scipy)",
  "deterministic": true,
  "seed": "n/a (no randomness)",
+ "pipeline_config_version": "p22.v2",
+ "pipeline_stages": [
+  "BUILD_PANEL",
+  "BUILD_SIGNAL_CACHE",
+  "RUN_PRIMARY_SCREEN",
+  "RUN_CHAMPION_CORRELATION",
+  "RUN_STRICT_VALIDATION",
+  "RUN_WEEKLY_REVERSAL_CHECK",
+  "RUN_ENSEMBLES",
+  "WRITE_FINAL_ARTIFACTS"
+ ],
+ "stage_cache": {
+  "dir": "D:\\Stock_Prediction_app_data\\phase22_cache",
+  "format": "pickle (no parquet engine installed)",
+  "keyed_by": "sha256(config_version + input file name/size/mtime)",
+  "resumable": true,
+  "idempotent": true
+ },
  "inputs": {
   "monthly_panel": "D:\\Stock_Prediction_app_data\\research_panels\\phase8c_russell3000",
   "weekly_grid": "D:\\Stock_Prediction_app_data\\research_panels\\phase8d_daily_conditional\\weekly_observation_grid.csv",
@@ -34,6 +52,13 @@
    "max_single_year_spread_frac": 0.4,
    "corr_champ_pref_max": 0.7,
    "multiple_testing_alpha": 0.05
+  },
+  "screen": {
+   "screen_ic_t_min": 1.0,
+   "min_indep_periods": 36,
+   "require_positive_mean_ic": true,
+   "require_positive_gross_spread": true,
+   "require_positive_net25": true
   },
   "candidates": [
    "mom_12_1",

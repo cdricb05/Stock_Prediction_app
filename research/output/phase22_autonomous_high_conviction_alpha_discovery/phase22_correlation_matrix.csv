@@ -10,4 +10,4 @@ rev_1m,sector_neutral,composite_sn,-0.0116,0.1155,120
 lowvol_12m,raw,composite_sn,-0.04,0.1091,120
 lowvol_12m,sector_neutral,composite_sn,0.071,0.1492,120
 liquidity,raw,composite_sn,0.0093,0.0918,120
-liquidity,sector_neutral,composite_sn,0.0916,0.1431,120
+liquidity,sector_neutral,composite_sn,,,0

@@ -1,0 +1,11 @@
+frequency,universe,survivorship,signal,horizon,ic_t,net25,verdict
+daily,phase7i current-members,BIASED,gap_rev (5d reversal),~5d,2.7296,0.004514,reference (survivorship-biased Phase 21 leaderboard)
+weekly,phase8d weekly grid,AWARE (delisted incl.),-ret_5,fwd_excess_5,5.993,,reversal SURVIVES delisted inclusion at short horizon
+weekly,phase8d weekly grid,AWARE (delisted incl.),-ret_1,fwd_excess_5,7.272,,reversal SURVIVES delisted inclusion at short horizon
+weekly,phase8d weekly grid,AWARE (delisted incl.),-ret_5,fwd_excess_10,5.176,,reversal SURVIVES delisted inclusion at short horizon
+weekly,phase8d weekly grid,AWARE (delisted incl.),-ret_20,fwd_excess_20,4.388,,reversal SURVIVES delisted inclusion at short horizon
+weekly,phase8d weekly grid,AWARE (delisted incl.),+ret_20,fwd_excess_20,-4.388,,weak
+weekly,phase8d weekly grid,AWARE (delisted incl.),-rv_20,fwd_excess_20,0.776,,weak
+monthly,phase8c Russell3000,FREE,rev_1m->fwd_1m,fwd_1m,2.151,0.00156,positive
+monthly,phase8c Russell3000,FREE,rev_1m->fwd_3m,fwd_3m,-0.933,-0.00924,fragile/insignificant
+monthly,phase8c Russell3000,FREE,rev_1m->fwd_6m,fwd_6m,-3.158,-0.022,negative (momentum dominates)

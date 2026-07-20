@@ -32,6 +32,4 @@ lowvol_12m,sector_neutral,fwd_6m,0.04049,0.03964,0.03878,0.1715
 liquidity,raw,fwd_1m,0.00126,0.00092,0.00058,0.0685
 liquidity,raw,fwd_3m,0.00416,0.00382,0.00348,0.0686
 liquidity,raw,fwd_6m,0.00627,0.00592,0.00558,0.0689
-liquidity,sector_neutral,fwd_1m,-0.00023,-0.00097,-0.00171,0.1482
 liquidity,sector_neutral,fwd_3m,-0.00147,-0.00221,-0.00294,0.1478
-liquidity,sector_neutral,fwd_6m,-0.0022,-0.00294,-0.00367,0.1476

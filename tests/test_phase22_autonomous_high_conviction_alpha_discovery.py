@@ -365,5 +365,210 @@ def test_real_data_momentum_survives_and_gap_rev_repaired(tmp_path):
     assert any(w["signal"].startswith("-ret_5") and w["ic_t"] > 2 for w in weekly)
     # writes exactly the documented artifact set to a tmp dir (no DB, no orders)
     written = M.write_artifacts(res, str(tmp_path / "out"))
-    assert len(written) == 25
+    assert len(written) == 32
     M.clear_cache()
+
+
+# --------------------------------------------------------------------------- #
+# Staged pipeline: cache fingerprinting / reuse / invalidation / equivalence.  #
+# --------------------------------------------------------------------------- #
+def test_fingerprint_deterministic_and_input_sensitive(tmp_path):
+    a = tmp_path / "f.csv"
+    a.write_text("x")
+    sig1 = M._file_sig(str(a))
+    assert set(sig1) == {"name", "size", "mtime"} and sig1["size"] == 1
+    fp1 = M._fingerprint(["v", sig1])
+    assert fp1 == M._fingerprint(["v", sig1])              # deterministic
+    a.write_text("xxxxx")                                  # size changes -> fingerprint must change
+    assert M._fingerprint(["v", M._file_sig(str(a))]) != fp1
+    assert M._file_sig(str(tmp_path / "absent.csv"))["size"] is None
+
+
+def test_stage_cache_reuse_and_invalidation(tmp_path):
+    M.clear_cache()
+    _write_panel(tmp_path / "p8c", n_months=84)
+    cache = str(tmp_path / "cache")
+    champ = str(tmp_path / "nope.csv")
+    r1 = M.build(panel_dir=str(tmp_path / "p8c"), champion_path=champ, run_weekly=False,
+                 cache_dir=cache, use_stage_cache=True)
+    st1 = {s["stage"]: s["cache_status"] for s in r1["stage_timing"]}
+    assert st1["BUILD_PANEL"] == "miss" and st1["BUILD_SIGNAL_CACHE"] == "miss"
+    M.clear_cache()
+    r2 = M.build(panel_dir=str(tmp_path / "p8c"), champion_path=champ, run_weekly=False,
+                 cache_dir=cache, use_stage_cache=True)
+    st2 = {s["stage"]: s["cache_status"] for s in r2["stage_timing"]}
+    assert st2["BUILD_PANEL"] == "hit" and st2["BUILD_SIGNAL_CACHE"] == "hit"     # reuse
+    # changing an input (different #tickers -> different file size) invalidates the fingerprint
+    M.clear_cache()
+    _write_panel(tmp_path / "p8c", n_months=84, n_tickers=48)
+    r3 = M.build(panel_dir=str(tmp_path / "p8c"), champion_path=champ, run_weekly=False,
+                 cache_dir=cache, use_stage_cache=True)
+    st3 = {s["stage"]: s["cache_status"] for s in r3["stage_timing"]}
+    assert st3["BUILD_PANEL"] == "miss"                    # input changed -> recomputed
+
+
+def test_staged_output_equivalence_cache_on_vs_off(tmp_path):
+    M.clear_cache()
+    _write_panel(tmp_path / "p8c", n_months=84)
+    champ = str(tmp_path / "nope.csv")
+    cache = str(tmp_path / "cache")
+    r_off = M.build(panel_dir=str(tmp_path / "p8c"), champion_path=champ, run_weekly=False)
+    M.clear_cache()
+    M.build(panel_dir=str(tmp_path / "p8c"), champion_path=champ, run_weekly=False,
+            cache_dir=cache, use_stage_cache=True)                        # writes cache (miss)
+    M.clear_cache()
+    r_hit = M.build(panel_dir=str(tmp_path / "p8c"), champion_path=champ, run_weekly=False,
+                    cache_dir=cache, use_stage_cache=True)                # reads cache (hit)
+    assert r_off["terminal"]["decision"] == r_hit["terminal"]["decision"]
+    assert r_off["horizon_metrics"] == r_hit["horizon_metrics"]          # caching never changes numbers
+    assert r_off["primary_screen"] == r_hit["primary_screen"]
+
+
+def test_rank_cache_equivalence_and_hits(panel):
+    p, _ = panel
+    sig = M.build_signals(p)
+    fwd = M.build_forwards(p)
+    valid = M.base_valid_mask(p)
+    ic0, n0 = M._row_ic(sig["mom_12_1"], fwd["fwd_3m"], valid)            # direct
+    cache = M._new_ic_cache()
+    ic1, n1 = M._row_ic(sig["mom_12_1"], fwd["fwd_3m"], valid, cache=cache)   # miss
+    ic2, n2 = M._row_ic(sig["mom_12_1"], fwd["fwd_3m"], valid, cache=cache)   # hit
+    assert np.allclose(np.nan_to_num(ic0, nan=-9), np.nan_to_num(ic1, nan=-9))
+    assert np.allclose(np.nan_to_num(ic1, nan=-9), np.nan_to_num(ic2, nan=-9))
+    assert (n0 == n1).all() and (n1 == n2).all()
+    # decile books share the same identity cache under a distinct namespace
+    b1 = M._decile_books(sig["mom_12_1"], fwd["fwd_3m"], valid, cache=cache)
+    b2 = M._decile_books(sig["mom_12_1"], fwd["fwd_3m"], valid, cache=cache)
+    assert b1["gross"] == b2["gross"]
+    assert cache["_stats"]["hits"] == 2 and cache["_stats"]["misses"] == 2
+
+
+# --------------------------------------------------------------------------- #
+# Funnel behavior: screen loose-ness invariant + strict-only-on-survivors.     #
+# --------------------------------------------------------------------------- #
+def test_screen_uses_max_abs_t_and_positive_edge():
+    def ev(ic_t, ic_nw_t, net25=0.01, spread=0.01, mean_ic=0.02):
+        return dict(full=dict(n_months=100, mean_ic=mean_ic, ic_t=ic_t, ic_nw_t=ic_nw_t,
+                              gross_spread=spread, net25=net25, net50=net25 - 0.002, pos_ic_rate=0.6),
+                    pre2020=dict(mean_ic=0.02), post2020=dict(mean_ic=0.02), avg_turnover=0.3)
+    assert M.screen_pass(ev(1.3, 0.4))[0] is True          # screen_t = max(1.3,0.4) >= 1.0
+    assert M.screen_pass(ev(0.4, 1.5))[0] is True          # NW leg can carry it (never too tight)
+    ok, reasons = M.screen_pass(ev(0.5, 0.4))
+    assert ok is False and any("WEAK_IC_T" in r for r in reasons)
+    assert M.screen_pass(ev(3.0, 3.0, net25=-0.01))[0] is False   # negative net is screened out
+    assert M.screen_pass(ev(3.0, 3.0, mean_ic=-0.01))[0] is False
+
+
+def test_screen_never_drops_a_gate_eligible_candidate(synthetic_build):
+    # invariant: every STRONG/ORTHOGONAL candidate must have been a Pass-1 survivor
+    res, _ = synthetic_build
+    survivors = set(res["survivors"])
+    for (key, neutral), cr in res["candidates"].items():
+        if cr["gate"]["status"] in ("STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
+                                    "ORTHOGONAL_ALPHA_RESEARCH_ELIGIBLE"):
+            assert f"{key}:{neutral}" in survivors
+            assert not cr["screened_out"]
+
+
+def test_strict_battery_runs_only_on_survivors(synthetic_build):
+    res, _ = synthetic_build
+    n_screened = sum(1 for cr in res["candidates"].values() if cr["screened_out"])
+    n_surv = sum(1 for cr in res["candidates"].values() if not cr["screened_out"])
+    assert n_screened >= 1 and n_surv >= 1                 # the funnel actually splits the grid
+    for (key, neutral), cr in res["candidates"].items():
+        if cr["screened_out"]:
+            assert cr["gate"]["status"] == "REJECTED"
+            assert cr["packaged"]["stability"]["frac_positive_windows"] is None   # no rolling battery
+            assert cr["corr"]["mean_corr"] is None                                # no champion corr
+            assert list(cr["per_horizon"].keys()) == [cr["primary_horizon"]]      # primary horizon only
+        else:
+            assert set(cr["per_horizon"].keys()) == set(M.HORIZONS)               # full multi-horizon
+
+
+def test_screened_out_candidate_still_reported(synthetic_build):
+    res, _ = synthetic_build
+    screen_rows = {(r["candidate"], r["neutralization"]): r for r in res["primary_screen"]}
+    assert len(screen_rows) == len(M.CANDIDATES) * len(M.NEUTRALIZATIONS)         # every candidate listed
+    rej = M._rejection_rows(res)
+    assert len(rej) >= 1
+
+
+# --------------------------------------------------------------------------- #
+# Champion-universe restriction + ensemble common-universe enforcement.        #
+# --------------------------------------------------------------------------- #
+def test_champion_correlation_restricted_to_champion_universe(tmp_path, monkeypatch):
+    M.clear_cache()
+    info = _write_panel(tmp_path / "p8c", n_tickers=48, n_months=84)
+    # champion covers only 30 of the 48 tickers -> correlation is computed over the shared subset only
+    champ_path = str(tmp_path / "champ.csv")
+    _write_champion(champ_path, info["tickers"][:30], info["dates"])
+    p = M.load_monthly_panel(str(tmp_path / "p8c"), use_cache=False)
+    sig = M.build_signals(p)
+    valid = M.base_valid_mask(p)
+    champ = M.load_champion_month_map(champ_path)
+    assert len(M.champion_universe(champ)) == 30                  # strict subset of the 48-name panel
+    corr = M.champion_correlation(sig["mom_12_1"], valid, champ)
+    assert corr["n_months"] > 0 and corr["mean_corr"] is not None
+
+
+def test_common_universe_ensemble_enforces_shared_universe(synthetic_build):
+    res, _ = synthetic_build
+    rows = res["common_universe_ensemble"]
+    assert rows, "champion present -> ensemble rows expected"
+    labels = [r["blend"] for r in rows]
+    assert "champion_only" in labels                       # baseline on the same intersection
+    nmonths = {r["n_months"] for r in rows}
+    assert len(nmonths) == 1                               # all blends use identical shared dates
+    for r in rows:
+        assert r["avg_shared_names"] and r["avg_shared_names"] > 0
+    base = [r for r in rows if r["blend"] == "champion_only"][0]
+    assert base["holdout_lift_vs_champ_only"] == 0.0       # baseline lifts vs itself by zero
+
+
+# --------------------------------------------------------------------------- #
+# Delisted inclusion + holdout untouched + safety (no orders/db/network).      #
+# --------------------------------------------------------------------------- #
+def test_delisted_name_included_while_member(tmp_path):
+    M.clear_cache()
+    _write_panel(tmp_path / "p8c", n_tickers=40, n_months=84)
+    # ticker 0 is a member for the first 40 months, then delists (membership -> 0)
+    mem = pd.read_csv(tmp_path / "p8c" / "membership_panel.csv", index_col="Date", parse_dates=["Date"])
+    mem.iloc[40:, 0] = 0.0
+    mem.to_csv(tmp_path / "p8c" / "membership_panel.csv")
+    meta = pd.read_csv(tmp_path / "p8c" / "metadata.csv")
+    meta.loc[0, "is_delisted"] = True
+    meta.to_csv(tmp_path / "p8c" / "metadata.csv", index=False)
+    p = M.load_monthly_panel(str(tmp_path / "p8c"), use_cache=False)
+    valid = M.base_valid_mask(p)
+    assert bool(valid.iloc[30, 0]) is True                 # INCLUDED while it was a member
+    assert bool(valid.iloc[60, 0]) is False                # excluded only after it delisted
+
+
+def test_holdout_is_the_untouched_tail_and_disjoint(tmp_path):
+    M.clear_cache()
+    info = _write_panel(tmp_path / "p8c", n_months=140)
+    p = M.load_monthly_panel(str(tmp_path / "p8c"), use_cache=False)
+    sl = M._slice_indices(p["months"])
+    months = list(p["months"])
+    assert sl["holdout"] == set(months[-M.HOLDOUT_MONTHS:])          # last HOLDOUT_MONTHS only
+    assert not (sl["holdout"] & sl["dev"]) and not (sl["holdout"] & sl["val"])   # disjoint from dev/val
+    assert not (sl["dev"] & sl["val"])
+
+
+def test_no_network_or_db_imports_in_runner():
+    import inspect
+    src = inspect.getsource(M)
+    for forbidden in ("import requests", "import socket", "import psycopg2", "sqlalchemy",
+                      "urllib.request", "boto3", "subprocess"):
+        assert forbidden not in src, f"runner must not reference {forbidden}"
+
+
+def test_safety_block_and_manifest_flags(synthetic_build):
+    res, _ = synthetic_build
+    man = M._cache_manifest(res)
+    assert man["pipeline_config_version"] == M.PIPELINE_CONFIG_VERSION
+    assert man["ic_cache_stats"]["hits"] >= 0
+    sb = M.SAFETY_BLOCK()
+    for k in ("creates_orders", "touches_broker", "writes_database", "mutates_positions",
+              "replaces_champion", "promotes_to_live", "runs_automation", "new_paid_data"):
+        assert sb[k] is False

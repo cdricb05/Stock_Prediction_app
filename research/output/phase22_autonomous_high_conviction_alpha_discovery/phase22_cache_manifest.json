@@ -1,0 +1,97 @@
+{
+ "pipeline_config_version": "p22.v2",
+ "stages": [
+  {
+   "stage": "BUILD_PANEL",
+   "cache_status": "hit",
+   "fingerprint": "8dcc95a8e22ed2f2",
+   "cache_file": "build_panel.8dcc95a8e22ed2f2.pkl",
+   "n_inputs": 5
+  },
+  {
+   "stage": "BUILD_SIGNAL_CACHE",
+   "cache_status": "hit",
+   "fingerprint": "86826c5f14072d72",
+   "cache_file": "build_signals.86826c5f14072d72.pkl",
+   "n_inputs": 1
+  },
+  {
+   "stage": "RUN_PRIMARY_SCREEN",
+   "cache_status": "computed",
+   "fingerprint": null,
+   "cache_file": null,
+   "n_inputs": 0
+  },
+  {
+   "stage": "RUN_CHAMPION_CORRELATION",
+   "cache_status": "computed",
+   "fingerprint": null,
+   "cache_file": null,
+   "n_inputs": 0
+  },
+  {
+   "stage": "RUN_STRICT_VALIDATION",
+   "cache_status": "computed",
+   "fingerprint": null,
+   "cache_file": null,
+   "n_inputs": 0
+  },
+  {
+   "stage": "RUN_WEEKLY_REVERSAL_CHECK",
+   "cache_status": "computed",
+   "fingerprint": null,
+   "cache_file": null,
+   "n_inputs": 0
+  },
+  {
+   "stage": "RUN_ENSEMBLES",
+   "cache_status": "computed",
+   "fingerprint": null,
+   "cache_file": null,
+   "n_inputs": 0
+  }
+ ],
+ "stage_timing": [
+  {
+   "stage": "BUILD_PANEL",
+   "seconds": 0.562,
+   "cache_status": "hit"
+  },
+  {
+   "stage": "BUILD_SIGNAL_CACHE",
+   "seconds": 6.962,
+   "cache_status": "hit"
+  },
+  {
+   "stage": "RUN_PRIMARY_SCREEN",
+   "seconds": 11.894,
+   "cache_status": "computed"
+  },
+  {
+   "stage": "RUN_CHAMPION_CORRELATION",
+   "seconds": 0.572,
+   "cache_status": "computed"
+  },
+  {
+   "stage": "RUN_STRICT_VALIDATION",
+   "seconds": 43.872,
+   "cache_status": "computed"
+  },
+  {
+   "stage": "RUN_WEEKLY_REVERSAL_CHECK",
+   "seconds": 11.906,
+   "cache_status": "computed"
+  },
+  {
+   "stage": "RUN_ENSEMBLES",
+   "seconds": 0.777,
+   "cache_status": "computed"
+  }
+ ],
+ "ic_cache_stats": {
+  "hits": 32,
+  "misses": 97
+ },
+ "total_seconds": 76.545,
+ "note": "BUILD_PANEL / BUILD_SIGNAL_CACHE are disk-persisted (pickle) and keyed by an input+config fingerprint; a rerun with unchanged inputs reports cache_status=hit. In-process ic_cache memoizes _row_ic / _decile_books so no (signal,forward,mask) triple is computed twice."
+}

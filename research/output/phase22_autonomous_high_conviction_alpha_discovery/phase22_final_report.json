@@ -1,6 +1,6 @@
 {
  "phase": "22",
- "built_at": "2026-07-20T03:03:29Z",
+ "built_at": "2026-07-20T11:53:22Z",
  "terminal_decision": "STRONG_ALPHA_PAPER_CHALLENGER_ELIGIBLE",
  "panel_summary": {
   "source": "phase8c_russell3000 (Norgate Russell 3000 Current & Past, total-return)",
@@ -131,34 +131,34 @@
   {
    "weight": "champ0.7_cand0.3",
    "n_months": 118,
-   "full_gross": 0.01391,
-   "full_t": 1.175,
-   "holdout_gross": 0.00579,
-   "holdout_t": 0.268
+   "full_gross": 0.01333,
+   "full_t": 1.14,
+   "holdout_gross": 0.00435,
+   "holdout_t": 0.206
   },
   {
    "weight": "champ0.5_cand0.5",
    "n_months": 118,
-   "full_gross": 0.01906,
-   "full_t": 1.639,
-   "holdout_gross": 0.02708,
-   "holdout_t": 1.377
+   "full_gross": 0.01909,
+   "full_t": 1.673,
+   "holdout_gross": 0.01572,
+   "holdout_t": 0.76
   },
   {
    "weight": "champ0.3_cand0.7",
    "n_months": 118,
-   "full_gross": 0.01687,
-   "full_t": 1.402,
-   "holdout_gross": 0.03531,
-   "holdout_t": 1.727
+   "full_gross": 0.02343,
+   "full_t": 1.976,
+   "holdout_gross": 0.02613,
+   "holdout_t": 1.272
   },
   {
    "weight": "champion_only",
    "n_months": 118,
-   "full_gross": 0.01118,
-   "full_t": 0.985,
-   "holdout_gross": 0.00073,
-   "holdout_t": 0.037
+   "full_gross": 0.00907,
+   "full_t": 0.801,
+   "holdout_gross": 0.00189,
+   "holdout_t": 0.095
   }
  ],
  "assumptions": [
@@ -328,7 +328,7 @@
    "ic_t": -2.237,
    "net25": -0.00221,
    "failure_class": "NO_EDGE",
-   "reasons": "WEAK_ADJ_IC_T(t=-1.56<2.0);NEGATIVE_OR_ZERO_IC;LOW_POS_IC_RATE(0.48<0.55);NET25_NOT_POSITIVE(-0.00221);WEAK_SPREAD_T(gross_t=-0.38<2.0);SUBPERIOD_SIGN(pre=-0.01018,post=-0.02263);YEAR_CONCENTRATION(1.319>0.4);UNSTABLE_ROLLING_IC(frac_pos=0.353);FAILS_MULTIPLE_TESTING(adj_p=1.0)"
+   "reasons": "SCREENED_OUT_PASS1(NONPOSITIVE_IC(-0.01239);NONPOSITIVE_SPREAD(-0.00147);NONPOSITIVE_NET25(-0.00221));WEAK_ADJ_IC_T(t=-1.56<2.0);NEGATIVE_OR_ZERO_IC;LOW_POS_IC_RATE(0.48<0.55);NET25_NOT_POSITIVE(-0.00221);WEAK_SPREAD_T(gross_t=-0.38<2.0);SUBPERIOD_SIGN(pre=-0.01018,post=-0.02263);YEAR_CONCENTRATION(1.319>0.4);FAILS_MULTIPLE_TESTING(adj_p=1.0)"
   }
  ],
  "next_data_recommendation": [

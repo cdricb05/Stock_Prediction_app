@@ -1,0 +1,4 @@
+blend,n_months,avg_shared_names,full_gross,full_t,holdout_gross,holdout_t,holdout_lift_vs_champ_only
+champion_only,118,145.7,0.00907,0.801,0.00189,0.095,0.0
+champ0.7_mom0.3,118,145.7,0.01333,1.14,0.00435,0.206,0.00246
+champ0.5_mom0.5,118,145.7,0.01909,1.673,0.01572,0.76,0.01383
