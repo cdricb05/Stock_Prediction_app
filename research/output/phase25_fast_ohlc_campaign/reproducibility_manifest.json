@@ -1,0 +1,40 @@
+{
+ "engine_version": "p25.v1",
+ "built_at": "2026-07-20T20:27:08Z",
+ "panel_npz": "D:\\Stock_Prediction_app_data\\phase25_fast_ohlc\\ohlc_panel\\russell1000_cp_ohlc.npz",
+ "panel_manifest": {
+  "source": "Norgate Data (owned, local NDU v1.0.74): US Equities + US Equities Delisted",
+  "entitlement": "reachable+entitled (databases include 'US Equities Delisted'); read-only; not upgraded",
+  "watchlist": "Russell 1000 Current & Past",
+  "index": "Russell 1000",
+  "adjustment": "TOTALRETURN (splits+dividends) on O/H/L/C",
+  "fields": "open,high,low,close,dvol(dollar volume),member(PIT)",
+  "start_date": "2000-01-01",
+  "first_date": "2000-01-03",
+  "last_date": "2026-07-17",
+  "n_trading_days": 6674,
+  "securities_pulled": 3076,
+  "universe_current_past": 3597,
+  "current_members": 1021,
+  "delisted_or_removed": 2576,
+  "symbols_missing": 521,
+  "member_symbol_days": 6596212,
+  "price_coverage_fraction": 0.5409,
+  "ohlc_consistency_fraction": 0.999999,
+  "symbol_mappings": "Norgate canonical tickers (delisted retained under Current & Past watchlist)",
+  "missingness": "NaN where a symbol had no listed bar on a trading day (pre-listing/post-delisting)",
+  "survivorship_caveats": "Universe = Russell 1000 Current & Past (delisted retained). Membership mask is PIT/survivorship-free. Capacity-relevant (large-cap liquid).",
+  "pit_confidence": "HIGH: OHLC of t known after t's close; forward from t+1 (or t's own exec price per executable-timing rules); PIT membership as-of t; TR adjustment.",
+  "npz_path": "D:\\Stock_Prediction_app_data\\phase25_fast_ohlc\\ohlc_panel\\russell1000_cp_ohlc.npz",
+  "build_seconds": 143.9
+ },
+ "code": [
+  "research/phase25_ohlc_panel.py",
+  "research/phase25_fast_ohlc_engine.py",
+  "research/run_phase25_fast_ohlc_campaign.py"
+ ],
+ "reproduce": "python -m research.run_phase25_fast_ohlc_campaign",
+ "battery": "phase24_fast_engine.evaluate_metrics reused verbatim + slippage stress",
+ "cost_model": "net = gross - 2*cost*turnover (25/50/75bps); slip stress +10bps/side for T2/T3; never weakened",
+ "elapsed_seconds": 126.5
+}

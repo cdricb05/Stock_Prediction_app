@@ -1,0 +1,9 @@
+key,family,mechanism,expected,turnover_prior,relationship
+gap_reversal,OVERNIGHT_GAP_REVERSAL,Overnight gaps overshoot (illiquid auction pricing); intraday session fades them.,strong gross IC; full daily round-trip so cost bar is very high,FULL (1.0/day),genuinely new (needs Open; Phase 24 could not test)
+gap_continuation,OVERNIGHT_GAP_CONTINUATION,Informative (news-driven) gaps continue in the following sessions (PEAD-like drift).,weaker but lower-frequency; volume confirmation should matter,MEDIUM,candidate new fast-drift cluster
+overnight_drift,INTRADAY_TO_OVERNIGHT,Intraday winners/losers drift or revert over the following night (flow imbalance at close).,small per-period edge; full nightly round trip,FULL (1.0/night),new overnight-session mechanism
+close_location,CLOSE_LOCATION,Close near the high/low of the day's range signals auction pressure that spills into the next session(s).,modest continuation short-term,HIGH,bar-shape mechanism
+shock_recovery,MULTI_DAY_SHOCK_RECOVERY,Multi-day standardized shocks recover over the next days (next-open executable).,reversal-family economics but event-gated at longer horizon,MEDIUM-HIGH,event-gated cousin of the Phase 24 reversal (executable timing differs)
+compression_breakout,VOL_COMPRESSION_BREAKOUT,Range compression then a close above the prior 5d high starts a short trend leg.,"low-frequency, medium turnover; capacity-friendly",MEDIUM,candidate new range/trend cluster
+range_expansion,RANGE_EXPANSION_CONTINUATION,Directional wide-range days with volume confirmation continue for 1-2 sessions.,high turnover; continuation vs reversal contest,HIGH,bar-shape event mechanism
+vol_accel,VOL_ACCELERATION,Short-run realized-vol acceleration mean-reverts (fade names whose vol just spiked).,overlaps low-vol cluster at faster horizon,MEDIUM,fast diagnostic cousin of the low-vol cluster

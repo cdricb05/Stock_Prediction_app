@@ -1,0 +1,38 @@
+{
+ "phase": "25",
+ "decided_at": "2026-07-20T20:27:08Z",
+ "decision": "FAST_OHLC_INFORMATION_REAL_BUT_NOT_TRADABLE",
+ "detail": {
+  "best_mechanism": "gapfade_oc_z",
+  "hypothesis": "gap_reversal",
+  "timing": "T2",
+  "ic_nw_t": 46.962,
+  "gross": 0.003606,
+  "net25": -0.001394,
+  "avg_turnover": 1.0,
+  "breakeven_bps": 18.03,
+  "binding_failure": "NET25<=0(-0.001394);HOLDOUT_NET25<=0(-0.003922);BREAKEVEN<25bps(18.03)"
+ },
+ "gate": {
+  "ic_nw_t_min": 3.0,
+  "net25_min": 0.0,
+  "holdout_net25_min": 0.0,
+  "breakeven_bps_min": 25.0,
+  "wf_pos_folds_min": 4,
+  "max_year_frac_max": 0.6,
+  "subperiod_both_positive": true,
+  "slip_stress_required_for": [
+   "T2",
+   "T3"
+  ],
+  "min_rebalances": 100,
+  "min_book_adv": 10000000.0
+ },
+ "n_experiments": 27,
+ "existing_clusters_retained": [
+  "fundamental_slow",
+  "momentum_medium",
+  "lowvol_medium",
+  "fast_reversal_information_only"
+ ]
+}

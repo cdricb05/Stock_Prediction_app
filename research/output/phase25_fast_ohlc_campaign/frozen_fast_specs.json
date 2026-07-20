@@ -1,0 +1,8 @@
+{
+ "phase": "25",
+ "qualified": false,
+ "terminal": "FAST_OHLC_INFORMATION_REAL_BUT_NOT_TRADABLE",
+ "frozen_specs": [],
+ "cost_model_never_weakened": true,
+ "note": "A fast sleeve in Paper Trader activates ONLY when qualified=true. No qualification -> the sleeve stays inactive (NO_VALIDATED_FAST_ALPHA)."
+}

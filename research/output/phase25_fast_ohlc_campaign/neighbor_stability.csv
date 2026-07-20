@@ -1,0 +1,9 @@
+hypothesis,n_variants,n_net25_positive,sign_stable,variants
+gap_reversal,8,1,False,gapfade_oc_raw;gapfade_oc_resid;gapfade_oc_z;gapfade_oc_extreme;gapfade_oc_secneu;gapfade_oc_highliq;gapfade_oc_volconf;gapfade_next_noc
+gap_continuation,4,0,True,gapcont_oo1;gapcont_oo2;gapcont_oo5;gapcont_volconf_oo5
+overnight_drift,4,0,True,overnight_rev;overnight_cont;overnight_cloc;overnight_cont_highliq
+close_location,2,0,True,cloc_cont_noc;cloc_rev_oo5
+shock_recovery,2,0,True,shockrec_oo3;shockrec_volconf_oo5
+compression_breakout,4,0,True,breakout5_oo5;breakout5_compress_oo5;breakout5_inside_oo5;breakout5_oo10
+range_expansion,1,0,True,rangeexp_cont_oo2
+vol_accel,1,0,True,rvaccel_rev_oo5
