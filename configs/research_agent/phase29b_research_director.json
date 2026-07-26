@@ -1,0 +1,74 @@
+{
+ "schema_version": "29B.1",
+ "name": "phase29b_research_director",
+ "objective": "Identify bounded, point-in-time-safe FEATURE hypotheses that could materially improve cross-sectional rank-IC stability beyond the exhausted fundamental/momentum blend family. The Phase 29A.3 campaign proved that no portfolio-level knob (blend weight, book size, sector treatment, exit buffer, or their combinations) moves monthly rank-IC; only signal-level construction can. Hypotheses must be expressed in the strict declarative feature DSL over owned point-in-time fields, and every proposal must carry a falsification condition and an explicit leakage analysis.",
+ "primary_target": {
+  "metrics": ["rank_ic_mean", "rank_ic_t"],
+  "direction": "increase",
+  "notes": "the strict shadow gate requires rank-IC t evidence (2.0 standard) that the current signal set cannot supply (baseline t ~0.79, retained candidates 0.61-1.03)"
+ },
+ "secondary_constraints": [
+  "preserve positive cost-adjusted SPY excess across the 12.5/25/50 bps ladder",
+  "avoid excessive turnover (do not degrade materially vs the baseline)",
+  "avoid sector concentration (the hard gate that killed 40/59 Phase 29A.3 cells)",
+  "retain subperiod and regime stability (no single-subperiod artifacts)",
+  "do not degrade max drawdown materially"
+ ],
+ "exhausted_dimensions": [
+  {
+   "family": "fundamental_momentum_blend_v1",
+   "axis": "blend_weights_simple",
+   "signature": "portfolio:blend_weights_simple_30_70_to_70_30",
+   "evidence": "simple 30/70 through 70/30 blend changes are exhausted (Phase 29A.3, 59/59 cells, 0 shadow-eligible)"
+  },
+  {
+   "family": "fundamental_momentum_blend_v1",
+   "axis": "top25_vs_top50_alone",
+   "signature": "portfolio:top25_vs_top50_alone",
+   "evidence": "Top-25 versus Top-50 alone is exhausted; Top-50 rejected on materially worse net excess"
+  },
+  {
+   "family": "fundamental_momentum_blend_v1",
+   "axis": "sector_treatment_alone",
+   "signature": "portfolio:sector_treatment_alone",
+   "evidence": "raw/capped/neutral alone is exhausted; raw and sector_neutral breach the sector_concentration hard gate"
+  },
+  {
+   "family": "fundamental_momentum_blend_v1",
+   "axis": "exit_buffer_alone",
+   "signature": "portfolio:exit_buffer_alone",
+   "evidence": "0% versus 20% buffer alone is exhausted; the buffer improves turnover but adds no alpha"
+  },
+  {
+   "family": "fundamental_momentum_blend_v1",
+   "axis": "phase29a3_combined_grid",
+   "signature": "portfolio:phase29a3_combined_grid",
+   "evidence": "every direct combination already covered by the Phase 29A.3 59-cell grid is exhausted"
+  }
+ ],
+ "budgets": {
+  "max_proposed_hypotheses": 12,
+  "max_accepted_hypotheses": 6,
+  "max_primary_experiments": 24,
+  "max_feature_depth": 3,
+  "max_interactions": 4,
+  "max_robustness_candidates": 4,
+  "max_registered_challengers": 2,
+  "max_retry_per_tool": 1
+ },
+ "provider": {
+  "default": "fixture",
+  "fixture": {
+   "n_proposals": 3
+  },
+  "claude_cli": {
+   "timeout_seconds": 180
+  }
+ },
+ "strict_mode": true,
+ "safety": {
+  "no_operational_promotion": true,
+  "fixture_provider_may_register_challengers": false,
+  "notes": "the director layer has no challenger-registration capability at all; registration belongs to the deterministic campaign controller behind the strict, unlowered SHADOW_ELIGIBLE gates plus explicit human approval"
+ }
+}

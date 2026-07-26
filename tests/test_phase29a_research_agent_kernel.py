@@ -699,12 +699,46 @@ class TestTools:
                      "Popen(", "import requests", "import urllib",
                      "urllib.request", "http://", "https://",
                      "ib_insync", "alpaca", "create_order(")
+        # Phase 29B: director_provider.py is the ONE authorized subprocess
+        # user (fixed executable, fixed argument vector, shell=False,
+        # enforced timeout — properties its own Phase 29B tests assert).
+        # Only the import-subprocess tokens are relaxed for that single
+        # file; every other token (network, brokers, os.system, Popen)
+        # still applies to it, and every other file keeps the full ban.
+        subprocess_tokens = ("import subprocess", "from subprocess")
+        authorized_subprocess_file = "director_provider.py"
         for fname in sorted(os.listdir(pkg_dir)):
             if not fname.endswith(".py"):
                 continue
             src = open(os.path.join(pkg_dir, fname), "r", encoding="utf-8").read()
             for tok in forbidden:
+                if fname == authorized_subprocess_file and tok in subprocess_tokens:
+                    continue
                 assert tok not in src, "%s contains %s" % (fname, tok)
+        # the authorized exception is itself constrained: every subprocess
+        # call site must be subprocess.run with an explicit shell=False
+        import ast
+
+        src = open(os.path.join(pkg_dir, authorized_subprocess_file),
+                   "r", encoding="utf-8").read()
+        run_calls = [
+            node for node in ast.walk(ast.parse(src))
+            if isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Attribute)
+            and node.func.attr == "run"
+            and isinstance(node.func.value, ast.Name)
+            and node.func.value.id == "subprocess"
+        ]
+        assert run_calls, "expected at least one subprocess.run call site"
+        for call in run_calls:
+            shell_kw = [kw for kw in call.keywords if kw.arg == "shell"]
+            assert shell_kw, (
+                "subprocess.run at line %d of %s must pass an explicit "
+                "shell=False" % (call.lineno, authorized_subprocess_file))
+            assert (isinstance(shell_kw[0].value, ast.Constant)
+                    and shell_kw[0].value.value is False), (
+                "subprocess.run at line %d of %s must pass shell=False"
+                % (call.lineno, authorized_subprocess_file))
 
 
 # =========================================================================== #

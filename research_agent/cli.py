@@ -15,6 +15,12 @@ Phase 29A.2: --max-experiments on run/resume limits ONE invocation; the
 campaign pauses (resumable) at the limit instead of completing. `finalize`
 is the only way to COMPLETE a campaign that still has supported planned
 work, and it requires an explicit --reason that is persisted.
+
+Phase 29B adds the research-director commands (provider-check,
+director-evidence, director-validate, director-plan, director-status,
+director-report). The director layer is read-only toward campaigns, writes
+only under its own output root, and can never register challengers or
+touch any operational state.
 """
 
 from __future__ import annotations
@@ -22,6 +28,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from . import SAFETY_CONTRACT
@@ -195,6 +202,170 @@ def cmd_report(args) -> int:
     return EXIT_OK
 
 
+# --------------------------------------------------------------------------- #
+# Phase 29B research-director commands
+# --------------------------------------------------------------------------- #
+def _director_output_root(args) -> str:
+    return args.output_root or args.artifact_root or DEFAULT_ARTIFACT_ROOT
+
+
+def cmd_provider_check(args) -> int:
+    from .director_provider import PROVIDER_NAMES, ProviderError, get_provider
+
+    try:
+        provider = get_provider(
+            args.provider, exchange_dir=args.exchange_dir or "."
+        )
+    except ProviderError as exc:
+        print(str(exc), file=sys.stderr)
+        print("allowed providers: %s" % ", ".join(PROVIDER_NAMES),
+              file=sys.stderr)
+        return EXIT_INVALID
+    _emit(provider.check_availability(), args.json)
+    return EXIT_OK
+
+
+def cmd_director_validate(args) -> int:
+    from .director import validate_director_config
+
+    cfg = _load_config(args.config)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_director_config(cfg)
+    _emit(
+        {
+            "accepted": verdict["accepted"],
+            "violations": verdict["violations"],
+            "config_hash": verdict["config_hash"],
+        },
+        args.json,
+    )
+    return EXIT_OK if verdict["accepted"] else EXIT_INVALID
+
+
+def cmd_director_evidence(args) -> int:
+    from .director import DirectorStore
+    from .evidence_pack import EvidencePackError, build_evidence_pack
+
+    root = args.artifact_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        store = ArtifactStore(root)
+        if args.campaign_id not in store.list_campaigns():
+            print("unknown campaign id: %s" % args.campaign_id, file=sys.stderr)
+            return EXIT_UNKNOWN_CAMPAIGN
+        director_config = None
+        if args.config:
+            director_config = _load_config(args.config)
+            if director_config is None:
+                return EXIT_INVALID
+        dstore = DirectorStore(_director_output_root(args))
+        pack = build_evidence_pack(
+            store,
+            args.campaign_id,
+            director_config=director_config,
+            graveyard_entries=dstore.read_graveyard(),
+        )
+        pack_id = dstore.save_evidence_pack(pack)
+    except (ArtifactStoreError, EvidencePackError) as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_INVALID
+    _emit(
+        {
+            "evidence_pack_id": pack_id,
+            "content_hash": pack["content_hash"],
+            "source_campaign": pack["source_campaign"],
+            "code_commit": pack["code_commit"],
+            "path": str(dstore.evidence_pack_path(pack_id)),
+            "safety": SAFETY_CONTRACT,
+        },
+        args.json,
+    )
+    return EXIT_OK
+
+
+def cmd_director_plan(args) -> int:
+    from .director import run_director_session, validate_director_config
+    from .director_provider import ProviderError, get_provider
+    from .evidence_pack import EvidencePackError
+
+    cfg = _load_config(args.config)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_director_config(cfg)
+    if not verdict["accepted"]:
+        _emit({"accepted": False, "violations": verdict["violations"]}, args.json)
+        return EXIT_INVALID
+    root = args.artifact_root or DEFAULT_ARTIFACT_ROOT
+    output_root = _director_output_root(args)
+    try:
+        store = ArtifactStore(root)
+        if args.campaign_id not in store.list_campaigns():
+            print("unknown campaign id: %s" % args.campaign_id, file=sys.stderr)
+            return EXIT_UNKNOWN_CAMPAIGN
+        provider = get_provider(
+            args.provider,
+            director_config=cfg,
+            exchange_dir=args.exchange_dir
+            or str(Path(output_root) / "director_exchange"),
+        )
+        result = run_director_session(
+            artifact_root=root,
+            campaign_id=args.campaign_id,
+            director_config=cfg,
+            provider=provider,
+            output_root=output_root,
+        )
+    except (ArtifactStoreError, EvidencePackError, ProviderError) as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_INVALID
+    _emit(result, args.json)
+    if result.get("status") == "INVALID_CONFIG":
+        return EXIT_INVALID
+    # PROVIDER_UNAVAILABLE / AWAITING_MANUAL_RESPONSE are structured, valid
+    # outcomes of a bounded director invocation, not command failures.
+    return EXIT_OK
+
+
+def _director_store_for(args):
+    from .director import DirectorStore
+
+    return DirectorStore(_director_output_root(args))
+
+
+def cmd_director_status(args) -> int:
+    from .director import DirectorStoreError, build_session_status
+
+    try:
+        dstore = _director_store_for(args)
+        status = build_session_status(dstore, args.session_id)
+    except (ArtifactStoreError, DirectorStoreError) as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    _emit(status, args.json)
+    return EXIT_OK
+
+
+def cmd_director_report(args) -> int:
+    from .director import DirectorStoreError, write_director_report
+
+    try:
+        dstore = _director_store_for(args)
+        result = write_director_report(dstore, args.session_id)
+    except (ArtifactStoreError, DirectorStoreError) as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    payload = {
+        "artifact_paths": result["artifact_paths"],
+        "session_state": result["report"]["session_state"],
+        "reconciliation": result["report"]["reconciliation"],
+        "safety": SAFETY_CONTRACT,
+    }
+    if args.json:
+        payload["report"] = result["report"]
+    _emit(payload, args.json)
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="python -m research_agent.cli",
@@ -259,6 +430,62 @@ def build_parser() -> argparse.ArgumentParser:
     sp = sub.add_parser("report", help="generate the campaign report")
     _common(sp)
     sp.set_defaults(fn=cmd_report)
+
+    # ---- Phase 29B research-director commands ----------------------------
+    sp = sub.add_parser("provider-check",
+                        help="structured director-provider availability check")
+    sp.add_argument("--provider", required=True,
+                    help="fixture | file-exchange | claude-code")
+    sp.add_argument("--exchange-dir", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_provider_check)
+
+    sp = sub.add_parser("director-validate",
+                        help="validate a Phase 29B director configuration")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_director_validate)
+
+    sp = sub.add_parser("director-evidence",
+                        help="build the deterministic evidence pack for a "
+                             "COMPLETE campaign")
+    sp.add_argument("--campaign-id", required=True)
+    sp.add_argument("--artifact-root", default=None)
+    sp.add_argument("--output-root", default=None,
+                    help="director output root (default: artifact root)")
+    sp.add_argument("--config", default=None,
+                    help="optional director config (budgets/exhausted dims)")
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_director_evidence)
+
+    sp = sub.add_parser("director-plan",
+                        help="run one bounded director cycle (evidence -> "
+                             "provider plan -> deterministic policy)")
+    sp.add_argument("--campaign-id", required=True)
+    sp.add_argument("--artifact-root", default=None)
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--provider", required=True,
+                    help="fixture | file-exchange | claude-code")
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--exchange-dir", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_director_plan)
+
+    sp = sub.add_parser("director-status",
+                        help="reconciled counts for one director session")
+    sp.add_argument("--session-id", required=True)
+    sp.add_argument("--artifact-root", default=None)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_director_status)
+
+    sp = sub.add_parser("director-report",
+                        help="write the director session report")
+    sp.add_argument("--session-id", required=True)
+    sp.add_argument("--artifact-root", default=None)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_director_report)
 
     return p
 
