@@ -1,0 +1,47 @@
+{
+ "schema_version": "29A.1",
+ "name": "phase29a_first_campaign",
+ "objective": "Improve the cost-adjusted robustness of the current fundamental_momentum_50_50_v1 family without modifying the frozen operational model. Vary only the approved bounded dimensions (blend weights, Top-25 vs Top-50, supported sector treatment, supported member/exit buffer, supported rebalance treatment, cost sensitivity, defensive overlay off vs current) against the reproduced baseline.",
+ "baseline": {
+  "model_id": "fundamental_momentum_50_50_v1",
+  "book_id": "fundamental_momentum_50_50_top25",
+  "cost_bps_per_side": 25.0,
+  "exit_buffer_fraction": 0.0,
+  "notes": "Scientific baseline = the RAW monthly target reconstruction (exit_buffer_fraction 0.0): the exact configuration that reproduces the owned evidence file historical_book_returns.csv 120/120 months at that file's 12.5 bps-per-side convention (net = gross - 0.0025 * one-way turnover, the same rate as the paper desk's COST_BPS_PER_SIDE). The live engine's EXIT_BUFFER_FRACTION 0.20 is an OPERATIONAL holdings/action-layer hysteresis, not part of the evidence construction (it mismatches the reference in 111/120 months); it is studied separately via the labeled sensitivity dimension exit_buffer_fractions [0.0, 0.2] (hyp_exit_buffer). baseline.cost_bps_per_side 25.0 is the deliberately conservative Phase 10-C evaluation standard (2x the desk execution rate); every cost level is applied once, from gross, never stacked."
+ },
+ "research_dimensions": {
+  "blend_weights": [[0.3, 0.7], [0.4, 0.6], [0.5, 0.5], [0.6, 0.4], [0.7, 0.3]],
+  "portfolio_sizes": [25, 50],
+  "sector_treatments": ["raw", "sector_cap", "sector_neutral"],
+  "exit_buffer_fractions": [0.0, 0.2],
+  "rebalance_treatments": ["monthly", "eligible_sessions_20"],
+  "cost_bps_per_side": [12.5, 25.0, 50.0],
+  "defensive_overlays": ["off", "current_validated"],
+  "min_adv_dollars": [10000000.0, 25000000.0]
+ },
+ "data": {
+  "data_root": "D:\\Stock_Prediction_app_data",
+  "data_cutoff": "2026-06-30",
+  "momentum_panel": "D:\\Stock_Prediction_app_data\\phase25_multi_horizon_alpha\\_inputs\\momentum_monthly_panel.csv",
+  "fundamental_panel": "C:\\Users\\binis\\Stock_Prediction_app_push\\research\\output\\phase10l_historical_sector_neutral_scored_panel_reconstruction\\historical_sector_neutral_scored_panel.csv",
+  "sector_map": "C:\\Users\\binis\\Stock_Prediction_app_push\\research\\output\\phase10f_owned_sector_mapping_repair\\repaired_sector_mapping.csv",
+  "spy_monthly": "D:\\Stock_Prediction_app_data\\research_panels\\phase8c_russell3000\\spy_monthly_total_return.csv",
+  "reference_book_returns": "D:\\Stock_Prediction_app_data\\phase25_multi_horizon_alpha\\historical_book_returns.csv"
+ },
+ "budgets": {
+  "max_primary_experiments": 60,
+  "max_robustness_candidates": 8,
+  "max_registered_challengers": 3,
+  "max_retry_per_experiment": 1,
+  "experiment_timeout_seconds": 900
+ },
+ "stop_conditions": {
+  "fail_fast_on_pit_failure": true,
+  "fail_fast_on_baseline_nonreproducibility": true,
+  "allow_pause_resume": true,
+  "no_operational_promotion": true
+ },
+ "thresholds": {},
+ "artifact_root": "D:\\Stock_Prediction_app_data\\research_agent",
+ "random_seed": 29
+}
