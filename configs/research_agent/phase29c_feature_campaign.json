@@ -1,0 +1,61 @@
+{
+ "schema_version": "29C.1",
+ "name": "phase29c_feature_campaign",
+ "objective": "Execute bounded, point-in-time-safe feature hypotheses designed to improve cross-sectional rank-IC stability beyond the exhausted portfolio-parameter family. The deterministic executor performs every calculation; the LLM only proposes hypotheses and reads structured feedback. Two experiments at most per accepted hypothesis: one standalone feature diagnostic, then one bounded 80/20 baseline integration only when the IC screen advances the feature.",
+ "budgets": {
+  "max_accepted_hypotheses": 3,
+  "max_primary_experiments": 6,
+  "max_experiments_per_hypothesis": 2,
+  "max_retained_candidates": 2,
+  "max_robustness_candidates": 2,
+  "max_revised_experiments": 2,
+  "max_director_feedback_cycles": 1,
+  "max_retry_per_tool": 1,
+  "max_feature_depth": 3,
+  "max_interactions": 4
+ },
+ "integration": {
+  "baseline_weight": 0.8,
+  "feature_weight": 0.2
+ },
+ "costs": {
+  "primary_cost_bps_per_side": 25.0,
+  "sensitivity_cost_bps_per_side": [12.5, 50.0]
+ },
+ "portfolio": {
+  "top_n": 25,
+  "sector_treatment": "sector_cap",
+  "exit_buffer_fraction": 0.0,
+  "universe": "mhz_reconstruction",
+  "min_adv_dollar": 10000000.0
+ },
+ "ic_screen": {
+  "min_months": 36,
+  "min_coverage_fraction": 0.6,
+  "min_abs_rank_ic_t": 1.0,
+  "material_ic_t_margin": 0.25,
+  "near_duplicate_abs_corr": 0.95,
+  "max_complementary_abs_baseline_corr": 0.5,
+  "max_top_rank_sector_share": 0.5,
+  "leakage_suspicion_abs_ic": 0.5,
+  "min_universe": 10
+ },
+ "data": {
+  "inherit_data_cutoff_from_source_campaign": true
+ },
+ "random_seed": 29,
+ "provider": {
+  "default": "fixture",
+  "fixture": {
+   "n_proposals": 3
+  },
+  "claude_cli": {
+   "timeout_seconds": 180
+  }
+ },
+ "strict_mode": true,
+ "safety": {
+  "no_operational_promotion": true,
+  "fixture_provider_may_register_challengers": false
+ }
+}

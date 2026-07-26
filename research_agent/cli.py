@@ -21,6 +21,14 @@ director-evidence, director-validate, director-plan, director-status,
 director-report). The director layer is read-only toward campaigns, writes
 only under its own output root, and can never register challengers or
 touch any operational state.
+
+Phase 29C adds the deterministic feature-campaign commands
+(feature-validate, feature-create, feature-plan, feature-run,
+feature-resume, feature-status, feature-report, director-feedback).
+Feature campaigns execute validated Phase 29B feature hypotheses through
+the fixed deterministic executor under <artifact_root>/feature_campaigns;
+they inherit the source campaign's data cutoff, never lower a gate, never
+register challengers, and never touch Paper Trader.
 """
 
 from __future__ import annotations
@@ -366,6 +374,163 @@ def cmd_director_report(args) -> int:
     return EXIT_OK
 
 
+# --------------------------------------------------------------------------- #
+# Phase 29C feature-campaign commands
+# --------------------------------------------------------------------------- #
+def _feature_store(args):
+    from .feature_campaign import FeatureCampaignStore
+
+    return FeatureCampaignStore(args.artifact_root or DEFAULT_ARTIFACT_ROOT)
+
+
+def _feature_controller(args):
+    from .feature_campaign import FeatureCampaignController
+
+    try:
+        store = _feature_store(args)
+        if args.feature_campaign_id not in store.list_campaigns():
+            print("unknown feature campaign id: %s" % args.feature_campaign_id,
+                  file=sys.stderr)
+            return None
+        return FeatureCampaignController(
+            args.feature_campaign_id,
+            artifact_root=args.artifact_root or DEFAULT_ARTIFACT_ROOT,
+        )
+    except ArtifactStoreError as exc:
+        print(str(exc), file=sys.stderr)
+        return None
+
+
+def cmd_feature_validate(args) -> int:
+    from .feature_campaign import validate_feature_campaign_config
+
+    cfg = _load_config(args.config)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_feature_campaign_config(cfg)
+    _emit(
+        {
+            "accepted": verdict["accepted"],
+            "violations": verdict["violations"],
+            "config_hash": verdict["config_hash"],
+        },
+        args.json,
+    )
+    return EXIT_OK if verdict["accepted"] else EXIT_INVALID
+
+
+def cmd_feature_create(args) -> int:
+    from .feature_campaign import create_feature_campaign
+
+    cfg = _load_config(args.config)
+    if cfg is None:
+        return EXIT_INVALID
+    try:
+        result = create_feature_campaign(
+            config=cfg,
+            director_root=args.director_root,
+            session_id=args.director_session_id,
+            source_campaign_id=args.source_campaign_id,
+            artifact_root=args.artifact_root,
+        )
+    except ArtifactStoreError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_INVALID
+    _emit(result, args.json)
+    if result.get("created"):
+        return EXIT_OK
+    if result.get("reason") in ("UNKNOWN_DIRECTOR_SESSION",
+                                "UNKNOWN_SOURCE_CAMPAIGN"):
+        return EXIT_UNKNOWN_CAMPAIGN
+    return EXIT_INVALID
+
+
+def cmd_feature_plan(args) -> int:
+    ctl = _feature_controller(args)
+    if ctl is None:
+        return EXIT_UNKNOWN_CAMPAIGN
+    _emit(ctl.plan(), args.json)
+    return EXIT_OK
+
+
+def _feature_run_exit(result: Dict[str, Any]) -> int:
+    status = result.get("status")
+    if status in (RUN_OK, RUN_ALREADY_COMPLETE, RUN_PAUSED):
+        return EXIT_OK
+    if status == RUN_LOCKED:
+        return EXIT_LOCKED
+    if status in (RUN_FAILED, RUN_ALREADY_FAILED, RUN_BLOCKED):
+        return EXIT_FAILED
+    return EXIT_OK
+
+
+def cmd_feature_run(args) -> int:
+    ctl = _feature_controller(args)
+    if ctl is None:
+        return EXIT_UNKNOWN_CAMPAIGN
+    result = ctl.run(max_experiments=args.max_experiments)
+    _emit(result, args.json)
+    return _feature_run_exit(result)
+
+
+def cmd_feature_status(args) -> int:
+    ctl = _feature_controller(args)
+    if ctl is None:
+        return EXIT_UNKNOWN_CAMPAIGN
+    _emit(ctl.status(), args.json)
+    return EXIT_OK
+
+
+def cmd_feature_report(args) -> int:
+    from .feature_campaign import write_feature_report
+
+    ctl = _feature_controller(args)
+    if ctl is None:
+        return EXIT_UNKNOWN_CAMPAIGN
+    result = write_feature_report(ctl.store, args.feature_campaign_id)
+    payload = {
+        "artifact_paths": result["artifact_paths"],
+        "current_state": result["report"]["current_state"],
+        "experiments_by_status": result["report"]["experiments_by_status"],
+        "safety": SAFETY_CONTRACT,
+    }
+    if args.json:
+        payload["report"] = result["report"]
+    _emit(payload, args.json)
+    return EXIT_OK
+
+
+def cmd_director_feedback(args) -> int:
+    from .director_feedback import run_feedback_cycle
+    from .director_provider import ProviderError
+    from .feature_campaign import FeatureCampaignError
+
+    try:
+        store = _feature_store(args)
+        if args.feature_campaign_id not in store.list_campaigns():
+            print("unknown feature campaign id: %s" % args.feature_campaign_id,
+                  file=sys.stderr)
+            return EXIT_UNKNOWN_CAMPAIGN
+        result = run_feedback_cycle(
+            store,
+            args.feature_campaign_id,
+            provider_name=args.provider,
+            exchange_dir=args.exchange_dir,
+        )
+    except (ArtifactStoreError, FeatureCampaignError, ProviderError) as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_INVALID
+    _emit(result, args.json)
+    if result.get("status") in (
+        "FEEDBACK_CYCLE_COMPLETE",
+        "FEEDBACK_CYCLE_LIMIT_REACHED",
+        "AWAITING_MANUAL_RESPONSE",
+        "PROVIDER_UNAVAILABLE",
+    ):
+        return EXIT_OK
+    return EXIT_INVALID
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="python -m research_agent.cli",
@@ -486,6 +651,69 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--output-root", default=None)
     sp.add_argument("--json", action="store_true")
     sp.set_defaults(fn=cmd_director_report)
+
+    # ---- Phase 29C feature-campaign commands -----------------------------
+    def _feature_common(sp, campaign=True):
+        sp.add_argument("--artifact-root", default=None)
+        sp.add_argument("--json", action="store_true")
+        if campaign:
+            sp.add_argument("--feature-campaign-id", required=True)
+
+    sp = sub.add_parser("feature-validate",
+                        help="validate a Phase 29C feature-campaign config")
+    sp.add_argument("--config", required=True)
+    _feature_common(sp, campaign=False)
+    sp.set_defaults(fn=cmd_feature_validate)
+
+    sp = sub.add_parser("feature-create",
+                        help="create a feature campaign from a COMPLETE "
+                             "director session")
+    sp.add_argument("--director-session-id", required=True)
+    sp.add_argument("--director-root", required=True,
+                    help="director output root holding director_sessions")
+    sp.add_argument("--source-campaign-id", required=True)
+    sp.add_argument("--config", required=True)
+    _feature_common(sp, campaign=False)
+    sp.set_defaults(fn=cmd_feature_create)
+
+    sp = sub.add_parser("feature-plan",
+                        help="read-only reconciled feature-campaign plan")
+    _feature_common(sp)
+    sp.set_defaults(fn=cmd_feature_plan)
+
+    sp = sub.add_parser("feature-run", help="run a feature campaign")
+    _feature_common(sp)
+    sp.add_argument("--max-experiments", type=int, default=None,
+                    help="per-invocation limit; the campaign PAUSES at the "
+                         "limit and stays resumable")
+    sp.set_defaults(fn=cmd_feature_run)
+
+    sp = sub.add_parser("feature-resume",
+                        help="resume a paused feature campaign (executes "
+                             "only pending work; completed experiments are "
+                             "never rerun)")
+    _feature_common(sp)
+    sp.add_argument("--max-experiments", type=int, default=None)
+    sp.set_defaults(fn=cmd_feature_run)
+
+    sp = sub.add_parser("feature-status",
+                        help="read-only feature-campaign status")
+    _feature_common(sp)
+    sp.set_defaults(fn=cmd_feature_status)
+
+    sp = sub.add_parser("feature-report",
+                        help="write the feature-campaign report")
+    _feature_common(sp)
+    sp.set_defaults(fn=cmd_feature_report)
+
+    sp = sub.add_parser("director-feedback",
+                        help="run the ONE bounded director feedback cycle "
+                             "over the persisted feedback packets")
+    _feature_common(sp)
+    sp.add_argument("--provider", required=True,
+                    help="fixture | file-exchange | claude-code")
+    sp.add_argument("--exchange-dir", default=None)
+    sp.set_defaults(fn=cmd_director_feedback)
 
     return p
 
