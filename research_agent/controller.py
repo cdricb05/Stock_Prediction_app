@@ -4,6 +4,16 @@ Crash-safe by construction: every step is persisted before/after execution,
 experiment artifacts are immutable, already-complete experiments are skipped
 on resume, the campaign lock guarantees single-flight execution, and a
 COMPLETE or FAILED campaign is never rerun.
+
+Phase 29A.2 invocation semantics: ``--max-experiments`` limits ONE invocation,
+never the campaign. The full supported plan is always persisted; when an
+invocation reaches its limit with supported work remaining the campaign
+transitions to PAUSED (pause_reason=INVOCATION_EXPERIMENT_LIMIT_REACHED),
+stays resumable, and a later resume executes exactly the next pending
+experiments without re-running completed ones. COMPLETE is reachable only
+when no supported planned work remains (or an operator explicitly finalizes
+with a persisted reason). Every invocation is recorded in the append-only
+``invocations.jsonl`` ledger.
 """
 
 from __future__ import annotations
@@ -33,10 +43,11 @@ from .memory import (
     CampaignMemory,
     build_campaign_record,
     build_experiment_record,
+    derive_hypothesis_status,
     spec_hash,
 )
 from .planner import BoundedDeterministicPlanner
-from .reporting import write_report
+from .reporting import build_work_summary, write_report
 from .schemas import validate_campaign_config
 from .tool_adapters import ToolContext, build_registry
 
@@ -49,6 +60,15 @@ RUN_FAILED = "RUN_FAILED"
 RUN_ALREADY_COMPLETE = "RUN_ALREADY_COMPLETE"
 RUN_ALREADY_FAILED = "RUN_ALREADY_FAILED"
 RUN_LOCKED = "RUN_LOCKED"
+
+# Pause / stop reasons (persisted in events, manifest and invocation ledger).
+PAUSE_INVOCATION_LIMIT = "INVOCATION_EXPERIMENT_LIMIT_REACHED"
+PAUSE_OPERATOR_REQUEST = "OPERATOR_REQUEST"
+PAUSE_REMAINING_WORK = "REMAINING_SUPPORTED_WORK"
+STOP_CAMPAIGN_COMPLETE = "CAMPAIGN_COMPLETE"
+STOP_CAMPAIGN_FAILED = "CAMPAIGN_FAILED"
+STOP_CAMPAIGN_BLOCKED = "CAMPAIGN_BLOCKED"
+STOP_OPERATOR_FINALIZE = "OPERATOR_FINALIZE"
 
 DEFAULT_ARTIFACT_ROOT = r"D:\Stock_Prediction_app_data\research_agent"
 
@@ -141,6 +161,9 @@ class CampaignController:
         self._seam_close_frame = close_frame
         self._ctx: Optional[ToolContext] = None
         self._max_experiments_override: Optional[int] = None
+        self._invocation_counters: Dict[str, int] = {
+            "attempted": 0, "completed": 0, "failed": 0,
+        }
 
     # ---- helpers ----------------------------------------------------------
     @property
@@ -240,7 +263,7 @@ class CampaignController:
         challengers = ChallengerRegistry(
             self.store, self.campaign_id, manifest["budgets"]["max_registered_challengers"]
         ).latest_by_candidate()
-        return {
+        doc = {
             "campaign_id": self.campaign_id,
             "current_state": manifest.get("current_state"),
             "resume_state": manifest.get("resume_state"),
@@ -254,10 +277,14 @@ class CampaignController:
             "challengers_registered": sorted(challengers),
             "baseline_reproduced": (manifest.get("baseline") or {}).get("baseline_reproduced"),
             "operator_request": self._operator_request(),
+            "last_pause": manifest.get("last_pause"),
+            "finalization": manifest.get("finalization"),
             "heartbeat": self.store.read_status(self.campaign_id),
             "safety": dict(SAFETY_CONTRACT),
             "schema_version": SCHEMA_VERSION,
         }
+        doc.update(self.work_summary())
+        return doc
 
     def plan_preview(self, max_experiments: Optional[int] = None) -> Dict[str, Any]:
         """Deterministic dry planning: NO ledger writes, NO execution."""
@@ -291,6 +318,61 @@ class CampaignController:
             "safety": dict(SAFETY_CONTRACT),
         }
 
+    # ---- invocation ledger ------------------------------------------------
+    def _begin_invocation(
+        self, max_experiments: Optional[int], *, kind: str = "run"
+    ) -> Dict[str, Any]:
+        rows = self.store.read_invocations(self.campaign_id)
+        n = sum(1 for r in rows if r.get("phase") == "START") + 1
+        record = {
+            "schema_version": SCHEMA_VERSION,
+            "record_type": "INVOCATION",
+            "invocation_id": "inv_%04d" % n,
+            "phase": "START",
+            "kind": kind,
+            "started_at": _now_iso(),
+            "requested_max_experiments": max_experiments,
+            "state_before": self.sm.current_state(),
+        }
+        self.store.append_invocation(self.campaign_id, record)
+        self._invocation_counters = {"attempted": 0, "completed": 0, "failed": 0}
+        return record
+
+    def _end_invocation(
+        self,
+        start_record: Dict[str, Any],
+        result: Dict[str, Any],
+        *,
+        stop_reason: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        reason = stop_reason or result.get("pause_reason") or {
+            RUN_OK: STOP_CAMPAIGN_COMPLETE,
+            RUN_FAILED: STOP_CAMPAIGN_FAILED,
+            RUN_BLOCKED: STOP_CAMPAIGN_BLOCKED,
+            RUN_PAUSED: PAUSE_OPERATOR_REQUEST,
+        }.get(result.get("status"), result.get("status"))
+        record = {
+            "schema_version": SCHEMA_VERSION,
+            "record_type": "INVOCATION",
+            "invocation_id": start_record["invocation_id"],
+            "phase": "END",
+            "kind": start_record.get("kind", "run"),
+            "started_at": start_record["started_at"],
+            "completed_at": _now_iso(),
+            "requested_max_experiments": start_record.get("requested_max_experiments"),
+            "experiments_attempted": self._invocation_counters["attempted"],
+            "experiments_completed": self._invocation_counters["completed"],
+            "experiments_failed": self._invocation_counters["failed"],
+            "stop_reason": reason,
+            "state_after": self.sm.current_state(),
+        }
+        self.store.append_invocation(self.campaign_id, record)
+        self._update_manifest(last_invocation=record, last_stop_reason=reason)
+        return record
+
+    def work_summary(self) -> Dict[str, Any]:
+        return build_work_summary(self.store, self.campaign_id)
+
     # ---- main loop --------------------------------------------------------
     def run(
         self,
@@ -304,16 +386,19 @@ class CampaignController:
 
         state = self.sm.current_state()
         if state == smod.COMPLETE:
+            # Idempotent: no ledger rows, no experiment-evidence writes.
             return {
                 "status": RUN_ALREADY_COMPLETE,
                 "campaign_id": self.campaign_id,
                 "note": "COMPLETE campaigns are never rerun",
+                **self.work_summary(),
             }
         if state == smod.FAILED:
             return {
                 "status": RUN_ALREADY_FAILED,
                 "campaign_id": self.campaign_id,
                 "note": "FAILED campaigns preserve their evidence and are never rerun",
+                **self.work_summary(),
             }
 
         lock = self.store.lock(self.campaign_id, owner="research_agent.controller")
@@ -322,11 +407,17 @@ class CampaignController:
         except CampaignLockedError as exc:
             return {"status": RUN_LOCKED, "campaign_id": self.campaign_id, "detail": str(exc)}
 
+        invocation = self._begin_invocation(max_experiments)
         try:
             result = self._run_locked(lock)
+            end_record = self._end_invocation(invocation, result)
         finally:
             lock.release()
-        return result
+        summary = self.work_summary()
+        merged = dict(summary)
+        merged.update(result)
+        merged["invocation"] = end_record
+        return merged
 
     def _run_locked(self, lock) -> Dict[str, Any]:
         handlers = {
@@ -485,10 +576,15 @@ class CampaignController:
 
     def _do_planning(self) -> Optional[Dict[str, Any]]:
         existing = self.memory.experiments()
+        # The per-invocation --max-experiments override is deliberately NOT
+        # passed here: it limits one invocation's execution, never the plan.
+        # (Passing it was the Phase 29A root cause: the persisted plan was
+        # truncated to the invocation limit and the campaign then reported
+        # COMPLETE with the remaining supported cells silently rejected.)
         plan = self.planner.plan_experiments(
             self.config,
             seen_spec_hashes=[r.get("candidate_spec_hash") for r in existing.values()],
-            max_experiments=self._max_experiments_override,
+            max_experiments=None,
             today=self.today,
         )
         for rej in plan["rejected"]:
@@ -515,6 +611,21 @@ class CampaignController:
             {"budget": plan["budget"], "n_rejected": len(plan["rejected"]),
              "n_deduplicated": len(plan["deduplicated"])},
         )
+        self._update_manifest(
+            plan_totals={
+                "planned": len(plan["planned"]),
+                "rejected_unsupported": sum(
+                    1 for r in plan["rejected"] if r["reason"] == "UNSUPPORTED_COMBINATION"
+                ),
+                "rejected_invalid": sum(
+                    1 for r in plan["rejected"] if r["reason"] == "INVALID_SPEC"
+                ),
+                "rejected_budget": sum(
+                    1 for r in plan["rejected"] if r["reason"] == "BUDGET_EXHAUSTED"
+                ),
+                "deduplicated": len(plan["deduplicated"]),
+            }
+        )
         pending = [
             r for r in self.memory.experiments().values() if r.get("status") == "PLANNED"
         ]
@@ -524,13 +635,43 @@ class CampaignController:
         )
         return None
 
+    def _pause_running(
+        self, pause_reason: str, reason_text: str, detail: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        self.sm.transition(
+            smod.PAUSED,
+            reason=reason_text,
+            detail=dict(detail, pause_reason=pause_reason),
+        )
+        self._update_manifest(
+            last_pause=dict(detail, pause_reason=pause_reason, at=_now_iso())
+        )
+        self._sync_hypothesis_lifecycle()
+        self._heartbeat(stage=smod.PAUSED, pause_reason=pause_reason)
+        outcome = dict(self.work_summary())
+        outcome.update(detail)
+        outcome.update(
+            status=RUN_PAUSED,
+            campaign_id=self.campaign_id,
+            final_state=smod.PAUSED,
+            pause_reason=pause_reason,
+            note=reason_text,
+        )
+        return outcome
+
     def _do_running(self) -> Optional[Dict[str, Any]]:
         cfg = self.config
         max_retry = int(cfg["budgets"].get("max_retry_per_experiment", 1))
         timeout_s = float(cfg["budgets"].get("experiment_timeout_seconds", 900))
+        # Campaign budget only. The per-invocation --max-experiments override
+        # is applied further down as an ATTEMPT limit for this invocation and
+        # never redefines the campaign budget (Phase 29A.2, Part B).
         budget = int(cfg["budgets"]["max_primary_experiments"])
-        if self._max_experiments_override:
-            budget = min(budget, int(self._max_experiments_override))
+        limit = (
+            int(self._max_experiments_override)
+            if self._max_experiments_override
+            else None
+        )
 
         rows = sorted(
             self.memory.experiments().values(),
@@ -545,26 +686,33 @@ class CampaignController:
                 skipped["status"] = "SKIPPED_BUDGET"
                 self.memory.record_experiment(skipped)
                 continue
-            if self._operator_request() in ("PAUSE", "STOP"):
-                self.sm.transition(
-                    smod.PAUSED,
-                    reason="operator requested %s" % self._operator_request(),
+            if limit is not None and self._invocation_counters["attempted"] >= limit:
+                return self._pause_running(
+                    PAUSE_INVOCATION_LIMIT,
+                    "per-invocation experiment limit reached; a bounded "
+                    "invocation is not campaign completion — resume to continue",
+                    {"invocation_limit": limit},
                 )
+            if self._operator_request() in ("PAUSE", "STOP"):
+                requested = self._operator_request()
                 self.clear_operator_request()
-                return {
-                    "status": RUN_PAUSED,
-                    "campaign_id": self.campaign_id,
-                    "final_state": smod.PAUSED,
-                    "note": "paused gracefully; resume with the resume command",
-                }
+                return self._pause_running(
+                    PAUSE_OPERATOR_REQUEST,
+                    "operator requested %s; paused gracefully after the "
+                    "current experiment — resume with the resume command" % requested,
+                    {},
+                )
 
             spec = row["spec"]
+            self._invocation_counters["attempted"] += 1
             attempt = int(row.get("attempt", 0))
             while attempt <= max_retry:
                 attempt += 1
                 running = dict(row)
                 running.update(status="RUNNING", attempt=attempt, started_at=_now_iso())
                 self.memory.record_experiment(running)
+                if attempt == 1:
+                    self._sync_hypothesis_lifecycle()  # QUEUED -> ACTIVE
                 self._heartbeat(stage=smod.EXPERIMENT_RUNNING,
                                 experiment=row["experiment_id"], attempt=attempt,
                                 completed=completed, budget=budget)
@@ -612,12 +760,15 @@ class CampaignController:
                     )
                     self.memory.record_experiment(done)
                     completed += 1
+                    self._invocation_counters["completed"] += 1
+                    self._sync_hypothesis_lifecycle()
                     break
                 if env["status"] in ("REJECTED_INVALID", "REJECTED_UNSUPPORTED"):
                     rej = dict(running)
                     rej.update(status="REJECTED_UNSUPPORTED", failure=env.get("failure")
                                or {"type": env["status"], "detail": (env.get("output") or {}).get("violations")})
                     self.memory.record_experiment(rej)
+                    self._sync_hypothesis_lifecycle()
                     break
                 failure = {
                     "classification": "TOOL_ERROR",
@@ -628,7 +779,10 @@ class CampaignController:
                 failed.update(status="FAILED", failure=failure, completed_at=_now_iso())
                 self.memory.record_experiment(failed)
                 if attempt > max_retry:
+                    self._invocation_counters["failed"] += 1
+                    self._sync_hypothesis_lifecycle()
                     break
+        self._sync_hypothesis_lifecycle()
         self.sm.transition(smod.CANDIDATE_EVALUATION, reason="experiment queue drained")
         return None
 
@@ -639,6 +793,9 @@ class CampaignController:
             return {"status": RUN_BLOCKED, "campaign_id": self.campaign_id,
                     "final_state": smod.BLOCKED}
         thresholds = ctx.thresholds()
+        eval_cfg = self.config.get("evaluation") or {}
+        delta_tolerances = eval_cfg.get("delta_tolerances")
+        severe_multiplier = eval_cfg.get("severe_degradation_multiplier")
         survivors: List[Dict[str, Any]] = []
         for eid, row in sorted(self.memory.experiments().items()):
             if row.get("status") != "COMPLETE":
@@ -657,10 +814,16 @@ class CampaignController:
             metrics = dict(metrics_doc["metrics"])
             metrics["pit_integrity_ok"] = True  # campaign-level PIT gate passed
             gates = ev.evaluate_gates(metrics, ctx.baseline_metrics, thresholds)
-            decision = ev.decide_candidate(gates, stage="primary")
+            deltas = ev.build_baseline_deltas(
+                metrics, ctx.baseline_metrics, delta_tolerances, severe_multiplier
+            )
+            decision = ev.decide_candidate(gates, stage="primary", deltas=deltas)
             score = ev.score_candidate(metrics, ctx.baseline_metrics, gates)
             self.store.write_experiment_artifact(
                 self.campaign_id, eid, "gate_results.json", gates
+            )
+            self.store.write_experiment_artifact(
+                self.campaign_id, eid, "baseline_deltas.json", deltas
             )
             self.store.write_experiment_artifact(
                 self.campaign_id,
@@ -668,6 +831,8 @@ class CampaignController:
                 "decision.json",
                 {"stage": "primary", "decision": decision["decision"],
                  "reasons": decision["reasons"], "gate_overrides": decision["gate_overrides"],
+                 "diagnostic_flags": decision.get("diagnostic_flags", []),
+                 "stage_policy": decision.get("stage_policy"),
                  "score": score},
             )
             self.store.append_event(
@@ -688,6 +853,7 @@ class CampaignController:
             "ROBUSTNESS_QUEUE_SELECTED",
             {"n_survivors": len(survivors), "queued": queue, "budget": max_rb},
         )
+        self._sync_hypothesis_lifecycle()
         self.sm.transition(
             smod.ROBUSTNESS_TESTING if queue else smod.REPORTING,
             reason="%d survivor(s) queued for robustness" % len(queue),
@@ -754,6 +920,7 @@ class CampaignController:
             if decision["decision"] == ev.SHADOW_ELIGIBLE:
                 shadow.append(eid)
         self._update_manifest(shadow_eligible=shadow)
+        self._sync_hypothesis_lifecycle()
         self.sm.transition(
             smod.CHALLENGER_REGISTRATION if shadow else smod.REPORTING,
             reason="%d shadow-eligible candidate(s)" % len(shadow),
@@ -817,6 +984,21 @@ class CampaignController:
         return None
 
     def _do_reporting(self) -> Optional[Dict[str, Any]]:
+        # COMPLETE is allowed only when no supported planned work remains (or
+        # an operator explicitly finalized with a persisted reason). A bounded
+        # invocation ending must never masquerade as campaign completion.
+        pending = [
+            r for r in self.memory.experiments().values()
+            if r.get("status") in ("PLANNED", "RUNNING")
+        ]
+        if pending and not self.manifest.get("finalization"):
+            return self._pause_running(
+                PAUSE_REMAINING_WORK,
+                "%d supported planned experiment(s) remain; refusing to mark "
+                "the campaign COMPLETE — resume to continue or finalize with "
+                "an explicit reason" % len(pending),
+                {"remaining_total": len(pending)},
+            )
         env = self._tool("generate_campaign_report")
         if env["status"] != "OK":
             self.sm.transition(smod.FAILED, reason="report generation failed",
@@ -826,6 +1008,124 @@ class CampaignController:
         self.sm.transition(smod.COMPLETE, reason="campaign report written")
         self._heartbeat(stage=smod.COMPLETE)
         return None
+
+    # ---- hypothesis lifecycle (Phase 29A.2, Part D) -----------------------
+    def _sync_hypothesis_lifecycle(self) -> None:
+        """Append lifecycle rows derived from persisted evidence only.
+
+        Never rewrites prior hypothesis events: a change appends a fresh
+        snapshot row (latest-row-wins) plus a HYPOTHESIS_LIFECYCLE event.
+        """
+        hyps = self.memory.hypotheses()
+        if not hyps:
+            return
+        exps = self.memory.experiments()
+        decisions: Dict[str, str] = {}
+        for eid, row in exps.items():
+            if row.get("status") != "COMPLETE":
+                continue
+            doc = self.store.read_experiment_artifact(self.campaign_id, eid, "decision.json")
+            if doc and doc.get("stage") == "primary":
+                decisions[eid] = doc.get("decision")
+        manifest = self.manifest
+        robustness = manifest.get("robustness_results") or {}
+        evaluation_complete = "robustness_queue" in manifest
+        for hid in sorted(hyps):
+            h = hyps[hid]
+            derived = derive_hypothesis_status(
+                hid,
+                experiments=exps,
+                decisions=decisions,
+                robustness_results=robustness,
+                evidence_channel=h.get("evidence_channel", "grid_cells"),
+                evaluation_complete=evaluation_complete,
+            )
+            if derived != h.get("status"):
+                self.memory.update_hypothesis_status(hid, derived)
+                self.store.append_event(
+                    self.campaign_id,
+                    "HYPOTHESIS_LIFECYCLE",
+                    {"hypothesis_id": hid,
+                     "from_status": h.get("status"),
+                     "to_status": derived,
+                     "basis": "derived from persisted experiment/robustness evidence"},
+                )
+
+    # ---- explicit operator finalization (Phase 29A.2, Part B) -------------
+    def finalize(self, *, reason: str) -> Dict[str, Any]:
+        """Explicitly end a campaign that still has supported planned work.
+
+        The operator-provided reason is persisted (event + manifest) and every
+        remaining PLANNED/RUNNING experiment is recorded ABANDONED before the
+        pipeline is driven to COMPLETE. Without this command, remaining
+        supported work keeps the campaign resumable and incomplete.
+        """
+        reason = (reason or "").strip()
+        if not reason:
+            return {
+                "finalized": False,
+                "campaign_id": self.campaign_id,
+                "note": "finalize requires a non-empty --reason explaining why "
+                        "remaining work is being abandoned",
+            }
+        state = self.sm.current_state()
+        if state in (smod.COMPLETE, smod.FAILED):
+            return {
+                "finalized": False,
+                "campaign_id": self.campaign_id,
+                "final_state": state,
+                "note": "campaign is already terminal; nothing to finalize",
+                **self.work_summary(),
+            }
+        lock = self.store.lock(self.campaign_id, owner="research_agent.finalize")
+        try:
+            lock.acquire()
+        except CampaignLockedError as exc:
+            return {"status": RUN_LOCKED, "finalized": False,
+                    "campaign_id": self.campaign_id, "detail": str(exc)}
+        try:
+            invocation = self._begin_invocation(None, kind="finalize")
+            pending = sorted(
+                (r for r in self.memory.experiments().values()
+                 if r.get("status") in ("PLANNED", "RUNNING")),
+                key=lambda r: r["experiment_id"],
+            )
+            abandoned_ids = [r["experiment_id"] for r in pending]
+            now = _now_iso()
+            for row in pending:
+                ab = dict(row)
+                ab.update(status="ABANDONED", completed_at=now,
+                          abandon_reason=reason)
+                self.memory.record_experiment(ab)
+            self.store.append_event(
+                self.campaign_id,
+                "CAMPAIGN_FINALIZED",
+                {"reason": reason, "abandoned_experiment_ids": abandoned_ids},
+            )
+            self._update_manifest(
+                finalization={
+                    "reason": reason,
+                    "requested_at": now,
+                    "abandoned_experiment_ids": abandoned_ids,
+                }
+            )
+            self._sync_hypothesis_lifecycle()
+            result = self._run_locked(lock)
+            end_record = self._end_invocation(
+                invocation, result, stop_reason=STOP_OPERATOR_FINALIZE
+            )
+        finally:
+            lock.release()
+        summary = self.work_summary()
+        merged = dict(summary)
+        merged.update(result)
+        merged.update(
+            finalized=True,
+            finalization_reason=reason,
+            abandoned_experiment_ids=abandoned_ids,
+            invocation=end_record,
+        )
+        return merged
 
 
 def _experiment_report_md(eid, spec, metrics, gates, decision, score, results) -> str:
@@ -857,6 +1157,9 @@ __all__ = [
     "CampaignController",
     "DEFAULT_ARTIFACT_ROOT",
     "OPERATOR_REQUEST_FILE",
+    "PAUSE_INVOCATION_LIMIT",
+    "PAUSE_OPERATOR_REQUEST",
+    "PAUSE_REMAINING_WORK",
     "RUN_ALREADY_COMPLETE",
     "RUN_ALREADY_FAILED",
     "RUN_BLOCKED",
@@ -864,6 +1167,10 @@ __all__ = [
     "RUN_LOCKED",
     "RUN_OK",
     "RUN_PAUSED",
+    "STOP_CAMPAIGN_BLOCKED",
+    "STOP_CAMPAIGN_COMPLETE",
+    "STOP_CAMPAIGN_FAILED",
+    "STOP_OPERATOR_FINALIZE",
     "create_campaign",
     "read_git_commit",
 ]

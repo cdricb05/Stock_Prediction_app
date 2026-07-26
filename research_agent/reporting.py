@@ -1,4 +1,12 @@
-"""Campaign report generation (works for incomplete campaigns too)."""
+"""Campaign report generation (works for incomplete campaigns too).
+
+Phase 29A.2: reports and status share one work-summary contract. A report is
+``incomplete`` whenever supported planned work remains — a bounded invocation
+ending never makes a campaign COMPLETE — and always states planned/completed/
+remaining totals, the last stop reason, resumability, hypothesis status
+counts, per-stage decision counts, exact gate reasons, baseline-relative
+deltas and the next recommended agent action.
+"""
 
 from __future__ import annotations
 
@@ -16,6 +24,97 @@ from .artifact_store import (
 from .memory import CampaignMemory
 
 
+def _next_recommended_action(
+    state: str, campaign_id: str, remaining_total: int
+) -> str:
+    if state == "COMPLETE":
+        return "none — campaign complete; review reports/campaign_report.md"
+    if state == "FAILED":
+        return ("review the preserved failure evidence; FAILED campaigns are "
+                "never rerun")
+    if state == "BLOCKED":
+        return "fix the blocking input issue, then resume the campaign"
+    if state == "NEW_CAMPAIGN":
+        return ("run the campaign: python -m research_agent.cli run "
+                "--campaign-id %s" % campaign_id)
+    if remaining_total > 0:
+        return ("resume the campaign (%d supported experiment(s) remaining): "
+                "python -m research_agent.cli resume --campaign-id %s"
+                % (remaining_total, campaign_id))
+    return ("resume to finish evaluation/robustness/reporting: "
+            "python -m research_agent.cli resume --campaign-id %s" % campaign_id)
+
+
+def build_work_summary(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
+    """Reconciled work/progress totals shared by status and reports."""
+    manifest = store.read_manifest(campaign_id)
+    memory = CampaignMemory(store, campaign_id)
+    experiments = memory.experiments()
+    by_status: Dict[str, int] = {}
+    for row in experiments.values():
+        s = row.get("status", "?")
+        by_status[s] = by_status.get(s, 0) + 1
+
+    planned_total = len(experiments)
+    completed_total = by_status.get("COMPLETE", 0)
+    failed_total = by_status.get("FAILED", 0)
+    remaining_total = by_status.get("PLANNED", 0) + by_status.get("RUNNING", 0)
+    abandoned_total = by_status.get("ABANDONED", 0)
+    skipped_budget_total = by_status.get("SKIPPED_BUDGET", 0)
+    runtime_unsupported = by_status.get("REJECTED_UNSUPPORTED", 0)
+    plan_totals = manifest.get("plan_totals") or {}
+    rejected_unsupported_total = (
+        runtime_unsupported + int(plan_totals.get("rejected_unsupported") or 0)
+    )
+    supported_total = planned_total - runtime_unsupported
+
+    state = manifest.get("current_state", "NEW_CAMPAIGN")
+    resumable = state not in ("COMPLETE", "FAILED")
+    incomplete = bool(remaining_total > 0 or state != "COMPLETE")
+
+    hyp_counts: Dict[str, int] = {}
+    for h in memory.hypotheses().values():
+        s = h.get("status", "?")
+        hyp_counts[s] = hyp_counts.get(s, 0) + 1
+
+    primary_counts: Dict[str, int] = {}
+    for eid, row in experiments.items():
+        if row.get("status") != "COMPLETE":
+            continue
+        doc = store.read_experiment_artifact(campaign_id, eid, "decision.json")
+        if doc and doc.get("stage") == "primary":
+            d = doc.get("decision", "?")
+            primary_counts[d] = primary_counts.get(d, 0) + 1
+    robustness_counts: Dict[str, int] = {}
+    for doc in (manifest.get("robustness_results") or {}).values():
+        d = (doc or {}).get("decision", "?")
+        robustness_counts[d] = robustness_counts.get(d, 0) + 1
+
+    last_invocation = manifest.get("last_invocation")
+    return {
+        "planned_total": planned_total,
+        "supported_total": supported_total,
+        "completed_total": completed_total,
+        "failed_total": failed_total,
+        "rejected_unsupported_total": rejected_unsupported_total,
+        "remaining_total": remaining_total,
+        "abandoned_total": abandoned_total,
+        "skipped_budget_total": skipped_budget_total,
+        "plan_totals": plan_totals,
+        "invocation_limit": (last_invocation or {}).get("requested_max_experiments"),
+        "last_stop_reason": manifest.get("last_stop_reason"),
+        "last_invocation": last_invocation,
+        "resumable": resumable,
+        "incomplete": incomplete,
+        "hypothesis_status_counts": hyp_counts,
+        "primary_decision_counts": primary_counts,
+        "robustness_decision_counts": robustness_counts,
+        "next_recommended_action": _next_recommended_action(
+            state, campaign_id, remaining_total
+        ),
+    }
+
+
 def build_report(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
     manifest = store.read_manifest(campaign_id)
     memory = CampaignMemory(store, campaign_id)
@@ -31,9 +130,19 @@ def build_report(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
         row = experiments[eid]
         decision_doc = store.read_experiment_artifact(campaign_id, eid, "decision.json") or {}
         metrics_doc = store.read_experiment_artifact(campaign_id, eid, "metrics.json") or {}
+        gates_doc = store.read_experiment_artifact(campaign_id, eid, "gate_results.json") or {}
+        deltas_doc = store.read_experiment_artifact(campaign_id, eid, "baseline_deltas.json") or {}
         m = metrics_doc.get("metrics", metrics_doc) if isinstance(metrics_doc, dict) else {}
         if row.get("status") == "COMPLETE":
             configurations_tested += 1
+        compact_deltas = {
+            name: {
+                k: r.get(k)
+                for k in ("candidate", "baseline", "delta_abs", "delta_rel",
+                          "classification", "material")
+            }
+            for name, r in (deltas_doc.get("metrics") or {}).items()
+        }
         exp_rows.append(
             {
                 "experiment_id": eid,
@@ -41,6 +150,10 @@ def build_report(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
                 "status": row.get("status"),
                 "attempt": row.get("attempt"),
                 "decision": decision_doc.get("decision"),
+                "decision_reasons": decision_doc.get("reasons"),
+                "diagnostic_flags": decision_doc.get("diagnostic_flags"),
+                "hard_gate_failures": gates_doc.get("hard_gate_failures"),
+                "baseline_deltas": compact_deltas,
                 "final_score": (decision_doc.get("score") or {}).get("final_score"),
                 "net_spy_excess_ann": m.get("net_spy_excess_ann"),
                 "rank_ic_t": m.get("rank_ic_t"),
@@ -48,6 +161,7 @@ def build_report(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
                 "max_drawdown": m.get("max_drawdown"),
                 "months": m.get("months"),
                 "failure": row.get("failure"),
+                "abandon_reason": row.get("abandon_reason"),
             }
         )
 
@@ -118,8 +232,14 @@ def build_report(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
         "provisional_thresholds": provisional,
         "thresholds": {k: v.get("value") for k, v in thresholds.items()},
         "safety": dict(SAFETY_CONTRACT),
-        "incomplete": manifest.get("current_state") not in ("COMPLETE",),
+        "finalization": manifest.get("finalization"),
     }
+    # Work/progress contract (Phase 29A.2): planned/supported/completed/failed/
+    # remaining totals, invocation_limit, last_stop_reason, resumable,
+    # incomplete, hypothesis status counts, per-stage decision counts and the
+    # next recommended action. `incomplete` is true whenever supported planned
+    # work remains — never false merely because one bounded invocation ended.
+    summary.update(build_work_summary(store, campaign_id))
     return summary
 
 
@@ -155,6 +275,22 @@ def render_markdown(summary: Dict[str, Any]) -> str:
     for k, v in s["safety"].items():
         lines.append("- %s = %s" % (k, str(v).lower()))
     lines += [
+        "",
+        "## Campaign progress",
+        "- planned: %s | supported: %s | completed: %s | failed: %s | "
+        "remaining: %s | abandoned: %s"
+        % (s.get("planned_total"), s.get("supported_total"),
+           s.get("completed_total"), s.get("failed_total"),
+           s.get("remaining_total"), s.get("abandoned_total")),
+        "- incomplete: %s | resumable: %s | last stop reason: %s | "
+        "invocation limit: %s"
+        % (s.get("incomplete"), s.get("resumable"),
+           s.get("last_stop_reason"), s.get("invocation_limit")),
+        "- hypothesis statuses: %s" % s.get("hypothesis_status_counts"),
+        "- primary decisions: %s | robustness decisions: %s"
+        % (s.get("primary_decision_counts"), s.get("robustness_decision_counts")),
+        "- next recommended action: %s" % s.get("next_recommended_action"),
+        "- finalization: %s" % (s.get("finalization") or "none"),
         "",
         "## Baseline",
         "- model: %s / book: %s" % (s["baseline_model"], s["baseline_book"]),
@@ -211,4 +347,4 @@ def write_report(store: ArtifactStore, campaign_id: str) -> Dict[str, Any]:
     }
 
 
-__all__ = ["build_report", "render_markdown", "write_report"]
+__all__ = ["build_report", "build_work_summary", "render_markdown", "write_report"]

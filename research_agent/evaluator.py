@@ -9,6 +9,24 @@ Candidate outcomes: REJECTED / INCONCLUSIVE / RETAIN_FOR_ROBUSTNESS /
 SHADOW_ELIGIBLE. A candidate can never qualify on total return alone: the
 SHADOW_ELIGIBLE decision structurally requires rank-IC, cost-robustness,
 subperiod-stability and concentration gates in addition to net excess return.
+
+Phase 29A.2 stage separation:
+
+- PRIMARY RETENTION (stage="primary") decides whether a candidate deserves
+  expensive robustness testing. Its blocking gates are exactly the HARD gates
+  (PIT, coverage, 25 bps cost survival, sector concentration, subperiod
+  stability). The provisional absolute thresholds (rank-IC t, turnover cap,
+  regime fraction) are DIAGNOSTICS at this stage — recorded as
+  ``diagnostic_flags``, never silently blocking. Retention additionally
+  requires a persisted baseline-relative delta table showing either a material
+  balanced improvement or a useful robustness trade-off; total return alone
+  cannot retain (a materially unbalanced or severely degraded candidate stays
+  INCONCLUSIVE).
+- SHADOW ELIGIBILITY (stage="robustness") keeps the strict full standard:
+  every hard gate plus rank-IC, 50 bps cost survival, turnover, regime
+  stability and beating the baseline. A candidate can never become
+  SHADOW_ELIGIBLE from the primary stage, and human approval remains required
+  downstream regardless.
 """
 
 from __future__ import annotations
@@ -21,6 +39,9 @@ RETAIN_FOR_ROBUSTNESS = "RETAIN_FOR_ROBUSTNESS"
 SHADOW_ELIGIBLE = "SHADOW_ELIGIBLE"
 
 DECISIONS = (REJECTED, INCONCLUSIVE, RETAIN_FOR_ROBUSTNESS, SHADOW_ELIGIBLE)
+
+STAGE_PRIMARY = "primary"
+STAGE_ROBUSTNESS = "robustness"
 
 # Threshold defaults. "provisional" marks values without a formally validated
 # project source; they stay configurable through the campaign config.
@@ -46,6 +67,194 @@ HARD_GATES = (
     "sector_concentration",
     "subperiod_stability",
 )
+
+# Stage policy (Phase 29A.2). Primary retention blocks ONLY on the hard gates;
+# the provisional absolute thresholds are diagnostics at that stage. The shadow
+# standard additionally requires every strict evidence gate below.
+PRIMARY_RETENTION_GATES = HARD_GATES
+PRIMARY_DIAGNOSTIC_GATES = (
+    "rank_ic",
+    "turnover",
+    "regime_stability",
+    "cost_robustness_50bps",
+    "beats_baseline_net_excess",
+)
+SHADOW_ELIGIBILITY_GATES = HARD_GATES + (
+    "rank_ic",
+    "cost_robustness_50bps",
+    "turnover",
+    "regime_stability",
+    "beats_baseline_net_excess",
+)
+
+
+def stage_policy(stage: str) -> Dict[str, Any]:
+    """The explicit, persisted primary-vs-shadow gate policy for one stage."""
+    return {
+        "stage": stage,
+        "blocking_gates": list(
+            PRIMARY_RETENTION_GATES if stage == STAGE_PRIMARY else SHADOW_ELIGIBILITY_GATES
+        ),
+        "diagnostic_gates": list(
+            PRIMARY_DIAGNOSTIC_GATES if stage == STAGE_PRIMARY else ()
+        ),
+        "note": (
+            "primary retention decides robustness-testing admission only; "
+            "SHADOW_ELIGIBLE requires the full strict standard after robustness "
+            "and can never be granted at the primary stage"
+            if stage == STAGE_PRIMARY
+            else "shadow eligibility: strict full standard; human approval still "
+            "required and promotion beyond shadow is impossible here"
+        ),
+    }
+
+
+# --------------------------------------------------------------------------- #
+# Baseline-relative delta table (Phase 29A.2, Part F)
+# --------------------------------------------------------------------------- #
+# (metric name, source, direction: +1 higher-is-better / -1 lower-is-better,
+#  default materiality tolerance). Tolerances are PROVISIONAL: they mark the
+# band inside which a difference is treated as noise ("neutral"), and they stay
+# configurable through config["evaluation"]["delta_tolerances"].
+DELTA_METRICS = (
+    ("net_spy_excess_ann", ("metric", "net_spy_excess_ann"), +1, 0.005),
+    ("net_excess_ann_12p5bps", ("cost", 12.5), +1, 0.005),
+    ("net_excess_ann_25bps", ("cost", 25.0), +1, 0.005),
+    ("net_excess_ann_50bps", ("cost", 50.0), +1, 0.005),
+    ("gross_return_ann", ("metric", "gross_return_ann"), +1, 0.005),
+    ("max_drawdown", ("metric", "max_drawdown"), -1, 0.01),
+    ("volatility_ann", ("metric", "volatility_ann"), -1, 0.01),
+    ("turnover_monthly_oneside", ("metric", "turnover_monthly_oneside"), -1, 0.02),
+    ("rank_ic_mean", ("metric", "rank_ic_mean"), +1, 0.002),
+    ("rank_ic_t", ("metric", "rank_ic_t"), +1, 0.25),
+    ("rank_ic_ir", ("metric", "rank_ic_ir"), +1, 0.02),
+    ("subperiod_positive_fraction", ("metric", "subperiod_positive_fraction"), +1, 0.15),
+    ("net_excess_ann_ex_best_subperiod", ("metric", "net_excess_ann_ex_best_subperiod"), +1, 0.005),
+    ("regime_positive_fraction", ("metric", "regime_positive_fraction"), +1, 0.20),
+    ("max_sector_weight", ("metric", "max_sector_weight"), -1, 0.02),
+    ("membership_stability", ("metric", "membership_stability"), +1, 0.05),
+    ("coverage_fraction", ("metric", "coverage_fraction"), +1, 0.05),
+)
+
+DEFAULT_DELTA_TOLERANCES = {name: tol for name, _src, _dirn, tol in DELTA_METRICS}
+
+# A degradation this many times beyond its tolerance is "severe": it blocks
+# primary retention outright regardless of how good the return improvement is.
+SEVERE_DEGRADATION_MULTIPLIER = 5.0
+
+# Risk/stability metrics whose material degradations count against "balance".
+CORE_RISK_DELTA_METRICS = (
+    "max_drawdown",
+    "volatility_ann",
+    "turnover_monthly_oneside",
+    "rank_ic_mean",
+    "rank_ic_t",
+    "net_excess_ann_ex_best_subperiod",
+    "regime_positive_fraction",
+    "max_sector_weight",
+    "coverage_fraction",
+)
+
+# Material improvements here (with return not materially worse) form a "useful
+# robustness trade-off" — e.g. the 0.20 exit buffer trading a little return
+# for materially lower turnover.
+TRADE_OFF_IMPROVEMENT_METRICS = (
+    "turnover_monthly_oneside",
+    "max_drawdown",
+    "volatility_ann",
+    "max_sector_weight",
+)
+
+PRIMARY_RETURN_DELTA_METRIC = "net_spy_excess_ann"
+
+
+def resolve_delta_tolerances(
+    overrides: Optional[Dict[str, Any]] = None,
+) -> Dict[str, float]:
+    resolved = dict(DEFAULT_DELTA_TOLERANCES)
+    for key, val in (overrides or {}).items():
+        if key in resolved:
+            resolved[key] = float(val)
+    return resolved
+
+
+def build_baseline_deltas(
+    metrics: Dict[str, Any],
+    baseline_metrics: Dict[str, Any],
+    tolerances: Optional[Dict[str, Any]] = None,
+    severe_multiplier: Optional[float] = None,
+) -> Dict[str, Any]:
+    """Explicit per-candidate baseline-relative delta table (persisted).
+
+    Every metric row carries candidate value, baseline value, absolute delta,
+    relative delta where meaningful, better/worse/neutral classification and
+    whether the difference is material under the configured tolerance.
+    """
+    tol = resolve_delta_tolerances(tolerances)
+    mult = float(severe_multiplier or SEVERE_DEGRADATION_MULTIPLIER)
+    base = baseline_metrics or {}
+    rows: Dict[str, Dict[str, Any]] = {}
+    material_improvements: List[str] = []
+    material_degradations: List[str] = []
+    severe_degradations: List[str] = []
+
+    for name, source, direction, _default in DELTA_METRICS:
+        if source[0] == "cost":
+            cand = _cost_lookup(metrics.get("net_excess_ann_by_cost_bps") or {}, source[1])
+            bval = _cost_lookup(base.get("net_excess_ann_by_cost_bps") or {}, source[1])
+        else:
+            cand = metrics.get(source[1])
+            bval = base.get(source[1])
+        t = tol[name]
+        row: Dict[str, Any] = {
+            "candidate": cand,
+            "baseline": bval,
+            "direction": direction,
+            "tolerance": t,
+        }
+        if cand is None or bval is None:
+            row.update(
+                delta_abs=None, delta_rel=None,
+                classification="unavailable", material=False, severe=False,
+            )
+        else:
+            delta_abs = float(cand) - float(bval)
+            delta_rel = (delta_abs / abs(float(bval))) if abs(float(bval)) > 1e-12 else None
+            signed = direction * delta_abs
+            if abs(delta_abs) <= t:
+                cls, material = "neutral", False
+            elif signed > 0:
+                cls, material = "better", True
+            else:
+                cls, material = "worse", True
+            severe = bool(cls == "worse" and abs(delta_abs) > mult * t)
+            row.update(
+                delta_abs=delta_abs, delta_rel=delta_rel,
+                classification=cls, material=material, severe=severe,
+            )
+            if material and cls == "better":
+                material_improvements.append(name)
+            if material and cls == "worse":
+                material_degradations.append(name)
+            if severe:
+                severe_degradations.append(name)
+        rows[name] = row
+
+    return {
+        "metrics": rows,
+        "tolerances": tol,
+        "severe_degradation_multiplier": mult,
+        "material_improvements": material_improvements,
+        "material_degradations": material_degradations,
+        "severe_degradations": severe_degradations,
+        "provisional": True,
+        "note": (
+            "tolerances are provisional materiality bands (configurable via "
+            "config['evaluation']['delta_tolerances']); 'neutral' means the "
+            "difference is inside the band and cannot justify retention or "
+            "rejection on its own"
+        ),
+    }
 
 
 def resolve_thresholds(
@@ -261,14 +470,37 @@ def _cost_lookup(by_cost: Dict[Any, Any], bps: float) -> Optional[float]:
     return None
 
 
+def _diagnostic_flags(gates: Dict[str, Dict[str, Any]]) -> List[str]:
+    flags = []
+    for name in PRIMARY_DIAGNOSTIC_GATES:
+        g = gates.get(name)
+        if g is None:
+            continue
+        if g["passed"] is False:
+            flags.append(
+                "%s: provisional/diagnostic threshold not met "
+                "(non-blocking at the primary stage)" % name
+            )
+        elif g["passed"] is None:
+            flags.append("%s: not evaluated" % name)
+    return flags
+
+
 def decide_candidate(
     gate_results: Dict[str, Any],
     *,
     stage: str,
+    deltas: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
-    """stage: 'primary' (first backtest pass) or 'robustness' (full battery)."""
+    """stage: 'primary' (retention screening) or 'robustness' (shadow standard).
+
+    ``deltas`` is the persisted baseline-relative delta table from
+    ``build_baseline_deltas``. Primary retention REQUIRES it: without delta
+    evidence the primary stage can reject but never retain (conservative).
+    """
     gates = {g["gate"]: g for g in gate_results["gates"]}
     hard_failures = gate_results["hard_gate_failures"]
+    policy = stage_policy(stage)
     reasons: List[str] = []
 
     if gates["point_in_time_integrity"]["passed"] is False:
@@ -276,6 +508,8 @@ def decide_candidate(
             "decision": REJECTED,
             "reasons": ["point-in-time integrity failed (campaign fail-fast)"],
             "gate_overrides": ["point_in_time_integrity"],
+            "stage_policy": policy,
+            "diagnostic_flags": [],
         }
 
     if hard_failures:
@@ -283,42 +517,158 @@ def decide_candidate(
             "decision": REJECTED,
             "reasons": ["hard gate failed: %s" % ", ".join(hard_failures)],
             "gate_overrides": list(hard_failures),
+            "stage_policy": policy,
+            "diagnostic_flags": [],
         }
 
     beat = gates["beats_baseline_net_excess"]["passed"]
     ic = gates["rank_ic"]["passed"]
     to = gates["turnover"]["passed"]
 
-    if beat is False:
-        return {
-            "decision": REJECTED,
-            "reasons": ["does not beat the baseline on net SPY excess"],
-            "gate_overrides": [],
-        }
+    if stage == STAGE_PRIMARY:
+        flags = _diagnostic_flags(gates)
+        if deltas is None:
+            # No persisted delta table: retention evidence is missing, so the
+            # primary stage may never RETAIN. Keep the pre-29A.2 rejection for
+            # a candidate that does not beat the baseline at all.
+            if beat is False:
+                return {
+                    "decision": REJECTED,
+                    "reasons": ["does not beat the baseline on net SPY excess"],
+                    "gate_overrides": [],
+                    "stage_policy": policy,
+                    "diagnostic_flags": flags,
+                }
+            return {
+                "decision": INCONCLUSIVE,
+                "reasons": [
+                    "baseline-relative delta evidence unavailable; primary "
+                    "retention requires the persisted delta table"
+                ],
+                "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": flags,
+            }
 
-    if stage == "primary":
-        if beat and ic and (to is not False):
+        rows = deltas.get("metrics") or {}
+        ret = rows.get(PRIMARY_RETURN_DELTA_METRIC) or {}
+        ret_cls = ret.get("classification")
+        ret_material_better = bool(ret_cls == "better" and ret.get("material"))
+        ret_material_worse = bool(ret_cls == "worse" and ret.get("material"))
+        severe = list(deltas.get("severe_degradations") or [])
+        worse_core = [
+            name
+            for name in CORE_RISK_DELTA_METRICS
+            if (rows.get(name) or {}).get("classification") == "worse"
+            and (rows.get(name) or {}).get("material")
+        ]
+        tradeoff_gains = [
+            name
+            for name in TRADE_OFF_IMPROVEMENT_METRICS
+            if (rows.get(name) or {}).get("classification") == "better"
+            and (rows.get(name) or {}).get("material")
+        ]
+
+        if severe:
+            return {
+                "decision": INCONCLUSIVE,
+                "reasons": [
+                    "severe baseline-relative degradation blocks retention: %s"
+                    % ", ".join(severe)
+                ],
+                "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": flags,
+            }
+        if ret_material_better and len(worse_core) <= 1:
+            reasons = [
+                "material balanced baseline-relative improvement on %s "
+                "(delta %+0.4f, tolerance %.4f)"
+                % (PRIMARY_RETURN_DELTA_METRIC, ret.get("delta_abs") or 0.0,
+                   ret.get("tolerance") or 0.0)
+            ]
+            if worse_core:
+                reasons.append(
+                    "accepted trade-off: materially worse on %s only" % worse_core[0]
+                )
             return {
                 "decision": RETAIN_FOR_ROBUSTNESS,
-                "reasons": ["beats baseline with acceptable IC and turnover"],
+                "reasons": reasons,
                 "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": flags,
             }
-        reasons.append("improvement present but IC/turnover evidence incomplete")
-        return {"decision": INCONCLUSIVE, "reasons": reasons, "gate_overrides": []}
+        if ret_material_better:
+            return {
+                "decision": INCONCLUSIVE,
+                "reasons": [
+                    "return improvement is not balanced: materially worse on %s"
+                    % ", ".join(worse_core)
+                ],
+                "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": flags,
+            }
+        if not ret_material_worse and tradeoff_gains and not worse_core:
+            return {
+                "decision": RETAIN_FOR_ROBUSTNESS,
+                "reasons": [
+                    "useful robustness trade-off: material improvement on %s "
+                    "with net excess inside tolerance of the baseline"
+                    % ", ".join(tradeoff_gains)
+                ],
+                "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": flags,
+            }
+        if ret_material_worse:
+            return {
+                "decision": REJECTED,
+                "reasons": [
+                    "materially underperforms the baseline net of costs "
+                    "(delta %+0.4f beyond tolerance %.4f) with no qualifying "
+                    "robustness trade-off"
+                    % (ret.get("delta_abs") or 0.0, ret.get("tolerance") or 0.0)
+                ],
+                "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": flags,
+            }
+        return {
+            "decision": INCONCLUSIVE,
+            "reasons": [
+                "inside configured tolerances of the baseline on every "
+                "material dimension — indistinguishable, not retained"
+            ],
+            "gate_overrides": [],
+            "stage_policy": policy,
+            "diagnostic_flags": flags,
+        }
 
-    if stage == "robustness":
+    if stage == STAGE_ROBUSTNESS:
+        if beat is False:
+            return {
+                "decision": REJECTED,
+                "reasons": ["does not beat the baseline on net SPY excess"],
+                "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": [],
+            }
         c50 = gates["cost_robustness_50bps"]["passed"]
         reg = gates["regime_stability"]["passed"]
         # Total return alone can never qualify: IC, 50 bps survival, regime
-        # stability and (hard) subperiod/sector/coverage gates are all required.
-        if beat and ic and c50 and (reg is not False) and (to is not False):
+        # stability, turnover and the hard subperiod/sector/coverage gates are
+        # ALL required — the strict shadow standard is never lowered.
+        if beat and ic and c50 and reg is True and to is True:
             return {
                 "decision": SHADOW_ELIGIBLE,
                 "reasons": [
                     "beats baseline net of costs with IC, cost, subperiod, "
-                    "regime and concentration evidence"
+                    "regime, turnover and concentration evidence"
                 ],
                 "gate_overrides": [],
+                "stage_policy": policy,
+                "diagnostic_flags": [],
             }
         for name, g in gates.items():
             if g["passed"] is False:
@@ -329,6 +679,8 @@ def decide_candidate(
             "decision": REJECTED if any("failed" in r for r in reasons) else INCONCLUSIVE,
             "reasons": reasons or ["insufficient robustness evidence"],
             "gate_overrides": [],
+            "stage_policy": policy,
+            "diagnostic_flags": [],
         }
 
     raise ValueError("unknown evaluation stage: %s" % stage)
@@ -437,16 +789,30 @@ def score_candidate(
 
 
 __all__ = [
+    "CORE_RISK_DELTA_METRICS",
     "DECISIONS",
+    "DEFAULT_DELTA_TOLERANCES",
     "DEFAULT_THRESHOLDS",
+    "DELTA_METRICS",
     "HARD_GATES",
     "INCONCLUSIVE",
+    "PRIMARY_DIAGNOSTIC_GATES",
+    "PRIMARY_RETENTION_GATES",
+    "PRIMARY_RETURN_DELTA_METRIC",
     "REJECTED",
     "RETAIN_FOR_ROBUSTNESS",
+    "SEVERE_DEGRADATION_MULTIPLIER",
+    "SHADOW_ELIGIBILITY_GATES",
     "SHADOW_ELIGIBLE",
     "SCORE_COMPONENTS",
+    "STAGE_PRIMARY",
+    "STAGE_ROBUSTNESS",
+    "TRADE_OFF_IMPROVEMENT_METRICS",
+    "build_baseline_deltas",
     "decide_candidate",
     "evaluate_gates",
+    "resolve_delta_tolerances",
     "resolve_thresholds",
     "score_candidate",
+    "stage_policy",
 ]

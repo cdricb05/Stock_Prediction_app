@@ -106,6 +106,9 @@ _HYPOTHESES = (
         "expected_benefit": "candidates whose edge is real after realistic costs",
         "falsification_condition": "positive at 12.5 bps but non-positive at 50 bps",
         "priority": 1,
+        # no grid cells of its own: its evidence is the cost ladder computed
+        # inside every completed cell's metric battery
+        "evidence_channel": "per_cell_cost_ladder",
     },
     {
         "hypothesis_id": "hyp_universe_robustness",
@@ -115,6 +118,9 @@ _HYPOTHESES = (
         "expected_benefit": "evidence the edge is not a thin-liquidity artifact",
         "falsification_condition": "excess disappears under live eligibility/ADV",
         "priority": 3,
+        # no grid cells of its own: only the robustness battery of a retained
+        # candidate (run_universe_sensitivity) can test it
+        "evidence_channel": "robustness_battery",
     },
 )
 
@@ -129,6 +135,7 @@ class BoundedDeterministicPlanner(Planner):
                 expected_benefit=h["expected_benefit"],
                 falsification_condition=h["falsification_condition"],
                 priority=h["priority"],
+                evidence_channel=h.get("evidence_channel", "grid_cells"),
             )
             for h in _HYPOTHESES
         ]

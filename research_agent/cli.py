@@ -10,6 +10,11 @@ Exit codes:
 Every command supports --json for machine-readable output. The CLI performs
 research orchestration ONLY: it can never create orders, touch a broker, or
 change the operational model.
+
+Phase 29A.2: --max-experiments on run/resume limits ONE invocation; the
+campaign pauses (resumable) at the limit instead of completing. `finalize`
+is the only way to COMPLETE a campaign that still has supported planned
+work, and it requires an explicit --reason that is persisted.
 """
 
 from __future__ import annotations
@@ -156,6 +161,22 @@ def cmd_resume(args) -> int:
     return EXIT_FAILED
 
 
+def cmd_finalize(args) -> int:
+    ctl = _controller(args)
+    if ctl is None:
+        return EXIT_UNKNOWN_CAMPAIGN
+    result = ctl.finalize(reason=args.reason)
+    _emit(result, args.json)
+    if result.get("status") == RUN_LOCKED:
+        return EXIT_LOCKED
+    if not result.get("finalized"):
+        # already-terminal is an idempotent no-op; a missing reason is invalid
+        return EXIT_OK if result.get("final_state") else EXIT_INVALID
+    if result.get("status") in (RUN_FAILED, RUN_BLOCKED):
+        return EXIT_FAILED
+    return EXIT_OK
+
+
 def cmd_report(args) -> int:
     ctl = _controller(args)
     if ctl is None:
@@ -224,6 +245,16 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--max-experiments", type=int, default=None)
     sp.add_argument("--dry-run", action="store_true")
     sp.set_defaults(fn=cmd_resume)
+
+    sp = sub.add_parser(
+        "finalize",
+        help="explicitly end a campaign with remaining work, recording why "
+             "that work is abandoned (required --reason)",
+    )
+    _common(sp)
+    sp.add_argument("--reason", required=True,
+                    help="why the remaining supported work is being abandoned")
+    sp.set_defaults(fn=cmd_finalize)
 
     sp = sub.add_parser("report", help="generate the campaign report")
     _common(sp)

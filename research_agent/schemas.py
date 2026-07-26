@@ -494,6 +494,49 @@ def validate_campaign_config(
     elif sc is not None:
         violations.append(_violation("stop_conditions", "must be an object", sc))
 
+    # Optional Phase 29A.2 evaluation section: baseline-relative materiality
+    # tolerances for the persisted delta table. Strictly validated when present.
+    evl = cfg.get("evaluation")
+    if isinstance(evl, dict):
+        from .evaluator import DEFAULT_DELTA_TOLERANCES
+
+        for f in sorted(set(evl) - {"delta_tolerances", "severe_degradation_multiplier"}):
+            violations.append(
+                _violation("evaluation.%s" % f, "unknown field (strict schema)", evl.get(f))
+            )
+        tols = evl.get("delta_tolerances")
+        if tols is not None:
+            if not isinstance(tols, dict):
+                violations.append(
+                    _violation("evaluation.delta_tolerances", "must be an object", tols)
+                )
+            else:
+                for k in sorted(tols):
+                    if k not in DEFAULT_DELTA_TOLERANCES:
+                        violations.append(
+                            _violation(
+                                "evaluation.delta_tolerances.%s" % k,
+                                "unknown delta metric", tols[k],
+                            )
+                        )
+                    elif not _is_num(tols[k]) or float(tols[k]) < 0:
+                        violations.append(
+                            _violation(
+                                "evaluation.delta_tolerances.%s" % k,
+                                "must be a non-negative number", tols[k],
+                            )
+                        )
+        mult = evl.get("severe_degradation_multiplier")
+        if mult is not None and (not _is_num(mult) or float(mult) < 1.0):
+            violations.append(
+                _violation(
+                    "evaluation.severe_degradation_multiplier",
+                    "must be a number >= 1", mult,
+                )
+            )
+    elif evl is not None:
+        violations.append(_violation("evaluation", "must be an object", evl))
+
     accepted = not violations
     return {
         "accepted": accepted,

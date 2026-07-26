@@ -5,8 +5,10 @@ Layout under <artifact_root>\campaigns\<campaign_id>\:
     events.jsonl             append-only, chain-hashed event ledger
     hypotheses.jsonl         append-only hypothesis records
     experiment_index.jsonl   append-only experiment index rows
+    invocations.jsonl        append-only per-invocation records (START/END)
     experiments\<exp_id>\    config.json / provenance.json / metrics.json /
-                             gate_results.json / decision.json / report.md
+                             gate_results.json / decision.json /
+                             baseline_deltas.json / report.md
     challengers\             append-only challenger registry (registry.jsonl)
     reports\                 generated campaign reports
     locks\                   campaign.lock single-flight lock
@@ -39,6 +41,7 @@ CAMPAIGN_MANIFEST = "campaign.json"
 EVENTS_LEDGER = "events.jsonl"
 HYPOTHESES_LEDGER = "hypotheses.jsonl"
 EXPERIMENT_INDEX = "experiment_index.jsonl"
+INVOCATIONS_LEDGER = "invocations.jsonl"
 EXPERIMENTS_DIR = "experiments"
 CHALLENGERS_DIR = "challengers"
 CHALLENGER_REGISTRY = "registry.jsonl"
@@ -53,6 +56,7 @@ EXPERIMENT_ARTIFACTS = (
     "metrics.json",
     "gate_results.json",
     "decision.json",
+    "baseline_deltas.json",
     "report.md",
 )
 
@@ -347,6 +351,13 @@ class ArtifactStore:
     def read_experiment_index(self, campaign_id: str) -> List[Dict[str, Any]]:
         return read_jsonl(self.campaign_dir(campaign_id) / EXPERIMENT_INDEX)
 
+    def append_invocation(self, campaign_id: str, record: Dict[str, Any]) -> None:
+        """Append-only per-invocation ledger (START and END rows per run)."""
+        append_jsonl(self.campaign_dir(campaign_id) / INVOCATIONS_LEDGER, record)
+
+    def read_invocations(self, campaign_id: str) -> List[Dict[str, Any]]:
+        return read_jsonl(self.campaign_dir(campaign_id) / INVOCATIONS_LEDGER)
+
     # ---- immutable experiment artifacts ----------------------------------
     def write_experiment_artifact(
         self,
@@ -414,6 +425,7 @@ __all__ = [
     "CampaignLock",
     "CampaignLockedError",
     "ImmutableArtifactError",
+    "INVOCATIONS_LEDGER",
     "SecretLeakError",
     "append_jsonl",
     "assert_no_secrets",

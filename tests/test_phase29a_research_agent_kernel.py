@@ -588,11 +588,11 @@ class TestPlanner:
         try:
             real_decide = ev.decide_candidate
 
-            def forced(gates, *, stage):
+            def forced(gates, *, stage, **kw):
                 if stage == "primary":
                     return {"decision": ev.RETAIN_FOR_ROBUSTNESS,
                             "reasons": ["forced for test"], "gate_overrides": []}
-                return real_decide(gates, stage=stage)
+                return real_decide(gates, stage=stage, **kw)
 
             mp.setattr(ev, "decide_candidate", forced)
             result = controller.run()
@@ -1075,7 +1075,8 @@ class TestSafety:
         c = completed_campaign["controller"]
         cdir = c.store.campaign_dir(c.campaign_id)
         expected = {"campaign.json", "events.jsonl", "hypotheses.jsonl",
-                    "experiment_index.jsonl", "experiments", "challengers",
+                    "experiment_index.jsonl", "invocations.jsonl",
+                    "experiments", "challengers",
                     "reports", "locks", "status.json", "operator_request.json"}
         actual = {p.name for p in cdir.iterdir()}
         assert actual <= expected, "unexpected artifacts: %s" % (actual - expected)

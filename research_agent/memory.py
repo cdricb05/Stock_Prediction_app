@@ -21,6 +21,15 @@ HYPOTHESIS_STATUSES = (
     "FALSIFIED",
     "INCONCLUSIVE",
     "ABANDONED",
+    # Phase 29A.2 explicit lifecycle, derived from persisted experiment and
+    # robustness evidence (append-only status rows; history never rewritten):
+    "ACTIVE",
+    "PARTIALLY_TESTED",
+    "TESTED_NO_SURVIVOR",
+    "RETAINED_FOR_ROBUSTNESS",
+    "ROBUSTNESS_COMPLETE",
+    "EXHAUSTED",
+    "BLOCKED",
 )
 
 EXPERIMENT_STATUSES = (
@@ -30,7 +39,25 @@ EXPERIMENT_STATUSES = (
     "FAILED",
     "REJECTED_UNSUPPORTED",
     "SKIPPED_BUDGET",
+    # Phase 29A.2: recorded when an operator explicitly finalizes a campaign
+    # with supported planned work remaining (the finalize reason is persisted).
+    "ABANDONED",
 )
+
+# Experiment statuses that end an experiment's lifecycle.
+TERMINAL_EXPERIMENT_STATUSES = (
+    "COMPLETE",
+    "FAILED",
+    "REJECTED_UNSUPPORTED",
+    "SKIPPED_BUDGET",
+    "ABANDONED",
+)
+
+# How a hypothesis accumulates evidence (persisted on the hypothesis record):
+#   grid_cells           evidence = its own planned grid cells
+#   per_cell_cost_ladder evidence = the cost ladder inside EVERY completed cell
+#   robustness_battery   evidence = the robustness battery of retained candidates
+EVIDENCE_CHANNELS = ("grid_cells", "per_cell_cost_ladder", "robustness_battery")
 
 
 def build_campaign_record(
@@ -77,9 +104,12 @@ def build_hypothesis_record(
     priority: int,
     parent_hypothesis: Optional[str] = None,
     status: str = "QUEUED",
+    evidence_channel: str = "grid_cells",
 ) -> Dict[str, Any]:
     if status not in HYPOTHESIS_STATUSES:
         raise ValueError("unknown hypothesis status: %s" % status)
+    if evidence_channel not in EVIDENCE_CHANNELS:
+        raise ValueError("unknown evidence channel: %s" % evidence_channel)
     return {
         "schema_version": SCHEMA_VERSION,
         "record_type": "HYPOTHESIS",
@@ -91,8 +121,79 @@ def build_hypothesis_record(
         "priority": int(priority),
         "parent_hypothesis": parent_hypothesis,
         "status": status,
+        "evidence_channel": evidence_channel,
         "recorded_at": _now_iso(),
     }
+
+
+def derive_hypothesis_status(
+    hypothesis_id: str,
+    *,
+    experiments: Dict[str, Dict[str, Any]],
+    decisions: Dict[str, str],
+    robustness_results: Optional[Dict[str, Any]] = None,
+    evidence_channel: str = "grid_cells",
+    evaluation_complete: bool = False,
+) -> str:
+    """Derive a hypothesis lifecycle status from persisted evidence only.
+
+    ``decisions`` maps experiment_id -> primary decision string for evaluated
+    COMPLETE experiments; ``robustness_results`` maps experiment_id -> the
+    persisted robustness outcome. Never consults anything mutable in-flight.
+    """
+    robustness_results = robustness_results or {}
+    retained_decisions = ("RETAIN_FOR_ROBUSTNESS", "SHADOW_ELIGIBLE")
+
+    if evidence_channel == "robustness_battery":
+        if robustness_results:
+            return "ROBUSTNESS_COMPLETE"
+        if evaluation_complete:
+            any_retained = any(d in retained_decisions for d in decisions.values())
+            # Blocked on an upstream survivor: this hypothesis can only be
+            # tested through the robustness battery of a retained candidate.
+            return "ACTIVE" if any_retained else "BLOCKED"
+        return "QUEUED"
+
+    if evidence_channel == "per_cell_cost_ladder":
+        cells = list(experiments.values())
+        if not cells:
+            return "QUEUED"
+    else:
+        cells = [
+            r for r in experiments.values()
+            if r.get("hypothesis_id") == hypothesis_id
+        ]
+        if not cells:
+            # Once a plan exists, a hypothesis with no cells cannot be tested
+            # within this campaign's approved dimensions: BLOCKED, not QUEUED.
+            return "BLOCKED" if experiments else "QUEUED"
+
+    started = [r for r in cells if r.get("status") != "PLANNED"]
+    if not started:
+        return "QUEUED"
+
+    retained_cells = [
+        r["experiment_id"]
+        for r in cells
+        if decisions.get(r["experiment_id"]) in retained_decisions
+    ]
+    if retained_cells:
+        if all(eid in robustness_results for eid in retained_cells):
+            return "ROBUSTNESS_COMPLETE"
+        return "RETAINED_FOR_ROBUSTNESS"
+
+    terminal = [r for r in cells if r.get("status") in TERMINAL_EXPERIMENT_STATUSES]
+    complete = [r for r in cells if r.get("status") == "COMPLETE"]
+    all_terminal = len(terminal) == len(cells)
+    all_evaluated = all(r["experiment_id"] in decisions for r in complete)
+    if all_terminal and all_evaluated:
+        if not complete:
+            # every supported cell ended without producing usable evidence
+            return "EXHAUSTED"
+        return "TESTED_NO_SURVIVOR"
+    if terminal:
+        return "PARTIALLY_TESTED"
+    return "ACTIVE"
 
 
 def build_experiment_record(
@@ -230,11 +331,14 @@ def spec_hash(spec: Dict[str, Any]) -> str:
 
 __all__ = [
     "CampaignMemory",
+    "EVIDENCE_CHANNELS",
     "EXPERIMENT_STATUSES",
     "HYPOTHESIS_STATUSES",
+    "TERMINAL_EXPERIMENT_STATUSES",
     "build_campaign_record",
     "build_experiment_record",
     "build_hypothesis_record",
     "build_result_record",
+    "derive_hypothesis_status",
     "spec_hash",
 ]
