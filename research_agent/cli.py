@@ -35,6 +35,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any, Dict, Optional
@@ -816,6 +817,77 @@ def cmd_simfin_adequacy_report(args) -> int:
     return EXIT_OK
 
 
+# Phase 30C.2 vendor evaluation pack (deterministic export; no network, no vendor)
+def _vpack_config(args) -> Optional[Dict[str, Any]]:
+    from .vendor_evaluation_pack import load_config
+
+    cfg = load_config(args.config)
+    if cfg is None:
+        print("cannot read vendor-eval-pack config %s" % args.config, file=sys.stderr)
+    return cfg
+
+
+def cmd_vendor_eval_pack_validate(args) -> int:
+    from .vendor_evaluation_pack import validate_config
+
+    cfg = _vpack_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_config(cfg)
+    _emit({"accepted": verdict["accepted"], "violations": verdict["violations"],
+           "config_hash": verdict["config_hash"]}, args.json)
+    return EXIT_OK if verdict["accepted"] else EXIT_INVALID
+
+
+def cmd_vendor_eval_pack_build(args) -> int:
+    from .vendor_evaluation_pack import build_pack
+
+    cfg = _vpack_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    result = build_pack(cfg, output_root=output_root)
+    _emit(result, args.json)
+    return EXIT_INVALID if result.get("status") == "INVALID_CONFIG" else EXIT_OK
+
+
+def cmd_vendor_eval_pack_verify(args) -> int:
+    from .vendor_evaluation_pack import verify_pack
+
+    cfg = _vpack_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    result = verify_pack(output_root, cfg)
+    _emit(result, args.json)
+    return EXIT_OK if result.get("ok") else EXIT_INVALID
+
+
+def cmd_vendor_eval_pack_report(args) -> int:
+    from .vendor_evaluation_pack import PACKAGE_MANIFEST_JSON, DEFAULT_OUTPUT_SUBDIR
+    from .artifact_store import read_json
+
+    cfg = _vpack_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    out_dir = os.path.join(output_root, cfg.get("output_subdir") or DEFAULT_OUTPUT_SUBDIR)
+    manifest_path = os.path.join(out_dir, PACKAGE_MANIFEST_JSON)
+    if not os.path.isfile(manifest_path):
+        print("no package manifest at %s" % manifest_path, file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    manifest = read_json(manifest_path)
+    payload = {"output_dir": out_dir, "row_counts": manifest.get("row_counts"),
+               "sample_hash": manifest.get("sample_hash"),
+               "package_content_hash": manifest.get("package_content_hash"),
+               "files": [f["name"] for f in manifest.get("files", [])] + [PACKAGE_MANIFEST_JSON],
+               "safety": SAFETY_CONTRACT}
+    if args.json:
+        payload["manifest"] = manifest
+    _emit(payload, args.json)
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="python -m research_agent.cli",
@@ -1126,6 +1198,36 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--output-root", default=None)
     sp.add_argument("--json", action="store_true")
     sp.set_defaults(fn=cmd_simfin_adequacy_report)
+
+    # Phase 30C.2 vendor evaluation pack (deterministic export; no network, no vendor)
+    sp = sub.add_parser("vendor-eval-pack-validate",
+                        help="validate a Phase 30C.2 vendor evaluation pack config")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_vendor_eval_pack_validate)
+
+    sp = sub.add_parser("vendor-eval-pack-build",
+                        help="export the 7-file vendor evaluation pack from the "
+                             "committed 30C/30C.1 evidence (deterministic; no network)")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_vendor_eval_pack_build)
+
+    sp = sub.add_parser("vendor-eval-pack-verify",
+                        help="re-verify a written pack (counts, sample-hash, file "
+                             "hashes, secret + Paper Trader scan)")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_vendor_eval_pack_verify)
+
+    sp = sub.add_parser("vendor-eval-pack-report",
+                        help="print the manifest summary for a written pack")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_vendor_eval_pack_report)
 
     return p
 

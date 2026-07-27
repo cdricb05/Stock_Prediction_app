@@ -1,0 +1,79 @@
+{
+  "schema_version": "30C2.1",
+  "name": "phase30c2_vendor_evaluation_pack",
+  "objective": "Export a deterministic, vendor-neutral historical-fundamentals evaluation pack from the already-computed Phase 30C (hcov_026a857c80119147) and Phase 30C.1 (sfadq_f5403565056936e8) evidence. Reuse the exact deterministic Phase 30C 80-security sample (60 removed + 20 current) verbatim; emit the trial sample, the required-vendor-field contract, the unchanged acceptance gates, an empty response template, scoring instructions, a vendor-neutral request email, and a hashed manifest. No alpha campaign, no vendor contact, no purchase, no network call, no Paper Trader access. Research-only: no order, broker, automation, promotion, challenger, or operational-model change is possible.",
+  "data": {
+    "data_cutoff": "2026-06-30"
+  },
+  "generated_at": "2026-07-27T00:00:00Z",
+  "vendors": [
+    "Intrinio Gold Fundamentals",
+    "Nasdaq Sharadar SF1"
+  ],
+  "entitlement": {
+    "no_purchase": true,
+    "contact_sales": false,
+    "use_existing_keys_only": true,
+    "local_files_only": true
+  },
+  "coverage_gates": {
+    "global_min_cross_sectional_coverage": 0.6,
+    "global_min_month_coverage": 0.6,
+    "min_delisted_representation_fraction": 0.2
+  },
+  "sector_history": {
+    "member_month_coverage_min": 0.6
+  },
+  "safety": {
+    "research_only": true,
+    "may_register_challengers": false,
+    "no_operational_promotion": true
+  },
+  "output_subdir": "vendor_evaluation_pack",
+  "sources": {
+    "roots": {
+      "data_root": "DATA_ROOT",
+      "repo": "REPO_ROOT"
+    },
+    "phase30c_pointer": {
+      "relpath": "research_agent/phase30c_latest_run.json",
+      "root": "data_root"
+    },
+    "phase30c_runs_root": {
+      "relpath": "research_agent/historical_coverage_runs",
+      "root": "data_root"
+    },
+    "phase30c1_pointer": {
+      "relpath": "research_agent/phase30c1_latest_run.json",
+      "root": "data_root"
+    },
+    "phase30c1_runs_root": {
+      "relpath": "research_agent/simfin_adequacy_runs",
+      "root": "data_root"
+    },
+    "owned_sec_companyfacts_dir": {
+      "relpath": "phase7j_broad_universe_signal_retest/sec_companyfacts",
+      "root": "data_root"
+    },
+    "sec_cache_companyfacts_dir": {
+      "relpath": "provider_cache/phase30c/sec/companyfacts",
+      "root": "data_root"
+    },
+    "simfin_companies": {
+      "relpath": "research/data/simfin/us-companies.csv",
+      "root": "repo"
+    },
+    "simfin_income": {
+      "relpath": "research/data/simfin/us-income-quarterly.csv",
+      "root": "repo"
+    },
+    "simfin_balance": {
+      "relpath": "research/data/simfin/us-balance-quarterly.csv",
+      "root": "repo"
+    },
+    "simfin_cashflow": {
+      "relpath": "research/data/simfin/us-cashflow-quarterly.csv",
+      "root": "repo"
+    }
+  }
+}
