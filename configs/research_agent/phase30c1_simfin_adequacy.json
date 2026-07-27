@@ -1,0 +1,67 @@
+{
+ "schema_version": "30C1.1",
+ "name": "phase30c1_simfin_adequacy",
+ "objective": "Local, network-free adequacy test of the already-downloaded free SimFin bulk files. Inventory the local files, classify their point-in-time date semantics, build a deterministic CIK/SimFinId stable mapping onto the canonical Phase 30C security master, reconstruct the three committed factors (gross_profitability, fcf_to_assets, operating_accruals) with the exact committed definitions, measure SimFin-only coverage against the unchanged gates, compare and union with the existing Phase 30C SEC as-filed cache, quantify the free-data coverage ceiling, and finish with exactly one SimFin decision and one next-data action. Fully local: no network calls, no SimFin API key, no vendor contact, no purchase. No order, broker, automation, promotion, challenger, or operational-model change is possible.",
+ "data": {
+  "data_cutoff": "2026-06-30",
+  "cutoff_note": "committed Phase 29C/30A/30B/30C source-campaign cutoff (max formation month 2026-05); SimFin bulk downloaded 2026-06-21"
+ },
+ "sources": {
+  "roots": {"repo": "REPO_ROOT", "data_root": "DATA_ROOT"},
+  "momentum_panel": {"root": "data_root", "relpath": "phase25_multi_horizon_alpha/_inputs/momentum_monthly_panel.csv"},
+  "security_master": {"root": "data_root", "relpath": "research_panels/phase8c_russell3000/metadata.csv"},
+  "sector_map": {"root": "repo", "relpath": "research/output/phase10f_owned_sector_mapping_repair/repaired_sector_mapping.csv"},
+  "sec_company_tickers": {"root": "repo", "relpath": "research/output/phase3l_sec_universe_signal_gate/raw/company_tickers.json"},
+  "simfin_companies": {"root": "repo", "relpath": "research/data/simfin/us-companies.csv"},
+  "simfin_income": {"root": "repo", "relpath": "research/data/simfin/us-income-quarterly.csv"},
+  "simfin_balance": {"root": "repo", "relpath": "research/data/simfin/us-balance-quarterly.csv"},
+  "simfin_cashflow": {"root": "repo", "relpath": "research/data/simfin/us-cashflow-quarterly.csv"},
+  "simfin_income_banks": {"root": "repo", "relpath": "research/data/simfin/us-income-banks-quarterly.csv"},
+  "simfin_balance_banks": {"root": "repo", "relpath": "research/data/simfin/us-balance-banks-quarterly.csv"},
+  "simfin_cashflow_banks": {"root": "repo", "relpath": "research/data/simfin/us-cashflow-banks-quarterly.csv"},
+  "simfin_download_dir": {"root": "repo", "relpath": "research/data/simfin/download"},
+  "sec_cache_companyfacts_dir": {"root": "data_root", "relpath": "provider_cache/phase30c/sec/companyfacts"},
+  "sec_cache_submissions_dir": {"root": "data_root", "relpath": "provider_cache/phase30c/sec/submissions"},
+  "owned_sec_companyfacts_dir": {"root": "data_root", "relpath": "phase7j_broad_universe_signal_retest/sec_companyfacts"},
+  "owned_sec_submissions_dir": {"root": "data_root", "relpath": "phase7j_broad_universe_signal_retest/sec_submissions"},
+  "phase30c_pointer": {"root": "data_root", "relpath": "research_agent/phase30c_latest_run.json"},
+  "phase30c_runs_root": {"root": "data_root", "relpath": "research_agent/historical_coverage_runs"}
+ },
+ "entitlement": {"no_purchase": true, "contact_sales": false, "use_existing_keys_only": true, "local_files_only": true},
+ "max_factor_staleness_months": 15,
+ "coverage_gates": {
+  "global_min_cross_sectional_coverage": 0.60,
+  "global_min_month_coverage": 0.60,
+  "min_delisted_representation_fraction": 0.20
+ },
+ "sector_history": {
+  "require_pit_safe_for_promotion": true,
+  "treat_unknown_as_sector": false,
+  "member_month_coverage_min": 0.60
+ },
+ "diagnostics": {"factors": ["gross_profitability", "fcf_to_assets", "operating_accruals"]},
+ "ic_screen": {
+  "min_months": 36,
+  "min_coverage_fraction": 0.6,
+  "min_abs_rank_ic_t": 1.0,
+  "material_ic_t_margin": 0.25,
+  "near_duplicate_abs_corr": 0.95,
+  "max_complementary_abs_baseline_corr": 0.5,
+  "max_top_rank_sector_share": 0.5,
+  "leakage_suspicion_abs_ic": 0.5,
+  "min_universe": 10
+ },
+ "integration": {"baseline_weight": 0.8, "feature_weight": 0.2},
+ "costs": {"primary_cost_bps_per_side": 25.0, "sensitivity_cost_bps_per_side": [12.5, 50.0]},
+ "portfolio": {
+  "top_n": 25,
+  "sector_treatment": "sector_cap",
+  "exit_buffer_fraction": 0.0,
+  "universe": "mhz_reconstruction",
+  "min_adv_dollar": 10000000.0
+ },
+ "baseline": {"rank_ic_t": 0.7943535272584944},
+ "random_seed": 30,
+ "strict_mode": true,
+ "safety": {"research_only": true, "no_operational_promotion": true, "may_register_challengers": false}
+}

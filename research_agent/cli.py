@@ -749,6 +749,73 @@ def cmd_historical_coverage_report(args) -> int:
     return EXIT_OK
 
 
+# --------------------------------------------------------------------------- #
+# Phase 30C.1 SimFin adequacy commands (local-file only; no network)
+# --------------------------------------------------------------------------- #
+def _sfadq_config(args) -> Optional[Dict[str, Any]]:
+    from .simfin_adequacy import load_config
+
+    cfg = load_config(args.config)
+    if cfg is None:
+        print("cannot read simfin-adequacy config %s" % args.config, file=sys.stderr)
+    return cfg
+
+
+def cmd_simfin_adequacy_validate(args) -> int:
+    from .simfin_adequacy import validate_config
+
+    cfg = _sfadq_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_config(cfg)
+    _emit({"accepted": verdict["accepted"], "violations": verdict["violations"],
+           "config_hash": verdict["config_hash"]}, args.json)
+    return EXIT_OK if verdict["accepted"] else EXIT_INVALID
+
+
+def cmd_simfin_adequacy_run(args) -> int:
+    from .simfin_adequacy import run_adequacy
+
+    cfg = _sfadq_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    result = run_adequacy(cfg, output_root=output_root)
+    _emit(result, args.json)
+    return EXIT_INVALID if result.get("status") == "INVALID_CONFIG" else EXIT_OK
+
+
+def cmd_simfin_adequacy_status(args) -> int:
+    from .simfin_adequacy import SimfinAdequacyError, generate_status
+
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        _emit(generate_status(args.run_id, output_root), args.json)
+    except SimfinAdequacyError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    return EXIT_OK
+
+
+def cmd_simfin_adequacy_report(args) -> int:
+    from .simfin_adequacy import SimfinAdequacyError, generate_report
+
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        result = generate_report(args.run_id, output_root)
+    except SimfinAdequacyError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    payload = {"run_id": result["run_id"], "artifact_paths": result["artifact_paths"],
+               "simfin_decision": result["report"]["simfin_decision"],
+               "next_data_action": result["report"]["next_data_action"],
+               "safety": SAFETY_CONTRACT}
+    if args.json:
+        payload["report"] = result["report"]
+    _emit(payload, args.json)
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="python -m research_agent.cli",
@@ -1029,6 +1096,36 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--output-root", default=None)
     sp.add_argument("--json", action="store_true")
     sp.set_defaults(fn=cmd_historical_coverage_report)
+
+    # Phase 30C.1 SimFin adequacy (local-file only; no network)
+    sp = sub.add_parser("simfin-adequacy-validate",
+                        help="validate a Phase 30C.1 SimFin adequacy config")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_simfin_adequacy_validate)
+
+    sp = sub.add_parser("simfin-adequacy-run",
+                        help="run the local SimFin adequacy test (inventory, PIT "
+                             "semantics, mapping, factor reconstruction, coverage, "
+                             "SEC union, ceiling, decision) — no network")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_simfin_adequacy_run)
+
+    sp = sub.add_parser("simfin-adequacy-status",
+                        help="status of a SimFin adequacy run")
+    sp.add_argument("--run-id", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_simfin_adequacy_status)
+
+    sp = sub.add_parser("simfin-adequacy-report",
+                        help="idempotent report for a SimFin adequacy run")
+    sp.add_argument("--run-id", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_simfin_adequacy_report)
 
     return p
 
