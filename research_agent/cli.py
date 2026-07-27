@@ -655,6 +655,100 @@ def cmd_owned_factor_report(args) -> int:
     return EXIT_OK
 
 
+# --------------------------------------------------------------------------- #
+# Phase 30C historical-coverage commands
+# --------------------------------------------------------------------------- #
+def _hcov_config(args) -> Optional[Dict[str, Any]]:
+    from .historical_coverage import load_config
+
+    cfg = load_config(args.config)
+    if cfg is None:
+        print("cannot read historical-coverage config %s" % args.config, file=sys.stderr)
+    return cfg
+
+
+def cmd_historical_coverage_validate(args) -> int:
+    from .historical_coverage import validate_config
+
+    cfg = _hcov_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_config(cfg)
+    _emit({"accepted": verdict["accepted"], "violations": verdict["violations"],
+           "config_hash": verdict["config_hash"]}, args.json)
+    return EXIT_OK if verdict["accepted"] else EXIT_INVALID
+
+
+def cmd_historical_coverage_probe(args) -> int:
+    from .historical_coverage import run_probe
+
+    cfg = _hcov_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    result = run_probe(cfg, output_root=output_root)
+    _emit(result, args.json)
+    return EXIT_INVALID if result.get("status") == "INVALID_CONFIG" else EXIT_OK
+
+
+def cmd_historical_coverage_run(args) -> int:
+    from .historical_coverage import run_acquisition
+
+    cfg = _hcov_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    result = run_acquisition(cfg, output_root=output_root, max_securities=args.max_securities)
+    _emit(result, args.json)
+    return EXIT_INVALID if result.get("status") == "INVALID_CONFIG" else EXIT_OK
+
+
+def cmd_historical_coverage_resume(args) -> int:
+    from .historical_coverage import HistoricalCoverageError, resume_acquisition
+
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        result = resume_acquisition(args.run_id, output_root, max_securities=args.max_securities)
+    except HistoricalCoverageError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    _emit(result, args.json)
+    return EXIT_INVALID if result.get("status") == "INVALID_CONFIG" else EXIT_OK
+
+
+def cmd_historical_coverage_status(args) -> int:
+    from .historical_coverage import HistoricalCoverageError, generate_status
+
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        _emit(generate_status(args.run_id, output_root), args.json)
+    except HistoricalCoverageError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    return EXIT_OK
+
+
+def cmd_historical_coverage_report(args) -> int:
+    from .historical_coverage import HistoricalCoverageError, generate_report
+
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        result = generate_report(args.run_id, output_root)
+    except HistoricalCoverageError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    payload = {"run_id": result["run_id"], "artifact_paths": result["artifact_paths"],
+               "best_feature": result["report"]["best_feature"],
+               "best_feature_decision": result["report"]["best_feature_decision"],
+               "fundamental_source": result["report"]["fundamental_source"],
+               "sector_source": result["report"]["sector_source"],
+               "safety": SAFETY_CONTRACT}
+    if args.json:
+        payload["report"] = result["report"]
+    _emit(payload, args.json)
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="python -m research_agent.cli",
@@ -889,6 +983,52 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--output-root", default=None)
     sp.add_argument("--json", action="store_true")
     sp.set_defaults(fn=cmd_owned_factor_report)
+
+    # Phase 30C historical-coverage repair
+    sp = sub.add_parser("historical-coverage-validate",
+                        help="validate a Phase 30C historical-coverage config")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_historical_coverage_validate)
+
+    sp = sub.add_parser("historical-coverage-probe",
+                        help="build the security master + deterministic sample and "
+                             "probe providers (bounded live SEC/EODHD)")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_historical_coverage_probe)
+
+    sp = sub.add_parser("historical-coverage-run",
+                        help="run bounded resumable acquisition + PIT normalization "
+                             "+ sector history + coverage gates + re-evaluation")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--max-securities", type=int, default=25)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_historical_coverage_run)
+
+    sp = sub.add_parser("historical-coverage-resume",
+                        help="resume a prior acquisition run")
+    sp.add_argument("--run-id", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--max-securities", type=int, default=25)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_historical_coverage_resume)
+
+    sp = sub.add_parser("historical-coverage-status",
+                        help="status of a historical-coverage run")
+    sp.add_argument("--run-id", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_historical_coverage_status)
+
+    sp = sub.add_parser("historical-coverage-report",
+                        help="idempotent report for a historical-coverage run")
+    sp.add_argument("--run-id", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_historical_coverage_report)
 
     return p
 

@@ -1,0 +1,89 @@
+{
+ "schema_version": "30C.1",
+ "name": "phase30c_historical_coverage_repair",
+ "objective": "Perform ACTUAL survivorship-safe fundamental backfill and point-in-time sector-history reconstruction using only owned and free sources plus existing securely-loaded credentials. Build a canonical content-hashed historical security master, probe real providers, select the best survivorship-safe repair source, run bounded resumable SEC acquisition, normalize as-filed fundamentals point-in-time (available_date = filing acceptance date), reconstruct PIT sector from filing-header SIC, recompute the unchanged coverage / survivorship / sector gates, and re-evaluate the four Phase 30B factors on the repaired data. No order, broker, automation, promotion, challenger, or operational-model change is possible. No gate is lowered and the universe is never redefined on future data availability.",
+ "data": {
+  "data_cutoff": "2026-06-30",
+  "cutoff_note": "committed Phase 29C/30A/30B source-campaign cutoff (max formation month 2026-05)"
+ },
+ "sources": {
+  "roots": {"repo": "REPO_ROOT", "data_root": "DATA_ROOT"},
+  "momentum_panel": {"root": "data_root", "relpath": "phase25_multi_horizon_alpha/_inputs/momentum_monthly_panel.csv"},
+  "security_master": {"root": "data_root", "relpath": "research_panels/phase8c_russell3000/metadata.csv"},
+  "sector_map": {"root": "repo", "relpath": "research/output/phase10f_owned_sector_mapping_repair/repaired_sector_mapping.csv"},
+  "sec_company_tickers": {"root": "repo", "relpath": "research/output/phase3l_sec_universe_signal_gate/raw/company_tickers.json"},
+  "simfin_companies": {"root": "repo", "relpath": "research/data/simfin/us-companies.csv"},
+  "simfin_income": {"root": "repo", "relpath": "research/data/simfin/us-income-quarterly.csv"},
+  "owned_sec_companyfacts_dir": {"root": "data_root", "relpath": "phase7j_broad_universe_signal_retest/sec_companyfacts"},
+  "owned_sec_submissions_dir": {"root": "data_root", "relpath": "phase7j_broad_universe_signal_retest/sec_submissions"}
+ },
+ "provider_cache_root": {"root": "data_root", "relpath": "provider_cache/phase30c"},
+ "normalized_root": {"root": "data_root", "relpath": "provider_cache/phase30c/normalized"},
+ "provider_order": ["norgate", "eodhd", "simfin", "sec"],
+ "provider_endpoints": {
+  "sec": {
+   "allowed_hosts": ["www.sec.gov", "data.sec.gov"],
+   "submissions_url": "https://data.sec.gov/submissions/CIK{cik10}.json",
+   "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik10}.json",
+   "filing_txt_url": "https://www.sec.gov/Archives/edgar/data/{cik}/{accn_nodash}/{accn_dashed}.txt",
+   "user_agent": "PaperTraderResearch/Phase30C cedric.binisti.research@example.com"
+  },
+  "eodhd": {
+   "allowed_hosts": ["eodhd.com"],
+   "fundamentals_url": "https://eodhd.com/api/fundamentals/{symbol}.US?fmt=json"
+  }
+ },
+ "sample": {"removed": 60, "current": 20, "seed": 30, "decades": ["2000s", "2010s", "2020s"]},
+ "acquisition": {
+  "max_requests_per_batch": 25,
+  "max_retries": 2,
+  "request_timeout_seconds": 30,
+  "sec_min_interval_seconds": 0.25,
+  "eodhd_min_interval_seconds": 0.30,
+  "probe_sec_max": 8,
+  "probe_sample_per_group": 3,
+  "filing_header_budget": 12
+ },
+ "entitlement": {"no_purchase": true, "contact_sales": false, "use_existing_keys_only": true},
+ "max_factor_staleness_months": 15,
+ "coverage_gates": {
+  "global_min_cross_sectional_coverage": 0.60,
+  "global_min_month_coverage": 0.60,
+  "min_delisted_representation_fraction": 0.20
+ },
+ "sector_history": {
+  "require_pit_safe_for_promotion": true,
+  "treat_unknown_as_sector": false,
+  "member_month_coverage_min": 0.60
+ },
+ "acquisition_targets": {
+  "removed_names_target": 400,
+  "removed_representation_target": 0.20,
+  "sector_member_month_target": 0.60
+ },
+ "diagnostics": {"factors": ["gross_profitability", "fcf_to_assets", "operating_accruals", "realized_vol_63d"]},
+ "ic_screen": {
+  "min_months": 36,
+  "min_coverage_fraction": 0.6,
+  "min_abs_rank_ic_t": 1.0,
+  "material_ic_t_margin": 0.25,
+  "near_duplicate_abs_corr": 0.95,
+  "max_complementary_abs_baseline_corr": 0.5,
+  "max_top_rank_sector_share": 0.5,
+  "leakage_suspicion_abs_ic": 0.5,
+  "min_universe": 10
+ },
+ "integration": {"baseline_weight": 0.8, "feature_weight": 0.2},
+ "costs": {"primary_cost_bps_per_side": 25.0, "sensitivity_cost_bps_per_side": [12.5, 50.0]},
+ "portfolio": {
+  "top_n": 25,
+  "sector_treatment": "sector_cap",
+  "exit_buffer_fraction": 0.0,
+  "universe": "mhz_reconstruction",
+  "min_adv_dollar": 10000000.0
+ },
+ "baseline": {"rank_ic_t": 0.7943535272584944},
+ "random_seed": 30,
+ "strict_mode": true,
+ "safety": {"research_only": true, "no_operational_promotion": true, "may_register_challengers": false}
+}
