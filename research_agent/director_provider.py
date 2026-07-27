@@ -49,6 +49,10 @@ CLAUDE_PLAN_ARGS = ("-p", "--output-format", "json")
 DEFAULT_TIMEOUT_SECONDS = 180
 VERSION_CHECK_TIMEOUT_SECONDS = 30
 _MAX_CAPTURED_CHARS = 2000
+# transport-parse hardening (Phase 29C.1): bounded scan for the single JSON
+# object a live reply may surround with prose; never a schema relaxation.
+_MAX_OBJECT_SCAN_STARTS = 200
+_SENTINEL = object()
 
 
 class ProviderError(RuntimeError):
@@ -478,23 +482,53 @@ class ClaudeCodeDirectorProvider(ResearchDirectorProvider):
         return _envelope(self.name, STATUS_OK, response=parsed,
                          request_id=request.get("request_id"))
 
-    @staticmethod
-    def _parse_json_only(stdout: str) -> Optional[Dict[str, Any]]:
-        try:
-            outer = json.loads(stdout)
-        except json.JSONDecodeError:
-            return None
-        if not isinstance(outer, dict):
+    @classmethod
+    def _parse_json_only(cls, stdout: str) -> Optional[Dict[str, Any]]:
+        outer = cls._decode_object(stdout)
+        if outer is None:
             return None
         # `claude -p --output-format json` wraps the reply: the actual model
         # reply is the "result" string, which must itself be JSON.
         if "result" in outer and isinstance(outer["result"], str):
-            try:
-                inner = json.loads(outer["result"])
-            except json.JSONDecodeError:
-                return None
-            return inner if isinstance(inner, dict) else None
+            return cls._decode_object(outer["result"])
         return outer
+
+    @staticmethod
+    def _decode_object(text: str) -> Optional[Dict[str, Any]]:
+        """Decode exactly one strict JSON object from a provider reply.
+
+        The whole-string parse is tried first. When it fails, the reply may
+        still contain the single required JSON object surrounded by prose or
+        markdown fences (observed on the first live claude-code feedback
+        cycle); the largest decodable object in the text is then accepted.
+        The extracted object is still untrusted data — the strict response
+        validation downstream is unchanged.
+        """
+        if not isinstance(text, str) or not text.strip():
+            return None
+        try:
+            whole = json.loads(text)
+        except json.JSONDecodeError:
+            whole = _SENTINEL
+        if whole is not _SENTINEL:
+            return whole if isinstance(whole, dict) else None
+        decoder = json.JSONDecoder()
+        best: Optional[Dict[str, Any]] = None
+        best_span = -1
+        pos = 0
+        for _ in range(_MAX_OBJECT_SCAN_STARTS):
+            start = text.find("{", pos)
+            if start == -1:
+                break
+            try:
+                obj, end = decoder.raw_decode(text, start)
+            except ValueError:
+                pos = start + 1
+                continue
+            if isinstance(obj, dict) and (end - start) > best_span:
+                best, best_span = obj, end - start
+            pos = start + 1
+        return best
 
 
 def get_provider(
