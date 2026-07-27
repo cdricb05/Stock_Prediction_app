@@ -48,6 +48,13 @@ CLAUDE_VERSION_ARGS = ("--version",)
 CLAUDE_PLAN_ARGS = ("-p", "--output-format", "json")
 DEFAULT_TIMEOUT_SECONDS = 180
 VERSION_CHECK_TIMEOUT_SECONDS = 30
+# Bounded transport-timeout override (Phase 29C.2). A CLI operator may raise
+# the claude-code subprocess timeout within this range — the live machine
+# needs ~270-300s for a full plan/feedback request — but it is transport
+# only: it never touches budgets, gates, prompts, tools, safety, the data
+# cutoff, or the fixed argument vector, and it can never be unbounded.
+PROVIDER_TIMEOUT_MIN_SECONDS = 30
+PROVIDER_TIMEOUT_MAX_SECONDS = 900
 _MAX_CAPTURED_CHARS = 2000
 # transport-parse hardening (Phase 29C.1): bounded scan for the single JSON
 # object a live reply may surround with prose; never a schema relaxation.
@@ -531,12 +538,37 @@ class ClaudeCodeDirectorProvider(ResearchDirectorProvider):
         return best
 
 
+def validate_transport_timeout(value: Optional[int]) -> Optional[int]:
+    """Validate a CLI transport-timeout override (seconds) or reject clearly.
+
+    ``None`` means "no override" and is returned unchanged (the configured or
+    default timeout applies). Any supplied value must be an integer inside the
+    bounded ``[PROVIDER_TIMEOUT_MIN_SECONDS, PROVIDER_TIMEOUT_MAX_SECONDS]``
+    range; anything else raises ProviderError with an explicit message. This
+    governs the claude-code subprocess timeout ONLY — never budgets, gates,
+    prompts, tools, safety, or the data cutoff — and can never be unbounded.
+    """
+    if value is None:
+        return None
+    if not isinstance(value, int) or isinstance(value, bool):
+        raise ProviderError(
+            "provider timeout must be an integer number of seconds (got %r)"
+            % (value,))
+    if not (PROVIDER_TIMEOUT_MIN_SECONDS <= value <= PROVIDER_TIMEOUT_MAX_SECONDS):
+        raise ProviderError(
+            "provider timeout %ds is outside the allowed bounded range "
+            "[%d, %d] seconds" % (value, PROVIDER_TIMEOUT_MIN_SECONDS,
+                                   PROVIDER_TIMEOUT_MAX_SECONDS))
+    return value
+
+
 def get_provider(
     name: str,
     *,
     director_config: Optional[Dict[str, Any]] = None,
     exchange_dir: Optional[str] = None,
     fixture_response: Optional[Dict[str, Any]] = None,
+    timeout_override: Optional[int] = None,
 ) -> ResearchDirectorProvider:
     cfg = (director_config or {}).get("provider") or {}
     if name == PROVIDER_FIXTURE:
@@ -552,13 +584,15 @@ def get_provider(
         return FileExchangeDirectorProvider(exchange_dir)
     if name == PROVIDER_CLAUDE_CODE:
         # config key is claude_cli (not *_code): the schema layer refuses any
-        # key containing an executable-content token, including "code"
+        # key containing an executable-content token, including "code". An
+        # explicit CLI override (transport only, bounded) wins over the config
+        # value; otherwise the configured or default timeout applies.
+        override = validate_transport_timeout(timeout_override)
+        configured = int(
+            (cfg.get("claude_cli") or {}).get(
+                "timeout_seconds", DEFAULT_TIMEOUT_SECONDS))
         return ClaudeCodeDirectorProvider(
-            timeout_seconds=int(
-                (cfg.get("claude_cli") or {}).get(
-                    "timeout_seconds", DEFAULT_TIMEOUT_SECONDS
-                )
-            ),
+            timeout_seconds=override if override is not None else configured,
         )
     raise ProviderError("unknown provider: %s (allowed: %s)"
                         % (name, ", ".join(PROVIDER_NAMES)))
@@ -576,6 +610,8 @@ __all__ = [
     "PROVIDER_FILE_EXCHANGE",
     "PROVIDER_FIXTURE",
     "PROVIDER_NAMES",
+    "PROVIDER_TIMEOUT_MAX_SECONDS",
+    "PROVIDER_TIMEOUT_MIN_SECONDS",
     "ProviderError",
     "ResearchDirectorProvider",
     "STATUS_AWAITING_MANUAL_RESPONSE",
@@ -585,4 +621,5 @@ __all__ = [
     "STATUS_PROVIDER_UNAVAILABLE",
     "build_fixture_response",
     "get_provider",
+    "validate_transport_timeout",
 ]

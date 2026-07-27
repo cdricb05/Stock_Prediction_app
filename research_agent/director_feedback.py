@@ -41,6 +41,7 @@ from .director import (
     REQUIRED_SAFETY_CONFIRMATIONS,
 )
 from .director_provider import (
+    DEFAULT_TIMEOUT_SECONDS,
     PROVIDER_CLAUDE_CODE,
     PROVIDER_FILE_EXCHANGE,
     PROVIDER_FIXTURE,
@@ -49,6 +50,7 @@ from .director_provider import (
     FileExchangeDirectorProvider,
     FixtureDirectorProvider,
     ProviderError,
+    validate_transport_timeout,
 )
 from .feature_dsl import feature_set_signature, validate_feature_set
 from .schemas import find_forbidden_execution_keys
@@ -510,8 +512,10 @@ def run_feedback_cycle(
     elif provider_name == PROVIDER_FILE_EXCHANGE:
         provider = FileExchangeDirectorProvider(exchange_dir or str(fdir))
     elif provider_name == PROVIDER_CLAUDE_CODE:
+        override = validate_transport_timeout(timeout_seconds)
         provider = ClaudeCodeDirectorProvider(
-            timeout_seconds=int(timeout_seconds or 180))
+            timeout_seconds=override if override is not None
+            else DEFAULT_TIMEOUT_SECONDS)
     else:
         raise ProviderError("unknown provider: %s" % provider_name)
 

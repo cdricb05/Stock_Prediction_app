@@ -293,9 +293,17 @@ def cmd_director_evidence(args) -> int:
 
 def cmd_director_plan(args) -> int:
     from .director import run_director_session, validate_director_config
-    from .director_provider import ProviderError, get_provider
+    from .director_provider import (
+        ProviderError, get_provider, validate_transport_timeout)
     from .evidence_pack import EvidencePackError
 
+    try:
+        # transport-only, bounded; fail clearly before any campaign work
+        provider_timeout = validate_transport_timeout(
+            getattr(args, "provider_timeout_seconds", None))
+    except ProviderError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_INVALID
     cfg = _load_config(args.config)
     if cfg is None:
         return EXIT_INVALID
@@ -315,6 +323,7 @@ def cmd_director_plan(args) -> int:
             director_config=cfg,
             exchange_dir=args.exchange_dir
             or str(Path(output_root) / "director_exchange"),
+            timeout_override=provider_timeout,
         )
         result = run_director_session(
             artifact_root=root,
@@ -502,10 +511,13 @@ def cmd_feature_report(args) -> int:
 
 def cmd_director_feedback(args) -> int:
     from .director_feedback import run_feedback_cycle
-    from .director_provider import ProviderError
+    from .director_provider import ProviderError, validate_transport_timeout
     from .feature_campaign import FeatureCampaignError
 
     try:
+        # transport-only, bounded; fail clearly before any campaign work
+        timeout = validate_transport_timeout(
+            getattr(args, "provider_timeout_seconds", None))
         store = _feature_store(args)
         if args.feature_campaign_id not in store.list_campaigns():
             print("unknown feature campaign id: %s" % args.feature_campaign_id,
@@ -516,6 +528,7 @@ def cmd_director_feedback(args) -> int:
             args.feature_campaign_id,
             provider_name=args.provider,
             exchange_dir=args.exchange_dir,
+            timeout_seconds=timeout,
         )
     except (ArtifactStoreError, FeatureCampaignError, ProviderError) as exc:
         print(str(exc), file=sys.stderr)
@@ -633,6 +646,11 @@ def build_parser() -> argparse.ArgumentParser:
                     help="fixture | file-exchange | claude-code")
     sp.add_argument("--output-root", default=None)
     sp.add_argument("--exchange-dir", default=None)
+    sp.add_argument("--provider-timeout-seconds", type=int, default=None,
+                    help="transport-only timeout override for the claude-code "
+                         "provider subprocess, seconds; bounded [30, 900]; "
+                         "never changes budgets, gates, prompts, tools, "
+                         "safety, or the data cutoff")
     sp.add_argument("--json", action="store_true")
     sp.set_defaults(fn=cmd_director_plan)
 
@@ -713,6 +731,11 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--provider", required=True,
                     help="fixture | file-exchange | claude-code")
     sp.add_argument("--exchange-dir", default=None)
+    sp.add_argument("--provider-timeout-seconds", type=int, default=None,
+                    help="transport-only timeout override for the claude-code "
+                         "provider subprocess, seconds; bounded [30, 900]; "
+                         "never changes budgets, gates, prompts, tools, "
+                         "safety, or the data cutoff")
     sp.set_defaults(fn=cmd_director_feedback)
 
     return p
