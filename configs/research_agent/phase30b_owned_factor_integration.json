@@ -1,0 +1,187 @@
+{
+ "schema_version": "30B.1",
+ "name": "phase30b_owned_factor_integration",
+ "objective": "Connect already-owned, point-in-time-safe numeric factors (the realized_vol_63d column the momentum loader discards, and the raw EODHD normalized fundamental factors) to the deterministic research-agent diagnostic path, then evaluate them HONESTLY under an explicit universe/survivorship/sector contract. Coverage is never redefined to make a factor pass: the global 0.60 coverage gate is unchanged, and a separate source-observed universe result carries its own survivorship provenance and cannot create shadow eligibility. The deterministic engine performs every calculation; no order, broker, automation, promotion, or operational-model change is possible.",
+ "data": {
+  "inherit_data_cutoff_from_source_campaign": true,
+  "data_cutoff": "2026-06-30",
+  "source_campaign_cutoff_note": "committed Phase 29C / Phase 30A source-campaign cutoff (max formation month 2026-05; 310 formation months)"
+ },
+ "sources": {
+  "roots": {
+   "repo": "REPO_ROOT",
+   "data_root": "DATA_ROOT"
+  },
+  "momentum_panel": {"root": "data_root", "relpath": "phase25_multi_horizon_alpha/_inputs/momentum_monthly_panel.csv"},
+  "eodhd_normalized_root": {"root": "repo", "relpath": "research/data/eodhd/normalized"},
+  "sector_map": {"root": "repo", "relpath": "research/output/phase10f_owned_sector_mapping_repair/repaired_sector_mapping.csv"},
+  "factors": [
+   {
+    "source_id": "realized_vol_63d",
+    "provider": "norgate_derived_price",
+    "kind": "momentum_panel_column",
+    "value_column": "realized_vol_63d",
+    "ticker_column": "ticker",
+    "availability": "formation_month",
+    "frequency": "monthly",
+    "orientation": null,
+    "restatement_caveat": false,
+    "usage": "primary"
+   },
+   {
+    "source_id": "gross_profitability",
+    "provider": "eodhd_fundamentals",
+    "kind": "eodhd_normalized",
+    "subdir": "eodhd_gross_profitability",
+    "file": "gross_profitability.csv",
+    "value_column": "gross_profitability",
+    "ticker_column": "ticker",
+    "availability_date_column": "available_date",
+    "frequency": "quarterly_asof",
+    "orientation": null,
+    "restatement_caveat": true,
+    "usage": "primary"
+   },
+   {
+    "source_id": "fcf_to_assets",
+    "provider": "eodhd_fundamentals",
+    "kind": "eodhd_normalized",
+    "subdir": "eodhd_fcf_to_assets",
+    "file": "fcf_to_assets.csv",
+    "value_column": "fcf_to_assets",
+    "ticker_column": "ticker",
+    "availability_date_column": "available_date",
+    "frequency": "quarterly_asof",
+    "orientation": null,
+    "restatement_caveat": true,
+    "usage": "primary"
+   },
+   {
+    "source_id": "operating_accruals",
+    "provider": "eodhd_fundamentals",
+    "kind": "eodhd_normalized",
+    "subdir": "eodhd_operating_accruals",
+    "file": "operating_accruals.csv",
+    "value_column": "operating_accruals",
+    "ticker_column": "ticker",
+    "availability_date_column": "available_date",
+    "frequency": "quarterly_asof",
+    "orientation": null,
+    "restatement_caveat": true,
+    "usage": "primary"
+   },
+   {
+    "source_id": "leverage_change",
+    "provider": "eodhd_fundamentals",
+    "kind": "eodhd_normalized",
+    "subdir": "eodhd_leverage_change",
+    "file": "leverage_change.csv",
+    "value_column": "leverage_change",
+    "ticker_column": "ticker",
+    "availability_date_column": "available_date",
+    "frequency": "quarterly_asof",
+    "orientation": null,
+    "restatement_caveat": true,
+    "usage": "diagnostic_only"
+   },
+   {
+    "source_id": "net_share_issuance",
+    "provider": "eodhd_fundamentals",
+    "kind": "eodhd_normalized",
+    "subdir": "eodhd_net_share_issuance",
+    "file": "net_share_issuance.csv",
+    "value_column": "net_share_issuance",
+    "ticker_column": "ticker",
+    "availability_date_column": "available_date",
+    "frequency": "quarterly_asof",
+    "orientation": null,
+    "restatement_caveat": true,
+    "usage": "diagnostic_only"
+   }
+  ]
+ },
+ "permitted_numeric_fields": [
+  "realized_vol_63d",
+  "gross_profitability",
+  "fcf_to_assets",
+  "operating_accruals",
+  "leverage_change",
+  "net_share_issuance"
+ ],
+ "forbidden_target_fields": [
+  "fwd_1m_return",
+  "fwd_1m",
+  "forward_1m",
+  "forward_63d_return",
+  "forward_return",
+  "fwd_return",
+  "target",
+  "realized_return"
+ ],
+ "max_factor_staleness_months": 15,
+ "global_min_month_coverage": 0.60,
+ "global_min_cross_sectional_coverage": 0.60,
+ "source_universe_min_coverage": 0.60,
+ "survivorship": {
+  "require_pit_membership": true,
+  "min_delisted_representation_fraction": 0.20,
+  "note": "a source-observed universe may advance beyond diagnostic-only only when removed/delisted names are meaningfully represented; a current-survivor-only subset is DIAGNOSTIC_ONLY and can never create shadow eligibility"
+ },
+ "sector_history": {
+  "require_pit_safe_for_promotion": true,
+  "treat_unknown_as_sector": false,
+  "note": "current EODHD GICS is CURRENT_ONLY, never presented as historical PIT classification; the sector-concentration gate is unchanged and is applied only diagnostically until a PIT-safe classification exists"
+ },
+ "diagnostics": {
+  "max_features": 4,
+  "initial_features": [
+   "gross_profitability",
+   "fcf_to_assets",
+   "operating_accruals",
+   "realized_vol_63d"
+  ]
+ },
+ "budgets": {
+  "max_diagnostic_features": 4,
+  "max_portfolio_integrations": 2,
+  "max_robustness_candidates": 2,
+  "max_retry_per_tool": 1
+ },
+ "integration": {
+  "baseline_weight": 0.8,
+  "feature_weight": 0.2
+ },
+ "costs": {
+  "primary_cost_bps_per_side": 25.0,
+  "sensitivity_cost_bps_per_side": [12.5, 50.0]
+ },
+ "portfolio": {
+  "top_n": 25,
+  "sector_treatment": "sector_cap",
+  "exit_buffer_fraction": 0.0,
+  "universe": "mhz_reconstruction",
+  "min_adv_dollar": 10000000.0
+ },
+ "ic_screen": {
+  "min_months": 36,
+  "min_coverage_fraction": 0.6,
+  "min_abs_rank_ic_t": 1.0,
+  "material_ic_t_margin": 0.25,
+  "near_duplicate_abs_corr": 0.95,
+  "max_complementary_abs_baseline_corr": 0.5,
+  "max_top_rank_sector_share": 0.5,
+  "leakage_suspicion_abs_ic": 0.5,
+  "min_universe": 10
+ },
+ "baseline": {
+  "rank_ic_t": 0.7943535272584944,
+  "note": "committed Phase 29C/30A baseline aggregate rank-IC t-stat used for material/complementary comparison; recomputed from the reproduced baseline at run time"
+ },
+ "random_seed": 30,
+ "strict_mode": true,
+ "safety": {
+  "research_only": true,
+  "no_operational_promotion": true,
+  "may_register_challengers": false
+ }
+}

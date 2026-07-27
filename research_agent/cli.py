@@ -544,6 +544,117 @@ def cmd_director_feedback(args) -> int:
     return EXIT_INVALID
 
 
+# --------------------------------------------------------------------------- #
+# Phase 30B owned-factor commands
+# --------------------------------------------------------------------------- #
+def _owned_config(args) -> Optional[Dict[str, Any]]:
+    from .owned_factors import load_owned_factor_config
+
+    cfg = load_owned_factor_config(args.config)
+    if cfg is None:
+        print("cannot read owned-factor config %s" % args.config, file=sys.stderr)
+    return cfg
+
+
+def cmd_owned_factor_validate(args) -> int:
+    from .owned_factors import validate_owned_factor_config
+
+    cfg = _owned_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_owned_factor_config(cfg)
+    _emit(
+        {
+            "accepted": verdict["accepted"],
+            "violations": verdict["violations"],
+            "config_hash": verdict["config_hash"],
+        },
+        args.json,
+    )
+    return EXIT_OK if verdict["accepted"] else EXIT_INVALID
+
+
+def cmd_owned_factor_audit(args) -> int:
+    from .owned_factors import audit_sources, validate_owned_factor_config
+
+    cfg = _owned_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_owned_factor_config(cfg)
+    if not verdict["accepted"]:
+        _emit({"accepted": False, "violations": verdict["violations"]}, args.json)
+        return EXIT_INVALID
+    _emit(audit_sources(cfg), args.json)
+    return EXIT_OK
+
+
+def cmd_owned_universe_audit(args) -> int:
+    from .owned_factors import audit_universe, validate_owned_factor_config
+
+    cfg = _owned_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_owned_factor_config(cfg)
+    if not verdict["accepted"]:
+        _emit({"accepted": False, "violations": verdict["violations"]}, args.json)
+        return EXIT_INVALID
+    _emit(audit_universe(cfg), args.json)
+    return EXIT_OK
+
+
+def cmd_owned_sector_audit(args) -> int:
+    from .owned_factors import audit_sector, validate_owned_factor_config
+
+    cfg = _owned_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    verdict = validate_owned_factor_config(cfg)
+    if not verdict["accepted"]:
+        _emit({"accepted": False, "violations": verdict["violations"]}, args.json)
+        return EXIT_INVALID
+    _emit(audit_sector(cfg), args.json)
+    return EXIT_OK
+
+
+def cmd_owned_factor_diagnostics(args) -> int:
+    from .owned_factors import run_owned_factor_campaign
+
+    cfg = _owned_config(args)
+    if cfg is None:
+        return EXIT_INVALID
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    result = run_owned_factor_campaign(
+        cfg, output_root=output_root, max_features=args.max_features)
+    _emit(result, args.json)
+    if result.get("status") == "INVALID_CONFIG":
+        return EXIT_INVALID
+    if result.get("status") == "BLOCKED_BASELINE":
+        return EXIT_FAILED
+    return EXIT_OK
+
+
+def cmd_owned_factor_report(args) -> int:
+    from .owned_factors import OwnedFactorError, generate_report
+
+    output_root = args.output_root or DEFAULT_ARTIFACT_ROOT
+    try:
+        result = generate_report(args.run_id, output_root)
+    except OwnedFactorError as exc:
+        print(str(exc), file=sys.stderr)
+        return EXIT_UNKNOWN_CAMPAIGN
+    payload = {
+        "run_id": result["run_id"],
+        "artifact_paths": result["artifact_paths"],
+        "best_feature": result["report"]["best_feature"],
+        "best_feature_decision": result["report"]["best_feature_decision"],
+        "safety": SAFETY_CONTRACT,
+    }
+    if args.json:
+        payload["report"] = result["report"]
+    _emit(payload, args.json)
+    return EXIT_OK
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="python -m research_agent.cli",
@@ -737,6 +848,47 @@ def build_parser() -> argparse.ArgumentParser:
                          "never changes budgets, gates, prompts, tools, "
                          "safety, or the data cutoff")
     sp.set_defaults(fn=cmd_director_feedback)
+
+    # ---- Phase 30B owned-factor commands ---------------------------------
+    sp = sub.add_parser("owned-factor-validate",
+                        help="validate a Phase 30B owned-factor config")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_owned_factor_validate)
+
+    sp = sub.add_parser("owned-factor-audit",
+                        help="read-only source registry + per-factor PIT audit")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_owned_factor_audit)
+
+    sp = sub.add_parser("owned-universe-audit",
+                        help="read-only universe + survivorship audit")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_owned_universe_audit)
+
+    sp = sub.add_parser("owned-sector-audit",
+                        help="read-only sector-history audit")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_owned_sector_audit)
+
+    sp = sub.add_parser("owned-factor-diagnostics",
+                        help="run the bounded owned-factor diagnostic campaign "
+                             "(writes a run under <output-root>)")
+    sp.add_argument("--config", required=True)
+    sp.add_argument("--max-features", type=int, default=None)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_owned_factor_diagnostics)
+
+    sp = sub.add_parser("owned-factor-report",
+                        help="idempotent report for an owned-factor run")
+    sp.add_argument("--run-id", required=True)
+    sp.add_argument("--output-root", default=None)
+    sp.add_argument("--json", action="store_true")
+    sp.set_defaults(fn=cmd_owned_factor_report)
 
     return p
 
