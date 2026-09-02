@@ -72,21 +72,34 @@ def _save_progress(prog):
     os.replace(tmp, PROGRESS_PATH)
 
 
-def _pull_symbol(ng, sym, start_date):
-    """Return (close, dvol, member) pandas Series for one symbol, or None if unavailable."""
+def _pull_symbol(ng, sym, start_date, end_date=None):
+    """Return (close, dvol, member) pandas Series for one symbol, or None if unavailable.
+
+    ``end_date`` is the POINT-IN-TIME cutoff.  When supplied it is passed to BOTH the price
+    and the index-membership series, so the symbol contributes no observation later than the
+    cutoff.  A trailing truncation is applied as well, so a provider that ignores the bound
+    still cannot leak a future row into the panel.
+    """
+    kw = {"start_date": start_date}
+    if end_date:
+        kw["end_date"] = end_date
     try:
         px = ng.price_timeseries(
             sym, stock_price_adjustment_setting=ng.StockPriceAdjustmentType.TOTALRETURN,
-            padding_setting=ng.PaddingType.NONE, start_date=start_date, format="pandas-dataframe")
+            padding_setting=ng.PaddingType.NONE, format="pandas-dataframe", **kw)
     except Exception:
         return None
     if px is None or len(px) == 0 or "Close" not in px.columns:
         return None
+    if end_date:
+        px = px.loc[px.index <= pd.Timestamp(end_date)]
+        if len(px) == 0:
+            return None
     close = px["Close"].astype("float64")
     dvol = px["Turnover"].astype("float64") if "Turnover" in px.columns else pd.Series(index=px.index, dtype="float64")
     try:
         mem = ng.index_constituent_timeseries(
-            sym, INDEX_NAME, start_date=start_date, format="pandas-dataframe")
+            sym, INDEX_NAME, format="pandas-dataframe", **kw)
         mcol = "Index Constituent" if "Index Constituent" in mem.columns else mem.columns[-1]
         member = mem[mcol].astype("float64").reindex(close.index).fillna(0.0)
     except Exception:
@@ -155,10 +168,13 @@ def build_daily_panel_from_norgate(limit=None, start_date=START_DATE, force=Fals
     return manifest
 
 
-def _assemble_npz(universe, current, delisted, missing, start_date, n_total, log):
+def _assemble_npz(universe, current, delisted, missing, start_date, n_total, log,
+                  shard_dir=None, npz_path=None, as_of=None):
     """Assemble aligned float32 matrices from the per-shard pickles and persist a single NPZ."""
+    shard_dir = shard_dir or SHARD_DIR
+    npz_path = npz_path or NPZ_PATH
     close_map, dvol_map, mem_map = {}, {}, {}
-    for shard_path in sorted(glob.glob(os.path.join(SHARD_DIR, "shard_*.pkl"))):
+    for shard_path in sorted(glob.glob(os.path.join(shard_dir, "shard_*.pkl"))):
         with open(shard_path, "rb") as fh:
             data = pickle.load(fh)
         for sym, (close, dvol, member) in data.items():
@@ -167,6 +183,11 @@ def _assemble_npz(universe, current, delisted, missing, start_date, n_total, log
             mem_map[sym] = member
     symbols = sorted(close_map)
     close_df = pd.DataFrame(close_map).sort_index()
+    # POINT-IN-TIME BOUND (defence in depth).  The per-symbol pull is already bounded by
+    # end_date; truncating the assembled calendar here means no future row can survive
+    # even if a provider ignored the bound or a stale shard was picked up.
+    if as_of:
+        close_df = close_df.loc[close_df.index <= pd.Timestamp(as_of)]
     cal = close_df.index
     close_df = close_df.reindex(columns=symbols)
     dvol_df = pd.DataFrame(dvol_map).reindex(index=cal, columns=symbols)
@@ -178,10 +199,10 @@ def _assemble_npz(universe, current, delisted, missing, start_date, n_total, log
     member = (mem_df.to_numpy() > 0.5).astype(np.int8)
 
     sectors = _sector_vector(symbols)
-    os.makedirs(DAILY_DIR, exist_ok=True)
-    np.savez_compressed(NPZ_PATH, dates=dates, symbols=np.array(symbols),
+    os.makedirs(os.path.dirname(npz_path) or DAILY_DIR, exist_ok=True)
+    np.savez_compressed(npz_path, dates=dates, symbols=np.array(symbols),
                         close=close, dvol=dvol, member=member, sectors=np.array(sectors))
-    log(f"[daily] wrote NPZ {NPZ_PATH}  shape={close.shape}  size={os.path.getsize(NPZ_PATH)/1e6:.1f}MB")
+    log(f"[daily] wrote NPZ {npz_path}  shape={close.shape}  size={os.path.getsize(npz_path)/1e6:.1f}MB")
 
     member_days = int(member.sum())
     cov = float(np.isfinite(close).mean())
@@ -198,7 +219,9 @@ def _assemble_npz(universe, current, delisted, missing, start_date, n_total, log
         survivorship_caveats="Universe = Russell 1000 Current & Past (delisted retained). Membership mask "
         "is PIT/survivorship-free. A fast alpha here is capacity-relevant (large-cap liquid).",
         pit_confidence="HIGH: close known at t, forward from t+1, PIT membership as-of t, TR adjustment.",
-        npz_path=NPZ_PATH)
+        as_of_cutoff=(str(as_of)[:10] if as_of else None),
+        bounded_refresh=bool(as_of),
+        npz_path=npz_path)
 
 
 def _sector_vector(symbols):
@@ -214,6 +237,153 @@ def _sector_vector(symbols):
         except Exception:
             pass
     return [smap.get(s, "Unknown") for s in symbols]
+
+
+# --------------------------------------------------------------------------- #
+# BOUNDED POINT-IN-TIME REFRESH (the CONTROLLED maintenance path)              #
+#                                                                              #
+# ``build_daily_panel_from_norgate`` is a ONE-TIME acquisition: it returns early when the
+# NPZ already exists, and it pulls to the provider's LATEST observation.  Neither property
+# is usable for the operational research cycle, which must be able to rebuild the panel for
+# a NAMED historical session without ever seeing data that session did not have.  Hence ONE
+# extra entry point on the SAME owner (there is no second panel writer):
+#
+#   * the caller supplies an internal as-of cutoff (the eligible research session).  Every
+#     symbol is pulled with end_date=as_of and truncated again after assembly;
+#   * delisted / removed names are retained exactly as in the one-time build (the universe
+#     is the Current & Past watchlist and the membership mask is per-day PIT), so the
+#     refresh is survivorship-free by the same construction;
+#   * quality is checked against the panel being REPLACED and the refresh FAILS CLOSED
+#     (raising, writing nothing) on a short calendar, a future-dated row or lost symbols;
+#   * the canonical NPZ + manifest are replaced atomically, so a failed refresh always
+#     leaves the previous panel intact;
+#   * it is idempotent: refreshing twice to the same cutoff reproduces the same last_date
+#     and the same symbol set.
+# --------------------------------------------------------------------------- #
+REFRESH_SHARD_SUBDIR = "_refresh_shards"
+
+
+class PanelRefreshError(RuntimeError):
+    """A bounded refresh that failed its own quality contract.  Nothing was written."""
+
+    def __init__(self, message, code="PANEL_REFRESH_FAILED", detail=None):
+        super().__init__(message)
+        self.code = code
+        self.detail = detail or {}
+
+
+def _existing_manifest():
+    if os.path.exists(MANIFEST_PATH):
+        try:
+            with open(MANIFEST_PATH) as fh:
+                return json.load(fh)
+        except Exception:
+            return {}
+    return {}
+
+
+def refresh_daily_panel_as_of(as_of, start_date=START_DATE, log=print, limit=None):
+    """Rebuild the canonical survivorship-free daily panel bounded to ``as_of``.
+
+    ``as_of`` (YYYY-MM-DD) is the point-in-time cutoff — the eligible research session.
+    Returns the new manifest.  Raises ``PanelRefreshError`` (writing nothing) when the
+    refreshed panel fails its quality contract.
+    """
+    import norgatedata as ng  # owned adapter; lazy so importing this module never needs norgate
+
+    if not as_of:
+        raise PanelRefreshError("A bounded refresh requires an as-of cutoff.",
+                                code="PANEL_REFRESH_NO_CUTOFF")
+    cutoff = pd.Timestamp(str(as_of)[:10])
+    prior = _existing_manifest()
+    refresh_shards = os.path.join(DAILY_DIR, REFRESH_SHARD_SUBDIR)
+    if os.path.isdir(refresh_shards):
+        for stale in glob.glob(os.path.join(refresh_shards, "shard_*.pkl")):
+            os.remove(stale)
+    os.makedirs(refresh_shards, exist_ok=True)
+
+    universe = list(ng.watchlist_symbols(WATCHLIST_CP))
+    try:
+        current = set(ng.watchlist_symbols(WATCHLIST_CURRENT))
+    except Exception:
+        current = set()
+    if limit:
+        universe = universe[:limit]
+    n_total = len(universe)
+    delisted = [s for s in universe if s not in current]
+    log(f"[refresh] as_of={cutoff.date()} universe={n_total} delisted/removed={len(delisted)}")
+
+    t0 = time.time()
+    missing = []
+    end_str = str(cutoff.date())
+    for si in range(0, n_total, SHARD):
+        shard_id = si // SHARD
+        batch = universe[si:si + SHARD]
+        data = {}
+        for sym in batch:
+            res = _pull_symbol(ng, sym, start_date, end_date=end_str)
+            if res is None:
+                missing.append(sym)
+                continue
+            data[sym] = res
+        shard_path = os.path.join(refresh_shards, f"shard_{shard_id:03d}.pkl")
+        with open(shard_path + ".tmp", "wb") as fh:
+            pickle.dump(data, fh, protocol=pickle.HIGHEST_PROTOCOL)
+        os.replace(shard_path + ".tmp", shard_path)
+        log(f"[refresh] shard {shard_id} pulled {len(data)}/{len(batch)} "
+            f"(elapsed {time.time()-t0:.1f}s)")
+
+    tmp_npz = NPZ_PATH + ".refresh.tmp.npz"
+    manifest = _assemble_npz(universe, current, delisted, missing, start_date, n_total, log,
+                             shard_dir=refresh_shards, npz_path=tmp_npz, as_of=end_str)
+    manifest["build_seconds"] = round(time.time() - t0, 1)
+    manifest["refresh_kind"] = "BOUNDED_AS_OF"
+    manifest["previous_last_date"] = prior.get("last_date")
+    manifest["previous_securities_pulled"] = prior.get("securities_pulled")
+
+    # --- quality contract: fail closed, leaving the previous panel untouched ----------- #
+    def _fail(code, message, **detail):
+        try:
+            os.remove(tmp_npz)
+        except OSError:
+            pass
+        raise PanelRefreshError(message, code=code,
+                                detail=dict(as_of=end_str, **detail))
+
+    last = str(manifest.get("last_date") or "")[:10]
+    if not last:
+        _fail("SOURCE_PANEL_INCOMPLETE", "Refreshed panel has no trading days.")
+    if last > end_str:
+        _fail("SOURCE_PANEL_FUTURE_DATED",
+              f"Refreshed panel last date {last} is later than the cutoff {end_str}.",
+              last_date=last)
+    if last != end_str:
+        _fail("SOURCE_PANEL_INCOMPLETE",
+              f"Refreshed panel reaches only {last}; the cutoff session {end_str} is not "
+              f"covered by the owned provider.", last_date=last)
+    prev_syms = prior.get("securities_pulled")
+    if isinstance(prev_syms, int) and manifest["securities_pulled"] < prev_syms:
+        _fail("HISTORICAL_UNIVERSE_COVERAGE_FAILED",
+              f"Refreshed panel carries {manifest['securities_pulled']} securities, fewer "
+              f"than the {prev_syms} already held; refusing to drop historical names.",
+              securities_pulled=manifest["securities_pulled"], previous=prev_syms)
+    prev_days = prior.get("n_trading_days")
+    if isinstance(prev_days, int) and manifest["n_trading_days"] < prev_days:
+        _fail("SOURCE_PANEL_INCOMPLETE",
+              f"Refreshed panel carries {manifest['n_trading_days']} trading days, fewer "
+              f"than the {prev_days} already held.",
+              n_trading_days=manifest["n_trading_days"], previous=prev_days)
+
+    # --- atomic promotion -------------------------------------------------------------- #
+    os.replace(tmp_npz, NPZ_PATH)
+    manifest["npz_path"] = NPZ_PATH
+    tmp_manifest = MANIFEST_PATH + ".tmp"
+    with open(tmp_manifest, "w") as fh:
+        json.dump(manifest, fh, indent=2, default=str)
+    os.replace(tmp_manifest, MANIFEST_PATH)
+    log(f"[refresh] promoted panel bounded to {end_str} "
+        f"({manifest['n_trading_days']} days, {manifest['securities_pulled']} securities)")
+    return manifest
 
 
 # --------------------------------------------------------------------------- #
